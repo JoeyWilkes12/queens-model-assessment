@@ -83,5 +83,4 @@ The public bundle excludes credentials, private answer keys, encrypted reasoning
 - The repository solver is explanatory context, not a timed competitor.
 - Jev candidate recognition is never presented as autonomous puzzle construction.
 - The three original boards and six held-out boards do not support a general intelligence ranking.
-- The website is localhost-only in this phase. Deployment, analytics, and external data fetching are deferred.
-
+- The website is a static, read-only GitHub Pages publication. Analytics and external data fetching remain excluded.

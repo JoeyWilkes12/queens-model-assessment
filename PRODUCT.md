@@ -22,7 +22,7 @@ web
 
 ## Stack
 
-Inferred after the structured question mechanism was unavailable: Vite, React, and TypeScript. The first delivery is localhost-only; a later static build should remain compatible with GitHub Pages without deployment in this phase.
+Vite, React, and TypeScript, published as a static GitHub Pages site with hash routing.
 
 ## Users
 
@@ -40,7 +40,7 @@ The site connects an editorial assessment directly to its inspectable local evid
 
 ## Operating Context
 
-Readers move between high-level chapters, board diagrams, model comparisons, candidate-selection demonstrations, and exact JSON evidence. The initial site runs locally. No model calls, account changes, deployment, or external writes occur through the site.
+Readers move between high-level chapters, board diagrams, model comparisons, candidate-selection demonstrations, and exact JSON evidence. The public site remains static and read-only: no model calls, account changes, analytics, or external writes occur through the interface.
 
 ## Capabilities and Constraints
 
@@ -48,8 +48,8 @@ Readers move between high-level chapters, board diagrams, model comparisons, can
 - Expose model-visible requests, visible responses, metadata, grades, and preserved transport errors from the five assessment stages.
 - Exclude private answer keys, credentials, encrypted reasoning payloads, generated PDF page rasters, and unrelated repository files.
 - Use responsive sidebar and chapter navigation, accessible disclosure controls, native table scrolling, keyboard focus, reduced-motion support, and light/dark themes.
-- Keep the localhost build static-host compatible.
-- Deployment is explicitly deferred until the user approves it.
+- Keep local development and the GitHub Pages build aligned.
+- Publish only the sanitized site bundle and its inspectable source repository.
 
 ## Brand Commitments
 
@@ -66,7 +66,7 @@ Use the Agent Skills Resource Library design system at `/Users/joeywilkes/Deskto
 - Five report illustrations: `../assets/`.
 - The PDF remains a stable download for readers who do not need the evidence atlas.
 
-No testimonial, population-level benchmark claim, or public deployment claim is available and none may be fabricated.
+No testimonial or population-level benchmark claim is available and none may be fabricated. The public deployment is limited to the GitHub Pages URL recorded in the About page.
 
 ## Product Principles
 

@@ -22,6 +22,7 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/scale-primitives`
 - `#/evidence-atlas`
 - `#/methods-sources`
+- `#/about`
 
 The evidence atlas also supports `#/evidence-atlas/<record-id>` detail routes.
 
@@ -29,14 +30,20 @@ The evidence atlas also supports `#/evidence-atlas/<record-id>` detail routes.
 
 Only sanitized records placed in `public/evidence/manifest.json` are rendered. Private answer keys, credentials, encrypted reasoning, and raw repository paths must not be copied into that manifest. The generated bundle includes exact prompt text, model-visible responses, deterministic grades, request metadata, and decoded content-addressed copies of the three input board images.
 
-## Local handoff
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-`predev` and `prebuild` regenerate the public evidence bundle from the five retained studies. Use `npm run evidence:generate` to refresh it directly. The site is intentionally localhost-first and has not been deployed.
+The committed public evidence bundle is sufficient for development and deployment. From the parent Queens source checkout, use `npm run evidence:generate` to refresh it from the five retained studies before committing a deliberate data update.
+
+## Public deployment
+
+The site is published through GitHub Actions to [GitHub Pages](https://joeywilkes12.github.io/queens-model-assessment/). Pushes to `main` build the root Vite project and deploy `dist/`; the repository's Pages source must be set to **GitHub Actions**.
+
+The publication layer was prepared from source revision `dc5b1f77357bcb62580f3e4f5ccf480765586b75`. The About route, Pages workflow, and QR assets are deployment additions and do not change the assessment results.
 
 ## Design and quality records
 

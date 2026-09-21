@@ -5,9 +5,7 @@
   "type": "module",
   "scripts": {
     "evidence:generate": "node scripts/generate-evidence.mjs",
-    "predev": "npm run evidence:generate",
     "dev": "vite",
-    "prebuild": "npm run evidence:generate",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },
