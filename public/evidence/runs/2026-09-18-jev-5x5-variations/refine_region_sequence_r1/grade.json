@@ -1,0 +1,17 @@
+{
+  "call_id": "refine_region_sequence_r1",
+  "family": "region_sequence",
+  "replicate": 1,
+  "task_correct": true,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.99,
+  "best_correct_rank_optimistic": 1,
+  "selected_confidence": 0.97,
+  "seconds": 0.3217193749733269,
+  "cost_usd": 0.000054432,
+  "input_tokens": 1296,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "dc81372c0157091bf6fd94d092dea3442079be3da3d1de0bc7271b72aa055daf"
+}

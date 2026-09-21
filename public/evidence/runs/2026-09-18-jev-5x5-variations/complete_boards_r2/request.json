@@ -1,0 +1,88 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ],
+    "candidate_help": "Every option already has one queen per row and column and no touching queens. Exactly one option also has one queen in each region. Select that complete solution."
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Select the single complete placement that satisfies ALL target board rules. Exactly one of the 12 candidates is correct. Evaluate the target board, not any example board.",
+      "criteria": {
+        "option_01": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. Q . . .\n. . . Q .\nQ . . . .\n. . . . Q\n. . Q . .",
+        "option_02": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. Q . . .\n. . . . Q\n. . Q . .\nQ . . . .\n. . . Q .",
+        "option_03": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. . Q . .\n. . . . Q\nQ . . . .\n. . . Q .\n. Q . . .",
+        "option_04": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. Q . . .\n. . . Q .\nQ . . . .\n. . Q . .\n. . . . Q",
+        "option_05": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. . Q . .\n. . . . Q\n. Q . . .\n. . . Q .\nQ . . . .",
+        "option_06": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. . . . Q\n. . Q . .\nQ . . . .\n. . . Q .\n. Q . . .",
+        "option_07": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\nQ . . . .\n. . . Q .\n. Q . . .\n. . . . Q\n. . Q . .",
+        "option_08": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. . . Q .\n. Q . . .\n. . . . Q\n. . Q . .\nQ . . . .",
+        "option_09": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. . . . Q\n. Q . . .\n. . . Q .\nQ . . . .\n. . Q . .",
+        "option_10": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. . . Q .\nQ . . . .\n. . Q . .\n. . . . Q\n. Q . . .",
+        "option_11": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\nQ . . . .\n. . Q . .\n. . . . Q\n. Q . . .\n. . . Q .",
+        "option_12": "Q marks a queen; . marks an empty cell; rows top to bottom, columns left to right:\n. . . Q .\n. Q . . .\n. . . . Q\nQ . . . .\n. . Q . ."
+      }
+    }
+  }
+}

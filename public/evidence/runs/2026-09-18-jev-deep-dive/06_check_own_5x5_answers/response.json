@@ -1,0 +1,60 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "batch_columns": {
+      "type": "noul",
+      "noul": 0.11
+    },
+    "batch_regions": {
+      "type": "noul",
+      "noul": 0.32
+    },
+    "batch_no_touch": {
+      "type": "noul",
+      "noul": 0.58
+    },
+    "batch_all_rules": {
+      "type": "noul",
+      "noul": 0.2
+    },
+    "sequential_columns": {
+      "type": "noul",
+      "noul": 0.97
+    },
+    "sequential_regions": {
+      "type": "noul",
+      "noul": 0.54
+    },
+    "sequential_no_touch": {
+      "type": "noul",
+      "noul": 0.75
+    },
+    "sequential_all_rules": {
+      "type": "noul",
+      "noul": 0.47
+    },
+    "recognition_columns": {
+      "type": "noul",
+      "noul": 0.98
+    },
+    "recognition_regions": {
+      "type": "noul",
+      "noul": 0.51
+    },
+    "recognition_no_touch": {
+      "type": "noul",
+      "noul": 0.59
+    },
+    "recognition_all_rules": {
+      "type": "noul",
+      "noul": 0.37
+    }
+  },
+  "usage": {
+    "input_tokens": 1426,
+    "output_tokens": 234,
+    "cost": 0.000059892
+  },
+  "id": "gen-dec-1789762173-qYn4uJuam305cJ0Mba5R",
+  "provider": "TypeSafe"
+}

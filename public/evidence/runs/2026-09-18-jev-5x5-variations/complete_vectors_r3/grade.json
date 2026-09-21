@@ -1,0 +1,17 @@
+{
+  "call_id": "complete_vectors_r3",
+  "family": "complete_vectors",
+  "replicate": 3,
+  "task_correct": false,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.07,
+  "best_correct_rank_optimistic": 6,
+  "selected_confidence": 0.08,
+  "seconds": 0.30097337486222386,
+  "cost_usd": 0.00004809,
+  "input_tokens": 1145,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "7fb7b76c4671983d088e3bfc435ae3aa8818c5a9338fd0dedb9141e1296d56ad"
+}

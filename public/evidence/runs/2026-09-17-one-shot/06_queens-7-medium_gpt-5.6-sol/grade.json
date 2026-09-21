@@ -1,0 +1,47 @@
+{
+  "format_valid": true,
+  "correct": true,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": true,
+    "no_touch": true
+  },
+  "failure": null,
+  "call_id": "06_queens-7-medium_gpt-5.6-sol",
+  "board_id": "queens-7-medium",
+  "model": "openai/gpt-5.6-sol",
+  "provider": "OpenAI",
+  "seconds": 13.697559542022645,
+  "cost_usd": 0.010588,
+  "accounted_usd": 0.010588,
+  "usage": {
+    "prompt_tokens": 954,
+    "completion_tokens": 868,
+    "total_tokens": 1822,
+    "cost": 0.010588,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.010588,
+      "upstream_inference_prompt_cost": 0.001908,
+      "upstream_inference_completions_cost": 0.00868
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 834,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finish_reason": "stop",
+  "http_status": 200,
+  "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+  "scored": true,
+  "returned_answer": true,
+  "timed_out": false
+}

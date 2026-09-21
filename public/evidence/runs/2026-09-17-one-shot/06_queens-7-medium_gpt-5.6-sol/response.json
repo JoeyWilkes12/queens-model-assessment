@@ -1,0 +1,45 @@
+{
+  "id": "gen-1789705106-xYYvUThaRj3O2YkMxaPx",
+  "object": "chat.completion",
+  "created": 1789705106,
+  "model": "openai/gpt-5.6-sol",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"queens-7-medium\",\"columns_by_row\":[3,1,6,2,4,7,5]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 954,
+    "completion_tokens": 868,
+    "total_tokens": 1822,
+    "cost": 0.010588,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.010588,
+      "upstream_inference_prompt_cost": 0.001908,
+      "upstream_inference_completions_cost": 0.00868
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 834,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

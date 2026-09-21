@@ -1,0 +1,49 @@
+{
+  "model": "x-ai/grok-4.6",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Solve this regional Queens puzzle in one shot. The attached image is a blank N-by-N board. Row numbers increase from top to bottom and column numbers from left to right, both starting at 1. Matching letters/colors identify the same region; letters are region labels, not clues about queen locations.\n\nRules:\n1. Place exactly N queens: exactly one in every row, every column, and every region.\n2. Queens may not touch, including diagonally. Thus queens in consecutive rows cannot occupy columns differing by 1. Queens separated by more than one row MAY share a long diagonal; this is not the ordinary chess N-queens diagonal rule.\n3. The board has exactly one valid solution.\n\nReturn a written solution as exactly one JSON object, with no Markdown, explanation, alternative solution, or image:\n{\"board_id\":\"queens-5-easy\",\"columns_by_row\":[INTEGER_COLUMN_FOR_ROW_1,...,INTEGER_COLUMN_FOR_ROW_N]}\n\nReplace the placeholder entries with exactly N integers from 1 through N. Each array index identifies its row, so a coordinate appears only once. Check all rules before returning your final answer. You have no external tools, hints, or follow-up attempts.\n\nBoard ID: queens-5-easy\nN: 5\n"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "asset_ref": "request-inline-image://sha256/d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+            "asset_path": "assets/d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c.png",
+            "media_type": "image/png",
+            "sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+            "bytes": 12639
+          }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 12288,
+  "reasoning": {
+    "effort": "high",
+    "exclude": true
+  },
+  "stream": false,
+  "provider": {
+    "order": [
+      "xai"
+    ],
+    "only": [
+      "xai"
+    ],
+    "ignore": [
+      "xai/zdr",
+      "xai/zdr/priority",
+      "xai/priority"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true,
+    "max_price": {
+      "prompt": 2,
+      "completion": 6
+    }
+  }
+}

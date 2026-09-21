@@ -1,0 +1,17 @@
+{
+  "call_id": "complete_mixed_r3",
+  "family": "complete_mixed",
+  "replicate": 3,
+  "task_correct": false,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.1,
+  "best_correct_rank_optimistic": 3,
+  "selected_confidence": 0.18,
+  "seconds": 0.3111693332903087,
+  "cost_usd": 0.000046158,
+  "input_tokens": 1099,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "6ecc2464d26d2bae19eeea91ffba68f5f021d920caa433526b2d857bc6a8b76c"
+}

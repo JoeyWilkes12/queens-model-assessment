@@ -1,0 +1,17 @@
+{
+  "call_id": "complete_features_r2",
+  "family": "complete_features",
+  "replicate": 2,
+  "task_correct": true,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.98,
+  "best_correct_rank_optimistic": 1,
+  "selected_confidence": 0.97,
+  "seconds": 0.2573442501015961,
+  "cost_usd": 0.000093408,
+  "input_tokens": 2224,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "179c61a99bc11e8611eb4d7e8412474e194f026005d39a786e319fb365feda81"
+}

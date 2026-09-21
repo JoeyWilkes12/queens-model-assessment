@@ -1,0 +1,26 @@
+{
+  "call_id": "9_regions_k12_r1",
+  "size": 9,
+  "family": "regions",
+  "candidate_count": 12,
+  "replicate": 1,
+  "endpoint": "/api/alpha/decisions",
+  "request_sha256": "447f81253d292a4a6c4a505dcb84b061eb1e88ddec3e517fdc9489e4fb36e120",
+  "distractor_distinct_region_histogram": {
+    "8": 11
+  },
+  "seconds": 0.31471891701221466,
+  "http_status": 200,
+  "actual_usd": 0.000078834,
+  "reserve_usd": 0,
+  "raw_sha256": "38f32d0c9315b876bf3d56a82262c8cfafc621362024c9bf49044931d2f13d7d",
+  "input_tokens": 1877,
+  "correct": true,
+  "correct_probability": 0.91,
+  "confidence": 0.89,
+  "probability_sum": 1,
+  "correct_rank_optimistic": 1,
+  "correct_rank_pessimistic": 1,
+  "selected_distinct_regions": 9,
+  "random_baseline": 0.08333333333333333
+}

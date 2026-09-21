@@ -1,0 +1,120 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "cell_1_1": {
+      "type": "choice",
+      "choice": "A",
+      "probabilities": {
+        "D": 0,
+        "C": 0,
+        "E": 0,
+        "A": 1,
+        "B": 0
+      },
+      "confidence": 1
+    },
+    "cell_1_5": {
+      "type": "choice",
+      "choice": "C",
+      "probabilities": {
+        "B": 0,
+        "C": 1,
+        "E": 0,
+        "A": 0,
+        "D": 0
+      },
+      "confidence": 1
+    },
+    "cell_2_4": {
+      "type": "choice",
+      "choice": "D",
+      "probabilities": {
+        "D": 1,
+        "C": 0,
+        "E": 0,
+        "A": 0,
+        "B": 0
+      },
+      "confidence": 1
+    },
+    "cell_3_2": {
+      "type": "choice",
+      "choice": "E",
+      "probabilities": {
+        "D": 0,
+        "C": 0,
+        "E": 1,
+        "A": 0,
+        "B": 0
+      },
+      "confidence": 1
+    },
+    "cell_3_3": {
+      "type": "choice",
+      "choice": "B",
+      "probabilities": {
+        "D": 0,
+        "C": 0,
+        "E": 0,
+        "A": 0,
+        "B": 1
+      },
+      "confidence": 1
+    },
+    "cell_4_1": {
+      "type": "choice",
+      "choice": "A",
+      "probabilities": {
+        "D": 0,
+        "C": 0,
+        "E": 0,
+        "A": 1,
+        "B": 0
+      },
+      "confidence": 1
+    },
+    "cell_4_4": {
+      "type": "choice",
+      "choice": "D",
+      "probabilities": {
+        "B": 0,
+        "C": 0,
+        "E": 0,
+        "A": 0,
+        "D": 1
+      },
+      "confidence": 1
+    },
+    "cell_5_2": {
+      "type": "choice",
+      "choice": "E",
+      "probabilities": {
+        "D": 0,
+        "C": 0,
+        "E": 1,
+        "A": 0,
+        "B": 0
+      },
+      "confidence": 1
+    },
+    "cell_5_5": {
+      "type": "choice",
+      "choice": "D",
+      "probabilities": {
+        "D": 1,
+        "C": 0,
+        "E": 0,
+        "A": 0,
+        "B": 0
+      },
+      "confidence": 1
+    }
+  },
+  "usage": {
+    "input_tokens": 1515,
+    "output_tokens": 480,
+    "cost": 0.00006363
+  },
+  "id": "gen-dec-1789762113-rVrbnCif3NfIssS4sdSi",
+  "provider": "TypeSafe"
+}

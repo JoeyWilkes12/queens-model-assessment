@@ -1,0 +1,93 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ],
+    "given_correct_queen": {
+      "row": 1,
+      "column": 5,
+      "region": "C"
+    },
+    "instruction": "The given queen is certified part of the unique complete solution. Keep it fixed; choose one additional queen cell from the options. No other queens are placed yet."
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Select the one additional queen cell that can extend, together with the fixed given queen, to the complete legal solution. Exactly one supplied option permits a full completion. Being locally non-conflicting alone is NOT sufficient.",
+      "criteria": {
+        "option_01": "Place the additional queen at row 4, column 3. Its region is D.",
+        "option_02": "Place the additional queen at row 2, column 3. Its region is B.",
+        "option_03": "Place the additional queen at row 3, column 4. Its region is D.",
+        "option_04": "Place the additional queen at row 2, column 2. Its region is B.",
+        "option_05": "Place the additional queen at row 3, column 3. Its region is B.",
+        "option_06": "Place the additional queen at row 2, column 1. Its region is A.",
+        "option_07": "Place the additional queen at row 2, column 4. Its region is D.",
+        "option_08": "Place the additional queen at row 3, column 2. Its region is E.",
+        "option_09": "Place the additional queen at row 2, column 5. Its region is D.",
+        "option_10": "Place the additional queen at row 1, column 3. Its region is B.",
+        "option_11": "Place the additional queen at row 4, column 2. Its region is E.",
+        "option_12": "Place the additional queen at row 5, column 1. Its region is E."
+      }
+    }
+  }
+}

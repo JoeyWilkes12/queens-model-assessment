@@ -1,0 +1,37 @@
+{
+  "call_id": "12_queens-9-hard_gpt-5.6-sol",
+  "started_utc": "2026-09-18T04:21:57.814064+00:00",
+  "reserved_usd": 0.15688000000000002,
+  "accounted_usd": 0.014578,
+  "cost_source": "usage.cost",
+  "http_status": 200,
+  "latency_seconds": 20.13187195919454,
+  "actual_cost_usd": 0.014578,
+  "generation_id": "gen-1789705318-k058bYC3W5L1ck2MtKqm",
+  "returned_model": "openai/gpt-5.6-sol",
+  "returned_provider": "OpenAI",
+  "usage": {
+    "prompt_tokens": 954,
+    "completion_tokens": 1267,
+    "total_tokens": 2221,
+    "cost": 0.014578,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.014578,
+      "upstream_inference_prompt_cost": 0.001908,
+      "upstream_inference_completions_cost": 0.01267
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1229,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "ended_utc": "2026-09-18T04:22:17.946724+00:00"
+}

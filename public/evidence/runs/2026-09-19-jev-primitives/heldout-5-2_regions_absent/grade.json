@@ -1,0 +1,16 @@
+{
+  "call_id": "heldout-5-2_regions_absent",
+  "board_id": "heldout-5-2",
+  "size": 5,
+  "family": "regions",
+  "request_sha256": "65c9d1a61919f52e2efb67e7487d28b63d89c4945038dce89852b4b5f2495782",
+  "answer_present": false,
+  "seconds": 0.24081241711974144,
+  "cost_usd": 0.00020517,
+  "raw_sha256": "431f7deaf46768d4386ef7251fd6b855cf02e6b290c610cc9e3d806db59cd4d8",
+  "typed_questions": 25,
+  "choice_correct": true,
+  "choice_none": true,
+  "noul_positive_count": 0,
+  "score_positive_count": 0
+}

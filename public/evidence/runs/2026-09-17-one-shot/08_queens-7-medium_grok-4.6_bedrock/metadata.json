@@ -1,0 +1,12 @@
+{
+  "call_id": "08_queens-7-medium_grok-4.6_bedrock",
+  "started_utc": "2026-09-18T04:24:15.671832+00:00",
+  "reserved_usd": 0.1175008,
+  "accounted_usd": 0.1175008,
+  "cost_source": "conservative_reserve",
+  "http_status": null,
+  "latency_seconds": 600.9638772499748,
+  "exception_type": "TimeoutError",
+  "halt_reason": "uncertain_network_or_response_failure_no_retry",
+  "ended_utc": "2026-09-18T04:34:16.645981+00:00"
+}

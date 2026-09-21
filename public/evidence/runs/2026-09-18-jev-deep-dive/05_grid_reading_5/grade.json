@@ -1,0 +1,15 @@
+{
+  "correct": 9,
+  "total": 9,
+  "checks": {
+    "cell_1_1": true,
+    "cell_1_5": true,
+    "cell_2_4": true,
+    "cell_3_2": true,
+    "cell_3_3": true,
+    "cell_4_1": true,
+    "cell_4_4": true,
+    "cell_5_2": true,
+    "cell_5_5": true
+  }
+}

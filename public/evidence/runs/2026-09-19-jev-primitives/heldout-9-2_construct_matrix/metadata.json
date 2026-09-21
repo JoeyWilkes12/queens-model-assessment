@@ -1,0 +1,21 @@
+{
+  "call_id": "heldout-9-2_construct_matrix",
+  "started_utc": "2026-09-19T06:36:31.820528+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "dbf0b644ad5a1283f1ba95e03b5eb77968c2d115e6a15259880a068e4e88ecad",
+  "reserved_usd": 0.012497446,
+  "accounted_usd": 0.012497446,
+  "actual_cost_usd": null,
+  "http_status": 520,
+  "usage": null,
+  "returned_model": null,
+  "generation_id": null,
+  "returned_provider": null,
+  "error": {
+    "message": "HTTP 520: error code: 520\n",
+    "code": 520
+  },
+  "elapsed_seconds": 40.161341208964586,
+  "ended_utc": "2026-09-19T06:37:11.982804+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "call_id": "06_check_own_5x5_answers",
+  "started_utc": "2026-09-18T20:09:33.579703+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "67277880a076a9df8e52a556bf1c291bb5f9ded5a1342a225f4a97bf37da2e2e",
+  "reserved_usd": 0.01250992,
+  "accounted_usd": 0.000059892,
+  "actual_cost_usd": 0.000059892,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 1426,
+    "output_tokens": 234,
+    "cost": 0.000059892
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789762173-qYn4uJuam305cJ0Mba5R",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.3641526671126485,
+  "ended_utc": "2026-09-18T20:09:33.944406+00:00"
+}

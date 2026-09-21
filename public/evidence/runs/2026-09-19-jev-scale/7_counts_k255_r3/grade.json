@@ -1,0 +1,27 @@
+{
+  "call_id": "7_counts_k255_r3",
+  "size": 7,
+  "family": "counts",
+  "candidate_count": 255,
+  "replicate": 3,
+  "endpoint": "/api/alpha/decisions",
+  "request_sha256": "e58d84e1e757a15c96a7950d4d0857b9cc39707228458bf3f92e68ed985048ad",
+  "distractor_distinct_region_histogram": {
+    "5": 183,
+    "6": 71
+  },
+  "seconds": 0.372127584181726,
+  "http_status": 200,
+  "actual_usd": 0.00087549,
+  "reserve_usd": 0,
+  "raw_sha256": "afee1500457e19fb13a9d75158806e082bd39369686e4ee27534c3ef8e4532fc",
+  "input_tokens": 20845,
+  "correct": true,
+  "correct_probability": 0.96,
+  "confidence": 0.95,
+  "probability_sum": 1,
+  "correct_rank_optimistic": 1,
+  "correct_rank_pessimistic": 1,
+  "selected_distinct_regions": 7,
+  "random_baseline": 0.00392156862745098
+}

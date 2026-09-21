@@ -1,0 +1,17 @@
+{
+  "call_id": "complete_boards_r3",
+  "family": "complete_boards",
+  "replicate": 3,
+  "task_correct": false,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.08,
+  "best_correct_rank_optimistic": 3,
+  "selected_confidence": 0.06,
+  "seconds": 0.2382422499358654,
+  "cost_usd": 0.00005607,
+  "input_tokens": 1335,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "775badc8187194408e32f72bcf5e6444be2235ee3391e6d757edb744d31309b9"
+}

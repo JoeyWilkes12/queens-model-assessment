@@ -1,0 +1,40 @@
+{
+  "call_id": "09_queens-9-hard_grok-4.6_bedrock",
+  "started_utc": "2026-09-18T15:01:40.652152+00:00",
+  "reserved_usd": 0.1175008,
+  "accounted_usd": 0.042185,
+  "cost_source": "usage.cost",
+  "http_status": 200,
+  "response_headers": {
+    "Content-Type": "application/json"
+  },
+  "latency_seconds": 52.82281383359805,
+  "actual_cost_usd": 0.042185,
+  "generation_id": "gen-1789743700-X2mJekbXQL499UiX1GSm",
+  "returned_model": "x-ai/grok-4.6",
+  "returned_provider": "Amazon Bedrock",
+  "usage": {
+    "prompt_tokens": 872,
+    "completion_tokens": 6101,
+    "total_tokens": 6973,
+    "cost": 0.042185,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.042185,
+      "upstream_inference_prompt_cost": 0.0019184,
+      "upstream_inference_completions_cost": 0.0402666
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 5928,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "ended_utc": "2026-09-18T15:02:33.475350+00:00"
+}

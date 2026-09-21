@@ -1,0 +1,87 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ]
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Which complete placement satisfies ALL rules? Exactly one of the 12 options is correct; others may violate touching or region constraints.",
+      "criteria": {
+        "option_01": "Queen columns for rows 1,2,3,4,5 respectively: [2, 5, 1, 4, 3]",
+        "option_02": "Queen columns for rows 1,2,3,4,5 respectively: [1, 2, 4, 5, 3]",
+        "option_03": "Queen columns for rows 1,2,3,4,5 respectively: [4, 3, 2, 5, 1]",
+        "option_04": "Queen columns for rows 1,2,3,4,5 respectively: [2, 3, 4, 5, 1]",
+        "option_05": "Queen columns for rows 1,2,3,4,5 respectively: [4, 1, 5, 3, 2]",
+        "option_06": "Queen columns for rows 1,2,3,4,5 respectively: [5, 3, 1, 4, 2]",
+        "option_07": "Queen columns for rows 1,2,3,4,5 respectively: [5, 2, 1, 4, 3]",
+        "option_08": "Queen columns for rows 1,2,3,4,5 respectively: [5, 3, 1, 2, 4]",
+        "option_09": "Queen columns for rows 1,2,3,4,5 respectively: [4, 1, 2, 5, 3]",
+        "option_10": "Queen columns for rows 1,2,3,4,5 respectively: [1, 5, 2, 3, 4]",
+        "option_11": "Queen columns for rows 1,2,3,4,5 respectively: [1, 2, 5, 3, 4]",
+        "option_12": "Queen columns for rows 1,2,3,4,5 respectively: [5, 2, 4, 1, 3]"
+      }
+    }
+  }
+}

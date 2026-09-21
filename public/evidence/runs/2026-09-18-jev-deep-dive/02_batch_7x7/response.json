@@ -1,0 +1,110 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "row_1": {
+      "type": "choice",
+      "choice": "1",
+      "probabilities": {
+        "1": 0.26,
+        "2": 0.12,
+        "3": 0.13,
+        "4": 0.12,
+        "5": 0.1,
+        "6": 0.11,
+        "7": 0.16
+      },
+      "confidence": 0.14
+    },
+    "row_2": {
+      "type": "choice",
+      "choice": "4",
+      "probabilities": {
+        "1": 0.17,
+        "2": 0.08,
+        "3": 0.14,
+        "4": 0.18,
+        "5": 0.12,
+        "6": 0.14,
+        "7": 0.17
+      },
+      "confidence": 0.04
+    },
+    "row_3": {
+      "type": "choice",
+      "choice": "2",
+      "probabilities": {
+        "1": 0.16,
+        "2": 0.18,
+        "3": 0.13,
+        "4": 0.14,
+        "5": 0.13,
+        "6": 0.11,
+        "7": 0.15
+      },
+      "confidence": 0.04
+    },
+    "row_4": {
+      "type": "choice",
+      "choice": "7",
+      "probabilities": {
+        "1": 0.16,
+        "2": 0.08,
+        "3": 0.11,
+        "4": 0.15,
+        "5": 0.13,
+        "6": 0.17,
+        "7": 0.2
+      },
+      "confidence": 0.06
+    },
+    "row_5": {
+      "type": "choice",
+      "choice": "7",
+      "probabilities": {
+        "1": 0.1,
+        "2": 0.07,
+        "3": 0.1,
+        "4": 0.2,
+        "5": 0.13,
+        "6": 0.16,
+        "7": 0.24
+      },
+      "confidence": 0.12
+    },
+    "row_6": {
+      "type": "choice",
+      "choice": "5",
+      "probabilities": {
+        "1": 0.11,
+        "2": 0.06,
+        "3": 0.11,
+        "4": 0.19,
+        "5": 0.21,
+        "6": 0.15,
+        "7": 0.17
+      },
+      "confidence": 0.07
+    },
+    "row_7": {
+      "type": "choice",
+      "choice": "5",
+      "probabilities": {
+        "1": 0.07,
+        "2": 0.05,
+        "3": 0.08,
+        "4": 0.13,
+        "5": 0.32,
+        "6": 0.18,
+        "7": 0.17
+      },
+      "confidence": 0.21
+    }
+  },
+  "usage": {
+    "input_tokens": 2106,
+    "output_tokens": 458,
+    "cost": 0.000088452
+  },
+  "id": "gen-dec-1789762111-IuwvCLhiQLcnUGErUwyt",
+  "provider": "TypeSafe"
+}

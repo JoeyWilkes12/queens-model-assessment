@@ -1,0 +1,15 @@
+{
+  "call_id": "original_7",
+  "request_sha256": "00913e66060ca006d0929a85b02ceeb91bd03b90de03bc299e616727e78decd3",
+  "endpoint": "/api/v1/chat/completions",
+  "started_utc": "2026-09-19T06:24:13.202139+00:00",
+  "reserved_usd": 0.02,
+  "accounted_usd": 0.02,
+  "http_status": 400,
+  "actual_cost_usd": null,
+  "usage": null,
+  "returned_model": null,
+  "expected_decisions_only_rejection": true,
+  "elapsed_seconds": 0.2259110831655562,
+  "ended_utc": "2026-09-19T06:24:13.428325+00:00"
+}

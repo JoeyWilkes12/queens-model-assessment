@@ -1,0 +1,371 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "heldout-9-2",
+    "size": 9,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "B",
+        "B",
+        "C",
+        "C",
+        "D",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "B",
+        "C",
+        "C",
+        "C",
+        "D",
+        "D",
+        "E",
+        "D"
+      ],
+      [
+        "C",
+        "B",
+        "C",
+        "C",
+        "C",
+        "C",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "C",
+        "C",
+        "C",
+        "C",
+        "C",
+        "C",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "C",
+        "C",
+        "C",
+        "C",
+        "C",
+        "F",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "C",
+        "F",
+        "F",
+        "F",
+        "F",
+        "F",
+        "F",
+        "D",
+        "D"
+      ],
+      [
+        "F",
+        "F",
+        "F",
+        "G",
+        "H",
+        "F",
+        "F",
+        "F",
+        "I"
+      ],
+      [
+        "H",
+        "H",
+        "F",
+        "H",
+        "H",
+        "H",
+        "F",
+        "F",
+        "I"
+      ],
+      [
+        "H",
+        "H",
+        "H",
+        "H",
+        "H",
+        "H",
+        "H",
+        "F",
+        "F"
+      ]
+    ],
+    "guarantees": "All supplied candidates already have unique rows, unique columns and non-touching queens. Only region coverage may fail. Zero or one of these candidates is a complete solution. Evaluate candidates individually; do not assume one must be valid.",
+    "candidates": {
+      "candidate_01": "Queen columns by row: [1, 6, 2, 8, 5, 7, 4, 9, 3]",
+      "candidate_02": "Queen columns by row: [3, 1, 8, 6, 2, 7, 5, 9, 4]",
+      "candidate_03": "Queen columns by row: [3, 8, 4, 7, 1, 6, 9, 2, 5]",
+      "candidate_04": "Queen columns by row: [1, 5, 2, 9, 7, 3, 8, 6, 4]",
+      "candidate_05": "Queen columns by row: [2, 7, 5, 3, 8, 6, 4, 1, 9]",
+      "candidate_06": "Queen columns by row: [1, 8, 2, 7, 3, 5, 9, 6, 4]",
+      "candidate_07": "Queen columns by row: [5, 8, 2, 7, 1, 6, 4, 9, 3]",
+      "candidate_08": "Queen columns by row: [3, 1, 6, 9, 5, 7, 4, 8, 2]",
+      "candidate_09": "Queen columns by row: [3, 8, 4, 2, 9, 7, 5, 1, 6]",
+      "candidate_10": "Queen columns by row: [1, 8, 2, 5, 7, 3, 9, 6, 4]",
+      "candidate_11": "Queen columns by row: [1, 8, 2, 7, 3, 6, 4, 9, 5]",
+      "candidate_12": "Queen columns by row: [1, 4, 2, 5, 8, 3, 7, 9, 6]"
+    }
+  },
+  "questions": {
+    "choose": {
+      "type": "choice",
+      "instructions": "Which candidate covers every required region exactly once? Select none if no candidate is fully valid. Required regions: A, B, C, D, E, F, G, H, I.",
+      "criteria": {
+        "candidate_01": "Queen columns by row: [1, 6, 2, 8, 5, 7, 4, 9, 3]",
+        "candidate_02": "Queen columns by row: [3, 1, 8, 6, 2, 7, 5, 9, 4]",
+        "candidate_03": "Queen columns by row: [3, 8, 4, 7, 1, 6, 9, 2, 5]",
+        "candidate_04": "Queen columns by row: [1, 5, 2, 9, 7, 3, 8, 6, 4]",
+        "candidate_05": "Queen columns by row: [2, 7, 5, 3, 8, 6, 4, 1, 9]",
+        "candidate_06": "Queen columns by row: [1, 8, 2, 7, 3, 5, 9, 6, 4]",
+        "candidate_07": "Queen columns by row: [5, 8, 2, 7, 1, 6, 4, 9, 3]",
+        "candidate_08": "Queen columns by row: [3, 1, 6, 9, 5, 7, 4, 8, 2]",
+        "candidate_09": "Queen columns by row: [3, 8, 4, 2, 9, 7, 5, 1, 6]",
+        "candidate_10": "Queen columns by row: [1, 8, 2, 5, 7, 3, 9, 6, 4]",
+        "candidate_11": "Queen columns by row: [1, 8, 2, 7, 3, 6, 4, 9, 5]",
+        "candidate_12": "Queen columns by row: [1, 4, 2, 5, 8, 3, 7, 9, 6]",
+        "none": "No supplied candidate covers every required region exactly once."
+      }
+    },
+    "candidate_01_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 6, 2, 8, 5, 7, 4, 9, 3]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_01_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 6, 2, 8, 5, 7, 4, 9, 3]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_02_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 1, 8, 6, 2, 7, 5, 9, 4]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_02_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 1, 8, 6, 2, 7, 5, 9, 4]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_03_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 8, 4, 7, 1, 6, 9, 2, 5]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_03_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 8, 4, 7, 1, 6, 9, 2, 5]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_04_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 5, 2, 9, 7, 3, 8, 6, 4]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_04_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 5, 2, 9, 7, 3, 8, 6, 4]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_05_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [2, 7, 5, 3, 8, 6, 4, 1, 9]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_05_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [2, 7, 5, 3, 8, 6, 4, 1, 9]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_06_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 8, 2, 7, 3, 5, 9, 6, 4]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_06_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 8, 2, 7, 3, 5, 9, 6, 4]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_07_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [5, 8, 2, 7, 1, 6, 4, 9, 3]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_07_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [5, 8, 2, 7, 1, 6, 4, 9, 3]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_08_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 1, 6, 9, 5, 7, 4, 8, 2]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_08_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 1, 6, 9, 5, 7, 4, 8, 2]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_09_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 8, 4, 2, 9, 7, 5, 1, 6]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_09_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [3, 8, 4, 2, 9, 7, 5, 1, 6]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_10_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 8, 2, 5, 7, 3, 9, 6, 4]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_10_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 8, 2, 5, 7, 3, 9, 6, 4]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_11_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 8, 2, 7, 3, 6, 4, 9, 5]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_11_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 8, 2, 7, 3, 6, 4, 9, 5]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    },
+    "candidate_12_valid": {
+      "type": "noul",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 4, 2, 5, 8, 3, 7, 9, 6]. Does it cover every required board region exactly once, with none missing or repeated?",
+      "criteria": {
+        "true": "Every required region has exactly one queen.",
+        "false": "At least one region is missing or repeated."
+      }
+    },
+    "candidate_12_coverage": {
+      "type": "score",
+      "instructions": "Evaluate this candidate only: Queen columns by row: [1, 4, 2, 5, 8, 3, 7, 9, 6]. Rate its coverage of the required board regions using the supplied levels. Count regions with no queen, not empty cells; evaluate coverage only.",
+      "criteria": [
+        "At least two required regions have no queen; coverage has multiple gaps.",
+        "Exactly one required region has no queen; coverage has a single gap.",
+        "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      ]
+    }
+  }
+}

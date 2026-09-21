@@ -1,0 +1,20 @@
+{
+  "format_valid": false,
+  "correct": false,
+  "checks": {},
+  "failure": "timeout_no_answer",
+  "call_id": "08_queens-7-medium_grok-4.6_bedrock",
+  "board_id": "queens-7-medium",
+  "model": "x-ai/grok-4.6",
+  "provider": null,
+  "seconds": 600.9638772499748,
+  "cost_usd": null,
+  "accounted_usd": 0.1175008,
+  "usage": null,
+  "finish_reason": null,
+  "http_status": null,
+  "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+  "scored": false,
+  "returned_answer": false,
+  "timed_out": true
+}

@@ -1,0 +1,168 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ]
+  },
+  "questions": {
+    "cell_1_1": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 1, column 1 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_1_5": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 1, column 5 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_2_4": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 2, column 4 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_3_2": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 3, column 2 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_3_3": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 3, column 3 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_4_1": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 4, column 1 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_4_4": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 4, column 4 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_5_2": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 5, column 2 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    },
+    "cell_5_5": {
+      "type": "choice",
+      "instructions": "What region letter is printed in row 5, column 5 of region_grid_rows? Read the cell only; do not solve the puzzle.",
+      "criteria": {
+        "A": "Region A",
+        "B": "Region B",
+        "C": "Region C",
+        "D": "Region D",
+        "E": "Region E"
+      }
+    }
+  }
+}

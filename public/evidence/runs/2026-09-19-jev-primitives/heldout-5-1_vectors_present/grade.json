@@ -1,0 +1,19 @@
+{
+  "call_id": "heldout-5-1_vectors_present",
+  "board_id": "heldout-5-1",
+  "size": 5,
+  "family": "vectors",
+  "request_sha256": "7770ad4d15f41aaecb57629124081cd807098423ec7b03d766cfcd74fb83241e",
+  "answer_present": true,
+  "seconds": 0.30827937508001924,
+  "cost_usd": 0.000162834,
+  "raw_sha256": "1b5f514a43e8878ef3df918168bedd3158591bbb355aef5e879663b4143ce7c7",
+  "typed_questions": 25,
+  "choice_correct": false,
+  "choice_none": false,
+  "noul_top_correct": false,
+  "score_top_correct": false,
+  "score_valid_probability_top_correct": false,
+  "noul_positive_count": 12,
+  "score_positive_count": 10
+}

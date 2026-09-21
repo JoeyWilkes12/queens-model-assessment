@@ -1,0 +1,72 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "row_1": {
+      "type": "choice",
+      "choice": "5",
+      "probabilities": {
+        "1": 0.28,
+        "2": 0.14,
+        "3": 0.09,
+        "4": 0.15,
+        "5": 0.34
+      },
+      "confidence": 0.17
+    },
+    "row_2": {
+      "type": "choice",
+      "choice": "5",
+      "probabilities": {
+        "1": 0.13,
+        "2": 0.1,
+        "3": 0.25,
+        "4": 0.2,
+        "5": 0.32
+      },
+      "confidence": 0.16
+    },
+    "row_3": {
+      "type": "choice",
+      "choice": "5",
+      "probabilities": {
+        "1": 0.15,
+        "2": 0.24,
+        "3": 0.13,
+        "4": 0.17,
+        "5": 0.31
+      },
+      "confidence": 0.12
+    },
+    "row_4": {
+      "type": "choice",
+      "choice": "5",
+      "probabilities": {
+        "1": 0.15,
+        "2": 0.1,
+        "3": 0.09,
+        "4": 0.15,
+        "5": 0.51
+      },
+      "confidence": 0.39
+    },
+    "row_5": {
+      "type": "choice",
+      "choice": "5",
+      "probabilities": {
+        "1": 0.15,
+        "2": 0.1,
+        "3": 0.11,
+        "4": 0.17,
+        "5": 0.47
+      },
+      "confidence": 0.34
+    }
+  },
+  "usage": {
+    "input_tokens": 1351,
+    "output_tokens": 258,
+    "cost": 0.000056742
+  },
+  "id": "gen-dec-1789799785-aHp2J8hBNhroYNUJF5yE",
+  "provider": "TypeSafe"
+}

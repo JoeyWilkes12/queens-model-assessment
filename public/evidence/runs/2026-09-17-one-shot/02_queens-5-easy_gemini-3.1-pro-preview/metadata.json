@@ -1,0 +1,37 @@
+{
+  "call_id": "02_queens-5-easy_gemini-3.1-pro-preview",
+  "started_utc": "2026-09-18T04:15:44.964935+00:00",
+  "reserved_usd": 0.181456,
+  "accounted_usd": 0.04126,
+  "cost_source": "usage.cost",
+  "http_status": 200,
+  "latency_seconds": 26.610466999933124,
+  "actual_cost_usd": 0.04126,
+  "generation_id": "gen-1789704945-7f2mPI63pdmbBYBelg72",
+  "returned_model": "google/gemini-3.1-pro-preview",
+  "returned_provider": "Google AI Studio",
+  "usage": {
+    "prompt_tokens": 1364,
+    "completion_tokens": 3211,
+    "total_tokens": 4575,
+    "cost": 0.04126,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.04126,
+      "upstream_inference_prompt_cost": 0.002728,
+      "upstream_inference_completions_cost": 0.038532
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3184,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "ended_utc": "2026-09-18T04:16:11.576301+00:00"
+}

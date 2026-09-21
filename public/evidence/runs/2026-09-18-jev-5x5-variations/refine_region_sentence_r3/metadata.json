@@ -1,0 +1,21 @@
+{
+  "call_id": "refine_region_sentence_r3",
+  "started_utc": "2026-09-18T20:31:35.275448+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "6c23f7356fe4f0cb575399342a1e8847efe00d8e2774ffcb6c959b8971b3001d",
+  "reserved_usd": 0.010124614,
+  "accounted_usd": 0.000053928,
+  "actual_cost_usd": 0.000053928,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 1284,
+    "output_tokens": 140,
+    "cost": 0.000053928
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789763495-TRnXeEYZnbuAwtDw0THq",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.19673191709443927,
+  "ended_utc": "2026-09-18T20:31:35.472439+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "call_id": "complete_fewshot_r3",
+  "family": "complete_fewshot",
+  "replicate": 3,
+  "task_correct": false,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0,
+  "best_correct_rank_optimistic": 5,
+  "selected_confidence": 0.96,
+  "seconds": 0.29966012528166175,
+  "cost_usd": 0.000068628,
+  "input_tokens": 1634,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "322d9b48d5be067e82f3b3daa12a90564eafde31bae99ac6611036f06eff3d2b"
+}

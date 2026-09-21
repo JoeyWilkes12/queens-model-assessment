@@ -1,0 +1,21 @@
+{
+  "call_id": "complete_fewshot_r2",
+  "started_utc": "2026-09-18T20:29:48.147926+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "323e3716492f9186d0f51f89457658c29dc57c0476202e1536ffa34733b193e6",
+  "reserved_usd": 0.01014217,
+  "accounted_usd": 0.000068628,
+  "actual_cost_usd": 0.000068628,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 1634,
+    "output_tokens": 140,
+    "cost": 0.000068628
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789763388-meWovWOEazGgv8zUAv4L",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.25983304111287,
+  "ended_utc": "2026-09-18T20:29:48.408005+00:00"
+}

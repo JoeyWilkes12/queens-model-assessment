@@ -1,0 +1,45 @@
+{
+  "id": "gen-1789705058-cYYxofbSisv5DTWlMIsW",
+  "object": "chat.completion",
+  "created": 1789705058,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at the regions and constraints:\n\n- Row 6 must be F at col 7 (F cells are col 7 rows 5-7; rows 5,7 are E,G).\n- Row 7 must be G at col 5 (col 6 would touch row 6's col 7).\n- Row 5 must be E at col 4 (col 5 taken by G).\n- Row 1 must be B, Row 3 = C at col 6, Row 2 = A, Row 4 = D.\n\nTesting columns for non-adjacency:\n- Row1=3(B), Row2=1(A), Row3=6(C), Row4=2(D), Row5=4(E), Row6=7(F), Row7=5(G).\n\nCheck adjacents: 3→1(2), 1→6(5), 6→2(4), 2→4(2), 4→7(3), 7→5(2) — all >1. All columns distinct, all regions covered.\n\n{\"board_id\":\"queens-7-medium\",\"columns_by_row\":[3,1,6,2,4,7,5]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1222,
+    "completion_tokens": 3661,
+    "total_tokens": 4883,
+    "cost": 0.097635,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.097635,
+      "upstream_inference_prompt_cost": 0.00611,
+      "upstream_inference_completions_cost": 0.091525
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3330,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

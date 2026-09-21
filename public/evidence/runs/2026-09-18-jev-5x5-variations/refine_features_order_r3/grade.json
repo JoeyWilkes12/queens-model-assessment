@@ -1,0 +1,17 @@
+{
+  "call_id": "refine_features_order_r3",
+  "family": "features_order",
+  "replicate": 3,
+  "task_correct": true,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 1,
+  "best_correct_rank_optimistic": 1,
+  "selected_confidence": 0.98,
+  "seconds": 0.3104410842061043,
+  "cost_usd": 0.000093408,
+  "input_tokens": 2224,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "bf6f463c7dcb499706ddaa537da4ea248c66b1a58bf1d89f659a8c13ed4ec44e"
+}

@@ -1,0 +1,21 @@
+{
+  "call_id": "7_vectors_k50_r1",
+  "started_utc": "2026-09-19T06:24:14.355269+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "63a674263378ce53d1a7d72fe336a53aec4c120847b4439f2770e750b5076742",
+  "reserved_usd": 0.010203532,
+  "accounted_usd": 0.00011991,
+  "actual_cost_usd": 0.00011991,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 2855,
+    "output_tokens": 571,
+    "cost": 0.00011991
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789799054-2IowsPAQrOaNOl51a4A3",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.31945341592654586,
+  "ended_utc": "2026-09-19T06:24:14.674957+00:00"
+}

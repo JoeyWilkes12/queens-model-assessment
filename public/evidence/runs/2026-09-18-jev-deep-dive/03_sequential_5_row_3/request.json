@@ -1,0 +1,91 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ],
+    "previous_queen_decisions": [
+      {
+        "row": 1,
+        "column": 5
+      },
+      {
+        "row": 2,
+        "column": 2
+      }
+    ],
+    "instruction": "Keep previous queen decisions fixed. Choose the current row as part of a complete legal solution. No backtracking is provided."
+  },
+  "questions": {
+    "row_3": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 3? Consider all rows and all rules, not just row 3.",
+      "criteria": {
+        "1": "The queen in row 3 is in column 1.",
+        "2": "The queen in row 3 is in column 2.",
+        "3": "The queen in row 3 is in column 3.",
+        "4": "The queen in row 3 is in column 4.",
+        "5": "The queen in row 3 is in column 5."
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "interpreted_answer": {
+    "board_id": "queens-5-easy",
+    "columns_by_row": [
+      5,
+      2,
+      1,
+      4,
+      3
+    ]
+  },
+  "engine": {
+    "format_valid": true,
+    "correct": false,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": true,
+      "one_per_region": false,
+      "no_touch": false
+    },
+    "failure": "rule_violation"
+  },
+  "confidence": {
+    "row_1": 0.29,
+    "row_2": 0.15,
+    "row_3": 0.28,
+    "row_4": 0.59,
+    "row_5": 0.97
+  },
+  "interpretation": "Column labels converted to integers in row order. No correction, search, or repair."
+}

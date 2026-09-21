@@ -1,0 +1,20 @@
+{
+  "call_id": "construction_7",
+  "size": 7,
+  "family": "construction",
+  "endpoint": "/api/alpha/decisions",
+  "request_sha256": "3860759462f16b102a89c7cb4c17c50445ef07d851f8ca6936d2d4b4bb3a1fc6",
+  "seconds": 0.3155792918987572,
+  "http_status": 200,
+  "actual_usd": 0.000088452,
+  "reserve_usd": 0,
+  "raw_sha256": "b0d3e94517e9ba6bd638ffae64ee3a5e60cdc2674619053d4f2622314769cd70",
+  "input_tokens": 2106,
+  "correct": false,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false
+  }
+}

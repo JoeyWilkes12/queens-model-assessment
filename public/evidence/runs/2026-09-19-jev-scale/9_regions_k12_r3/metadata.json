@@ -1,0 +1,21 @@
+{
+  "call_id": "9_regions_k12_r3",
+  "started_utc": "2026-09-19T06:24:30.355370+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "7420f1665d7c51cc2f04864ae69b3ba6e373ce9a6473854ffa78440dc34481e1",
+  "reserved_usd": 0.010158844,
+  "accounted_usd": 0.000078834,
+  "actual_cost_usd": 0.000078834,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 1877,
+    "output_tokens": 153,
+    "cost": 0.000078834
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789799070-ladqGdfulkwsMv19GYoV",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.2850072500295937,
+  "ended_utc": "2026-09-19T06:24:30.640666+00:00"
+}

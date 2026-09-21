@@ -1,0 +1,20 @@
+{
+  "call_id": "heldout-9-2_construct_matrix_transport_retry1",
+  "board_id": "heldout-9-2",
+  "size": 9,
+  "family": "construction_matrix",
+  "request_sha256": "dbf0b644ad5a1283f1ba95e03b5eb77968c2d115e6a15259880a068e4e88ecad",
+  "retry_of": "heldout-9-2_construct_matrix",
+  "reason": "Manual review of HTTP 520 without model answer; single bounded transport retry.",
+  "seconds": 0.4157291669398546,
+  "cost_usd": 0.000129318,
+  "raw_sha256": "099f63cd8d2af137ca7d6ee412256f1c2cf3ca243fa4117b374c00c15ecce016",
+  "typed_questions": 9,
+  "correct": false,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false
+  }
+}

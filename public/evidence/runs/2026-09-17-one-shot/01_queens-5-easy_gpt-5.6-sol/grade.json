@@ -1,0 +1,47 @@
+{
+  "format_valid": true,
+  "correct": true,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": true,
+    "no_touch": true
+  },
+  "failure": null,
+  "call_id": "01_queens-5-easy_gpt-5.6-sol",
+  "board_id": "queens-5-easy",
+  "model": "openai/gpt-5.6-sol",
+  "provider": "OpenAI",
+  "seconds": 13.347242542076856,
+  "cost_usd": 0.008922,
+  "accounted_usd": 0.008922,
+  "usage": {
+    "prompt_tokens": 956,
+    "completion_tokens": 701,
+    "total_tokens": 1657,
+    "cost": 0.008922,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.008922,
+      "upstream_inference_prompt_cost": 0.001912,
+      "upstream_inference_completions_cost": 0.00701
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 670,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finish_reason": "stop",
+  "http_status": 200,
+  "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+  "scored": true,
+  "returned_answer": true,
+  "timed_out": false
+}

@@ -1,0 +1,88 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ],
+    "candidate_help": "Every option already has one queen per row and column and no touching queens. Exactly one option also has one queen in each region. Select that complete solution."
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Choose the candidate whose five occupied region letters contain A, B, C, D and E exactly once each, in ANY order, with no repeated or missing letter. Every candidate already satisfies all other Queens rules. Region letters were looked up accurately from the target board by code; counts and validity labels have NOT been supplied.",
+      "criteria": {
+        "option_01": "Queen columns by row: [2, 4, 1, 5, 3]; occupied region letters by row: [\"A\", \"D\", \"A\", \"D\", \"D\"]",
+        "option_02": "Queen columns by row: [2, 5, 3, 1, 4]; occupied region letters by row: [\"A\", \"D\", \"B\", \"A\", \"D\"]",
+        "option_03": "Queen columns by row: [3, 5, 1, 4, 2]; occupied region letters by row: [\"B\", \"D\", \"A\", \"D\", \"E\"]",
+        "option_04": "Queen columns by row: [2, 4, 1, 3, 5]; occupied region letters by row: [\"A\", \"D\", \"A\", \"D\", \"D\"]",
+        "option_05": "Queen columns by row: [3, 5, 2, 4, 1]; occupied region letters by row: [\"B\", \"D\", \"E\", \"D\", \"E\"]",
+        "option_06": "Queen columns by row: [5, 3, 1, 4, 2]; occupied region letters by row: [\"C\", \"B\", \"A\", \"D\", \"E\"]",
+        "option_07": "Queen columns by row: [1, 4, 2, 5, 3]; occupied region letters by row: [\"A\", \"D\", \"E\", \"D\", \"D\"]",
+        "option_08": "Queen columns by row: [4, 2, 5, 3, 1]; occupied region letters by row: [\"B\", \"B\", \"D\", \"D\", \"E\"]",
+        "option_09": "Queen columns by row: [5, 2, 4, 1, 3]; occupied region letters by row: [\"C\", \"B\", \"D\", \"A\", \"D\"]",
+        "option_10": "Queen columns by row: [4, 1, 3, 5, 2]; occupied region letters by row: [\"B\", \"A\", \"B\", \"D\", \"E\"]",
+        "option_11": "Queen columns by row: [1, 3, 5, 2, 4]; occupied region letters by row: [\"A\", \"B\", \"D\", \"E\", \"D\"]",
+        "option_12": "Queen columns by row: [4, 2, 5, 1, 3]; occupied region letters by row: [\"B\", \"B\", \"D\", \"A\", \"D\"]"
+      }
+    }
+  }
+}

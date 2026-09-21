@@ -1,0 +1,116 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-7-medium",
+    "size": 7,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "B",
+        "B",
+        "B",
+        "B",
+        "C",
+        "C"
+      ],
+      [
+        "A",
+        "A",
+        "A",
+        "C",
+        "C",
+        "C",
+        "C"
+      ],
+      [
+        "A",
+        "D",
+        "D",
+        "C",
+        "C",
+        "C",
+        "C"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "C",
+        "C",
+        "C",
+        "C"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "E",
+        "E",
+        "C",
+        "F"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "D",
+        "C",
+        "C",
+        "F"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "D",
+        "G",
+        "G",
+        "F"
+      ]
+    ],
+    "candidate_guarantees": "Every candidate already has exactly one queen per row and column and no touching queens. Exactly one candidate also has exactly one queen per region."
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Choose the candidate whose occupied region letters contain A, B, C, D, E, F, G exactly once each, in ANY order, with no repeated or missing letter. Every candidate already satisfies all other Queens rules. Region letters were looked up accurately by code; counts and validity labels have NOT been supplied.",
+      "criteria": {
+        "option_001": "Queen columns in row order: [4, 2, 6, 3, 1, 7, 5]. Occupied region letters in row order: [\"B\", \"A\", \"C\", \"D\", \"D\", \"F\", \"G\"]",
+        "option_002": "Queen columns in row order: [3, 6, 1, 4, 2, 7, 5]. Occupied region letters in row order: [\"B\", \"C\", \"A\", \"C\", \"D\", \"F\", \"G\"]",
+        "option_003": "Queen columns in row order: [2, 5, 1, 4, 7, 3, 6]. Occupied region letters in row order: [\"B\", \"C\", \"A\", \"C\", \"F\", \"D\", \"G\"]",
+        "option_004": "Queen columns in row order: [5, 3, 1, 6, 4, 7, 2]. Occupied region letters in row order: [\"B\", \"A\", \"A\", \"C\", \"E\", \"F\", \"D\"]",
+        "option_005": "Queen columns in row order: [3, 5, 1, 6, 4, 7, 2]. Occupied region letters in row order: [\"B\", \"C\", \"A\", \"C\", \"E\", \"F\", \"D\"]",
+        "option_006": "Queen columns in row order: [4, 1, 6, 3, 5, 7, 2]. Occupied region letters in row order: [\"B\", \"A\", \"C\", \"D\", \"E\", \"F\", \"D\"]",
+        "option_007": "Queen columns in row order: [3, 1, 6, 2, 4, 7, 5]. Occupied region letters in row order: [\"B\", \"A\", \"C\", \"D\", \"E\", \"F\", \"G\"]",
+        "option_008": "Queen columns in row order: [5, 3, 6, 2, 4, 1, 7]. Occupied region letters in row order: [\"B\", \"A\", \"C\", \"D\", \"E\", \"D\", \"F\"]",
+        "option_009": "Queen columns in row order: [4, 2, 6, 3, 5, 1, 7]. Occupied region letters in row order: [\"B\", \"A\", \"C\", \"D\", \"E\", \"D\", \"F\"]",
+        "option_010": "Queen columns in row order: [4, 2, 6, 3, 5, 7, 1]. Occupied region letters in row order: [\"B\", \"A\", \"C\", \"D\", \"E\", \"F\", \"D\"]",
+        "option_011": "Queen columns in row order: [3, 5, 1, 7, 4, 2, 6]. Occupied region letters in row order: [\"B\", \"C\", \"A\", \"C\", \"E\", \"D\", \"G\"]",
+        "option_012": "Queen columns in row order: [5, 3, 7, 1, 4, 2, 6]. Occupied region letters in row order: [\"B\", \"A\", \"C\", \"D\", \"E\", \"D\", \"G\"]"
+      }
+    }
+  }
+}

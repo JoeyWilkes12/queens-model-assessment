@@ -1,0 +1,88 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ],
+    "candidate_help": "Every option already has one queen per row and column and no touching queens. Exactly one option also has one queen in each region. Select that complete solution."
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Select the single complete placement that satisfies ALL target board rules. Exactly one of the 12 candidates is correct. Evaluate the target board, not any example board.",
+      "criteria": {
+        "option_01": "row 1, column 2, region A; row 2, column 5, region D; row 3, column 3, region B; row 4, column 1, region A; row 5, column 4, region D",
+        "option_02": "row 1, column 1, region A; row 2, column 4, region D; row 3, column 2, region E; row 4, column 5, region D; row 5, column 3, region D",
+        "option_03": "row 1, column 4, region B; row 2, column 2, region B; row 3, column 5, region D; row 4, column 1, region A; row 5, column 3, region D",
+        "option_04": "row 1, column 3, region B; row 2, column 1, region A; row 3, column 4, region D; row 4, column 2, region E; row 5, column 5, region D",
+        "option_05": "row 1, column 1, region A; row 2, column 3, region B; row 3, column 5, region D; row 4, column 2, region E; row 5, column 4, region D",
+        "option_06": "row 1, column 2, region A; row 2, column 4, region D; row 3, column 1, region A; row 4, column 5, region D; row 5, column 3, region D",
+        "option_07": "row 1, column 4, region B; row 2, column 2, region B; row 3, column 5, region D; row 4, column 3, region D; row 5, column 1, region E",
+        "option_08": "row 1, column 3, region B; row 2, column 1, region A; row 3, column 5, region D; row 4, column 2, region E; row 5, column 4, region D",
+        "option_09": "row 1, column 2, region A; row 2, column 4, region D; row 3, column 1, region A; row 4, column 3, region D; row 5, column 5, region D",
+        "option_10": "row 1, column 5, region C; row 2, column 3, region B; row 3, column 1, region A; row 4, column 4, region D; row 5, column 2, region E",
+        "option_11": "row 1, column 3, region B; row 2, column 5, region D; row 3, column 2, region E; row 4, column 4, region D; row 5, column 1, region E",
+        "option_12": "row 1, column 4, region B; row 2, column 1, region A; row 3, column 3, region B; row 4, column 5, region D; row 5, column 2, region E"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "call_id": "refine_region_sentence_r3",
+  "family": "region_sentence",
+  "replicate": 3,
+  "task_correct": true,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.95,
+  "best_correct_rank_optimistic": 1,
+  "selected_confidence": 0.93,
+  "seconds": 0.19673191709443927,
+  "cost_usd": 0.000053928,
+  "input_tokens": 1284,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "20f2475872798d65b4b9824ae580225b5a4f23b460a87eaddcf72d8ab804dc10"
+}

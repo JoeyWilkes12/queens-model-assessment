@@ -1,0 +1,17 @@
+{
+  "call_id": "refine_annotated_order_r2",
+  "family": "annotated_order",
+  "replicate": 2,
+  "task_correct": false,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.22,
+  "best_correct_rank_optimistic": 2,
+  "selected_confidence": 0.19,
+  "seconds": 0.2316755000501871,
+  "cost_usd": 0.000059682,
+  "input_tokens": 1421,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "8a75f015a38e642e53e9c816ba5082caf03d5b4bc3f393c8c6e7320a9b49630c"
+}

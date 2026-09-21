@@ -1,0 +1,42 @@
+{
+  "format_valid": false,
+  "correct": false,
+  "checks": {},
+  "failure": "invalid_json_or_missing_final",
+  "call_id": "11_queens-9-hard_gemini-3.1-pro-preview",
+  "board_id": "queens-9-hard",
+  "model": "google/gemini-3.1-pro-preview",
+  "provider": "Google AI Studio",
+  "seconds": 71.96571654221043,
+  "cost_usd": 0.12712,
+  "accounted_usd": 0.12712,
+  "usage": {
+    "prompt_tokens": 1364,
+    "completion_tokens": 10366,
+    "total_tokens": 11730,
+    "cost": 0.12712,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.12712,
+      "upstream_inference_prompt_cost": 0.002728,
+      "upstream_inference_completions_cost": 0.124392
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 10326,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finish_reason": "stop",
+  "http_status": 200,
+  "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+  "scored": true,
+  "returned_answer": true,
+  "timed_out": false
+}

@@ -1,0 +1,18 @@
+{
+  "call_id": "heldout-9-1_construct_matrix",
+  "board_id": "heldout-9-1",
+  "size": 9,
+  "family": "construction_matrix",
+  "request_sha256": "f59e56be3f6592ec1c339dcae2dcd87e1f2a2848a627fa9d718cd7c7aa9cf1ab",
+  "seconds": 0.17379291728138924,
+  "cost_usd": 0.000129318,
+  "raw_sha256": "d3dbbc1e04f8bf97c9d75c3b2dc5bcb7ef317d684e07919ca9cb2ca2877b205b",
+  "typed_questions": 9,
+  "correct": false,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false
+  }
+}

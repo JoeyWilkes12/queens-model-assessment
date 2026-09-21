@@ -1,0 +1,91 @@
+{
+  "records": [
+    {
+      "candidate": "batch",
+      "condition": "columns",
+      "noul": 0.11,
+      "expected": false,
+      "correct_at_0_5": true
+    },
+    {
+      "candidate": "batch",
+      "condition": "regions",
+      "noul": 0.32,
+      "expected": false,
+      "correct_at_0_5": true
+    },
+    {
+      "candidate": "batch",
+      "condition": "no_touch",
+      "noul": 0.58,
+      "expected": false,
+      "correct_at_0_5": false
+    },
+    {
+      "candidate": "batch",
+      "condition": "all_rules",
+      "noul": 0.2,
+      "expected": false,
+      "correct_at_0_5": true
+    },
+    {
+      "candidate": "sequential",
+      "condition": "columns",
+      "noul": 0.97,
+      "expected": true,
+      "correct_at_0_5": true
+    },
+    {
+      "candidate": "sequential",
+      "condition": "regions",
+      "noul": 0.54,
+      "expected": false,
+      "correct_at_0_5": false
+    },
+    {
+      "candidate": "sequential",
+      "condition": "no_touch",
+      "noul": 0.75,
+      "expected": false,
+      "correct_at_0_5": false
+    },
+    {
+      "candidate": "sequential",
+      "condition": "all_rules",
+      "noul": 0.47,
+      "expected": false,
+      "correct_at_0_5": true
+    },
+    {
+      "candidate": "recognition",
+      "condition": "columns",
+      "noul": 0.98,
+      "expected": true,
+      "correct_at_0_5": true
+    },
+    {
+      "candidate": "recognition",
+      "condition": "regions",
+      "noul": 0.51,
+      "expected": false,
+      "correct_at_0_5": false
+    },
+    {
+      "candidate": "recognition",
+      "condition": "no_touch",
+      "noul": 0.59,
+      "expected": true,
+      "correct_at_0_5": true
+    },
+    {
+      "candidate": "recognition",
+      "condition": "all_rules",
+      "noul": 0.37,
+      "expected": false,
+      "correct_at_0_5": true
+    }
+  ],
+  "correct_at_0_5": 8,
+  "total": 12,
+  "threshold_note": "Fixed 0.5 diagnostic threshold, not tuned or calibrated on these results."
+}

@@ -1,0 +1,17 @@
+{
+  "call_id": "partial_global_r2",
+  "family": "partial_global",
+  "replicate": 2,
+  "task_correct": false,
+  "locally_legal": true,
+  "globally_extendable": false,
+  "correct_option_probability_mass": 0.13,
+  "best_correct_rank_optimistic": 4,
+  "selected_confidence": 0.22,
+  "seconds": 0.2701029167510569,
+  "cost_usd": 0.000040698,
+  "input_tokens": 969,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "f0202eb484bb98cb65bbe51ef1020589da0be8448efa0793df4bcebb25f7bd83"
+}

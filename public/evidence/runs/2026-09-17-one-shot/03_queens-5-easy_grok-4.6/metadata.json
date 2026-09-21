@@ -1,0 +1,15 @@
+{
+  "call_id": "03_queens-5-easy_grok-4.6",
+  "started_utc": "2026-09-18T04:16:11.577422+00:00",
+  "reserved_usd": 0.107728,
+  "accounted_usd": 0.107728,
+  "cost_source": "conservative_reserve",
+  "http_status": 404,
+  "latency_seconds": 0.11887079104781151,
+  "generation_id": null,
+  "returned_model": null,
+  "returned_provider": null,
+  "usage": {},
+  "halt_reason": "request_rejected_or_provider_error",
+  "ended_utc": "2026-09-18T04:16:11.696650+00:00"
+}

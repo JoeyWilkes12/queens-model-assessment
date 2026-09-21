@@ -1,0 +1,40 @@
+{
+  "error": {
+    "message": "No allowed providers are available for the selected model. Providers serving x-ai/grok-4.6-20260810: xai, but your account's allowed-providers setting permits only: azure, modal, google-vertex, openai, baseten, anthropic, fireworks, moonshotai, digitalocean, amazon-bedrock, google-ai-studio. To change your allowed providers, visit: https://openrouter.ai/settings/privacy. Additionally, your request's provider.only preference permits only: xai.",
+    "code": 404,
+    "metadata": {
+      "available_providers": [
+        "xai"
+      ],
+      "requested_providers": [
+        "azure",
+        "modal",
+        "google-vertex",
+        "openai",
+        "baseten",
+        "anthropic",
+        "fireworks",
+        "moonshotai",
+        "digitalocean",
+        "amazon-bedrock",
+        "google-ai-studio",
+        "xai"
+      ],
+      "routing_funnel": [
+        {
+          "step": "Initial Endpoints",
+          "endpoint_count": 5
+        },
+        {
+          "step": "Filter by Regional Surcharge",
+          "endpoint_count": 4
+        },
+        {
+          "step": "Filter by Tier Endpoint Rows",
+          "endpoint_count": 2
+        }
+      ],
+      "failed_routing_step": "Filter by Allowed Providers"
+    }
+  }
+}

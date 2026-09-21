@@ -1,0 +1,22 @@
+{
+  "started_utc": "2026-09-18T16:12:05.445461+00:00",
+  "endpoint": "/api/v1/chat/completions",
+  "model": "~typesafe/jev-latest",
+  "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+  "prior_messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+  "reserved_usd": 0.02,
+  "accounted_usd": 0.02,
+  "actual_cost_usd": null,
+  "prompt_and_image_unchanged": true,
+  "parameters_changed": [
+    "model",
+    "provider",
+    "reasoning omitted: unsupported"
+  ],
+  "http_status": 400,
+  "usage": null,
+  "returned_model": null,
+  "generation_id": null,
+  "elapsed_seconds": 0.377751249819994,
+  "ended_utc": "2026-09-18T16:12:05.824033+00:00"
+}

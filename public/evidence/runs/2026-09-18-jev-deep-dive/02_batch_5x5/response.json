@@ -1,0 +1,32 @@
+{
+  "error": {
+    "message": "No allowed providers are available for the selected model. Providers serving typesafe/jev-1.13-20260917: typesafe, but your account's allowed-providers setting permits only: azure, modal, google-vertex, openai, baseten, anthropic, fireworks, moonshotai, digitalocean, amazon-bedrock, google-ai-studio. To change your allowed providers, visit: https://openrouter.ai/settings/privacy. Additionally, your request's provider.only preference permits only: typesafe.",
+    "code": 404,
+    "metadata": {
+      "available_providers": [
+        "typesafe"
+      ],
+      "requested_providers": [
+        "azure",
+        "modal",
+        "google-vertex",
+        "openai",
+        "baseten",
+        "anthropic",
+        "fireworks",
+        "moonshotai",
+        "digitalocean",
+        "amazon-bedrock",
+        "google-ai-studio",
+        "typesafe"
+      ],
+      "routing_funnel": [
+        {
+          "step": "Initial Endpoints",
+          "endpoint_count": 1
+        }
+      ],
+      "failed_routing_step": "Filter by Allowed Providers"
+    }
+  }
+}

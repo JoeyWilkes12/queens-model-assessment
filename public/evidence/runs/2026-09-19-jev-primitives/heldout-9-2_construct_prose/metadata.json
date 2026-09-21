@@ -1,0 +1,21 @@
+{
+  "call_id": "heldout-9-2_construct_prose",
+  "started_utc": "2026-09-19T06:38:39.663704+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "f8dacadc74516cc02ee721f4527a6c3087ac67d9ca21e922fb878996079dd1da",
+  "reserved_usd": 0.01257985,
+  "accounted_usd": 0.000125916,
+  "actual_cost_usd": 0.000125916,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 2998,
+    "output_tokens": 714,
+    "cost": 0.000125916
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789799919-V3v2Sy5FNNa7u1OVleaX",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.3220960842445493,
+  "ended_utc": "2026-09-19T06:38:39.986120+00:00"
+}

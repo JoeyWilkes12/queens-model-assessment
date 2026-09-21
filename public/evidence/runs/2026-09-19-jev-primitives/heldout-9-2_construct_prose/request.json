@@ -1,0 +1,168 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "heldout-9-2",
+    "size": 9,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "board_description": "Row 1, from left to right, contains regions A, B, B, C, C, D, D, D, D. Row 2, from left to right, contains regions A, B, C, C, C, D, D, E, D. Row 3, from left to right, contains regions C, B, C, C, C, C, D, D, D. Row 4, from left to right, contains regions C, C, C, C, C, C, D, D, D. Row 5, from left to right, contains regions C, C, C, C, C, F, D, D, D. Row 6, from left to right, contains regions C, F, F, F, F, F, F, D, D. Row 7, from left to right, contains regions F, F, F, G, H, F, F, F, I. Row 8, from left to right, contains regions H, H, F, H, H, H, F, F, I. Row 9, from left to right, contains regions H, H, H, H, H, H, H, F, F."
+  },
+  "questions": {
+    "row_1": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 1? Consider all rows and all rules, not just row 1.",
+      "criteria": {
+        "1": "The queen in row 1 is in column 1.",
+        "2": "The queen in row 1 is in column 2.",
+        "3": "The queen in row 1 is in column 3.",
+        "4": "The queen in row 1 is in column 4.",
+        "5": "The queen in row 1 is in column 5.",
+        "6": "The queen in row 1 is in column 6.",
+        "7": "The queen in row 1 is in column 7.",
+        "8": "The queen in row 1 is in column 8.",
+        "9": "The queen in row 1 is in column 9."
+      }
+    },
+    "row_2": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 2? Consider all rows and all rules, not just row 2.",
+      "criteria": {
+        "1": "The queen in row 2 is in column 1.",
+        "2": "The queen in row 2 is in column 2.",
+        "3": "The queen in row 2 is in column 3.",
+        "4": "The queen in row 2 is in column 4.",
+        "5": "The queen in row 2 is in column 5.",
+        "6": "The queen in row 2 is in column 6.",
+        "7": "The queen in row 2 is in column 7.",
+        "8": "The queen in row 2 is in column 8.",
+        "9": "The queen in row 2 is in column 9."
+      }
+    },
+    "row_3": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 3? Consider all rows and all rules, not just row 3.",
+      "criteria": {
+        "1": "The queen in row 3 is in column 1.",
+        "2": "The queen in row 3 is in column 2.",
+        "3": "The queen in row 3 is in column 3.",
+        "4": "The queen in row 3 is in column 4.",
+        "5": "The queen in row 3 is in column 5.",
+        "6": "The queen in row 3 is in column 6.",
+        "7": "The queen in row 3 is in column 7.",
+        "8": "The queen in row 3 is in column 8.",
+        "9": "The queen in row 3 is in column 9."
+      }
+    },
+    "row_4": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 4? Consider all rows and all rules, not just row 4.",
+      "criteria": {
+        "1": "The queen in row 4 is in column 1.",
+        "2": "The queen in row 4 is in column 2.",
+        "3": "The queen in row 4 is in column 3.",
+        "4": "The queen in row 4 is in column 4.",
+        "5": "The queen in row 4 is in column 5.",
+        "6": "The queen in row 4 is in column 6.",
+        "7": "The queen in row 4 is in column 7.",
+        "8": "The queen in row 4 is in column 8.",
+        "9": "The queen in row 4 is in column 9."
+      }
+    },
+    "row_5": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 5? Consider all rows and all rules, not just row 5.",
+      "criteria": {
+        "1": "The queen in row 5 is in column 1.",
+        "2": "The queen in row 5 is in column 2.",
+        "3": "The queen in row 5 is in column 3.",
+        "4": "The queen in row 5 is in column 4.",
+        "5": "The queen in row 5 is in column 5.",
+        "6": "The queen in row 5 is in column 6.",
+        "7": "The queen in row 5 is in column 7.",
+        "8": "The queen in row 5 is in column 8.",
+        "9": "The queen in row 5 is in column 9."
+      }
+    },
+    "row_6": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 6? Consider all rows and all rules, not just row 6.",
+      "criteria": {
+        "1": "The queen in row 6 is in column 1.",
+        "2": "The queen in row 6 is in column 2.",
+        "3": "The queen in row 6 is in column 3.",
+        "4": "The queen in row 6 is in column 4.",
+        "5": "The queen in row 6 is in column 5.",
+        "6": "The queen in row 6 is in column 6.",
+        "7": "The queen in row 6 is in column 7.",
+        "8": "The queen in row 6 is in column 8.",
+        "9": "The queen in row 6 is in column 9."
+      }
+    },
+    "row_7": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 7? Consider all rows and all rules, not just row 7.",
+      "criteria": {
+        "1": "The queen in row 7 is in column 1.",
+        "2": "The queen in row 7 is in column 2.",
+        "3": "The queen in row 7 is in column 3.",
+        "4": "The queen in row 7 is in column 4.",
+        "5": "The queen in row 7 is in column 5.",
+        "6": "The queen in row 7 is in column 6.",
+        "7": "The queen in row 7 is in column 7.",
+        "8": "The queen in row 7 is in column 8.",
+        "9": "The queen in row 7 is in column 9."
+      }
+    },
+    "row_8": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 8? Consider all rows and all rules, not just row 8.",
+      "criteria": {
+        "1": "The queen in row 8 is in column 1.",
+        "2": "The queen in row 8 is in column 2.",
+        "3": "The queen in row 8 is in column 3.",
+        "4": "The queen in row 8 is in column 4.",
+        "5": "The queen in row 8 is in column 5.",
+        "6": "The queen in row 8 is in column 6.",
+        "7": "The queen in row 8 is in column 7.",
+        "8": "The queen in row 8 is in column 8.",
+        "9": "The queen in row 8 is in column 9."
+      }
+    },
+    "row_9": {
+      "type": "choice",
+      "instructions": "In the unique complete legal solution of this regional Queens puzzle, which column contains the queen in row 9? Consider all rows and all rules, not just row 9.",
+      "criteria": {
+        "1": "The queen in row 9 is in column 1.",
+        "2": "The queen in row 9 is in column 2.",
+        "3": "The queen in row 9 is in column 3.",
+        "4": "The queen in row 9 is in column 4.",
+        "5": "The queen in row 9 is in column 5.",
+        "6": "The queen in row 9 is in column 6.",
+        "7": "The queen in row 9 is in column 7.",
+        "8": "The queen in row 9 is in column 8.",
+        "9": "The queen in row 9 is in column 9."
+      }
+    }
+  }
+}

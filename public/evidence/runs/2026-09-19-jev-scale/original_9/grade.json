@@ -1,0 +1,13 @@
+{
+  "call_id": "original_9",
+  "size": 9,
+  "family": "original_compatibility",
+  "endpoint": "/api/v1/chat/completions",
+  "request_sha256": "ca17cb79e305417cedab3dc7e771eedf73c5f72c0aad0b0a530ac656ccecebcd",
+  "seconds": 0.10783691704273224,
+  "http_status": 400,
+  "actual_usd": null,
+  "reserve_usd": 0.02,
+  "raw_sha256": "ba9b17deba018bd50b086c43156dd2a331e5c1cc6e35b31cf9bb7b7823dab788",
+  "correct": null
+}

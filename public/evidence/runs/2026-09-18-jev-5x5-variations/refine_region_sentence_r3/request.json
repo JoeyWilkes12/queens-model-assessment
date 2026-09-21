@@ -1,0 +1,88 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-5-easy",
+    "size": 5,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "B",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "B",
+        "D",
+        "D"
+      ],
+      [
+        "A",
+        "E",
+        "D",
+        "D",
+        "D"
+      ],
+      [
+        "E",
+        "E",
+        "D",
+        "D",
+        "D"
+      ]
+    ],
+    "candidate_help": "Every option already has one queen per row and column and no touching queens. Exactly one option also has one queen in each region. Select that complete solution."
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Choose the candidate whose five occupied region letters contain A, B, C, D and E exactly once each, in ANY order, with no repeated or missing letter. Every candidate already satisfies all other Queens rules. Region letters were looked up accurately from the target board by code; counts and validity labels have NOT been supplied.",
+      "criteria": {
+        "option_01": "This placement puts its five queens in regions A, D, B, A, D, respectively. Queen columns by row: [2, 5, 3, 1, 4]",
+        "option_02": "This placement puts its five queens in regions A, D, E, D, D, respectively. Queen columns by row: [1, 4, 2, 5, 3]",
+        "option_03": "This placement puts its five queens in regions B, B, D, A, D, respectively. Queen columns by row: [4, 2, 5, 1, 3]",
+        "option_04": "This placement puts its five queens in regions B, A, D, E, D, respectively. Queen columns by row: [3, 1, 4, 2, 5]",
+        "option_05": "This placement puts its five queens in regions A, B, D, E, D, respectively. Queen columns by row: [1, 3, 5, 2, 4]",
+        "option_06": "This placement puts its five queens in regions A, D, A, D, D, respectively. Queen columns by row: [2, 4, 1, 5, 3]",
+        "option_07": "This placement puts its five queens in regions B, B, D, D, E, respectively. Queen columns by row: [4, 2, 5, 3, 1]",
+        "option_08": "This placement puts its five queens in regions B, A, D, E, D, respectively. Queen columns by row: [3, 1, 5, 2, 4]",
+        "option_09": "This placement puts its five queens in regions A, D, A, D, D, respectively. Queen columns by row: [2, 4, 1, 3, 5]",
+        "option_10": "This placement puts its five queens in regions C, B, A, D, E, respectively. Queen columns by row: [5, 3, 1, 4, 2]",
+        "option_11": "This placement puts its five queens in regions B, D, E, D, E, respectively. Queen columns by row: [3, 5, 2, 4, 1]",
+        "option_12": "This placement puts its five queens in regions B, A, B, D, E, respectively. Queen columns by row: [4, 1, 3, 5, 2]"
+      }
+    }
+  }
+}

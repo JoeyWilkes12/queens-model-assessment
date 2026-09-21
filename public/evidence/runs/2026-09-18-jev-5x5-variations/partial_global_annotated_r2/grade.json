@@ -1,0 +1,17 @@
+{
+  "call_id": "partial_global_annotated_r2",
+  "family": "partial_global_annotated",
+  "replicate": 2,
+  "task_correct": false,
+  "locally_legal": true,
+  "globally_extendable": false,
+  "correct_option_probability_mass": 0.12,
+  "best_correct_rank_optimistic": 4,
+  "selected_confidence": 0.22,
+  "seconds": 0.30058524990454316,
+  "cost_usd": 0.000043218,
+  "input_tokens": 1029,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "435532e52f91289d544c5fa2d7aeef8d1a3913298e9fd1e19610f19a32e4b317"
+}

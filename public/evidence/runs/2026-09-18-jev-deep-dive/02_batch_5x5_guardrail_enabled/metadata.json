@@ -1,0 +1,21 @@
+{
+  "call_id": "02_batch_5x5_guardrail_enabled",
+  "started_utc": "2026-09-18T20:08:02.528000+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "da76aad273286ad2bfb8e0e7b2cb24a7e5964e415ef8042313bcfa3d364f4e1c",
+  "reserved_usd": 0.01063441,
+  "accounted_usd": 0.000056742,
+  "actual_cost_usd": 0.000056742,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 1351,
+    "output_tokens": 258,
+    "cost": 0.000056742
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789762082-hCitPFwzLLoY8SbvdcCP",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.43509995797649026,
+  "ended_utc": "2026-09-18T20:08:02.963802+00:00"
+}

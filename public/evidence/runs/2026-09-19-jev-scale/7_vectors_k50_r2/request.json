@@ -1,0 +1,154 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "queens-7-medium",
+    "size": 7,
+    "rules": [
+      "Place exactly one queen in every row.",
+      "Place exactly one queen in every column.",
+      "Place exactly one queen in every lettered region.",
+      "Two queens must not touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed: this is regional Queens, not chess N-Queens.",
+      "There is exactly one complete solution. Rows and columns are numbered from 1."
+    ],
+    "row_direction": "top to bottom",
+    "column_direction": "left to right",
+    "region_grid_rows": [
+      [
+        "A",
+        "B",
+        "B",
+        "B",
+        "B",
+        "C",
+        "C"
+      ],
+      [
+        "A",
+        "A",
+        "A",
+        "C",
+        "C",
+        "C",
+        "C"
+      ],
+      [
+        "A",
+        "D",
+        "D",
+        "C",
+        "C",
+        "C",
+        "C"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "C",
+        "C",
+        "C",
+        "C"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "E",
+        "E",
+        "C",
+        "F"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "D",
+        "C",
+        "C",
+        "F"
+      ],
+      [
+        "D",
+        "D",
+        "D",
+        "D",
+        "G",
+        "G",
+        "F"
+      ]
+    ],
+    "candidate_guarantees": "Every candidate already has exactly one queen per row and column and no touching queens. Exactly one candidate also has exactly one queen per region."
+  },
+  "questions": {
+    "pick": {
+      "type": "choice",
+      "instructions": "Select the single complete queen placement satisfying every target board rule, including exactly one queen per region. Look up each queen in the region grid. Exactly one supplied candidate is correct.",
+      "criteria": {
+        "option_001": "Queen columns in row order: [4, 2, 6, 3, 1, 7, 5]. ",
+        "option_002": "Queen columns in row order: [3, 6, 1, 4, 2, 7, 5]. ",
+        "option_003": "Queen columns in row order: [2, 5, 1, 4, 7, 3, 6]. ",
+        "option_004": "Queen columns in row order: [5, 3, 1, 6, 4, 7, 2]. ",
+        "option_005": "Queen columns in row order: [3, 5, 1, 6, 4, 7, 2]. ",
+        "option_006": "Queen columns in row order: [4, 1, 6, 3, 5, 7, 2]. ",
+        "option_007": "Queen columns in row order: [5, 3, 6, 2, 4, 1, 7]. ",
+        "option_008": "Queen columns in row order: [4, 2, 6, 3, 5, 1, 7]. ",
+        "option_009": "Queen columns in row order: [4, 2, 6, 3, 5, 7, 1]. ",
+        "option_010": "Queen columns in row order: [3, 5, 1, 7, 4, 2, 6]. ",
+        "option_011": "Queen columns in row order: [5, 3, 7, 1, 4, 2, 6]. ",
+        "option_012": "Queen columns in row order: [4, 1, 6, 3, 7, 2, 5]. ",
+        "option_013": "Queen columns in row order: [2, 6, 1, 3, 5, 7, 4]. ",
+        "option_014": "Queen columns in row order: [4, 7, 1, 3, 5, 2, 6]. ",
+        "option_015": "Queen columns in row order: [4, 6, 1, 3, 5, 2, 7]. ",
+        "option_016": "Queen columns in row order: [1, 3, 6, 2, 4, 7, 5]. ",
+        "option_017": "Queen columns in row order: [4, 1, 6, 2, 5, 3, 7]. ",
+        "option_018": "Queen columns in row order: [4, 1, 3, 7, 5, 2, 6]. ",
+        "option_019": "Queen columns in row order: [4, 2, 5, 1, 7, 3, 6]. ",
+        "option_020": "Queen columns in row order: [4, 2, 5, 3, 7, 1, 6]. ",
+        "option_021": "Queen columns in row order: [5, 1, 3, 6, 4, 2, 7]. ",
+        "option_022": "Queen columns in row order: [3, 1, 6, 4, 2, 7, 5]. ",
+        "option_023": "Queen columns in row order: [4, 1, 6, 2, 7, 3, 5]. ",
+        "option_024": "Queen columns in row order: [4, 2, 6, 1, 7, 3, 5]. ",
+        "option_025": "Queen columns in row order: [4, 2, 6, 1, 5, 3, 7]. ",
+        "option_026": "Queen columns in row order: [3, 1, 6, 2, 4, 7, 5]. ",
+        "option_027": "Queen columns in row order: [3, 1, 5, 7, 4, 2, 6]. ",
+        "option_028": "Queen columns in row order: [3, 5, 1, 4, 7, 2, 6]. ",
+        "option_029": "Queen columns in row order: [5, 3, 6, 1, 4, 2, 7]. ",
+        "option_030": "Queen columns in row order: [4, 1, 6, 3, 5, 2, 7]. ",
+        "option_031": "Queen columns in row order: [2, 4, 1, 6, 3, 7, 5]. ",
+        "option_032": "Queen columns in row order: [3, 1, 4, 6, 2, 7, 5]. ",
+        "option_033": "Queen columns in row order: [4, 2, 6, 1, 5, 7, 3]. ",
+        "option_034": "Queen columns in row order: [4, 2, 6, 1, 3, 7, 5]. ",
+        "option_035": "Queen columns in row order: [5, 2, 6, 1, 4, 7, 3]. ",
+        "option_036": "Queen columns in row order: [2, 5, 1, 3, 7, 4, 6]. ",
+        "option_037": "Queen columns in row order: [2, 4, 1, 5, 7, 3, 6]. ",
+        "option_038": "Queen columns in row order: [3, 1, 6, 4, 7, 2, 5]. ",
+        "option_039": "Queen columns in row order: [3, 1, 5, 2, 7, 4, 6]. ",
+        "option_040": "Queen columns in row order: [5, 2, 4, 1, 7, 3, 6]. ",
+        "option_041": "Queen columns in row order: [4, 2, 7, 1, 5, 3, 6]. ",
+        "option_042": "Queen columns in row order: [5, 1, 6, 2, 4, 7, 3]. ",
+        "option_043": "Queen columns in row order: [5, 3, 1, 6, 4, 2, 7]. ",
+        "option_044": "Queen columns in row order: [2, 5, 1, 6, 4, 7, 3]. ",
+        "option_045": "Queen columns in row order: [4, 1, 7, 2, 5, 3, 6]. ",
+        "option_046": "Queen columns in row order: [3, 7, 1, 6, 4, 2, 5]. ",
+        "option_047": "Queen columns in row order: [5, 3, 1, 4, 7, 2, 6]. ",
+        "option_048": "Queen columns in row order: [3, 6, 1, 7, 4, 2, 5]. ",
+        "option_049": "Queen columns in row order: [5, 1, 3, 7, 4, 2, 6]. ",
+        "option_050": "Queen columns in row order: [4, 1, 6, 2, 5, 7, 3]. "
+      }
+    }
+  }
+}

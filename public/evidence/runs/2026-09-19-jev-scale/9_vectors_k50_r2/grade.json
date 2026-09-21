@@ -1,0 +1,26 @@
+{
+  "call_id": "9_vectors_k50_r2",
+  "size": 9,
+  "family": "vectors",
+  "candidate_count": 50,
+  "replicate": 2,
+  "endpoint": "/api/alpha/decisions",
+  "request_sha256": "6fd9478fe694a3b4835883afc696553f9fa6f3f1fde5f3579dab62926d72d25b",
+  "distractor_distinct_region_histogram": {
+    "8": 49
+  },
+  "seconds": 0.2506167907267809,
+  "http_status": 200,
+  "actual_usd": 0.000138054,
+  "reserve_usd": 0,
+  "raw_sha256": "732cf18f94f7313048b9fa035264cc340066b2a3deb0a7958be8d346dd7dff91",
+  "input_tokens": 3287,
+  "correct": false,
+  "correct_probability": 0.01,
+  "confidence": 0.16,
+  "probability_sum": 1,
+  "correct_rank_optimistic": 7,
+  "correct_rank_pessimistic": 43,
+  "selected_distinct_regions": 8,
+  "random_baseline": 0.02
+}

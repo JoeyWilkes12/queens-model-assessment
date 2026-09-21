@@ -1,0 +1,17 @@
+{
+  "call_id": "complete_annotated_r3",
+  "family": "complete_annotated",
+  "replicate": 3,
+  "task_correct": false,
+  "locally_legal": null,
+  "globally_extendable": null,
+  "correct_option_probability_mass": 0.26,
+  "best_correct_rank_optimistic": 2,
+  "selected_confidence": 0.24,
+  "seconds": 0.32398116728290915,
+  "cost_usd": 0.000059682,
+  "input_tokens": 1421,
+  "candidate_count": 12,
+  "acceptable_count": 1,
+  "raw_sha256": "596643291a744e683b9c0b1508f5e388110eeaea74e1701264a5357c56591fdd"
+}

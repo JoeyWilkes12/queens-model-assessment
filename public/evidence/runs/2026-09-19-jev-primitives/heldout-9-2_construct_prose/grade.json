@@ -1,0 +1,18 @@
+{
+  "call_id": "heldout-9-2_construct_prose",
+  "board_id": "heldout-9-2",
+  "size": 9,
+  "family": "construction_prose",
+  "request_sha256": "f8dacadc74516cc02ee721f4527a6c3087ac67d9ca21e922fb878996079dd1da",
+  "seconds": 0.3220960842445493,
+  "cost_usd": 0.000125916,
+  "raw_sha256": "df9d178b79c30d7a7d4efd6b29b95d35ddcc74fb5fcfd9ddf5d3075b8faa5753",
+  "typed_questions": 9,
+  "correct": false,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false
+  }
+}

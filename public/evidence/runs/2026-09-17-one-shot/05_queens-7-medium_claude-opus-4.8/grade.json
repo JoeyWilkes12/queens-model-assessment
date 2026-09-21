@@ -1,0 +1,42 @@
+{
+  "format_valid": false,
+  "correct": false,
+  "checks": {},
+  "failure": "invalid_json_or_missing_final",
+  "call_id": "05_queens-7-medium_claude-opus-4.8",
+  "board_id": "queens-7-medium",
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "seconds": 48.22817691694945,
+  "cost_usd": 0.097635,
+  "accounted_usd": 0.097635,
+  "usage": {
+    "prompt_tokens": 1222,
+    "completion_tokens": 3661,
+    "total_tokens": 4883,
+    "cost": 0.097635,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.097635,
+      "upstream_inference_prompt_cost": 0.00611,
+      "upstream_inference_completions_cost": 0.091525
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3330,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finish_reason": "stop",
+  "http_status": 200,
+  "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+  "scored": true,
+  "returned_answer": true,
+  "timed_out": false
+}

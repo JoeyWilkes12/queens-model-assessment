@@ -1,0 +1,6 @@
+{
+  "error": {
+    "message": "~typesafe/jev-latest is a decisions model and cannot be used with the chat/completions endpoint. Use the /api/alpha/decisions endpoint instead.",
+    "code": 400
+  }
+}

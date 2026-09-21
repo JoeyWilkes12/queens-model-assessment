@@ -1,0 +1,38 @@
+{
+  "call_id": "02_batch_5x5_provider_enabled",
+  "started_utc": "2026-09-18T16:18:01.560366+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "da76aad273286ad2bfb8e0e7b2cb24a7e5964e415ef8042313bcfa3d364f4e1c",
+  "reserved_usd": 0.01063441,
+  "accounted_usd": 0.01063441,
+  "actual_cost_usd": null,
+  "http_status": 404,
+  "usage": null,
+  "returned_model": null,
+  "generation_id": null,
+  "returned_provider": null,
+  "error": {
+    "message": "0 endpoints out of 1 requested are available matching your guardrail restrictions and data policy. We removed them for the following reasons (an endpoint may have matched multiple reasons):\nProvider not allowed by guardrail: 1 endpoint excluded; configurable at https://openrouter.ai/workspaces/default/guardrails",
+    "code": 404,
+    "metadata": {
+      "input_endpoint_count": 1,
+      "ineligibility_reasons": [
+        {
+          "reason": "provider-not-allowed-by-guardrail",
+          "endpoint_count": 1,
+          "configure_url": "https://openrouter.ai/workspaces/default/guardrails"
+        }
+      ],
+      "routing_funnel": [
+        {
+          "step": "Initial Endpoints",
+          "endpoint_count": 1
+        }
+      ],
+      "failed_routing_step": "Filter by Guardrails"
+    }
+  },
+  "elapsed_seconds": 0.161399417091161,
+  "ended_utc": "2026-09-18T16:18:01.722207+00:00"
+}

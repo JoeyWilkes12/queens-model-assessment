@@ -1,0 +1,26 @@
+{
+  "call_id": "7_regions_k50_r1",
+  "size": 7,
+  "family": "regions",
+  "candidate_count": 50,
+  "replicate": 1,
+  "endpoint": "/api/alpha/decisions",
+  "request_sha256": "b4cb132cf49786bda1a69a6cab579bd86db6f3fdf4f7e1abfb8d43aabfd21cf2",
+  "distractor_distinct_region_histogram": {
+    "6": 49
+  },
+  "seconds": 0.2779733329080045,
+  "http_status": 200,
+  "actual_usd": 0.000181986,
+  "reserve_usd": 0,
+  "raw_sha256": "ced91cf6433589182706f33e93675d73935879ee1880dd7ed9368cbec8b3ed3e",
+  "input_tokens": 4333,
+  "correct": true,
+  "correct_probability": 0.9400000000000001,
+  "confidence": 0.92,
+  "probability_sum": 0.9900000000000001,
+  "correct_rank_optimistic": 1,
+  "correct_rank_pessimistic": 1,
+  "selected_distinct_regions": 7,
+  "random_baseline": 0.02
+}

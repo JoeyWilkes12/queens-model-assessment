@@ -1,0 +1,21 @@
+{
+  "call_id": "04_recognition_5_all120",
+  "started_utc": "2026-09-18T20:08:33.346369+00:00",
+  "endpoint": "/api/alpha/decisions",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "42095816aa4c98459fd455a1105b3715c54ea65b3b831fc7f5de54bb4dedfbd7",
+  "reserved_usd": 0.010492660000000001,
+  "accounted_usd": 0.000235746,
+  "actual_cost_usd": 0.000235746,
+  "http_status": 200,
+  "usage": {
+    "input_tokens": 5613,
+    "output_tokens": 1341,
+    "cost": 0.000235746
+  },
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "generation_id": "gen-dec-1789762113-0u15Y9ZuZ2Ma2pqJJnfi",
+  "returned_provider": "TypeSafe",
+  "elapsed_seconds": 0.24473504070192575,
+  "ended_utc": "2026-09-18T20:08:33.591698+00:00"
+}
