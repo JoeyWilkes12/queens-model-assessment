@@ -2,6 +2,8 @@
 
 This is the static-compatible Vite + React + TypeScript companion to the expanded Queens model assessment. It turns the report into a responsive technical book and exposes a sanitized evidence atlas at `/evidence/manifest.json`.
 
+Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-model-assessment/)
+
 ## Table of contents
 
 - [Routes](#routes)
@@ -43,7 +45,7 @@ The committed public evidence bundle is sufficient for development and deploymen
 
 The site is published through GitHub Actions to [GitHub Pages](https://joeywilkes12.github.io/queens-model-assessment/). Pushes to `main` build the root Vite project and deploy `dist/`; the repository's Pages source must be set to **GitHub Actions**.
 
-The publication layer was prepared from source revision `dc5b1f77357bcb62580f3e4f5ccf480765586b75`. The About route, Pages workflow, and QR assets are deployment additions and do not change the assessment results.
+The publication layer is prepared from committed source in the parent Queens repository. The About route, Pages workflow, and QR assets are deployment additions and do not change the assessment results.
 
 ## Design and quality records
 

@@ -12,7 +12,7 @@
 
 ## Scope
 
-This check covers the localhost-only Vite/React technical book in this directory. It does not cover deployment, live model calls, or unrelated dirty files elsewhere in the Queens repository.
+This check covers the Vite/React technical book in this directory and the equivalent static build published through GitHub Pages. It does not cover live model calls or unrelated dirty files elsewhere in the Queens repository.
 
 ## Build and dependency checks
 
@@ -36,6 +36,8 @@ The build regenerates the evidence bundle through `prebuild`; local development 
 | Per-run grades | 150 |
 | Full grade sources | 12 |
 | Decoded content-addressed input images | 3 |
+| Excluded from the default atlas | 6 request-level rejections |
+| Assessment outcomes | 71 success, 74 model failure, 8 request/transport failure, 2 not run, 2 ungraded |
 | Statuses | 147 success, 7 error, 2 not run, 1 timeout/transport failure |
 
 A recursive generated-tree scan found no credential-like keys, encrypted reasoning fields, absolute user paths, or token patterns. Each decoded image filename was verified against its SHA-256 bytes.
@@ -53,6 +55,10 @@ Functional checks passed for:
 - sidebar and mobile drawer navigation;
 - local contents navigation without corrupting hash routes;
 - evidence search by model and board;
+- excluded evidence hidden from the default browse view, discoverable by search, and available through the explicit “Show excluded” control;
+- direct excluded-record routes with a visible exclusion flag and request-level reason;
+- success, model-failure, request-failure, not-run, and ungraded outcome filtering, including the combined non-success view;
+- top-of-receipt error summaries for all seven HTTP error records, with the 520 record distinguished from its completed retry;
 - study filtering and progressive disclosure from 30 to 60 records;
 - exact evidence deep links, including the 12-option Jev request;
 - content-addressed input image rendering;
@@ -78,7 +84,7 @@ A fresh GPT-5.6 Sol High reviewer inspected the product contract, implementation
 
 ## Known boundaries
 
-- The website is intentionally not deployed.
-- Hash routing and relative asset paths are prepared for a later static host, but a public base path has not been selected.
+- The public build is deployed from committed source in the dedicated `queens-model-assessment` repository.
+- Hash routing and relative asset paths use the `/queens-model-assessment/` GitHub Pages base path.
 - The atlas is a sanitized evidence publication, not an unfiltered forensic export.
 - Large JSON receipts prioritize fidelity and selection over syntax highlighting or virtualized rendering.

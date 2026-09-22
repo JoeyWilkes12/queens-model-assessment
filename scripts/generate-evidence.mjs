@@ -43,6 +43,105 @@ const GRADE_SOURCES = {
   "2026-09-19-jev-scale": ["audit.json"],
 };
 
+// Records here remain in the public bundle and manifest, but the atlas omits
+// them from its default browse view. Exclusion is deliberately curated rather
+// than inferred from HTTP status: intentional compatibility probes and genuine
+// transport failures are still first-class study evidence.
+const EXCLUDED_RECORDS = new Map([
+  [
+    "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
+    "Pre-inference provider-routing rejection caused by the direct-xAI request route conflicting with the account allowlist; superseded by the same-input Amazon Bedrock run.",
+  ],
+  [
+    "2026-09-18-jev-deep-dive:01_unchanged_5x5",
+    "Pre-inference endpoint rejection: the Jev Decisions model was submitted to the chat-completions endpoint and returned no model answer.",
+  ],
+  [
+    "2026-09-18-jev-deep-dive:02_batch_5x5",
+    "Pre-inference provider-routing rejection caused by the TypeSafe provider not yet being present in the account allowlist.",
+  ],
+  [
+    "2026-09-18-jev-deep-dive:02_batch_5x5_provider_enabled",
+    "Pre-inference provider-routing rejection caused by the TypeSafe provider not yet being present in the key guardrail.",
+  ],
+  [
+    "2026-09-19-jev-scale:original_7",
+    "Pre-inference endpoint rejection: the Jev Decisions model was intentionally probed through chat completions and returned no model answer.",
+  ],
+  [
+    "2026-09-19-jev-scale:original_9",
+    "Pre-inference endpoint rejection: the Jev Decisions model was intentionally probed through chat completions and returned no model answer.",
+  ],
+]);
+
+const ERROR_CONTEXTS = new Map([
+  [
+    "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
+    {
+      category: "Request routing",
+      title: "The request was rejected before inference",
+      interpretation: "The request forced the direct xAI route while the account provider allowlist excluded xAI. No generation ID, model output, or usage record was returned, so this is not a Grok Queens result.",
+      followUp: "The same model input was sent through the approved Amazon Bedrock route and produced a correct graded answer.",
+    },
+  ],
+  [
+    "2026-09-18-jev-deep-dive:01_unchanged_5x5",
+    {
+      category: "Endpoint mismatch",
+      title: "A Decisions model was sent to chat completions",
+      interpretation: "OpenRouter returned HTTP 400 because Jev requires the Decisions endpoint. No model answer was produced, so the record establishes interface incompatibility rather than a Queens failure.",
+      followUp: "The study moved to the Decisions endpoint with text state and typed questions.",
+    },
+  ],
+  [
+    "2026-09-18-jev-deep-dive:02_batch_5x5",
+    {
+      category: "Provider allowlist",
+      title: "The TypeSafe route was unavailable to the account",
+      interpretation: "OpenRouter returned HTTP 404 before inference because the request required TypeSafe while the account allowlist did not yet include it. No Jev answer was produced.",
+      followUp: "After the account allowlist changed, a separate key-guardrail rejection was captured before the approved request succeeded.",
+    },
+  ],
+  [
+    "2026-09-18-jev-deep-dive:02_batch_5x5_provider_enabled",
+    {
+      category: "Key guardrail",
+      title: "The route remained blocked by the key guardrail",
+      interpretation: "OpenRouter returned HTTP 404 before inference because the workspace key guardrail still excluded the TypeSafe provider. This is configuration evidence, not a model response.",
+      followUp: "The subsequent guardrail-enabled request reached Jev and returned typed decisions.",
+    },
+  ],
+  [
+    "2026-09-19-jev-primitives:heldout-9-2_construct_matrix",
+    {
+      category: "Upstream transport",
+      title: "HTTP 520 returned no model answer",
+      interpretation: "The saved response contains only HTTP 520, with no generation ID, returned model or provider, usage, or answer. Cloudflare defines 520 as an empty, unknown, or unexpected response from an origin; the retained record does not reveal the deeper upstream cause. It must not be scored as a Queens failure.",
+      followUp: "One bounded retry used the same request hash and completed. That retry reached the model, but its returned placement failed the deterministic Queens checks.",
+      sourceUrl: "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/",
+      sourceLabel: "Cloudflare error 520 documentation",
+    },
+  ],
+  [
+    "2026-09-19-jev-scale:original_7",
+    {
+      category: "Endpoint mismatch",
+      title: "The 7×7 compatibility probe never reached Jev",
+      interpretation: "OpenRouter returned HTTP 400 because the Jev Decisions model was sent to chat completions. There is no model answer to assess.",
+      followUp: "The paired native 7×7 construction request used the Decisions endpoint and is retained separately.",
+    },
+  ],
+  [
+    "2026-09-19-jev-scale:original_9",
+    {
+      category: "Endpoint mismatch",
+      title: "The 9×9 compatibility probe never reached Jev",
+      interpretation: "OpenRouter returned HTTP 400 because the Jev Decisions model was sent to chat completions. There is no model answer to assess.",
+      followUp: "The paired native 9×9 construction request used the Decisions endpoint and is retained separately.",
+    },
+  ],
+]);
+
 const PRIVATE_KEY = /^(?:reasoning_details|encrypted_reasoning|api[_-]?key|authorization|proxy[_-]?authorization|access[_-]?token|refresh[_-]?token|client[_-]?secret|password|credential(?:s)?|user[_-]?id)$/i;
 
 function safePart(value) {
@@ -306,6 +405,27 @@ function gradeForRun(study, run, gradeByRun, gradeSources) {
   return candidates[0] ?? null;
 }
 
+function gradeCorrectness(grade) {
+  if (!grade || typeof grade !== "object") return null;
+  if (typeof grade.correct === "boolean") return grade.correct;
+  if (typeof grade.correct === "number" && typeof grade.total === "number") {
+    return grade.correct === grade.total;
+  }
+  if (typeof grade.task_correct === "boolean") return grade.task_correct;
+  if (typeof grade.engine?.correct === "boolean") return grade.engine.correct;
+  if (typeof grade.choice_correct === "boolean") return grade.choice_correct;
+  return null;
+}
+
+function assessmentOutcome(status, grade) {
+  if (status === "not_run") return "not_run";
+  if (status !== "success") return "request_failure";
+  const correct = gradeCorrectness(grade?.grade);
+  if (correct === true) return "success";
+  if (correct === false) return "model_failure";
+  return "ungraded";
+}
+
 async function buildStudy(study) {
   const studyDir = path.join(EVALUATIONS_DIR, study);
   const requestsDir = path.join(studyDir, "requests");
@@ -370,6 +490,9 @@ async function buildStudy(study) {
     }
 
     const recordId = `${study}:${run}`;
+    const exclusionReason = EXCLUDED_RECORDS.get(recordId) ?? null;
+    const errorContext = ERROR_CONTEXTS.get(recordId) ?? null;
+    const outcome = assessmentOutcome(status, grade);
     records.push({
       id: recordId,
       study,
@@ -382,6 +505,9 @@ async function buildStudy(study) {
       hasMetadata,
       hasGrade: Boolean(grade),
       partialResponse,
+      assessmentOutcome: outcome,
+      ...(exclusionReason ? { excluded: true, exclusionReason } : {}),
+      ...(errorContext ? { errorContext } : {}),
       files: {
         request: relativeOutput(path.join(outputRunDir, "request.json")),
         response: response ? relativeOutput(path.join(outputRunDir, "response.json")) : null,
@@ -409,12 +535,14 @@ function addToIndex(index, key, value, recordId) {
 }
 
 function buildIndex(records, gradeRecords) {
-  const index = { study: {}, board: {}, model: {}, run: {} };
+  const index = { study: {}, board: {}, model: {}, run: {}, excluded: {}, assessmentOutcome: {} };
   for (const record of [...records, ...gradeRecords]) {
     addToIndex(index, "study", record.study, record.id);
     addToIndex(index, "board", record.board, record.id);
     addToIndex(index, "model", record.model, record.id);
     addToIndex(index, "run", record.run, record.id);
+    if (record.excluded) addToIndex(index, "excluded", "true", record.id);
+    addToIndex(index, "assessmentOutcome", record.assessmentOutcome, record.id);
   }
   for (const dimension of Object.values(index)) {
     for (const values of Object.values(dimension)) values.sort();
@@ -469,6 +597,13 @@ async function main() {
       grades: allRecords.filter((record) => record.hasGrade).length,
       gradeSources: allGradeRecords.length,
       inlineImageAssets: INLINE_ASSETS.size,
+      excluded: allRecords.filter((record) => record.excluded).length,
+      assessmentOutcomes: Object.fromEntries(
+        [...new Set(allRecords.map((record) => record.assessmentOutcome))].sort().map((outcome) => [
+          outcome,
+          allRecords.filter((record) => record.assessmentOutcome === outcome).length,
+        ]),
+      ),
       statuses: Object.fromEntries(
         [...new Set(allRecords.map((record) => record.status))].sort().map((status) => [
           status,

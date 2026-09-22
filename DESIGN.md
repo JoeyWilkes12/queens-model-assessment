@@ -49,7 +49,7 @@ Hash routing keeps every page compatible with a later static host. The evidence 
 - **Local contents rail:** in-page navigation that scrolls without corrupting hash routing.
 - **Board diagram:** visible region letters, color redundancy, row/column-aware cell labels, and queen markers.
 - **Candidate lens:** toggles between columns-only and explicit-region representations using exact saved candidates.
-- **Evidence atlas:** searchable, study-filtered, progressively disclosed request and grade-source index.
+- **Evidence atlas:** searchable, study- and outcome-filtered, progressively disclosed request and grade-source index with distinct request and assessment states.
 - **Evidence receipt:** content-addressed input attachment, exact sanitized request, visible output, deterministic grade, metadata, copy, and download.
 - **Callouts and tables:** explicit evidence, caution, and boundary treatments with native horizontal table scrolling.
 
@@ -76,6 +76,10 @@ The site was visually checked at 1440×1000 and 390×844. Final QA captures are 
 
 Model-visible input, provider-visible output, evaluator-derived grade, and transport metadata are separate panels. Success, error, timeout, missing/not-run, and mixed/review states always have visible text; color is secondary. Missing data remains missing rather than being converted to a zero or inferred response.
 
+An `excluded` flag is a visibility annotation, not deletion or a replacement status. Excluded request-level failures remain in the manifest, search, direct routes, and receipts with a visible reason. The atlas omits them only from the initial browse view; an explicit control and any active search can reveal them.
+
+Every request record also has an assessment outcome. `success` means a completed request whose saved primary grade passed; `model_failure` means a completed request whose primary grade failed; `request_failure` means no model answer was available to grade; `not_run` and `ungraded` remain explicit. The atlas uses text tags and an outcome filter, never color alone. Error receipts begin with a compact interpretation block above the raw panels, including what failed, what the error does and does not mean, and what happened next.
+
 The public bundle excludes credentials, private answer keys, encrypted reasoning, and unrelated repository files. Inline image data is decoded to a SHA-256-addressed asset while its hash, media type, and byte count remain in the request.
 
 ## Deliberate constraints
@@ -83,4 +87,4 @@ The public bundle excludes credentials, private answer keys, encrypted reasoning
 - The repository solver is explanatory context, not a timed competitor.
 - Jev candidate recognition is never presented as autonomous puzzle construction.
 - The three original boards and six held-out boards do not support a general intelligence ranking.
-- The website is a static, read-only GitHub Pages publication. Analytics and external data fetching remain excluded.
+- The website is a read-only static GitHub Pages publication. Analytics, live model calls, and external runtime data fetching remain deferred.

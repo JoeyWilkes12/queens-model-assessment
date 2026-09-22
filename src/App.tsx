@@ -7,6 +7,17 @@ type Route = {
   description: string
 }
 
+type AssessmentOutcome = 'success' | 'model_failure' | 'request_failure' | 'not_run' | 'ungraded'
+
+type ErrorContext = {
+  category: string
+  title: string
+  interpretation: string
+  followUp: string
+  sourceUrl?: string
+  sourceLabel?: string
+}
+
 type EvidenceRecord = {
   id: string
   title: string
@@ -21,6 +32,10 @@ type EvidenceRecord = {
   board?: string | null
   model?: string | null
   run?: string | null
+  excluded?: boolean
+  exclusionReason?: string | null
+  assessmentOutcome?: AssessmentOutcome
+  errorContext?: ErrorContext | null
 }
 
 type InlineAsset = {
@@ -45,6 +60,10 @@ type ManifestRecord = {
   partialResponse?: boolean
   files?: { request?: string; response?: string; metadata?: string; grade?: string | null }
   failure?: unknown
+  excluded?: boolean
+  exclusionReason?: string | null
+  assessmentOutcome?: AssessmentOutcome
+  errorContext?: ErrorContext | null
 }
 
 const routes: Route[] = [
@@ -128,6 +147,20 @@ function displayStatus(status?: string) {
   return (status || 'review').replace(/_/g, ' ')
 }
 
+function displayRequestStatus(status?: string) {
+  if (status === 'success') return 'request success'
+  if (status === 'error') return 'request error'
+  return displayStatus(status)
+}
+
+function outcomeLabel(outcome?: AssessmentOutcome) {
+  if (outcome === 'success') return 'Success'
+  if (outcome === 'model_failure') return 'Model assessment failure'
+  if (outcome === 'request_failure') return 'Request / transport failure'
+  if (outcome === 'not_run') return 'Not run'
+  return 'Ungraded'
+}
+
 const fallbackEvidence: EvidenceRecord[] = [
   {
     id: '01-queens-5-easy-sol',
@@ -189,13 +222,20 @@ const fallbackEvidence: EvidenceRecord[] = [
 function normalizeManifestRecord(record: ManifestRecord): EvidenceRecord {
   const titleParts = [record.model || record.kind || 'Evidence', record.board || record.run].filter(Boolean)
   const state = record.status || 'review'
-  const detail = record.kind === 'grade-source'
+  const outcome = record.assessmentOutcome || 'ungraded'
+  const detail = record.excluded
+    ? 'Excluded from the default atlas because the request was rejected before inference; preserved for audit and search.'
+    : record.kind === 'grade-source'
     ? 'Complete study-level evaluator ledger retained as a sanitized grade source.'
-    : record.failure
-      ? 'A preserved transport or provider failure is available in the sanitized receipt.'
-      : record.hasResponse
-        ? `${record.hasGrade ? 'Response and grade' : 'Response'} retained; inspect the saved request, output, and metadata.`
-        : 'Planned record with no captured response; the absence is retained.'
+    : outcome === 'request_failure'
+      ? 'The request did not produce a model answer; inspect the error interpretation and transport receipt.'
+      : outcome === 'model_failure'
+        ? 'The request completed, but the saved deterministic grade marks the model answer incorrect.'
+        : outcome === 'success'
+          ? 'The request completed and the saved deterministic grade marks the scoped answer correct.'
+          : record.hasResponse
+            ? `${record.hasGrade ? 'Response and grade' : 'Response'} retained; inspect the saved request, output, and metadata.`
+            : 'Planned record with no captured response; the absence is retained.'
   return {
     id: record.id,
     title: titleParts.join(' · '),
@@ -207,7 +247,11 @@ function normalizeManifestRecord(record: ManifestRecord): EvidenceRecord {
     board: record.board,
     model: record.model,
     run: record.run,
-    metadata: { board: record.board, model: record.model, run: record.run, size: record.size, status: record.status, hasResponse: record.hasResponse, hasMetadata: record.hasMetadata, hasGrade: record.hasGrade, partialResponse: record.partialResponse, failure: record.failure },
+    excluded: record.excluded,
+    exclusionReason: record.exclusionReason,
+    assessmentOutcome: outcome,
+    errorContext: record.errorContext,
+    metadata: { board: record.board, model: record.model, run: record.run, size: record.size, status: record.status, assessmentOutcome: outcome, excluded: record.excluded, exclusionReason: record.exclusionReason, hasResponse: record.hasResponse, hasMetadata: record.hasMetadata, hasGrade: record.hasGrade, partialResponse: record.partialResponse, failure: record.failure },
   }
 }
 
@@ -423,10 +467,23 @@ function jsonText(value: unknown) {
   return JSON.stringify(value ?? {}, null, 2)
 }
 
+function OutcomeTag({ outcome }: { outcome?: AssessmentOutcome }) {
+  if (!outcome || outcome === 'ungraded') return null
+  return <span className={`outcome-tag outcome-${outcome}`}>{outcomeLabel(outcome)}</span>
+}
+
+function ErrorContextCallout({ record }: { record: EvidenceRecord }) {
+  if (!record.errorContext) return null
+  const context = record.errorContext
+  return <aside className="error-context" aria-labelledby="error-context-heading"><div className="error-context-heading"><span>{context.category}</span><h2 id="error-context-heading">{context.title}</h2></div><div className="error-context-body"><div><strong>How to interpret it</strong><p>{context.interpretation}</p></div><div><strong>What happened next</strong><p>{context.followUp}</p></div>{record.excluded && <div><strong>Atlas visibility</strong><p>Excluded from default browsing, but retained in search, direct links, and the public evidence bundle.</p></div>}{context.sourceUrl && <a href={context.sourceUrl} target="_blank" rel="noreferrer">{context.sourceLabel || 'Error reference'} <Icon name="external" /></a>}</div></aside>
+}
+
 function EvidenceExplorer({ selectedId }: { selectedId?: string }) {
   const [records, setRecords] = useState<EvidenceRecord[]>(fallbackEvidence)
   const [query, setQuery] = useState('')
   const [stage, setStage] = useState('All studies')
+  const [outcome, setOutcome] = useState('all')
+  const [showExcluded, setShowExcluded] = useState(false)
   const [visibleCount, setVisibleCount] = useState(30)
   const [, navigate] = useHashPath()
   useEffect(() => {
@@ -439,15 +496,29 @@ function EvidenceExplorer({ selectedId }: { selectedId?: string }) {
     return () => { active = false }
   }, [])
   const stages = ['All studies', ...Array.from(new Set(records.map(record => record.stage)))]
+  const excludedCount = records.filter(record => record.excluded).length
+  const outcomeCounts = useMemo(() => ({
+    success: records.filter(record => record.assessmentOutcome === 'success').length,
+    model_failure: records.filter(record => record.assessmentOutcome === 'model_failure').length,
+    request_failure: records.filter(record => record.assessmentOutcome === 'request_failure').length,
+    not_run: records.filter(record => record.assessmentOutcome === 'not_run').length,
+    ungraded: records.filter(record => record.assessmentOutcome === 'ungraded').length,
+  }), [records])
   const filtered = useMemo(() => records.filter(record => {
-    const haystack = `${record.id} ${record.title} ${record.stage} ${record.kind} ${record.summary} ${record.model || ''} ${record.board || ''} ${record.run || ''}`.toLowerCase()
-    return (stage === 'All studies' || record.stage === stage) && haystack.includes(query.toLowerCase())
-  }), [records, query, stage])
-  useEffect(() => { setVisibleCount(30) }, [query, stage])
+    const normalizedQuery = query.trim().toLowerCase()
+    const assessment = record.assessmentOutcome || 'ungraded'
+    const matchesOutcome = outcome === 'all'
+      || (outcome === 'non_success' && ['model_failure', 'request_failure', 'not_run'].includes(assessment))
+      || assessment === outcome
+    const haystack = `${record.id} ${record.title} ${record.stage} ${record.kind} ${record.summary} ${record.model || ''} ${record.board || ''} ${record.run || ''} ${outcomeLabel(assessment)} ${record.excluded ? 'excluded' : 'included'} ${record.exclusionReason || ''} ${record.errorContext?.category || ''} ${record.errorContext?.interpretation || ''}`.toLowerCase()
+    const visibleByDefault = !record.excluded || showExcluded || normalizedQuery.length > 0 || outcome !== 'all'
+    return visibleByDefault && matchesOutcome && (stage === 'All studies' || record.stage === stage) && haystack.includes(normalizedQuery)
+  }), [outcome, records, query, showExcluded, stage])
+  useEffect(() => { setVisibleCount(30) }, [outcome, query, showExcluded, stage])
   const visible = filtered.slice(0, visibleCount)
   const selected = selectedId ? records.find(record => record.id === selectedId) : undefined
   if (selected) return <EvidenceDetail record={selected} onBack={() => navigate('evidence-atlas')} />
-  return <><PageHero trail="Receipts / atlas" title="Evidence atlas" deck="Search the sanitized request, visible output, deterministic grade, and metadata behind the assessment. Every record is a bounded receipt, not a private raw dump." /><main className="atlas" id="main-content"><div className="atlas-controls"><label className="search-field"><span className="sr-only">Search evidence</span><Icon name="search" /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search run, model, board, or study" /></label><label className="select-field"><span className="sr-only">Filter study</span><select value={stage} onChange={event => setStage(event.target.value)}>{stages.map(item => <option key={item}>{item}</option>)}</select></label></div><p className="atlas-count">Showing <strong>{visible.length}</strong> of {filtered.length} matching records · {records.length} total</p><div className="evidence-list">{visible.map(record => <button className="evidence-row" key={record.id} onClick={() => navigate(`evidence-atlas/${record.id}`)}><span className={`status-dot status-${record.status || 'review'}`} aria-hidden="true" /><span className="evidence-main"><span className="evidence-title">{record.title}<Icon name="arrow" /></span><span>{record.summary}</span></span><span className="evidence-meta"><strong>{record.stage}</strong><span>{record.kind} · {displayStatus(record.status)}</span></span></button>)}</div>{visible.length < filtered.length && <div className="atlas-pagination"><button className="button button-outline" type="button" onClick={() => setVisibleCount(count => count + 30)}>Load 30 more</button><button className="back-link" type="button" onClick={() => setVisibleCount(filtered.length)}>Show all {filtered.length}</button></div>}{!filtered.length && <div className="empty-state"><strong>No records match.</strong><span>Try a shorter query or return to all studies.</span></div>}<Callout tone="evidence" title="Sanitization boundary">The atlas intentionally omits private answer keys, credentials, encrypted reasoning payloads, and unrelated repository files. A missing raw field is a safety decision, not a broken receipt.</Callout></main></>
+  return <><PageHero trail="Receipts / atlas" title="Evidence atlas" deck="Search the sanitized request, visible output, deterministic grade, and metadata behind the assessment. Every record is a bounded receipt, not a private raw dump." /><main className="atlas" id="main-content"><div className="atlas-controls"><label className="search-field"><span className="sr-only">Search evidence</span><Icon name="search" /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search run, model, board, study, or excluded" /></label><label className="select-field"><span className="sr-only">Filter study</span><select value={stage} onChange={event => setStage(event.target.value)}>{stages.map(item => <option key={item}>{item}</option>)}</select></label><label className="select-field"><span className="sr-only">Filter assessment outcome</span><select value={outcome} onChange={event => setOutcome(event.target.value)}><option value="all">All outcomes</option><option value="non_success">Non-success evidence</option><option value="success">Success ({outcomeCounts.success})</option><option value="model_failure">Model failures ({outcomeCounts.model_failure})</option><option value="request_failure">Request failures ({outcomeCounts.request_failure})</option><option value="not_run">Not run ({outcomeCounts.not_run})</option><option value="ungraded">Ungraded / ledgers ({outcomeCounts.ungraded})</option></select></label><label className="excluded-field"><input type="checkbox" checked={showExcluded} onChange={event => setShowExcluded(event.target.checked)} /><span>Show excluded <strong>{excludedCount}</strong></span></label></div><p className="atlas-count" aria-live="polite">Showing <strong>{visible.length}</strong> of {filtered.length} matching records · {records.length - excludedCount} included by default · {excludedCount} excluded</p><div className="evidence-list">{visible.map(record => <button className={`evidence-row${record.excluded ? ' evidence-row--excluded' : ''}`} key={record.id} onClick={() => navigate(`evidence-atlas/${record.id}`)}><span className={`status-dot outcome-dot-${record.assessmentOutcome || 'ungraded'}`} aria-hidden="true" /><span className="evidence-main"><span className="evidence-title">{record.title}<OutcomeTag outcome={record.assessmentOutcome} />{record.excluded && <span className="evidence-flag">Excluded</span>}<Icon name="arrow" /></span><span>{record.summary}</span></span><span className="evidence-meta"><strong>{record.stage}</strong><span>{record.kind} · {displayRequestStatus(record.status)}</span></span></button>)}</div>{visible.length < filtered.length && <div className="atlas-pagination"><button className="button button-outline" type="button" onClick={() => setVisibleCount(count => count + 30)}>Load 30 more</button><button className="back-link" type="button" onClick={() => setVisibleCount(filtered.length)}>Show all {filtered.length}</button></div>}{!filtered.length && <div className="empty-state"><strong>No records match.</strong><span>Try a shorter query, return to all studies, or show excluded evidence.</span></div>}<Callout tone="evidence" title="How outcome tags work">Success and model assessment failure require a completed request plus a saved deterministic grade. Request and transport failures produced no model answer. Excluded records remain searchable and directly addressable, but do not appear in the default browse view.</Callout></main></>
 }
 
 function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: () => void }) {
@@ -480,7 +551,7 @@ function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: ()
   const copy = async () => { try { await navigator.clipboard.writeText(payload); setCopied(true); window.setTimeout(() => setCopied(false), 1800) } catch { setCopied(false) } }
   const download = () => { const url = URL.createObjectURL(new Blob([payload], { type: 'application/json' })); const anchor = document.createElement('a'); anchor.href = url; anchor.download = `${record.id.replace(/[^A-Za-z0-9._-]+/g, '_')}.json`; anchor.click(); URL.revokeObjectURL(url) }
   const inlineAssets = collectInlineAssets(loaded.request)
-  return <><PageHero trail={`Receipts / atlas / ${record.id}`} title={record.title} deck={record.summary}><span className={`detail-status status-pill status-${record.status || 'review'}`}>{displayStatus(record.status)}</span></PageHero><main className="evidence-detail" id="main-content"><button className="back-link" onClick={onBack}>← Back to atlas</button><div className="detail-toolbar"><span><strong>{record.stage}</strong> · {record.kind}</span><div><button className="button button-small" onClick={copy} disabled={loading}><Icon name="copy" />{loading ? 'Loading…' : copied ? 'Copied' : 'Copy JSON'}</button><button className="button button-small button-outline" onClick={download} disabled={loading}><Icon name="download" />Download</button></div></div>{inlineAssets.length > 0 && <section className="input-assets" aria-labelledby="input-assets-heading"><div className="input-assets-heading"><span className="section-label">Exact input attachment</span><h2 id="input-assets-heading">Model-visible board image</h2><p>The base64 transport field was decoded into a content-addressed local asset; the request JSON retains its hash, media type, and byte count.</p></div><div className="input-assets-grid">{inlineAssets.map(asset => <figure key={asset.asset_path}><img src={assetUrl(`evidence/${asset.asset_path}`)} alt={`Board image attached to ${record.run || record.id}`} /><figcaption><code>{asset.sha256 ? `sha256:${asset.sha256}` : asset.asset_path}</code><span>{asset.media_type || 'image'}{asset.bytes ? ` · ${asset.bytes.toLocaleString()} bytes` : ''}</span></figcaption></figure>)}</div></section>}<div className="json-panels"><JsonPanel title="Sanitized request" value={loaded.request} /><JsonPanel title="Visible output" value={loaded.output} /><JsonPanel title="Deterministic grade" value={loaded.grade} /><JsonPanel title="Metadata" value={loaded.metadata} /></div><Callout tone="evidence" title="Record handling">This detail is loaded from the public evidence manifest and its linked sanitized files. Exact prompt text and visible provider output are preserved; private credentials and encrypted reasoning are intentionally excluded.</Callout></main></>
+  return <><PageHero trail={`Receipts / atlas / ${record.id}`} title={record.title} deck={record.summary}><div className="detail-flags"><OutcomeTag outcome={record.assessmentOutcome} /><span className={`status-pill status-${record.status || 'review'}`}>{displayRequestStatus(record.status)}</span>{record.excluded && <span className="status-pill evidence-flag">Excluded</span>}</div></PageHero><main className="evidence-detail" id="main-content"><button className="back-link" onClick={onBack}>← Back to atlas</button><ErrorContextCallout record={record} />{record.excluded && !record.errorContext && <Callout tone="caution" title="Excluded from the default atlas"><p>{record.exclusionReason || 'This record documents a request-level failure rather than a model response.'}</p><p>It remains searchable, directly addressable, and available for audit.</p></Callout>}<div className="detail-toolbar"><span><strong>{record.stage}</strong> · {record.kind}</span><div><button className="button button-small" onClick={copy} disabled={loading}><Icon name="copy" />{loading ? 'Loading…' : copied ? 'Copied' : 'Copy JSON'}</button><button className="button button-small button-outline" onClick={download} disabled={loading}><Icon name="download" />Download</button></div></div>{inlineAssets.length > 0 && <section className="input-assets" aria-labelledby="input-assets-heading"><div className="input-assets-heading"><span className="section-label">Exact input attachment</span><h2 id="input-assets-heading">Model-visible board image</h2><p>The base64 transport field was decoded into a content-addressed local asset; the request JSON retains its hash, media type, and byte count.</p></div><div className="input-assets-grid">{inlineAssets.map(asset => <figure key={asset.asset_path}><img src={assetUrl(`evidence/${asset.asset_path}`)} alt={`Board image attached to ${record.run || record.id}`} /><figcaption><code>{asset.sha256 ? `sha256:${asset.sha256}` : asset.asset_path}</code><span>{asset.media_type || 'image'}{asset.bytes ? ` · ${asset.bytes.toLocaleString()} bytes` : ''}</span></figcaption></figure>)}</div></section>}<div className="json-panels"><JsonPanel title="Sanitized request" value={loaded.request} /><JsonPanel title="Visible output" value={loaded.output} /><JsonPanel title="Deterministic grade" value={loaded.grade} /><JsonPanel title="Metadata" value={loaded.metadata} /></div><Callout tone="evidence" title="Record handling">This detail is loaded from the public evidence manifest and its linked sanitized files. Exact prompt text and visible provider output are preserved; private credentials and encrypted reasoning are intentionally excluded.</Callout></main></>
 }
 
 function JsonPanel({ title, value }: { title: string; value: unknown }) {

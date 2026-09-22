@@ -16,6 +16,14 @@
     "grades": 150,
     "gradeSources": 12,
     "inlineImageAssets": 3,
+    "excluded": 6,
+    "assessmentOutcomes": {
+      "model_failure": 74,
+      "not_run": 2,
+      "request_failure": 8,
+      "success": 71,
+      "ungraded": 2
+    },
     "statuses": {
       "error": 7,
       "not_run": 2,
@@ -1033,6 +1041,185 @@
       "original_9": [
         "2026-09-19-jev-scale:original_9"
       ]
+    },
+    "excluded": {
+      "true": [
+        "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
+        "2026-09-18-jev-deep-dive:01_unchanged_5x5",
+        "2026-09-18-jev-deep-dive:02_batch_5x5",
+        "2026-09-18-jev-deep-dive:02_batch_5x5_provider_enabled",
+        "2026-09-19-jev-scale:original_7",
+        "2026-09-19-jev-scale:original_9"
+      ]
+    },
+    "assessmentOutcome": {
+      "success": [
+        "2026-09-17-one-shot:01_queens-5-easy_gpt-5.6-sol",
+        "2026-09-17-one-shot:02_queens-5-easy_gemini-3.1-pro-preview",
+        "2026-09-17-one-shot:03_queens-5-easy_grok-4.6_bedrock",
+        "2026-09-17-one-shot:04_queens-5-easy_claude-opus-4.8",
+        "2026-09-17-one-shot:06_queens-7-medium_gpt-5.6-sol",
+        "2026-09-17-one-shot:07_queens-7-medium_gemini-3.1-pro-preview",
+        "2026-09-17-one-shot:09_queens-9-hard_grok-4.6_bedrock",
+        "2026-09-17-one-shot:10_queens-9-hard_claude-opus-4.8",
+        "2026-09-17-one-shot:12_queens-9-hard_gpt-5.6-sol",
+        "2026-09-18-jev-5x5-variations:complete_annotated_r2",
+        "2026-09-18-jev-5x5-variations:complete_boards_r1",
+        "2026-09-18-jev-5x5-variations:complete_features_r1",
+        "2026-09-18-jev-5x5-variations:complete_features_r2",
+        "2026-09-18-jev-5x5-variations:complete_features_r3",
+        "2026-09-18-jev-5x5-variations:partial_local_r1",
+        "2026-09-18-jev-5x5-variations:partial_local_r2",
+        "2026-09-18-jev-5x5-variations:partial_local_r3",
+        "2026-09-18-jev-5x5-variations:refine_annotated_order_r3",
+        "2026-09-18-jev-5x5-variations:refine_features_order_r1",
+        "2026-09-18-jev-5x5-variations:refine_features_order_r2",
+        "2026-09-18-jev-5x5-variations:refine_features_order_r3",
+        "2026-09-18-jev-5x5-variations:refine_region_sentence_r1",
+        "2026-09-18-jev-5x5-variations:refine_region_sentence_r2",
+        "2026-09-18-jev-5x5-variations:refine_region_sentence_r3",
+        "2026-09-18-jev-5x5-variations:refine_region_sequence_r1",
+        "2026-09-18-jev-5x5-variations:refine_region_sequence_r2",
+        "2026-09-18-jev-5x5-variations:refine_region_sequence_r3",
+        "2026-09-18-jev-deep-dive:05_grid_reading_5",
+        "2026-09-19-jev-primitives:heldout-5-1_regions_absent",
+        "2026-09-19-jev-primitives:heldout-5-1_regions_present",
+        "2026-09-19-jev-primitives:heldout-5-2_regions_absent",
+        "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+        "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+        "2026-09-19-jev-primitives:heldout-7-1_regions_present",
+        "2026-09-19-jev-primitives:heldout-7-2_regions_absent",
+        "2026-09-19-jev-primitives:heldout-7-2_regions_present",
+        "2026-09-19-jev-primitives:heldout-9-1_regions_absent",
+        "2026-09-19-jev-primitives:heldout-9-1_regions_present",
+        "2026-09-19-jev-primitives:heldout-9-2_regions_absent",
+        "2026-09-19-jev-primitives:heldout-9-2_regions_present",
+        "2026-09-19-jev-scale:7_counts_k255_r1",
+        "2026-09-19-jev-scale:7_counts_k255_r2",
+        "2026-09-19-jev-scale:7_counts_k255_r3",
+        "2026-09-19-jev-scale:7_regions_k100_r1",
+        "2026-09-19-jev-scale:7_regions_k100_r2",
+        "2026-09-19-jev-scale:7_regions_k100_r3",
+        "2026-09-19-jev-scale:7_regions_k12_r1",
+        "2026-09-19-jev-scale:7_regions_k12_r2",
+        "2026-09-19-jev-scale:7_regions_k12_r3",
+        "2026-09-19-jev-scale:7_regions_k255_r1",
+        "2026-09-19-jev-scale:7_regions_k255_r2",
+        "2026-09-19-jev-scale:7_regions_k255_r3",
+        "2026-09-19-jev-scale:7_regions_k50_r1",
+        "2026-09-19-jev-scale:7_regions_k50_r2",
+        "2026-09-19-jev-scale:7_regions_k50_r3",
+        "2026-09-19-jev-scale:9_counts_k255_r1",
+        "2026-09-19-jev-scale:9_counts_k255_r2",
+        "2026-09-19-jev-scale:9_counts_k255_r3",
+        "2026-09-19-jev-scale:9_regions_k100_r1",
+        "2026-09-19-jev-scale:9_regions_k100_r2",
+        "2026-09-19-jev-scale:9_regions_k100_r3",
+        "2026-09-19-jev-scale:9_regions_k12_r1",
+        "2026-09-19-jev-scale:9_regions_k12_r2",
+        "2026-09-19-jev-scale:9_regions_k12_r3",
+        "2026-09-19-jev-scale:9_regions_k255_r1",
+        "2026-09-19-jev-scale:9_regions_k255_r2",
+        "2026-09-19-jev-scale:9_regions_k255_r3",
+        "2026-09-19-jev-scale:9_regions_k50_r1",
+        "2026-09-19-jev-scale:9_regions_k50_r2",
+        "2026-09-19-jev-scale:9_regions_k50_r3",
+        "2026-09-19-jev-scale:9_vectors_k12_r1"
+      ],
+      "request_failure": [
+        "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
+        "2026-09-17-one-shot:08_queens-7-medium_grok-4.6_bedrock",
+        "2026-09-18-jev-deep-dive:01_unchanged_5x5",
+        "2026-09-18-jev-deep-dive:02_batch_5x5",
+        "2026-09-18-jev-deep-dive:02_batch_5x5_provider_enabled",
+        "2026-09-19-jev-primitives:heldout-9-2_construct_matrix",
+        "2026-09-19-jev-scale:original_7",
+        "2026-09-19-jev-scale:original_9"
+      ],
+      "model_failure": [
+        "2026-09-17-one-shot:05_queens-7-medium_claude-opus-4.8",
+        "2026-09-17-one-shot:11_queens-9-hard_gemini-3.1-pro-preview",
+        "2026-09-18-jev-5x5-variations:complete_annotated_r1",
+        "2026-09-18-jev-5x5-variations:complete_annotated_r3",
+        "2026-09-18-jev-5x5-variations:complete_boards_r2",
+        "2026-09-18-jev-5x5-variations:complete_boards_r3",
+        "2026-09-18-jev-5x5-variations:complete_fewshot_r1",
+        "2026-09-18-jev-5x5-variations:complete_fewshot_r2",
+        "2026-09-18-jev-5x5-variations:complete_fewshot_r3",
+        "2026-09-18-jev-5x5-variations:complete_mixed_r1",
+        "2026-09-18-jev-5x5-variations:complete_mixed_r2",
+        "2026-09-18-jev-5x5-variations:complete_mixed_r3",
+        "2026-09-18-jev-5x5-variations:complete_vectors_r1",
+        "2026-09-18-jev-5x5-variations:complete_vectors_r2",
+        "2026-09-18-jev-5x5-variations:complete_vectors_r3",
+        "2026-09-18-jev-5x5-variations:partial_global_annotated_r1",
+        "2026-09-18-jev-5x5-variations:partial_global_annotated_r2",
+        "2026-09-18-jev-5x5-variations:partial_global_annotated_r3",
+        "2026-09-18-jev-5x5-variations:partial_global_r1",
+        "2026-09-18-jev-5x5-variations:partial_global_r2",
+        "2026-09-18-jev-5x5-variations:partial_global_r3",
+        "2026-09-18-jev-5x5-variations:refine_annotated_order_r1",
+        "2026-09-18-jev-5x5-variations:refine_annotated_order_r2",
+        "2026-09-18-jev-deep-dive:02_batch_7x7",
+        "2026-09-18-jev-deep-dive:02_batch_9x9",
+        "2026-09-18-jev-deep-dive:03_sequential_5_row_1",
+        "2026-09-18-jev-deep-dive:03_sequential_5_row_2",
+        "2026-09-18-jev-deep-dive:03_sequential_5_row_3",
+        "2026-09-18-jev-deep-dive:03_sequential_5_row_4",
+        "2026-09-18-jev-deep-dive:03_sequential_5_row_5",
+        "2026-09-18-jev-deep-dive:04_recognition_5_all120",
+        "2026-09-19-jev-primitives:heldout-5-1_construct_matrix",
+        "2026-09-19-jev-primitives:heldout-5-1_construct_prose",
+        "2026-09-19-jev-primitives:heldout-5-1_vectors_present",
+        "2026-09-19-jev-primitives:heldout-5-2_construct_matrix",
+        "2026-09-19-jev-primitives:heldout-5-2_construct_prose",
+        "2026-09-19-jev-primitives:heldout-5-2_vectors_present",
+        "2026-09-19-jev-primitives:heldout-7-1_construct_matrix",
+        "2026-09-19-jev-primitives:heldout-7-1_construct_prose",
+        "2026-09-19-jev-primitives:heldout-7-1_vectors_present",
+        "2026-09-19-jev-primitives:heldout-7-2_construct_matrix",
+        "2026-09-19-jev-primitives:heldout-7-2_construct_prose",
+        "2026-09-19-jev-primitives:heldout-7-2_vectors_present",
+        "2026-09-19-jev-primitives:heldout-9-1_construct_matrix",
+        "2026-09-19-jev-primitives:heldout-9-1_construct_prose",
+        "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+        "2026-09-19-jev-primitives:heldout-9-2_construct_matrix_transport_retry1",
+        "2026-09-19-jev-primitives:heldout-9-2_construct_prose",
+        "2026-09-19-jev-primitives:heldout-9-2_vectors_present",
+        "2026-09-19-jev-scale:7_vectors_k100_r1",
+        "2026-09-19-jev-scale:7_vectors_k100_r2",
+        "2026-09-19-jev-scale:7_vectors_k100_r3",
+        "2026-09-19-jev-scale:7_vectors_k12_r1",
+        "2026-09-19-jev-scale:7_vectors_k12_r2",
+        "2026-09-19-jev-scale:7_vectors_k12_r3",
+        "2026-09-19-jev-scale:7_vectors_k255_r1",
+        "2026-09-19-jev-scale:7_vectors_k255_r2",
+        "2026-09-19-jev-scale:7_vectors_k255_r3",
+        "2026-09-19-jev-scale:7_vectors_k50_r1",
+        "2026-09-19-jev-scale:7_vectors_k50_r2",
+        "2026-09-19-jev-scale:7_vectors_k50_r3",
+        "2026-09-19-jev-scale:9_vectors_k100_r1",
+        "2026-09-19-jev-scale:9_vectors_k100_r2",
+        "2026-09-19-jev-scale:9_vectors_k100_r3",
+        "2026-09-19-jev-scale:9_vectors_k12_r2",
+        "2026-09-19-jev-scale:9_vectors_k12_r3",
+        "2026-09-19-jev-scale:9_vectors_k255_r1",
+        "2026-09-19-jev-scale:9_vectors_k255_r2",
+        "2026-09-19-jev-scale:9_vectors_k255_r3",
+        "2026-09-19-jev-scale:9_vectors_k50_r1",
+        "2026-09-19-jev-scale:9_vectors_k50_r2",
+        "2026-09-19-jev-scale:9_vectors_k50_r3",
+        "2026-09-19-jev-scale:construction_7",
+        "2026-09-19-jev-scale:construction_9"
+      ],
+      "not_run": [
+        "2026-09-17-one-shot:08_queens-7-medium_grok-4.6",
+        "2026-09-17-one-shot:09_queens-9-hard_grok-4.6"
+      ],
+      "ungraded": [
+        "2026-09-18-jev-deep-dive:02_batch_5x5_guardrail_enabled",
+        "2026-09-18-jev-deep-dive:06_check_own_5x5_answers"
+      ]
     }
   },
   "records": [
@@ -1048,6 +1235,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/01_queens-5-easy_gpt-5.6-sol/request.json",
         "response": "runs/2026-09-17-one-shot/01_queens-5-easy_gpt-5.6-sol/response.json",
@@ -1074,6 +1262,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/02_queens-5-easy_gemini-3.1-pro-preview/request.json",
         "response": "runs/2026-09-17-one-shot/02_queens-5-easy_gemini-3.1-pro-preview/response.json",
@@ -1100,6 +1289,15 @@
       "hasMetadata": true,
       "hasGrade": false,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
+      "excluded": true,
+      "exclusionReason": "Pre-inference provider-routing rejection caused by the direct-xAI request route conflicting with the account allowlist; superseded by the same-input Amazon Bedrock run.",
+      "errorContext": {
+        "category": "Request routing",
+        "title": "The request was rejected before inference",
+        "interpretation": "The request forced the direct xAI route while the account provider allowlist excluded xAI. No generation ID, model output, or usage record was returned, so this is not a Grok Queens result.",
+        "followUp": "The same model input was sent through the approved Amazon Bedrock route and produced a correct graded answer."
+      },
       "files": {
         "request": "runs/2026-09-17-one-shot/03_queens-5-easy_grok-4.6/request.json",
         "response": "runs/2026-09-17-one-shot/03_queens-5-easy_grok-4.6/response.json",
@@ -1167,6 +1365,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/03_queens-5-easy_grok-4.6_bedrock/request.json",
         "response": "runs/2026-09-17-one-shot/03_queens-5-easy_grok-4.6_bedrock/response.json",
@@ -1193,6 +1392,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/04_queens-5-easy_claude-opus-4.8/request.json",
         "response": "runs/2026-09-17-one-shot/04_queens-5-easy_claude-opus-4.8/response.json",
@@ -1219,6 +1419,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-17-one-shot/05_queens-7-medium_claude-opus-4.8/request.json",
         "response": "runs/2026-09-17-one-shot/05_queens-7-medium_claude-opus-4.8/response.json",
@@ -1245,6 +1446,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/06_queens-7-medium_gpt-5.6-sol/request.json",
         "response": "runs/2026-09-17-one-shot/06_queens-7-medium_gpt-5.6-sol/response.json",
@@ -1271,6 +1473,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/07_queens-7-medium_gemini-3.1-pro-preview/request.json",
         "response": "runs/2026-09-17-one-shot/07_queens-7-medium_gemini-3.1-pro-preview/response.json",
@@ -1297,6 +1500,7 @@
       "hasMetadata": false,
       "hasGrade": false,
       "partialResponse": false,
+      "assessmentOutcome": "not_run",
       "files": {
         "request": "runs/2026-09-17-one-shot/08_queens-7-medium_grok-4.6/request.json",
         "response": null,
@@ -1323,6 +1527,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
       "files": {
         "request": "runs/2026-09-17-one-shot/08_queens-7-medium_grok-4.6_bedrock/request.json",
         "response": null,
@@ -1352,6 +1557,7 @@
       "hasMetadata": false,
       "hasGrade": false,
       "partialResponse": false,
+      "assessmentOutcome": "not_run",
       "files": {
         "request": "runs/2026-09-17-one-shot/09_queens-9-hard_grok-4.6/request.json",
         "response": null,
@@ -1378,6 +1584,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": true,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/09_queens-9-hard_grok-4.6_bedrock/request.json",
         "response": "runs/2026-09-17-one-shot/09_queens-9-hard_grok-4.6_bedrock/response.json",
@@ -1406,6 +1613,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/10_queens-9-hard_claude-opus-4.8/request.json",
         "response": "runs/2026-09-17-one-shot/10_queens-9-hard_claude-opus-4.8/response.json",
@@ -1432,6 +1640,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-17-one-shot/11_queens-9-hard_gemini-3.1-pro-preview/request.json",
         "response": "runs/2026-09-17-one-shot/11_queens-9-hard_gemini-3.1-pro-preview/response.json",
@@ -1458,6 +1667,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-17-one-shot/12_queens-9-hard_gpt-5.6-sol/request.json",
         "response": "runs/2026-09-17-one-shot/12_queens-9-hard_gpt-5.6-sol/response.json",
@@ -1484,6 +1694,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_annotated_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_annotated_r1/response.json",
@@ -1510,6 +1721,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_annotated_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_annotated_r2/response.json",
@@ -1536,6 +1748,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_annotated_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_annotated_r3/response.json",
@@ -1562,6 +1775,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_boards_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_boards_r1/response.json",
@@ -1588,6 +1802,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_boards_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_boards_r2/response.json",
@@ -1614,6 +1829,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_boards_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_boards_r3/response.json",
@@ -1640,6 +1856,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_features_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_features_r1/response.json",
@@ -1666,6 +1883,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_features_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_features_r2/response.json",
@@ -1692,6 +1910,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_features_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_features_r3/response.json",
@@ -1718,6 +1937,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r1/response.json",
@@ -1744,6 +1964,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r2/response.json",
@@ -1770,6 +1991,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r3/response.json",
@@ -1796,6 +2018,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r1/response.json",
@@ -1822,6 +2045,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r2/response.json",
@@ -1848,6 +2072,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r3/response.json",
@@ -1874,6 +2099,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_vectors_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_vectors_r1/response.json",
@@ -1900,6 +2126,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_vectors_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_vectors_r2/response.json",
@@ -1926,6 +2153,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/complete_vectors_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/complete_vectors_r3/response.json",
@@ -1952,6 +2180,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_global_annotated_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_global_annotated_r1/response.json",
@@ -1978,6 +2207,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_global_annotated_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_global_annotated_r2/response.json",
@@ -2004,6 +2234,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_global_annotated_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_global_annotated_r3/response.json",
@@ -2030,6 +2261,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_global_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_global_r1/response.json",
@@ -2056,6 +2288,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_global_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_global_r2/response.json",
@@ -2082,6 +2315,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_global_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_global_r3/response.json",
@@ -2108,6 +2342,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_local_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_local_r1/response.json",
@@ -2134,6 +2369,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_local_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_local_r2/response.json",
@@ -2160,6 +2396,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/partial_local_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/partial_local_r3/response.json",
@@ -2186,6 +2423,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r1/response.json",
@@ -2212,6 +2450,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r2/response.json",
@@ -2238,6 +2477,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r3/response.json",
@@ -2264,6 +2504,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_features_order_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_features_order_r1/response.json",
@@ -2290,6 +2531,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_features_order_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_features_order_r2/response.json",
@@ -2316,6 +2558,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_features_order_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_features_order_r3/response.json",
@@ -2342,6 +2585,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r1/response.json",
@@ -2368,6 +2612,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r2/response.json",
@@ -2394,6 +2639,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r3/response.json",
@@ -2420,6 +2666,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_region_sequence_r1/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_region_sequence_r1/response.json",
@@ -2446,6 +2693,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_region_sequence_r2/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_region_sequence_r2/response.json",
@@ -2472,6 +2720,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-5x5-variations/refine_region_sequence_r3/request.json",
         "response": "runs/2026-09-18-jev-5x5-variations/refine_region_sequence_r3/response.json",
@@ -2498,6 +2747,15 @@
       "hasMetadata": true,
       "hasGrade": false,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
+      "excluded": true,
+      "exclusionReason": "Pre-inference endpoint rejection: the Jev Decisions model was submitted to the chat-completions endpoint and returned no model answer.",
+      "errorContext": {
+        "category": "Endpoint mismatch",
+        "title": "A Decisions model was sent to chat completions",
+        "interpretation": "OpenRouter returned HTTP 400 because Jev requires the Decisions endpoint. No model answer was produced, so the record establishes interface incompatibility rather than a Queens failure.",
+        "followUp": "The study moved to the Decisions endpoint with text state and typed questions."
+      },
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/01_unchanged_5x5/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/01_unchanged_5x5/response.json",
@@ -2530,6 +2788,15 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
+      "excluded": true,
+      "exclusionReason": "Pre-inference provider-routing rejection caused by the TypeSafe provider not yet being present in the account allowlist.",
+      "errorContext": {
+        "category": "Provider allowlist",
+        "title": "The TypeSafe route was unavailable to the account",
+        "interpretation": "OpenRouter returned HTTP 404 before inference because the request required TypeSafe while the account allowlist did not yet include it. No Jev answer was produced.",
+        "followUp": "After the account allowlist changed, a separate key-guardrail rejection was captured before the approved request succeeded."
+      },
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/02_batch_5x5/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/02_batch_5x5/response.json",
@@ -2588,6 +2855,7 @@
       "hasMetadata": true,
       "hasGrade": false,
       "partialResponse": false,
+      "assessmentOutcome": "ungraded",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/02_batch_5x5_guardrail_enabled/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/02_batch_5x5_guardrail_enabled/response.json",
@@ -2614,6 +2882,15 @@
       "hasMetadata": true,
       "hasGrade": false,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
+      "excluded": true,
+      "exclusionReason": "Pre-inference provider-routing rejection caused by the TypeSafe provider not yet being present in the key guardrail.",
+      "errorContext": {
+        "category": "Key guardrail",
+        "title": "The route remained blocked by the key guardrail",
+        "interpretation": "OpenRouter returned HTTP 404 before inference because the workspace key guardrail still excluded the TypeSafe provider. This is configuration evidence, not a model response.",
+        "followUp": "The subsequent guardrail-enabled request reached Jev and returned typed decisions."
+      },
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/02_batch_5x5_provider_enabled/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/02_batch_5x5_provider_enabled/response.json",
@@ -2663,6 +2940,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/02_batch_7x7/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/02_batch_7x7/response.json",
@@ -2689,6 +2967,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/02_batch_9x9/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/02_batch_9x9/response.json",
@@ -2715,6 +2994,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_1/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_1/response.json",
@@ -2741,6 +3021,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_2/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_2/response.json",
@@ -2767,6 +3048,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_3/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_3/response.json",
@@ -2793,6 +3075,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_4/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_4/response.json",
@@ -2819,6 +3102,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_5/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/03_sequential_5_row_5/response.json",
@@ -2845,6 +3129,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/04_recognition_5_all120/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/04_recognition_5_all120/response.json",
@@ -2871,6 +3156,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/05_grid_reading_5/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/05_grid_reading_5/response.json",
@@ -2897,6 +3183,7 @@
       "hasMetadata": true,
       "hasGrade": false,
       "partialResponse": false,
+      "assessmentOutcome": "ungraded",
       "files": {
         "request": "runs/2026-09-18-jev-deep-dive/06_check_own_5x5_answers/request.json",
         "response": "runs/2026-09-18-jev-deep-dive/06_check_own_5x5_answers/response.json",
@@ -2923,6 +3210,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_matrix/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_matrix/response.json",
@@ -2949,6 +3237,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_prose/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_prose/response.json",
@@ -2975,6 +3264,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-1_regions_absent/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-1_regions_absent/response.json",
@@ -3001,6 +3291,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-1_regions_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-1_regions_present/response.json",
@@ -3027,6 +3318,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-1_vectors_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-1_vectors_present/response.json",
@@ -3053,6 +3345,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-2_construct_matrix/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-2_construct_matrix/response.json",
@@ -3079,6 +3372,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-2_construct_prose/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-2_construct_prose/response.json",
@@ -3105,6 +3399,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-2_regions_absent/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-2_regions_absent/response.json",
@@ -3131,6 +3426,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-2_regions_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-2_regions_present/response.json",
@@ -3157,6 +3453,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-5-2_vectors_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-5-2_vectors_present/response.json",
@@ -3183,6 +3480,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-1_construct_matrix/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-1_construct_matrix/response.json",
@@ -3209,6 +3507,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-1_construct_prose/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-1_construct_prose/response.json",
@@ -3235,6 +3534,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_absent/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_absent/response.json",
@@ -3261,6 +3561,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_present/response.json",
@@ -3287,6 +3588,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-1_vectors_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-1_vectors_present/response.json",
@@ -3313,6 +3615,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-2_construct_matrix/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-2_construct_matrix/response.json",
@@ -3339,6 +3642,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-2_construct_prose/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-2_construct_prose/response.json",
@@ -3365,6 +3669,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-2_regions_absent/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-2_regions_absent/response.json",
@@ -3391,6 +3696,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-2_regions_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-2_regions_present/response.json",
@@ -3417,6 +3723,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-7-2_vectors_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-7-2_vectors_present/response.json",
@@ -3443,6 +3750,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-1_construct_matrix/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-1_construct_matrix/response.json",
@@ -3469,6 +3777,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-1_construct_prose/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-1_construct_prose/response.json",
@@ -3495,6 +3804,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-1_regions_absent/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-1_regions_absent/response.json",
@@ -3521,6 +3831,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-1_regions_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-1_regions_present/response.json",
@@ -3547,6 +3858,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/response.json",
@@ -3573,6 +3885,15 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
+      "errorContext": {
+        "category": "Upstream transport",
+        "title": "HTTP 520 returned no model answer",
+        "interpretation": "The saved response contains only HTTP 520, with no generation ID, returned model or provider, usage, or answer. Cloudflare defines 520 as an empty, unknown, or unexpected response from an origin; the retained record does not reveal the deeper upstream cause. It must not be scored as a Queens failure.",
+        "followUp": "One bounded retry used the same request hash and completed. That retry reached the model, but its returned placement failed the deterministic Queens checks.",
+        "sourceUrl": "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/",
+        "sourceLabel": "Cloudflare error 520 documentation"
+      },
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix/response.json",
@@ -3605,6 +3926,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix_transport_retry1/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix_transport_retry1/response.json",
@@ -3631,6 +3953,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_prose/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_prose/response.json",
@@ -3657,6 +3980,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_absent/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_absent/response.json",
@@ -3683,6 +4007,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_present/response.json",
@@ -3709,6 +4034,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-primitives/heldout-9-2_vectors_present/request.json",
         "response": "runs/2026-09-19-jev-primitives/heldout-9-2_vectors_present/response.json",
@@ -3735,6 +4061,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_counts_k255_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_counts_k255_r1/response.json",
@@ -3761,6 +4088,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_counts_k255_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_counts_k255_r2/response.json",
@@ -3787,6 +4115,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_counts_k255_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_counts_k255_r3/response.json",
@@ -3813,6 +4142,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k100_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k100_r1/response.json",
@@ -3839,6 +4169,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k100_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k100_r2/response.json",
@@ -3865,6 +4196,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k100_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k100_r3/response.json",
@@ -3891,6 +4223,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k12_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k12_r1/response.json",
@@ -3917,6 +4250,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k12_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k12_r2/response.json",
@@ -3943,6 +4277,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k12_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k12_r3/response.json",
@@ -3969,6 +4304,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k255_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k255_r1/response.json",
@@ -3995,6 +4331,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k255_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k255_r2/response.json",
@@ -4021,6 +4358,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k255_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k255_r3/response.json",
@@ -4047,6 +4385,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k50_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k50_r1/response.json",
@@ -4073,6 +4412,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k50_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k50_r2/response.json",
@@ -4099,6 +4439,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_regions_k50_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_regions_k50_r3/response.json",
@@ -4125,6 +4466,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k100_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k100_r1/response.json",
@@ -4151,6 +4493,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k100_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k100_r2/response.json",
@@ -4177,6 +4520,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k100_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k100_r3/response.json",
@@ -4203,6 +4547,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k12_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k12_r1/response.json",
@@ -4229,6 +4574,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k12_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k12_r2/response.json",
@@ -4255,6 +4601,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k12_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k12_r3/response.json",
@@ -4281,6 +4628,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k255_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k255_r1/response.json",
@@ -4307,6 +4655,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k255_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k255_r2/response.json",
@@ -4333,6 +4682,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k255_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k255_r3/response.json",
@@ -4359,6 +4709,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k50_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k50_r1/response.json",
@@ -4385,6 +4736,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k50_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k50_r2/response.json",
@@ -4411,6 +4763,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/7_vectors_k50_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/7_vectors_k50_r3/response.json",
@@ -4437,6 +4790,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_counts_k255_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_counts_k255_r1/response.json",
@@ -4463,6 +4817,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_counts_k255_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_counts_k255_r2/response.json",
@@ -4489,6 +4844,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_counts_k255_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_counts_k255_r3/response.json",
@@ -4515,6 +4871,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k100_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k100_r1/response.json",
@@ -4541,6 +4898,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k100_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k100_r2/response.json",
@@ -4567,6 +4925,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k100_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k100_r3/response.json",
@@ -4593,6 +4952,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k12_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k12_r1/response.json",
@@ -4619,6 +4979,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k12_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k12_r2/response.json",
@@ -4645,6 +5006,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k12_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k12_r3/response.json",
@@ -4671,6 +5033,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k255_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k255_r1/response.json",
@@ -4697,6 +5060,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k255_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k255_r2/response.json",
@@ -4723,6 +5087,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k255_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k255_r3/response.json",
@@ -4749,6 +5114,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k50_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k50_r1/response.json",
@@ -4775,6 +5141,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k50_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k50_r2/response.json",
@@ -4801,6 +5168,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_regions_k50_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_regions_k50_r3/response.json",
@@ -4827,6 +5195,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k100_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k100_r1/response.json",
@@ -4853,6 +5222,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k100_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k100_r2/response.json",
@@ -4879,6 +5249,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k100_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k100_r3/response.json",
@@ -4905,6 +5276,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "success",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k12_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k12_r1/response.json",
@@ -4931,6 +5303,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k12_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k12_r2/response.json",
@@ -4957,6 +5330,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k12_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k12_r3/response.json",
@@ -4983,6 +5357,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k255_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k255_r1/response.json",
@@ -5009,6 +5384,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k255_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k255_r2/response.json",
@@ -5035,6 +5411,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k255_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k255_r3/response.json",
@@ -5061,6 +5438,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k50_r1/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k50_r1/response.json",
@@ -5087,6 +5465,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k50_r2/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k50_r2/response.json",
@@ -5113,6 +5492,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/9_vectors_k50_r3/request.json",
         "response": "runs/2026-09-19-jev-scale/9_vectors_k50_r3/response.json",
@@ -5139,6 +5519,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/construction_7/request.json",
         "response": "runs/2026-09-19-jev-scale/construction_7/response.json",
@@ -5165,6 +5546,7 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "model_failure",
       "files": {
         "request": "runs/2026-09-19-jev-scale/construction_9/request.json",
         "response": "runs/2026-09-19-jev-scale/construction_9/response.json",
@@ -5191,6 +5573,15 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
+      "excluded": true,
+      "exclusionReason": "Pre-inference endpoint rejection: the Jev Decisions model was intentionally probed through chat completions and returned no model answer.",
+      "errorContext": {
+        "category": "Endpoint mismatch",
+        "title": "The 7×7 compatibility probe never reached Jev",
+        "interpretation": "OpenRouter returned HTTP 400 because the Jev Decisions model was sent to chat completions. There is no model answer to assess.",
+        "followUp": "The paired native 7×7 construction request used the Decisions endpoint and is retained separately."
+      },
       "files": {
         "request": "runs/2026-09-19-jev-scale/original_7/request.json",
         "response": "runs/2026-09-19-jev-scale/original_7/response.json",
@@ -5223,6 +5614,15 @@
       "hasMetadata": true,
       "hasGrade": true,
       "partialResponse": false,
+      "assessmentOutcome": "request_failure",
+      "excluded": true,
+      "exclusionReason": "Pre-inference endpoint rejection: the Jev Decisions model was intentionally probed through chat completions and returned no model answer.",
+      "errorContext": {
+        "category": "Endpoint mismatch",
+        "title": "The 9×9 compatibility probe never reached Jev",
+        "interpretation": "OpenRouter returned HTTP 400 because the Jev Decisions model was sent to chat completions. There is no model answer to assess.",
+        "followUp": "The paired native 9×9 construction request used the Decisions endpoint and is retained separately."
+      },
       "files": {
         "request": "runs/2026-09-19-jev-scale/original_9/request.json",
         "response": "runs/2026-09-19-jev-scale/original_9/response.json",
