@@ -31,6 +31,8 @@ type EvidenceRecord = {
   files?: { request?: string; response?: string; metadata?: string; grade?: string | null }
   board?: string | null
   model?: string | null
+  modelVersion?: string | null
+  provider?: string | null
   run?: string | null
   excluded?: boolean
   exclusionReason?: string | null
@@ -51,6 +53,8 @@ type ManifestRecord = {
   board?: string | null
   size?: number
   model?: string | null
+  modelVersion?: string | null
+  provider?: string | null
   run?: string | null
   status?: string
   kind?: string
@@ -246,12 +250,14 @@ function normalizeManifestRecord(record: ManifestRecord): EvidenceRecord {
     files: record.files,
     board: record.board,
     model: record.model,
+    modelVersion: record.modelVersion,
+    provider: record.provider,
     run: record.run,
     excluded: record.excluded,
     exclusionReason: record.exclusionReason,
     assessmentOutcome: outcome,
     errorContext: record.errorContext,
-    metadata: { board: record.board, model: record.model, run: record.run, size: record.size, status: record.status, assessmentOutcome: outcome, excluded: record.excluded, exclusionReason: record.exclusionReason, hasResponse: record.hasResponse, hasMetadata: record.hasMetadata, hasGrade: record.hasGrade, partialResponse: record.partialResponse, failure: record.failure },
+    metadata: { board: record.board, model: record.model, modelVersion: record.modelVersion, provider: record.provider, run: record.run, size: record.size, status: record.status, assessmentOutcome: outcome, excluded: record.excluded, exclusionReason: record.exclusionReason, hasResponse: record.hasResponse, hasMetadata: record.hasMetadata, hasGrade: record.hasGrade, partialResponse: record.partialResponse, failure: record.failure },
   }
 }
 
@@ -482,6 +488,8 @@ function EvidenceExplorer({ selectedId }: { selectedId?: string }) {
   const [records, setRecords] = useState<EvidenceRecord[]>(fallbackEvidence)
   const [query, setQuery] = useState('')
   const [stage, setStage] = useState('All studies')
+  const [provider, setProvider] = useState('all')
+  const [modelVersion, setModelVersion] = useState('all')
   const [outcome, setOutcome] = useState('all')
   const [showExcluded, setShowExcluded] = useState(false)
   const [visibleCount, setVisibleCount] = useState(30)
@@ -496,6 +504,10 @@ function EvidenceExplorer({ selectedId }: { selectedId?: string }) {
     return () => { active = false }
   }, [])
   const stages = ['All studies', ...Array.from(new Set(records.map(record => record.stage)))]
+  const providers = useMemo(() => Array.from(new Set(records.map(record => record.provider).filter((value): value is string => Boolean(value)))).sort((a, b) => a.localeCompare(b)), [records])
+  const modelVersions = useMemo(() => Array.from(new Set(records.map(record => record.modelVersion).filter((value): value is string => Boolean(value)))).sort((a, b) => a.localeCompare(b)), [records])
+  const providerCounts = useMemo(() => Object.fromEntries(providers.map(value => [value, records.filter(record => record.provider === value).length])), [providers, records])
+  const modelVersionCounts = useMemo(() => Object.fromEntries(modelVersions.map(value => [value, records.filter(record => record.modelVersion === value).length])), [modelVersions, records])
   const excludedCount = records.filter(record => record.excluded).length
   const outcomeCounts = useMemo(() => ({
     success: records.filter(record => record.assessmentOutcome === 'success').length,
@@ -510,15 +522,17 @@ function EvidenceExplorer({ selectedId }: { selectedId?: string }) {
     const matchesOutcome = outcome === 'all'
       || (outcome === 'non_success' && ['model_failure', 'request_failure', 'not_run'].includes(assessment))
       || assessment === outcome
-    const haystack = `${record.id} ${record.title} ${record.stage} ${record.kind} ${record.summary} ${record.model || ''} ${record.board || ''} ${record.run || ''} ${outcomeLabel(assessment)} ${record.excluded ? 'excluded' : 'included'} ${record.exclusionReason || ''} ${record.errorContext?.category || ''} ${record.errorContext?.interpretation || ''}`.toLowerCase()
+    const matchesProvider = provider === 'all' || record.provider === provider
+    const matchesModelVersion = modelVersion === 'all' || record.modelVersion === modelVersion
+    const haystack = `${record.id} ${record.title} ${record.stage} ${record.kind} ${record.summary} ${record.model || ''} ${record.modelVersion || ''} ${record.provider || ''} ${record.board || ''} ${record.run || ''} ${outcomeLabel(assessment)} ${record.excluded ? 'excluded' : 'included'} ${record.exclusionReason || ''} ${record.errorContext?.category || ''} ${record.errorContext?.interpretation || ''}`.toLowerCase()
     const visibleByDefault = !record.excluded || showExcluded || normalizedQuery.length > 0 || outcome !== 'all'
-    return visibleByDefault && matchesOutcome && (stage === 'All studies' || record.stage === stage) && haystack.includes(normalizedQuery)
-  }), [outcome, records, query, showExcluded, stage])
-  useEffect(() => { setVisibleCount(30) }, [outcome, query, showExcluded, stage])
+    return visibleByDefault && matchesOutcome && matchesProvider && matchesModelVersion && (stage === 'All studies' || record.stage === stage) && haystack.includes(normalizedQuery)
+  }), [modelVersion, outcome, provider, records, query, showExcluded, stage])
+  useEffect(() => { setVisibleCount(30) }, [modelVersion, outcome, provider, query, showExcluded, stage])
   const visible = filtered.slice(0, visibleCount)
   const selected = selectedId ? records.find(record => record.id === selectedId) : undefined
   if (selected) return <EvidenceDetail record={selected} onBack={() => navigate('evidence-atlas')} />
-  return <><PageHero trail="Receipts / atlas" title="Evidence atlas" deck="Search the sanitized request, visible output, deterministic grade, and metadata behind the assessment. Every record is a bounded receipt, not a private raw dump." /><main className="atlas" id="main-content"><div className="atlas-controls"><label className="search-field"><span className="sr-only">Search evidence</span><Icon name="search" /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search run, model, board, study, or excluded" /></label><label className="select-field"><span className="sr-only">Filter study</span><select value={stage} onChange={event => setStage(event.target.value)}>{stages.map(item => <option key={item}>{item}</option>)}</select></label><label className="select-field"><span className="sr-only">Filter assessment outcome</span><select value={outcome} onChange={event => setOutcome(event.target.value)}><option value="all">All outcomes</option><option value="non_success">Non-success evidence</option><option value="success">Success ({outcomeCounts.success})</option><option value="model_failure">Model failures ({outcomeCounts.model_failure})</option><option value="request_failure">Request failures ({outcomeCounts.request_failure})</option><option value="not_run">Not run ({outcomeCounts.not_run})</option><option value="ungraded">Ungraded / ledgers ({outcomeCounts.ungraded})</option></select></label><label className="excluded-field"><input type="checkbox" checked={showExcluded} onChange={event => setShowExcluded(event.target.checked)} /><span>Show excluded <strong>{excludedCount}</strong></span></label></div><p className="atlas-count" aria-live="polite">Showing <strong>{visible.length}</strong> of {filtered.length} matching records · {records.length - excludedCount} included by default · {excludedCount} excluded</p><div className="evidence-list">{visible.map(record => <button className={`evidence-row${record.excluded ? ' evidence-row--excluded' : ''}`} key={record.id} onClick={() => navigate(`evidence-atlas/${record.id}`)}><span className={`status-dot outcome-dot-${record.assessmentOutcome || 'ungraded'}`} aria-hidden="true" /><span className="evidence-main"><span className="evidence-title">{record.title}<OutcomeTag outcome={record.assessmentOutcome} />{record.excluded && <span className="evidence-flag">Excluded</span>}<Icon name="arrow" /></span><span>{record.summary}</span></span><span className="evidence-meta"><strong>{record.stage}</strong><span>{record.kind} · {displayRequestStatus(record.status)}</span></span></button>)}</div>{visible.length < filtered.length && <div className="atlas-pagination"><button className="button button-outline" type="button" onClick={() => setVisibleCount(count => count + 30)}>Load 30 more</button><button className="back-link" type="button" onClick={() => setVisibleCount(filtered.length)}>Show all {filtered.length}</button></div>}{!filtered.length && <div className="empty-state"><strong>No records match.</strong><span>Try a shorter query, return to all studies, or show excluded evidence.</span></div>}<Callout tone="evidence" title="How outcome tags work">Success and model assessment failure require a completed request plus a saved deterministic grade. Request and transport failures produced no model answer. Excluded records remain searchable and directly addressable, but do not appear in the default browse view.</Callout></main></>
+  return <><PageHero trail="Receipts / atlas" title="Evidence atlas" deck="Search the sanitized request, visible output, deterministic grade, and metadata behind the assessment. Every record is a bounded receipt, not a private raw dump." /><main className="atlas" id="main-content"><div className="atlas-controls"><label className="search-field atlas-control-search"><span className="sr-only">Search evidence</span><Icon name="search" /><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search run, model author, version, board, or excluded" /></label><label className="select-field atlas-control-study"><span className="sr-only">Filter study</span><select value={stage} onChange={event => setStage(event.target.value)}>{stages.map(item => <option key={item}>{item}</option>)}</select></label><label className="select-field atlas-control-outcome"><span className="sr-only">Filter assessment outcome</span><select value={outcome} onChange={event => setOutcome(event.target.value)}><option value="all">All outcomes</option><option value="non_success">Non-success evidence</option><option value="success">Success ({outcomeCounts.success})</option><option value="model_failure">Model failures ({outcomeCounts.model_failure})</option><option value="request_failure">Request failures ({outcomeCounts.request_failure})</option><option value="not_run">Not run ({outcomeCounts.not_run})</option><option value="ungraded">Ungraded / ledgers ({outcomeCounts.ungraded})</option></select></label><label className="select-field atlas-control-provider"><span className="sr-only">Filter model provider or author</span><select value={provider} onChange={event => setProvider(event.target.value)}><option value="all">All model authors</option>{providers.map(item => <option value={item} key={item}>{item} ({providerCounts[item]})</option>)}</select></label><label className="select-field atlas-control-model"><span className="sr-only">Filter exact model version</span><select value={modelVersion} onChange={event => setModelVersion(event.target.value)}><option value="all">All model versions</option>{modelVersions.map(item => <option value={item} key={item}>{item} ({modelVersionCounts[item]})</option>)}</select></label><label className="excluded-field atlas-control-excluded"><input type="checkbox" checked={showExcluded} onChange={event => setShowExcluded(event.target.checked)} /><span>Show excluded <strong>{excludedCount}</strong></span></label></div><p className="atlas-count" aria-live="polite">Showing <strong>{visible.length}</strong> of {filtered.length} matching records · {records.length - excludedCount} included by default · {excludedCount} excluded</p><div className="evidence-list">{visible.map(record => <button className={`evidence-row${record.excluded ? ' evidence-row--excluded' : ''}`} key={record.id} onClick={() => navigate(`evidence-atlas/${record.id}`)}><span className={`status-dot outcome-dot-${record.assessmentOutcome || 'ungraded'}`} aria-hidden="true" /><span className="evidence-main"><span className="evidence-title">{record.title}<OutcomeTag outcome={record.assessmentOutcome} />{record.excluded && <span className="evidence-flag">Excluded</span>}<Icon name="arrow" /></span><span>{record.summary}</span></span><span className="evidence-meta"><strong>{record.stage}</strong><span>{record.kind} · {displayRequestStatus(record.status)}</span></span></button>)}</div>{visible.length < filtered.length && <div className="atlas-pagination"><button className="button button-outline" type="button" onClick={() => setVisibleCount(count => count + 30)}>Load 30 more</button><button className="back-link" type="button" onClick={() => setVisibleCount(filtered.length)}>Show all {filtered.length}</button></div>}{!filtered.length && <div className="empty-state"><strong>No records match.</strong><span>Try a shorter query, broaden the model author or version, or show excluded evidence.</span></div>}<Callout tone="evidence" title="How outcome tags work">Success and model assessment failure require a completed request plus a saved deterministic grade. Request and transport failures produced no model answer. Excluded records remain searchable and directly addressable, but do not appear in the default browse view.</Callout></main></>
 }
 
 function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: () => void }) {

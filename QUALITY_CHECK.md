@@ -58,6 +58,7 @@ Functional checks passed for:
 - excluded evidence hidden from the default browse view, discoverable by search, and available through the explicit “Show excluded” control;
 - direct excluded-record routes with a visible exclusion flag and request-level reason;
 - success, model-failure, request-failure, not-run, and ungraded outcome filtering, including the combined non-success view;
+- model-author/provider and exact-model-version filtering, including combined filters with study and assessment outcome;
 - top-of-receipt error summaries for all seven HTTP error records, with the 520 record distinguished from its completed retry;
 - study filtering and progressive disclosure from 30 to 60 records;
 - exact evidence deep links, including the 12-option Jev request;

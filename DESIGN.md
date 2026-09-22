@@ -49,7 +49,7 @@ Hash routing keeps every page compatible with a later static host. The evidence 
 - **Local contents rail:** in-page navigation that scrolls without corrupting hash routing.
 - **Board diagram:** visible region letters, color redundancy, row/column-aware cell labels, and queen markers.
 - **Candidate lens:** toggles between columns-only and explicit-region representations using exact saved candidates.
-- **Evidence atlas:** searchable, study- and outcome-filtered, progressively disclosed request and grade-source index with distinct request and assessment states.
+- **Evidence atlas:** searchable, study-, provider-, exact-model-version-, and outcome-filtered request and grade-source index with distinct request and assessment states.
 - **Evidence receipt:** content-addressed input attachment, exact sanitized request, visible output, deterministic grade, metadata, copy, and download.
 - **Callouts and tables:** explicit evidence, caution, and boundary treatments with native horizontal table scrolling.
 

@@ -259,6 +259,33 @@ function parseModel(request, metadata, response) {
     ?? null;
 }
 
+function providerLabel(value) {
+  if (!value || typeof value !== "string") return null;
+  const normalized = value.replace(/^~/, "").toLowerCase();
+  const labels = {
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "openai": "OpenAI",
+    "typesafe": "TypeSafe",
+    "x-ai": "xAI",
+    "xai": "xAI",
+  };
+  return labels[normalized] ?? value;
+}
+
+function parseProvider(model) {
+  const modelNamespace = typeof model === "string" ? model.split("/")[0] : null;
+  return providerLabel(modelNamespace);
+}
+
+function parseModelVersion(request, metadata, response) {
+  return metadata?.returned_model
+    ?? response?.model
+    ?? metadata?.model
+    ?? request?.model
+    ?? null;
+}
+
 function parseSize(request, board, run) {
   if (Number.isInteger(request?.state?.size)) return request.state.size;
   const boardSize = String(board ?? "").match(/(?:queens|heldout)-(\d+)/i)?.[1];
@@ -373,6 +400,8 @@ async function expandGradeSources(study) {
       study,
       board: boardFromGrade(sourceData, path.basename(sourcePath)),
       model: null,
+      modelVersion: null,
+      provider: null,
       run: null,
       kind: "grade-source",
       status: "success",
@@ -470,6 +499,8 @@ async function buildStudy(study) {
     const response = hasResponse ? await readJson(responsePath) : null;
     const board = parseBoard(request, run);
     const model = parseModel(request, metadata, response);
+    const modelVersion = parseModelVersion(request, metadata, response);
+    const provider = parseProvider(model);
     const size = parseSize(request, board, run);
     const status = responseStatus({ response, metadata, rawDirExists });
     const grade = gradeForRun(study, run, gradeByRun, gradeSourceData.map(({ source, data }) => ({
@@ -499,6 +530,8 @@ async function buildStudy(study) {
       board,
       size,
       model,
+      modelVersion,
+      provider,
       run,
       status,
       hasResponse,
@@ -535,11 +568,13 @@ function addToIndex(index, key, value, recordId) {
 }
 
 function buildIndex(records, gradeRecords) {
-  const index = { study: {}, board: {}, model: {}, run: {}, excluded: {}, assessmentOutcome: {} };
+  const index = { study: {}, board: {}, model: {}, modelVersion: {}, provider: {}, run: {}, excluded: {}, assessmentOutcome: {} };
   for (const record of [...records, ...gradeRecords]) {
     addToIndex(index, "study", record.study, record.id);
     addToIndex(index, "board", record.board, record.id);
     addToIndex(index, "model", record.model, record.id);
+    addToIndex(index, "modelVersion", record.modelVersion, record.id);
+    addToIndex(index, "provider", record.provider, record.id);
     addToIndex(index, "run", record.run, record.id);
     if (record.excluded) addToIndex(index, "excluded", "true", record.id);
     addToIndex(index, "assessmentOutcome", record.assessmentOutcome, record.id);

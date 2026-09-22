@@ -224,7 +224,13 @@ code { color: var(--text-primary); font-size: .88em; }
 .lens-footer a { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; color: var(--link-evidence); font-weight: 700; text-decoration: underline; }
 
 .atlas { max-width: 1136px; margin: 0 auto; padding: 52px 28px 84px; }
-.atlas-controls { display: grid; grid-template-columns: minmax(260px, 1fr) 190px 210px auto; gap: 12px; }
+.atlas-controls { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
+.atlas-control-search { grid-column: span 5; }
+.atlas-control-study { grid-column: span 3; }
+.atlas-control-outcome { grid-column: span 4; }
+.atlas-control-provider { grid-column: span 4; }
+.atlas-control-model { grid-column: span 5; }
+.atlas-control-excluded { grid-column: span 3; }
 .search-field, .select-field { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 13px; border: 1px solid var(--border-strong); background: var(--surface-raised); }
 .search-field input, .select-field select { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font-size: .88rem; }
 .search-field input::placeholder { color: var(--text-muted); }
@@ -301,6 +307,7 @@ code { color: var(--text-primary); font-size: .88em; }
   .local-toc { position: static; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-bottom: 34px; }
   .local-toc .toc-label { flex-basis: 100%; }
   .atlas-controls { grid-template-columns: minmax(0, 1fr) minmax(180px, .65fr); }
+  .atlas-controls > * { grid-column: auto; }
 }
 @media (max-width: 1020px) {
   .book-sidebar { width: 260px; padding-inline: 19px; }
