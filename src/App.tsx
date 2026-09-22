@@ -222,7 +222,7 @@ function useHashPath() {
   return [path, (next: string) => { window.location.hash = `/${next}` }] as const
 }
 
-function Icon({ name, size = 18 }: { name: 'arrow' | 'book' | 'close' | 'menu' | 'moon' | 'sun' | 'copy' | 'download' | 'search' | 'external'; size?: number }) {
+function Icon({ name, size = 18 }: { name: 'arrow' | 'book' | 'close' | 'menu' | 'moon' | 'sun' | 'copy' | 'download' | 'search' | 'external' | 'expand'; size?: number }) {
   const paths: Record<string, ReactNode> = {
     arrow: <><path d="M4 9h11" /><path d="m11 4 5 5-5 5" /></>,
     book: <><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H19v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z" /><path d="M4 19V4.5" /><path d="M7.5 6H16" /><path d="M7.5 9H16" /></>,
@@ -234,6 +234,7 @@ function Icon({ name, size = 18 }: { name: 'arrow' | 'book' | 'close' | 'menu' |
     download: <><path d="M10 2v10" /><path d="m6 8 4 4 4-4" /><path d="M3 15v2h14v-2" /></>,
     search: <><circle cx="8.5" cy="8.5" r="5.5" /><path d="m13 13 4 4" /></>,
     external: <><path d="M10 4h6v6" /><path d="m16 4-7 7" /><path d="M14 13v3H4V6h3" /></>,
+    expand: <><path d="M8 3H3v5" /><path d="m3 3 5 5" /><path d="M12 17h5v-5" /><path d="m17 17-5-5" /></>,
   }
   return <svg aria-hidden="true" className="icon" width={size} height={size} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square" strokeLinejoin="miter">{paths[name]}</svg>
 }
@@ -267,7 +268,52 @@ function ReportFigures() {
     ['jev-invalid-vs-correct-5.png', 'Jev selected placement versus the unique legal solution'],
     ['fewshot-5-pair.png', 'A solved 5×5 board used only as worked-example context'],
   ]
-  return <div className="figure-grid" aria-label="Report illustrations">{figures.map(([src, caption]) => <figure key={src}><img src={assetUrl(`assets/${src}`)} alt={caption} loading="lazy" /><figcaption>{caption}</figcaption></figure>)}</div>
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
+  const [selectedFigure, setSelectedFigure] = useState<string[] | null>(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!selectedFigure || !dialog || dialog.open) return
+    dialog.showModal()
+    window.requestAnimationFrame(() => dialog.querySelector<HTMLButtonElement>('.figure-lightbox-close')?.focus())
+  }, [selectedFigure])
+
+  const openFigure = (figure: string[], trigger: HTMLButtonElement) => {
+    triggerRef.current = trigger
+    setSelectedFigure(figure)
+  }
+
+  const closeFigure = () => dialogRef.current?.close()
+
+  const handleDialogClose = () => {
+    setSelectedFigure(null)
+    triggerRef.current?.focus()
+  }
+
+  return <>
+    <div className="figure-grid" aria-label="Report illustrations">
+      {figures.map(([src, caption]) => <figure key={src}>
+        <button className="figure-preview" type="button" onClick={(event) => openFigure([src, caption], event.currentTarget)} aria-label={`View ${caption} full screen`}>
+          <img src={assetUrl(`assets/${src}`)} alt={caption} loading="lazy" width="2200" height="1230" />
+          <span className="figure-expand-label"><Icon name="expand" /> Full screen</span>
+        </button>
+        <figcaption>{caption}</figcaption>
+      </figure>)}
+    </div>
+    <dialog ref={dialogRef} className="figure-lightbox" aria-labelledby="figure-lightbox-caption" onClose={handleDialogClose} onClick={(event) => { if (event.target === event.currentTarget) closeFigure() }}>
+      {selectedFigure && <div className="figure-lightbox-shell">
+        <div className="figure-lightbox-toolbar">
+          <span>Visual receipt</span>
+          <button className="figure-lightbox-close" type="button" onClick={closeFigure}><Icon name="close" /> Close</button>
+        </div>
+        <figure>
+          <div className="figure-lightbox-visual"><img src={assetUrl(`assets/${selectedFigure[0]}`)} alt={selectedFigure[1]} width="2200" height="1230" /></div>
+          <figcaption id="figure-lightbox-caption">{selectedFigure[1]}</figcaption>
+        </figure>
+      </div>}
+    </dialog>
+  </>
 }
 
 function AssessmentReceipt() {
