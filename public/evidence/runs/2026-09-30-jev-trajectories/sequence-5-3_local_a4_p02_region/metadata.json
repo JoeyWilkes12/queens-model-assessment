@@ -1,0 +1,33 @@
+{
+  "call_id": "sequence-5-3_local_a4_p02_region",
+  "endpoint": "/api/alpha/decisions",
+  "requested_model": "typesafe/jev-1.13",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "ef723fd9ea9b8d94d485a6d98890ea7653139244d9f0ce898d83e7de9165a7f4",
+  "started_utc": "2026-10-01T05:54:47.228864+00:00",
+  "reserved_usd": "0.001079422",
+  "accounted_usd": "4.5276e-05",
+  "actual_cost_usd": 0.000045276,
+  "http_status": 200,
+  "context": {
+    "board_id": "sequence-5-3",
+    "size": 5,
+    "family": "trajectory",
+    "mode": "local",
+    "replicate": 4,
+    "step": 2,
+    "phase": "region"
+  },
+  "response_sha256": "e586da089ef39574539329603b9ce7486819e2b166597d883054c38f6c5a3a6e",
+  "retry_after": null,
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "returned_provider": "TypeSafe",
+  "generation_id": "gen-dec-1790834087-rxXMlXO4jfSyM6jM1E8M",
+  "usage": {
+    "input_tokens": 1078,
+    "output_tokens": 45,
+    "cost": 0.000045276
+  },
+  "elapsed_seconds": 0.2111819579731673,
+  "ended_utc": "2026-10-01T05:54:47.440229+00:00"
+}

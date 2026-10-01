@@ -1,0 +1,25 @@
+{
+  "call_id": "exact_build_route_probe",
+  "endpoint": "/api/alpha/decisions",
+  "requested_model": "typesafe/jev-1.13-20260917",
+  "model": "typesafe/jev-1.13-20260917",
+  "request_sha256": "ce021067c9621c77e9c2a8f7c6e4818e854d6b5429da41c93c256f6fe2ef6be6",
+  "started_utc": "2026-10-01T05:52:50.527273+00:00",
+  "reserved_usd": "0.001080094",
+  "accounted_usd": "0.001080094",
+  "actual_cost_usd": null,
+  "http_status": 400,
+  "context": {
+    "family": "version_probe",
+    "board_id": "sequence-5-1"
+  },
+  "response_sha256": "4c7935ea51945a88876356f9727e6d2542639d44442f9b1dafa909f48113588b",
+  "retry_after": null,
+  "returned_model": null,
+  "returned_provider": null,
+  "generation_id": null,
+  "usage": null,
+  "error": "Only the user-approved Jev models may use Decisions.",
+  "elapsed_seconds": 0.006729000015184283,
+  "ended_utc": "2026-10-01T05:52:50.534501+00:00"
+}

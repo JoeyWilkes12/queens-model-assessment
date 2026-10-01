@@ -1,0 +1,39 @@
+{
+  "call_id": "probe_sequence-9-1_cell_A_r07",
+  "endpoint": "/api/alpha/decisions",
+  "requested_model": "typesafe/jev-1.13",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "4e6733294acbc5952b0180409a908179586426769f4517ea884960d6a5b2b98f",
+  "started_utc": "2026-10-01T05:55:14.006769+00:00",
+  "reserved_usd": "0.001142548",
+  "accounted_usd": "9.03e-05",
+  "actual_cost_usd": 0.0000903,
+  "http_status": 200,
+  "context": {
+    "family": "exact_probe",
+    "board_id": "sequence-9-1",
+    "size": 9,
+    "phase": "cell_A",
+    "replicate": 7
+  },
+  "response_sha256": "dcaf2b26a317efc4060d4894067d1f3df3f963f683ac7622d0c741e5585f7f71",
+  "retry_after": null,
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "returned_provider": "TypeSafe",
+  "generation_id": "gen-dec-1790834114-D0SaPsVcQ17IeQx1E3GJ",
+  "usage": {
+    "input_tokens": 2150,
+    "output_tokens": 61,
+    "cost": 0.0000903
+  },
+  "choice_probability_disagreements": [
+    {
+      "question": "cell_A",
+      "choice": "r1c1",
+      "choice_probability": 0.34,
+      "reported_maximum": 0.35000000000000003
+    }
+  ],
+  "elapsed_seconds": 0.2126042500603944,
+  "ended_utc": "2026-10-01T05:55:14.219476+00:00"
+}

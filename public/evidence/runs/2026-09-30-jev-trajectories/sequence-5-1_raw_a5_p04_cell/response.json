@@ -1,0 +1,26 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "cell": {
+      "type": "choice",
+      "choice": "r5c3",
+      "probabilities": {
+        "r5c4": 0.14,
+        "r5c3": 0.47,
+        "r4c3": 0.09,
+        "r5c2": 0.2,
+        "r5c1": 0.02,
+        "r4c2": 0.04,
+        "r5c5": 0.04
+      },
+      "confidence": 0.4
+    }
+  },
+  "usage": {
+    "input_tokens": 1259,
+    "output_tokens": 90,
+    "cost": 0.000052878
+  },
+  "id": "gen-dec-1790834090-pLvtSOTeaDFAWkhd7Kca",
+  "provider": "TypeSafe"
+}

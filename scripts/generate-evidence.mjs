@@ -4,7 +4,7 @@
  * Build the static, public evidence bundle used by the local assessment site.
  *
  * This script intentionally has no network or package dependencies.  It reads
- * the five completed evaluation studies, keeps model-visible requests and
+ * the completed evaluation studies, keeps model-visible requests and
  * evaluator-visible records, removes private/sensitive fields, and writes a
  * searchable manifest plus a small, predictable file tree under public/.
  */
@@ -30,6 +30,7 @@ const STUDIES = [
   "2026-09-18-jev-deep-dive",
   "2026-09-19-jev-primitives",
   "2026-09-19-jev-scale",
+  "2026-09-30-jev-trajectories",
 ];
 
 // Grade sources are deliberately explicit.  Discovery dumps, catalogs,
@@ -41,6 +42,7 @@ const GRADE_SOURCES = {
   "2026-09-18-jev-deep-dive": ["grades/*.json"],
   "2026-09-19-jev-primitives": ["audit.json", "candidate_scores.json"],
   "2026-09-19-jev-scale": ["audit.json"],
+  "2026-09-30-jev-trajectories": ["grades/*.json"],
 };
 
 // Records here remain in the public bundle and manifest, but the atlas omits
@@ -48,6 +50,10 @@ const GRADE_SOURCES = {
 // than inferred from HTTP status: intentional compatibility probes and genuine
 // transport failures are still first-class study evidence.
 const EXCLUDED_RECORDS = new Map([
+  [
+    "2026-09-30-jev-trajectories:exact_build_route_probe",
+    "Local credential broker rejected the dated returned-build string before upstream inference. This does not establish whether OpenRouter accepts that string; the versioned family route was tested separately.",
+  ],
   [
     "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
     "Pre-inference provider-routing rejection caused by the direct-xAI request route conflicting with the account allowlist; superseded by the same-input Amazon Bedrock run.",
@@ -75,6 +81,12 @@ const EXCLUDED_RECORDS = new Map([
 ]);
 
 const ERROR_CONTEXTS = new Map([
+  [
+    "2026-09-30-jev-trajectories:exact_build_route_probe",
+    { category: "Local broker model policy", title: "The dated build route did not reach OpenRouter",
+      interpretation: "The local broker allowed the versioned family slug but rejected the dated build string. No model answer or usage was returned. The experiment used typesafe/jev-1.13 and checked every returned build against typesafe/jev-1.13-20260917.",
+      followUp: "Read the trajectory chapter for model pinning, empirical repeatability, and complete puzzle outcomes." },
+  ],
   [
     "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
     {
@@ -652,6 +664,24 @@ async function main() {
   };
   assertPublic(manifest);
   await writeJson(path.join(OUTPUT_DIR, "manifest.json"), manifest);
+
+  const trajectoryDir = path.join(EVALUATIONS_DIR, "2026-09-30-jev-trajectories");
+  const audit = await readJson(path.join(trajectoryDir, "audit.json"));
+  const { records: unusedRecords, ...trajectoryAudit } = audit;
+  const trajectoryManifest = await readJson(path.join(trajectoryDir, "manifest.json"));
+  const boards = await Promise.all(trajectoryManifest.boards.map(async (id) =>
+    readJson(path.join(trajectoryDir, "boards", `${id}.json`))));
+  await writeJson(path.join(OUTPUT_DIR, "trajectory-study.json"), {
+    audit: trajectoryAudit,
+    manifest: trajectoryManifest,
+    boards,
+    trajectories: await readJson(path.join(trajectoryDir, "trajectory_results.json")),
+  });
+  for (const name of ["REPORT.md", "PROTOCOL.md", "RESEARCH.md"]) {
+    if (await exists(path.join(trajectoryDir, name))) {
+      await writeFile(path.join(OUTPUT_DIR, `trajectory-${name}`), await readFile(path.join(trajectoryDir, name)));
+    }
+  }
 
   // Verify the generated tree cannot accidentally contain a private path.
   const outputFiles = [];

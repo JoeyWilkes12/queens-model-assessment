@@ -1,0 +1,12 @@
+{
+  "call_id": "sequence-9-3_local_a1_p04_cell",
+  "board_id": "sequence-9-3",
+  "family": "trajectory",
+  "phase": "cell",
+  "interpretation": "Returned Choice executed verbatim; probability ranking not substituted.",
+  "correct": false,
+  "selected_cell": [
+    3,
+    3
+  ]
+}

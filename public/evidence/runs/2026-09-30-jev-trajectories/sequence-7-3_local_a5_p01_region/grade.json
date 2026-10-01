@@ -1,0 +1,7 @@
+{
+  "call_id": "sequence-7-3_local_a5_p01_region",
+  "board_id": "sequence-7-3",
+  "family": "trajectory",
+  "phase": "region",
+  "interpretation": "Returned Choice executed verbatim; probability ranking not substituted. Region preference has no unique correct label; ungraded for puzzle correctness."
+}

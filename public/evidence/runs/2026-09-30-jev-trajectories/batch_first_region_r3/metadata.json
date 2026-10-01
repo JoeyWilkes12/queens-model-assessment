@@ -1,0 +1,28 @@
+{
+  "call_id": "batch_first_region_r3",
+  "endpoint": "/api/alpha/decisions",
+  "requested_model": "typesafe/jev-1.13",
+  "model": "typesafe/jev-1.13",
+  "request_sha256": "7e11adbc61487dd526372d0e658aee2ab22e6e48e243f71e2043e82091557eef",
+  "started_utc": "2026-10-01T05:56:29.193634+00:00",
+  "reserved_usd": "0.009761284",
+  "accounted_usd": "0.00053046",
+  "actual_cost_usd": 0.00053046,
+  "http_status": 200,
+  "context": {
+    "family": "cross_board_batch",
+    "replicate": 3
+  },
+  "response_sha256": "d722aa6d90b784ae372c1953d718cdbb6a7ca321febf76be01ca874b2d9ba535",
+  "retry_after": null,
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "returned_provider": "TypeSafe",
+  "generation_id": "gen-dec-1790834189-WM4LgnWOA4MRmkcEsdiv",
+  "usage": {
+    "input_tokens": 12630,
+    "output_tokens": 606,
+    "cost": 0.00053046
+  },
+  "elapsed_seconds": 0.43025695893447846,
+  "ended_utc": "2026-10-01T05:56:29.624015+00:00"
+}

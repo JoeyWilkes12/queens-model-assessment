@@ -1,0 +1,12 @@
+{
+  "call_id": "probe_sequence-7-1_cell_A_r10",
+  "board_id": "sequence-7-1",
+  "family": "exact_probe",
+  "phase": "cell_A",
+  "interpretation": "Returned Choice executed verbatim; probability ranking not substituted.",
+  "correct": false,
+  "selected_cell": [
+    1,
+    3
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "sequence-5-1": {
+      "type": "choice",
+      "choice": "B",
+      "probabilities": {
+        "D": 0.26,
+        "A": 0.21,
+        "B": 0.49,
+        "E": 0.02,
+        "C": 0.02
+      },
+      "confidence": 0.37
+    },
+    "sequence-5-2": {
+      "type": "choice",
+      "choice": "E",
+      "probabilities": {
+        "D": 0.01,
+        "A": 0.12,
+        "B": 0.13,
+        "E": 0.72,
+        "C": 0.02
+      },
+      "confidence": 0.66
+    },
+    "sequence-5-3": {
+      "type": "choice",
+      "choice": "C",
+      "probabilities": {
+        "C": 0.74,
+        "A": 0.14,
+        "B": 0.05,
+        "E": 0.04,
+        "D": 0.03
+      },
+      "confidence": 0.66
+    },
+    "sequence-7-1": {
+      "type": "choice",
+      "choice": "B",
+      "probabilities": {
+        "C": 0.04,
+        "A": 0.07,
+        "B": 0.55,
+        "D": 0.02,
+        "E": 0.01,
+        "G": 0.04,
+        "F": 0.26
+      },
+      "confidence": 0.47
+    },
+    "sequence-7-2": {
+      "type": "choice",
+      "choice": "F",
+      "probabilities": {
+        "D": 0.02,
+        "A": 0.25,
+        "B": 0.05,
+        "F": 0.61,
+        "E": 0.01,
+        "G": 0.03,
+        "C": 0.03
+      },
+      "confidence": 0.56
+    },
+    "sequence-7-3": {
+      "type": "choice",
+      "choice": "B",
+      "probabilities": {
+        "C": 0.2,
+        "A": 0.21,
+        "B": 0.27,
+        "D": 0.02,
+        "E": 0.03,
+        "G": 0.25,
+        "F": 0.02
+      },
+      "confidence": 0.15
+    },
+    "sequence-9-1": {
+      "type": "choice",
+      "choice": "F",
+      "probabilities": {
+        "I": 0.27,
+        "C": 0.04,
+        "B": 0.06,
+        "E": 0.01,
+        "H": 0.01,
+        "F": 0.45,
+        "A": 0.14,
+        "G": 0.01,
+        "D": 0.01
+      },
+      "confidence": 0.38
+    },
+    "sequence-9-2": {
+      "type": "choice",
+      "choice": "A",
+      "probabilities": {
+        "I": 0.15,
+        "C": 0.01,
+        "B": 0.03,
+        "E": 0.01,
+        "H": 0.26,
+        "F": 0.02,
+        "A": 0.5,
+        "G": 0.01,
+        "D": 0.01
+      },
+      "confidence": 0.43
+    },
+    "sequence-9-3": {
+      "type": "choice",
+      "choice": "C",
+      "probabilities": {
+        "I": 0.03,
+        "D": 0.02,
+        "B": 0.02,
+        "E": 0.04,
+        "H": 0.33,
+        "F": 0.01,
+        "A": 0.07,
+        "G": 0.01,
+        "C": 0.47
+      },
+      "confidence": 0.4
+    }
+  },
+  "usage": {
+    "input_tokens": 12630,
+    "output_tokens": 606,
+    "cost": 0.00053046
+  },
+  "id": "gen-dec-1790834189-GtXGvgioJh6607JjLxD0",
+  "provider": "TypeSafe"
+}

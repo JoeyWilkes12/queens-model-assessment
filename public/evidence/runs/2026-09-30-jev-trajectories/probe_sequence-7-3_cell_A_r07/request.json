@@ -1,0 +1,330 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "sequence-7-3",
+    "size": 7,
+    "rules": [
+      "Exactly one queen per row, column, and color region.",
+      "Queens cannot touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed; this is regional Queens, not chess N-Queens.",
+      "Exactly one full solution exists. Coordinates are 1-based."
+    ],
+    "coordinates": "Rows top to bottom; columns left to right; both start at 1.",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "A",
+        "B",
+        "B",
+        "C",
+        "C"
+      ],
+      [
+        "A",
+        "A",
+        "A",
+        "D",
+        "D",
+        "C",
+        "C"
+      ],
+      [
+        "A",
+        "A",
+        "A",
+        "D",
+        "D",
+        "D",
+        "C"
+      ],
+      [
+        "E",
+        "E",
+        "A",
+        "A",
+        "A",
+        "F",
+        "F"
+      ],
+      [
+        "E",
+        "E",
+        "E",
+        "A",
+        "A",
+        "F",
+        "F"
+      ],
+      [
+        "E",
+        "E",
+        "E",
+        "A",
+        "F",
+        "F",
+        "F"
+      ],
+      [
+        "G",
+        "G",
+        "G",
+        "G",
+        "G",
+        "F",
+        "F"
+      ]
+    ],
+    "regions": {
+      "A": [
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        },
+        {
+          "row": 6,
+          "column": 4
+        }
+      ],
+      "B": [
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        }
+      ],
+      "C": [
+        {
+          "row": 1,
+          "column": 6
+        },
+        {
+          "row": 1,
+          "column": 7
+        },
+        {
+          "row": 2,
+          "column": 6
+        },
+        {
+          "row": 2,
+          "column": 7
+        },
+        {
+          "row": 3,
+          "column": 7
+        }
+      ],
+      "D": [
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 3,
+          "column": 6
+        }
+      ],
+      "E": [
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 6,
+          "column": 1
+        },
+        {
+          "row": 6,
+          "column": 2
+        },
+        {
+          "row": 6,
+          "column": 3
+        }
+      ],
+      "F": [
+        {
+          "row": 4,
+          "column": 6
+        },
+        {
+          "row": 4,
+          "column": 7
+        },
+        {
+          "row": 5,
+          "column": 6
+        },
+        {
+          "row": 5,
+          "column": 7
+        },
+        {
+          "row": 6,
+          "column": 5
+        },
+        {
+          "row": 6,
+          "column": 6
+        },
+        {
+          "row": 6,
+          "column": 7
+        },
+        {
+          "row": 7,
+          "column": 6
+        },
+        {
+          "row": 7,
+          "column": 7
+        }
+      ],
+      "G": [
+        {
+          "row": 7,
+          "column": 1
+        },
+        {
+          "row": 7,
+          "column": 2
+        },
+        {
+          "row": 7,
+          "column": 3
+        },
+        {
+          "row": 7,
+          "column": 4
+        },
+        {
+          "row": 7,
+          "column": 5
+        }
+      ]
+    },
+    "placed_queens": [],
+    "instruction": "Keep placed queens fixed. Select a next decision consistent with the unique complete solution. No backtracking or solution feedback is supplied.",
+    "selected_region": "A"
+  },
+  "questions": {
+    "cell_A": {
+      "type": "choice",
+      "instructions": "Which cell in region A contains its queen in the unique full solution? Keep all placed queens fixed and consider all rows, columns, regions, and non-touch rules. Select a cell; do not merely prefer a locally legal cell if it makes completion impossible.",
+      "criteria": {
+        "r1c1": "Place queen at row 1, column 1, region A.",
+        "r1c2": "Place queen at row 1, column 2, region A.",
+        "r1c3": "Place queen at row 1, column 3, region A.",
+        "r2c1": "Place queen at row 2, column 1, region A.",
+        "r2c2": "Place queen at row 2, column 2, region A.",
+        "r2c3": "Place queen at row 2, column 3, region A.",
+        "r3c1": "Place queen at row 3, column 1, region A.",
+        "r3c2": "Place queen at row 3, column 2, region A.",
+        "r3c3": "Place queen at row 3, column 3, region A.",
+        "r4c3": "Place queen at row 4, column 3, region A.",
+        "r4c4": "Place queen at row 4, column 4, region A.",
+        "r4c5": "Place queen at row 4, column 5, region A.",
+        "r5c4": "Place queen at row 5, column 4, region A.",
+        "r5c5": "Place queen at row 5, column 5, region A.",
+        "r6c4": "Place queen at row 6, column 4, region A."
+      }
+    }
+  }
+}

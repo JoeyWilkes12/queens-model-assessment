@@ -1,0 +1,12 @@
+{
+  "call_id": "order_sequence-7-3_cell_A_r3",
+  "board_id": "sequence-7-3",
+  "family": "reversed_order",
+  "phase": null,
+  "interpretation": "Returned Choice executed verbatim; probability ranking not substituted.",
+  "correct": true,
+  "selected_cell": [
+    4,
+    3
+  ]
+}

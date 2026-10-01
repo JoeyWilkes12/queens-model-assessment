@@ -1,0 +1,7 @@
+{
+  "call_id": "batch_first_region_r1",
+  "board_id": null,
+  "family": "cross_board_batch",
+  "phase": null,
+  "interpretation": "Returned Choice executed verbatim; probability ranking not substituted. Region preference has no unique correct label; ungraded for puzzle correctness."
+}

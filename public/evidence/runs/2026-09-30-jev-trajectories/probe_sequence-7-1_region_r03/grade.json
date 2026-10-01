@@ -1,0 +1,7 @@
+{
+  "call_id": "probe_sequence-7-1_region_r03",
+  "board_id": "sequence-7-1",
+  "family": "exact_probe",
+  "phase": "region",
+  "interpretation": "Returned Choice executed verbatim; probability ranking not substituted. Region preference has no unique correct label; ungraded for puzzle correctness."
+}
