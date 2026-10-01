@@ -7,6 +7,7 @@
 - [Information architecture](#information-architecture)
 - [Visual language](#visual-language)
 - [Core components](#core-components)
+- [Table behavior](#table-behavior)
 - [Responsive behavior](#responsive-behavior)
 - [Accessibility](#accessibility)
 - [Evidence semantics](#evidence-semantics)
@@ -53,7 +54,17 @@ Hash routing keeps every page compatible with a later static host. The evidence 
 - **Candidate lens:** toggles between columns-only and explicit-region representations using exact saved candidates.
 - **Evidence atlas:** searchable, study-, provider-, exact-model-version-, and outcome-filtered request and grade-source index with distinct request and assessment states.
 - **Evidence receipt:** content-addressed input attachment, exact sanitized request, visible output, deterministic grade, metadata, copy, and download.
-- **Callouts and tables:** explicit evidence, caution, and boundary treatments with native horizontal table scrolling.
+- **Callouts and tables:** explicit evidence, caution, and boundary treatments. Every table uses the shared `DataTable` component and the frozen-header behavior below.
+
+## Table behavior
+
+- Preserve native table, caption, column-header and row-header semantics. Do not clone headers or turn rows into mobile cards.
+- Short tables take their natural height. Tall tables scroll inside a named, keyboard-focusable region capped at the smaller of 36rem or 65% of the dynamic viewport height; the `vh` fallback covers older browsers. This leaves room for mobile navigation and the surrounding reading context.
+- Column headers stick to the top of the table's own scroll region. Their opaque, theme-aware raised-paper surface and stacking layer keep scrolling rows from showing through. Separate borders preserve the header rule while it moves.
+- Horizontal and vertical scrolling remain native, with columns and headers moving together horizontally. Visible guidance explains the scroll behavior; the same guidance describes the accessible region.
+- Measure wrapped header height with `ResizeObserver` and use it as scroll padding so keyboard-focused receipt links can be brought below the frozen header after viewport, font or zoom changes.
+- The mobile navigation remains above the table. No first-column pinning, data hiding, sampling or evidence truncation is introduced.
+- Printing removes the scroll height limit and sticky positioning so every row remains available.
 
 ## Responsive behavior
 

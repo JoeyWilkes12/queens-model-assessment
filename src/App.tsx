@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 
 type Route = {
   path: string
@@ -401,7 +401,28 @@ function Callout({ tone = 'note', title, children }: { tone?: 'note' | 'evidence
 }
 
 function DataTable({ caption, headers, rows }: { caption: string; headers: string[]; rows: (string | ReactNode)[][] }) {
-  return <div className="table-wrap" tabIndex={0} role="region" aria-label={caption}><table><caption>{caption}</caption><thead><tr>{headers.map(header => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => cellIndex === 0 ? <th scope="row" key={cellIndex}>{cell}</th> : <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody></table></div>
+  const hintId = useId()
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const scroller = scrollRef.current
+    const heading = scroller?.querySelector('thead')
+    if (!scroller || !heading) return
+    // Keep keyboard-focused links below the frozen header, including after
+    // viewport changes, wrapped labels, zoom, or font loading.
+    const measure = () => scroller.style.setProperty('--table-header-height', `${heading.getBoundingClientRect().height}px`)
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(heading)
+    return () => observer.disconnect()
+  }, [])
+
+  return <div className="data-table">
+    <p className="table-scroll-hint" id={hintId}>Scroll when needed to compare rows and columns. Column headers stay visible.</p>
+    <div ref={scrollRef} className="table-wrap" tabIndex={0} role="region" aria-label={caption} aria-describedby={hintId}>
+      <table><caption>{caption}</caption><thead><tr>{headers.map(header => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => cellIndex === 0 ? <th scope="row" key={cellIndex}>{cell}</th> : <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody></table>
+    </div>
+  </div>
 }
 
 function ExecutiveSummary() {
