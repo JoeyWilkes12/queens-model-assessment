@@ -1,0 +1,31 @@
+{
+  "model": "openai/gpt-4.1",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Solve this regional Queens puzzle in one shot. Every connected region is provided below with its member cells as one-based [row, column] coordinates. Rows increase top to bottom and columns left to right. Region labels identify groups of cells; they are not clues about queen locations.\n\nRegion cells (JSON object):\n{\"A\":[[1,1],[2,1],[3,1],[3,5],[4,1],[4,2],[4,3],[4,4],[4,5],[4,6],[4,8],[4,9],[5,2],[5,3],[5,4],[5,6],[5,7],[5,8],[6,1],[6,2],[6,3],[6,4],[6,7],[7,1],[8,1],[9,1]],\"B\":[[1,2],[1,3],[1,4],[1,5],[2,2],[2,3],[2,4],[2,5],[2,6],[3,2],[3,3],[3,6]],\"C\":[[1,6],[1,7],[1,8],[1,9],[2,7],[2,8],[2,9],[3,7],[3,8],[3,9]],\"D\":[[3,4]],\"E\":[[4,7]],\"F\":[[5,1]],\"G\":[[5,5],[6,5],[6,6],[7,2],[7,3],[7,4],[7,5],[7,6],[7,7],[7,8],[8,2],[8,3],[8,4],[8,5],[8,6],[8,7],[9,2],[9,3],[9,4],[9,5],[9,6],[9,7]],\"H\":[[5,9],[6,8],[6,9],[7,9]],\"I\":[[8,8],[8,9],[9,8],[9,9]]}\n\nRules:\n1. Place exactly N queens: exactly one in every row, every column, and every region.\n2. Queens may not touch, including diagonally. Thus queens in consecutive rows cannot occupy columns differing by 1. Queens separated by more than one row MAY share a long diagonal; this is not the ordinary chess N-queens diagonal rule.\n3. The board has exactly one valid solution.\n\nReturn a written solution as exactly one JSON object, with no Markdown, explanation, or alternative solution:\n{\"board_id\":\"queens-9-hard\",\"columns_by_row\":[INTEGER_COLUMN_FOR_ROW_1,...,INTEGER_COLUMN_FOR_ROW_N]}\n\nReplace the placeholder entries with exactly N integers from 1 through N. Each array index identifies its row, so a coordinate appears only once. Check all rules before returning your final answer. You have no external tools, hints, or follow-up attempts.\n\nBoard ID: queens-9-hard\nN: 9\n"
+        }
+      ]
+    }
+  ],
+  "max_tokens": 12288,
+  "stream": false,
+  "provider": {
+    "order": [
+      "openai"
+    ],
+    "only": [
+      "openai"
+    ],
+    "ignore": [],
+    "allow_fallbacks": false,
+    "require_parameters": true,
+    "max_price": {
+      "prompt": 2,
+      "completion": 8
+    }
+  }
+}

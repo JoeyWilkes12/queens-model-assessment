@@ -1,0 +1,41 @@
+{
+  "call_id": "rep1_gpt-4.1__queens-5-easy_region_cells",
+  "started_utc": "2026-10-01T19:08:10.004366+00:00",
+  "reserved_usd": 0.132304,
+  "accounted_usd": 0.000978,
+  "cost_source": "usage.cost",
+  "http_status": 200,
+  "execution_phase": "replicate-1",
+  "response_headers": {
+    "Content-Type": "application/json"
+  },
+  "actual_cost_usd": 0.000978,
+  "generation_id": "gen-1790881690-3VO0qTP8gqN3CMutKseH",
+  "returned_model": "openai/gpt-4.1",
+  "returned_provider": "OpenAI",
+  "usage": {
+    "prompt_tokens": 385,
+    "completion_tokens": 26,
+    "total_tokens": 411,
+    "cost": 0.000978,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.000978,
+      "upstream_inference_prompt_cost": 0.00077,
+      "upstream_inference_completions_cost": 0.000208
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "ended_utc": "2026-10-01T19:08:11.078529+00:00",
+  "latency_seconds": 1.0737572920043021
+}

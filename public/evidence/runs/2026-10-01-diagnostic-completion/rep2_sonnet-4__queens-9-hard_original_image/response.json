@@ -1,0 +1,45 @@
+{
+  "id": "gen-1790882318-0S8fZzjhWo3ZupBOcX7a",
+  "object": "chat.completion",
+  "created": 1790882318,
+  "model": "anthropic/claude-sonnet-4",
+  "provider": "Amazon Bedrock",
+  "system_fingerprint": null,
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this regional Queens puzzle, I need to place exactly 9 queens with one in each row, column, and region, while ensuring no queens touch each other.\n\nLet me first identify the regions and their constraints:\n- Single-cell regions must have queens: D at (3,4), E at (4,7), F at (5,1)\n- This gives us: Row 3→Column 4, Row 4→Column 7, Row 5→Column 1\n\nWith these fixed placements, I need to consider the touching constraints:\n- (3,4) forbids adjacent cells including (2,3), (2,4), (2,5)\n- (4,7) forbids adjacent cells including (5,6), (5,7), (5,8)  \n- (5,1) forbids adjacent cells including (6,1), (6,2)\n\nFor the remaining regions:\n- Region I (bottom-right) can only be in rows 8-9, columns 8-9\n- Region H has limited options due to (4,7) blocking some cells\n- Regions B and C can only appear in rows 1-3, but row 3 is taken\n\nLet me work through the placements systematically:\n\n1. Place I at (9,8) to avoid conflicts\n2. Place H at (7,9) - one of the few remaining valid positions  \n3. This forces G into row 8, where (8,5) works well\n4. Region A needs row 6, where (6,3) is available after touching constraints\n5. For rows 1-2, B can go to (2,2) and C to (1,6)\n\nChecking all constraints:\n- Each row/column/region has exactly one queen ✓\n- No queens touch diagonally or orthogonally ✓\n- All touching constraints satisfied ✓\n\n{\"board_id\":\"queens-9-hard\",\"columns_by_row\":[6,2,4,7,1,3,9,5,8]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1112,
+    "completion_tokens": 11269,
+    "total_tokens": 12381,
+    "cost": 0.172371,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.172371,
+      "upstream_inference_prompt_cost": 0.003336,
+      "upstream_inference_completions_cost": 0.169035
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3934,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

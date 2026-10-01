@@ -1,0 +1,811 @@
+{
+  "study": "2026-10-01-diagnostic-completion",
+  "generated_utc": "2026-10-01T19:21:50.642005+00:00",
+  "design": "Six historically failed matched model-board pairs; three representations; two independent O1 replicates; exploratory descriptive inference only.",
+  "attempt_policy": "O1; no retries, feedback, or best-of-two outcome",
+  "planned_calls": 36,
+  "attempted_calls": 36,
+  "strict_correct_count": 1,
+  "written_correct_count": 10,
+  "budget": {
+    "cap_usd": 5,
+    "worst_case_frozen_reserve_usd": 4.295232,
+    "known_cost_usd": 1.2434317,
+    "accounted_usd": 1.2434317000000004,
+    "remaining_usd": 3.7565682999999996
+  },
+  "conditions": [
+    {
+      "condition": "original_image",
+      "label": "Original image",
+      "planned_calls": 12,
+      "attempted_calls": 12,
+      "strict_correct_count": 0,
+      "written_correct_count": 4,
+      "known_cost_usd": 0.4154361,
+      "by_replicate": [
+        {
+          "replicate": 1,
+          "planned_calls": 6,
+          "attempted_calls": 6,
+          "strict_correct_count": 0,
+          "written_correct_count": 2,
+          "known_cost_usd": 0.1776343
+        },
+        {
+          "replicate": 2,
+          "planned_calls": 6,
+          "attempted_calls": 6,
+          "strict_correct_count": 0,
+          "written_correct_count": 2,
+          "known_cost_usd": 0.2378018
+        }
+      ]
+    },
+    {
+      "condition": "text_only_region_grid_rows",
+      "label": "Region matrix",
+      "planned_calls": 12,
+      "attempted_calls": 12,
+      "strict_correct_count": 1,
+      "written_correct_count": 4,
+      "known_cost_usd": 0.3582437,
+      "by_replicate": [
+        {
+          "replicate": 1,
+          "planned_calls": 6,
+          "attempted_calls": 6,
+          "strict_correct_count": 0,
+          "written_correct_count": 2,
+          "known_cost_usd": 0.1577481
+        },
+        {
+          "replicate": 2,
+          "planned_calls": 6,
+          "attempted_calls": 6,
+          "strict_correct_count": 1,
+          "written_correct_count": 2,
+          "known_cost_usd": 0.2004956
+        }
+      ]
+    },
+    {
+      "condition": "text_only_region_cells",
+      "label": "Region cell lists",
+      "planned_calls": 12,
+      "attempted_calls": 12,
+      "strict_correct_count": 0,
+      "written_correct_count": 2,
+      "known_cost_usd": 0.4697519,
+      "by_replicate": [
+        {
+          "replicate": 1,
+          "planned_calls": 6,
+          "attempted_calls": 6,
+          "strict_correct_count": 0,
+          "written_correct_count": 2,
+          "known_cost_usd": 0.2180672
+        },
+        {
+          "replicate": 2,
+          "planned_calls": 6,
+          "attempted_calls": 6,
+          "strict_correct_count": 0,
+          "written_correct_count": 0,
+          "known_cost_usd": 0.25168470000000004
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "matched_pair_id": "gpt-4.1__queens-5-easy",
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "historical_source_call_id": "r6_queens-5-easy_gpt-4.1",
+      "source_failure_category": "rule_invalid_placement",
+      "source_failure_basis": {
+        "http_status": 200,
+        "halt_reason": null,
+        "finish_reason": "stop",
+        "received_answer": true,
+        "written_correct": false,
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false
+      },
+      "conditions": [
+        {
+          "condition": "original_image",
+          "label": "Original image",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-5-easy_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.002268,
+              "seconds": 5.933832000009716
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-5-easy_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.002268,
+              "seconds": 4.988575084018521
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_grid_rows",
+          "label": "Region matrix",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.000856,
+              "seconds": 1.7567285420373082
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.000856,
+              "seconds": 1.031366709037684
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_cells",
+          "label": "Region cell lists",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-5-easy_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.000978,
+              "seconds": 1.0737572920043021
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-5-easy_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.000978,
+              "seconds": 1.4995043750386685
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        }
+      ]
+    },
+    {
+      "matched_pair_id": "sonnet-4__queens-9-hard",
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-9-hard",
+      "historical_source_call_id": "r5_queens-9-hard_claude-sonnet-4",
+      "source_failure_category": "rule_invalid_placement",
+      "source_failure_basis": {
+        "http_status": 200,
+        "halt_reason": null,
+        "finish_reason": "stop",
+        "received_answer": true,
+        "written_correct": false,
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false
+      },
+      "conditions": [
+        {
+          "condition": "original_image",
+          "label": "Original image",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_sonnet-4__queens-9-hard_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.110301,
+              "seconds": 64.48224029201083
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_sonnet-4__queens-9-hard_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.172371,
+              "seconds": 103.70095641596708
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 2
+        },
+        {
+          "condition": "text_only_region_grid_rows",
+          "label": "Region matrix",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_sonnet-4__queens-9-hard_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.099255,
+              "seconds": 59.64716433396097
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_sonnet-4__queens-9-hard_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.1479,
+              "seconds": 88.79532999999356
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 2
+        },
+        {
+          "condition": "text_only_region_cells",
+          "label": "Region cell lists",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_sonnet-4__queens-9-hard_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.160545,
+              "seconds": 121.35797287500463
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_sonnet-4__queens-9-hard_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.186375,
+              "seconds": 157.9616455420619
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 1
+        }
+      ]
+    },
+    {
+      "matched_pair_id": "gemini-2.5-flash__queens-5-easy",
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "historical_source_call_id": "r2_queens-5-easy_gemini-2.5-flash",
+      "source_failure_category": "unusable_final_schema_timecap",
+      "source_failure_basis": {
+        "http_status": 200,
+        "halt_reason": null,
+        "finish_reason": "length",
+        "received_answer": true,
+        "written_correct": false,
+        "candidate_count": 0,
+        "rule_valid_after_extraction": false
+      },
+      "conditions": [
+        {
+          "condition": "original_image",
+          "label": "Original image",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gemini-2.5-flash__queens-5-easy_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.0296299,
+              "seconds": 47.386036499985494
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gemini-2.5-flash__queens-5-easy_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.0277124,
+              "seconds": 44.690089166979305
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 2
+        },
+        {
+          "condition": "text_only_region_grid_rows",
+          "label": "Region matrix",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.0247493,
+              "seconds": 40.37617312499788
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+              "attempted": true,
+              "correct": true,
+              "written_correct": true,
+              "failure": null,
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.0188268,
+              "seconds": 31.325175249949098
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 1,
+          "written_correct_count": 2
+        },
+        {
+          "condition": "text_only_region_cells",
+          "label": "Region cell lists",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": true,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "stop",
+              "cost_usd": 0.023011,
+              "seconds": 38.7763877910329
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.030796,
+              "seconds": 53.70432899997104
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 1
+        }
+      ]
+    },
+    {
+      "matched_pair_id": "gpt-4.1__queens-7-medium",
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-7-medium",
+      "historical_source_call_id": "r6_queens-7-medium_gpt-4.1",
+      "source_failure_category": "rule_invalid_placement",
+      "source_failure_basis": {
+        "http_status": 200,
+        "halt_reason": null,
+        "finish_reason": "stop",
+        "received_answer": true,
+        "written_correct": false,
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false
+      },
+      "conditions": [
+        {
+          "condition": "original_image",
+          "label": "Original image",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-7-medium_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.002288,
+              "seconds": 4.736014875001274
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-7-medium_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.002288,
+              "seconds": 6.7998328329995275
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_grid_rows",
+          "label": "Region matrix",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.000976,
+              "seconds": 1.5901325420709327
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.000976,
+              "seconds": 2.165192540967837
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_cells",
+          "label": "Region cell lists",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-7-medium_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.001206,
+              "seconds": 1.6773858750239015
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-7-medium_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.001206,
+              "seconds": 1.4738177499966696
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        }
+      ]
+    },
+    {
+      "matched_pair_id": "gemini-2.5-flash__queens-7-medium",
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-7-medium",
+      "historical_source_call_id": "r2_queens-7-medium_gemini-2.5-flash",
+      "source_failure_category": "unusable_final_schema_timecap",
+      "source_failure_basis": {
+        "http_status": 200,
+        "halt_reason": null,
+        "finish_reason": "length",
+        "received_answer": true,
+        "written_correct": false,
+        "candidate_count": 0,
+        "rule_valid_after_extraction": false
+      },
+      "conditions": [
+        {
+          "condition": "original_image",
+          "label": "Original image",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gemini-2.5-flash__queens-7-medium_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.0308274,
+              "seconds": 56.06887383398134
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gemini-2.5-flash__queens-7-medium_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.0308424,
+              "seconds": 47.85409733396955
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_grid_rows",
+          "label": "Region matrix",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.0307718,
+              "seconds": 51.53706083400175
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.0307968,
+              "seconds": 50.94590487505775
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_cells",
+          "label": "Region cell lists",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.0308172,
+              "seconds": 48.90068637498189
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "invalid_json_or_missing_final",
+              "extraction_failure": null,
+              "finish_reason": "length",
+              "cost_usd": 0.0308197,
+              "seconds": 52.10979245894123
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        }
+      ]
+    },
+    {
+      "matched_pair_id": "gpt-4.1__queens-9-hard",
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-9-hard",
+      "historical_source_call_id": "r6_queens-9-hard_gpt-4.1",
+      "source_failure_category": "rule_invalid_placement",
+      "source_failure_basis": {
+        "http_status": 200,
+        "halt_reason": null,
+        "finish_reason": "stop",
+        "received_answer": true,
+        "written_correct": false,
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false
+      },
+      "conditions": [
+        {
+          "condition": "original_image",
+          "label": "Original image",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-9-hard_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.00232,
+              "seconds": 4.355379124986939
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-9-hard_original_image",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.00232,
+              "seconds": 6.4354128340492025
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_grid_rows",
+          "label": "Region matrix",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.00114,
+              "seconds": 1.4258423750288785
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-9-hard_region_grid_rows",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.00114,
+              "seconds": 1.262866875040345
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        },
+        {
+          "condition": "text_only_region_cells",
+          "label": "Region cell lists",
+          "replicates": [
+            {
+              "replicate": 1,
+              "call_id": "rep1_gpt-4.1__queens-9-hard_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.00151,
+              "seconds": 2.0715578749077395
+            },
+            {
+              "replicate": 2,
+              "call_id": "rep2_gpt-4.1__queens-9-hard_region_cells",
+              "attempted": true,
+              "correct": false,
+              "written_correct": false,
+              "failure": "rule_violation",
+              "extraction_failure": "rule_violation",
+              "finish_reason": "stop",
+              "cost_usd": 0.00151,
+              "seconds": 2.520788124995306
+            }
+          ],
+          "attempted_calls": 2,
+          "strict_correct_count": 0,
+          "written_correct_count": 0
+        }
+      ]
+    }
+  ],
+  "historical_diagnostics_note": "The prior study's two text diagnostics are historical exploratory observations and are not included in these matched cells or denominators."
+}

@@ -8,28 +8,29 @@
     "2026-09-19-jev-primitives",
     "2026-09-19-jev-scale",
     "2026-09-30-jev-trajectories",
-    "2026-10-01-earlier-generations"
+    "2026-10-01-earlier-generations",
+    "2026-10-01-diagnostic-completion"
   ],
   "counts": {
-    "studies": 7,
-    "requests": 798,
-    "responses": 777,
-    "metadata": 778,
-    "grades": 772,
-    "gradeSources": 14,
+    "studies": 8,
+    "requests": 834,
+    "responses": 813,
+    "metadata": 814,
+    "grades": 808,
+    "gradeSources": 15,
     "inlineImageAssets": 3,
     "excluded": 7,
     "assessmentOutcomes": {
-      "model_failure": 264,
+      "model_failure": 299,
       "not_run": 20,
       "request_failure": 9,
-      "success": 135,
+      "success": 136,
       "ungraded": 370
     },
     "statuses": {
       "error": 8,
       "not_run": 20,
-      "success": 769,
+      "success": 805,
       "timeout_or_transport_failure": 1
     }
   },
@@ -811,6 +812,45 @@
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_region",
         "grade:2026-09-30-jev-trajectories:call_grades"
       ],
+      "2026-10-01-diagnostic-completion": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows",
+        "grade:2026-10-01-diagnostic-completion:grades"
+      ],
       "2026-10-01-earlier-generations": [
         "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
@@ -920,6 +960,18 @@
         "2026-09-18-jev-deep-dive:04_recognition_5_all120",
         "2026-09-18-jev-deep-dive:05_grid_reading_5",
         "2026-09-18-jev-deep-dive:06_check_own_5x5_answers",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
@@ -941,6 +993,7 @@
         "grade:2026-09-18-jev-deep-dive:batch_5",
         "grade:2026-09-18-jev-deep-dive:recognition_5",
         "grade:2026-09-18-jev-deep-dive:sequential_5",
+        "grade:2026-10-01-diagnostic-completion:grades",
         "grade:2026-10-01-earlier-generations:grades"
       ],
       "queens-7-medium": [
@@ -979,6 +1032,18 @@
         "2026-09-19-jev-scale:7_vectors_k50_r3",
         "2026-09-19-jev-scale:construction_7",
         "2026-09-19-jev-scale:original_7",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
         "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
         "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
@@ -1032,6 +1097,18 @@
         "2026-09-19-jev-scale:9_vectors_k50_r3",
         "2026-09-19-jev-scale:construction_9",
         "2026-09-19-jev-scale:original_9",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7",
         "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro",
         "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5",
@@ -2470,16 +2547,57 @@
         "2026-09-30-jev-trajectories:exact_build_route_probe"
       ],
       "google/gemini-2.5-flash": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
         "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
         "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
         "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash"
       ],
       "openai/gpt-4.1": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
         "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
         "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
         "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1"
+      ],
+      "anthropic/claude-sonnet-4": [
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
       ],
       "anthropic/claude-opus-4.7": [
         "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
@@ -2530,11 +2648,6 @@
         "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
         "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
         "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1"
-      ],
-      "anthropic/claude-sonnet-4": [
-        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
-        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
-        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
       ],
       "openai/gpt-5": [
         "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
@@ -3314,16 +3427,57 @@
         "2026-09-19-jev-scale:original_9"
       ],
       "google/gemini-2.5-flash": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
         "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
         "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
         "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash"
       ],
       "openai/gpt-4.1": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
         "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
         "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
         "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1"
+      ],
+      "anthropic/claude-sonnet-4": [
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
       ],
       "anthropic/claude-opus-4.7": [
         "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
@@ -3375,11 +3529,6 @@
         "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
         "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1"
       ],
-      "anthropic/claude-sonnet-4": [
-        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
-        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
-        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
-      ],
       "openai/gpt-5": [
         "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
         "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
@@ -3396,6 +3545,24 @@
         "2026-09-17-one-shot:01_queens-5-easy_gpt-5.6-sol",
         "2026-09-17-one-shot:06_queens-7-medium_gpt-5.6-sol",
         "2026-09-17-one-shot:12_queens-9-hard_gpt-5.6-sol",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
         "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
@@ -3423,6 +3590,18 @@
         "2026-09-17-one-shot:02_queens-5-easy_gemini-3.1-pro-preview",
         "2026-09-17-one-shot:07_queens-7-medium_gemini-3.1-pro-preview",
         "2026-09-17-one-shot:11_queens-9-hard_gemini-3.1-pro-preview",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
         "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
@@ -3446,6 +3625,12 @@
         "2026-09-17-one-shot:04_queens-5-easy_claude-opus-4.8",
         "2026-09-17-one-shot:05_queens-7-medium_claude-opus-4.8",
         "2026-09-17-one-shot:10_queens-9-hard_claude-opus-4.8",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
         "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
         "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7",
@@ -6455,6 +6640,114 @@
       "sequence-9-3_raw_a5_p03_region": [
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_region"
       ],
+      "rep1_gemini-2.5-flash__queens-5-easy_original_image": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image"
+      ],
+      "rep1_gemini-2.5-flash__queens-5-easy_region_cells": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells"
+      ],
+      "rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows"
+      ],
+      "rep1_gemini-2.5-flash__queens-7-medium_original_image": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image"
+      ],
+      "rep1_gemini-2.5-flash__queens-7-medium_region_cells": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells"
+      ],
+      "rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows"
+      ],
+      "rep1_gpt-4.1__queens-5-easy_original_image": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image"
+      ],
+      "rep1_gpt-4.1__queens-5-easy_region_cells": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells"
+      ],
+      "rep1_gpt-4.1__queens-5-easy_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows"
+      ],
+      "rep1_gpt-4.1__queens-7-medium_original_image": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image"
+      ],
+      "rep1_gpt-4.1__queens-7-medium_region_cells": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells"
+      ],
+      "rep1_gpt-4.1__queens-7-medium_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows"
+      ],
+      "rep1_gpt-4.1__queens-9-hard_original_image": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image"
+      ],
+      "rep1_gpt-4.1__queens-9-hard_region_cells": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells"
+      ],
+      "rep1_gpt-4.1__queens-9-hard_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows"
+      ],
+      "rep1_sonnet-4__queens-9-hard_original_image": [
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image"
+      ],
+      "rep1_sonnet-4__queens-9-hard_region_cells": [
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells"
+      ],
+      "rep1_sonnet-4__queens-9-hard_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows"
+      ],
+      "rep2_gemini-2.5-flash__queens-5-easy_original_image": [
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image"
+      ],
+      "rep2_gemini-2.5-flash__queens-5-easy_region_cells": [
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells"
+      ],
+      "rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows"
+      ],
+      "rep2_gemini-2.5-flash__queens-7-medium_original_image": [
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image"
+      ],
+      "rep2_gemini-2.5-flash__queens-7-medium_region_cells": [
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells"
+      ],
+      "rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows"
+      ],
+      "rep2_gpt-4.1__queens-5-easy_original_image": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image"
+      ],
+      "rep2_gpt-4.1__queens-5-easy_region_cells": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells"
+      ],
+      "rep2_gpt-4.1__queens-5-easy_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows"
+      ],
+      "rep2_gpt-4.1__queens-7-medium_original_image": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image"
+      ],
+      "rep2_gpt-4.1__queens-7-medium_region_cells": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells"
+      ],
+      "rep2_gpt-4.1__queens-7-medium_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows"
+      ],
+      "rep2_gpt-4.1__queens-9-hard_original_image": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image"
+      ],
+      "rep2_gpt-4.1__queens-9-hard_region_cells": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells"
+      ],
+      "rep2_gpt-4.1__queens-9-hard_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows"
+      ],
+      "rep2_sonnet-4__queens-9-hard_original_image": [
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image"
+      ],
+      "rep2_sonnet-4__queens-9-hard_region_cells": [
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells"
+      ],
+      "rep2_sonnet-4__queens-9-hard_region_grid_rows": [
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows"
+      ],
       "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows": [
         "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows"
       ],
@@ -6732,6 +7025,7 @@
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p03_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p03_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p03_cell",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
         "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
         "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
@@ -7006,6 +7300,41 @@
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p04_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p04_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_cell",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells",
+        "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
         "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
         "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
@@ -29392,6 +29721,1122 @@
       "failure": null
     },
     {
+      "id": "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep1_gemini-2.5-flash__queens-5-easy_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gemini-2.5-flash__queens-5-easy_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-5-easy_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-5-easy_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep1_gemini-2.5-flash__queens-5-easy_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gemini-2.5-flash__queens-5-easy_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-5-easy_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-5-easy_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep1_gemini-2.5-flash__queens-7-medium_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gemini-2.5-flash__queens-7-medium_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-7-medium_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-7-medium_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep1_gemini-2.5-flash__queens-7-medium_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gemini-2.5-flash__queens-7-medium_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-7-medium_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-7-medium_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gemini-2.5-flash__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-5-easy_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-5-easy_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-5-easy_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-5-easy_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-5-easy_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-5-easy_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-5-easy_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-5-easy_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-5-easy_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-5-easy_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-5-easy_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-7-medium_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-7-medium_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-7-medium_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-7-medium_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-7-medium_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-7-medium_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-7-medium_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-7-medium_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-7-medium_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-7-medium_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-7-medium_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-9-hard_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-9-hard_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-9-hard_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-9-hard_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-9-hard_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-9-hard_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-9-hard_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-9-hard_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep1_gpt-4.1__queens-9-hard_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_gpt-4.1__queens-9-hard_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_gpt-4.1__queens-9-hard_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_gpt-4.1__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "rep1_sonnet-4__queens-9-hard_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_sonnet-4__queens-9-hard_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_sonnet-4__queens-9-hard_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_sonnet-4__queens-9-hard_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "rep1_sonnet-4__queens-9-hard_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_sonnet-4__queens-9-hard_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_sonnet-4__queens-9-hard_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_sonnet-4__queens-9-hard_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep1_sonnet-4__queens-9-hard_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "rep1_sonnet-4__queens-9-hard_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep1_sonnet-4__queens-9-hard_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep1_sonnet-4__queens-9-hard_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_sonnet-4__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep1_sonnet-4__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep2_gemini-2.5-flash__queens-5-easy_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gemini-2.5-flash__queens-5-easy_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-5-easy_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-5-easy_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep2_gemini-2.5-flash__queens-5-easy_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gemini-2.5-flash__queens-5-easy_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-5-easy_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-5-easy_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep2_gemini-2.5-flash__queens-7-medium_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gemini-2.5-flash__queens-7-medium_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-7-medium_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-7-medium_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep2_gemini-2.5-flash__queens-7-medium_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gemini-2.5-flash__queens-7-medium_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-7-medium_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-7-medium_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gemini-2.5-flash__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-5-easy_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-5-easy_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-5-easy_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-5-easy_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-5-easy_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-5-easy_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-5-easy_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-5-easy_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-5-easy_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-5-easy_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-5-easy_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-5-easy_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-5-easy_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-7-medium_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-7-medium_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-7-medium_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-7-medium_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-7-medium_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-7-medium_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-7-medium_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-7-medium_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-7-medium_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-7-medium_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-7-medium_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-7-medium_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-7-medium_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-9-hard_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-9-hard_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-9-hard_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-9-hard_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-9-hard_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-9-hard_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-9-hard_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-9-hard_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_gpt-4.1__queens-9-hard_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "rep2_gpt-4.1__queens-9-hard_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_gpt-4.1__queens-9-hard_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_gpt-4.1__queens-9-hard_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_gpt-4.1__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_original_image",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "rep2_sonnet-4__queens-9-hard_original_image",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_original_image/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_original_image/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_original_image/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_original_image/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_sonnet-4__queens-9-hard_original_image.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_sonnet-4__queens-9-hard_original_image/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_sonnet-4__queens-9-hard_original_image/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_cells",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "rep2_sonnet-4__queens-9-hard_region_cells",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_cells/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_cells/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_cells/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_cells/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_sonnet-4__queens-9-hard_region_cells.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_sonnet-4__queens-9-hard_region_cells/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_sonnet-4__queens-9-hard_region_cells/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-diagnostic-completion:rep2_sonnet-4__queens-9-hard_region_grid_rows",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "rep2_sonnet-4__queens-9-hard_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-diagnostic-completion/rep2_sonnet-4__queens-9-hard_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-diagnostic-completion/requests/rep2_sonnet-4__queens-9-hard_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_sonnet-4__queens-9-hard_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-diagnostic-completion/raw/rep2_sonnet-4__queens-9-hard_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
       "id": "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
       "study": "2026-10-01-earlier-generations",
       "board": "queens-5-easy",
@@ -31124,6 +32569,30 @@
       },
       "path": "grades/2026-09-30-jev-trajectories/call_grades.json",
       "source": "evaluations/2026-09-30-jev-trajectories/grades/call_grades.json",
+      "failure": null
+    },
+    {
+      "id": "grade:2026-10-01-diagnostic-completion:grades",
+      "study": "2026-10-01-diagnostic-completion",
+      "board": "queens-5-easy",
+      "model": null,
+      "modelVersion": null,
+      "provider": null,
+      "run": null,
+      "kind": "grade-source",
+      "status": "success",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": true,
+      "partialResponse": false,
+      "files": {
+        "request": null,
+        "response": null,
+        "metadata": null,
+        "grade": "grades/2026-10-01-diagnostic-completion/grades.json"
+      },
+      "path": "grades/2026-10-01-diagnostic-completion/grades.json",
+      "source": "evaluations/2026-10-01-diagnostic-completion/grades.json",
       "failure": null
     },
     {

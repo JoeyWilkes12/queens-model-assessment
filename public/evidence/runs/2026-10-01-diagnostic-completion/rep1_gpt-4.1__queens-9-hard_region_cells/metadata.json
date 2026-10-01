@@ -1,0 +1,41 @@
+{
+  "call_id": "rep1_gpt-4.1__queens-9-hard_region_cells",
+  "started_utc": "2026-10-01T16:35:22.833252+00:00",
+  "reserved_usd": 0.132304,
+  "accounted_usd": 0.00151,
+  "cost_source": "usage.cost",
+  "http_status": 200,
+  "execution_phase": "replicate-1",
+  "response_headers": {
+    "Content-Type": "application/json"
+  },
+  "actual_cost_usd": 0.00151,
+  "generation_id": "gen-1790872522-NLYJB5OOAdcS6lvRl3dL",
+  "returned_model": "openai/gpt-4.1",
+  "returned_provider": "OpenAI",
+  "usage": {
+    "prompt_tokens": 623,
+    "completion_tokens": 33,
+    "total_tokens": 656,
+    "cost": 0.00151,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00151,
+      "upstream_inference_prompt_cost": 0.001246,
+      "upstream_inference_completions_cost": 0.000264
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "ended_utc": "2026-10-01T16:35:24.905159+00:00",
+  "latency_seconds": 2.0715578749077395
+}

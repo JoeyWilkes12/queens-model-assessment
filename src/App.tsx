@@ -621,6 +621,45 @@ type EarlierGenerationsSummary = {
   conclusions: string[]
 }
 
+type CompletionReplicate = {
+  replicate: number
+  call_id: string
+  attempted: boolean
+  correct: boolean | null
+  written_correct: boolean | null
+  failure: string | null
+  extraction_failure: string | null
+  finish_reason: string | null
+  seconds: number | null
+  cost_usd: number | null
+}
+
+type CompletionPair = {
+  matched_pair_id: string
+  family: string
+  model: string
+  board_id: string
+  historical_source_call_id: string
+  source_failure_category: string
+  source_failure_basis: Record<string, unknown>
+  conditions: { condition: string; label: string; attempted_calls: number; strict_correct_count: number; written_correct_count: number; replicates: CompletionReplicate[] }[]
+}
+
+type DiagnosticCompletionSummary = {
+  study: string
+  generated_utc: string
+  design: string
+  attempt_policy: string
+  planned_calls: number
+  attempted_calls: number
+  strict_correct_count: number
+  written_correct_count: number
+  budget: { cap_usd: number; worst_case_frozen_reserve_usd: number; known_cost_usd: number | null; accounted_usd: number | null; remaining_usd: number | null }
+  conditions: { condition: string; label: string; planned_calls: number; attempted_calls: number; strict_correct_count: number; written_correct_count: number; known_cost_usd: number; by_replicate: { replicate: number; planned_calls: number; attempted_calls: number; strict_correct_count: number; written_correct_count: number; known_cost_usd: number }[] }[]
+  pairs: CompletionPair[]
+  historical_diagnostics_note: string
+}
+
 function earlierPassLabel(value: boolean | null | undefined) {
   return value === true ? 'Pass' : value === false ? 'Fail' : 'Not scored'
 }
@@ -639,9 +678,38 @@ function earlierReceipt(callId: string | null | undefined) {
     : 'No request recorded'
 }
 
+function completionReceipt(callId: string) {
+  return <a href={`#/evidence-atlas/2026-10-01-diagnostic-completion:${callId}`}>Open receipt</a>
+}
+
+function completionMedianSeconds(pairs: CompletionPair[], condition: string) {
+  const times = pairs.flatMap(pair => pair.conditions.find(item => item.condition === condition)?.replicates ?? [])
+    .map(rep => rep.seconds).filter((value): value is number => typeof value === 'number').sort((a, b) => a - b)
+  if (!times.length) return null
+  const middle = Math.floor(times.length / 2)
+  return times.length % 2 ? times[middle] : (times[middle - 1] + times[middle]) / 2
+}
+
+function completionFindings(data: DiagnosticCompletionSummary) {
+  return data.pairs.map(pair => {
+    const count = (condition: string) => pair.conditions.find(cell => cell.condition === condition)?.written_correct_count ?? 0
+    const image = count('original_image')
+    const capped = pair.conditions.flatMap(cell => cell.replicates).filter(rep => rep.finish_reason === 'length').length
+    const results = `${pair.model} · ${pair.board_id}: image ${image}/2, matrix ${count('text_only_region_grid_rows')}/2, cell lists ${count('text_only_region_cells')}/2 mathematically valid.`
+    return `${results} ${image === 2
+      ? 'The earlier image failure did not reproduce in either fresh image control.'
+      : image === 1 ? 'The fresh image controls disagreed; the observed failure is not a stable boundary.'
+        : capped === 6 ? 'All six responses hit the completion cap; this does not isolate a rule-solving misconception.'
+        : count('text_only_region_grid_rows') === 0 && count('text_only_region_cells') === 0 ? 'Neither text encoding rescued these one-shot trials; this is not a universal inability claim.'
+        : 'Both fresh image controls failed; text differences remain representation-sensitive observations, not a vision-only diagnosis.'}`
+  })
+}
+
 function EarlierGenerations() {
   const [data, setData] = useState<EarlierGenerationsSummary | null>(null)
   const [error, setError] = useState(false)
+  const [completion, setCompletion] = useState<DiagnosticCompletionSummary | null>(null)
+  const [completionError, setCompletionError] = useState(false)
   useEffect(() => {
     let active = true
     fetch(assetUrl('evidence/earlier-generations-summary.json')).then(response => {
@@ -649,6 +717,16 @@ function EarlierGenerations() {
       return response.json()
     }).then(value => { if (active) setData(value as EarlierGenerationsSummary) }).catch(() => {
       if (active) setError(true)
+    })
+    return () => { active = false }
+  }, [])
+  useEffect(() => {
+    let active = true
+    fetch(assetUrl('evidence/diagnostic-completion-summary.json')).then(response => {
+      if (!response.ok) throw new Error('Diagnostic summary unavailable')
+      return response.json()
+    }).then(value => { if (active) setCompletion(value as DiagnosticCompletionSummary) }).catch(() => {
+      if (active) setCompletionError(true)
     })
     return () => { active = false }
   }, [])
@@ -699,7 +777,7 @@ function EarlierGenerations() {
   ]) ?? []
 
   return <><PageHero trail="Model generations / October 1 cohort" title="The same board, across earlier model generations." deck="A sparse, adaptively reprioritized comparison replays the original image prompts and separates strict JSON-plus-rules success from a deterministic written-answer diagnostic." action={{ label: 'Open the request receipts', path: 'evidence-atlas' }} />
-    <div className="reading-layout"><LocalToc items={[{ id: 'earlier-method', label: 'Scoring boundary' }, { id: 'earlier-models', label: 'By model' }, { id: 'earlier-receipts', label: 'Every board receipt' }, { id: 'earlier-failures', label: 'First observed failures' }, { id: 'earlier-diagnostics', label: 'Representation diagnostics' }, { id: 'earlier-limits', label: 'Cost & limits' }]} />
+    <div className="reading-layout"><LocalToc items={[{ id: 'earlier-method', label: 'Scoring boundary' }, { id: 'earlier-models', label: 'By model' }, { id: 'earlier-receipts', label: 'Every board receipt' }, { id: 'earlier-failures', label: 'First observed failures' }, { id: 'earlier-diagnostics', label: 'Historical diagnostics' }, { id: 'diagnostic-completion', label: 'Matched completion study' }, { id: 'earlier-limits', label: 'Cost & limits' }]} />
       <main className="reading-column" id="main-content">
         {!data && <p role="status">{error ? 'The saved cohort summary is not available. You can still inspect this study’s saved requests and responses in the evidence atlas.' : 'Loading the saved cohort summary…'}</p>}
         {data && <>
@@ -733,12 +811,53 @@ function EarlierGenerations() {
               ? <DataTable caption="Observed family stopping points · original candidate rungs" headers={['Family', 'Model', 'Candidate rung', 'Board', 'Observed failure', 'Evidence']} rows={firstFailureRows} />
               : <p>No family stopping observation is recorded in the current summary.</p>}
           </Section>
-          <Section id="earlier-diagnostics" title="Representation diagnostics are a separate condition">
+      <Section id="earlier-diagnostics" title="Representation diagnostics are a separate condition">
             <p>These text-input probes were selected only after an original-image failure. They remove image perception and change the representation, so they cannot be combined with or used to revise the original-image score.</p>
-            <p>The two funded probes use complete region matrices on 5×5. GPT-4.1 still failed region coverage; Gemini 2.5 Flash returned a valid placement but not strict JSON. Claude’s failed 9×9 matrix probe was omitted because its conservative $0.230320 reserve exceeded the $0.199215 remaining when this phase was frozen. No correctness feedback or candidate answers entered these fresh requests.</p>
+            <p>The two probes funded in this original $2 phase used complete region matrices on 5×5: GPT-4.1 still failed region coverage; Gemini 2.5 Flash returned a valid placement but not strict JSON. Claude’s failed 9×9 matrix probe was omitted at that time because its conservative $0.230320 reserve exceeded the $0.199215 then remaining. That historical budget omission is now superseded by a separate, additional-$5 controlled completion stage, which includes Claude Sonnet 4 on 9×9 with two fresh requests per representation. The original two probes remain exploratory and are excluded from that new matched denominator; no outcomes or costs are pooled. No correctness feedback or candidate answers entered those original requests.</p>
             {diagnosticRows.length
               ? <DataTable caption="Exploratory diagnostic calls" headers={['Model', 'Board', 'Text condition', 'Strict', 'Written', 'API time', 'Cost', 'Evidence']} rows={diagnosticRows} />
               : <p>No diagnostic results are recorded in the current summary.</p>}
+          </Section>
+          <Section id="diagnostic-completion" title="Matched diagnostic completion: six failed pairs, three representations">
+            {!completion && <p role="status">{completionError ? 'The separate diagnostic-completion summary is not available yet. Its frozen requests and any saved responses remain inspectable in the evidence atlas.' : 'Loading the saved diagnostic-completion summary…'}</p>}
+            {completion && <>
+              {completion.attempted_calls < completion.planned_calls && <Callout tone="caution" title="This separate $5 stage is still in progress.">The table reflects saved attempts only; unattempted schedule entries are not failures. This stage has its own authorization and ledger, separate from the earlier $2 cohort.</Callout>}
+              <p className="lead">The follow-up repeats each of six previously mathematical-failure model/board pairs in the original image condition, a full region matrix, and region cell lists, with two independent fresh one-shot requests per condition. There is no feedback, answer key, retry, or best-of-two score.</p>
+              <p>The prior two text probes above are retained as historical exploratory data, not inserted into these matched results. Strict success requires the original JSON-only schema and every Queens rule; written success extracts exactly one schema-shaped object from visible final text and applies the same deterministic checker, without repairs or choosing among answers.</p>
+              {completion.attempted_calls === completion.planned_calls && <>
+                <h3>What the fresh controls showed</h3>
+                <ul>{completionFindings(completion).map(finding => <li key={finding}>{finding}</li>)}</ul>
+              </>}
+              <DataTable caption="New-stage outcomes by representation" headers={['Representation', 'Attempted / planned', 'Strict correct', 'Written valid', 'Median request time', 'Known usage cost']} rows={completion.conditions.map(condition => [
+                condition.label,
+                `${condition.attempted_calls} / ${condition.planned_calls}`,
+                `${condition.strict_correct_count} / ${condition.attempted_calls}`,
+                `${condition.written_correct_count} / ${condition.attempted_calls}`,
+                earlierSeconds(completionMedianSeconds(completion.pairs, condition.condition)),
+                earlierUsd(condition.known_cost_usd),
+              ])} />
+              <p>Each pair-condition has two independently reported replicates, not a two-attempt session. Two observations per cell are a limited repeatability check, not a stable accuracy estimate or significance test. Text conditions change modality, wording, token count, and serialization together, so they do not isolate visual perception as a cause.</p>
+              <p>The saved timestamps show a 146.89-minute pause between trials 9 and 10. That orchestration gap is excluded from request latency; this was not an uninterrupted session. Service/time drift remains possible despite the unchanged frozen inputs and counterbalanced order.</p>
+              <DataTable caption="Every matched pair, replicate, and response receipt" headers={['Pair / earlier failure', 'Representation', 'Replicate 1', 'Replicate 2', 'Evidence receipts']} rows={completion.pairs.flatMap(pair => pair.conditions.map(condition => {
+                const reps = [0, 1].map(index => condition.replicates[index])
+                const describe = (rep: CompletionReplicate | undefined) => !rep || !rep.attempted
+                  ? 'Not attempted'
+                  : `Strict ${earlierPassLabel(rep.correct)} · written ${earlierPassLabel(rep.written_correct)} · ${earlierSeconds(rep.seconds)} · ${earlierUsd(rep.cost_usd)}`
+                const receipts = reps.filter((rep): rep is CompletionReplicate => Boolean(rep)).map(rep => <span key={rep.call_id}>{completionReceipt(rep.call_id)}</span>)
+                return [`${pair.family} · ${pair.model} · ${pair.board_id}\nPrior: ${pair.source_failure_category}`, condition.label, describe(reps[0]), describe(reps[1]), receipts.length ? <>{receipts[0]}{receipts[1] && <> · {receipts[1]}</>}</> : 'No frozen requests']
+              }))} />
+              <DataTable caption="Separate diagnostic-completion ledger" headers={['Measure', 'Observed value']} rows={[
+                ['Scheduled requests', String(completion.planned_calls)],
+                ['Attempted requests', String(completion.attempted_calls)],
+                ['Strict successes', `${completion.strict_correct_count}/${completion.attempted_calls}`],
+                ['Written-answer successes', `${completion.written_correct_count}/${completion.attempted_calls}`],
+                ['Known usage cost', earlierUsd(completion.budget.known_cost_usd)],
+                ['Accounted against this stage’s cap', `${earlierUsd(completion.budget.accounted_usd)} / ${earlierUsd(completion.budget.cap_usd)}`],
+                ['Remaining in this stage', earlierUsd(completion.budget.remaining_usd)],
+                ['Summary updated', completion.generated_utc],
+              ]} />
+              <div className="next-actions"><a href={assetUrl('evidence/diagnostic-completion-REPORT.md')} download>Download the report</a><a href={assetUrl('evidence/diagnostic-completion-PROTOCOL.md')} download>Frozen protocol</a><a href={assetUrl('evidence/diagnostic-completion-manifest.json')} download>Frozen schedule</a><a href={assetUrl('evidence/diagnostic-completion-grades.json')} download>Grades and ledger</a><a href={assetUrl('evidence/diagnostic-completion-audit.json')} download>Independent audit</a><a href="#/evidence-atlas">Browse all trial receipts</a></div>
+            </>}
           </Section>
           <Section id="earlier-limits" title="Budget, boundaries, and downloadable record">
             <DataTable caption="Incremental study ledger" headers={['Measure', 'Observed value']} rows={[

@@ -1,0 +1,10 @@
+{
+  "retrieved_utc": "2026-10-01T16:23:56.113768+00:00",
+  "endpoint": "/api/v1/models",
+  "models_requested": [
+    "openai/gpt-4.1",
+    "anthropic/claude-sonnet-4",
+    "google/gemini-2.5-flash"
+  ],
+  "read_only": true
+}

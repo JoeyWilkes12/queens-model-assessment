@@ -32,6 +32,7 @@ const STUDIES = [
   "2026-09-19-jev-scale",
   "2026-09-30-jev-trajectories",
   "2026-10-01-earlier-generations",
+  "2026-10-01-diagnostic-completion",
 ];
 
 // Grade sources are deliberately explicit.  Discovery dumps, catalogs,
@@ -45,6 +46,7 @@ const GRADE_SOURCES = {
   "2026-09-19-jev-scale": ["audit.json"],
   "2026-09-30-jev-trajectories": ["grades/*.json"],
   "2026-10-01-earlier-generations": ["grades.json"],
+  "2026-10-01-diagnostic-completion": ["grades.json"],
 };
 
 // Records here remain in the public bundle and manifest, but the atlas omits
@@ -711,6 +713,46 @@ async function main() {
     const sourcePath = path.join(earlierGenerationsDir, name);
     if (await exists(sourcePath)) {
       await writeJson(path.join(OUTPUT_DIR, `earlier-generations-${name}`), sanitize(await readJson(sourcePath)));
+    }
+  }
+
+  const completionDir = path.join(EVALUATIONS_DIR, "2026-10-01-diagnostic-completion");
+  const completionSummaryPath = path.join(completionDir, "summary.json");
+  if (await exists(completionSummaryPath)) {
+    const completionSummary = sanitize(await readJson(completionSummaryPath));
+    assertPublic(completionSummary, "diagnostic-completion-summary");
+    await writeJson(path.join(OUTPUT_DIR, "diagnostic-completion-summary.json"), completionSummary);
+  }
+  for (const name of ["REPORT.md", "PROTOCOL.md", "REVIEW_NOTES.md", "README.md"]) {
+    const sourcePath = path.join(completionDir, name);
+    if (await exists(sourcePath)) {
+      const publicText = (await readFile(sourcePath, "utf8"))
+        .replace(/\]\(raw\/([^/]+)\/response\.json\)/g, "](runs/2026-10-01-diagnostic-completion/$1/response.json)")
+        .replace(/\]\((PROTOCOL\.md|REVIEW_NOTES\.md|README\.md|manifest\.json|summary\.json|grades\.json|audit\.json)\)/g,
+          "](diagnostic-completion-$1)")
+        .replace(/\]\(\.\.\/2026-10-01-earlier-generations\/REPORT\.md\)/g,
+          "](earlier-generations-REPORT.md)")
+        .replace(/\[(public-audit\.json|deployment-readback\.json)\]\(\1\)/g,
+          "$1 (local verification receipt; kept outside the generated bundle to avoid self-referential hashes)");
+      await writeFile(path.join(OUTPUT_DIR, `diagnostic-completion-${name}`), publicText);
+    }
+  }
+  for (const name of ["manifest.json", "grades.json", "audit.json", "catalog.json", "catalog-receipt.json"]) {
+    const sourcePath = path.join(completionDir, name);
+    if (await exists(sourcePath)) {
+      const publicData = sanitize(await readJson(sourcePath));
+      assertPublic(publicData, `diagnostic-completion-${name}`);
+      await writeJson(path.join(OUTPUT_DIR, `diagnostic-completion-${name}`), publicData);
+    }
+  }
+  const completionEndpointsDir = path.join(completionDir, "endpoints");
+  if (await exists(completionEndpointsDir)) {
+    for (const entry of (await readdir(completionEndpointsDir, { withFileTypes: true }))
+      .filter((item) => item.isFile() && item.name.endsWith(".json"))) {
+      const sourcePath = path.join(completionEndpointsDir, entry.name);
+      const publicData = sanitize(await readJson(sourcePath));
+      assertPublic(publicData, `diagnostic-completion-endpoint-${entry.name}`);
+      await writeJson(path.join(OUTPUT_DIR, `diagnostic-completion-endpoint-${entry.name}`), publicData);
     }
   }
 
