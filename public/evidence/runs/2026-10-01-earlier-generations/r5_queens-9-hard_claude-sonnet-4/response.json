@@ -1,0 +1,45 @@
+{
+  "id": "gen-1790865563-N4qx0aC8BkhXJgoE4AoZ",
+  "object": "chat.completion",
+  "created": 1790865563,
+  "model": "anthropic/claude-sonnet-4",
+  "provider": "Amazon Bedrock",
+  "system_fingerprint": null,
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this regional queens puzzle, I need to identify the regions first and then place 9 queens following the rules.\n\nFrom the image, I can identify the regions:\n- A: Large region covering many cells\n- B: Blue region in upper left portion\n- C: Green region in upper right\n- D: Single orange cell at (3,4)\n- E: Single purple cell at (4,7) \n- F: Single orange cell at (5,1)\n- G: Large teal region in lower portion\n- H: Purple region with 4 cells\n- I: Light purple region in bottom right corner\n\nSince regions D, E, and F each contain only one cell, I must place queens at:\n- D: (3,4)\n- E: (4,7) \n- F: (5,1)\n\nThis uses rows 3, 4, 5 and columns 1, 4, 7.\n\nFor the remaining regions, I need to find valid positions that satisfy:\n1. One queen per row/column/region\n2. No queens touching (including diagonally)\n\nWorking through the adjacency constraints from the forced placements:\n- (5,1) blocks adjacent cells like (6,2)\n- (3,4) blocks cells like (2,5)\n- (6,3) becomes the only viable option for region A\n\nContinuing this process systematically:\n- Region A: (6,3)\n- Region B: (1,5)\n- Region C: (2,8)\n- Region G: (8,6)\n- Region H: (7,9)\n- Region I: (9,2)\n\nVerifying this gives one queen per row, column, and region with no touching violations.\n\n{\"board_id\":\"queens-9-hard\",\"columns_by_row\":[5,8,4,7,1,3,9,6,2]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1112,
+    "completion_tokens": 8520,
+    "total_tokens": 9632,
+    "cost": 0.131136,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.131136,
+      "upstream_inference_prompt_cost": 0.003336,
+      "upstream_inference_completions_cost": 0.1278
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2706,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

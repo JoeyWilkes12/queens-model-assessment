@@ -1,0 +1,45 @@
+{
+  "id": "gen-1790864946-FfzwvrlTqgtBwQwlTUzE",
+  "object": "chat.completion",
+  "created": 1790864946,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to place 5 queens — one per row, column, and region (A, B, C, D, E) — with no diagonal adjacency between consecutive rows.\n\n**Key deduction — Region C:**\nRegion C contains only cell (1,5), so **Row 1 → Column 5**.\n\n**Row 2 constraints:**\nColumn must differ from 5 by more than 1, so options are columns 1, 2, or 3.\n\n**Testing Row 2 → Column 3 (Region B):**\n- Row 3: Can't use col 2 or 4 (adjacent to 3). Remaining columns {1, 2, 4} → **Row 3 → Column 1 (Region A)** ✓\n- Row 4: Can't use col 2 (adjacent to 1). Remaining columns {2, 4} → **Row 4 → Column 4 (Region D)** ✓\n- Row 5: Can't use col 3 or 5 (adjacent to 4). Remaining column → **Row 5 → Column 2 (Region E)** ✓\n\n**Verification:**\n- Columns: 5, 3, 1, 4, 2 — all unique ✓\n- Regions: C, B, A, D, E — all unique ✓\n- Consecutive row column gaps: |5−3|=2, |3−1|=2, |1−4|=3, |4−2|=2 — all >1 ✓\n\n{\"board_id\":\"queens-5-easy\",\"columns_by_row\":[5,3,1,4,2]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 1851,
+    "total_tokens": 2934,
+    "cost": 0.05169,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.05169,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.046275
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1445,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "gen-1790864451-9ALBA4JdtzXSiK5aTUHC",
+  "object": "chat.completion",
+  "created": 1790864451,
+  "model": "anthropic/claude-opus-4.7",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"queens-5-easy\",\"columns_by_row\":[5,3,1,4,2]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1227,
+    "completion_tokens": 776,
+    "total_tokens": 2003,
+    "cost": 0.025535,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.025535,
+      "upstream_inference_prompt_cost": 0.006135,
+      "upstream_inference_completions_cost": 0.0194
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 736,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

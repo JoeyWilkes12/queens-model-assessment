@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Scope](#scope)
+- [October 1 verification](#october-1-verification)
 - [Build and dependency checks](#build-and-dependency-checks)
 - [Evidence checks](#evidence-checks)
 - [Browser checks](#browser-checks)
@@ -14,6 +15,18 @@
 
 This check covers the Vite/React technical book in this directory and the equivalent static build published through GitHub Pages. It does not cover live model calls or unrelated dirty files elsewhere in the Queens repository.
 
+The October 1 section records the current verification. The remaining sections retain the original five-study, nine-route QA snapshot and are historical, not evidence of new checks.
+
+## October 1 verification
+
+The revised source passes TypeScript and Vite production builds. The generated bundle contains seven studies, 798 frozen requests, 777 responses, 778 metadata records, 772 per-run grades, 14 grade sources, and three content-addressed PNGs. Twenty not-run records remain explicitly unexecuted, including 18 October candidates. Existing historical evidence is retained.
+
+All twelve routes loaded with their expected title and H1 at 1440×1000, no document-level horizontal overflow, and no outstanding loading text. The fresh local QA browser recorded zero console errors and zero warnings. The October chapter displayed 27 original attempts, 13 strict passes, 21 mathematically valid written answers, and separate image/text billing. A chapter receipt link opened a failed GPT-4.1 response with its original 768×768 image, prompt, output, grade, and metadata. The Gemini text-matrix receipt loaded all four record panels without an image. The chapter and diagnostic receipt had no document overflow at 390×844.
+
+Root visually inspected the desktop chapter, mobile chapter, and desktop diagnostic receipt. Captures live under the task-owned `output/playwright/` directory. A misleading generic receipt sentence was corrected: a failed assessment contract does not necessarily mean a mathematically wrong answer. October first-failure labels now distinguish strict formatting from extracted rule failures.
+
+The offline experiment auditor, prepared by GPT-6 Luna Xhigh and repaired/reviewed by GPT-6.1 Sol Xhigh, independently verifies original input hashes, uniqueness, grading, schedule, route controls and billing. Its current audit passes for 47 scheduled / 29 attempted requests. The final public-bundle scan and publication readback are recorded in the October study's audit artifacts; do not infer remote browser testing from these local checks.
+
 ## Build and dependency checks
 
 | Check | Result |
@@ -23,7 +36,7 @@ This check covers the Vite/React technical book in this directory and the equiva
 | Impeccable implementation detector | Pass; empty finding set `[]` |
 | `git diff --check` | Pass |
 
-The build regenerates the evidence bundle through `prebuild`; local development does the same through `predev`.
+The build recorded above regenerated the then-current evidence bundle through `prebuild`; local development did the same through `predev`. This historical result does not establish that the current source builds successfully.
 
 ## Evidence checks
 
@@ -40,13 +53,13 @@ The build regenerates the evidence bundle through `prebuild`; local development 
 | Assessment outcomes | 71 success, 74 model failure, 8 request/transport failure, 2 not run, 2 ungraded |
 | Statuses | 147 success, 7 error, 2 not run, 1 timeout/transport failure |
 
-A recursive generated-tree scan found no credential-like keys, encrypted reasoning fields, absolute user paths, or token patterns. Each decoded image filename was verified against its SHA-256 bytes.
+A recursive scan of that historical generated tree found no credential-like keys, encrypted reasoning fields, absolute user paths, or token patterns. Each decoded image filename was verified against its SHA-256 bytes. Re-run the scan against the current bundle, especially the new summary, report, schedule amendment, and review-note exports, before publication.
 
 Two consecutive generations produced the same 633-file bundle digest: `3663c54fbfd0602cd52a605fdbe2e819c6dc201f8419901846bca3c1bc408858`.
 
 ## Browser checks
 
-Playwright CLI exercised all nine book routes plus a representative evidence detail. Every route returned its expected title and H1 and reported no document-level horizontal overflow at 1440×1000. A fresh session recorded 0 console errors and 0 warnings.
+Playwright CLI exercised all nine routes in that earlier edition plus a representative evidence detail. Every route returned its expected title and H1 and reported no document-level horizontal overflow at 1440×1000. A fresh session recorded 0 console errors and 0 warnings. The current route set and the October evidence detail were not covered by this historical check.
 
 The built `dist/` output was also served with `vite preview` on localhost. A direct hash-route evidence URL loaded its sanitized JSON and content-addressed board image with 0 console errors and 0 warnings.
 

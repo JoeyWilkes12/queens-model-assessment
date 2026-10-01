@@ -22,7 +22,7 @@ web
 
 ## Stack
 
-Vite, React, and TypeScript, published with hash routing through the separate static GitHub Pages repository `queens-model-assessment`.
+Vite, React, and TypeScript. The source runs locally and is published as a static GitHub Pages site through the separate `queens-model-assessment` repository.
 
 ## Users
 
@@ -40,17 +40,17 @@ The site connects an editorial assessment directly to its inspectable local evid
 
 ## Operating Context
 
-Readers move between high-level chapters, board diagrams, model comparisons, candidate-selection demonstrations, and exact JSON evidence. The public site remains static and read-only: no model calls, account changes, analytics, or external writes occur through the interface.
+Readers move between high-level chapters, board diagrams, model comparisons, candidate-selection demonstrations, and exact JSON evidence. The site is a read-only static publication; no model calls, account changes, or external writes occur through the interface.
 
 ## Capabilities and Constraints
 
 - Preserve the report's findings and caveats; do not silently recompute or reinterpret scores.
-- Expose model-visible requests, visible responses, metadata, grades, and preserved transport errors from the five assessment stages.
+- Expose model-visible requests, visible responses, metadata, grades, and preserved transport errors from the seven retained studies, including the October earlier-generations replay.
 - Distinguish request success from model-assessment success, and contextualize every error before showing raw JSON.
 - Exclude private answer keys, credentials, encrypted reasoning payloads, generated PDF page rasters, and unrelated repository files.
 - Use responsive sidebar and chapter navigation, accessible disclosure controls, native table scrolling, keyboard focus, reduced-motion support, and light/dark themes.
 - Keep local development and the GitHub Pages build behaviorally equivalent.
-- Publish only the sanitized site bundle from committed source in the dedicated Pages repository.
+- Publish only from committed source in the dedicated Pages repository.
 
 ## Brand Commitments
 
@@ -66,6 +66,7 @@ Use the Agent Skills Resource Library design system at `/Users/joeywilkes/Deskto
 - Jev held-out primitive study: `../../2026-09-19-jev-primitives/`.
 - Five report illustrations: `../assets/`.
 - The PDF remains a stable download for readers who do not need the evidence atlas.
+- Earlier-generation replay: `../../2026-10-01-earlier-generations/`, with strict and deterministic written-answer diagnostic grades kept separate.
 
 No testimonial or population-level benchmark claim is available and none may be fabricated. The public deployment is [Queens model assessment](https://joeywilkes12.github.io/queens-model-assessment/).
 

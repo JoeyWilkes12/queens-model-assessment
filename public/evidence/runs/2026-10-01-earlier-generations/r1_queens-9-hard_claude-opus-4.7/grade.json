@@ -1,0 +1,77 @@
+{
+  "call_id": "r1_queens-9-hard_claude-opus-4.7",
+  "round": 1,
+  "family": "Claude",
+  "model": "anthropic/claude-opus-4.7",
+  "board_id": "queens-9-hard",
+  "condition": "original_image",
+  "provider_tag": "anthropic",
+  "canonical_slug": "anthropic/claude-4.7-opus-20260416",
+  "request_file": "requests/r1_queens-9-hard_claude-opus-4.7.json",
+  "request_sha256": "bd8d32be6082c8660b3d854a1a3460f7317441af83c55424c746507680e52db6",
+  "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+  "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+  "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+  "reasoning_mode": "high",
+  "reserved_usd": 0.37720000000000004,
+  "prompt_rate": 0.000005,
+  "completion_rate": 0.000025,
+  "format_valid": true,
+  "correct": true,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": true,
+    "no_touch": true
+  },
+  "failure": null,
+  "extraction": {
+    "diagnostic_only": true,
+    "candidate_count": 1,
+    "markdown_fence_present": false,
+    "visible_character_count": 65,
+    "rule_valid_after_extraction": true,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": true,
+      "one_per_region": true,
+      "no_touch": true
+    },
+    "failure": null,
+    "extra_visible_text": false
+  },
+  "written_correct": true,
+  "received_answer": true,
+  "finish_reason": "stop",
+  "seconds": 40.65169962507207,
+  "cost_usd": 0.089435,
+  "accounted_usd": 0.089435,
+  "http_status": 200,
+  "returned_model": "anthropic/claude-opus-4.7",
+  "provider": "Anthropic",
+  "usage": {
+    "prompt_tokens": 1227,
+    "completion_tokens": 3332,
+    "total_tokens": 4559,
+    "cost": 0.089435,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.089435,
+      "upstream_inference_prompt_cost": 0.006135,
+      "upstream_inference_completions_cost": 0.0833
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3284,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "halt_reason": null,
+  "execution_phase": "round-1"
+}

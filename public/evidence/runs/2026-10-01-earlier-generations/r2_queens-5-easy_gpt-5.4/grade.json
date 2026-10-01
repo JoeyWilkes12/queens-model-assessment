@@ -1,0 +1,77 @@
+{
+  "call_id": "r2_queens-5-easy_gpt-5.4",
+  "round": 2,
+  "family": "GPT",
+  "model": "openai/gpt-5.4",
+  "board_id": "queens-5-easy",
+  "condition": "original_image",
+  "provider_tag": "openai",
+  "canonical_slug": "openai/gpt-5.4-20260305",
+  "request_file": "requests/r2_queens-5-easy_gpt-5.4.json",
+  "request_sha256": "bece2e041202c7e62425eb66c6568df658802b20cf178373fce46e044440095a",
+  "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+  "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+  "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+  "reasoning_mode": "high",
+  "reserved_usd": 0.22432000000000002,
+  "prompt_rate": 0.0000025,
+  "completion_rate": 0.000015,
+  "format_valid": true,
+  "correct": true,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": true,
+    "no_touch": true
+  },
+  "failure": null,
+  "extraction": {
+    "diagnostic_only": true,
+    "candidate_count": 1,
+    "markdown_fence_present": false,
+    "visible_character_count": 57,
+    "rule_valid_after_extraction": true,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": true,
+      "one_per_region": true,
+      "no_touch": true
+    },
+    "failure": null,
+    "extra_visible_text": false
+  },
+  "written_correct": true,
+  "received_answer": true,
+  "finish_reason": "stop",
+  "seconds": 27.685664999997243,
+  "cost_usd": 0.02501,
+  "accounted_usd": 0.02501,
+  "http_status": 200,
+  "returned_model": "openai/gpt-5.4",
+  "provider": "OpenAI",
+  "usage": {
+    "prompt_tokens": 956,
+    "completion_tokens": 1508,
+    "total_tokens": 2464,
+    "cost": 0.02501,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.02501,
+      "upstream_inference_prompt_cost": 0.00239,
+      "upstream_inference_completions_cost": 0.02262
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1477,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "halt_reason": null,
+  "execution_phase": "round-2"
+}

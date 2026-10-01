@@ -1,0 +1,77 @@
+{
+  "call_id": "r6_queens-7-medium_gpt-4.1",
+  "round": 6,
+  "family": "GPT",
+  "model": "openai/gpt-4.1",
+  "board_id": "queens-7-medium",
+  "condition": "original_image",
+  "provider_tag": "openai",
+  "canonical_slug": "openai/gpt-4.1-2025-04-14",
+  "request_file": "requests/r6_queens-7-medium_gpt-4.1.json",
+  "request_sha256": "a0822ef50cd6565775e5769e6914e5d9dfab802a2f51894adec753a738dc690b",
+  "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+  "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+  "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+  "reasoning_mode": "unsupported_omitted",
+  "reserved_usd": 0.132304,
+  "prompt_rate": 0.000002,
+  "completion_rate": 0.000008,
+  "format_valid": true,
+  "correct": false,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": false,
+    "no_touch": true
+  },
+  "failure": "rule_violation",
+  "extraction": {
+    "diagnostic_only": true,
+    "candidate_count": 1,
+    "markdown_fence_present": false,
+    "visible_character_count": 63,
+    "rule_valid_after_extraction": false,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": true,
+      "one_per_region": false,
+      "no_touch": true
+    },
+    "failure": "rule_violation",
+    "extra_visible_text": false
+  },
+  "written_correct": false,
+  "received_answer": true,
+  "finish_reason": "stop",
+  "seconds": 2.5443998749833554,
+  "cost_usd": 0.002288,
+  "accounted_usd": 0.002288,
+  "http_status": 200,
+  "returned_model": "openai/gpt-4.1",
+  "provider": "OpenAI",
+  "usage": {
+    "prompt_tokens": 1028,
+    "completion_tokens": 29,
+    "total_tokens": 1057,
+    "cost": 0.002288,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.002288,
+      "upstream_inference_prompt_cost": 0.002056,
+      "upstream_inference_completions_cost": 0.000232
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "halt_reason": null,
+  "execution_phase": "older-anchors"
+}

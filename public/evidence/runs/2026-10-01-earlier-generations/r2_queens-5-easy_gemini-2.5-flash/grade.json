@@ -1,0 +1,64 @@
+{
+  "call_id": "r2_queens-5-easy_gemini-2.5-flash",
+  "round": 2,
+  "family": "Gemini",
+  "model": "google/gemini-2.5-flash",
+  "board_id": "queens-5-easy",
+  "condition": "original_image",
+  "provider_tag": "google-ai-studio",
+  "canonical_slug": "google/gemini-2.5-flash",
+  "request_file": "requests/r2_queens-5-easy_gemini-2.5-flash.json",
+  "request_sha256": "3c7075ccbd70e629d5151796a00673269752dccec50808d79c2c5c33cbe302f0",
+  "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+  "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+  "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+  "reasoning_mode": "high",
+  "reserved_usd": 0.044320000000000005,
+  "prompt_rate": 3e-7,
+  "completion_rate": 0.0000025,
+  "format_valid": false,
+  "correct": false,
+  "checks": {},
+  "failure": "invalid_json_or_missing_final",
+  "extraction": {
+    "diagnostic_only": true,
+    "candidate_count": 0,
+    "markdown_fence_present": false,
+    "visible_character_count": 5315,
+    "rule_valid_after_extraction": false
+  },
+  "written_correct": false,
+  "received_answer": true,
+  "finish_reason": "length",
+  "seconds": 50.74310583306942,
+  "cost_usd": 0.0308199,
+  "accounted_usd": 0.0308199,
+  "http_status": 200,
+  "returned_model": "google/gemini-2.5-flash",
+  "provider": "Google AI Studio",
+  "usage": {
+    "prompt_tokens": 533,
+    "completion_tokens": 12264,
+    "total_tokens": 12797,
+    "cost": 0.0308199,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0308199,
+      "upstream_inference_prompt_cost": 0.0001599,
+      "upstream_inference_completions_cost": 0.03066
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 9826,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "halt_reason": null,
+  "execution_phase": "round-2"
+}

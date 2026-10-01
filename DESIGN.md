@@ -22,12 +22,14 @@ The visual authority is the authorized [AI Agent Skills Resource Library design 
 
 ## Information architecture
 
-The persistent book rail groups nine routes into four chapters:
+The persistent book rail groups twelve routes into six chapters:
 
 1. Read first: executive summary and assessment receipt.
 2. The board: Queens rules and protocol/results.
-3. The Jev question: primer, candidate engineering, and scale/primitives.
-4. Receipts: searchable evidence atlas and methods/sources.
+3. Model generations: the October 1 earlier-generation replay using the original board images.
+4. The Jev question: primer, candidate engineering, scale/primitives, and trajectories.
+5. Receipts: searchable evidence atlas and methods/sources.
+6. About: purpose, provenance, and sharing.
 
 Hash routing keeps every page compatible with a later static host. The evidence atlas adds one deep-linkable subpage per request or full grade source.
 
@@ -86,5 +88,5 @@ The public bundle excludes credentials, private answer keys, encrypted reasoning
 
 - The repository solver is explanatory context, not a timed competitor.
 - Jev candidate recognition is never presented as autonomous puzzle construction.
-- The three original boards and six held-out boards do not support a general intelligence ranking.
+- The three original boards and six held-out boards do not support a general intelligence ranking. The October replay reuses the original three images and adds neither new boards nor independent distribution coverage.
 - The website is a read-only static GitHub Pages publication. Analytics, live model calls, and external runtime data fetching remain deferred.

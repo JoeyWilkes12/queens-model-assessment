@@ -1,0 +1,41 @@
+{
+  "call_id": "r5_queens-7-medium_claude-sonnet-4",
+  "started_utc": "2026-10-01T14:38:24.887300+00:00",
+  "reserved_usd": 0.23032000000000002,
+  "accounted_usd": 0.105216,
+  "cost_source": "usage.cost",
+  "http_status": 200,
+  "execution_phase": "older-anchors",
+  "response_headers": {
+    "Content-Type": "application/json"
+  },
+  "actual_cost_usd": 0.105216,
+  "generation_id": "gen-1790865505-P4CbeTMTSBUA7EH69biq",
+  "returned_model": "anthropic/claude-sonnet-4",
+  "returned_provider": "Amazon Bedrock",
+  "usage": {
+    "prompt_tokens": 1112,
+    "completion_tokens": 6792,
+    "total_tokens": 7904,
+    "cost": 0.105216,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.105216,
+      "upstream_inference_prompt_cost": 0.003336,
+      "upstream_inference_completions_cost": 0.10188
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2260,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "ended_utc": "2026-10-01T14:39:20.663496+00:00",
+  "latency_seconds": 55.77555033296812
+}

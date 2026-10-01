@@ -22,8 +22,8 @@ const OUTPUT_DIR = path.join(SITE_DIR, "public", "evidence");
 const README_SOURCE = path.join(SITE_DIR, "evidence", "README.md");
 const INLINE_ASSETS = new Map();
 
-// These are the five source studies.  The comprehensive directory contains
-// this site and is deliberately not treated as an evidence input study.
+// The comprehensive directory contains this site and is deliberately not
+// treated as an evidence input study.
 const STUDIES = [
   "2026-09-17-one-shot",
   "2026-09-18-jev-5x5-variations",
@@ -31,6 +31,7 @@ const STUDIES = [
   "2026-09-19-jev-primitives",
   "2026-09-19-jev-scale",
   "2026-09-30-jev-trajectories",
+  "2026-10-01-earlier-generations",
 ];
 
 // Grade sources are deliberately explicit.  Discovery dumps, catalogs,
@@ -43,6 +44,7 @@ const GRADE_SOURCES = {
   "2026-09-19-jev-primitives": ["audit.json", "candidate_scores.json"],
   "2026-09-19-jev-scale": ["audit.json"],
   "2026-09-30-jev-trajectories": ["grades/*.json"],
+  "2026-10-01-earlier-generations": ["grades.json"],
 };
 
 // Records here remain in the public bundle and manifest, but the atlas omits
@@ -489,15 +491,19 @@ async function buildStudy(study) {
     }
   }
 
-  const requestFiles = (await readdir(requestsDir, { withFileTypes: true }))
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
-    .map((entry) => entry.name)
-    .sort();
+  const requestDirs = [requestsDir];
+  const diagnosticDir = path.join(studyDir, "diagnostic_requests");
+  if (await exists(diagnosticDir)) requestDirs.push(diagnosticDir);
+  const requestFiles = (await Promise.all(requestDirs.map(async (directory) =>
+    (await readdir(directory, { withFileTypes: true }))
+      .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+      .map((entry) => path.join(directory, entry.name)))))
+    .flat().sort();
 
   const records = [];
   for (const requestFile of requestFiles) {
     const run = path.basename(requestFile, ".json");
-    const requestPath = path.join(requestsDir, requestFile);
+    const requestPath = requestFile;
     const request = await readJson(requestPath);
     const runSourceDir = path.join(rawDir, run);
     const rawDirExists = await exists(runSourceDir);
@@ -680,6 +686,31 @@ async function main() {
   for (const name of ["REPORT.md", "PROTOCOL.md", "RESEARCH.md"]) {
     if (await exists(path.join(trajectoryDir, name))) {
       await writeFile(path.join(OUTPUT_DIR, `trajectory-${name}`), await readFile(path.join(trajectoryDir, name)));
+    }
+  }
+
+  const earlierGenerationsDir = path.join(EVALUATIONS_DIR, "2026-10-01-earlier-generations");
+  const earlierSummaryPath = path.join(earlierGenerationsDir, "summary.json");
+  if (await exists(earlierSummaryPath)) {
+    const earlierSummary = sanitize(await readJson(earlierSummaryPath));
+    assertPublic(earlierSummary, "earlier-generations-summary");
+    await writeJson(path.join(OUTPUT_DIR, "earlier-generations-summary.json"), earlierSummary);
+  }
+  for (const name of ["REPORT.md", "PROTOCOL.md", "SCHEDULE_AMENDMENT.md", "REVIEW_NOTES.md"]) {
+    const sourcePath = path.join(earlierGenerationsDir, name);
+    if (await exists(sourcePath)) {
+      const publicText = (await readFile(sourcePath, "utf8"))
+        .replace(/\]\(raw\/([^/]+)\/response\.json\)/g, "](runs/2026-10-01-earlier-generations/$1/response.json)")
+        .replace(/\]\((PROTOCOL\.md|SCHEDULE_AMENDMENT\.md|REVIEW_NOTES\.md|manifest\.json|diagnostic-manifest\.json|summary\.json|grades\.json|audit\.json)\)/g, "](earlier-generations-$1)")
+        .replace(/\]\(\.\.\/2026-09-17-one-shot\/(BOARDS\.md|RESULTS\.md|README\.md)\)/g,
+          "](https://joeywilkes12.github.io/queens-model-assessment/#/protocol-results)");
+      await writeFile(path.join(OUTPUT_DIR, `earlier-generations-${name}`), publicText);
+    }
+  }
+  for (const name of ["manifest.json", "diagnostic-manifest.json", "grades.json", "audit.json"]) {
+    const sourcePath = path.join(earlierGenerationsDir, name);
+    if (await exists(sourcePath)) {
+      await writeJson(path.join(OUTPUT_DIR, `earlier-generations-${name}`), sanitize(await readJson(sourcePath)));
     }
   }
 

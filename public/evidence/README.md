@@ -1,6 +1,6 @@
 # Evidence bundle
 
-This directory documents the generated evidence served by the local Queens assessment site. It is produced from the five completed studies listed in `public/evidence/manifest.json`:
+This directory documents the generated evidence served by the local Queens assessment site. It is produced from the retained studies listed in `public/evidence/manifest.json`:
 
 ## Table of contents
 
@@ -16,6 +16,8 @@ This directory documents the generated evidence served by the local Queens asses
 - `2026-09-18-jev-deep-dive`
 - `2026-09-19-jev-primitives`
 - `2026-09-19-jev-scale`
+- `2026-09-30-jev-trajectories`
+- `2026-10-01-earlier-generations`
 
 ## Regenerate
 
@@ -25,13 +27,13 @@ From the `Games/Queens/screenshot-solver` project root, run:
 node evaluations/2026-09-19-comprehensive/site/scripts/generate-evidence.mjs
 ```
 
-The generator uses only local files and has no network or package dependency. It recreates `evaluations/2026-09-19-comprehensive/site/public/evidence/`, then writes a searchable `manifest.json`, sanitized grade-source files, and one folder per study/run. Generated JSON intentionally omits a wall-clock build timestamp so an unchanged evidence source produces byte-for-byte stable output.
+The generator uses only local files and has no network or package dependency. It recreates `evaluations/2026-09-19-comprehensive/site/public/evidence/`, then writes a searchable `manifest.json`, sanitized grade-source files, and one folder per study/run. It also sanitizes and publishes the earlier-generations `summary.json`, plus the authored `REPORT.md`, `PROTOCOL.md`, `SCHEDULE_AMENDMENT.md`, and `REVIEW_NOTES.md` as a bounded editorial data source; board-level requests and receipts remain separately addressable in the atlas. Generated JSON intentionally omits a wall-clock build timestamp so an unchanged evidence source produces byte-for-byte stable output, except for the saved study summary's own `updated_utc` field.
 
 ## Included
 
 - Actual `requests/*.json` files, retaining the complete model-visible prompt text and structured request fields.
 - `raw/*/response.json` and `raw/*/metadata.json` when present, including provider errors, timeout metadata, and other explicit transport failures.
-- The selected public grade records: one-shot grades, variation/primitives/scale audit records, primitive candidate scores, and deep-dive `grades/*.json` files.
+- The selected public grade records: one-shot grades, variation/primitives/scale audit records, primitive candidate scores, deep-dive and trajectory `grades/*.json` files, and the earlier-generations deterministic grades.
 - A manifest record for every request, including requests that were planned but never produced a raw run, runs with no response, and error responses. Missing files remain `null`; the generator never fabricates a response.
 - A searchable `excluded` flag and reason for curated request-level failures that should remain auditable without appearing in the atlas's default browse view. Searching and explicit outcome filtering still surface matching excluded records, and the atlas offers a “Show excluded” control.
 - A normalized assessment outcome for each request: `success`, `model_failure`, `request_failure`, `not_run`, or `ungraded`. Request success and Queens-assessment success remain distinct.
@@ -53,4 +55,4 @@ The generated manifest has per-record `study`, `board`, `model`, `modelVersion`,
 
 Six request-level rejections are excluded from default browsing: the direct-xAI Grok routing rejection; the initial Jev chat-endpoint mismatch; two Jev provider/guardrail rejections; and the 7×7 and 9×9 Jev chat-endpoint compatibility probes. The HTTP 520 held-out record and the Grok timeout remain included because they are genuine transport evidence rather than request-construction mistakes.
 
-Outcome tags use the saved per-run grade's primary result field in this order: `correct`, `task_correct`, `engine.correct`, or `choice_correct`. A request or transport failure never becomes a model failure, even if a grade ledger records the missing attempt. Full grade-source ledgers are ungraded navigation records rather than individual assessment attempts.
+Outcome tags use the saved per-run grade's primary result field in this order: `correct`, `task_correct`, `engine.correct`, or `choice_correct`. A request or transport failure never becomes a model failure, even if a grade ledger records the missing attempt. For the earlier-generations chapter, strict success is the original JSON-only contract plus every Queens rule; written validity is a separate deterministic extraction of exactly one visible schema-shaped JSON object followed by that same checker, without repair or answer selection. Full grade-source ledgers are ungraded navigation records rather than individual assessment attempts.

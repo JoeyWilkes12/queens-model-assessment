@@ -7,28 +7,29 @@
     "2026-09-18-jev-deep-dive",
     "2026-09-19-jev-primitives",
     "2026-09-19-jev-scale",
-    "2026-09-30-jev-trajectories"
+    "2026-09-30-jev-trajectories",
+    "2026-10-01-earlier-generations"
   ],
   "counts": {
-    "studies": 6,
-    "requests": 751,
-    "responses": 748,
-    "metadata": 749,
-    "grades": 743,
-    "gradeSources": 13,
+    "studies": 7,
+    "requests": 798,
+    "responses": 777,
+    "metadata": 778,
+    "grades": 772,
+    "gradeSources": 14,
     "inlineImageAssets": 3,
     "excluded": 7,
     "assessmentOutcomes": {
-      "model_failure": 248,
-      "not_run": 2,
+      "model_failure": 264,
+      "not_run": 20,
       "request_failure": 9,
-      "success": 122,
+      "success": 135,
       "ungraded": 370
     },
     "statuses": {
       "error": 8,
-      "not_run": 2,
-      "success": 740,
+      "not_run": 20,
+      "success": 769,
       "timeout_or_transport_failure": 1
     }
   },
@@ -809,6 +810,56 @@
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_region",
         "grade:2026-09-30-jev-trajectories:call_grades"
+      ],
+      "2026-10-01-earlier-generations": [
+        "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+        "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5",
+        "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1",
+        "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20",
+        "grade:2026-10-01-earlier-generations:grades"
       ]
     },
     "board": {
@@ -869,10 +920,28 @@
         "2026-09-18-jev-deep-dive:04_recognition_5_all120",
         "2026-09-18-jev-deep-dive:05_grid_reading_5",
         "2026-09-18-jev-deep-dive:06_check_own_5x5_answers",
+        "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+        "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
+        "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
+        "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
         "grade:2026-09-17-one-shot:grades",
         "grade:2026-09-18-jev-deep-dive:batch_5",
         "grade:2026-09-18-jev-deep-dive:recognition_5",
-        "grade:2026-09-18-jev-deep-dive:sequential_5"
+        "grade:2026-09-18-jev-deep-dive:sequential_5",
+        "grade:2026-10-01-earlier-generations:grades"
       ],
       "queens-7-medium": [
         "2026-09-17-one-shot:05_queens-7-medium_claude-opus-4.8",
@@ -910,6 +979,21 @@
         "2026-09-19-jev-scale:7_vectors_k50_r3",
         "2026-09-19-jev-scale:construction_7",
         "2026-09-19-jev-scale:original_7",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
+        "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
+        "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20",
         "grade:2026-09-18-jev-deep-dive:batch_7"
       ],
       "queens-9-hard": [
@@ -948,6 +1032,21 @@
         "2026-09-19-jev-scale:9_vectors_k50_r3",
         "2026-09-19-jev-scale:construction_9",
         "2026-09-19-jev-scale:original_9",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5",
+        "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1",
+        "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20",
         "grade:2026-09-18-jev-deep-dive:batch_9"
       ],
       "heldout-5-1": [
@@ -2369,6 +2468,83 @@
       ],
       "typesafe/jev-1.13-20260917": [
         "2026-09-30-jev-trajectories:exact_build_route_probe"
+      ],
+      "google/gemini-2.5-flash": [
+        "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash"
+      ],
+      "openai/gpt-4.1": [
+        "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+        "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1"
+      ],
+      "anthropic/claude-opus-4.7": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7"
+      ],
+      "google/gemini-2.5-pro": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro"
+      ],
+      "openai/gpt-5.5": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5"
+      ],
+      "anthropic/claude-opus-4.6": [
+        "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6"
+      ],
+      "openai/gpt-5.4": [
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4"
+      ],
+      "anthropic/claude-opus-4.5": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5"
+      ],
+      "google/gemini-2.5-flash-lite": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite"
+      ],
+      "openai/gpt-5.2": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2"
+      ],
+      "anthropic/claude-sonnet-4.5": [
+        "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5"
+      ],
+      "openai/gpt-5.1": [
+        "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1"
+      ],
+      "anthropic/claude-sonnet-4": [
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
+      ],
+      "openai/gpt-5": [
+        "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5"
+      ],
+      "openai/gpt-4o-2024-11-20": [
+        "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20"
       ]
     },
     "modelVersion": {
@@ -3136,18 +3312,127 @@
         "2026-09-19-jev-primitives:heldout-9-2_construct_matrix",
         "2026-09-19-jev-scale:original_7",
         "2026-09-19-jev-scale:original_9"
+      ],
+      "google/gemini-2.5-flash": [
+        "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash"
+      ],
+      "openai/gpt-4.1": [
+        "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+        "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1"
+      ],
+      "anthropic/claude-opus-4.7": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7"
+      ],
+      "google/gemini-2.5-pro": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro"
+      ],
+      "openai/gpt-5.5": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5"
+      ],
+      "anthropic/claude-opus-4.6": [
+        "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6"
+      ],
+      "openai/gpt-5.4": [
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4"
+      ],
+      "anthropic/claude-opus-4.5": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5"
+      ],
+      "google/gemini-2.5-flash-lite": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite"
+      ],
+      "openai/gpt-5.2": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2"
+      ],
+      "anthropic/claude-sonnet-4.5": [
+        "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5"
+      ],
+      "openai/gpt-5.1": [
+        "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1"
+      ],
+      "anthropic/claude-sonnet-4": [
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
+      ],
+      "openai/gpt-5": [
+        "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5"
+      ],
+      "openai/gpt-4o-2024-11-20": [
+        "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20"
       ]
     },
     "provider": {
       "OpenAI": [
         "2026-09-17-one-shot:01_queens-5-easy_gpt-5.6-sol",
         "2026-09-17-one-shot:06_queens-7-medium_gpt-5.6-sol",
-        "2026-09-17-one-shot:12_queens-9-hard_gpt-5.6-sol"
+        "2026-09-17-one-shot:12_queens-9-hard_gpt-5.6-sol",
+        "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5",
+        "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1",
+        "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20"
       ],
       "Google": [
         "2026-09-17-one-shot:02_queens-5-easy_gemini-3.1-pro-preview",
         "2026-09-17-one-shot:07_queens-7-medium_gemini-3.1-pro-preview",
-        "2026-09-17-one-shot:11_queens-9-hard_gemini-3.1-pro-preview"
+        "2026-09-17-one-shot:11_queens-9-hard_gemini-3.1-pro-preview",
+        "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite"
       ],
       "xAI": [
         "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
@@ -3160,7 +3445,22 @@
       "Anthropic": [
         "2026-09-17-one-shot:04_queens-5-easy_claude-opus-4.8",
         "2026-09-17-one-shot:05_queens-7-medium_claude-opus-4.8",
-        "2026-09-17-one-shot:10_queens-9-hard_claude-opus-4.8"
+        "2026-09-17-one-shot:10_queens-9-hard_claude-opus-4.8",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
       ],
       "TypeSafe": [
         "2026-09-18-jev-5x5-variations:complete_annotated_r1",
@@ -6154,6 +6454,147 @@
       ],
       "sequence-9-3_raw_a5_p03_region": [
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_region"
+      ],
+      "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows": [
+        "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows"
+      ],
+      "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows": [
+        "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows"
+      ],
+      "r1_queens-5-easy_claude-opus-4.7": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7"
+      ],
+      "r1_queens-5-easy_gemini-2.5-pro": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro"
+      ],
+      "r1_queens-5-easy_gpt-5.5": [
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5"
+      ],
+      "r1_queens-7-medium_claude-opus-4.7": [
+        "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7"
+      ],
+      "r1_queens-7-medium_gemini-2.5-pro": [
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro"
+      ],
+      "r1_queens-7-medium_gpt-5.5": [
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5"
+      ],
+      "r1_queens-9-hard_claude-opus-4.7": [
+        "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7"
+      ],
+      "r1_queens-9-hard_gemini-2.5-pro": [
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro"
+      ],
+      "r1_queens-9-hard_gpt-5.5": [
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5"
+      ],
+      "r2_queens-5-easy_claude-opus-4.6": [
+        "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6"
+      ],
+      "r2_queens-5-easy_gemini-2.5-flash": [
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash"
+      ],
+      "r2_queens-5-easy_gpt-5.4": [
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4"
+      ],
+      "r2_queens-7-medium_claude-opus-4.6": [
+        "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6"
+      ],
+      "r2_queens-7-medium_gemini-2.5-flash": [
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash"
+      ],
+      "r2_queens-7-medium_gpt-5.4": [
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4"
+      ],
+      "r2_queens-9-hard_claude-opus-4.6": [
+        "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6"
+      ],
+      "r2_queens-9-hard_gemini-2.5-flash": [
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash"
+      ],
+      "r2_queens-9-hard_gpt-5.4": [
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4"
+      ],
+      "r3_queens-5-easy_claude-opus-4.5": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5"
+      ],
+      "r3_queens-5-easy_gemini-2.5-flash-lite": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite"
+      ],
+      "r3_queens-5-easy_gpt-5.2": [
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2"
+      ],
+      "r3_queens-7-medium_claude-opus-4.5": [
+        "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5"
+      ],
+      "r3_queens-7-medium_gemini-2.5-flash-lite": [
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite"
+      ],
+      "r3_queens-7-medium_gpt-5.2": [
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2"
+      ],
+      "r3_queens-9-hard_claude-opus-4.5": [
+        "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5"
+      ],
+      "r3_queens-9-hard_gemini-2.5-flash-lite": [
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite"
+      ],
+      "r3_queens-9-hard_gpt-5.2": [
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2"
+      ],
+      "r4_queens-5-easy_claude-sonnet-4.5": [
+        "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5"
+      ],
+      "r4_queens-5-easy_gpt-5.1": [
+        "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1"
+      ],
+      "r4_queens-7-medium_claude-sonnet-4.5": [
+        "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5"
+      ],
+      "r4_queens-7-medium_gpt-5.1": [
+        "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1"
+      ],
+      "r4_queens-9-hard_claude-sonnet-4.5": [
+        "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5"
+      ],
+      "r4_queens-9-hard_gpt-5.1": [
+        "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1"
+      ],
+      "r5_queens-5-easy_claude-sonnet-4": [
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4"
+      ],
+      "r5_queens-5-easy_gpt-5": [
+        "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5"
+      ],
+      "r5_queens-7-medium_claude-sonnet-4": [
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4"
+      ],
+      "r5_queens-7-medium_gpt-5": [
+        "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5"
+      ],
+      "r5_queens-9-hard_claude-sonnet-4": [
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
+      ],
+      "r5_queens-9-hard_gpt-5": [
+        "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5"
+      ],
+      "r6_queens-5-easy_gpt-4.1": [
+        "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1"
+      ],
+      "r6_queens-7-medium_gpt-4.1": [
+        "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1"
+      ],
+      "r6_queens-9-hard_gpt-4.1": [
+        "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1"
+      ],
+      "r7_queens-5-easy_gpt-4o-2024-11-20": [
+        "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20"
+      ],
+      "r7_queens-7-medium_gpt-4o-2024-11-20": [
+        "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20"
+      ],
+      "r7_queens-9-hard_gpt-4o-2024-11-20": [
+        "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20"
       ]
     },
     "excluded": {
@@ -6290,7 +6731,20 @@
         "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p03_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p03_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p03_cell",
-        "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p03_cell"
+        "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p03_cell",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5"
       ],
       "request_failure": [
         "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
@@ -6551,11 +7005,45 @@
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p03_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p04_cell",
         "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p04_cell",
-        "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_cell"
+        "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_cell",
+        "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+        "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+        "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6",
+        "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash",
+        "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4",
+        "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
+        "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1"
       ],
       "not_run": [
         "2026-09-17-one-shot:08_queens-7-medium_grok-4.6",
-        "2026-09-17-one-shot:09_queens-9-hard_grok-4.6"
+        "2026-09-17-one-shot:09_queens-9-hard_grok-4.6",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite",
+        "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5",
+        "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1",
+        "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20",
+        "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20"
       ],
       "ungraded": [
         "2026-09-18-jev-deep-dive:02_batch_5x5_guardrail_enabled",
@@ -28902,6 +29390,1427 @@
         "grade": "evaluations/2026-09-30-jev-trajectories/grades/call_grades.json"
       },
       "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-earlier-generations/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/diagnostic_requests/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows/request.json",
+        "response": "runs/2026-10-01-earlier-generations/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/diagnostic_requests/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "anthropic/claude-opus-4.7",
+      "modelVersion": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "run": "r1_queens-5-easy_claude-opus-4.7",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_claude-opus-4.7/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_claude-opus-4.7/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_claude-opus-4.7/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_claude-opus-4.7/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-5-easy_claude-opus-4.7.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-5-easy_claude-opus-4.7/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-5-easy_claude-opus-4.7/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-pro",
+      "modelVersion": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "run": "r1_queens-5-easy_gemini-2.5-pro",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gemini-2.5-pro/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gemini-2.5-pro/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gemini-2.5-pro/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gemini-2.5-pro/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-5-easy_gemini-2.5-pro.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-5-easy_gemini-2.5-pro/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-5-easy_gemini-2.5-pro/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-5.5",
+      "modelVersion": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "run": "r1_queens-5-easy_gpt-5.5",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gpt-5.5/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gpt-5.5/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gpt-5.5/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-5-easy_gpt-5.5/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-5-easy_gpt-5.5.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-5-easy_gpt-5.5/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-5-easy_gpt-5.5/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "anthropic/claude-opus-4.7",
+      "modelVersion": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "run": "r1_queens-7-medium_claude-opus-4.7",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_claude-opus-4.7/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_claude-opus-4.7/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_claude-opus-4.7/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_claude-opus-4.7/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-7-medium_claude-opus-4.7.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-7-medium_claude-opus-4.7/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-7-medium_claude-opus-4.7/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-pro",
+      "modelVersion": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "run": "r1_queens-7-medium_gemini-2.5-pro",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gemini-2.5-pro/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gemini-2.5-pro/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gemini-2.5-pro/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gemini-2.5-pro/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-7-medium_gemini-2.5-pro.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-7-medium_gemini-2.5-pro/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-7-medium_gemini-2.5-pro/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-5.5",
+      "modelVersion": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "run": "r1_queens-7-medium_gpt-5.5",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gpt-5.5/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gpt-5.5/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gpt-5.5/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-7-medium_gpt-5.5/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-7-medium_gpt-5.5.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-7-medium_gpt-5.5/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-7-medium_gpt-5.5/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-opus-4.7",
+      "modelVersion": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "run": "r1_queens-9-hard_claude-opus-4.7",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_claude-opus-4.7/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_claude-opus-4.7/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_claude-opus-4.7/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_claude-opus-4.7/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-9-hard_claude-opus-4.7.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-9-hard_claude-opus-4.7/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-9-hard_claude-opus-4.7/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "google/gemini-2.5-pro",
+      "modelVersion": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "run": "r1_queens-9-hard_gemini-2.5-pro",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gemini-2.5-pro/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gemini-2.5-pro/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gemini-2.5-pro/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gemini-2.5-pro/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-9-hard_gemini-2.5-pro.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-9-hard_gemini-2.5-pro/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-9-hard_gemini-2.5-pro/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-5.5",
+      "modelVersion": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "run": "r1_queens-9-hard_gpt-5.5",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gpt-5.5/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gpt-5.5/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gpt-5.5/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r1_queens-9-hard_gpt-5.5/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r1_queens-9-hard_gpt-5.5.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-9-hard_gpt-5.5/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r1_queens-9-hard_gpt-5.5/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "anthropic/claude-opus-4.6",
+      "modelVersion": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "run": "r2_queens-5-easy_claude-opus-4.6",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_claude-opus-4.6/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_claude-opus-4.6/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_claude-opus-4.6/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_claude-opus-4.6/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-5-easy_claude-opus-4.6.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-5-easy_claude-opus-4.6/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-5-easy_claude-opus-4.6/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "r2_queens-5-easy_gemini-2.5-flash",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gemini-2.5-flash/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gemini-2.5-flash/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gemini-2.5-flash/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gemini-2.5-flash/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-5-easy_gemini-2.5-flash.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-5-easy_gemini-2.5-flash/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-5-easy_gemini-2.5-flash/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-5.4",
+      "modelVersion": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "run": "r2_queens-5-easy_gpt-5.4",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gpt-5.4/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gpt-5.4/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gpt-5.4/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-5-easy_gpt-5.4/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-5-easy_gpt-5.4.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-5-easy_gpt-5.4/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-5-easy_gpt-5.4/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "anthropic/claude-opus-4.6",
+      "modelVersion": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "run": "r2_queens-7-medium_claude-opus-4.6",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_claude-opus-4.6/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_claude-opus-4.6/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_claude-opus-4.6/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_claude-opus-4.6/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-7-medium_claude-opus-4.6.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-7-medium_claude-opus-4.6/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-7-medium_claude-opus-4.6/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "r2_queens-7-medium_gemini-2.5-flash",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gemini-2.5-flash/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gemini-2.5-flash/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gemini-2.5-flash/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gemini-2.5-flash/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-7-medium_gemini-2.5-flash.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-7-medium_gemini-2.5-flash/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-7-medium_gemini-2.5-flash/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-5.4",
+      "modelVersion": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "run": "r2_queens-7-medium_gpt-5.4",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gpt-5.4/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gpt-5.4/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gpt-5.4/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-7-medium_gpt-5.4/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-7-medium_gpt-5.4.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-7-medium_gpt-5.4/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-7-medium_gpt-5.4/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-opus-4.6",
+      "modelVersion": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "run": "r2_queens-9-hard_claude-opus-4.6",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_claude-opus-4.6/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_claude-opus-4.6/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_claude-opus-4.6/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_claude-opus-4.6/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-9-hard_claude-opus-4.6.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-9-hard_claude-opus-4.6/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-9-hard_claude-opus-4.6/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "google/gemini-2.5-flash",
+      "modelVersion": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "run": "r2_queens-9-hard_gemini-2.5-flash",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gemini-2.5-flash/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gemini-2.5-flash/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gemini-2.5-flash/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gemini-2.5-flash/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-9-hard_gemini-2.5-flash.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-9-hard_gemini-2.5-flash/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-9-hard_gemini-2.5-flash/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-5.4",
+      "modelVersion": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "run": "r2_queens-9-hard_gpt-5.4",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gpt-5.4/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gpt-5.4/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gpt-5.4/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r2_queens-9-hard_gpt-5.4/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-9-hard_gpt-5.4.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-9-hard_gpt-5.4/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r2_queens-9-hard_gpt-5.4/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "anthropic/claude-opus-4.5",
+      "modelVersion": "anthropic/claude-opus-4.5",
+      "provider": "Anthropic",
+      "run": "r3_queens-5-easy_claude-opus-4.5",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-5-easy_claude-opus-4.5/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-5-easy_claude-opus-4.5.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-5-easy_gemini-2.5-flash-lite",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "google/gemini-2.5-flash-lite",
+      "modelVersion": "google/gemini-2.5-flash-lite",
+      "provider": "Google",
+      "run": "r3_queens-5-easy_gemini-2.5-flash-lite",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-5-easy_gemini-2.5-flash-lite/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-5-easy_gemini-2.5-flash-lite.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-5-easy_gpt-5.2",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-5.2",
+      "modelVersion": "openai/gpt-5.2",
+      "provider": "OpenAI",
+      "run": "r3_queens-5-easy_gpt-5.2",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-5-easy_gpt-5.2/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-5-easy_gpt-5.2.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-7-medium_claude-opus-4.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "anthropic/claude-opus-4.5",
+      "modelVersion": "anthropic/claude-opus-4.5",
+      "provider": "Anthropic",
+      "run": "r3_queens-7-medium_claude-opus-4.5",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-7-medium_claude-opus-4.5/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-7-medium_claude-opus-4.5.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-7-medium_gemini-2.5-flash-lite",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "google/gemini-2.5-flash-lite",
+      "modelVersion": "google/gemini-2.5-flash-lite",
+      "provider": "Google",
+      "run": "r3_queens-7-medium_gemini-2.5-flash-lite",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-7-medium_gemini-2.5-flash-lite/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-7-medium_gemini-2.5-flash-lite.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-7-medium_gpt-5.2",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-5.2",
+      "modelVersion": "openai/gpt-5.2",
+      "provider": "OpenAI",
+      "run": "r3_queens-7-medium_gpt-5.2",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-7-medium_gpt-5.2/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-7-medium_gpt-5.2.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-9-hard_claude-opus-4.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-opus-4.5",
+      "modelVersion": "anthropic/claude-opus-4.5",
+      "provider": "Anthropic",
+      "run": "r3_queens-9-hard_claude-opus-4.5",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-9-hard_claude-opus-4.5/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-9-hard_claude-opus-4.5.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-9-hard_gemini-2.5-flash-lite",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "google/gemini-2.5-flash-lite",
+      "modelVersion": "google/gemini-2.5-flash-lite",
+      "provider": "Google",
+      "run": "r3_queens-9-hard_gemini-2.5-flash-lite",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-9-hard_gemini-2.5-flash-lite/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-9-hard_gemini-2.5-flash-lite.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r3_queens-9-hard_gpt-5.2",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-5.2",
+      "modelVersion": "openai/gpt-5.2",
+      "provider": "OpenAI",
+      "run": "r3_queens-9-hard_gpt-5.2",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r3_queens-9-hard_gpt-5.2/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r3_queens-9-hard_gpt-5.2.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r4_queens-5-easy_claude-sonnet-4.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "anthropic/claude-sonnet-4.5",
+      "modelVersion": "anthropic/claude-sonnet-4.5",
+      "provider": "Anthropic",
+      "run": "r4_queens-5-easy_claude-sonnet-4.5",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r4_queens-5-easy_claude-sonnet-4.5/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r4_queens-5-easy_claude-sonnet-4.5.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r4_queens-5-easy_gpt-5.1",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-5.1",
+      "modelVersion": "openai/gpt-5.1",
+      "provider": "OpenAI",
+      "run": "r4_queens-5-easy_gpt-5.1",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r4_queens-5-easy_gpt-5.1/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r4_queens-5-easy_gpt-5.1.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r4_queens-7-medium_claude-sonnet-4.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "anthropic/claude-sonnet-4.5",
+      "modelVersion": "anthropic/claude-sonnet-4.5",
+      "provider": "Anthropic",
+      "run": "r4_queens-7-medium_claude-sonnet-4.5",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r4_queens-7-medium_claude-sonnet-4.5/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r4_queens-7-medium_claude-sonnet-4.5.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r4_queens-7-medium_gpt-5.1",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-5.1",
+      "modelVersion": "openai/gpt-5.1",
+      "provider": "OpenAI",
+      "run": "r4_queens-7-medium_gpt-5.1",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r4_queens-7-medium_gpt-5.1/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r4_queens-7-medium_gpt-5.1.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r4_queens-9-hard_claude-sonnet-4.5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4.5",
+      "modelVersion": "anthropic/claude-sonnet-4.5",
+      "provider": "Anthropic",
+      "run": "r4_queens-9-hard_claude-sonnet-4.5",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r4_queens-9-hard_claude-sonnet-4.5/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r4_queens-9-hard_claude-sonnet-4.5.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r4_queens-9-hard_gpt-5.1",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-5.1",
+      "modelVersion": "openai/gpt-5.1",
+      "provider": "OpenAI",
+      "run": "r4_queens-9-hard_gpt-5.1",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r4_queens-9-hard_gpt-5.1/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r4_queens-9-hard_gpt-5.1.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "r5_queens-5-easy_claude-sonnet-4",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_claude-sonnet-4/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_claude-sonnet-4/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_claude-sonnet-4/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_claude-sonnet-4/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r5_queens-5-easy_claude-sonnet-4.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-5-easy_claude-sonnet-4/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-5-easy_claude-sonnet-4/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-5",
+      "modelVersion": "openai/gpt-5",
+      "provider": "OpenAI",
+      "run": "r5_queens-5-easy_gpt-5",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_gpt-5/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_gpt-5/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_gpt-5/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r5_queens-5-easy_gpt-5/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r5_queens-5-easy_gpt-5.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-5-easy_gpt-5/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-5-easy_gpt-5/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "r5_queens-7-medium_claude-sonnet-4",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_claude-sonnet-4/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_claude-sonnet-4/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_claude-sonnet-4/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_claude-sonnet-4/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r5_queens-7-medium_claude-sonnet-4.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-7-medium_claude-sonnet-4/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-7-medium_claude-sonnet-4/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-5",
+      "modelVersion": "openai/gpt-5",
+      "provider": "OpenAI",
+      "run": "r5_queens-7-medium_gpt-5",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_gpt-5/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_gpt-5/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_gpt-5/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r5_queens-7-medium_gpt-5/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r5_queens-7-medium_gpt-5.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-7-medium_gpt-5/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-7-medium_gpt-5/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "anthropic/claude-sonnet-4",
+      "modelVersion": "anthropic/claude-sonnet-4",
+      "provider": "Anthropic",
+      "run": "r5_queens-9-hard_claude-sonnet-4",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_claude-sonnet-4/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_claude-sonnet-4/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_claude-sonnet-4/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_claude-sonnet-4/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r5_queens-9-hard_claude-sonnet-4.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-9-hard_claude-sonnet-4/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-9-hard_claude-sonnet-4/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-5",
+      "modelVersion": "openai/gpt-5",
+      "provider": "OpenAI",
+      "run": "r5_queens-9-hard_gpt-5",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_gpt-5/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_gpt-5/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_gpt-5/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r5_queens-9-hard_gpt-5/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r5_queens-9-hard_gpt-5.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-9-hard_gpt-5/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r5_queens-9-hard_gpt-5/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "r6_queens-5-easy_gpt-4.1",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r6_queens-5-easy_gpt-4.1/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r6_queens-5-easy_gpt-4.1/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r6_queens-5-easy_gpt-4.1/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r6_queens-5-easy_gpt-4.1/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r6_queens-5-easy_gpt-4.1.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r6_queens-5-easy_gpt-4.1/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r6_queens-5-easy_gpt-4.1/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "r6_queens-7-medium_gpt-4.1",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r6_queens-7-medium_gpt-4.1/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r6_queens-7-medium_gpt-4.1/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r6_queens-7-medium_gpt-4.1/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r6_queens-7-medium_gpt-4.1/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r6_queens-7-medium_gpt-4.1.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r6_queens-7-medium_gpt-4.1/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r6_queens-7-medium_gpt-4.1/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4.1",
+      "modelVersion": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "run": "r6_queens-9-hard_gpt-4.1",
+      "status": "success",
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
+      "partialResponse": true,
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r6_queens-9-hard_gpt-4.1/request.json",
+        "response": "runs/2026-10-01-earlier-generations/r6_queens-9-hard_gpt-4.1/response.json",
+        "metadata": "runs/2026-10-01-earlier-generations/r6_queens-9-hard_gpt-4.1/metadata.json",
+        "grade": "runs/2026-10-01-earlier-generations/r6_queens-9-hard_gpt-4.1/grade.json"
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r6_queens-9-hard_gpt-4.1.json",
+        "response": "evaluations/2026-10-01-earlier-generations/raw/r6_queens-9-hard_gpt-4.1/response.json",
+        "metadata": "evaluations/2026-10-01-earlier-generations/raw/r6_queens-9-hard_gpt-4.1/metadata.json",
+        "grade": "evaluations/2026-10-01-earlier-generations/grades.json"
+      },
+      "failure": {
+        "partialResponse": true
+      }
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "size": 5,
+      "model": "openai/gpt-4o-2024-11-20",
+      "modelVersion": "openai/gpt-4o-2024-11-20",
+      "provider": "OpenAI",
+      "run": "r7_queens-5-easy_gpt-4o-2024-11-20",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r7_queens-5-easy_gpt-4o-2024-11-20/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r7_queens-5-easy_gpt-4o-2024-11-20.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r7_queens-7-medium_gpt-4o-2024-11-20",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-7-medium",
+      "size": 7,
+      "model": "openai/gpt-4o-2024-11-20",
+      "modelVersion": "openai/gpt-4o-2024-11-20",
+      "provider": "OpenAI",
+      "run": "r7_queens-7-medium_gpt-4o-2024-11-20",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r7_queens-7-medium_gpt-4o-2024-11-20/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r7_queens-7-medium_gpt-4o-2024-11-20.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
+    },
+    {
+      "id": "2026-10-01-earlier-generations:r7_queens-9-hard_gpt-4o-2024-11-20",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-9-hard",
+      "size": 9,
+      "model": "openai/gpt-4o-2024-11-20",
+      "modelVersion": "openai/gpt-4o-2024-11-20",
+      "provider": "OpenAI",
+      "run": "r7_queens-9-hard_gpt-4o-2024-11-20",
+      "status": "not_run",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": false,
+      "partialResponse": false,
+      "assessmentOutcome": "not_run",
+      "files": {
+        "request": "runs/2026-10-01-earlier-generations/r7_queens-9-hard_gpt-4o-2024-11-20/request.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "source": {
+        "request": "evaluations/2026-10-01-earlier-generations/requests/r7_queens-9-hard_gpt-4o-2024-11-20.json",
+        "response": null,
+        "metadata": null,
+        "grade": null
+      },
+      "failure": null
     }
   ],
   "gradeRecords": [
@@ -29215,6 +31124,30 @@
       },
       "path": "grades/2026-09-30-jev-trajectories/call_grades.json",
       "source": "evaluations/2026-09-30-jev-trajectories/grades/call_grades.json",
+      "failure": null
+    },
+    {
+      "id": "grade:2026-10-01-earlier-generations:grades",
+      "study": "2026-10-01-earlier-generations",
+      "board": "queens-5-easy",
+      "model": null,
+      "modelVersion": null,
+      "provider": null,
+      "run": null,
+      "kind": "grade-source",
+      "status": "success",
+      "hasResponse": false,
+      "hasMetadata": false,
+      "hasGrade": true,
+      "partialResponse": false,
+      "files": {
+        "request": null,
+        "response": null,
+        "metadata": null,
+        "grade": "grades/2026-10-01-earlier-generations/grades.json"
+      },
+      "path": "grades/2026-10-01-earlier-generations/grades.json",
+      "source": "evaluations/2026-10-01-earlier-generations/grades.json",
       "failure": null
     }
   ]

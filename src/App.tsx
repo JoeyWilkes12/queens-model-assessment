@@ -75,6 +75,7 @@ const routes: Route[] = [
   { path: 'assessment-receipt', title: 'Assessment receipt', section: 'Read first', description: 'What was tested, when, and how to read the ledger.' },
   { path: 'queens-rules', title: 'Queens rules', section: 'The board', description: 'Regional constraints, boards, and verified solutions.' },
   { path: 'protocol-results', title: 'Protocol & results', section: 'The board', description: 'Frozen inputs, entrants, outcomes, and route failures.' },
+  { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
   { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
   { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
   { path: 'scale-primitives', title: 'Scale & primitives', section: 'The Jev question', description: 'Larger menus, Noul, Score, and held-out boards.' },
@@ -235,7 +236,7 @@ function normalizeManifestRecord(record: ManifestRecord): EvidenceRecord {
     : outcome === 'request_failure'
       ? 'The request did not produce a model answer; inspect the error interpretation and transport receipt.'
       : outcome === 'model_failure'
-        ? 'The request completed, but the saved deterministic grade marks the model answer incorrect.'
+        ? 'The request completed, but did not pass the saved assessment contract. Inspect the grade to distinguish format failures from rule violations.'
         : outcome === 'success'
           ? 'The request completed and the saved deterministic grade marks the scoped answer correct.'
           : record.hasResponse
@@ -412,6 +413,7 @@ function ExecutiveSummary() {
       <main className="reading-column" id="main-content">
         <Section id="finding" title="A useful distinction, with a small denominator" label="Executive summary">
           <Callout tone="evidence" title="September 30 follow-up: Jev completed one new 5×5 board.">A color-then-cell workflow completed one of nine new boards in every attempt, with and without immediate-conflict filtering. The other eight boards remained unsolved. <a href="#/jev-trajectories">Read all 90 trajectories and the exact-request repeatability tests.</a> The original construction results below remain the September 19 baseline.</Callout>
+          <Callout tone="note" title="October 1 comparison: earlier model generations, same three board images.">The historical cohort reuses the original image prompts and separates strict JSON-plus-rules success from a deterministic written-answer extraction diagnostic. <a href="#/earlier-generations">Compare each model and board, inspect the first observed failures, and open every request receipt.</a></Callout>
           <p className="lead">On six held-out boards, Jev's matrix and prose construction scored <strong>0/6</strong>. When a local generator supplied complete candidates and exposed each candidate's occupied region letters, Choice, Noul ranking, and Score ranking selected the true candidate <strong>6/6</strong>.</p>
           <p>That is assisted recognition, not unaided whole-puzzle planning. The exact validator remains the authority. The report intentionally preserves both the success and the scaffolding that made it possible.</p>
           <div className="finding-strip"><div><strong>11 / 11</strong><span>captured reasoning-model answers valid</span></div><div><strong>24 / 24</strong><span>larger-board explicit-region selections</span></div><div><strong>0 / 6</strong><span>new-board native constructions</span></div></div>
@@ -438,7 +440,7 @@ function ExecutiveSummary() {
 }
 
 function AssessmentReceiptPage() {
-  return <><PageHero trail="Read first / receipt" title="Assessment receipt" deck="The report's trust strip, expanded into a readable ledger: what was in scope, what was measured, and which edges remain unresolved." /><AssessmentReceipt /><div className="reading-layout"><LocalToc items={[{ id: 'scope', label: 'Scope' }, { id: 'ledger', label: 'Ledger' }, { id: 'boundaries', label: 'Boundaries' }]} /><main className="reading-column" id="main-content"><Section id="scope" title="Scope before score"><p>The original language-model condition was one request, one fresh context, and one scored answer opportunity per model per board. It was not an agentic sandbox. Jev was evaluated separately through typed Decisions calls with text state.</p><div className="scope-grid"><div><span>Included</span><strong>Five models and four Jev stages</strong><p>Requests, visible responses, grades, usage, timing, and preserved transport failures.</p></div><div><span>Excluded</span><strong>Private and irreproducible payloads</strong><p>No credentials, encrypted reasoning, hidden answer keys, or unrelated repository files.</p></div></div></Section><Section id="ledger" title="September 19 historical ledger"><DataTable caption="Inference cost accounting" headers={['Component', 'Confirmed USD', 'Unresolved allowance']} rows={[['Original reasoning-model pilot', '$0.667009200', '$0.225228800'], ['First Jev deep dive', '$0.000792540', '$0.041268820'], ['Jev 39-call variations', '$0.002274384', '$0.000000000'], ['Jev larger-board scale', '$0.020552112', '$0.040000000'], ['Jev new-board primitives', '$0.004976664', '$0.012497446'], ['Total', '$0.695604900', '$0.318995066']]} /><p className="table-note">Conservative accounted total: <strong>$1.014599966</strong>. Remaining under the $3 allowance: <strong>$1.985400034</strong>. Allowances are reservations, not measured charges.</p></Section><p><a href="#/jev-trajectories">September 30 follow-up: view the updated all-study cost ledger.</a></p><Section id="boundaries" title="The receipt is not a certificate"><Callout tone="stop" title="A trust receipt makes provenance visible; it does not certify a model.">Source class, date, interaction mode, and outcome are reminders to inspect the evidence. They do not imply security, broad quality, or production readiness.</Callout></Section></main></div></>
+  return <><PageHero trail="Read first / receipt" title="Assessment receipt" deck="The report's trust strip, expanded into a readable ledger: what was in scope, what was measured, and which edges remain unresolved." /><AssessmentReceipt /><div className="reading-layout"><LocalToc items={[{ id: 'scope', label: 'Scope' }, { id: 'ledger', label: 'Ledger' }, { id: 'boundaries', label: 'Boundaries' }]} /><main className="reading-column" id="main-content"><Section id="scope" title="Scope before score"><p>The original language-model condition was one request, one fresh context, and one scored answer opportunity per model per board. It was not an agentic sandbox. Jev was evaluated separately through typed Decisions calls with text state.</p><div className="scope-grid"><div><span>Included</span><strong>Seven retained model and Jev studies</strong><p>Requests, visible responses, grades, usage, timing, and preserved transport failures, including the October 1 generation replay.</p></div><div><span>Excluded</span><strong>Private and irreproducible payloads</strong><p>No credentials, encrypted reasoning, hidden answer keys, or unrelated repository files.</p></div></div></Section><Section id="ledger" title="September 19 historical ledger"><DataTable caption="Inference cost accounting" headers={['Component', 'Confirmed USD', 'Unresolved allowance']} rows={[['Original reasoning-model pilot', '$0.667009200', '$0.225228800'], ['First Jev deep dive', '$0.000792540', '$0.041268820'], ['Jev 39-call variations', '$0.002274384', '$0.000000000'], ['Jev larger-board scale', '$0.020552112', '$0.040000000'], ['Jev new-board primitives', '$0.004976664', '$0.012497446'], ['Total', '$0.695604900', '$0.318995066']]} /><p className="table-note">Conservative accounted total: <strong>$1.014599966</strong>. Remaining under the $3 allowance: <strong>$1.985400034</strong>. Allowances are reservations, not measured charges.</p></Section><p><a href="#/jev-trajectories">September 30 follow-up: view the updated all-study cost ledger.</a> <a href="#/earlier-generations">The October 1 replay reports its own incremental budget and cost ledger.</a></p><Section id="boundaries" title="The receipt is not a certificate"><Callout tone="stop" title="A trust receipt makes provenance visible; it does not certify a model.">Source class, date, interaction mode, and outcome are reminders to inspect the evidence. They do not imply security, broad quality, or production readiness.</Callout></Section></main></div></>
 }
 
 function QueensRules() {
@@ -574,8 +576,192 @@ function JsonPanel({ title, value }: { title: string; value: unknown }) {
   return <section className="json-panel"><div className="json-panel-header"><h2>{title}</h2><span>sanitized</span></div><pre>{jsonText(value)}</pre></section>
 }
 
+type EarlierBoardResult = {
+  board_id: string
+  strict_correct: boolean | null
+  written_correct: boolean | null
+  failure: string | null
+  finish_reason: string | null
+  seconds: number | null
+  cost_usd: number | null
+  call_id: string
+}
+
+type EarlierModelResult = {
+  model: string
+  family: string
+  round: number
+  condition: string
+  attempted: number
+  strict_correct: number
+  written_correct: number
+  median_seconds: number | null
+  cost_usd: number | null
+  boards: EarlierBoardResult[]
+}
+
+type EarlierGenerationsSummary = {
+  study: string
+  updated_utc: string
+  status: 'complete' | 'running'
+  attempted: number
+  original_attempted: number
+  strict_correct: number
+  written_correct: number
+  known_cost_usd: number
+  original_cost_usd: number
+  diagnostic_cost_usd: number
+  accounted_usd: number
+  budget_usd: number
+  remaining_usd: number
+  models: EarlierModelResult[]
+  first_failures: { family: string; model: string; round: number; board_id: string; failure: string | null; finish_reason: string | null; written_failure: string; written_checks: Record<string, boolean>; candidate_count: number }[]
+  diagnostic_results: { model: string; board_id: string; condition: string; strict_correct: boolean | null; written_correct: boolean | null; seconds: number | null; cost_usd: number | null; call_id: string }[]
+  limits: string[]
+  conclusions: string[]
+}
+
+function earlierPassLabel(value: boolean | null | undefined) {
+  return value === true ? 'Pass' : value === false ? 'Fail' : 'Not scored'
+}
+
+function earlierSeconds(value: number | null | undefined) {
+  return typeof value === 'number' && Number.isFinite(value) ? `${value.toFixed(1)} s` : '—'
+}
+
+function earlierUsd(value: number | null | undefined) {
+  return typeof value === 'number' && Number.isFinite(value) ? `$${value.toFixed(9)}` : '—'
+}
+
+function earlierReceipt(callId: string | null | undefined) {
+  return callId
+    ? <a href={`#/evidence-atlas/2026-10-01-earlier-generations:${callId}`}>Open receipt</a>
+    : 'No request recorded'
+}
+
+function EarlierGenerations() {
+  const [data, setData] = useState<EarlierGenerationsSummary | null>(null)
+  const [error, setError] = useState(false)
+  useEffect(() => {
+    let active = true
+    fetch(assetUrl('evidence/earlier-generations-summary.json')).then(response => {
+      if (!response.ok) throw new Error('Summary unavailable')
+      return response.json()
+    }).then(value => { if (active) setData(value as EarlierGenerationsSummary) }).catch(() => {
+      if (active) setError(true)
+    })
+    return () => { active = false }
+  }, [])
+
+  const originalAttempted = data?.models.reduce((total, model) => total + model.attempted, 0) ?? 0
+  const originalStrictCorrect = data?.models.reduce((total, model) => total + model.strict_correct, 0) ?? 0
+  const originalWrittenCorrect = data?.models.reduce((total, model) => total + model.written_correct, 0) ?? 0
+  const modelRows = data?.models.map(model => [
+    `Candidate rung ${model.round} · ${model.family}`,
+    model.model,
+    `${model.strict_correct}/${model.attempted}`,
+    `${model.written_correct}/${model.attempted}`,
+    earlierSeconds(model.median_seconds),
+    earlierUsd(model.cost_usd),
+  ]) ?? []
+  const boardRows = data?.models.flatMap(model => model.boards.map(board => [
+    model.model,
+    `Candidate rung ${model.round}`,
+    board.board_id,
+    earlierPassLabel(board.strict_correct),
+    earlierPassLabel(board.written_correct),
+    earlierSeconds(board.seconds),
+    earlierUsd(board.cost_usd),
+    board.failure || board.finish_reason || '—',
+    earlierReceipt(board.call_id),
+  ])) ?? []
+  const firstFailureRows = data?.first_failures.map(failure => {
+    const board = data.models.find(model => model.model === failure.model && model.round === failure.round)
+      ?.boards.find(result => result.board_id === failure.board_id)
+    return [
+      failure.family,
+      failure.model,
+      `Candidate rung ${failure.round}`,
+      failure.board_id,
+      `Strict: ${failure.failure || '—'}; written: ${failure.written_failure}; objects: ${failure.candidate_count}; ${Object.entries(failure.written_checks).filter(([, passed]) => !passed).map(([rule]) => rule).join(', ') || failure.finish_reason || '—'}`,
+      earlierReceipt(board?.call_id),
+    ]
+  }) ?? []
+  const diagnosticRows = data?.diagnostic_results.map(result => [
+    result.model,
+    result.board_id,
+    result.condition,
+    earlierPassLabel(result.strict_correct),
+    earlierPassLabel(result.written_correct),
+    earlierSeconds(result.seconds),
+    earlierUsd(result.cost_usd),
+    earlierReceipt(result.call_id),
+  ]) ?? []
+
+  return <><PageHero trail="Model generations / October 1 cohort" title="The same board, across earlier model generations." deck="A sparse, adaptively reprioritized comparison replays the original image prompts and separates strict JSON-plus-rules success from a deterministic written-answer diagnostic." action={{ label: 'Open the request receipts', path: 'evidence-atlas' }} />
+    <div className="reading-layout"><LocalToc items={[{ id: 'earlier-method', label: 'Scoring boundary' }, { id: 'earlier-models', label: 'By model' }, { id: 'earlier-receipts', label: 'Every board receipt' }, { id: 'earlier-failures', label: 'First observed failures' }, { id: 'earlier-diagnostics', label: 'Representation diagnostics' }, { id: 'earlier-limits', label: 'Cost & limits' }]} />
+      <main className="reading-column" id="main-content">
+        {!data && <p role="status">{error ? 'The saved cohort summary is not available. You can still inspect this study’s saved requests and responses in the evidence atlas.' : 'Loading the saved cohort summary…'}</p>}
+        {data && <>
+          {data.status === 'running' && <Callout tone="caution" title="This cohort is still in progress.">The counts below are a live saved summary, not a final result. Do not interpret unfinished requests or phases as the generation ladder’s stopping point.</Callout>}
+          <Section id="earlier-method" title="Same images, separate scores, adaptive sparse schedule">
+            <p className="lead">Strict success requires the original JSON-only contract and every Queens rule. The separate written-answer diagnostic extracts exactly one schema-shaped JSON object from visible text, then applies the same deterministic checker; it does not repair placements or replace the strict score.</p>
+            <p>The original frozen candidate ladder was reprioritized after round 1 to spend the limited budget on older cross-family anchors before deeper within-family probes. The “candidate rung” shown below preserves each model’s position in that original ladder; it is <strong>not execution chronology</strong>. Consult the schedule amendment for the actual adaptive sequence. Skipped intermediate releases are unobserved—not passes or failures—so this study cannot establish a contiguous generation threshold.</p>
+            <DataTable caption="Original-image cohort summary" headers={['Measure', 'Observed value']} rows={[
+              ['Original-image requests attempted', String(data.original_attempted)],
+              ['Strict JSON and all rules', `${originalStrictCorrect}/${originalAttempted}`],
+              ['Mathematically valid written answer after extraction', `${originalWrittenCorrect}/${originalAttempted}`],
+              ['Original-image usage cost', earlierUsd(data.original_cost_usd)],
+              ['Text-diagnostic usage cost', earlierUsd(data.diagnostic_cost_usd)],
+              ['Combined confirmed usage', earlierUsd(data.known_cost_usd)],
+              ['Accounted within the incremental budget', `${earlierUsd(data.accounted_usd)} of ${earlierUsd(data.budget_usd)}`],
+              ['Budget remaining', earlierUsd(data.remaining_usd)],
+            ]} />
+            <p>One sample per model/board cell does not estimate stable accuracy. Model versions are the versions reported by OpenRouter; a family slug or alias does not guarantee immutable weights.</p>
+          </Section>
+          <Section id="earlier-models" title="Results by model and frozen candidate rung">
+            <DataTable caption="Original image prompts · deterministic grades" headers={['Original candidate rung', 'Requested model', 'Strict correct', 'Written valid', 'Median API time', 'Reported cost']} rows={modelRows} />
+            <p>“Strict correct” and “written valid” use the same attempted-request denominator shown for each model rung. It can be fewer than three when the budget-gated phase did not reach every board. The written-answer measure was preregistered for this October stage; it was post hoc in the historical frontier pilot. Strict formatting failures remain failures in the primary cohort.</p>
+          </Section>
+          <Section id="earlier-receipts" title="Every board-level response and request receipt">
+            <p>Each receipt opens the exact saved request, visible final response or transport error, deterministic grade, and usage/timing metadata. The attached image is decoded to a SHA-256-addressed asset so its submitted pixels remain inspectable without embedding base64 in the public JSON.</p>
+            <DataTable caption="Board-level records · original image condition" headers={['Requested model', 'Candidate rung', 'Board', 'Strict', 'Written', 'API time', 'Cost', 'Failure / finish', 'Evidence']} rows={boardRows} />
+          </Section>
+          <Section id="earlier-failures" title="First sampled failures are not a contiguous threshold">
+            <p>Family stopping decisions and the limited budget leave generations untested. An observed failure is only a location in this adaptive sample; it does not show that all older versions fail, all newer ones pass, or that a boundary lies between adjacent releases.</p>
+            {firstFailureRows.length
+              ? <DataTable caption="Observed family stopping points · original candidate rungs" headers={['Family', 'Model', 'Candidate rung', 'Board', 'Observed failure', 'Evidence']} rows={firstFailureRows} />
+              : <p>No family stopping observation is recorded in the current summary.</p>}
+          </Section>
+          <Section id="earlier-diagnostics" title="Representation diagnostics are a separate condition">
+            <p>These text-input probes were selected only after an original-image failure. They remove image perception and change the representation, so they cannot be combined with or used to revise the original-image score.</p>
+            <p>The two funded probes use complete region matrices on 5×5. GPT-4.1 still failed region coverage; Gemini 2.5 Flash returned a valid placement but not strict JSON. Claude’s failed 9×9 matrix probe was omitted because its conservative $0.230320 reserve exceeded the $0.199215 remaining when this phase was frozen. No correctness feedback or candidate answers entered these fresh requests.</p>
+            {diagnosticRows.length
+              ? <DataTable caption="Exploratory diagnostic calls" headers={['Model', 'Board', 'Text condition', 'Strict', 'Written', 'API time', 'Cost', 'Evidence']} rows={diagnosticRows} />
+              : <p>No diagnostic results are recorded in the current summary.</p>}
+          </Section>
+          <Section id="earlier-limits" title="Budget, boundaries, and downloadable record">
+            <DataTable caption="Incremental study ledger" headers={['Measure', 'Observed value']} rows={[
+              ['Requests attempted', String(data.attempted)],
+              ['Original-image attempts', String(data.original_attempted)],
+              ['Confirmed usage cost', earlierUsd(data.known_cost_usd)],
+              ['Conservative accounted cost', earlierUsd(data.accounted_usd)],
+              ['Authorized maximum', earlierUsd(data.budget_usd)],
+              ['Remaining allowance', earlierUsd(data.remaining_usd)],
+              ['Summary updated', data.updated_utc],
+            ]} />
+            <ul>{data.conclusions.map((conclusion, index) => <li key={`conclusion-${index}`}>{conclusion}</li>)}</ul>
+            <Callout tone="caution" title="A practical service comparison, not an isolated generation effect.">
+              <ul>{data.limits.map((limit, index) => <li key={`limit-${index}`}>{limit}</li>)}</ul>
+            </Callout>
+            <div className="next-actions"><a href={assetUrl('evidence/earlier-generations-REPORT.md')} download>Download the report</a><a href={assetUrl('evidence/earlier-generations-PROTOCOL.md')} download>Frozen protocol</a><a href={assetUrl('evidence/earlier-generations-SCHEDULE_AMENDMENT.md')} download>Adaptive schedule amendment</a><a href={assetUrl('evidence/earlier-generations-REVIEW_NOTES.md')} download>Review and interpretation notes</a><a href="#/evidence-atlas">Search all request receipts</a></div>
+          </Section>
+        </>}
+      </main></div></>
+}
+
 function MethodsSources() {
-  return <><PageHero trail="Receipts / methods" title="Methods & sources" deck="Definitions keep the narrative honest. This page names the measurement boundaries, the limits, and the primary public references used for interpretation." /><div className="reading-layout"><LocalToc items={[{ id: 'definitions', label: 'Definitions' }, { id: 'limits', label: 'Limits' }, { id: 'models', label: 'Model listings' }, { id: 'sources', label: 'Rules & Jev docs' }]} /><main className="reading-column" id="main-content"><Section id="definitions" title="Measurement boundaries"><div className="definition-list"><div><strong>Correct solution</strong><p>An in-range queen in every row, unique columns, exactly one hit per region, and no touching pair.</p></div><div><strong>Strict pass</strong><p>The original output also satisfies the exact JSON-only schema. Post-hoc extraction is a separate diagnostic.</p></div><div><strong>Elapsed API time</strong><p>Monotonic client time through full response receipt; not isolated model compute or preparation time.</p></div><div><strong>Confirmed USD</strong><p>Returned <code>usage.cost</code>. Missing charges are not zero; allowance is reservation, not billed amount.</p></div></div></Section><Section id="limits" title="Limits that materially affect interpretation"><Callout tone="caution" title="The denominator is intentionally visible.">Three original scored boards and six later boards do not establish broad distribution coverage. Clean images, region letters, singleton regions, preview model versions, unequal provider conditions, and generator-family reuse all constrain the inference.</Callout><p>The same board appears in several conditions and candidate lists overlap. Analyze at board level; do not manufacture tiny p-values by multiplying correlated decisions.</p></Section><Section id="models" title="OpenRouter model listings"><ul className="source-list"><li><a href="https://openrouter.ai/openai/gpt-5.6-sol" target="_blank" rel="noreferrer">GPT-5.6 Sol <Icon name="external" /></a><span>OpenAI model listing used for the one-shot pilot.</span></li><li><a href="https://openrouter.ai/anthropic/claude-opus-4.8" target="_blank" rel="noreferrer">Claude Opus 4.8 <Icon name="external" /></a><span>Anthropic model listing used for the one-shot pilot.</span></li><li><a href="https://openrouter.ai/x-ai/grok-4.6" target="_blank" rel="noreferrer">Grok 4.6 <Icon name="external" /></a><span>Model listing; saved runs used the approved Amazon Bedrock US West 2 route.</span></li><li><a href="https://openrouter.ai/google/gemini-3.1-pro-preview" target="_blank" rel="noreferrer">Gemini 3.1 Pro Preview <Icon name="external" /></a><span>Google preview-model listing used for the one-shot pilot.</span></li><li><a href="https://openrouter.ai/typesafe/jev-1.13" target="_blank" rel="noreferrer">Jev 1.13 <Icon name="external" /></a><span>Versioned listing resolved by the experiment.</span></li><li><a href="https://openrouter.ai/~typesafe/jev-latest" target="_blank" rel="noreferrer">Jev Latest alias <Icon name="external" /></a><span>Moving alias supplied for the deep dive; do not equate it with a frozen build.</span></li></ul></Section><Section id="sources" title="Queens rules, play link, and Jev documentation"><ul className="source-list"><li><a href="https://www.linkedin.com/help/linkedin/answer/a6269510" target="_blank" rel="noreferrer">LinkedIn Queens help <Icon name="external" /></a><span>Authoritative regional one-queen and no-touch rule reference.</span></li><li><a href="https://www.linkedin.com/games/queens/" target="_blank" rel="noreferrer">Play LinkedIn Queens <Icon name="external" /></a><span>Live daily game; not a frozen copy of these benchmark boards.</span></li><li><a href="https://docs.typesafe.ai/models" target="_blank" rel="noreferrer">TypeSafe models and aliases <Icon name="external" /></a><span>Text modality, version names, and context notes.</span></li><li><a href="https://docs.typesafe.ai/concepts/system-one" target="_blank" rel="noreferrer">System One <Icon name="external" /></a><span>Typed decisions over structured state.</span></li><li><a href="https://docs.typesafe.ai/primitives/choice" target="_blank" rel="noreferrer">Choice primitive <Icon name="external" /></a><span>Fixed candidate selection and rejection-option design.</span></li><li><a href="https://docs.typesafe.ai/primitives/noul" target="_blank" rel="noreferrer">Noul primitive <Icon name="external" /></a><span>Probability of an affirmative binary judgment.</span></li><li><a href="https://docs.typesafe.ai/primitives/score" target="_blank" rel="noreferrer">Score primitive <Icon name="external" /></a><span>Ordered descriptive levels and expected index.</span></li><li><a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13" target="_blank" rel="noreferrer">Jev 1.13 known limitations <Icon name="external" /></a><span>Vendor cautions about counting, indirection, precision, and cross-primitive consistency.</span></li></ul></Section></main></div></>
+  return <><PageHero trail="Receipts / methods" title="Methods & sources" deck="Definitions keep the narrative honest. This page names the measurement boundaries, the limits, and the primary public references used for interpretation." /><div className="reading-layout"><LocalToc items={[{ id: 'definitions', label: 'Definitions' }, { id: 'limits', label: 'Limits' }, { id: 'models', label: 'Model listings' }, { id: 'sources', label: 'Rules & Jev docs' }]} /><main className="reading-column" id="main-content"><Section id="definitions" title="Measurement boundaries"><div className="definition-list"><div><strong>Correct solution</strong><p>An in-range queen in every row, unique columns, exactly one hit per region, and no touching pair.</p></div><div><strong>Strict pass</strong><p>The original output also satisfies the exact JSON-only schema. Post-hoc extraction is a separate diagnostic.</p></div><div><strong>Elapsed API time</strong><p>Monotonic client time through full response receipt; not isolated model compute or preparation time.</p></div><div><strong>Confirmed USD</strong><p>Returned <code>usage.cost</code>. Missing charges are not zero; allowance is reservation, not billed amount.</p></div></div></Section><Section id="limits" title="Limits that materially affect interpretation"><Callout tone="caution" title="The denominator is intentionally visible.">The October generation replay reuses the three original board images; later Jev studies use small, study-specific cohorts, including six held-out construction boards and nine trajectory boards. These do not establish broad distribution coverage. Clean images, region letters, singleton regions, preview model versions, unequal provider conditions, and generator-family reuse all constrain the inference.</Callout><p>The same board appears in several conditions and candidate lists overlap. Analyze at board level; do not manufacture tiny p-values by multiplying correlated decisions.</p></Section><Section id="models" title="OpenRouter model listings"><ul className="source-list"><li><a href="https://openrouter.ai/openai/gpt-5.6-sol" target="_blank" rel="noreferrer">GPT-5.6 Sol <Icon name="external" /></a><span>OpenAI model listing used for the one-shot pilot.</span></li><li><a href="https://openrouter.ai/anthropic/claude-opus-4.8" target="_blank" rel="noreferrer">Claude Opus 4.8 <Icon name="external" /></a><span>Anthropic model listing used for the one-shot pilot.</span></li><li><a href="https://openrouter.ai/x-ai/grok-4.6" target="_blank" rel="noreferrer">Grok 4.6 <Icon name="external" /></a><span>Model listing; saved runs used the approved Amazon Bedrock US West 2 route.</span></li><li><a href="https://openrouter.ai/google/gemini-3.1-pro-preview" target="_blank" rel="noreferrer">Gemini 3.1 Pro Preview <Icon name="external" /></a><span>Google preview-model listing used for the one-shot pilot.</span></li><li><a href="https://openrouter.ai/typesafe/jev-1.13" target="_blank" rel="noreferrer">Jev 1.13 <Icon name="external" /></a><span>Versioned listing resolved by the experiment.</span></li><li><a href="https://openrouter.ai/~typesafe/jev-latest" target="_blank" rel="noreferrer">Jev Latest alias <Icon name="external" /></a><span>Moving alias supplied for the deep dive; do not equate it with a frozen build.</span></li></ul></Section><Section id="sources" title="Queens rules, play link, and Jev documentation"><ul className="source-list"><li><a href="https://www.linkedin.com/help/linkedin/answer/a6269510" target="_blank" rel="noreferrer">LinkedIn Queens help <Icon name="external" /></a><span>Authoritative regional one-queen and no-touch rule reference.</span></li><li><a href="https://www.linkedin.com/games/queens/" target="_blank" rel="noreferrer">Play LinkedIn Queens <Icon name="external" /></a><span>Live daily game; not a frozen copy of these benchmark boards.</span></li><li><a href="https://docs.typesafe.ai/models" target="_blank" rel="noreferrer">TypeSafe models and aliases <Icon name="external" /></a><span>Text modality, version names, and context notes.</span></li><li><a href="https://docs.typesafe.ai/concepts/system-one" target="_blank" rel="noreferrer">System One <Icon name="external" /></a><span>Typed decisions over structured state.</span></li><li><a href="https://docs.typesafe.ai/primitives/choice" target="_blank" rel="noreferrer">Choice primitive <Icon name="external" /></a><span>Fixed candidate selection and rejection-option design.</span></li><li><a href="https://docs.typesafe.ai/primitives/noul" target="_blank" rel="noreferrer">Noul primitive <Icon name="external" /></a><span>Probability of an affirmative binary judgment.</span></li><li><a href="https://docs.typesafe.ai/primitives/score" target="_blank" rel="noreferrer">Score primitive <Icon name="external" /></a><span>Ordered descriptive levels and expected index.</span></li><li><a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13" target="_blank" rel="noreferrer">Jev 1.13 known limitations <Icon name="external" /></a><span>Vendor cautions about counting, indirection, precision, and cross-primitive consistency.</span></li></ul></Section></main></div></>
 }
 
 type TraceStep = { step: number; region: string; cell?: number[]; region_call?: string | null; cell_call?: string | null; region_forced?: boolean; cell_forced?: boolean; candidate_count: number; local_violations?: string[]; on_unique_solution?: boolean }
@@ -647,7 +833,7 @@ function JevTrajectories() {
 function AboutPage() {
   const liveUrl = 'https://joeywilkes12.github.io/queens-model-assessment/'
   const sourceUrl = 'https://github.com/JoeyWilkes12/queens-model-assessment'
-  return <><PageHero trail="About / project" title="A public field guide with its receipts attached." deck="This technical book translates a bounded Queens model assessment into a readable narrative without separating the findings from the evidence used to support them." action={{ label: 'Browse the evidence', path: 'evidence-atlas' }} /><div className="reading-layout"><LocalToc items={[{ id: 'purpose', label: 'Purpose' }, { id: 'provenance', label: 'Provenance' }, { id: 'share', label: 'Share this book' }]} /><main className="reading-column" id="main-content"><Section id="purpose" title="Why this book exists"><p className="lead">Evaluation reports are easiest to trust when the conclusion, method, failure cases, and source records remain close together.</p><p>The book teaches the regional Queens constraints, explains what each model was actually asked to do, and keeps the narrow Jev candidate-selection result distinct from autonomous puzzle solving. The evidence atlas exposes sanitized requests, visible responses, deterministic grades, timing, usage, and transport failures for inspection.</p><Callout tone="caution" title="Read the denominator, not just the headline.">The assessed boards are deliberately visible and limited. This is a documented experiment, not a population-level model ranking.</Callout></Section><Section id="provenance" title="Build provenance"><div className="about-ledger"><div><span>Source revision</span><code>dc5b1f77357bcb62580f3e4f5ccf480765586b75</code></div><div><span>Published repository</span><a href={sourceUrl} target="_blank" rel="noreferrer">JoeyWilkes12/queens-model-assessment <Icon name="external" /></a></div><div><span>Delivery</span><strong>Static Vite build on GitHub Pages</strong></div><div><span>Data boundary</span><strong>Sanitized, read-only evidence bundle</strong></div></div><p>The public edition was prepared from the named source revision. Its About page, Pages configuration, and QR assets are publication-layer additions; they do not alter the assessment results.</p></Section><Section id="share" title="Open the book on another device"><div className="qr-share"><div className="qr-frame"><img src={assetUrl('assets/queens-model-assessment-qr.svg')} alt={`QR code for ${liveUrl}`} /></div><div className="qr-copy"><span className="section-label">Permanent public URL</span><a className="qr-url" href={liveUrl}>{liveUrl}</a><p>Scan the code or use the URL to open this exact public edition. The high-error-correction QR uses a full quiet zone and a dark-on-light treatment for reliable display and print.</p><div className="next-actions"><a href={assetUrl('assets/queens-model-assessment-qr.svg')} download>Download SVG <Icon name="download" /></a><a href={assetUrl('assets/queens-model-assessment-qr.png')} download>Download PNG <Icon name="download" /></a></div></div></div></Section></main></div></>
+  return <><PageHero trail="About / project" title="A public field guide with its receipts attached." deck="This technical book translates a bounded Queens model assessment into a readable narrative without separating the findings from the evidence used to support them." action={{ label: 'Browse the evidence', path: 'evidence-atlas' }} /><div className="reading-layout"><LocalToc items={[{ id: 'purpose', label: 'Purpose' }, { id: 'provenance', label: 'Provenance' }, { id: 'share', label: 'Share this book' }]} /><main className="reading-column" id="main-content"><Section id="purpose" title="Why this book exists"><p className="lead">Evaluation reports are easiest to trust when the conclusion, method, failure cases, and source records remain close together.</p><p>The book teaches the regional Queens constraints, explains what each model was actually asked to do, and keeps the narrow Jev candidate-selection result distinct from autonomous puzzle solving. The evidence atlas exposes sanitized requests, visible responses, deterministic grades, timing, usage, and transport failures for inspection.</p><Callout tone="caution" title="Read the denominator, not just the headline.">The assessed boards are deliberately visible and limited. This is a documented experiment, not a population-level model ranking.</Callout></Section><Section id="provenance" title="Build provenance"><div className="about-ledger"><div><span>Foundation source revision</span><code>dc5b1f77357bcb62580f3e4f5ccf480765586b75</code></div><div><span>Published repository</span><a href={sourceUrl} target="_blank" rel="noreferrer">JoeyWilkes12/queens-model-assessment <Icon name="external" /></a></div><div><span>Delivery</span><strong>Static Vite build on GitHub Pages</strong></div><div><span>Data boundary</span><strong>Sanitized, read-only evidence bundle</strong></div></div><p>This SHA identifies the original book foundation, not the current expanded edition. The September 30 trajectory and October 1 earlier-generations chapters were added in later commits; the repository history is the provenance record for this current publication. The About page, Pages configuration, and QR assets are publication-layer additions and do not alter the assessment results.</p></Section><Section id="share" title="Open the book on another device"><div className="qr-share"><div className="qr-frame"><img src={assetUrl('assets/queens-model-assessment-qr.svg')} alt={`QR code for ${liveUrl}`} /></div><div className="qr-copy"><span className="section-label">Permanent public URL</span><a className="qr-url" href={liveUrl}>{liveUrl}</a><p>Scan the code or use the URL to open this exact public edition. The high-error-correction QR uses a full quiet zone and a dark-on-light treatment for reliable display and print.</p><div className="next-actions"><a href={assetUrl('assets/queens-model-assessment-qr.svg')} download>Download SVG <Icon name="download" /></a><a href={assetUrl('assets/queens-model-assessment-qr.png')} download>Download PNG <Icon name="download" /></a></div></div></div></Section></main></div></>
 }
 
 function NotFound() {
@@ -658,7 +844,7 @@ function NotFound() {
 function Sidebar({ active, open, onClose }: { active: string; open: boolean; onClose: () => void }) {
   const [, navigate] = useHashPath()
   const groups = Array.from(new Set(routes.map(route => route.section)))
-  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>30 SEP FOLLOW-UP</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · 13 retained sections</span></div></aside></>
+  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>01 OCT FOLLOW-UP</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · 13 retained sections</span></div></aside></>
 }
 
 function App() {
@@ -684,7 +870,8 @@ function App() {
         : active === 'protocol-results' ? <ProtocolResults />
           : active === 'jev-primer' ? <JevPrimer />
             : active === 'candidate-engineering' ? <CandidateEngineering />
-              : active === 'scale-primitives' ? <ScalePrimitives />
+            : active === 'scale-primitives' ? <ScalePrimitives />
+              : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories />
                 : active === 'evidence-atlas' ? <EvidenceExplorer selectedId={selectedId} />
                   : active === 'methods-sources' ? <MethodsSources />

@@ -1,0 +1,41 @@
+{
+  "call_id": "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+  "started_utc": "2026-10-01T14:59:19.359770+00:00",
+  "reserved_usd": 0.044320000000000005,
+  "accounted_usd": 0.0226243,
+  "cost_source": "usage.cost",
+  "http_status": 200,
+  "execution_phase": "text-diagnostics",
+  "response_headers": {
+    "Content-Type": "application/json"
+  },
+  "actual_cost_usd": 0.0226243,
+  "generation_id": "gen-1790866759-T7IgHbcgKUi0Wt9CLJNK",
+  "returned_model": "google/gemini-2.5-flash",
+  "returned_provider": "Google AI Studio",
+  "usage": {
+    "prompt_tokens": 331,
+    "completion_tokens": 9010,
+    "total_tokens": 9341,
+    "cost": 0.0226243,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0226243,
+      "upstream_inference_prompt_cost": 0.0000993,
+      "upstream_inference_completions_cost": 0.022525
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 8978,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "ended_utc": "2026-10-01T14:59:57.893255+00:00",
+  "latency_seconds": 38.533262541051954
+}

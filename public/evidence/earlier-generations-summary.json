@@ -1,0 +1,530 @@
+{
+  "study": "2026-10-01-earlier-generations",
+  "updated_utc": "2026-10-01T15:21:24.704381+00:00",
+  "status": "complete",
+  "attempted": 29,
+  "original_attempted": 27,
+  "strict_correct": 13,
+  "written_correct": 21,
+  "known_cost_usd": 1.82426525,
+  "accounted_usd": 1.8242652500000003,
+  "original_cost_usd": 1.80078495,
+  "diagnostic_cost_usd": 0.0234803,
+  "budget_usd": 2,
+  "remaining_usd": 0.17573474999999972,
+  "models": [
+    {
+      "model": "openai/gpt-5.5",
+      "family": "GPT",
+      "round": 1,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 3,
+      "written_correct": 3,
+      "median_seconds": 23.388365166960284,
+      "cost_usd": 0.19441,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 16.71260583307594,
+          "cost_usd": 0.04384,
+          "call_id": "r1_queens-5-easy_gpt-5.5"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 23.388365166960284,
+          "cost_usd": 0.06702,
+          "call_id": "r1_queens-7-medium_gpt-5.5"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 30.411754292086698,
+          "cost_usd": 0.08355,
+          "call_id": "r1_queens-9-hard_gpt-5.5"
+        }
+      ]
+    },
+    {
+      "model": "anthropic/claude-opus-4.7",
+      "family": "Claude",
+      "round": 1,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 3,
+      "written_correct": 3,
+      "median_seconds": 26.536996333044954,
+      "cost_usd": 0.17268,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 14.191412041895092,
+          "cost_usd": 0.025535,
+          "call_id": "r1_queens-5-easy_claude-opus-4.7"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 26.536996333044954,
+          "cost_usd": 0.05771,
+          "call_id": "r1_queens-7-medium_claude-opus-4.7"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 40.65169962507207,
+          "cost_usd": 0.089435,
+          "call_id": "r1_queens-9-hard_claude-opus-4.7"
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-2.5-pro",
+      "family": "Gemini",
+      "round": 1,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 1,
+      "written_correct": 3,
+      "median_seconds": 60.779905042028986,
+      "cost_usd": 0.25314875000000003,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 55.32892062503379,
+          "cost_usd": 0.08207625,
+          "call_id": "r1_queens-5-easy_gemini-2.5-pro"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 67.00789775000885,
+          "cost_usd": 0.09051625,
+          "call_id": "r1_queens-7-medium_gemini-2.5-pro"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 60.779905042028986,
+          "cost_usd": 0.08055625,
+          "call_id": "r1_queens-9-hard_gemini-2.5-pro"
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-5.4",
+      "family": "GPT",
+      "round": 2,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 3,
+      "written_correct": 3,
+      "median_seconds": 56.57061283302028,
+      "cost_usd": 0.130985,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 27.685664999997243,
+          "cost_usd": 0.02501,
+          "call_id": "r2_queens-5-easy_gpt-5.4"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 63.12148641701788,
+          "cost_usd": 0.05643,
+          "call_id": "r2_queens-7-medium_gpt-5.4"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 56.57061283302028,
+          "cost_usd": 0.049545,
+          "call_id": "r2_queens-9-hard_gpt-5.4"
+        }
+      ]
+    },
+    {
+      "model": "anthropic/claude-opus-4.6",
+      "family": "Claude",
+      "round": 2,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 0,
+      "written_correct": 3,
+      "median_seconds": 66.35221829207148,
+      "cost_usd": 0.315145,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 30.244593207957223,
+          "cost_usd": 0.05169,
+          "call_id": "r2_queens-5-easy_claude-opus-4.6"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 92.40997187502217,
+          "cost_usd": 0.155215,
+          "call_id": "r2_queens-7-medium_claude-opus-4.6"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 66.35221829207148,
+          "cost_usd": 0.10824,
+          "call_id": "r2_queens-9-hard_claude-opus-4.6"
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-2.5-flash",
+      "family": "Gemini",
+      "round": 2,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 0,
+      "written_correct": 1,
+      "median_seconds": 50.74310583306942,
+      "cost_usd": 0.0864847,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": false,
+          "written_correct": false,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "length",
+          "seconds": 50.74310583306942,
+          "cost_usd": 0.0308199,
+          "call_id": "r2_queens-5-easy_gemini-2.5-flash"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": false,
+          "written_correct": false,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "length",
+          "seconds": 53.76248983293772,
+          "cost_usd": 0.0308399,
+          "call_id": "r2_queens-7-medium_gemini-2.5-flash"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 40.22060083295219,
+          "cost_usd": 0.0248249,
+          "call_id": "r2_queens-9-hard_gemini-2.5-flash"
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-5",
+      "family": "GPT",
+      "round": 5,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 3,
+      "written_correct": 3,
+      "median_seconds": 169.07990949996747,
+      "cost_usd": 0.3146375,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 138.89029454102274,
+          "cost_usd": 0.0963875,
+          "call_id": "r5_queens-5-easy_gpt-5"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 169.07990949996747,
+          "cost_usd": 0.115095,
+          "call_id": "r5_queens-7-medium_gpt-5"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": true,
+          "written_correct": true,
+          "failure": null,
+          "finish_reason": "stop",
+          "seconds": 170.3228549589403,
+          "cost_usd": 0.103155,
+          "call_id": "r5_queens-9-hard_gpt-5"
+        }
+      ]
+    },
+    {
+      "model": "anthropic/claude-sonnet-4",
+      "family": "Claude",
+      "round": 5,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 0,
+      "written_correct": 2,
+      "median_seconds": 55.77555033296812,
+      "cost_usd": 0.326418,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 48.29122949996963,
+          "cost_usd": 0.090066,
+          "call_id": "r5_queens-5-easy_claude-sonnet-4"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": false,
+          "written_correct": true,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 55.77555033296812,
+          "cost_usd": 0.105216,
+          "call_id": "r5_queens-7-medium_claude-sonnet-4"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": false,
+          "written_correct": false,
+          "failure": "invalid_json_or_missing_final",
+          "finish_reason": "stop",
+          "seconds": 93.39724087505601,
+          "cost_usd": 0.131136,
+          "call_id": "r5_queens-9-hard_claude-sonnet-4"
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-4.1",
+      "family": "GPT",
+      "round": 6,
+      "condition": "original_image",
+      "attempted": 3,
+      "strict_correct": 0,
+      "written_correct": 0,
+      "median_seconds": 2.451206750003621,
+      "cost_usd": 0.006876,
+      "boards": [
+        {
+          "board_id": "queens-5-easy",
+          "strict_correct": false,
+          "written_correct": false,
+          "failure": "rule_violation",
+          "finish_reason": "stop",
+          "seconds": 2.451206750003621,
+          "cost_usd": 0.002268,
+          "call_id": "r6_queens-5-easy_gpt-4.1"
+        },
+        {
+          "board_id": "queens-7-medium",
+          "strict_correct": false,
+          "written_correct": false,
+          "failure": "rule_violation",
+          "finish_reason": "stop",
+          "seconds": 2.5443998749833554,
+          "cost_usd": 0.002288,
+          "call_id": "r6_queens-7-medium_gpt-4.1"
+        },
+        {
+          "board_id": "queens-9-hard",
+          "strict_correct": false,
+          "written_correct": false,
+          "failure": "rule_violation",
+          "finish_reason": "stop",
+          "seconds": 1.92781304102391,
+          "cost_usd": 0.00232,
+          "call_id": "r6_queens-9-hard_gpt-4.1"
+        }
+      ]
+    }
+  ],
+  "first_failures": [
+    {
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "round": 6,
+      "board_id": "queens-5-easy",
+      "failure": "rule_violation",
+      "finish_reason": "stop",
+      "written_failure": "rule_violation",
+      "written_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": false
+      },
+      "candidate_count": 1
+    },
+    {
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "round": 6,
+      "board_id": "queens-7-medium",
+      "failure": "rule_violation",
+      "finish_reason": "stop",
+      "written_failure": "rule_violation",
+      "written_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": true
+      },
+      "candidate_count": 1
+    },
+    {
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "round": 6,
+      "board_id": "queens-9-hard",
+      "failure": "rule_violation",
+      "finish_reason": "stop",
+      "written_failure": "rule_violation",
+      "written_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": false
+      },
+      "candidate_count": 1
+    },
+    {
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "round": 5,
+      "board_id": "queens-9-hard",
+      "failure": "invalid_json_or_missing_final",
+      "finish_reason": "stop",
+      "written_failure": "rule_violation",
+      "written_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": true
+      },
+      "candidate_count": 1
+    },
+    {
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "round": 2,
+      "board_id": "queens-5-easy",
+      "failure": "invalid_json_or_missing_final",
+      "finish_reason": "length",
+      "written_failure": "no_single_final_object",
+      "written_checks": {},
+      "candidate_count": 0
+    },
+    {
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "round": 2,
+      "board_id": "queens-7-medium",
+      "failure": "invalid_json_or_missing_final",
+      "finish_reason": "length",
+      "written_failure": "no_single_final_object",
+      "written_checks": {},
+      "candidate_count": 0
+    }
+  ],
+  "diagnostic_results": [
+    {
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "condition": "text_only_region_grid_rows",
+      "strict_correct": false,
+      "written_correct": false,
+      "seconds": 1.455947000067681,
+      "cost_usd": 0.000856,
+      "call_id": "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows"
+    },
+    {
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "condition": "text_only_region_grid_rows",
+      "strict_correct": false,
+      "written_correct": true,
+      "seconds": 38.533262541051954,
+      "cost_usd": 0.0226243,
+      "call_id": "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows"
+    }
+  ],
+  "limits": [
+    "One sample per model/board; first observed failures are not statistically established thresholds.",
+    "Three original synthetic boards; size and search difficulty are confounded and region labels/singletons aid perception.",
+    "High labels and tokenization do not equalize internal reasoning; unsupported controls are omitted.",
+    "Gemini Pro to Flash/Lite and Claude Opus to Sonnet transitions change product tier; release dates are not matched.",
+    "Historical frontier results were collected earlier; service drift, queueing and routing contribute to latency.",
+    "Adaptive family stopping and cost reservations leave some frozen candidate requests unexecuted.",
+    "Text diagnostics are selected after failure and alter input representation; their successes do not change image scores."
+  ],
+  "conclusions": [
+    "21/27 original-image requests delivered a mathematically valid written placement; 13/27 passed strict JSON.",
+    "GPT: first sampled failure at openai/gpt-4.1, candidate rung 6, on queens-5-easy, queens-7-medium, queens-9-hard.",
+    "Claude: first sampled failure at anthropic/claude-sonnet-4, candidate rung 5, on queens-9-hard.",
+    "Gemini: first sampled failure at google/gemini-2.5-flash, candidate rung 2, on queens-5-easy, queens-7-medium.",
+    "Separate text representation diagnostics: 1/2 mathematically correct; these are fresh one-shot conditions."
+  ]
+}

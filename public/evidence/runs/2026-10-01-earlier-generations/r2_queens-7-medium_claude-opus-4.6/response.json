@@ -1,0 +1,45 @@
+{
+  "id": "gen-1790865090-BSs5Sywyi9NTbBAfeMui",
+  "object": "chat.completion",
+  "created": 1790865090,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to identify the regions and find valid queen placements.\n\n**Regions identified:**\n- **A:** (1,1),(2,1),(2,2),(2,3),(3,1)\n- **B:** (1,2),(1,3),(1,4),(1,5)\n- **C:** (1,6),(1,7),(2,4)-(2,7),(3,4)-(3,7),(4,4)-(4,7),(5,6),(6,5),(6,6)\n- **D:** (3,2),(3,3),(4,1)-(4,3),(5,1)-(5,3),(6,1)-(6,4),(7,1)-(7,4)\n- **E:** (5,4),(5,5)\n- **F:** (5,7),(6,7),(7,7)\n- **G:** (7,5),(7,6)\n\n**Solving with constraints:**\n- **Region F** can't share a row with E (row 5) or G (row 7), so F → **(6,7)**\n- **Region G** at (7,6) would be diagonal-adjacent to F at (6,7), so G → **(7,5)**\n- **Region E** can't use column 5 (taken by G), so E → **(5,4)**\n- Row 4 can't use column 3 (adjacent to row 5, col 4) or columns 4,5,7 (taken)\n- **Region B** only has row 1 available; testing B → **(1,3)**\n- Row 2 can't use col 2 (adjacent to col 3), so **A → (2,1)**\n- Row 3 can't use col 2 (adjacent to col 1), so **C → (3,6)**\n- **D → (4,2)**\n\n**Verification of adjacency (column differences between consecutive rows):**\n(1,3)→(2,1): |3-1|=2 ✓ | (2,1)→(3,6): 5 ✓ | (3,6)→(4,2): 4 ✓ | (4,2)→(5,4): 2 ✓ | (5,4)→(6,7): 3 ✓ | (6,7)→(7,5): 2 ✓\n\nAll columns {3,1,6,2,4,7,5} unique ✓ | All regions covered ✓\n\n{\"board_id\":\"queens-7-medium\",\"columns_by_row\":[3,1,6,2,4,7,5]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 5992,
+    "total_tokens": 7075,
+    "cost": 0.155215,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.155215,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.1498
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 5340,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

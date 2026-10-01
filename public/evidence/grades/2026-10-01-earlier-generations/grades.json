@@ -1,0 +1,2196 @@
+{
+  "analyzed_utc": "2026-10-01T15:21:24.701183+00:00",
+  "attempts": [
+    {
+      "call_id": "r1_queens-5-easy_gpt-5.5",
+      "round": 1,
+      "family": "GPT",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-5.5-20260423",
+      "request_file": "requests/r1_queens-5-easy_gpt-5.5.json",
+      "request_sha256": "9f4a1a16b08c6959f03134fb600c9a57452a4bbb141fee1c14aafac6a3b2c14e",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.43864000000000003,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.00003,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 57,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 16.71260583307594,
+      "cost_usd": 0.04384,
+      "accounted_usd": 0.04384,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 956,
+        "completion_tokens": 1302,
+        "total_tokens": 2258,
+        "cost": 0.04384,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.04384,
+          "upstream_inference_prompt_cost": 0.00478,
+          "upstream_inference_completions_cost": 0.03906
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1271,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-5-easy_claude-opus-4.7",
+      "round": 1,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "canonical_slug": "anthropic/claude-4.7-opus-20260416",
+      "request_file": "requests/r1_queens-5-easy_claude-opus-4.7.json",
+      "request_sha256": "80898a64981dcf071614ca65a96264ca8b8b461aab713fc7d24d8b31498b2606",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.37720000000000004,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.000025,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 57,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 14.191412041895092,
+      "cost_usd": 0.025535,
+      "accounted_usd": 0.025535,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "usage": {
+        "prompt_tokens": 1227,
+        "completion_tokens": 776,
+        "total_tokens": 2003,
+        "cost": 0.025535,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.025535,
+          "upstream_inference_prompt_cost": 0.006135,
+          "upstream_inference_completions_cost": 0.0194
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 736,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-5-easy_gemini-2.5-pro",
+      "round": 1,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "canonical_slug": "google/gemini-2.5-pro",
+      "request_file": "requests/r1_queens-5-easy_gemini-2.5-pro.json",
+      "request_sha256": "accc7fe3e47fe2b19d58b16fb42efd60409dd51566cf76dbb86fc421d21d153e",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.14788000000000004,
+      "prompt_rate": 0.00000125,
+      "completion_rate": 0.00001,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": true,
+        "visible_character_count": 69,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 55.32892062503379,
+      "cost_usd": 0.08207625,
+      "accounted_usd": 0.08207625,
+      "http_status": 200,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google AI Studio",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 8141,
+        "total_tokens": 8674,
+        "cost": 0.08207625,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.08207625,
+          "upstream_inference_prompt_cost": 0.00066625,
+          "upstream_inference_completions_cost": 0.08141
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 8109,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-7-medium_gpt-5.5",
+      "round": 1,
+      "family": "GPT",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-5.5-20260423",
+      "request_file": "requests/r1_queens-7-medium_gpt-5.5.json",
+      "request_sha256": "9edbe81d282f9d1777c47f41e1451037c54bb17e6e7fcb925ad6685257c51eb5",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.43864000000000003,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.00003,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 63,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 23.388365166960284,
+      "cost_usd": 0.06702,
+      "accounted_usd": 0.06702,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 954,
+        "completion_tokens": 2075,
+        "total_tokens": 3029,
+        "cost": 0.06702,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.06702,
+          "upstream_inference_prompt_cost": 0.00477,
+          "upstream_inference_completions_cost": 0.06225
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2041,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-7-medium_claude-opus-4.7",
+      "round": 1,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "canonical_slug": "anthropic/claude-4.7-opus-20260416",
+      "request_file": "requests/r1_queens-7-medium_claude-opus-4.7.json",
+      "request_sha256": "fc10ab8f1786156ddc9501919b622023abf1e4f87f3b73ddc66baefab0c7edf3",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.37720000000000004,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.000025,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 63,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 26.536996333044954,
+      "cost_usd": 0.05771,
+      "accounted_usd": 0.05771,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "usage": {
+        "prompt_tokens": 1227,
+        "completion_tokens": 2063,
+        "total_tokens": 3290,
+        "cost": 0.05771,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.05771,
+          "upstream_inference_prompt_cost": 0.006135,
+          "upstream_inference_completions_cost": 0.051575
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2019,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-7-medium_gemini-2.5-pro",
+      "round": 1,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "canonical_slug": "google/gemini-2.5-pro",
+      "request_file": "requests/r1_queens-7-medium_gemini-2.5-pro.json",
+      "request_sha256": "14ca7fe54de2af1c6c89715235d1ab3b7d1f8593ee8ff0e4e802daecf776bba3",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.14788000000000004,
+      "prompt_rate": 0.00000125,
+      "completion_rate": 0.00001,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": true,
+        "visible_character_count": 122,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 67.00789775000885,
+      "cost_usd": 0.09051625,
+      "accounted_usd": 0.09051625,
+      "http_status": 200,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google AI Studio",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 8985,
+        "total_tokens": 9518,
+        "cost": 0.09051625,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.09051625,
+          "upstream_inference_prompt_cost": 0.00066625,
+          "upstream_inference_completions_cost": 0.08985
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 8929,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-9-hard_gpt-5.5",
+      "round": 1,
+      "family": "GPT",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-5.5-20260423",
+      "request_file": "requests/r1_queens-9-hard_gpt-5.5.json",
+      "request_sha256": "e44c7280bb8fdd59fff91a5652250f7d1d92cec33a698784b1c24ed2d3fbe764",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.43864000000000003,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.00003,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 65,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 30.411754292086698,
+      "cost_usd": 0.08355,
+      "accounted_usd": 0.08355,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 954,
+        "completion_tokens": 2626,
+        "total_tokens": 3580,
+        "cost": 0.08355,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.08355,
+          "upstream_inference_prompt_cost": 0.00477,
+          "upstream_inference_completions_cost": 0.07878
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2588,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-9-hard_claude-opus-4.7",
+      "round": 1,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "canonical_slug": "anthropic/claude-4.7-opus-20260416",
+      "request_file": "requests/r1_queens-9-hard_claude-opus-4.7.json",
+      "request_sha256": "bd8d32be6082c8660b3d854a1a3460f7317441af83c55424c746507680e52db6",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.37720000000000004,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.000025,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 65,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 40.65169962507207,
+      "cost_usd": 0.089435,
+      "accounted_usd": 0.089435,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "usage": {
+        "prompt_tokens": 1227,
+        "completion_tokens": 3332,
+        "total_tokens": 4559,
+        "cost": 0.089435,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.089435,
+          "upstream_inference_prompt_cost": 0.006135,
+          "upstream_inference_completions_cost": 0.0833
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3284,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r1_queens-9-hard_gemini-2.5-pro",
+      "round": 1,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "canonical_slug": "google/gemini-2.5-pro",
+      "request_file": "requests/r1_queens-9-hard_gemini-2.5-pro.json",
+      "request_sha256": "921bce750043b0b5d7bace6c6594249ab45b9e36f4457e827c0467906cae42b9",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.14788000000000004,
+      "prompt_rate": 0.00000125,
+      "completion_rate": 0.00001,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 65,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 60.779905042028986,
+      "cost_usd": 0.08055625,
+      "accounted_usd": 0.08055625,
+      "http_status": 200,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google AI Studio",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 7989,
+        "total_tokens": 8522,
+        "cost": 0.08055625,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.08055625,
+          "upstream_inference_prompt_cost": 0.00066625,
+          "upstream_inference_completions_cost": 0.07989
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 7954,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-1"
+    },
+    {
+      "call_id": "r2_queens-5-easy_gpt-5.4",
+      "round": 2,
+      "family": "GPT",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-5.4-20260305",
+      "request_file": "requests/r2_queens-5-easy_gpt-5.4.json",
+      "request_sha256": "bece2e041202c7e62425eb66c6568df658802b20cf178373fce46e044440095a",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.22432000000000002,
+      "prompt_rate": 0.0000025,
+      "completion_rate": 0.000015,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 57,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 27.685664999997243,
+      "cost_usd": 0.02501,
+      "accounted_usd": 0.02501,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 956,
+        "completion_tokens": 1508,
+        "total_tokens": 2464,
+        "cost": 0.02501,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.02501,
+          "upstream_inference_prompt_cost": 0.00239,
+          "upstream_inference_completions_cost": 0.02262
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1477,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-5-easy_claude-opus-4.6",
+      "round": 2,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "canonical_slug": "anthropic/claude-4.6-opus-20260205",
+      "request_file": "requests/r2_queens-5-easy_claude-opus-4.6.json",
+      "request_sha256": "c1c5cb66f00f918ee169e9c1547edb455e96408b6250e549e0d2a3f19688ab5c",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.37720000000000004,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.000025,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 936,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 30.244593207957223,
+      "cost_usd": 0.05169,
+      "accounted_usd": 0.05169,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "usage": {
+        "prompt_tokens": 1083,
+        "completion_tokens": 1851,
+        "total_tokens": 2934,
+        "cost": 0.05169,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.05169,
+          "upstream_inference_prompt_cost": 0.005415,
+          "upstream_inference_completions_cost": 0.046275
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1445,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-5-easy_gemini-2.5-flash",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "canonical_slug": "google/gemini-2.5-flash",
+      "request_file": "requests/r2_queens-5-easy_gemini-2.5-flash.json",
+      "request_sha256": "3c7075ccbd70e629d5151796a00673269752dccec50808d79c2c5c33cbe302f0",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.044320000000000005,
+      "prompt_rate": 3e-7,
+      "completion_rate": 0.0000025,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 0,
+        "markdown_fence_present": false,
+        "visible_character_count": 5315,
+        "rule_valid_after_extraction": false
+      },
+      "written_correct": false,
+      "received_answer": true,
+      "finish_reason": "length",
+      "seconds": 50.74310583306942,
+      "cost_usd": 0.0308199,
+      "accounted_usd": 0.0308199,
+      "http_status": 200,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google AI Studio",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 12264,
+        "total_tokens": 12797,
+        "cost": 0.0308199,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0308199,
+          "upstream_inference_prompt_cost": 0.0001599,
+          "upstream_inference_completions_cost": 0.03066
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9826,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-7-medium_gpt-5.4",
+      "round": 2,
+      "family": "GPT",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-5.4-20260305",
+      "request_file": "requests/r2_queens-7-medium_gpt-5.4.json",
+      "request_sha256": "6904f9c54747c2893c813c2989c2bbe955ac5404764d06c5f0b31cbcd0d96508",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.22432000000000002,
+      "prompt_rate": 0.0000025,
+      "completion_rate": 0.000015,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 63,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 63.12148641701788,
+      "cost_usd": 0.05643,
+      "accounted_usd": 0.05643,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 954,
+        "completion_tokens": 3603,
+        "total_tokens": 4557,
+        "cost": 0.05643,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.05643,
+          "upstream_inference_prompt_cost": 0.002385,
+          "upstream_inference_completions_cost": 0.054045
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3569,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-7-medium_claude-opus-4.6",
+      "round": 2,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "canonical_slug": "anthropic/claude-4.6-opus-20260205",
+      "request_file": "requests/r2_queens-7-medium_claude-opus-4.6.json",
+      "request_sha256": "bc336383b372c6221d32572dcb3aa2543b304a6c572410b09f1c20c839e849e7",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.37720000000000004,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.000025,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 1260,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 92.40997187502217,
+      "cost_usd": 0.155215,
+      "accounted_usd": 0.155215,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "usage": {
+        "prompt_tokens": 1083,
+        "completion_tokens": 5992,
+        "total_tokens": 7075,
+        "cost": 0.155215,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.155215,
+          "upstream_inference_prompt_cost": 0.005415,
+          "upstream_inference_completions_cost": 0.1498
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5340,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-7-medium_gemini-2.5-flash",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "canonical_slug": "google/gemini-2.5-flash",
+      "request_file": "requests/r2_queens-7-medium_gemini-2.5-flash.json",
+      "request_sha256": "6e4dcc04a00f464d07dc9a8a9085384572c6d3b4b5f24cb8cac22980981826e9",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.044320000000000005,
+      "prompt_rate": 3e-7,
+      "completion_rate": 0.0000025,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 0,
+        "markdown_fence_present": false,
+        "visible_character_count": 5679,
+        "rule_valid_after_extraction": false
+      },
+      "written_correct": false,
+      "received_answer": true,
+      "finish_reason": "length",
+      "seconds": 53.76248983293772,
+      "cost_usd": 0.0308399,
+      "accounted_usd": 0.0308399,
+      "http_status": 200,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google AI Studio",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 12272,
+        "total_tokens": 12805,
+        "cost": 0.0308399,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0308399,
+          "upstream_inference_prompt_cost": 0.0001599,
+          "upstream_inference_completions_cost": 0.03068
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9827,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-9-hard_gpt-5.4",
+      "round": 2,
+      "family": "GPT",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-5.4-20260305",
+      "request_file": "requests/r2_queens-9-hard_gpt-5.4.json",
+      "request_sha256": "37932af2b2104c74da61a5433058ad1216ae407f687ab76c4bc11b32539556dd",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.22432000000000002,
+      "prompt_rate": 0.0000025,
+      "completion_rate": 0.000015,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 65,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 56.57061283302028,
+      "cost_usd": 0.049545,
+      "accounted_usd": 0.049545,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 954,
+        "completion_tokens": 3144,
+        "total_tokens": 4098,
+        "cost": 0.049545,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.049545,
+          "upstream_inference_prompt_cost": 0.002385,
+          "upstream_inference_completions_cost": 0.04716
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3106,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-9-hard_claude-opus-4.6",
+      "round": 2,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "canonical_slug": "anthropic/claude-4.6-opus-20260205",
+      "request_file": "requests/r2_queens-9-hard_claude-opus-4.6.json",
+      "request_sha256": "b605bf883b30412b95b382dedb63c68941276dfd23de3ebb8b58c2bbc19354a0",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.37720000000000004,
+      "prompt_rate": 0.000005,
+      "completion_rate": 0.000025,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 1311,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 66.35221829207148,
+      "cost_usd": 0.10824,
+      "accounted_usd": 0.10824,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "usage": {
+        "prompt_tokens": 1083,
+        "completion_tokens": 4113,
+        "total_tokens": 5196,
+        "cost": 0.10824,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.10824,
+          "upstream_inference_prompt_cost": 0.005415,
+          "upstream_inference_completions_cost": 0.102825
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3646,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r2_queens-9-hard_gemini-2.5-flash",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "canonical_slug": "google/gemini-2.5-flash",
+      "request_file": "requests/r2_queens-9-hard_gemini-2.5-flash.json",
+      "request_sha256": "b49d0edba2a8145a6e0cf150b55a1c2293167b98a51b48b8c7f7f02d1a3c9b43",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.044320000000000005,
+      "prompt_rate": 3e-7,
+      "completion_rate": 0.0000025,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": true,
+        "visible_character_count": 77,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 40.22060083295219,
+      "cost_usd": 0.0248249,
+      "accounted_usd": 0.0248249,
+      "http_status": 200,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google AI Studio",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 9866,
+        "total_tokens": 10399,
+        "cost": 0.0248249,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0248249,
+          "upstream_inference_prompt_cost": 0.0001599,
+          "upstream_inference_completions_cost": 0.024665
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9826,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "round-2"
+    },
+    {
+      "call_id": "r5_queens-5-easy_gpt-5",
+      "round": 5,
+      "family": "GPT",
+      "model": "openai/gpt-5",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai/default",
+      "canonical_slug": "openai/gpt-5-2025-08-07",
+      "request_file": "requests/r5_queens-5-easy_gpt-5.json",
+      "request_sha256": "6e716c510bfa44e198b0771ed5a777e3f873723ede3ee61cafd56e0f4c3764bd",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.14788000000000004,
+      "prompt_rate": 0.00000125,
+      "completion_rate": 0.00001,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 57,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 138.89029454102274,
+      "cost_usd": 0.0963875,
+      "accounted_usd": 0.0963875,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 894,
+        "completion_tokens": 9527,
+        "total_tokens": 10421,
+        "cost": 0.0963875,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0963875,
+          "upstream_inference_prompt_cost": 0.0011175,
+          "upstream_inference_completions_cost": 0.09527
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9472,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "gpt-bridge"
+    },
+    {
+      "call_id": "r5_queens-5-easy_claude-sonnet-4",
+      "round": 5,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "amazon-bedrock",
+      "canonical_slug": "anthropic/claude-4-sonnet-20250522",
+      "request_file": "requests/r5_queens-5-easy_claude-sonnet-4.json",
+      "request_sha256": "1a5ed7b39867867568a5525fdcd871d727d7825f4374598f058b7b7d7fed3610",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.23032000000000002,
+      "prompt_rate": 0.000003,
+      "completion_rate": 0.000015,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 1283,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 48.29122949996963,
+      "cost_usd": 0.090066,
+      "accounted_usd": 0.090066,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-sonnet-4",
+      "provider": "Amazon Bedrock",
+      "usage": {
+        "prompt_tokens": 1112,
+        "completion_tokens": 5782,
+        "total_tokens": 6894,
+        "cost": 0.090066,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.090066,
+          "upstream_inference_prompt_cost": 0.003336,
+          "upstream_inference_completions_cost": 0.08673
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1779,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "older-anchors"
+    },
+    {
+      "call_id": "r5_queens-7-medium_gpt-5",
+      "round": 5,
+      "family": "GPT",
+      "model": "openai/gpt-5",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai/default",
+      "canonical_slug": "openai/gpt-5-2025-08-07",
+      "request_file": "requests/r5_queens-7-medium_gpt-5.json",
+      "request_sha256": "2957e2435c83c51faa6682766d0979031dbf30acac922f9548f85eefbbb54335",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.14788000000000004,
+      "prompt_rate": 0.00000125,
+      "completion_rate": 0.00001,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 63,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 169.07990949996747,
+      "cost_usd": 0.115095,
+      "accounted_usd": 0.115095,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 892,
+        "completion_tokens": 11398,
+        "total_tokens": 12290,
+        "cost": 0.115095,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.115095,
+          "upstream_inference_prompt_cost": 0.001115,
+          "upstream_inference_completions_cost": 0.11398
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 11328,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "gpt-bridge"
+    },
+    {
+      "call_id": "r5_queens-7-medium_claude-sonnet-4",
+      "round": 5,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "amazon-bedrock",
+      "canonical_slug": "anthropic/claude-4-sonnet-20250522",
+      "request_file": "requests/r5_queens-7-medium_claude-sonnet-4.json",
+      "request_sha256": "35f3cc1bc39e4bd8bb540f816ac5c54b4664a632888ea37e3dc1c11240bcde3e",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.23032000000000002,
+      "prompt_rate": 0.000003,
+      "completion_rate": 0.000015,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 1958,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 55.77555033296812,
+      "cost_usd": 0.105216,
+      "accounted_usd": 0.105216,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-sonnet-4",
+      "provider": "Amazon Bedrock",
+      "usage": {
+        "prompt_tokens": 1112,
+        "completion_tokens": 6792,
+        "total_tokens": 7904,
+        "cost": 0.105216,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.105216,
+          "upstream_inference_prompt_cost": 0.003336,
+          "upstream_inference_completions_cost": 0.10188
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2260,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "older-anchors"
+    },
+    {
+      "call_id": "r5_queens-9-hard_gpt-5",
+      "round": 5,
+      "family": "GPT",
+      "model": "openai/gpt-5",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai/default",
+      "canonical_slug": "openai/gpt-5-2025-08-07",
+      "request_file": "requests/r5_queens-9-hard_gpt-5.json",
+      "request_sha256": "6edaf3fb95d65e2ef6fc0dd249b986c14e000873975bbb24cb25437cbf9b3311",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.14788000000000004,
+      "prompt_rate": 0.00000125,
+      "completion_rate": 0.00001,
+      "format_valid": true,
+      "correct": true,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "failure": null,
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 65,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": false
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 170.3228549589403,
+      "cost_usd": 0.103155,
+      "accounted_usd": 0.103155,
+      "http_status": 200,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 892,
+        "completion_tokens": 10204,
+        "total_tokens": 11096,
+        "cost": 0.103155,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.103155,
+          "upstream_inference_prompt_cost": 0.001115,
+          "upstream_inference_completions_cost": 0.10204
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 10112,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "gpt-bridge"
+    },
+    {
+      "call_id": "r5_queens-9-hard_claude-sonnet-4",
+      "round": 5,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "amazon-bedrock",
+      "canonical_slug": "anthropic/claude-4-sonnet-20250522",
+      "request_file": "requests/r5_queens-9-hard_claude-sonnet-4.json",
+      "request_sha256": "8e5e56605040877b5a5ce5ac57c3a7e0cc3ba9e327e160bf76f0cdfa63b176f2",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "high",
+      "reserved_usd": 0.23032000000000002,
+      "prompt_rate": 0.000003,
+      "completion_rate": 0.000015,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 1308,
+        "rule_valid_after_extraction": false,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": true
+        },
+        "failure": "rule_violation",
+        "extra_visible_text": true
+      },
+      "written_correct": false,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 93.39724087505601,
+      "cost_usd": 0.131136,
+      "accounted_usd": 0.131136,
+      "http_status": 200,
+      "returned_model": "anthropic/claude-sonnet-4",
+      "provider": "Amazon Bedrock",
+      "usage": {
+        "prompt_tokens": 1112,
+        "completion_tokens": 8520,
+        "total_tokens": 9632,
+        "cost": 0.131136,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.131136,
+          "upstream_inference_prompt_cost": 0.003336,
+          "upstream_inference_completions_cost": 0.1278
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2706,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "older-anchors"
+    },
+    {
+      "call_id": "r6_queens-5-easy_gpt-4.1",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-4.1-2025-04-14",
+      "request_file": "requests/r6_queens-5-easy_gpt-4.1.json",
+      "request_sha256": "b27862b46664777ed3022ea925a0aba38a4d3565b4e8614c84588922160b3f3c",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_request": "2026-09-17-one-shot/requests/01_queens-5-easy_gpt-5.6-sol.json",
+      "reasoning_mode": "unsupported_omitted",
+      "reserved_usd": 0.132304,
+      "prompt_rate": 0.000002,
+      "completion_rate": 0.000008,
+      "format_valid": true,
+      "correct": false,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": false
+      },
+      "failure": "rule_violation",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 57,
+        "rule_valid_after_extraction": false,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": false
+        },
+        "failure": "rule_violation",
+        "extra_visible_text": false
+      },
+      "written_correct": false,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 2.451206750003621,
+      "cost_usd": 0.002268,
+      "accounted_usd": 0.002268,
+      "http_status": 200,
+      "returned_model": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 1030,
+        "completion_tokens": 26,
+        "total_tokens": 1056,
+        "cost": 0.002268,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.002268,
+          "upstream_inference_prompt_cost": 0.00206,
+          "upstream_inference_completions_cost": 0.000208
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "older-anchors"
+    },
+    {
+      "call_id": "r6_queens-7-medium_gpt-4.1",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-4.1-2025-04-14",
+      "request_file": "requests/r6_queens-7-medium_gpt-4.1.json",
+      "request_sha256": "a0822ef50cd6565775e5769e6914e5d9dfab802a2f51894adec753a738dc690b",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "source_request": "2026-09-17-one-shot/requests/06_queens-7-medium_gpt-5.6-sol.json",
+      "reasoning_mode": "unsupported_omitted",
+      "reserved_usd": 0.132304,
+      "prompt_rate": 0.000002,
+      "completion_rate": 0.000008,
+      "format_valid": true,
+      "correct": false,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": true
+      },
+      "failure": "rule_violation",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 63,
+        "rule_valid_after_extraction": false,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": true
+        },
+        "failure": "rule_violation",
+        "extra_visible_text": false
+      },
+      "written_correct": false,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 2.5443998749833554,
+      "cost_usd": 0.002288,
+      "accounted_usd": 0.002288,
+      "http_status": 200,
+      "returned_model": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 1028,
+        "completion_tokens": 29,
+        "total_tokens": 1057,
+        "cost": 0.002288,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.002288,
+          "upstream_inference_prompt_cost": 0.002056,
+          "upstream_inference_completions_cost": 0.000232
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "older-anchors"
+    },
+    {
+      "call_id": "r6_queens-9-hard_gpt-4.1",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-4.1-2025-04-14",
+      "request_file": "requests/r6_queens-9-hard_gpt-4.1.json",
+      "request_sha256": "29e105cb84a0bc6f0e1462dfecd58e264f80e1874f74f05d4e1a62d18a3dbec9",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "source_request": "2026-09-17-one-shot/requests/12_queens-9-hard_gpt-5.6-sol.json",
+      "reasoning_mode": "unsupported_omitted",
+      "reserved_usd": 0.132304,
+      "prompt_rate": 0.000002,
+      "completion_rate": 0.000008,
+      "format_valid": true,
+      "correct": false,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": false
+      },
+      "failure": "rule_violation",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 65,
+        "rule_valid_after_extraction": false,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": false
+        },
+        "failure": "rule_violation",
+        "extra_visible_text": false
+      },
+      "written_correct": false,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 1.92781304102391,
+      "cost_usd": 0.00232,
+      "accounted_usd": 0.00232,
+      "http_status": 200,
+      "returned_model": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 1028,
+        "completion_tokens": 33,
+        "total_tokens": 1061,
+        "cost": 0.00232,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00232,
+          "upstream_inference_prompt_cost": 0.002056,
+          "upstream_inference_completions_cost": 0.000264
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "older-anchors"
+    },
+    {
+      "call_id": "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "condition": "text_only_region_grid_rows",
+      "diagnostic_variant": "region_grid_rows",
+      "representation_description": "Full region partition as a JSON matrix of letter labels.",
+      "provider_tag": "openai",
+      "canonical_slug": "openai/gpt-4.1-2025-04-14",
+      "reasoning_mode": "unsupported_omitted",
+      "request_file": "diagnostic_requests/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows.json",
+      "request_sha256": "8c55883d8cd0cab562fbb646c4da666934ba5b51c9e85c745d0764ebca3ea140",
+      "messages_sha256": "ab806436cde902d58375be0f796fe0d0bd7c1a0a94a779d7201e9b62c8830baf",
+      "source_original_call_id": "r6_queens-5-easy_gpt-4.1",
+      "source_original_request": "evaluations/2026-10-01-earlier-generations/requests/r6_queens-5-easy_gpt-4.1.json",
+      "source_original_request_sha256": "b27862b46664777ed3022ea925a0aba38a4d3565b4e8614c84588922160b3f3c",
+      "source_original_messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "source_image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_jev_request": "evaluations/2026-09-18-jev-deep-dive/requests/02_batch_5x5_guardrail_enabled.json",
+      "source_jev_request_sha256": "64cf4ca9e7f7700ee663e73e029c5eb6a342ce803b4453e8f2ef30542e9e9d2a",
+      "source_board_json": "evaluations/2026-09-17-one-shot/inputs/queens-5-easy.json",
+      "source_board_json_sha256": "c34a225abbbda7378e949ee20c0e5fe1aaaaf49dce50def9bc74474309da20da",
+      "source_jev_rules_sha256": "d2f8abc917ad25e234079d5f8f021360e3b0216dc3e7dd8231a8b054d8871a29",
+      "source_jev_rules_validation": "Exact six-rule Jev list verified; it covers row, column, region, no-touch, long-diagonal allowance, unique solution, and one-based orientation. The original prompt's Rules section is retained verbatim in the transformed request.",
+      "transformation": "Preserve the original one-shot rules and JSON output schema verbatim. Replace only the user message: remove the original embedded image and image/color-dependent intro, then append either the validated letter matrix or validated one-based region-cell lists before the unchanged Rules/output-schema tail. No candidates, solution, examples, givens, computed counts, feedback, or tool definitions are included.",
+      "prompt_rate": 0.000002,
+      "completion_rate": 0.000008,
+      "input_token_reserve": 12000,
+      "max_tokens": 12288,
+      "surcharge_reserve_usd": 0.01,
+      "reserved_usd": 0.132304,
+      "format_valid": true,
+      "correct": false,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": true
+      },
+      "failure": "rule_violation",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": false,
+        "visible_character_count": 57,
+        "rule_valid_after_extraction": false,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": true
+        },
+        "failure": "rule_violation",
+        "extra_visible_text": false
+      },
+      "written_correct": false,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 1.455947000067681,
+      "cost_usd": 0.000856,
+      "accounted_usd": 0.000856,
+      "http_status": 200,
+      "returned_model": "openai/gpt-4.1",
+      "provider": "OpenAI",
+      "usage": {
+        "prompt_tokens": 324,
+        "completion_tokens": 26,
+        "total_tokens": 350,
+        "cost": 0.000856,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.000856,
+          "upstream_inference_prompt_cost": 0.000648,
+          "upstream_inference_completions_cost": 0.000208
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "text-diagnostics"
+    },
+    {
+      "call_id": "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "condition": "text_only_region_grid_rows",
+      "diagnostic_variant": "region_grid_rows",
+      "representation_description": "Full region partition as a JSON matrix of letter labels.",
+      "provider_tag": "google-ai-studio",
+      "canonical_slug": "google/gemini-2.5-flash",
+      "reasoning_mode": "high",
+      "request_file": "diagnostic_requests/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows.json",
+      "request_sha256": "d737c72c3e9ca620e51027bf5a88ed92148adfbdf5f70b4aa4992adafa1a1142",
+      "messages_sha256": "ab806436cde902d58375be0f796fe0d0bd7c1a0a94a779d7201e9b62c8830baf",
+      "source_original_call_id": "r2_queens-5-easy_gemini-2.5-flash",
+      "source_original_request": "evaluations/2026-10-01-earlier-generations/requests/r2_queens-5-easy_gemini-2.5-flash.json",
+      "source_original_request_sha256": "3c7075ccbd70e629d5151796a00673269752dccec50808d79c2c5c33cbe302f0",
+      "source_original_messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "source_image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "source_jev_request": "evaluations/2026-09-18-jev-deep-dive/requests/02_batch_5x5_guardrail_enabled.json",
+      "source_jev_request_sha256": "64cf4ca9e7f7700ee663e73e029c5eb6a342ce803b4453e8f2ef30542e9e9d2a",
+      "source_board_json": "evaluations/2026-09-17-one-shot/inputs/queens-5-easy.json",
+      "source_board_json_sha256": "c34a225abbbda7378e949ee20c0e5fe1aaaaf49dce50def9bc74474309da20da",
+      "source_jev_rules_sha256": "d2f8abc917ad25e234079d5f8f021360e3b0216dc3e7dd8231a8b054d8871a29",
+      "source_jev_rules_validation": "Exact six-rule Jev list verified; it covers row, column, region, no-touch, long-diagonal allowance, unique solution, and one-based orientation. The original prompt's Rules section is retained verbatim in the transformed request.",
+      "transformation": "Preserve the original one-shot rules and JSON output schema verbatim. Replace only the user message: remove the original embedded image and image/color-dependent intro, then append either the validated letter matrix or validated one-based region-cell lists before the unchanged Rules/output-schema tail. No candidates, solution, examples, givens, computed counts, feedback, or tool definitions are included.",
+      "prompt_rate": 3e-7,
+      "completion_rate": 0.0000025,
+      "input_token_reserve": 12000,
+      "max_tokens": 12288,
+      "surcharge_reserve_usd": 0.01,
+      "reserved_usd": 0.044320000000000005,
+      "format_valid": false,
+      "correct": false,
+      "checks": {},
+      "failure": "invalid_json_or_missing_final",
+      "extraction": {
+        "diagnostic_only": true,
+        "candidate_count": 1,
+        "markdown_fence_present": true,
+        "visible_character_count": 69,
+        "rule_valid_after_extraction": true,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        },
+        "failure": null,
+        "extra_visible_text": true
+      },
+      "written_correct": true,
+      "received_answer": true,
+      "finish_reason": "stop",
+      "seconds": 38.533262541051954,
+      "cost_usd": 0.0226243,
+      "accounted_usd": 0.0226243,
+      "http_status": 200,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google AI Studio",
+      "usage": {
+        "prompt_tokens": 331,
+        "completion_tokens": 9010,
+        "total_tokens": 9341,
+        "cost": 0.0226243,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0226243,
+          "upstream_inference_prompt_cost": 0.0000993,
+          "upstream_inference_completions_cost": 0.022525
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 8978,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "halt_reason": null,
+      "execution_phase": "text-diagnostics"
+    }
+  ],
+  "known_cost_usd": 1.82426525,
+  "accounted_usd": 1.8242652500000003,
+  "budget_usd": 2,
+  "remaining_usd": 0.17573474999999972
+}

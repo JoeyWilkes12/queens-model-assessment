@@ -1,0 +1,45 @@
+{
+  "id": "gen-1790865505-P4CbeTMTSBUA7EH69biq",
+  "object": "chat.completion",
+  "created": 1790865505,
+  "model": "anthropic/claude-sonnet-4",
+  "provider": "Amazon Bedrock",
+  "system_fingerprint": null,
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this 7x7 regional Queens puzzle, I need to place exactly 7 queens such that there's one in each row, column, and region, with no queens touching each other.\n\nLet me first identify the regions from the board:\n- Region A: (1,1), (2,1), (2,2), (2,3), (3,1) \n- Region B: (1,2), (1,3), (1,4), (1,5)\n- Region C: Multiple cells across rows 1-6 in columns 4-7\n- Region D: Multiple cells in the lower-left area\n- Region E: (5,4), (5,5) - only 2 cells\n- Region F: (5,7), (6,7), (7,7) - only 3 cells  \n- Region G: (7,5), (7,6) - only 2 cells\n\nThe small regions E and G severely constrain the solution. Let me work with these constraints:\n\nStarting with region E (2 cells): I'll try placing the queen at (5,4).\nFor region G (2 cells): I'll try placing the queen at (7,5).\nFor region F (3 cells): Since rows 5 and 7 are taken, the queen must go to (6,7).\n\nSo far: (5,4), (7,5), (6,7)\nUsed rows: 5, 6, 7\nUsed columns: 4, 5, 7\nRemaining rows: 1, 2, 3, 4\nRemaining columns: 1, 2, 3, 6\n\nFor region B (only in row 1): With available columns 1,2,3,6 and region B covering (1,2), (1,3), (1,4), (1,5), I can use (1,3) since column 3 is available.\n\nCurrent queens: (5,4), (7,5), (6,7), (1,3)\nUsed rows: 1, 5, 6, 7\nUsed columns: 3, 4, 5, 7\nRemaining rows: 2, 3, 4\nRemaining columns: 1, 2, 6\n\nFor region A: Available positions are (2,1) and (3,1). I'll try (2,1).\n\nCurrent queens: (5,4), (7,5), (6,7), (1,3), (2,1)\nUsed rows: 1, 2, 5, 6, 7  \nUsed columns: 1, 3, 4, 5, 7\nRemaining rows: 3, 4\nRemaining columns: 2, 6\n\nI need to place queens in regions C and D using positions (3,6), (4,2), checking that:\n- (3,6) is in region C\n- (4,2) is in region D\n- They don't touch each other (1 row apart, 4 columns apart - acceptable)\n- They're not blocked by existing queens\n\nFinal solution: (1,3), (2,1), (3,6), (4,2), (5,4), (6,7), (7,5)\n\nVerification: All rows ✓, all columns ✓, all regions ✓, no adjacent queens ✓\n\n{\"board_id\":\"queens-7-medium\",\"columns_by_row\":[3,1,6,2,4,7,5]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1112,
+    "completion_tokens": 6792,
+    "total_tokens": 7904,
+    "cost": 0.105216,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.105216,
+      "upstream_inference_prompt_cost": 0.003336,
+      "upstream_inference_completions_cost": 0.10188
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2260,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

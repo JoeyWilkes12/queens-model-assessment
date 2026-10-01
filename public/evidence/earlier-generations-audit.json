@@ -1,0 +1,2388 @@
+{
+  "audited_utc": "2026-10-01T15:26:46.728994+00:00",
+  "status": "passed",
+  "offline_only": true,
+  "verifier_sha256": "9390587b636c7b50dea0a7ffb91913d9444da97b27c1b3a5b49dd9641b275ca9",
+  "protocol_sha256": "1770f6038d9539335dcfbb2a5975f73a74786f7866c6cd8a16ef4dacbfd25023",
+  "manifest_sha256": "f6b325e66006fcce47c8c88a73f55d3c538933653455f0e627bd6de0e0c78d9b",
+  "scheduled_calls": 47,
+  "started_calls": 29,
+  "received_inference_responses": 29,
+  "unique_generation_ids": 29,
+  "all_actual_and_planned_inputs_match_frozen_source_lineage": true,
+  "answer_free_input_audit": {
+    "original_text_matches_frozen_placeholder_only_template": true,
+    "embedded_images_match_original_blank_board_pngs": true,
+    "diagnostic_partitions_match_original_boards": true,
+    "diagnostic_text_exactly_reconstructed_from_partition_and_original_rules_schema": true,
+    "private_key_candidates_examples_and_feedback_not_included": true
+  },
+  "private_solution_key_normalization": {
+    "source_convention": "zero_based_columns",
+    "independent_grader_convention": "one_based_columns",
+    "transformation": "add_one_in_memory_only",
+    "coordinates_disclosed": false
+  },
+  "unique_solution_permutation_audits": [
+    {
+      "board_id": "queens-5-easy",
+      "solution_count": 1,
+      "full_column_permutations_checked": 120
+    },
+    {
+      "board_id": "queens-7-medium",
+      "solution_count": 1,
+      "full_column_permutations_checked": 5040
+    },
+    {
+      "board_id": "queens-9-hard",
+      "solution_count": 1,
+      "full_column_permutations_checked": 362880
+    }
+  ],
+  "self_tests": [
+    {
+      "board_id": "queens-5-easy",
+      "strict_valid_solution": true,
+      "repeated_schema_object_rejected": true,
+      "boolean_column_rejected": true,
+      "duplicate_json_key_rejected": true
+    },
+    {
+      "board_id": "queens-7-medium",
+      "strict_valid_solution": true,
+      "repeated_schema_object_rejected": true,
+      "boolean_column_rejected": true,
+      "duplicate_json_key_rejected": true
+    },
+    {
+      "board_id": "queens-9-hard",
+      "strict_valid_solution": true,
+      "repeated_schema_object_rejected": true,
+      "boolean_column_rejected": true,
+      "duplicate_json_key_rejected": true
+    }
+  ],
+  "reasoning_support_audit": [
+    {
+      "call_id": "r1_queens-5-easy_gpt-5.5",
+      "round": 1,
+      "family": "GPT",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r1_queens-5-easy_gpt-5.5.json",
+      "request_sha256": "9f4a1a16b08c6959f03134fb600c9a57452a4bbb141fee1c14aafac6a3b2c14e",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r1_queens-5-easy_claude-opus-4.7",
+      "round": 1,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r1_queens-5-easy_claude-opus-4.7.json",
+      "request_sha256": "80898a64981dcf071614ca65a96264ca8b8b461aab713fc7d24d8b31498b2606",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "max",
+          "medium",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r1_queens-5-easy_gemini-2.5-pro",
+      "round": 1,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r1_queens-5-easy_gemini-2.5-pro.json",
+      "request_sha256": "accc7fe3e47fe2b19d58b16fb42efd60409dd51566cf76dbb86fc421d21d153e",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r1_queens-7-medium_gpt-5.5",
+      "round": 1,
+      "family": "GPT",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r1_queens-7-medium_gpt-5.5.json",
+      "request_sha256": "9edbe81d282f9d1777c47f41e1451037c54bb17e6e7fcb925ad6685257c51eb5",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r1_queens-7-medium_claude-opus-4.7",
+      "round": 1,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r1_queens-7-medium_claude-opus-4.7.json",
+      "request_sha256": "fc10ab8f1786156ddc9501919b622023abf1e4f87f3b73ddc66baefab0c7edf3",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "max",
+          "medium",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r1_queens-7-medium_gemini-2.5-pro",
+      "round": 1,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r1_queens-7-medium_gemini-2.5-pro.json",
+      "request_sha256": "14ca7fe54de2af1c6c89715235d1ab3b7d1f8593ee8ff0e4e802daecf776bba3",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r1_queens-9-hard_gpt-5.5",
+      "round": 1,
+      "family": "GPT",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r1_queens-9-hard_gpt-5.5.json",
+      "request_sha256": "e44c7280bb8fdd59fff91a5652250f7d1d92cec33a698784b1c24ed2d3fbe764",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r1_queens-9-hard_claude-opus-4.7",
+      "round": 1,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r1_queens-9-hard_claude-opus-4.7.json",
+      "request_sha256": "bd8d32be6082c8660b3d854a1a3460f7317441af83c55424c746507680e52db6",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "max",
+          "medium",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r1_queens-9-hard_gemini-2.5-pro",
+      "round": 1,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r1_queens-9-hard_gemini-2.5-pro.json",
+      "request_sha256": "921bce750043b0b5d7bace6c6594249ab45b9e36f4457e827c0467906cae42b9",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r2_queens-5-easy_gpt-5.4",
+      "round": 2,
+      "family": "GPT",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r2_queens-5-easy_gpt-5.4.json",
+      "request_sha256": "bece2e041202c7e62425eb66c6568df658802b20cf178373fce46e044440095a",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r2_queens-5-easy_claude-opus-4.6",
+      "round": 2,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r2_queens-5-easy_claude-opus-4.6.json",
+      "request_sha256": "c1c5cb66f00f918ee169e9c1547edb455e96408b6250e549e0d2a3f19688ab5c",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "max",
+          "medium"
+        ]
+      }
+    },
+    {
+      "call_id": "r2_queens-5-easy_gemini-2.5-flash",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r2_queens-5-easy_gemini-2.5-flash.json",
+      "request_sha256": "3c7075ccbd70e629d5151796a00673269752dccec50808d79c2c5c33cbe302f0",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r2_queens-7-medium_gpt-5.4",
+      "round": 2,
+      "family": "GPT",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r2_queens-7-medium_gpt-5.4.json",
+      "request_sha256": "6904f9c54747c2893c813c2989c2bbe955ac5404764d06c5f0b31cbcd0d96508",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r2_queens-7-medium_claude-opus-4.6",
+      "round": 2,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r2_queens-7-medium_claude-opus-4.6.json",
+      "request_sha256": "bc336383b372c6221d32572dcb3aa2543b304a6c572410b09f1c20c839e849e7",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "max",
+          "medium"
+        ]
+      }
+    },
+    {
+      "call_id": "r2_queens-7-medium_gemini-2.5-flash",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r2_queens-7-medium_gemini-2.5-flash.json",
+      "request_sha256": "6e4dcc04a00f464d07dc9a8a9085384572c6d3b4b5f24cb8cac22980981826e9",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r2_queens-9-hard_gpt-5.4",
+      "round": 2,
+      "family": "GPT",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r2_queens-9-hard_gpt-5.4.json",
+      "request_sha256": "37932af2b2104c74da61a5433058ad1216ae407f687ab76c4bc11b32539556dd",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r2_queens-9-hard_claude-opus-4.6",
+      "round": 2,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r2_queens-9-hard_claude-opus-4.6.json",
+      "request_sha256": "b605bf883b30412b95b382dedb63c68941276dfd23de3ebb8b58c2bbc19354a0",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "max",
+          "medium"
+        ]
+      }
+    },
+    {
+      "call_id": "r2_queens-9-hard_gemini-2.5-flash",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r2_queens-9-hard_gemini-2.5-flash.json",
+      "request_sha256": "b49d0edba2a8145a6e0cf150b55a1c2293167b98a51b48b8c7f7f02d1a3c9b43",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r3_queens-5-easy_gpt-5.2",
+      "round": 3,
+      "family": "GPT",
+      "model": "openai/gpt-5.2",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r3_queens-5-easy_gpt-5.2.json",
+      "request_sha256": "373ccd7e72c8638f0f5efff355ed63a7f4539d7c753913cafe08f05f837ad5c6",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r3_queens-5-easy_claude-opus-4.5",
+      "round": 3,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.5",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r3_queens-5-easy_claude-opus-4.5.json",
+      "request_sha256": "0cd7bfc1941fc536980016de5094c2990771fb5fb7965c4331caa04d95689f7e",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r3_queens-5-easy_gemini-2.5-flash-lite",
+      "round": 3,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash-lite",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r3_queens-5-easy_gemini-2.5-flash-lite.json",
+      "request_sha256": "91831f509a41d7c4dcbefe94398f0b3aa901c374822ca07a9d80a887eb225619",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r3_queens-7-medium_gpt-5.2",
+      "round": 3,
+      "family": "GPT",
+      "model": "openai/gpt-5.2",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r3_queens-7-medium_gpt-5.2.json",
+      "request_sha256": "a15e60586fe2448726ee32558c922a5132bd32df89110305959a0438bf4ead89",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r3_queens-7-medium_claude-opus-4.5",
+      "round": 3,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.5",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r3_queens-7-medium_claude-opus-4.5.json",
+      "request_sha256": "9f20433973d641fb68cca5af5881b5356d238c1d646f3aa93cf470048a2c35a4",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r3_queens-7-medium_gemini-2.5-flash-lite",
+      "round": 3,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash-lite",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r3_queens-7-medium_gemini-2.5-flash-lite.json",
+      "request_sha256": "06826731bf03f2cef54cf2883b41780997578f12dafa35f5ee2eb7f938020282",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r3_queens-9-hard_gpt-5.2",
+      "round": 3,
+      "family": "GPT",
+      "model": "openai/gpt-5.2",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r3_queens-9-hard_gpt-5.2.json",
+      "request_sha256": "d4eb151165610314475ea3572190a2533c4f092ef5c40d1d5ef723a2f320612f",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none",
+          "xhigh"
+        ]
+      }
+    },
+    {
+      "call_id": "r3_queens-9-hard_claude-opus-4.5",
+      "round": 3,
+      "family": "Claude",
+      "model": "anthropic/claude-opus-4.5",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r3_queens-9-hard_claude-opus-4.5.json",
+      "request_sha256": "6887c3a10afa714923df1cc23b9e47c93bad7a7055acb0fddf3c94318961728e",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r3_queens-9-hard_gemini-2.5-flash-lite",
+      "round": 3,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash-lite",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "google-ai-studio",
+      "request_file": "requests/r3_queens-9-hard_gemini-2.5-flash-lite.json",
+      "request_sha256": "f3c278c19a68fd1164a7835fceb0103bfa22de88d96964d0c573ac74af7c9df9",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r4_queens-5-easy_gpt-5.1",
+      "round": 4,
+      "family": "GPT",
+      "model": "openai/gpt-5.1",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r4_queens-5-easy_gpt-5.1.json",
+      "request_sha256": "97fbbd57f57572c886bf451e1286be79d20040034c3067b913ffa9e0844d1052",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none"
+        ]
+      }
+    },
+    {
+      "call_id": "r4_queens-5-easy_claude-sonnet-4.5",
+      "round": 4,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4.5",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r4_queens-5-easy_claude-sonnet-4.5.json",
+      "request_sha256": "4427bd7f05213756d6ae516c8c0dad7dd5e930ac9893394c2160c55c23c29650",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r4_queens-7-medium_gpt-5.1",
+      "round": 4,
+      "family": "GPT",
+      "model": "openai/gpt-5.1",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r4_queens-7-medium_gpt-5.1.json",
+      "request_sha256": "2918f931ec1e7e42f57b57fc913878fc01b42d4114930f16dbf24625589d023e",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none"
+        ]
+      }
+    },
+    {
+      "call_id": "r4_queens-7-medium_claude-sonnet-4.5",
+      "round": 4,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4.5",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r4_queens-7-medium_claude-sonnet-4.5.json",
+      "request_sha256": "ece984e7a6a05155ada11852bc06b309de3161469d67f618f0753b8191181113",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r4_queens-9-hard_gpt-5.1",
+      "round": 4,
+      "family": "GPT",
+      "model": "openai/gpt-5.1",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r4_queens-9-hard_gpt-5.1.json",
+      "request_sha256": "d79a7ee3027558a1db8c436c459295b06f0402ad905507acaba1568e2a91fd26",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "none"
+        ]
+      }
+    },
+    {
+      "call_id": "r4_queens-9-hard_claude-sonnet-4.5",
+      "round": 4,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4.5",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "anthropic",
+      "request_file": "requests/r4_queens-9-hard_claude-sonnet-4.5.json",
+      "request_sha256": "0cf20dfea0f528933e0876d2b8110dd5f279d020d75a2f15d401c45d586efd94",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r5_queens-5-easy_gpt-5",
+      "round": 5,
+      "family": "GPT",
+      "model": "openai/gpt-5",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai/default",
+      "request_file": "requests/r5_queens-5-easy_gpt-5.json",
+      "request_sha256": "6e716c510bfa44e198b0771ed5a777e3f873723ede3ee61cafd56e0f4c3764bd",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "minimal"
+        ]
+      }
+    },
+    {
+      "call_id": "r5_queens-5-easy_claude-sonnet-4",
+      "round": 5,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "amazon-bedrock",
+      "request_file": "requests/r5_queens-5-easy_claude-sonnet-4.json",
+      "request_sha256": "1a5ed7b39867867568a5525fdcd871d727d7825f4374598f058b7b7d7fed3610",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r5_queens-7-medium_gpt-5",
+      "round": 5,
+      "family": "GPT",
+      "model": "openai/gpt-5",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai/default",
+      "request_file": "requests/r5_queens-7-medium_gpt-5.json",
+      "request_sha256": "2957e2435c83c51faa6682766d0979031dbf30acac922f9548f85eefbbb54335",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "minimal"
+        ]
+      }
+    },
+    {
+      "call_id": "r5_queens-7-medium_claude-sonnet-4",
+      "round": 5,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "amazon-bedrock",
+      "request_file": "requests/r5_queens-7-medium_claude-sonnet-4.json",
+      "request_sha256": "35f3cc1bc39e4bd8bb540f816ac5c54b4664a632888ea37e3dc1c11240bcde3e",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r5_queens-9-hard_gpt-5",
+      "round": 5,
+      "family": "GPT",
+      "model": "openai/gpt-5",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai/default",
+      "request_file": "requests/r5_queens-9-hard_gpt-5.json",
+      "request_sha256": "6edaf3fb95d65e2ef6fc0dd249b986c14e000873975bbb24cb25437cbf9b3311",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "catalog_native_effort_supported",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": true,
+        "catalog_supported_efforts": [
+          "high",
+          "low",
+          "medium",
+          "minimal"
+        ]
+      }
+    },
+    {
+      "call_id": "r5_queens-9-hard_claude-sonnet-4",
+      "round": 5,
+      "family": "Claude",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "amazon-bedrock",
+      "request_file": "requests/r5_queens-9-hard_claude-sonnet-4.json",
+      "request_sha256": "8e5e56605040877b5a5ce5ac57c3a7e0cc3ba9e327e160bf76f0cdfa63b176f2",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    },
+    {
+      "call_id": "r6_queens-5-easy_gpt-4.1",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r6_queens-5-easy_gpt-4.1.json",
+      "request_sha256": "b27862b46664777ed3022ea925a0aba38a4d3565b4e8614c84588922160b3f3c",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "unsupported_omitted",
+      "reasoning_support_audit": {
+        "frozen_mode": "unsupported_omitted",
+        "request_value": "omitted",
+        "support_classification": "omitted_in_frozen_request"
+      }
+    },
+    {
+      "call_id": "r6_queens-7-medium_gpt-4.1",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r6_queens-7-medium_gpt-4.1.json",
+      "request_sha256": "a0822ef50cd6565775e5769e6914e5d9dfab802a2f51894adec753a738dc690b",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "unsupported_omitted",
+      "reasoning_support_audit": {
+        "frozen_mode": "unsupported_omitted",
+        "request_value": "omitted",
+        "support_classification": "omitted_in_frozen_request"
+      }
+    },
+    {
+      "call_id": "r6_queens-9-hard_gpt-4.1",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r6_queens-9-hard_gpt-4.1.json",
+      "request_sha256": "29e105cb84a0bc6f0e1462dfecd58e264f80e1874f74f05d4e1a62d18a3dbec9",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "unsupported_omitted",
+      "reasoning_support_audit": {
+        "frozen_mode": "unsupported_omitted",
+        "request_value": "omitted",
+        "support_classification": "omitted_in_frozen_request"
+      }
+    },
+    {
+      "call_id": "r7_queens-5-easy_gpt-4o-2024-11-20",
+      "round": 7,
+      "family": "GPT",
+      "model": "openai/gpt-4o-2024-11-20",
+      "board_id": "queens-5-easy",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r7_queens-5-easy_gpt-4o-2024-11-20.json",
+      "request_sha256": "88b229494fdedea3c987d4107deebbafd9c4abf6bd7bde1cce4dc0a597248217",
+      "messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+      "image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+      "frozen_reasoning_mode": "unsupported_omitted",
+      "reasoning_support_audit": {
+        "frozen_mode": "unsupported_omitted",
+        "request_value": "omitted",
+        "support_classification": "omitted_in_frozen_request"
+      }
+    },
+    {
+      "call_id": "r7_queens-7-medium_gpt-4o-2024-11-20",
+      "round": 7,
+      "family": "GPT",
+      "model": "openai/gpt-4o-2024-11-20",
+      "board_id": "queens-7-medium",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r7_queens-7-medium_gpt-4o-2024-11-20.json",
+      "request_sha256": "23718f7f11ecbae3264da19e6499fdad44426e4735f570d8743a0b2e7a3fa47c",
+      "messages_sha256": "9291e2ce65301bc1e0064bfd90c34b63757d9f086b91ef7050fe867d973d3a61",
+      "image_sha256": "2291954e941b22ca2b09534186ca001374ad67a43dbde41b80aebedc8825d179",
+      "frozen_reasoning_mode": "unsupported_omitted",
+      "reasoning_support_audit": {
+        "frozen_mode": "unsupported_omitted",
+        "request_value": "omitted",
+        "support_classification": "omitted_in_frozen_request"
+      }
+    },
+    {
+      "call_id": "r7_queens-9-hard_gpt-4o-2024-11-20",
+      "round": 7,
+      "family": "GPT",
+      "model": "openai/gpt-4o-2024-11-20",
+      "board_id": "queens-9-hard",
+      "condition": "original_image",
+      "provider_tag": "openai",
+      "request_file": "requests/r7_queens-9-hard_gpt-4o-2024-11-20.json",
+      "request_sha256": "e8ee0bf7a2cfe828eb774d0fc983bb8886b7a2dd672a526cc0ed8ce81cf19542",
+      "messages_sha256": "1493b868c9462e115ca560112f44186b3e6a688b640f03f7f309b45707bb143d",
+      "image_sha256": "838551d0904b556d3e93b69ddb25da6a018c90fd348cd1194652cdbb7b4647ea",
+      "frozen_reasoning_mode": "unsupported_omitted",
+      "reasoning_support_audit": {
+        "frozen_mode": "unsupported_omitted",
+        "request_value": "omitted",
+        "support_classification": "omitted_in_frozen_request"
+      }
+    },
+    {
+      "call_id": "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+      "round": 6,
+      "family": "GPT",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "condition": "text_only_region_grid_rows",
+      "provider_tag": "openai",
+      "request_file": "diagnostic_requests/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows.json",
+      "request_sha256": "8c55883d8cd0cab562fbb646c4da666934ba5b51c9e85c745d0764ebca3ea140",
+      "messages_sha256": "ab806436cde902d58375be0f796fe0d0bd7c1a0a94a779d7201e9b62c8830baf",
+      "image_sha256": null,
+      "frozen_reasoning_mode": "unsupported_omitted",
+      "reasoning_support_audit": {
+        "frozen_mode": "unsupported_omitted",
+        "request_value": "omitted",
+        "support_classification": "omitted_in_frozen_request"
+      }
+    },
+    {
+      "call_id": "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+      "round": 2,
+      "family": "Gemini",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "condition": "text_only_region_grid_rows",
+      "provider_tag": "google-ai-studio",
+      "request_file": "diagnostic_requests/diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows.json",
+      "request_sha256": "d737c72c3e9ca620e51027bf5a88ed92148adfbdf5f70b4aa4992adafa1a1142",
+      "messages_sha256": "ab806436cde902d58375be0f796fe0d0bd7c1a0a94a779d7201e9b62c8830baf",
+      "image_sha256": null,
+      "frozen_reasoning_mode": "high",
+      "reasoning_support_audit": {
+        "frozen_mode": "high",
+        "request_value": "high",
+        "support_classification": "gateway_reasoning_parameter_without_native_effort_catalog",
+        "endpoint_advertises_reasoning": true,
+        "endpoint_advertises_reasoning_effort": false,
+        "catalog_supported_efforts": []
+      }
+    }
+  ],
+  "family_ladder": {
+    "first_failure_round_by_family": {
+      "Gemini": 2,
+      "GPT": 6,
+      "Claude": 5
+    },
+    "started_call_order": [
+      "r1_queens-5-easy_gpt-5.5",
+      "r1_queens-5-easy_claude-opus-4.7",
+      "r1_queens-5-easy_gemini-2.5-pro",
+      "r1_queens-7-medium_gpt-5.5",
+      "r1_queens-7-medium_claude-opus-4.7",
+      "r1_queens-7-medium_gemini-2.5-pro",
+      "r1_queens-9-hard_gpt-5.5",
+      "r1_queens-9-hard_claude-opus-4.7",
+      "r1_queens-9-hard_gemini-2.5-pro",
+      "r2_queens-5-easy_gpt-5.4",
+      "r2_queens-5-easy_claude-opus-4.6",
+      "r2_queens-5-easy_gemini-2.5-flash",
+      "r2_queens-7-medium_gpt-5.4",
+      "r2_queens-7-medium_claude-opus-4.6",
+      "r2_queens-7-medium_gemini-2.5-flash",
+      "r2_queens-9-hard_gpt-5.4",
+      "r2_queens-9-hard_claude-opus-4.6",
+      "r2_queens-9-hard_gemini-2.5-flash",
+      "r6_queens-5-easy_gpt-4.1",
+      "r5_queens-5-easy_claude-sonnet-4",
+      "r6_queens-7-medium_gpt-4.1",
+      "r5_queens-7-medium_claude-sonnet-4",
+      "r6_queens-9-hard_gpt-4.1",
+      "r5_queens-9-hard_claude-sonnet-4",
+      "r5_queens-5-easy_gpt-5",
+      "r5_queens-7-medium_gpt-5",
+      "r5_queens-9-hard_gpt-5",
+      "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+      "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows"
+    ],
+    "execution_phases": [
+      "round-1",
+      "round-1",
+      "round-1",
+      "round-1",
+      "round-1",
+      "round-1",
+      "round-1",
+      "round-1",
+      "round-1",
+      "round-2",
+      "round-2",
+      "round-2",
+      "round-2",
+      "round-2",
+      "round-2",
+      "round-2",
+      "round-2",
+      "round-2",
+      "older-anchors",
+      "older-anchors",
+      "older-anchors",
+      "older-anchors",
+      "older-anchors",
+      "older-anchors",
+      "gpt-bridge",
+      "gpt-bridge",
+      "gpt-bridge",
+      "text-diagnostics",
+      "text-diagnostics"
+    ],
+    "breadth_first_prefix_valid": true,
+    "family_stop_rule_valid": true,
+    "complete_block_budget_checks": [
+      {
+        "phase": "round-1",
+        "board_id": "queens-5-easy",
+        "accounted_before_usd": "0",
+        "whole_block_reserve_usd": "0.96372000000000011",
+        "hold_usd": "0.15",
+        "projected_usd": "1.11372000000000011"
+      },
+      {
+        "phase": "round-1",
+        "board_id": "queens-7-medium",
+        "accounted_before_usd": "0.15145125",
+        "whole_block_reserve_usd": "0.96372000000000011",
+        "hold_usd": "0.15",
+        "projected_usd": "1.26517125000000011"
+      },
+      {
+        "phase": "round-1",
+        "board_id": "queens-9-hard",
+        "accounted_before_usd": "0.36669750",
+        "whole_block_reserve_usd": "0.96372000000000011",
+        "hold_usd": "0.15",
+        "projected_usd": "1.48041750000000011"
+      },
+      {
+        "phase": "round-2",
+        "board_id": "queens-5-easy",
+        "accounted_before_usd": "0.62023875",
+        "whole_block_reserve_usd": "0.645840000000000065",
+        "hold_usd": "0.15",
+        "projected_usd": "1.416078750000000065"
+      },
+      {
+        "phase": "round-2",
+        "board_id": "queens-7-medium",
+        "accounted_before_usd": "0.72775865",
+        "whole_block_reserve_usd": "0.645840000000000065",
+        "hold_usd": "0.15",
+        "projected_usd": "1.523598650000000065"
+      },
+      {
+        "phase": "round-2",
+        "board_id": "queens-9-hard",
+        "accounted_before_usd": "0.97024355",
+        "whole_block_reserve_usd": "0.645840000000000065",
+        "hold_usd": "0.15",
+        "projected_usd": "1.766083550000000065"
+      },
+      {
+        "phase": "older-anchors",
+        "board_id": "queens-5-easy",
+        "accounted_before_usd": "1.15285345",
+        "whole_block_reserve_usd": "0.36262400000000002",
+        "hold_usd": "0.15",
+        "projected_usd": "1.66547745000000002"
+      },
+      {
+        "phase": "older-anchors",
+        "board_id": "queens-7-medium",
+        "accounted_before_usd": "1.24518745",
+        "whole_block_reserve_usd": "0.36262400000000002",
+        "hold_usd": "0.15",
+        "projected_usd": "1.75781145000000002"
+      },
+      {
+        "phase": "older-anchors",
+        "board_id": "queens-9-hard",
+        "accounted_before_usd": "1.35269145",
+        "whole_block_reserve_usd": "0.36262400000000002",
+        "hold_usd": "0.15",
+        "projected_usd": "1.86531545000000002"
+      },
+      {
+        "phase": "gpt-bridge",
+        "board_id": "queens-5-easy",
+        "accounted_before_usd": "1.48614745",
+        "whole_block_reserve_usd": "0.14788000000000004",
+        "hold_usd": "0.15",
+        "projected_usd": "1.78402745000000004"
+      },
+      {
+        "phase": "gpt-bridge",
+        "board_id": "queens-7-medium",
+        "accounted_before_usd": "1.58253495",
+        "whole_block_reserve_usd": "0.14788000000000004",
+        "hold_usd": "0.15",
+        "projected_usd": "1.88041495000000004"
+      },
+      {
+        "phase": "gpt-bridge",
+        "board_id": "queens-9-hard",
+        "accounted_before_usd": "1.69762995",
+        "whole_block_reserve_usd": "0.14788000000000004",
+        "hold_usd": "0.15",
+        "projected_usd": "1.99550995000000004"
+      }
+    ],
+    "budget_stop_receipts": [],
+    "older_anchor_schedule_valid": true,
+    "gpt_bridge_schedule_valid": true
+  },
+  "delivery_halt_events": [],
+  "response_audit_warnings": [],
+  "completed_but_unmetered_calls": [],
+  "confirmed_cost_usd": "1.82426525",
+  "unknown_or_unmetered_reserve_usd": "0",
+  "actual_plus_reserves_usd": "1.82426525",
+  "unstarted_diagnostic_reserve_usd": "0",
+  "configured_diagnostic_hold_usd": "0.15",
+  "currently_enforced_hold_usd": "0",
+  "projected_accounted_reserves_and_hold_usd": "1.82426525",
+  "budget_usd": "2.00",
+  "remaining_after_planned_reserves_usd": "0.17573475",
+  "attempts": [
+    {
+      "call_id": "diag_r2_queens-5-easy_gemini-2.5-flash_region_grid_rows",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "family": "Gemini",
+      "condition": "text_only_region_grid_rows",
+      "round": 2,
+      "execution_phase": "text-diagnostics",
+      "returned_model": "google/gemini-2.5-flash",
+      "returned_provider": "Google AI Studio",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": true,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.0226243",
+      "state": "completed"
+    },
+    {
+      "call_id": "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "family": "GPT",
+      "condition": "text_only_region_grid_rows",
+      "round": 6,
+      "execution_phase": "text-diagnostics",
+      "returned_model": "openai/gpt-4.1",
+      "returned_provider": "OpenAI",
+      "strict_correct": false,
+      "strict_failure": "rule_violation",
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": true
+      },
+      "written_correct": false,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": "rule_violation",
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.000856",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-5-easy_claude-opus-4.7",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-5-easy",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "anthropic/claude-opus-4.7",
+      "returned_provider": "Anthropic",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.025535",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-5-easy_gemini-2.5-pro",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-5-easy",
+      "family": "Gemini",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "google/gemini-2.5-pro",
+      "returned_provider": "Google AI Studio",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": true,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.08207625",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-5-easy_gpt-5.5",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-5-easy",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "openai/gpt-5.5",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.04384",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-7-medium_claude-opus-4.7",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-7-medium",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "anthropic/claude-opus-4.7",
+      "returned_provider": "Anthropic",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.05771",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-7-medium_gemini-2.5-pro",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-7-medium",
+      "family": "Gemini",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "google/gemini-2.5-pro",
+      "returned_provider": "Google AI Studio",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": true,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.09051625",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-7-medium_gpt-5.5",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-7-medium",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "openai/gpt-5.5",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.06702",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-9-hard_claude-opus-4.7",
+      "model": "anthropic/claude-opus-4.7",
+      "board_id": "queens-9-hard",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "anthropic/claude-opus-4.7",
+      "returned_provider": "Anthropic",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.089435",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-9-hard_gemini-2.5-pro",
+      "model": "google/gemini-2.5-pro",
+      "board_id": "queens-9-hard",
+      "family": "Gemini",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "google/gemini-2.5-pro",
+      "returned_provider": "Google AI Studio",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.08055625",
+      "state": "completed"
+    },
+    {
+      "call_id": "r1_queens-9-hard_gpt-5.5",
+      "model": "openai/gpt-5.5",
+      "board_id": "queens-9-hard",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 1,
+      "execution_phase": "round-1",
+      "returned_model": "openai/gpt-5.5",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.08355",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-5-easy_claude-opus-4.6",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-5-easy",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "anthropic/claude-opus-4.6",
+      "returned_provider": "Anthropic",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.05169",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-5-easy_gemini-2.5-flash",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-5-easy",
+      "family": "Gemini",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "google/gemini-2.5-flash",
+      "returned_provider": "Google AI Studio",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": false,
+      "candidate_count": 0,
+      "extraction_audit": {
+        "candidate_count": 0,
+        "rule_valid_after_extraction": false,
+        "extra_visible_text": false,
+        "markdown_fence_present": false
+      },
+      "finish_reason": "length",
+      "actual_cost_usd": "0.0308199",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-5-easy_gpt-5.4",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-5-easy",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "openai/gpt-5.4",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.02501",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-7-medium_claude-opus-4.6",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-7-medium",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "anthropic/claude-opus-4.6",
+      "returned_provider": "Anthropic",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.155215",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-7-medium_gemini-2.5-flash",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-7-medium",
+      "family": "Gemini",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "google/gemini-2.5-flash",
+      "returned_provider": "Google AI Studio",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": false,
+      "candidate_count": 0,
+      "extraction_audit": {
+        "candidate_count": 0,
+        "rule_valid_after_extraction": false,
+        "extra_visible_text": false,
+        "markdown_fence_present": false
+      },
+      "finish_reason": "length",
+      "actual_cost_usd": "0.0308399",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-7-medium_gpt-5.4",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-7-medium",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "openai/gpt-5.4",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.05643",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-9-hard_claude-opus-4.6",
+      "model": "anthropic/claude-opus-4.6",
+      "board_id": "queens-9-hard",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "anthropic/claude-opus-4.6",
+      "returned_provider": "Anthropic",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.10824",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-9-hard_gemini-2.5-flash",
+      "model": "google/gemini-2.5-flash",
+      "board_id": "queens-9-hard",
+      "family": "Gemini",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "google/gemini-2.5-flash",
+      "returned_provider": "Google AI Studio",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": true,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.0248249",
+      "state": "completed"
+    },
+    {
+      "call_id": "r2_queens-9-hard_gpt-5.4",
+      "model": "openai/gpt-5.4",
+      "board_id": "queens-9-hard",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 2,
+      "execution_phase": "round-2",
+      "returned_model": "openai/gpt-5.4",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.049545",
+      "state": "completed"
+    },
+    {
+      "call_id": "r5_queens-5-easy_claude-sonnet-4",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-5-easy",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 5,
+      "execution_phase": "older-anchors",
+      "returned_model": "anthropic/claude-sonnet-4",
+      "returned_provider": "Amazon Bedrock",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.090066",
+      "state": "completed"
+    },
+    {
+      "call_id": "r5_queens-5-easy_gpt-5",
+      "model": "openai/gpt-5",
+      "board_id": "queens-5-easy",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 5,
+      "execution_phase": "gpt-bridge",
+      "returned_model": "openai/gpt-5",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.0963875",
+      "state": "completed"
+    },
+    {
+      "call_id": "r5_queens-7-medium_claude-sonnet-4",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-7-medium",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 5,
+      "execution_phase": "older-anchors",
+      "returned_model": "anthropic/claude-sonnet-4",
+      "returned_provider": "Amazon Bedrock",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": true,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.105216",
+      "state": "completed"
+    },
+    {
+      "call_id": "r5_queens-7-medium_gpt-5",
+      "model": "openai/gpt-5",
+      "board_id": "queens-7-medium",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 5,
+      "execution_phase": "gpt-bridge",
+      "returned_model": "openai/gpt-5",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.115095",
+      "state": "completed"
+    },
+    {
+      "call_id": "r5_queens-9-hard_claude-sonnet-4",
+      "model": "anthropic/claude-sonnet-4",
+      "board_id": "queens-9-hard",
+      "family": "Claude",
+      "condition": "original_image",
+      "round": 5,
+      "execution_phase": "older-anchors",
+      "returned_model": "anthropic/claude-sonnet-4",
+      "returned_provider": "Amazon Bedrock",
+      "strict_correct": false,
+      "strict_failure": "invalid_json_or_missing_final",
+      "strict_rule_checks": {},
+      "written_correct": false,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false,
+        "extra_visible_text": true,
+        "markdown_fence_present": false,
+        "failure": "rule_violation",
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.131136",
+      "state": "completed"
+    },
+    {
+      "call_id": "r5_queens-9-hard_gpt-5",
+      "model": "openai/gpt-5",
+      "board_id": "queens-9-hard",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 5,
+      "execution_phase": "gpt-bridge",
+      "returned_model": "openai/gpt-5",
+      "returned_provider": "OpenAI",
+      "strict_correct": true,
+      "strict_failure": null,
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true
+      },
+      "written_correct": true,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": true,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": null,
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": true,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.103155",
+      "state": "completed"
+    },
+    {
+      "call_id": "r6_queens-5-easy_gpt-4.1",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-5-easy",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 6,
+      "execution_phase": "older-anchors",
+      "returned_model": "openai/gpt-4.1",
+      "returned_provider": "OpenAI",
+      "strict_correct": false,
+      "strict_failure": "rule_violation",
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": false
+      },
+      "written_correct": false,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": "rule_violation",
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": false
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.002268",
+      "state": "completed"
+    },
+    {
+      "call_id": "r6_queens-7-medium_gpt-4.1",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-7-medium",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 6,
+      "execution_phase": "older-anchors",
+      "returned_model": "openai/gpt-4.1",
+      "returned_provider": "OpenAI",
+      "strict_correct": false,
+      "strict_failure": "rule_violation",
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": true
+      },
+      "written_correct": false,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": "rule_violation",
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": true
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.002288",
+      "state": "completed"
+    },
+    {
+      "call_id": "r6_queens-9-hard_gpt-4.1",
+      "model": "openai/gpt-4.1",
+      "board_id": "queens-9-hard",
+      "family": "GPT",
+      "condition": "original_image",
+      "round": 6,
+      "execution_phase": "older-anchors",
+      "returned_model": "openai/gpt-4.1",
+      "returned_provider": "OpenAI",
+      "strict_correct": false,
+      "strict_failure": "rule_violation",
+      "strict_rule_checks": {
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": false
+      },
+      "written_correct": false,
+      "candidate_count": 1,
+      "extraction_audit": {
+        "candidate_count": 1,
+        "rule_valid_after_extraction": false,
+        "extra_visible_text": false,
+        "markdown_fence_present": false,
+        "failure": "rule_violation",
+        "checks": {
+          "one_per_row": true,
+          "one_per_column": true,
+          "one_per_region": false,
+          "no_touch": false
+        }
+      },
+      "finish_reason": "stop",
+      "actual_cost_usd": "0.00232",
+      "state": "completed"
+    }
+  ],
+  "notes": [
+    "Reasoning request value and capability support are audited separately; gateway-mapped High is not labeled as native High.",
+    "Unmetered or interrupted started calls retain their full frozen reserve.",
+    "The original grades.json was read for comparison and not overwritten."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "call_id": "diag_r6_queens-5-easy_gpt-4.1_region_grid_rows",
+  "round": 6,
+  "family": "GPT",
+  "model": "openai/gpt-4.1",
+  "board_id": "queens-5-easy",
+  "condition": "text_only_region_grid_rows",
+  "diagnostic_variant": "region_grid_rows",
+  "representation_description": "Full region partition as a JSON matrix of letter labels.",
+  "provider_tag": "openai",
+  "canonical_slug": "openai/gpt-4.1-2025-04-14",
+  "reasoning_mode": "unsupported_omitted",
+  "request_file": "diagnostic_requests/diag_r6_queens-5-easy_gpt-4.1_region_grid_rows.json",
+  "request_sha256": "8c55883d8cd0cab562fbb646c4da666934ba5b51c9e85c745d0764ebca3ea140",
+  "messages_sha256": "ab806436cde902d58375be0f796fe0d0bd7c1a0a94a779d7201e9b62c8830baf",
+  "source_original_call_id": "r6_queens-5-easy_gpt-4.1",
+  "source_original_request": "evaluations/2026-10-01-earlier-generations/requests/r6_queens-5-easy_gpt-4.1.json",
+  "source_original_request_sha256": "b27862b46664777ed3022ea925a0aba38a4d3565b4e8614c84588922160b3f3c",
+  "source_original_messages_sha256": "aee50599c474da85a3dfb1e11832a5aac2d87e38aabf4447d245526ddec7bd0e",
+  "source_image_sha256": "d69fec03a223629b71bc71234a5c85b891194ec7f474007310176151fdb9f88c",
+  "source_jev_request": "evaluations/2026-09-18-jev-deep-dive/requests/02_batch_5x5_guardrail_enabled.json",
+  "source_jev_request_sha256": "64cf4ca9e7f7700ee663e73e029c5eb6a342ce803b4453e8f2ef30542e9e9d2a",
+  "source_board_json": "evaluations/2026-09-17-one-shot/inputs/queens-5-easy.json",
+  "source_board_json_sha256": "c34a225abbbda7378e949ee20c0e5fe1aaaaf49dce50def9bc74474309da20da",
+  "source_jev_rules_sha256": "d2f8abc917ad25e234079d5f8f021360e3b0216dc3e7dd8231a8b054d8871a29",
+  "source_jev_rules_validation": "Exact six-rule Jev list verified; it covers row, column, region, no-touch, long-diagonal allowance, unique solution, and one-based orientation. The original prompt's Rules section is retained verbatim in the transformed request.",
+  "transformation": "Preserve the original one-shot rules and JSON output schema verbatim. Replace only the user message: remove the original embedded image and image/color-dependent intro, then append either the validated letter matrix or validated one-based region-cell lists before the unchanged Rules/output-schema tail. No candidates, solution, examples, givens, computed counts, feedback, or tool definitions are included.",
+  "prompt_rate": 0.000002,
+  "completion_rate": 0.000008,
+  "input_token_reserve": 12000,
+  "max_tokens": 12288,
+  "surcharge_reserve_usd": 0.01,
+  "reserved_usd": 0.132304,
+  "format_valid": true,
+  "correct": false,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": false,
+    "no_touch": true
+  },
+  "failure": "rule_violation",
+  "extraction": {
+    "diagnostic_only": true,
+    "candidate_count": 1,
+    "markdown_fence_present": false,
+    "visible_character_count": 57,
+    "rule_valid_after_extraction": false,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": true,
+      "one_per_region": false,
+      "no_touch": true
+    },
+    "failure": "rule_violation",
+    "extra_visible_text": false
+  },
+  "written_correct": false,
+  "received_answer": true,
+  "finish_reason": "stop",
+  "seconds": 1.455947000067681,
+  "cost_usd": 0.000856,
+  "accounted_usd": 0.000856,
+  "http_status": 200,
+  "returned_model": "openai/gpt-4.1",
+  "provider": "OpenAI",
+  "usage": {
+    "prompt_tokens": 324,
+    "completion_tokens": 26,
+    "total_tokens": 350,
+    "cost": 0.000856,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.000856,
+      "upstream_inference_prompt_cost": 0.000648,
+      "upstream_inference_completions_cost": 0.000208
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "halt_reason": null,
+  "execution_phase": "text-diagnostics"
+}

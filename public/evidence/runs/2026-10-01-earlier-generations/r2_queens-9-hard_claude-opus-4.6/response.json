@@ -1,0 +1,45 @@
+{
+  "id": "gen-1790865293-e9SHSYeWkBxNqqzJgnbS",
+  "object": "chat.completion",
+  "created": 1790865293,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at the puzzle, I need to identify regions and find the unique valid placement.\n\n**Identifying single-cell regions (forced placements):**\n- **Region D:** Only cell (3,4) → Row 3 = Column 4\n- **Region E:** Only cell (4,7) → Row 4 = Column 7  \n- **Region F:** Only cell (5,1) → Row 5 = Column 1\n\n**Propagating constraints:**\n\n**Region A:** After removing used rows/columns, A's only available cells are (6,2) and (6,3). Adjacency with Row 5, Col 1 requires |col−1|>1, eliminating col 2. → **Row 6 = Column 3**\n\n**Region H:** With row 6 taken, H's only remaining option is (7,9). → **Row 7 = Column 9**\n\n**Region I:** Column 9 is used; row 8 is blocked by adjacency with row 7 col 9 (cols 8,9 excluded for row 8). So I must go in row 9. Only col 8 remains available. → **Row 9 = Column 8**\n\n**Region G:** Must be row 8. Adjacency constraints leave {2,5,6}. After later assignments, → **Row 8 = Column 5**\n\n**Region C:** Available cells reduce to only (1,6). → **Row 1 = Column 6**\n\n**Region B:** Row 2 must satisfy |col−6|>1 (adjacency with row 1). From remaining {2,5}: only col 2 works. → **Row 2 = Column 2**\n\n**Verification:** All rows, columns, regions have exactly one queen; no two queens touch diagonally between consecutive rows. ✓\n\n{\"board_id\":\"queens-9-hard\",\"columns_by_row\":[6,2,4,7,1,3,9,5,8]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 4113,
+    "total_tokens": 5196,
+    "cost": 0.10824,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.10824,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.102825
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3646,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
