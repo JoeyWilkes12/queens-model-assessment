@@ -2,6 +2,8 @@ import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'rea
 import { BoardReplay } from './BoardReplay'
 import { deriveReceiptBoard } from './receiptBoardData'
 import { deriveTrajectoryFrames, linkedTrajectoryForReceipt } from './trajectoryBoardData'
+import { FailureComparison } from './FailureComparison'
+import { deriveFailureComparison } from './failureComparisonData'
 
 type Route = {
   path: string
@@ -594,6 +596,7 @@ function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: ()
   const download = () => { const url = URL.createObjectURL(new Blob([payload], { type: 'application/json' })); const anchor = document.createElement('a'); anchor.href = url; anchor.download = `${record.id.replace(/[^A-Za-z0-9._-]+/g, '_')}.json`; anchor.click(); URL.revokeObjectURL(url) }
   const inlineAssets = collectInlineAssets(loaded.request)
   const boardView = useMemo(() => deriveReceiptBoard(loaded.request, loaded.output, loaded.grade), [loaded.request, loaded.output, loaded.grade])
+  const failureComparison = useMemo(() => record.assessmentOutcome === 'model_failure' ? deriveFailureComparison(loaded.request, loaded.output, loaded.grade) : null, [record.assessmentOutcome, loaded.request, loaded.output, loaded.grade])
   const linkedTrajectory = linkedTrajectoryForReceipt(record.id)
   return <>
     <PageHero trail={`Receipts / atlas / ${record.id}`} title={record.title} deck={record.summary}>
@@ -604,7 +607,8 @@ function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: ()
       <ErrorContextCallout record={record} />
       {record.excluded && !record.errorContext && <Callout tone="caution" title="Excluded from the default atlas"><p>{record.exclusionReason || 'This record documents a request-level failure rather than a model response.'}</p><p>It remains searchable, directly addressable, and available for audit.</p></Callout>}
       <div className="detail-toolbar"><span><strong>{record.stage}</strong> · {record.kind}</span><div><button className="button button-small" onClick={copy} disabled={loading}><Icon name="copy" />{loading ? 'Loading…' : copied ? 'Copied' : 'Copy JSON'}</button><button className="button button-small button-outline" onClick={download} disabled={loading}><Icon name="download" />Download</button></div></div>
-      {!loading && boardView && <BoardReplay key={record.id} regions={boardView.regions} frames={boardView.frames} title="Board reconstructed from this receipt" description={boardView.description} allowPlayback={false} />}
+      {!loading && failureComparison && <FailureComparison data={failureComparison} />}
+      {!loading && !failureComparison && boardView && <BoardReplay key={record.id} regions={boardView.regions} frames={boardView.frames} title="Board reconstructed from this receipt" description={boardView.description} allowPlayback={false} />}
       {!loading && !boardView && inlineAssets.length === 0 && record.kind !== 'grade-source' && <p className="board-view-unavailable">No complete, unambiguous board partition was found in this receipt. The raw input and output below remain authoritative; no board or missing state has been guessed.</p>}
       {linkedTrajectory && <p className="receipt-replay-link"><a className="text-link" href={`#/jev-trajectories/${encodeURIComponent(linkedTrajectory)}`}>Play this receipt’s linked Jev attempt <Icon name="arrow" /></a><br /><span>Playback follows recorded decisions across requests, including harness-forced choices and evaluator stops.</span></p>}
       {inlineAssets.length > 0 && <section className="input-assets" aria-labelledby="input-assets-heading"><div className="input-assets-heading"><span className="section-label">Exact input attachment</span><h2 id="input-assets-heading">Model-visible board image</h2><p>The base64 transport field was decoded into a content-addressed local asset; the request JSON retains its hash, media type, and byte count.</p></div><div className="input-assets-grid">{inlineAssets.map(asset => <figure key={asset.asset_path}><img src={assetUrl(`evidence/${asset.asset_path}`)} alt={`Board image attached to ${record.run || record.id}`} /><figcaption><code>{asset.sha256 ? `sha256:${asset.sha256}` : asset.asset_path}</code><span>{asset.media_type || 'image'}{asset.bytes ? ` · ${asset.bytes.toLocaleString()} bytes` : ''}</span></figcaption></figure>)}</div></section>}

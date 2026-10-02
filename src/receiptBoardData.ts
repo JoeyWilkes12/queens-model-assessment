@@ -185,13 +185,14 @@ function inputQueens(board: BoardSource): Cell[] | null {
   return sources[0] || []
 }
 
-function answerCells(value: unknown, board: BoardSource): Cell[] | null {
+function answerCells(value: unknown, board: { id: string; size: number }): Cell[] | null {
   const answer = object(value)
   if (!answer || Object.keys(answer).sort().join(',') !== 'board_id,columns_by_row' || answer.board_id !== board.id || !Array.isArray(answer.columns_by_row) || answer.columns_by_row.length !== board.size || answer.columns_by_row.some(column => !integer(column) || column < 1 || column > board.size)) return null
   return answer.columns_by_row.map((column, row) => [row + 1, column as number] as Cell)
 }
 
-function submittedQueens(output: unknown, grade: unknown, board: BoardSource): { cells: Cell[]; source: string } | null {
+/** Shared conservative visible-written-placement parser; never reads grade coordinates. */
+export function submittedQueens(output: unknown, grade: unknown, board: { id: string; size: number }): { cells: Cell[]; source: string } | null {
   const body = object(output)
   const choices = body?.choices
   if (!Array.isArray(choices) || choices.length !== 1) return null

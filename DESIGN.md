@@ -8,6 +8,7 @@
 - [Visual language](#visual-language)
 - [Core components](#core-components)
 - [Table behavior](#table-behavior)
+- [Receipt boards and recorded playback](#receipt-boards-and-recorded-playback)
 - [Responsive behavior](#responsive-behavior)
 - [Accessibility](#accessibility)
 - [Evidence semantics](#evidence-semantics)
@@ -65,6 +66,16 @@ Hash routing keeps every page compatible with a later static host. The evidence 
 - Measure wrapped header height with `ResizeObserver` and use it as scroll padding so keyboard-focused receipt links can be brought below the frozen header after viewport, font or zoom changes.
 - The mobile navigation remains above the table. No first-column pinning, data hiding, sampling or evidence truncation is introduced.
 - Printing removes the scroll height limit and sticky positioning so every row remains available.
+
+## Receipt boards and recorded playback
+
+These are narrow additions to the existing field-guide identity, not a replacement visual world. Static receipt views reconstruct only complete, unambiguous public input partitions and exact recoverable placements. Unknown inputs retain raw evidence. Recorded Jev playback links actual request boundaries, distinguishes model choices from harness-forced decisions, and stops at the recorded evaluator outcome. It is not an animation of hidden reasoning or invented intermediate steps; reduced-motion users retain manual frame navigation without playback.
+
+Eligible saved assessment failures use two static, equal-scale subplots: recorded model response and evaluator-identified unique legal solution. Boards expand to fill their panes but never shrink below their native cell scale. They sit side by side above 600px of comparison-container width, stack below it, and keep larger boards horizontally scrollable inside their panels. The section uses an `h2`; pane, annotation and note titles use `h3`.
+
+Red crowns and rings mark differences from the unique reference; red cell outlines and X marks identify recomputed direct rule conflicts. Neither implies the other. Matching queens remain navy/gold; written coordinates, legends and region counts provide non-color equivalents. Partial answers stay partial, format-only failures acquire no invented geometric errors, and unavailable answers show an explicit no-placement panel rather than substitute the reference.
+
+Identified evaluator references are a separate versioned registry derived and independently verified from public partitions after evaluation. They are not imported private answer files, returned model answers, repaired responses or changed grades. Some candidate menus may already have included a correct layout as an unidentified option. Publicly identified solutions make these boards unsuitable as secret future benchmarks. Each eligible receipt exposes its written partition, binding/reference provenance, and unchanged raw evidence for inspection.
 
 ## Responsive behavior
 
