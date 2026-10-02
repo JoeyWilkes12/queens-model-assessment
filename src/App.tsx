@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 import { BoardReplay } from './BoardReplay'
 import { deriveReceiptBoard } from './receiptBoardData'
+import { deriveTrajectoryFrames, linkedTrajectoryForReceipt } from './trajectoryBoardData'
 
 type Route = {
   path: string
@@ -593,6 +594,7 @@ function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: ()
   const download = () => { const url = URL.createObjectURL(new Blob([payload], { type: 'application/json' })); const anchor = document.createElement('a'); anchor.href = url; anchor.download = `${record.id.replace(/[^A-Za-z0-9._-]+/g, '_')}.json`; anchor.click(); URL.revokeObjectURL(url) }
   const inlineAssets = collectInlineAssets(loaded.request)
   const boardView = useMemo(() => deriveReceiptBoard(loaded.request, loaded.output, loaded.grade), [loaded.request, loaded.output, loaded.grade])
+  const linkedTrajectory = linkedTrajectoryForReceipt(record.id)
   return <>
     <PageHero trail={`Receipts / atlas / ${record.id}`} title={record.title} deck={record.summary}>
       <div className="detail-flags"><OutcomeTag outcome={record.assessmentOutcome} /><span className={`status-pill status-${record.status || 'review'}`}>{displayRequestStatus(record.status)}</span>{record.excluded && <span className="status-pill evidence-flag">Excluded</span>}</div>
@@ -604,6 +606,7 @@ function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: ()
       <div className="detail-toolbar"><span><strong>{record.stage}</strong> · {record.kind}</span><div><button className="button button-small" onClick={copy} disabled={loading}><Icon name="copy" />{loading ? 'Loading…' : copied ? 'Copied' : 'Copy JSON'}</button><button className="button button-small button-outline" onClick={download} disabled={loading}><Icon name="download" />Download</button></div></div>
       {!loading && boardView && <BoardReplay key={record.id} regions={boardView.regions} frames={boardView.frames} title="Board reconstructed from this receipt" description={boardView.description} allowPlayback={false} />}
       {!loading && !boardView && inlineAssets.length === 0 && record.kind !== 'grade-source' && <p className="board-view-unavailable">No complete, unambiguous board partition was found in this receipt. The raw input and output below remain authoritative; no board or missing state has been guessed.</p>}
+      {linkedTrajectory && <p className="receipt-replay-link"><a className="text-link" href={`#/jev-trajectories/${encodeURIComponent(linkedTrajectory)}`}>Play this receipt’s linked Jev attempt <Icon name="arrow" /></a><br /><span>Playback follows recorded decisions across requests, including harness-forced choices and evaluator stops.</span></p>}
       {inlineAssets.length > 0 && <section className="input-assets" aria-labelledby="input-assets-heading"><div className="input-assets-heading"><span className="section-label">Exact input attachment</span><h2 id="input-assets-heading">Model-visible board image</h2><p>The base64 transport field was decoded into a content-addressed local asset; the request JSON retains its hash, media type, and byte count.</p></div><div className="input-assets-grid">{inlineAssets.map(asset => <figure key={asset.asset_path}><img src={assetUrl(`evidence/${asset.asset_path}`)} alt={`Board image attached to ${record.run || record.id}`} /><figcaption><code>{asset.sha256 ? `sha256:${asset.sha256}` : asset.asset_path}</code><span>{asset.media_type || 'image'}{asset.bytes ? ` · ${asset.bytes.toLocaleString()} bytes` : ''}</span></figcaption></figure>)}</div></section>}
       <div className="json-panels"><JsonPanel title="Sanitized request" value={loaded.request} /><JsonPanel title="Visible output" value={loaded.output} /><JsonPanel title="Deterministic grade" value={loaded.grade} /><JsonPanel title="Metadata" value={loaded.metadata} /></div>
       <Callout tone="evidence" title="Record handling">This detail is loaded from the public evidence manifest and its linked sanitized files. Exact prompt text and visible provider output are preserved; private credentials and encrypted reasoning are intentionally excluded. Any board view is an evaluator-side reconstruction, not an additional model input or a revised grade.</Callout>
@@ -934,10 +937,11 @@ type TrajectoryStudy = {
   boards: { id: string; size: number; regions: number[][] }[];
 }
 
-function JevTrajectories() {
+function JevTrajectories({ selectedId }: { selectedId?: string }) {
   const [data, setData] = useState<TrajectoryStudy | null>(null)
   const [error, setError] = useState('')
-  const [selected, setSelected] = useState('sequence-5-1_raw_a1')
+  const [selected, setSelected] = useState(selectedId || 'sequence-5-1_raw_a1')
+  useEffect(() => { if (selectedId) setSelected(selectedId) }, [selectedId])
   useEffect(() => {
     let active = true
     fetch(assetUrl('evidence/trajectory-study.json')).then(response => {
@@ -949,7 +953,9 @@ function JevTrajectories() {
   const countText = (counts: Record<string, number>) => Object.entries(counts).map(([label, count]) => `${label}: ${count}`).join(' · ') || 'Forced cell; no probe'
   const trace = data?.trajectories.find(item => item.trajectory_id === selected)
   const traceBoard = data?.boards.find(item => item.id === trace?.board_id)
-  const receiptLink = (id: string | null | undefined) => id ? <a href={`#/evidence-atlas/2026-09-30-jev-trajectories:${id}`}>Receipt</a> : 'Forced by code'
+  const replayRegions = useMemo(() => traceBoard?.regions.map(row => row.map(region => String.fromCharCode(65 + region))) ?? [], [traceBoard])
+  const replayFrames = useMemo(() => trace && traceBoard ? deriveTrajectoryFrames(trace, replayRegions) : [], [trace, traceBoard, replayRegions])
+  const receiptLink = (id: string | null | undefined, forced?: boolean) => id ? <a href={`#/evidence-atlas/2026-09-30-jev-trajectories:${id}`}>Receipt</a> : forced === true ? 'Forced by code' : 'No recorded API receipt'
   return <><PageHero trail="The Jev question / September 30 follow-up" title="Jev solved one board; repeated requests still changed its decisions." deck="Ninety attempts on nine new boards tested color selection followed by cell placement. Every attempt started empty and stopped on its first failed placement, then the next attempt started fresh." />
     <div className="reading-layout"><LocalToc items={[{ id: 'trajectory-results', label: 'Full attempts' }, { id: 'trajectory-trace', label: 'Inspect a trace' }, { id: 'repeatability', label: 'Identical requests' }, { id: 'batching', label: 'Batch & order' }, { id: 'trajectory-methods', label: 'Methods & sources' }]} />
       <main className="reading-column" id="main-content">
@@ -962,8 +968,11 @@ function JevTrajectories() {
         </Section>
         <Section id="trajectory-trace" title="Follow each color decision and cell decision">
           <label htmlFor="trajectory-select">Saved attempt</label>{' '}<select id="trajectory-select" value={selected} onChange={event => setSelected(event.target.value)}>{data.trajectories.map(item => <option value={item.trajectory_id} key={item.trajectory_id}>{item.trajectory_id} · {item.stop_reason}</option>)}</select>
+          {!trace && <p role="status">This attempt is not in the saved evidence. Choose a recorded attempt above; no missing trace will be reconstructed.</p>}
           {trace && <><p><strong>{trace.stop_reason.replace(/_/g, ' ')}</strong> · {trace.correct_queens_before_failure} correct placements before termination · {trace.http_calls} API requests · {trace.forced_decisions} forced decisions · {trace.api_elapsed_seconds.toFixed(3)} summed API seconds.</p>
-            <DataTable caption="Ordered attempt trace" headers={['Step', 'Color', 'Color decision', 'Cell', 'Cell decision', 'Menu size', 'Engine result']} rows={trace.steps.map(step => [String(step.step), step.region, receiptLink(step.region_call), step.cell ? `r${step.cell[0]}c${step.cell[1]}` : '—', receiptLink(step.cell_call), String(step.candidate_count), step.local_violations?.length ? step.local_violations.join(', ') : step.on_unique_solution ? 'On unique solution' : 'Globally unextendable'])} />
+            {traceBoard && replayFrames.length > 0 && <BoardReplay key={trace.trajectory_id} regions={replayRegions} frames={replayFrames} title="Recorded attempt, one decision at a time" description="This replay reconstructs saved input states and recorded decisions. It distinguishes model choices, forced harness decisions and evaluator outcomes; it does not reveal an internal reasoning trace or invent intermediate search." />}
+            <p><a className="text-link" href={`#/jev-trajectories/${encodeURIComponent(trace.trajectory_id)}`}>Link to this recorded attempt <Icon name="external" /></a></p>
+            <DataTable caption="Ordered attempt trace" headers={['Step', 'Color', 'Color decision', 'Cell', 'Cell decision', 'Menu size', 'Engine result']} rows={trace.steps.map(step => [String(step.step), step.region, receiptLink(step.region_call, step.region_forced), step.cell ? `r${step.cell[0]}c${step.cell[1]}` : '—', receiptLink(step.cell_call, step.cell_forced), String(step.candidate_count), step.local_violations?.length ? step.local_violations.join(', ') : step.on_unique_solution === true ? 'On unique solution' : step.on_unique_solution === false ? 'Globally unextendable' : 'No recorded evaluator verdict'])} />
             {traceBoard && <details><summary>Show this blank board as a letter matrix</summary><pre>{traceBoard.regions.map(row => row.map(region => String.fromCharCode(65 + region)).join(' ')).join('\n')}</pre></details>}</>}
         </Section>
         <Section id="repeatability" title="The same request did not always produce the same Choice">
@@ -1030,7 +1039,7 @@ function App() {
             : active === 'candidate-engineering' ? <CandidateEngineering />
             : active === 'scale-primitives' ? <ScalePrimitives />
               : active === 'earlier-generations' ? <EarlierGenerations />
-                : active === 'jev-trajectories' ? <JevTrajectories />
+                : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'evidence-atlas' ? <EvidenceExplorer selectedId={selectedId} />
                   : active === 'methods-sources' ? <MethodsSources />
                     : active === 'about' ? <AboutPage /> : <NotFound />
