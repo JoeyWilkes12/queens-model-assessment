@@ -34,6 +34,14 @@ The final shared ledger estimates $0.08695505 in token charges and conservativel
 
 See the [full report](public/evidence/subq-REPORT.md), [path audit](public/evidence/subq-trajectory-audit.json), [campaign ledger](public/evidence/subq-budget.json), and [containment reference](docs/subq-provider.md).
 
+### Playback and receipt-chain follow-up
+
+SubQ now uses the same interactive board-state viewer as Jev for all ninety saved attempts. Partition/trace validation, missing-data fallbacks, invalid-attempt links, and provider-specific frame receipt URLs prevent a missing or mismatched game from being silently substituted. Receipt detail navigation is generated from exact step references across both studies: 180 attempts and 719 calls, including explicit forced-decision gaps and disabled end-of-attempt navigation.
+
+`npm run receipts:verify` independently checks all 1,674 frames (939 Jev and 735 SubQ), every previous/next link, source hashes, saved coordinates, receipt choices, and evaluator outcomes. All 1,230 unrelated atlas records reject chain membership; 1,531 public evidence files remain unchanged. The existing trajectory and board-view verification also passes. This follow-up makes no inference calls and changes no assessment result or budget.
+
+Browser checks exercise the user's exact SubQ receipt through its three-request chain, previous/next boundaries, linked attempt playback, manual stepping and scrubbing, timed play/pause, a failed terminal state and a solved terminal state. Reduced motion disables autoplay while retaining manual stepping. The Jev chain remains correct, unknown SubQ attempts show an explicit unavailable state, and standalone replays have no chain. Desktop and 390×844 screenshots were inspected; phone-size layout has no document overflow. Private Tailscale HTTP access was tested from this Mac, not an actual phone browser.
+
 ## October 1 verification
 
 The revised source passes TypeScript and Vite production builds. The generated bundle contains seven studies, 798 frozen requests, 777 responses, 778 metadata records, 772 per-run grades, 14 grade sources, and three content-addressed PNGs. Twenty not-run records remain explicitly unexecuted, including 18 October candidates. Existing historical evidence is retained.

@@ -1,4 +1,6 @@
-import { useEffect, useState, type ComponentType, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
+import { BoardReplay } from './BoardReplay'
+import { deriveTrajectoryFrames, type RecordedTrajectory, type RecordedTrajectoryStep } from './trajectoryBoardData'
 
 type BookUi = {
   PageHero: ComponentType<{ title: string; deck: string; trail: string; action?: { label: string; path: string } }>
@@ -65,6 +67,11 @@ type HistoricalTrajectoryStudy = {
   trajectories: { trajectory_id: string; board_id: string; mode: string; success: boolean }[]
 }
 
+type TrajectoryProtocol = {
+  study: string
+  boards: { id: string; size: number; regions: number[][] }[]
+}
+
 type SplitSummary = {
   study: string; model?: string; requests: number; planned_requests: number; planned_logical_tasks: number; completed_logical_tasks: number; remaining_logical_tasks: number
   families: { family: string; logical_tasks: number; complete_logical_tasks: number; primary_correct: number }[]
@@ -128,6 +135,29 @@ function isHistoricalTrajectoryStudy(value: unknown): value is HistoricalTraject
       && typeof family.mode === 'string' && count(family.attempts) && count(family.solved))
     && Array.isArray(value.trajectories) && value.trajectories.every(attempt => isObject(attempt)
       && typeof attempt.trajectory_id === 'string' && typeof attempt.board_id === 'string' && typeof attempt.success === 'boolean')
+}
+
+function isTrajectoryProtocol(value: unknown): value is TrajectoryProtocol {
+  if (!isObject(value) || value.study !== '2026-10-13-subq-trajectories' || !Array.isArray(value.boards)) return false
+  const ids = new Set<string>()
+  return value.boards.every(board => {
+    if (!isObject(board) || typeof board.id !== 'string' || ids.has(board.id)
+      || !count(board.size) || board.size < 1 || board.size > 26
+      || !Array.isArray(board.regions) || board.regions.length !== board.size) return false
+    const size = board.size
+    const valid = board.regions.every(row => Array.isArray(row) && row.length === size
+      && row.every(region => count(region) && region < size))
+    if (!valid || new Set(board.regions.flat()).size !== size) return false
+    ids.add(board.id)
+    return true
+  })
+}
+
+function hasRecordedPlaybackSteps(attempt: AdaptiveTrajectory): attempt is AdaptiveTrajectory & RecordedTrajectory {
+  return Number.isInteger(attempt.size) && attempt.size > 0 && typeof attempt.success === 'boolean'
+    && attempt.steps.every((step): step is TrajectoryStep & RecordedTrajectoryStep =>
+      count(step.step) && step.step > 0 && typeof step.region === 'string' && step.region.length > 0
+      && count(step.candidate_count))
 }
 
 function useSavedSummary<T>(filename: string, validate: (value: unknown) => value is T) {
@@ -213,15 +243,55 @@ function stopReasons(reasons: Record<string, number>) {
   return Object.entries(reasons).map(([reason, total]) => `${familyLabel(reason)}: ${total}`).join('; ') || 'None recorded'
 }
 
+function SubQTrajectoryPlayback({ attempt, protocol, selectedId }: {
+  attempt: AdaptiveTrajectory
+  protocol: ReturnType<typeof useSavedSummary<TrajectoryProtocol>>
+  selectedId?: string
+}) {
+  const root = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (selectedId !== attempt.trajectory_id || protocol.state.status === 'loading') return
+    const frame = window.requestAnimationFrame(() => {
+      root.current?.scrollIntoView({ block: 'start' })
+      root.current?.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [selectedId, attempt.trajectory_id, protocol.state.status])
+
+  const board = protocol.state.status === 'ready'
+    ? protocol.state.data.boards.find(item => item.id === attempt.board_id && item.size === attempt.size)
+    : undefined
+  const regions = board?.regions.map(row => row.map(region => String.fromCharCode(65 + region))) ?? []
+  let frames: ReturnType<typeof deriveTrajectoryFrames> = []
+  let invalidTrace = false
+  if (board) {
+    try {
+      if (!hasRecordedPlaybackSteps(attempt)) throw new Error('Incomplete recorded steps')
+      frames = deriveTrajectoryFrames(attempt, regions, '2026-10-13-subq-trajectories')
+    } catch {
+      invalidTrace = true
+    }
+  }
+  return <div id="subq-trajectory-playback" ref={root} tabIndex={-1} role="region" aria-label={`Recorded SubQ playback for ${attempt.trajectory_id}`}>
+    <SummaryUnavailable state={protocol.state} retry={protocol.retry} label="SubQ saved board partitions" />
+    {protocol.state.status === 'ready' && (!board
+      ? <p role="status">This attempt has no saved board partition matching its board ID and size. Playback is unavailable; no missing board is inferred. The recorded steps remain below.</p>
+      : invalidTrace
+        ? <p role="status">The saved board and step data do not agree or are incomplete. Playback is unavailable; no missing placement is inferred. Inspect the recorded steps and receipts below.</p>
+        : <BoardReplay key={attempt.trajectory_id} regions={regions} frames={frames} title="Recorded SubQ attempt, one decision at a time" description="Play, pause, step or scrub through the saved color choices, cell proposals and evaluator outcomes. Receipt links belong to this SubQ attempt. Forced decisions have no API receipt. This is an interactive replay of recorded states, not a video of internal model reasoning." />)}
+  </div>
+}
+
 function TrajectoryResults({ ui, selectedId }: { ui: BookUi; selectedId?: string }) {
   const { state, retry } = useSavedSummary('subq-trajectories-summary.json', isTrajectorySummary)
   const historical = useSavedSummary('trajectory-study.json', isHistoricalTrajectoryStudy)
+  const protocol = useSavedSummary('subq-trajectories-protocol.json', isTrajectoryProtocol)
   const { DataTable, Callout } = ui
   const [selection, setSelection] = useState(selectedId || '')
   useEffect(() => { if (selectedId) setSelection(selectedId) }, [selectedId])
   if (state.status !== 'ready') return <SummaryUnavailable state={state} retry={retry} label="SubQ adaptive trajectory summary" />
   const data = state.data
-  const selected = data.trajectories.find(attempt => attempt.trajectory_id === selection) || data.trajectories[0]
+  const selected = selection ? data.trajectories.find(attempt => attempt.trajectory_id === selection) : data.trajectories[0]
   const jev = historical.state.status === 'ready' ? historical.state.data : undefined
   const jevBoardsSolved = jev ? new Set(jev.trajectories.filter(attempt => attempt.success).map(attempt => attempt.board_id)).size : undefined
   const callLink = (id?: string | null, forced?: boolean) => id ? <a href={`#/evidence-atlas/${data.study}:${id}`}>Receipt</a> : forced === true ? 'Forced by harness' : 'No recorded API call'
@@ -242,14 +312,15 @@ function TrajectoryResults({ ui, selectedId }: { ui: BookUi; selectedId?: string
       return [family.board_id, family.mode, baseline && jevAttempt ? <a href={`#/jev-trajectories/${jevAttempt.trajectory_id}`}>{baseline.solved} / {baseline.attempts}</a> : 'Source not loaded', subqAttempt ? <a href={`#/subq-assessment/${subqAttempt.trajectory_id}`}>{family.solved} / {family.attempts}</a> : `${family.solved} / ${family.attempts}`, stopReasons(family.stop_reasons), String(family.model_calls), String(family.forced_decisions)]
     })} />
     <Callout tone="caution" title="Matching protocol does not make repetitions independent.">The boards, rules, option ordering, raw/local menus, and first-failure criteria match the Jev study. Later states follow each model's choices. SubQ runs sequentially in board groups; Jev used concurrent streams and repetition blocks. A solved path and an early stopped failure have different elapsed-time meanings.</Callout>
-    <h3>Follow a recorded attempt</h3>
+    <h3>Follow each color decision and cell decision</h3>
+    <label className="filter-label" htmlFor="subq-trajectory-select">Recorded SubQ trajectory</label>
+    <select id="subq-trajectory-select" className="trajectory-select" value={selected?.trajectory_id || ''} onChange={event => setSelection(event.target.value)}>{!selected && <option value="">Choose a recorded attempt</option>}{data.trajectories.map(attempt => <option key={attempt.trajectory_id} value={attempt.trajectory_id}>{attempt.trajectory_id} · {familyLabel(attempt.stop_reason)}</option>)}</select>
     {selected ? <>
-      <label className="filter-label" htmlFor="subq-trajectory-select">Recorded SubQ trajectory</label>
-      <select id="subq-trajectory-select" className="trajectory-select" value={selected.trajectory_id} onChange={event => setSelection(event.target.value)}>{data.trajectories.map(attempt => <option key={attempt.trajectory_id} value={attempt.trajectory_id}>{attempt.trajectory_id} · {familyLabel(attempt.stop_reason)}</option>)}</select>
       <p><strong>{familyLabel(selected.stop_reason)}</strong> · {selected.correct_queens_before_failure} correct placements before termination · {selected.http_calls} API requests · {selected.forced_decisions} forced decisions · {selected.api_elapsed_seconds.toFixed(3)} summed API seconds. <a href={`#/subq-assessment/${selected.trajectory_id}`}>Link to this attempt</a></p>
+      <SubQTrajectoryPlayback key={selected.trajectory_id} attempt={selected} protocol={protocol} selectedId={selectedId} />
       <DataTable caption={`Recorded steps · ${selected.trajectory_id}`} headers={['Step', 'Region', 'Region decision', 'Cell', 'Cell decision', 'Menu size', 'Evaluator outcome']} rows={selected.steps.map(step => [String(step.step), step.region || 'Not returned', callLink(step.region_call, step.region_forced), step.cell ? `r${step.cell[0]}c${step.cell[1]}` : 'No placement', callLink(step.cell_call, step.cell_forced), step.candidate_count === undefined ? 'Not recorded' : String(step.candidate_count), step.local_violations?.length ? step.local_violations.join(', ') : step.on_unique_solution === true ? 'On unique solution' : step.on_unique_solution === false ? 'Globally unextendable' : 'No recorded evaluator result'])} />
       <p className="table-note">Evaluator outcomes are post-response annotations. They were not feedback supplied to SubQ. Region choices alone have no uniquely correct order.</p>
-    </> : <p>No recorded adaptive attempts are present.</p>}
+    </> : <p role="status">{selection ? 'This attempt is not in the saved SubQ evidence. Choose a recorded attempt above; no missing trace will be reconstructed.' : 'No recorded adaptive attempts are present.'}</p>}
     <DataTable caption="Every recorded SubQ adaptive attempt" headers={['Attempt', 'Board', 'Mode', 'Outcome', 'API calls', 'Forced']} rows={data.trajectories.map(attempt => [<a href={`#/subq-assessment/${attempt.trajectory_id}`}>{attempt.trajectory_id}</a>, attempt.board_id, attempt.mode, familyLabel(attempt.stop_reason), String(attempt.http_calls), String(attempt.forced_decisions)])} />
     <p><a href={assetUrl('evidence/subq-trajectories-summary.json')} download>Download all adaptive traces and their separate ledger snapshot</a></p>
   </>

@@ -33,6 +33,17 @@ The app uses hash routing so a static host can serve every page without rewrite 
 The evidence atlas also supports `#/evidence-atlas/<record-id>` detail routes.
 Recorded adaptive SubQ attempts support `#/subq-assessment/<trajectory-id>` deep links.
 
+Both Jev and SubQ have interactive saved-state playback with Play/Pause, previous/next states, and a scrubber. Each frame distinguishes model choices, forced harness decisions, and evaluator outcomes, with links to the actual API receipts. This is an explanatory replay, with an illustrative cadence, rather than measured model timing.
+
+The 719 genuine trajectory receipts have **Previous Receipt**, **Next Receipt**, and **Play full attempt** controls. Their order comes from the recorded steps of one game attempt. Forced transitions have no fabricated receipts, and the last request never advances into another repetition. Frozen-state replays and standalone probes do not acquire guessed chains.
+
+After changing public trajectory sources, regenerate and verify the navigation snapshot:
+
+```sh
+npm run receipts:generate
+npm run receipts:verify
+```
+
 ## Evidence boundary
 
 Only sanitized records placed in `public/evidence/manifest.json` are rendered. Private answer keys, credentials, encrypted reasoning, and raw repository paths must not be copied into that manifest. The generated bundle includes exact prompt text, model-visible responses, deterministic grades, request metadata, and decoded content-addressed copies of the three input board images.

@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "evidence:generate": "node scripts/generate-evidence.mjs",
+    "receipts:generate": "node scripts/generate-receipt-chains.mjs",
+    "receipts:verify": "node scripts/verify-receipt-chains.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview"

@@ -142,10 +142,10 @@ function copyCells(cells: readonly Cell[]): Cell[] {
   return cells.map(([row, column]) => [row, column] as const)
 }
 
-function links(step: RecordedTrajectoryStep): { label: string; id: string }[] {
+function links(step: RecordedTrajectoryStep, receiptStudyId = studyId): { label: string; id: string }[] {
   return [
-    ...(step.region_call ? [{ label: 'Region Choice receipt', id: `${studyId}:${step.region_call}` }] : []),
-    ...(step.cell_call ? [{ label: 'Cell Choice receipt', id: `${studyId}:${step.cell_call}` }] : []),
+    ...(step.region_call ? [{ label: 'Region Choice receipt', id: `${receiptStudyId}:${step.region_call}` }] : []),
+    ...(step.cell_call ? [{ label: 'Cell Choice receipt', id: `${receiptStudyId}:${step.cell_call}` }] : []),
   ]
 }
 
@@ -164,6 +164,7 @@ function source(call: string | null | undefined, forced: boolean | undefined): s
 export function deriveTrajectoryFrames(
   trace: RecordedTrajectory,
   regions: readonly (readonly (string | number)[])[],
+  receiptStudyId = studyId,
 ): BoardFrame[] {
   const n = trace.size
   if (!Number.isInteger(n) || n < 1 || regions.length !== n || regions.some(row => row.length !== n)) {
@@ -188,7 +189,7 @@ export function deriveTrajectoryFrames(
 
   for (const [index, step] of trace.steps.entries()) {
     const key = `${trace.trajectory_id}:step-${step.step}`
-    const receipts = links(step)
+    const receipts = links(step, receiptStudyId)
     const regionSource = source(step.region_call, step.region_forced)
     frames.push({
       id: `${key}:region`,
@@ -197,7 +198,7 @@ export function deriveTrajectoryFrames(
       highlightRegion: step.region,
       note: `The recorded decision selected region ${step.region}; no queen is placed by a region Choice. The recorded cell menu contained ${step.candidate_count} option${step.candidate_count === 1 ? '' : 's'}. Menu cells are not guessed from the trace.`,
       sourceLabel: regionSource,
-      receiptLinks: step.region_call ? [{ label: 'Region Choice receipt', id: `${studyId}:${step.region_call}` }] : [],
+      receiptLinks: step.region_call ? [{ label: 'Region Choice receipt', id: `${receiptStudyId}:${step.region_call}` }] : [],
     })
 
     if (!step.cell) {
@@ -231,7 +232,7 @@ export function deriveTrajectoryFrames(
       selectedCellLabel: step.cell_forced ? 'Harness-forced cell' : 'Returned cell Choice',
       note: `${cellSource}. This proposed cell is shown separately from prior accepted placements; it has not yet passed the recorded evaluator transition.`,
       sourceLabel: cellSource,
-      receiptLinks: step.cell_call ? [{ label: 'Cell Choice receipt', id: `${studyId}:${step.cell_call}` }] : receipts,
+      receiptLinks: step.cell_call ? [{ label: 'Cell Choice receipt', id: `${receiptStudyId}:${step.cell_call}` }] : receipts,
     })
 
     // Missing validation is unknown, never silently green or accepted.
@@ -266,7 +267,7 @@ export function deriveTrajectoryFrames(
         : solved
           ? 'The saved evaluator certified the complete recorded placement. This is a terminal state, not a new model answer.'
           : step.on_unique_solution === true
-            ? 'The recorded harness retained the cell; the saved oracle marked this placement on the unique solution. This evaluator annotation was not supplied to Jev as feedback.'
+            ? 'The recorded harness retained the cell; the saved oracle marked this placement on the unique solution. This evaluator annotation was not supplied to the model as feedback.'
             : 'The recorded local check has no violations; no global pass is asserted because its saved oracle annotation is missing.'
     frames.push({
       id: `${key}:outcome`,

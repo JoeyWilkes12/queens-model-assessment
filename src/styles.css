@@ -56,6 +56,13 @@ img, svg { display: block; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .board-view-unavailable, .receipt-replay-link { max-width: 70ch; margin: 20px 0 28px; }
 .board-view-unavailable, .receipt-replay-link > span { color: var(--text-muted); font-size: .875rem; }
+.receipt-chain { margin: 12px 0 28px; padding: 20px 0; border-block: 1px solid var(--border-subtle); }
+.receipt-chain p { margin: 0 0 14px; overflow-wrap: anywhere; }
+.receipt-chain-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.receipt-chain-actions .button { flex: 1 1 140px; min-height: 44px; white-space: normal; text-align: center; }
+.receipt-chain-actions .receipt-chain-playback { flex-basis: 200px; }
+.receipt-chain-actions button:disabled { opacity: .55; cursor: default; transform: none; }
+.receipt-chain .receipt-chain-context { margin: 14px 0 0; max-width: 75ch; color: var(--text-muted); font-size: .875rem; }
 
 .app-shell { display: flex; min-height: 100vh; }
 .page-frame { flex: 1; min-width: 0; margin-left: 296px; position: relative; }

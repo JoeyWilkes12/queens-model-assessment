@@ -1,0 +1,5949 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "public/evidence/trajectory-study.json",
+      "sha256": "ca500eda9175204fd03700532ea8b4506219a8b5ea52e893965c628cc2bd4a79"
+    },
+    {
+      "path": "public/evidence/subq-trajectories-summary.json",
+      "sha256": "bcf4175487bb2435dba55da846117f177d95257ea87229b16234e4dbf8beaa48"
+    }
+  ],
+  "chains": [
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_local_a1",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_local_a2",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_local_a3",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_local_a4",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_local_a5",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_raw_a1",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_raw_a2",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_raw_a3",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_raw_a4",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-1_raw_a5",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-2_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-5-3_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p06_region",
+          "step": 6,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p06_cell",
+          "step": 6,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p06_region",
+          "step": 6,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p06_cell",
+          "step": 6,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p06_region",
+          "step": 6,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p06_cell",
+          "step": 6,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p06_region",
+          "step": 6,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p06_cell",
+          "step": 6,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p06_region",
+          "step": 6,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p06_cell",
+          "step": 6,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_raw_a1",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_raw_a2",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_raw_a3",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_raw_a4",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-1_raw_a5",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-2_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a1_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a2_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a3_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a4_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a1_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a2_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a3_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a4_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-7-3_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a5_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-1_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p06_region",
+          "step": 6,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p06_cell",
+          "step": 6,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p06_region",
+          "step": 6,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p06_cell",
+          "step": 6,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_raw_a1",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p05_region",
+          "step": 5,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p05_cell",
+          "step": 5,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_raw_a2",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_raw_a4",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-2_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_local_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_local_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_local_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_local_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_local_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a1",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_raw_a1",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a2",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a3",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_raw_a3",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a4",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_raw_a4",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-09-30-jev-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a5",
+      "modelLabel": "Jev",
+      "playbackPath": "#/jev-trajectories/sequence-9-3_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-1_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-1_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-1_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_local_a1",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_local_a2",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_local_a3",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_local_a4",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_local_a5",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_local_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 3
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-2_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-2_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-2_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_local_a1",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a1_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 2
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_local_a2",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a2_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 2
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_local_a3",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a3_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 2
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_local_a4",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a4_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 2
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_local_a5",
+      "stopReason": "solved",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_local_a5_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 2
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a1_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a2_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a3_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a4_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-5-3_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-5-3_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-5-3_raw_a5_p03_cell",
+          "step": 3,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_raw_a1",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_raw_a2",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_raw_a3",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_raw_a4",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-1_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-1_raw_a5",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-1_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a1_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a2_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a3_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a4_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_local_a5_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a1_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a2_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a3_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a4_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-2_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-2_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-2_raw_a5_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a1_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a1_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a1_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a1_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a2_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a2_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a2_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a2_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a3_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a3_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a3_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a3_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a4_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a4_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a4_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a4_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a5_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a5_p03_region",
+          "step": 3,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a5_p04_region",
+          "step": 4,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_local_a5_p04_cell",
+          "step": 4,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a1_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a2_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a3_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a4_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-7-3_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-7-3_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a5_p01_cell",
+          "step": 1,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-7-3_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-1_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-1_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-1_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_raw_a1",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_raw_a2",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_raw_a3",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_raw_a4",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-2_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-2_raw_a5",
+      "stopReason": "local_rule_violation",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-2_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_local_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_local_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_local_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_local_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_local_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_local_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_local_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_local_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_local_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_local_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_local_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a1",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_raw_a1",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a1_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a1_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a1_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a2",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_raw_a2",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a2_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a2_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a2_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a3",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_raw_a3",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a3_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a3_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a3_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a4",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_raw_a4",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a4_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a4_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a4_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    },
+    {
+      "studyId": "2026-10-13-subq-trajectories",
+      "trajectoryId": "sequence-9-3_raw_a5",
+      "modelLabel": "SubQ",
+      "playbackPath": "#/subq-assessment/sequence-9-3_raw_a5",
+      "stopReason": "globally_unextendable_prefix",
+      "calls": [
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a5_p01_region",
+          "step": 1,
+          "phase": "region",
+          "forcedBeforeNext": 1
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a5_p02_region",
+          "step": 2,
+          "phase": "region",
+          "forcedBeforeNext": 0
+        },
+        {
+          "id": "2026-10-13-subq-trajectories:sequence-9-3_raw_a5_p02_cell",
+          "step": 2,
+          "phase": "cell",
+          "forcedBeforeNext": 0
+        }
+      ]
+    }
+  ]
+}
