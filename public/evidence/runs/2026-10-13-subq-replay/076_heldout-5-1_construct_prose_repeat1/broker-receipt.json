@@ -1,0 +1,81 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "row_1": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.08241520076990128,
+          "2": 0.09733998775482178,
+          "3": 0.18125717341899872,
+          "4": 0.23739638924598694,
+          "5": 0.4015912413597107
+        },
+        "confidence": 0.2519890516996383,
+        "choice": "5"
+      },
+      "row_2": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.07138469070196152,
+          "2": 0.286717027425766,
+          "3": 0.22572018206119537,
+          "4": 0.21860115230083466,
+          "5": 0.19757689535617828
+        },
+        "confidence": 0.10839628428220748,
+        "choice": "2"
+      },
+      "row_3": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.2721860110759735,
+          "2": 0.4855707585811615,
+          "3": 0.0441761240363121,
+          "4": 0.07757508009672165,
+          "5": 0.12049200385808945
+        },
+        "confidence": 0.3569634482264518,
+        "choice": "2"
+      },
+      "row_4": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.18399453163146973,
+          "2": 0.3026714026927948,
+          "3": 0.11545883864164352,
+          "4": 0.16204743087291718,
+          "5": 0.2358277589082718
+        },
+        "confidence": 0.12833925336599347,
+        "choice": "2"
+      },
+      "row_5": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.11707083135843277,
+          "2": 0.12439054250717163,
+          "3": 0.1476578563451767,
+          "4": 0.16919241845607758,
+          "5": 0.4416884183883667
+        },
+        "confidence": 0.3021105229854583,
+        "choice": "5"
+      }
+    },
+    "usage": {
+      "input_tokens": 1029,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.40945637499999066,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0041079,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 76,
+    "billing_confirmed": false
+  }
+}

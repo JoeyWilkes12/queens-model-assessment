@@ -1,0 +1,76 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 5,
+  "graded_question_count": 5,
+  "correct_questions": 1,
+  "questions": {
+    "row_1": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "1",
+      "probability_sum": 0.9999999552965164,
+      "confidence": 0.21338785439729688,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.3707102835178375
+    },
+    "row_2": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 1.0000000670552254,
+      "confidence": 0.2574246600270271,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.0761692151427269
+    },
+    "row_3": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "5",
+      "probability_sum": 1.000000037252903,
+      "confidence": 0.2715314030647277,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.2113243043422699
+    },
+    "row_4": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 0.9999999552965164,
+      "confidence": 0.22558259218931195,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.10423159599304199
+    },
+    "row_5": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 0.9999999776482582,
+      "confidence": 0.3340639770030975,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.22433072328567505
+    }
+  },
+  "columns_by_row": [
+    1,
+    1,
+    5,
+    1,
+    1
+  ],
+  "checks": {
+    "shape": true,
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false,
+    "correct": false
+  },
+  "outcome": "model_failure"
+}

@@ -1,0 +1,24 @@
+{
+  "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_absent/request.json",
+    "response": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_absent/response.json",
+    "metadata": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_absent/metadata.json",
+    "grade": "runs/2026-09-19-jev-primitives/heldout-7-1_regions_absent/grade.json"
+  },
+  "source_outcome": "success",
+  "source_request_file_sha256": "dea86571ff98ae2a96d1ee80ae361986b0ccdd621cdd113766df9aa30e934792",
+  "reference_grade": null,
+  "source_semantics_sha256": "777585156f2b7fa5e4bfda74f2d9afaa7c5d4aafb53aeeaf80d18c2d8102bd3f",
+  "parent_source_semantics_sha256": "2e3c8ead755b39845b87c043a353024aad9e6c7c40a1a28e9a86e6119193b480",
+  "parent_call_id": "087_heldout-7-1_regions_absent_repeat1",
+  "logical_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+  "adaptation": {
+    "kind": "question_batch_split",
+    "part": 2,
+    "parts": 2,
+    "question_count": 9,
+    "parent_question_count": 25,
+    "observed_provider_max_questions": 16
+  }
+}

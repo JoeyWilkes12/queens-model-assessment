@@ -1,0 +1,28 @@
+{
+  "call_id": "sequence-9-1_local_a2_p01_region",
+  "trajectory_id": "sequence-9-1_local_a2",
+  "board_id": "sequence-9-1",
+  "size": 9,
+  "mode": "local",
+  "replicate": 2,
+  "phase": "region",
+  "step": 1,
+  "family": "trajectory",
+  "completed_utc": "2026-10-13T06:00:15.550449+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.3496489169999677,
+  "request_sha256": "19f2fafc0177d8fc8d8e8ace0362de15eeaadb02f83fb612250995b38445d751",
+  "response_sha256": "16a14ea3ac39dd995378b4dc4e5fff0a49748675c0acf55953a54f5c7814f59c",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0155694,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 324,
+    "billing_confirmed": false
+  },
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 1611,
+    "output_tokens": 0
+  }
+}

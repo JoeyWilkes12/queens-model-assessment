@@ -1,0 +1,1361 @@
+{
+  "study": "2026-10-13-subq-trajectories",
+  "model": "subq-snap-preview",
+  "created_utc": "2026-10-13T05:54:54.409322+00:00",
+  "boards": [
+    {
+      "id": "sequence-5-1",
+      "size": 5,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          3,
+          4,
+          4,
+          2,
+          2
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "sequence-5-2",
+      "size": 5,
+      "regions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          2
+        ],
+        [
+          0,
+          0,
+          3,
+          3,
+          3
+        ],
+        [
+          0,
+          4,
+          3,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "id": "sequence-5-3",
+      "size": 5,
+      "regions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          4,
+          3,
+          3,
+          3
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "id": "sequence-7-1",
+      "size": 7,
+      "regions": [
+        [
+          0,
+          1,
+          0,
+          0,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          3,
+          0,
+          0,
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          4,
+          4,
+          2,
+          2,
+          2,
+          4
+        ],
+        [
+          5,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          6,
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "sequence-7-2",
+      "size": 7,
+      "regions": [
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          3,
+          1,
+          4,
+          4,
+          5
+        ],
+        [
+          2,
+          2,
+          3,
+          3,
+          4,
+          4,
+          4
+        ],
+        [
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          6
+        ],
+        [
+          3,
+          3,
+          3,
+          3,
+          6,
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "id": "sequence-7-3",
+      "size": 7,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          3,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          3,
+          3,
+          2
+        ],
+        [
+          4,
+          4,
+          0,
+          0,
+          0,
+          5,
+          5
+        ],
+        [
+          4,
+          4,
+          4,
+          0,
+          0,
+          5,
+          5
+        ],
+        [
+          4,
+          4,
+          4,
+          0,
+          5,
+          5,
+          5
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "id": "sequence-9-1",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          3,
+          2,
+          2,
+          2,
+          2,
+          4,
+          4
+        ],
+        [
+          0,
+          3,
+          3,
+          2,
+          2,
+          2,
+          4,
+          4,
+          4
+        ],
+        [
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          5,
+          4,
+          4
+        ],
+        [
+          6,
+          3,
+          2,
+          2,
+          2,
+          7,
+          4,
+          4,
+          4
+        ],
+        [
+          6,
+          6,
+          7,
+          2,
+          2,
+          7,
+          7,
+          4,
+          4
+        ],
+        [
+          6,
+          6,
+          7,
+          7,
+          7,
+          7,
+          4,
+          4,
+          4
+        ],
+        [
+          6,
+          6,
+          7,
+          7,
+          7,
+          4,
+          4,
+          4,
+          4
+        ],
+        [
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          4,
+          4,
+          8
+        ]
+      ]
+    },
+    {
+      "id": "sequence-9-2",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          1,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          3,
+          3,
+          2,
+          4,
+          2,
+          2
+        ],
+        [
+          5,
+          3,
+          3,
+          6,
+          3,
+          2,
+          4,
+          4,
+          4
+        ],
+        [
+          5,
+          5,
+          5,
+          6,
+          3,
+          6,
+          7,
+          4,
+          4
+        ],
+        [
+          5,
+          5,
+          6,
+          6,
+          6,
+          6,
+          4,
+          4,
+          4
+        ],
+        [
+          5,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          4,
+          4
+        ],
+        [
+          5,
+          6,
+          6,
+          8,
+          6,
+          6,
+          6,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "sequence-9-3",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          2,
+          3,
+          3
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          3
+        ],
+        [
+          4,
+          0,
+          0,
+          1,
+          1,
+          1,
+          3,
+          3,
+          3
+        ],
+        [
+          4,
+          5,
+          0,
+          1,
+          1,
+          6,
+          6,
+          3,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          1,
+          6,
+          6,
+          6,
+          6,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          3,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          7,
+          3,
+          6,
+          3,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          5,
+          5,
+          8,
+          8,
+          8,
+          3,
+          3,
+          3,
+          3
+        ]
+      ]
+    }
+  ],
+  "schedule": [
+    {
+      "trajectory_id": "sequence-5-1_raw_a1",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-5-1_local_a1",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-5-1_raw_a2",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-5-1_local_a2",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-5-1_raw_a3",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-5-1_local_a3",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-5-1_raw_a4",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-5-1_local_a4",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-5-1_raw_a5",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-5-1_local_a5",
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-5-2_raw_a1",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-5-2_local_a1",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-5-2_raw_a2",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-5-2_local_a2",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-5-2_raw_a3",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-5-2_local_a3",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-5-2_raw_a4",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-5-2_local_a4",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-5-2_raw_a5",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-5-2_local_a5",
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-5-3_raw_a1",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-5-3_local_a1",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-5-3_raw_a2",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-5-3_local_a2",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-5-3_raw_a3",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-5-3_local_a3",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-5-3_raw_a4",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-5-3_local_a4",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-5-3_raw_a5",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-5-3_local_a5",
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-7-1_raw_a1",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-7-1_local_a1",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-7-1_raw_a2",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-7-1_local_a2",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-7-1_raw_a3",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-7-1_local_a3",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-7-1_raw_a4",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-7-1_local_a4",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-7-1_raw_a5",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-7-1_local_a5",
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-7-2_raw_a1",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-7-2_local_a1",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-7-2_raw_a2",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-7-2_local_a2",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-7-2_raw_a3",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-7-2_local_a3",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-7-2_raw_a4",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-7-2_local_a4",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-7-2_raw_a5",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-7-2_local_a5",
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-7-3_raw_a1",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-7-3_local_a1",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-7-3_raw_a2",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-7-3_local_a2",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-7-3_raw_a3",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-7-3_local_a3",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-7-3_raw_a4",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-7-3_local_a4",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-7-3_raw_a5",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-7-3_local_a5",
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-9-1_raw_a1",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-9-1_local_a1",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-9-1_raw_a2",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-9-1_local_a2",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-9-1_raw_a3",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-9-1_local_a3",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-9-1_raw_a4",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-9-1_local_a4",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-9-1_raw_a5",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-9-1_local_a5",
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-9-2_raw_a1",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-9-2_local_a1",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-9-2_raw_a2",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-9-2_local_a2",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-9-2_raw_a3",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-9-2_local_a3",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-9-2_raw_a4",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-9-2_local_a4",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-9-2_raw_a5",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-9-2_local_a5",
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "mode": "local",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-9-3_raw_a1",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-9-3_local_a1",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1
+    },
+    {
+      "trajectory_id": "sequence-9-3_raw_a2",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-9-3_local_a2",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "local",
+      "replicate": 2
+    },
+    {
+      "trajectory_id": "sequence-9-3_raw_a3",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-9-3_local_a3",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "local",
+      "replicate": 3
+    },
+    {
+      "trajectory_id": "sequence-9-3_raw_a4",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-9-3_local_a4",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "local",
+      "replicate": 4
+    },
+    {
+      "trajectory_id": "sequence-9-3_raw_a5",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 5
+    },
+    {
+      "trajectory_id": "sequence-9-3_local_a5",
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "mode": "local",
+      "replicate": 5
+    }
+  ],
+  "scheduled_trajectories": 90,
+  "certificates": [
+    {
+      "board_id": "sequence-5-1",
+      "size": 5,
+      "unique_solutions": 1,
+      "board_sha256": "bb3223b3f1692ca757a6fbe3c3f768780a515230848c6294ed974ee702500255",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-5-2",
+      "size": 5,
+      "unique_solutions": 1,
+      "board_sha256": "0d59b2cec6abef8089a1d2ff148a03ea33d519c00d4993eecbcfba93afaaab3b",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-5-3",
+      "size": 5,
+      "unique_solutions": 1,
+      "board_sha256": "a8068a5fa7c13a6220050314fa62a5fe91d104a44ddd13a78e381e2dfd6713ed",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-7-1",
+      "size": 7,
+      "unique_solutions": 1,
+      "board_sha256": "720c1a3b490a47c009eb7f2a6b4fc8a347e0619b269e3b136ecb022b9b90f7db",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-7-2",
+      "size": 7,
+      "unique_solutions": 1,
+      "board_sha256": "f694ca3b50a5ba3cdcc02eed343912501070bb7f91c1c5a60868c25798fbd5d9",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-7-3",
+      "size": 7,
+      "unique_solutions": 1,
+      "board_sha256": "9ef2ea41efb8e70770102d0e6dfc57a9280de903b6e3cdc09fb533e66d6db4c9",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-9-1",
+      "size": 9,
+      "unique_solutions": 1,
+      "board_sha256": "8e57e93c422ac3b29e39ec32354729ade42e6aa43adca25668c7227294963bd1",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-9-2",
+      "size": 9,
+      "unique_solutions": 1,
+      "board_sha256": "ad3d070edc1c66e1fe28ef3480831f47e6524c486b2e711add6877eeb32319fb",
+      "independent_validators_agree": true
+    },
+    {
+      "board_id": "sequence-9-3",
+      "size": 9,
+      "unique_solutions": 1,
+      "board_sha256": "c5fd22945fbbeff7f285b1502377943705bc06564ff8cbe7446258f2b60267e0",
+      "independent_validators_agree": true
+    }
+  ],
+  "exact_historical_template_matches": 394,
+  "protocol": "Nine original boards; raw/local cell menus; five fresh empty-board attempts per board and mode. Stop on the first local violation or globally unextendable prefix. No feedback or backtracking.",
+  "caveats": [
+    "Dynamic accepted placements follow SubQ choices, so later states may differ from Jev. Templates, boards, option ordering, rules and stopping criteria match exactly.",
+    "Singleton menus use a forced harness transition and no inference. Forced decisions and model calls are counted separately.",
+    "Local mode filters immediate row, column, region and touching conflicts only. The full solver never filters candidates or supplies answers.",
+    "All repeated attempts start empty; no prior failure or solution is included. Repetitions do not establish statistical independence.",
+    "The runner is sequential and groups attempts by board for depth-first execution; Jev used four concurrent independent work streams and repetition blocks.",
+    "The nine boards are a small synthetic sample. Some have singleton regions; size is not a human difficulty rating.",
+    "Budget and provider failures stop the campaign and are reported separately from puzzle failures."
+  ]
+}

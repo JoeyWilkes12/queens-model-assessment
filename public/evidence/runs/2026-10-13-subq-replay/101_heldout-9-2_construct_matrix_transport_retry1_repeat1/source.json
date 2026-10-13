@@ -1,0 +1,32 @@
+{
+  "source_id": "2026-09-19-jev-primitives:heldout-9-2_construct_matrix_transport_retry1",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix_transport_retry1/request.json",
+    "response": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix_transport_retry1/response.json",
+    "metadata": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix_transport_retry1/metadata.json",
+    "grade": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix_transport_retry1/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "28ae39f46274566278c2402a834646e61b6a3f4809885cd7936e53fb2425e32c",
+  "source_semantics_sha256": "4d19d9488f8d8583f1fa1de22c72a9d97e025b3d864a283d3aca7e38094ed0be",
+  "reference_grade": {
+    "call_id": "heldout-9-2_construct_matrix_transport_retry1",
+    "board_id": "heldout-9-2",
+    "size": 9,
+    "family": "construction_matrix",
+    "request_sha256": "dbf0b644ad5a1283f1ba95e03b5eb77968c2d115e6a15259880a068e4e88ecad",
+    "retry_of": "heldout-9-2_construct_matrix",
+    "reason": "Manual review of HTTP 520 without model answer; single bounded transport retry.",
+    "seconds": 0.4157291669398546,
+    "cost_usd": 0.000129318,
+    "raw_sha256": "099f63cd8d2af137ca7d6ee412256f1c2cf3ca243fa4117b374c00c15ecce016",
+    "typed_questions": 9,
+    "correct": false,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": false,
+      "one_per_region": false,
+      "no_touch": false
+    }
+  }
+}

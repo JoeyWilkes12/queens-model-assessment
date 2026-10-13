@@ -1,0 +1,257 @@
+{
+  "model": "subq-snap-preview",
+  "answers": {
+    "choose": {
+      "type": "choice",
+      "probabilities": {
+        "candidate_01": 0.004798577167093754,
+        "candidate_02": 0.0035910699516534805,
+        "candidate_03": 0.007742336485534906,
+        "candidate_04": 0.00718890642747283,
+        "candidate_05": 0.0854443833231926,
+        "candidate_06": 0.0013563992688432336,
+        "candidate_07": 0.0012242506491020322,
+        "candidate_08": 0.0019817762076854706,
+        "candidate_09": 0.6222608089447021,
+        "candidate_10": 0.1160987913608551,
+        "candidate_11": 0.0021138854790478945,
+        "candidate_12": 0.011900277808308601,
+        "none": 0.13429859280586243
+      },
+      "confidence": 0.5907825430234274,
+      "choice": "candidate_09"
+    },
+    "candidate_01_valid": {
+      "type": "noul",
+      "noul": 0.011295047588646412
+    },
+    "candidate_01_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9189178347587585,
+        "1": 0.06256744265556335,
+        "2": 0.018514683470129967
+      },
+      "confidence": 0.8506047856062651,
+      "score": 0.09959680959582329,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_02_valid": {
+      "type": "noul",
+      "noul": 0.012105961330235004
+    },
+    "candidate_02_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9110484719276428,
+        "1": 0.07017571479082108,
+        "2": 0.01877579279243946
+      },
+      "confidence": 0.83840904943645,
+      "score": 0.1077273003757,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_03_valid": {
+      "type": "noul",
+      "noul": 0.012723427265882492
+    },
+    "candidate_03_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.8948125243186951,
+        "1": 0.08121594041585922,
+        "2": 0.0239715576171875
+      },
+      "confidence": 0.8062614165246487,
+      "score": 0.12915905565023422,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_04_valid": {
+      "type": "noul",
+      "noul": 0.01525750383734703
+    },
+    "candidate_04_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.8515796661376953,
+        "1": 0.13512203097343445,
+        "2": 0.013298333622515202
+      },
+      "confidence": 0.7574219526723027,
+      "score": 0.16171869821846485,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_05_valid": {
+      "type": "noul",
+      "noul": 0.055711857974529266
+    },
+    "candidate_05_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.1208856925368309,
+        "1": 0.8388513922691345,
+        "2": 0.040262944996356964
+      },
+      "confidence": 0.7582770437002182,
+      "score": 0.9193772822618484,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_06_valid": {
+      "type": "noul",
+      "noul": 0.012721378356218338
+    },
+    "candidate_06_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9192588925361633,
+        "1": 0.06633007526397705,
+        "2": 0.014411017298698425
+      },
+      "confidence": 0.8572718352079391,
+      "score": 0.0951521098613739,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_07_valid": {
+      "type": "noul",
+      "noul": 0.011217608116567135
+    },
+    "candidate_07_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9234216809272766,
+        "1": 0.057398952543735504,
+        "2": 0.01917937770485878
+      },
+      "confidence": 0.8563634380698204,
+      "score": 0.09575770795345306,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_08_valid": {
+      "type": "noul",
+      "noul": 0.009368100203573704
+    },
+    "candidate_08_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9344052076339722,
+        "1": 0.04853761941194534,
+        "2": 0.017057083547115326
+      },
+      "confidence": 0.876022320240736,
+      "score": 0.082651786506176,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_09_valid": {
+      "type": "noul",
+      "noul": 0.04922550544142723
+    },
+    "candidate_09_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.2784948945045471,
+        "1": 0.6938440799713135,
+        "2": 0.027661118656396866
+      },
+      "confidence": 0.540765980258584,
+      "score": 0.7491663172841072,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_10_valid": {
+      "type": "noul",
+      "noul": 0.05299742519855499
+    },
+    "candidate_10_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.5213084816932678,
+        "1": 0.45207399129867554,
+        "2": 0.026617540046572685
+      },
+      "confidence": 0.24203639291226864,
+      "score": 0.5053090713918209,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_11_valid": {
+      "type": "noul",
+      "noul": 0.012088785879313946
+    },
+    "candidate_11_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9342677593231201,
+        "1": 0.05036615952849388,
+        "2": 0.015366114675998688
+      },
+      "confidence": 0.8783524166792631,
+      "score": 0.08109838888049126,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_12_valid": {
+      "type": "noul",
+      "noul": 0.04562754184007645
+    },
+    "candidate_12_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.4896184802055359,
+        "1": 0.4594809412956238,
+        "2": 0.05090054124593735
+      },
+      "confidence": 0.1580769643187523,
+      "score": 0.5612820237874985,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 6497,
+    "output_tokens": 0
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "call_id": "149_9_regions_k50_r2_repeat1",
+  "source_id": "2026-09-19-jev-scale:9_regions_k50_r2",
+  "family": "remaining_2026-09-19-jev-scale",
+  "repeat": 1,
+  "board": "queens-9-hard",
+  "size": 9,
+  "fixture": "fixtures/2026-09-19-jev-scale__9_regions_k50_r2.json",
+  "completed_utc": "2026-10-13T06:05:14.326104+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.48235154200006036,
+  "request_sha256": "ca09bee159e99226e6ec74a6ec4737cd67cea463c6a57677604bb973ffa7edb4",
+  "response_sha256": "ff498ead714379cc489934549cf4500b6ed369da1cf430edc02433fad7730101",
+  "source_semantics_sha256": "0b2512260aa2042e37585b1cfed2a144579397e669f946bff120e8743c180709",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 4386,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.04120605,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 459,
+    "billing_confirmed": false
+  }
+}

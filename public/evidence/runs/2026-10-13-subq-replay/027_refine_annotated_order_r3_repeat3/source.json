@@ -1,0 +1,29 @@
+{
+  "source_id": "2026-09-18-jev-5x5-variations:refine_annotated_order_r3",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r3/request.json",
+    "response": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r3/response.json",
+    "metadata": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r3/metadata.json",
+    "grade": "runs/2026-09-18-jev-5x5-variations/refine_annotated_order_r3/grade.json"
+  },
+  "source_outcome": "success",
+  "source_request_file_sha256": "090034614e244ab64fc64fdc566372b71be48fa215d15d041df7f7e69d6ae297",
+  "source_semantics_sha256": "cd12440161c8977cabbe98b7ccedb27ae1fc3e01cd657cdbc09b245139c3305f",
+  "reference_grade": {
+    "call_id": "refine_annotated_order_r3",
+    "family": "annotated_order",
+    "replicate": 3,
+    "task_correct": true,
+    "locally_legal": null,
+    "globally_extendable": null,
+    "correct_option_probability_mass": 0.28,
+    "best_correct_rank_optimistic": 1,
+    "selected_confidence": 0.2,
+    "seconds": 0.24768658401444554,
+    "cost_usd": 5.9682e-05,
+    "input_tokens": 1421,
+    "candidate_count": 12,
+    "acceptable_count": 1,
+    "raw_sha256": "32a2fe4ab04fc4bfbe5d193b1491d0f14aa2ca31c428ca0d6232bfad70d5d28b"
+  }
+}

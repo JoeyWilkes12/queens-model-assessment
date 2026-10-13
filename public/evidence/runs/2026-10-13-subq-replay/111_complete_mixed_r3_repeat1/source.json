@@ -1,0 +1,29 @@
+{
+  "source_id": "2026-09-18-jev-5x5-variations:complete_mixed_r3",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r3/request.json",
+    "response": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r3/response.json",
+    "metadata": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r3/metadata.json",
+    "grade": "runs/2026-09-18-jev-5x5-variations/complete_mixed_r3/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "3cf603969db88849baeab3ddc59afe94e9e3c1e42f659e8e877206b1b3a5ad92",
+  "source_semantics_sha256": "e22ca65327db51d1ccdae741bf3478b4cd8bfca8ccbe32eeef7eb27a45681933",
+  "reference_grade": {
+    "call_id": "complete_mixed_r3",
+    "family": "complete_mixed",
+    "replicate": 3,
+    "task_correct": false,
+    "locally_legal": null,
+    "globally_extendable": null,
+    "correct_option_probability_mass": 0.1,
+    "best_correct_rank_optimistic": 3,
+    "selected_confidence": 0.18,
+    "seconds": 0.3111693332903087,
+    "cost_usd": 4.6158e-05,
+    "input_tokens": 1099,
+    "candidate_count": 12,
+    "acceptable_count": 1,
+    "raw_sha256": "6ecc2464d26d2bae19eeea91ffba68f5f021d920caa433526b2d857bc6a8b76c"
+  }
+}

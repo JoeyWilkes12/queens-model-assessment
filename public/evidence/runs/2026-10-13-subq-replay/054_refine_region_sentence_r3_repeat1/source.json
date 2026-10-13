@@ -1,0 +1,29 @@
+{
+  "source_id": "2026-09-18-jev-5x5-variations:refine_region_sentence_r3",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r3/request.json",
+    "response": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r3/response.json",
+    "metadata": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r3/metadata.json",
+    "grade": "runs/2026-09-18-jev-5x5-variations/refine_region_sentence_r3/grade.json"
+  },
+  "source_outcome": "success",
+  "source_request_file_sha256": "542ae0d29895bc6715d6158a9e570b396d749f51c4cf876ca9c9d3dce776d6f1",
+  "source_semantics_sha256": "6ed3c6ed718ace1313a32e07e5e7ae152e2044212f07f6fc2b4c9d73a60246b4",
+  "reference_grade": {
+    "call_id": "refine_region_sentence_r3",
+    "family": "region_sentence",
+    "replicate": 3,
+    "task_correct": true,
+    "locally_legal": null,
+    "globally_extendable": null,
+    "correct_option_probability_mass": 0.95,
+    "best_correct_rank_optimistic": 1,
+    "selected_confidence": 0.93,
+    "seconds": 0.19673191709443927,
+    "cost_usd": 5.3928e-05,
+    "input_tokens": 1284,
+    "candidate_count": 12,
+    "acceptable_count": 1,
+    "raw_sha256": "20f2475872798d65b4b9824ae580225b5a4f23b460a87eaddcf72d8ab804dc10"
+  }
+}

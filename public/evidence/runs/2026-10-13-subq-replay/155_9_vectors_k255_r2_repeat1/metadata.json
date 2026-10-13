@@ -1,0 +1,27 @@
+{
+  "call_id": "155_9_vectors_k255_r2_repeat1",
+  "source_id": "2026-09-19-jev-scale:9_vectors_k255_r2",
+  "family": "remaining_2026-09-19-jev-scale",
+  "repeat": 1,
+  "board": "queens-9-hard",
+  "size": 9,
+  "fixture": "fixtures/2026-09-19-jev-scale__9_vectors_k255_r2.json",
+  "completed_utc": "2026-10-13T06:05:18.337521+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.5260742919999757,
+  "request_sha256": "1f5062988b3555565dad749c3602ba8029fc33d8d4b169c50b7dec4960e3b623",
+  "response_sha256": "6d2a115849e41f0ae0d3a6569e3996096ba4b3cded15c4a09522bcbf9a607ce5",
+  "source_semantics_sha256": "523c0c9a0f6c78425b4365efcc9a15e0d943248152b859fac0a46014c0f8931b",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 11214,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.04325235,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 465,
+    "billing_confirmed": false
+  }
+}

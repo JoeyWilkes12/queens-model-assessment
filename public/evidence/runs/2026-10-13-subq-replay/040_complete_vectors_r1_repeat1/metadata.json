@@ -1,0 +1,27 @@
+{
+  "call_id": "040_complete_vectors_r1_repeat1",
+  "source_id": "2026-09-18-jev-5x5-variations:complete_vectors_r1",
+  "family": "control_complete_vectors",
+  "repeat": 1,
+  "board": "queens-5-easy",
+  "size": 5,
+  "fixture": "fixtures/2026-09-18-jev-5x5-variations__complete_vectors_r1.json",
+  "completed_utc": "2026-10-13T05:53:03.071406+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.35060308300001,
+  "request_sha256": "fd87ab2c46dcb70b716e3353a33445e62cab71d81164b423d1931e1fd801944f",
+  "response_sha256": "078659c1e349b9a6ef79d181fd59ae5ff9258e3633b9f804c183dcbc89279d19",
+  "source_semantics_sha256": "e3bc40f313933caf5702e475008885b02b72d80fb03970b550c8c657b82a7678",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 804,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0022158,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 40,
+    "billing_confirmed": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "call_id": "055_7_vectors_k12_r1_repeat1",
+  "source_id": "2026-09-19-jev-scale:7_vectors_k12_r1",
+  "family": "control_7_vectors_k12",
+  "repeat": 1,
+  "board": "queens-7-medium",
+  "size": 7,
+  "fixture": "fixtures/2026-09-19-jev-scale__7_vectors_k12_r1.json",
+  "completed_utc": "2026-10-13T05:53:09.255540+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.35090391599999293,
+  "request_sha256": "83b9a379f9625926a9ac744155f520c50cc6da512bb51ff6164d3b446d2cc38a",
+  "response_sha256": "a880af46ab4bc93d826d527f556762234a422a9ae73e504663691bded277a3d1",
+  "source_semantics_sha256": "db0e6b6bed9031a7c2cc0e230d0fc07d5851022c318ca890d8d052bdaa167b92",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 840,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0028092,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 55,
+    "billing_confirmed": false
+  }
+}

@@ -1,0 +1,4380 @@
+{
+  "passed": true,
+  "audited_source_responses": 729,
+  "records": [
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_annotated_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_annotated_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_annotated_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_boards_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_boards_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_boards_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_annotated_order_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_annotated_order_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_annotated_order_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k12_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k12_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k12_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_features_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_features_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_features_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_vectors_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_vectors_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_vectors_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_local_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_local_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_local_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_global_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_global_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_global_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_region_sequence_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_region_sequence_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_region_sequence_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_region_sentence_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_region_sentence_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_region_sentence_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k12_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k12_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k12_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k12_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k12_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k12_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k12_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k12_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k12_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:02_batch_5x5_guardrail_enabled",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:02_batch_7x7",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:02_batch_9x9",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:03_sequential_5_row_1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:03_sequential_5_row_2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:03_sequential_5_row_3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:03_sequential_5_row_4",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:03_sequential_5_row_5",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:04_recognition_5_all120",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:05_grid_reading_5",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-18-jev-deep-dive:06_check_own_5x5_answers",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_construct_matrix",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_construct_prose",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_absent",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_construct_matrix",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_construct_prose",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_absent",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_vectors_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_construct_matrix",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_construct_prose",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_construct_matrix",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_construct_prose",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_construct_matrix",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_construct_prose",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_absent",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_construct_matrix_transport_retry1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_construct_prose",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_absent",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_vectors_present",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_fewshot_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_fewshot_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_fewshot_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_mixed_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_mixed_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:complete_mixed_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_global_annotated_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_global_annotated_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:partial_global_annotated_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_features_order_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_features_order_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-18-jev-5x5-variations:refine_features_order_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_counts_k255_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_counts_k255_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_counts_k255_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k100_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k100_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k100_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k255_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k255_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k255_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k50_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k50_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_regions_k50_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k100_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k100_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k100_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k255_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k255_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k255_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k50_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k50_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:7_vectors_k50_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_counts_k255_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_counts_k255_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_counts_k255_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k100_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k100_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k100_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k255_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k255_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k255_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k50_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k50_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_regions_k50_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k100_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k100_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k100_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k255_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k255_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k255_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k50_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k50_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:9_vectors_k50_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:construction_7",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-19-jev-scale:construction_9",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:batch_first_region_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:batch_first_region_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:batch_first_region_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:batch_first_region_r4",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:batch_first_region_r5",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-1_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-1_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-1_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-2_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-2_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-2_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-3_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-3_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-5-3_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-1_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-1_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-1_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-2_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-2_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-2_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-3_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-3_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-7-3_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-9-1_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-9-1_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-9-1_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-9-3_cell_A_r1",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-9-3_cell_A_r2",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:order_sequence-9-3_cell_A_r3",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-1_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-2_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-5-3_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-1_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-2_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-7-3_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-1_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-2_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_cell_A_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r01",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r02",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r03",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r04",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r05",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r06",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r07",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r08",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r09",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:probe_sequence-9-3_region_r10",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a1_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a2_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a3_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_local_a5_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a2_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a3_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a4_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a5_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a1_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a2_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a3_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a4_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a5_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a1_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a2_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a3_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a4_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a5_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-2_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a2_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a4_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_local_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a1_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a3_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a5_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-5-3_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p06_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a1_p06_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p06_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a2_p06_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p06_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a3_p06_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p06_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a4_p06_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p06_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_local_a5_p06_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a1_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a2_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a3_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a4_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-1_raw_a5_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a1_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a2_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a3_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a4_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a5_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a1_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a2_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a3_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a4_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a5_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-2_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a1_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a2_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a3_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a4_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a1_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a2_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a3_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a4_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a5_p01_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-7-3_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_local_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-1_raw_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a1_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a2_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a3_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p06_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a4_p06_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p06_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_local_a5_p06_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p05_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p05_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a2_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a3_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a5_p02_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a1_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a2_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_local_a5_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a1_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a2_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": true,
+      "historical_primary_correct": true
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p04_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a4_p04_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p01_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p02_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_cell",
+      "schema_valid": true,
+      "recomputed_primary_correct": false,
+      "historical_primary_correct": false
+    },
+    {
+      "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a5_p03_region",
+      "schema_valid": true,
+      "recomputed_primary_correct": null,
+      "historical_primary_correct": null
+    }
+  ]
+}

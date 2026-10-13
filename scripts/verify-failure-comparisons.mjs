@@ -375,8 +375,12 @@ const totals = Object.values(coverage).reduce((total, group) => {
   for (const [key, value] of Object.entries(group)) total[key] = (total[key] || 0) + value;
   return total;
 }, {});
-await check('current frozen corpus eligibility excludes non-placement tasks instead of reporting unusable queen answers', () => {
-  assert.deepEqual(totals, { failures: 299, eligible: 142, placement: 130, unavailable: 12, complete: 46, partial: 84, ineligible: 157 });
+const historicalTotals = Object.entries(coverage).filter(([study]) => !study.includes('subq')).reduce((total, [, group]) => {
+  for (const [key, value] of Object.entries(group)) total[key] = (total[key] || 0) + value;
+  return total;
+}, {});
+await check('retained historical corpus eligibility remains unchanged when SubQ evidence is added', () => {
+  assert.deepEqual(historicalTotals, { failures: 299, eligible: 142, placement: 130, unavailable: 12, complete: 46, partial: 84, ineligible: 157 });
   assert.equal(unavailableTypedRequests, 0);
 });
 await check('all public evidence byte hashes unchanged after verification', async () => assert.deepEqual(await snapshot(), before));

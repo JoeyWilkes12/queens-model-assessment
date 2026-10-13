@@ -1,0 +1,13 @@
+{
+  "source_id": "2026-09-18-jev-deep-dive:06_check_own_5x5_answers",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-deep-dive/06_check_own_5x5_answers/request.json",
+    "response": "runs/2026-09-18-jev-deep-dive/06_check_own_5x5_answers/response.json",
+    "metadata": "runs/2026-09-18-jev-deep-dive/06_check_own_5x5_answers/metadata.json",
+    "grade": null
+  },
+  "source_outcome": "ungraded",
+  "source_request_file_sha256": "55e4fe5b895de2a62fb6732590e7113f00a468ef796d33e94bdd440ff4851a49",
+  "source_semantics_sha256": "d542c4c58dbb377d831ec9c2c76fe22e22d724a0b683f8f8f1ae5f9bdc61de05",
+  "reference_grade": null
+}

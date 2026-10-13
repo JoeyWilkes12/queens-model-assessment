@@ -1,0 +1,120 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 9,
+  "graded_question_count": 9,
+  "correct_questions": 2,
+  "questions": {
+    "row_1": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 0.9999999534338713,
+      "confidence": 0.26502755656838417,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.030377203598618507
+    },
+    "row_2": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "6",
+      "probability_sum": 0.9999999981373549,
+      "confidence": 0.18343961983919146,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.09642310440540314
+    },
+    "row_3": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 1.0000000447034836,
+      "confidence": 0.28560955449938774,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.25899648666381836
+    },
+    "row_4": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "8",
+      "probability_sum": 0.9999999180436134,
+      "confidence": 0.06979459151625635,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.04925951361656189
+    },
+    "row_5": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "1",
+      "probability_sum": 0.9999998677521944,
+      "confidence": 0.5682323426008224,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.6162065267562866
+    },
+    "row_6": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "3",
+      "probability_sum": 0.9999999571591616,
+      "confidence": 0.09759417921304704,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.19786149263381958
+    },
+    "row_7": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "7",
+      "probability_sum": 0.9999999813735485,
+      "confidence": 0.24607721343636516,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.035455912351608276
+    },
+    "row_8": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "6",
+      "probability_sum": 0.9999999441206455,
+      "confidence": 0.14661409705877307,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.1414952278137207
+    },
+    "row_9": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "9",
+      "probability_sum": 0.9999999739229679,
+      "confidence": 0.33471064269542694,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.08769795298576355
+    }
+  },
+  "columns_by_row": [
+    1,
+    6,
+    1,
+    8,
+    1,
+    3,
+    7,
+    6,
+    9
+  ],
+  "checks": {
+    "shape": true,
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false,
+    "correct": false
+  },
+  "outcome": "model_failure"
+}

@@ -1,0 +1,30 @@
+{
+  "source_id": "2026-09-19-jev-primitives:heldout-5-1_construct_prose",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_prose/request.json",
+    "response": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_prose/response.json",
+    "metadata": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_prose/metadata.json",
+    "grade": "runs/2026-09-19-jev-primitives/heldout-5-1_construct_prose/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "4139fa006620f8bd1ce18640c457eed60855a34c9f8566a38b312633ba25a758",
+  "source_semantics_sha256": "795ed4e58105a7ae30c4a066db71faa80e96ea74524018aa4c5437a76b006049",
+  "reference_grade": {
+    "call_id": "heldout-5-1_construct_prose",
+    "board_id": "heldout-5-1",
+    "size": 5,
+    "family": "construction_prose",
+    "request_sha256": "91e9d2599bb142c78555ffe942cde763378ac1263eea2f5c257770dc9639700b",
+    "seconds": 0.2629986251704395,
+    "cost_usd": 5.6532e-05,
+    "raw_sha256": "30305d9758e4d79104dba728cb0bf3d06a17f1ad56872d89c2ce421c4310df15",
+    "typed_questions": 5,
+    "correct": false,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": false,
+      "one_per_region": false,
+      "no_touch": false
+    }
+  }
+}

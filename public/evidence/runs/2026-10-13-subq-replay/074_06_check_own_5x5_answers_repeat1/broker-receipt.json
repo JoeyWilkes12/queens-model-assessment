@@ -1,0 +1,69 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "batch_columns": {
+        "type": "noul",
+        "noul": 0.017442649230360985
+      },
+      "batch_regions": {
+        "type": "noul",
+        "noul": 0.030831869691610336
+      },
+      "batch_no_touch": {
+        "type": "noul",
+        "noul": 0.05011359602212906
+      },
+      "batch_all_rules": {
+        "type": "noul",
+        "noul": 0.014526784420013428
+      },
+      "sequential_columns": {
+        "type": "noul",
+        "noul": 0.9696316123008728
+      },
+      "sequential_regions": {
+        "type": "noul",
+        "noul": 0.1850302517414093
+      },
+      "sequential_no_touch": {
+        "type": "noul",
+        "noul": 0.8282338380813599
+      },
+      "sequential_all_rules": {
+        "type": "noul",
+        "noul": 0.22960740327835083
+      },
+      "recognition_columns": {
+        "type": "noul",
+        "noul": 0.9238873720169067
+      },
+      "recognition_regions": {
+        "type": "noul",
+        "noul": 0.19195660948753357
+      },
+      "recognition_no_touch": {
+        "type": "noul",
+        "noul": 0.5643236041069031
+      },
+      "recognition_all_rules": {
+        "type": "noul",
+        "noul": 0.06037956103682518
+      }
+    },
+    "usage": {
+      "input_tokens": 1251,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.47257712599997603,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0040065000000000005,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 74,
+    "billing_confirmed": false
+  }
+}

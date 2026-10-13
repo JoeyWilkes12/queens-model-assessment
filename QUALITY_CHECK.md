@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Scope](#scope)
+- [October 13 SubQ verification](#october-13-subq-verification)
 - [October 1 verification](#october-1-verification)
 - [Build and dependency checks](#build-and-dependency-checks)
 - [Evidence checks](#evidence-checks)
@@ -15,7 +16,23 @@
 
 This check covers the Vite/React technical book in this directory and the equivalent static build published through GitHub Pages. It does not cover live model calls or unrelated dirty files elsewhere in the Queens repository.
 
-The October 1 section records the current verification. The remaining sections retain the original five-study, nine-route QA snapshot and are historical, not evidence of new checks.
+The October 13 section records the SubQ verification. Earlier sections retain historical QA snapshots.
+
+## October 13 SubQ verification
+
+The completed campaign retains 739 exact replay API attempts (736 HTTP 200 and three integration rejections), fifteen local compatibility skips, 36 adapted part calls covering eighteen logical tasks, and ninety fresh adaptive attempts using 325 API calls. The public atlas now contains 1,949 records across eleven studies. Every manifest file reference resolves locally. The independent path audit reconstructs all ninety attempts and verifies every menu, forced transition, chosen cell, stopping reason, and receipt hash.
+
+Nineteen offline harness tests, the existing board-view and trajectory-view checks, and the failure-comparison checks pass. The failure-comparison test preserves its original historical cohort assertion while reporting added SubQ coverage separately. TypeScript and the Vite production build pass. The compatible source-map-js patch removes the vulnerability reported by npm; the final audit reports zero known vulnerabilities.
+
+Desktop (1440×1000) and emulated phone (390×844) screenshots were visually inspected in a project-only Playwright session. The SubQ chapter loads its real replay, trajectory, and adapted summaries without substituted scores; a SubQ atlas receipt displays its saved board and exact Choice. No document overflow or PDF links were observed. Localhost and private HTTP Tailscale URLs return HTTP 200 from this Mac. These checks are not an actual phone-browser test or a GitHub Pages deployment test. The local preview remains available for review.
+
+Runtime containment checks pass: nonroot worker, no external active network interface or route, blocked direct internet and metadata-IP connections, read-only inputs/socket directory/root, no host home or Docker socket, dropped capabilities, and no-new-privileges. The trusted broker has normal outbound networking and enforces a fixed SubQ HTTPS destination in code. This uses Docker Engine containment, not the separate Docker Sandboxes sbx product or a firewall on the broker.
+
+The API key was loaded programmatically into broker stdin without exposing its value or fragments to model context, command arguments, environment variables, receipts, or logs. `.env` is ignored and untracked. Provider response filtering excludes arbitrary strings; retained response hashes cover filtered JSON. No llms.txt, provider SDK, response code execution, model judge, or OpenAI inference was used.
+
+The final shared ledger estimates $0.08695505 in token charges and conservatively reserves $0.05898240 for unmetered failures, totaling $0.14593745 accounted against the $5 authorization. This is not a provider-confirmed bill. Per-study snapshots include prior phases and must not be summed.
+
+See the [full report](public/evidence/subq-REPORT.md), [path audit](public/evidence/subq-trajectory-audit.json), [campaign ledger](public/evidence/subq-budget.json), and [containment reference](docs/subq-provider.md).
 
 ## October 1 verification
 

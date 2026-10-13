@@ -1,0 +1,24 @@
+{
+  "source_id": "2026-09-30-jev-trajectories:sequence-9-3_raw_a3_p04_cell",
+  "source_files": {
+    "request": "runs/2026-09-30-jev-trajectories/sequence-9-3_raw_a3_p04_cell/request.json",
+    "response": "runs/2026-09-30-jev-trajectories/sequence-9-3_raw_a3_p04_cell/response.json",
+    "metadata": "runs/2026-09-30-jev-trajectories/sequence-9-3_raw_a3_p04_cell/metadata.json",
+    "grade": "runs/2026-09-30-jev-trajectories/sequence-9-3_raw_a3_p04_cell/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "1b1758d27dcaa03143f915e0c2349c283057526c41cb320b674f9695574ce2b7",
+  "source_semantics_sha256": "cc6e04fef64bad0768a91a05daaa018da5d6bba71944d31c01c806a74c332141",
+  "reference_grade": {
+    "call_id": "sequence-9-3_raw_a3_p04_cell",
+    "board_id": "sequence-9-3",
+    "family": "trajectory",
+    "phase": "cell",
+    "interpretation": "Returned Choice executed verbatim; probability ranking not substituted.",
+    "correct": false,
+    "selected_cell": [
+      3,
+      2
+    ]
+  }
+}

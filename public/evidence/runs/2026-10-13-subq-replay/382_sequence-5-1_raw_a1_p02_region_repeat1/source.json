@@ -1,0 +1,19 @@
+{
+  "source_id": "2026-09-30-jev-trajectories:sequence-5-1_raw_a1_p02_region",
+  "source_files": {
+    "request": "runs/2026-09-30-jev-trajectories/sequence-5-1_raw_a1_p02_region/request.json",
+    "response": "runs/2026-09-30-jev-trajectories/sequence-5-1_raw_a1_p02_region/response.json",
+    "metadata": "runs/2026-09-30-jev-trajectories/sequence-5-1_raw_a1_p02_region/metadata.json",
+    "grade": "runs/2026-09-30-jev-trajectories/sequence-5-1_raw_a1_p02_region/grade.json"
+  },
+  "source_outcome": "ungraded",
+  "source_request_file_sha256": "ce877e82c07151424813e7c64c7f5291b545b86f4cb759cb13a9a56486628275",
+  "source_semantics_sha256": "ac7a7634cb100cd98ee83fad7315c409b0fef49ed6dc55dfec019e6626176493",
+  "reference_grade": {
+    "call_id": "sequence-5-1_raw_a1_p02_region",
+    "board_id": "sequence-5-1",
+    "family": "trajectory",
+    "phase": "region",
+    "interpretation": "Returned Choice executed verbatim; probability ranking not substituted. Region preference has no unique correct label; ungraded for puzzle correctness."
+  }
+}

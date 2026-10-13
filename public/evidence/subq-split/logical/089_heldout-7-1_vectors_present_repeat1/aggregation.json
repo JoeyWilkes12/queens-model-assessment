@@ -1,0 +1,10 @@
+{
+  "kind": "offline_question_batch_aggregation",
+  "provider_single_response": false,
+  "parts": [
+    "017_heldout-7-1_vectors_present_part1",
+    "018_heldout-7-1_vectors_present_part2"
+  ],
+  "source_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present",
+  "parent_source_semantics_sha256": "80f5e911d56596f0a41211e9a183e2cd4b377051d9c76ce1449eaa7672365e34"
+}

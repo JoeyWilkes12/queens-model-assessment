@@ -1,0 +1,14 @@
+{
+  "exact_updated_utc": "2026-10-13T06:12:52.936627+00:00",
+  "adaptive_updated_utc": "2026-10-13T06:00:53.918122+00:00",
+  "split_updated_utc": "2026-10-13T13:16:08.787481+00:00",
+  "shared_budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.08695505,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 1100,
+    "billing_confirmed": false
+  },
+  "exact_remaining": 0,
+  "split_remaining_logical": 0
+}

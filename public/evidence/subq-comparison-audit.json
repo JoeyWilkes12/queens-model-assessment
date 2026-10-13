@@ -1,0 +1,264 @@
+{
+  "updated_utc": "2026-10-13T13:17:41.911075+00:00",
+  "priority_cohorts": [
+    {
+      "family": "mixed_complete_annotated",
+      "source_variants": 3,
+      "historical_correct_variants": 1,
+      "subq_consistently_correct_variants": 3,
+      "subq_correct_replays": 9,
+      "subq_replays": 9,
+      "records": [
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:complete_annotated_r1",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 3,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_02",
+            "option_02",
+            "option_02"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "001_complete_annotated_r1_repeat1",
+            "002_complete_annotated_r1_repeat2",
+            "003_complete_annotated_r1_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:complete_annotated_r2",
+          "historical_primary_correct": true,
+          "subq_correct_replays": 3,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_06",
+            "option_06",
+            "option_06"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "004_complete_annotated_r2_repeat1",
+            "005_complete_annotated_r2_repeat2",
+            "006_complete_annotated_r2_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:complete_annotated_r3",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 3,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_10",
+            "option_10",
+            "option_10"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "007_complete_annotated_r3_repeat1",
+            "008_complete_annotated_r3_repeat2",
+            "009_complete_annotated_r3_repeat3"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "mixed_complete_boards",
+      "source_variants": 3,
+      "historical_correct_variants": 1,
+      "subq_consistently_correct_variants": 0,
+      "subq_correct_replays": 0,
+      "subq_replays": 9,
+      "records": [
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:complete_boards_r1",
+          "historical_primary_correct": true,
+          "subq_correct_replays": 0,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_09",
+            "option_09",
+            "option_09"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "010_complete_boards_r1_repeat1",
+            "011_complete_boards_r1_repeat2",
+            "012_complete_boards_r1_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:complete_boards_r2",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 0,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_10",
+            "option_10",
+            "option_10"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "013_complete_boards_r2_repeat1",
+            "014_complete_boards_r2_repeat2",
+            "015_complete_boards_r2_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:complete_boards_r3",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 0,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_12",
+            "option_12",
+            "option_12"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "016_complete_boards_r3_repeat1",
+            "017_complete_boards_r3_repeat2",
+            "018_complete_boards_r3_repeat3"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "mixed_refine_annotated_order",
+      "source_variants": 3,
+      "historical_correct_variants": 1,
+      "subq_consistently_correct_variants": 3,
+      "subq_correct_replays": 9,
+      "subq_replays": 9,
+      "records": [
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:refine_annotated_order_r1",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 3,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_11",
+            "option_11",
+            "option_11"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "019_refine_annotated_order_r1_repeat1",
+            "020_refine_annotated_order_r1_repeat2",
+            "021_refine_annotated_order_r1_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:refine_annotated_order_r2",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 3,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_08",
+            "option_08",
+            "option_08"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "022_refine_annotated_order_r2_repeat1",
+            "023_refine_annotated_order_r2_repeat2",
+            "024_refine_annotated_order_r2_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-18-jev-5x5-variations:refine_annotated_order_r3",
+          "historical_primary_correct": true,
+          "subq_correct_replays": 3,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_05",
+            "option_05",
+            "option_05"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "025_refine_annotated_order_r3_repeat1",
+            "026_refine_annotated_order_r3_repeat2",
+            "027_refine_annotated_order_r3_repeat3"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "mixed_9_vectors_k12",
+      "source_variants": 3,
+      "historical_correct_variants": 1,
+      "subq_consistently_correct_variants": 1,
+      "subq_correct_replays": 3,
+      "subq_replays": 9,
+      "records": [
+        {
+          "source_id": "2026-09-19-jev-scale:9_vectors_k12_r1",
+          "historical_primary_correct": true,
+          "subq_correct_replays": 3,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_002",
+            "option_002",
+            "option_002"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "028_9_vectors_k12_r1_repeat1",
+            "029_9_vectors_k12_r1_repeat2",
+            "030_9_vectors_k12_r1_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-19-jev-scale:9_vectors_k12_r2",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 0,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_001",
+            "option_001",
+            "option_001"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "031_9_vectors_k12_r2_repeat1",
+            "032_9_vectors_k12_r2_repeat2",
+            "033_9_vectors_k12_r2_repeat3"
+          ]
+        },
+        {
+          "source_id": "2026-09-19-jev-scale:9_vectors_k12_r3",
+          "historical_primary_correct": false,
+          "subq_correct_replays": 0,
+          "subq_replays": 3,
+          "subq_choices": [
+            "option_003",
+            "option_003",
+            "option_003"
+          ],
+          "distinct_subq_choices": 1,
+          "call_ids": [
+            "034_9_vectors_k12_r3_repeat1",
+            "035_9_vectors_k12_r3_repeat2",
+            "036_9_vectors_k12_r3_repeat3"
+          ]
+        }
+      ]
+    }
+  ],
+  "source_matched": true,
+  "extra_subq_repeats_per_source_variant": 3,
+  "adaptive": {
+    "subq_solved": 10,
+    "subq_attempts": 90,
+    "jev_solved": 10,
+    "jev_attempts": 90,
+    "subq_boards_solved": 2,
+    "jev_boards_solved": 1
+  },
+  "caveats": [
+    "The three historical variants change candidate content/order; they were not three identical Jev repeats.",
+    "SubQ repeated each exact priority variant three times. Stable replies do not establish independent inference or exclude caching.",
+    "Matched replay cells are conditional judgments at historical states; their success cannot be scored as new whole-board construction."
+  ]
+}

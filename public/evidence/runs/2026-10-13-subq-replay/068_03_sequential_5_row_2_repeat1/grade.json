@@ -1,0 +1,21 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 1,
+  "graded_question_count": 1,
+  "correct_questions": 0,
+  "questions": {
+    "row_2": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "2",
+      "probability_sum": 0.9999999790452421,
+      "confidence": 0.27895773202180857,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.21602271497249603
+    }
+  },
+  "outcome": "model_failure"
+}

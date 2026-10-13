@@ -1,0 +1,28 @@
+{
+  "call_id": "sequence-5-3_raw_a1_p02_region",
+  "trajectory_id": "sequence-5-3_raw_a1",
+  "board_id": "sequence-5-3",
+  "size": 5,
+  "mode": "raw",
+  "replicate": 1,
+  "phase": "region",
+  "step": 2,
+  "family": "trajectory",
+  "completed_utc": "2026-10-13T05:59:07.042264+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.3380269589999898,
+  "request_sha256": "4fadbd65e18824791f73fede6ace5da44feec187f1d2dd9850a537c9725df843",
+  "response_sha256": "d92822481e5cd931cfdc09116ea6325945edda3a3140dd687a1843010123bf4e",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0069446,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 156,
+    "billing_confirmed": false
+  },
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 712,
+    "output_tokens": 0
+  }
+}

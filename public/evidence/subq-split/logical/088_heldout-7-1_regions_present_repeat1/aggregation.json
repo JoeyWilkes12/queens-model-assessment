@@ -1,0 +1,10 @@
+{
+  "kind": "offline_question_batch_aggregation",
+  "provider_single_response": false,
+  "parts": [
+    "015_heldout-7-1_regions_present_part1",
+    "016_heldout-7-1_regions_present_part2"
+  ],
+  "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present",
+  "parent_source_semantics_sha256": "d5f62f9c93b3e4e331c4737856fc4a629cbdc163d2261196d4659a38f67b1325"
+}

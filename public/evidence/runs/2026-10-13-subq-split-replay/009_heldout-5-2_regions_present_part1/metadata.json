@@ -1,0 +1,31 @@
+{
+  "call_id": "009_heldout-5-2_regions_present_part1",
+  "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+  "family": "split_heldout_regions_present",
+  "repeat": 1,
+  "board": "heldout-5-2",
+  "size": 5,
+  "fixture": "fixtures/009_heldout-5-2_regions_present_part1.json",
+  "part": 1,
+  "total_parts": 2,
+  "parent_call_id": "083_heldout-5-2_regions_present_repeat1",
+  "logical_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+  "completed_utc": "2026-10-13T13:15:49.208063+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.6228155000000015,
+  "request_sha256": "5d9b81d15804f3b7d9120c9bb3b8ca92687c35bf0b9135ab1461d0c11129d440",
+  "response_sha256": "9caa1ba575d08401068154e24882fa4eddd2d320a1e30100c1d24a44be037c62",
+  "source_semantics_sha256": "5ec590d860aab08bee745c46766f239d1cf7381f37496c9193ce5e8e34a44e40",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 3522,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.08282975000000001,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 1073,
+    "billing_confirmed": false
+  }
+}

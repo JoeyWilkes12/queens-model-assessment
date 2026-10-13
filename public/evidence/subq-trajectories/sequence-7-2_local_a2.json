@@ -1,0 +1,42 @@
+{
+  "trajectory_id": "sequence-7-2_local_a2",
+  "board_id": "sequence-7-2",
+  "size": 7,
+  "mode": "local",
+  "replicate": 2,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-13T05:59:42.617718+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "sequence-7-2_local_a2_p01_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 3,
+      "cell_call": "sequence-7-2_local_a2_p01_cell",
+      "cell_forced": false,
+      "top_probability": 0.48994746804237366,
+      "cell": [
+        1,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 2,
+  "forced_decisions": 0,
+  "api_elapsed_seconds": 0.7478588750000199,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 1,
+  "placement_prefix": [
+    [
+      1,
+      1
+    ]
+  ],
+  "correct_queens_before_failure": 0,
+  "elapsed_seconds": 0.7818062080000345,
+  "ended_utc": "2026-10-13T05:59:43.400033+00:00"
+}

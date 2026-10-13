@@ -1,0 +1,29 @@
+{
+  "source_id": "2026-09-18-jev-5x5-variations:complete_fewshot_r2",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r2/request.json",
+    "response": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r2/response.json",
+    "metadata": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r2/metadata.json",
+    "grade": "runs/2026-09-18-jev-5x5-variations/complete_fewshot_r2/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "77faad9c2e0719b9e4def225fa500cfb2dc223f435b34c387c188c091a921277",
+  "source_semantics_sha256": "0fd9b1421f8f36a344409c764973d01b485debfd31daf7a58509aeae3bb7ef14",
+  "reference_grade": {
+    "call_id": "complete_fewshot_r2",
+    "family": "complete_fewshot",
+    "replicate": 2,
+    "task_correct": false,
+    "locally_legal": null,
+    "globally_extendable": null,
+    "correct_option_probability_mass": 0,
+    "best_correct_rank_optimistic": 3,
+    "selected_confidence": 0.98,
+    "seconds": 0.25983304111287,
+    "cost_usd": 6.8628e-05,
+    "input_tokens": 1634,
+    "candidate_count": 12,
+    "acceptable_count": 1,
+    "raw_sha256": "ee951ee92dab55c330ea4b3d99dcf3ad5e9aa80cb3151f9c70f1be01904ccb9b"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": true,
+  "question_count": 16,
+  "graded_question_count": 16,
+  "correct_questions": 16,
+  "questions": {
+    "choose": {
+      "kind": "complete_recognition",
+      "correct": true,
+      "selected": "candidate_09",
+      "probability_sum": 1.0000000340514816,
+      "confidence": 0.963268647591273,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9660941362380981,
+      "columns_by_row": [
+        3,
+        1,
+        4,
+        2,
+        5
+      ],
+      "checks": {
+        "shape": true,
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": true,
+        "no_touch": true,
+        "correct": true
+      }
+    },
+    "candidate_01_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.010106121189892292,
+      "brier": 0.00010213368550479
+    },
+    "candidate_01_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.12144548632204533,
+      "true_level": 0,
+      "absolute_error": 0.12144548632204533,
+      "modal_levels": [
+        0
+      ],
+      "valid_probability": 0.007547763176262379
+    },
+    "candidate_02_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.012113617733120918,
+      "brier": 0.00014673973458418157
+    },
+    "candidate_02_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.11645115911960602,
+      "true_level": 0,
+      "absolute_error": 0.11645115911960602,
+      "modal_levels": [
+        0
+      ],
+      "valid_probability": 0.013609830290079117
+    },
+    "candidate_03_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.01941642351448536,
+      "brier": 0.00037699750209386
+    },
+    "candidate_03_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.8815865218639374,
+      "true_level": 1,
+      "absolute_error": 0.11841347813606262,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.03136293590068817
+    },
+    "candidate_04_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.013102020137012005,
+      "brier": 0.00017166293167066807
+    },
+    "candidate_04_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.7191570214927197,
+      "true_level": 1,
+      "absolute_error": 0.28084297850728035,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.015815993770956993
+    },
+    "candidate_05_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.017464973032474518,
+      "brier": 0.00030502528302506215
+    },
+    "candidate_05_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.18614396825432777,
+      "true_level": 0,
+      "absolute_error": 0.18614396825432777,
+      "modal_levels": [
+        0
+      ],
+      "valid_probability": 0.016782889142632484
+    },
+    "candidate_06_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.03563893958926201,
+      "brier": 0.001270134015047067
+    },
+    "candidate_06_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.8616326414048672,
+      "true_level": 1,
+      "absolute_error": 0.13836735859513283,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.01708379201591015
+    },
+    "candidate_07_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.017940249294042587,
+      "brier": 0.00032185254473239555
+    },
+    "candidate_07_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.723495289683342,
+      "true_level": 1,
+      "absolute_error": 0.276504710316658,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.018427662551403046
+    },
+    "candidate_08_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.015705212950706482,
+      "brier": 0.0002466537138270386
+    }
+  },
+  "outcome": "success"
+}

@@ -1,0 +1,15 @@
+{
+  "status": 422,
+  "body": {
+    "receipt_filter": "provider error/body withheld; consult HTTP status"
+  },
+  "elapsed_seconds": 0.23868829200000619,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0041079,
+    "unresolved_reserve_usd": 0.019660800000000003,
+    "calls_reserved": 77,
+    "billing_confirmed": false
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 7,
+  "graded_question_count": 7,
+  "correct_questions": 3,
+  "questions": {
+    "row_1": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "5",
+      "probability_sum": 0.9999999329447746,
+      "confidence": 0.1185465082526207,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.19929444789886475
+    },
+    "row_2": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "3",
+      "probability_sum": 1.0000000149011612,
+      "confidence": 0.11291122684876125,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.1625368446111679
+    },
+    "row_3": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 0.9999999813735485,
+      "confidence": 0.40626582503318787,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.06137002259492874
+    },
+    "row_4": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "2",
+      "probability_sum": 1.0000000074505806,
+      "confidence": 0.23243539035320282,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.3420874774456024
+    },
+    "row_5": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "4",
+      "probability_sum": 0.9999999962747097,
+      "confidence": 0.3356667806704839,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.4305715262889862
+    },
+    "row_6": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "3",
+      "probability_sum": 1.0000000521540642,
+      "confidence": 0.12222003191709518,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.039409711956977844
+    },
+    "row_7": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "5",
+      "probability_sum": 0.9999999888241291,
+      "confidence": 0.16676959892114004,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.2858025133609772
+    }
+  },
+  "columns_by_row": [
+    5,
+    3,
+    1,
+    2,
+    4,
+    3,
+    5
+  ],
+  "checks": {
+    "shape": true,
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false,
+    "correct": false
+  },
+  "outcome": "model_failure"
+}

@@ -1,0 +1,94 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 9,
+  "graded_question_count": 9,
+  "correct_questions": 6,
+  "questions": {
+    "candidate_08_coverage": {
+      "kind": "coverage_score",
+      "correct": false,
+      "score": 0.7038748562335968,
+      "true_level": 0,
+      "absolute_error": 0.7038748562335968,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.12254396080970764
+    },
+    "candidate_09_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.14997994899749756,
+      "brier": 0.02249398510129197
+    },
+    "candidate_09_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.6237209290266037,
+      "true_level": 0,
+      "absolute_error": 0.6237209290266037,
+      "modal_levels": [
+        0
+      ],
+      "valid_probability": 0.09331802278757095
+    },
+    "candidate_10_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.09363016486167908,
+      "brier": 0.008766607772025203
+    },
+    "candidate_10_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.665854424238205,
+      "true_level": 1,
+      "absolute_error": 0.33414557576179504,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.07831792533397675
+    },
+    "candidate_11_valid": {
+      "kind": "candidate_validity",
+      "correct": false,
+      "truth": true,
+      "noul": 0.3147749602794647,
+      "brier": 0.46953335506000915
+    },
+    "candidate_11_coverage": {
+      "kind": "coverage_score",
+      "correct": false,
+      "score": 0.7772222459316254,
+      "true_level": 2,
+      "absolute_error": 1.2227777540683746,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.15476775169372559
+    },
+    "candidate_12_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.08794181793928146,
+      "brier": 0.007733763342465727
+    },
+    "candidate_12_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.5951264947652817,
+      "true_level": 0,
+      "absolute_error": 0.5951264947652817,
+      "modal_levels": [
+        0
+      ],
+      "valid_probability": 0.09133673459291458
+    }
+  },
+  "outcome": "model_failure"
+}

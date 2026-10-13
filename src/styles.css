@@ -346,7 +346,7 @@ code { color: var(--text-primary); font-size: .88em; }
 .qr-url { display: inline-block; max-width: 100%; margin: 7px 0 14px; overflow-wrap: anywhere; color: var(--link-evidence); font-family: var(--mono-font); font-size: .83rem; font-weight: 700; text-underline-offset: 3px; }
 .qr-copy p { font-size: .88rem; }
 .qr-copy .next-actions { margin-top: 18px; }
-#trajectory-select { max-width: 100%; margin: 12px 0; padding: 10px; border: 1px solid var(--border-strong); color: var(--text-primary); background: var(--surface-raised); font: inherit; }
+#trajectory-select, .trajectory-select { max-width: 100%; margin: 12px 0; padding: 10px; border: 1px solid var(--border-strong); color: var(--text-primary); background: var(--surface-raised); font: inherit; }
 #trajectory-trace pre { max-width: 100%; overflow-x: auto; padding: 16px; background: var(--surface-raised); }
 @media (max-width: 700px) { .qr-share { grid-template-columns: minmax(190px, 240px) minmax(0, 1fr); } }
 @media (max-width: 460px) { .about-ledger, .qr-share { grid-template-columns: 1fr; } .qr-share { padding: 18px; } .qr-frame { max-width: 250px; } }

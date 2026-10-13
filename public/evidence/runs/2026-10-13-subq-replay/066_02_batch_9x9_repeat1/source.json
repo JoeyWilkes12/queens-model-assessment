@@ -1,0 +1,51 @@
+{
+  "source_id": "2026-09-18-jev-deep-dive:02_batch_9x9",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-deep-dive/02_batch_9x9/request.json",
+    "response": "runs/2026-09-18-jev-deep-dive/02_batch_9x9/response.json",
+    "metadata": "runs/2026-09-18-jev-deep-dive/02_batch_9x9/metadata.json",
+    "grade": "runs/2026-09-18-jev-deep-dive/02_batch_9x9/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "3ded741cead0be087fbcac39584b3e6777bfe277c39ac83370e7bfd56107a0d1",
+  "source_semantics_sha256": "dfcee65649b63ed3322ae8ccbd270ae2ad25b91ef046df5ed52a6fd9afbc2d37",
+  "reference_grade": {
+    "interpreted_answer": {
+      "board_id": "queens-9-hard",
+      "columns_by_row": [
+        1,
+        1,
+        4,
+        7,
+        5,
+        5,
+        5,
+        8,
+        1
+      ]
+    },
+    "engine": {
+      "format_valid": true,
+      "correct": false,
+      "checks": {
+        "one_per_row": true,
+        "one_per_column": false,
+        "one_per_region": false,
+        "no_touch": false
+      },
+      "failure": "rule_violation"
+    },
+    "confidence": {
+      "row_1": 0.18,
+      "row_2": 0.03,
+      "row_3": 0.15,
+      "row_4": 0.19,
+      "row_5": 0.24,
+      "row_6": 0.04,
+      "row_7": 0.03,
+      "row_8": 0.11,
+      "row_9": 0.08
+    },
+    "interpretation": "Column labels converted to integers in row order. No correction, search, or repair."
+  }
+}

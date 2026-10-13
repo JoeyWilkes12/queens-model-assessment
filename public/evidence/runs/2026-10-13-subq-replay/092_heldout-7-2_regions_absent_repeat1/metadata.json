@@ -1,0 +1,19 @@
+{
+  "call_id": "092_heldout-7-2_regions_absent_repeat1",
+  "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent",
+  "family": "heldout_regions_absent",
+  "repeat": 1,
+  "board": "heldout-7-2",
+  "size": 7,
+  "fixture": "fixtures/2026-09-19-jev-primitives__heldout-7-2_regions_absent.json",
+  "completed_utc": "2026-10-13T06:04:43.900222+00:00",
+  "http_status": null,
+  "elapsed_seconds": 0,
+  "request_sha256": "06b85d954009d383d3cc130a8b5befa0e2ed7d521a9b946d2b6560dcce27e6de",
+  "response_sha256": "710d928c788098fc26f3654a660ad4a969339a69a9a69a4c21f1eb10357b4c4e",
+  "source_semantics_sha256": "18dc89dcc6e342a300545aca5d6ad399b65079278bb992f117d4af32fe9ec346",
+  "returned_model": null,
+  "usage": null,
+  "budget": null,
+  "local_compatibility_skip": true
+}

@@ -1,0 +1,178 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "choose": {
+        "type": "choice",
+        "probabilities": {
+          "candidate_01": 0.016694113612174988,
+          "candidate_02": 0.009298782795667648,
+          "candidate_03": 0.0027438225224614143,
+          "candidate_04": 0.0019040246261283755,
+          "candidate_05": 0.00333490502089262,
+          "candidate_06": 0.007659832015633583,
+          "candidate_07": 0.0006479927687905729,
+          "candidate_08": 0.013146129436790943,
+          "candidate_09": 0.020006263628602028,
+          "candidate_10": 0.0005284013459458947,
+          "candidate_11": 0.010515538044273853,
+          "candidate_12": 0.001014968496747315,
+          "none": 0.9125052690505981
+        },
+        "confidence": 0.9052140414714813,
+        "choice": "none"
+      },
+      "candidate_01_valid": {
+        "type": "noul",
+        "noul": 0.019461778923869133
+      },
+      "candidate_01_coverage": {
+        "type": "score",
+        "probabilities": {
+          "0": 0.18632321059703827,
+          "1": 0.786651074886322,
+          "2": 0.027025725692510605
+        },
+        "confidence": 0.6799765955656767,
+        "score": 0.8407025262713432,
+        "legend": {
+          "0": "At least two required regions have no queen; coverage has multiple gaps.",
+          "1": "Exactly one required region has no queen; coverage has a single gap.",
+          "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+        }
+      },
+      "candidate_02_valid": {
+        "type": "noul",
+        "noul": 0.01364189013838768
+      },
+      "candidate_02_coverage": {
+        "type": "score",
+        "probabilities": {
+          "0": 0.4572247862815857,
+          "1": 0.5314751267433167,
+          "2": 0.011300094425678253
+        },
+        "confidence": 0.2972126789391041,
+        "score": 0.5540753155946732,
+        "legend": {
+          "0": "At least two required regions have no queen; coverage has multiple gaps.",
+          "1": "Exactly one required region has no queen; coverage has a single gap.",
+          "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+        }
+      },
+      "candidate_03_valid": {
+        "type": "noul",
+        "noul": 0.01076479721814394
+      },
+      "candidate_03_coverage": {
+        "type": "score",
+        "probabilities": {
+          "0": 0.9285870790481567,
+          "1": 0.05990125238895416,
+          "2": 0.01151162851601839
+        },
+        "confidence": 0.8756132358685136,
+        "score": 0.08292450942099094,
+        "legend": {
+          "0": "At least two required regions have no queen; coverage has multiple gaps.",
+          "1": "Exactly one required region has no queen; coverage has a single gap.",
+          "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+        }
+      },
+      "candidate_04_valid": {
+        "type": "noul",
+        "noul": 0.010976874269545078
+      },
+      "candidate_04_coverage": {
+        "type": "score",
+        "probabilities": {
+          "0": 0.9300294518470764,
+          "1": 0.059588249772787094,
+          "2": 0.010382294654846191
+        },
+        "confidence": 0.8794707413762808,
+        "score": 0.08035283908247948,
+        "legend": {
+          "0": "At least two required regions have no queen; coverage has multiple gaps.",
+          "1": "Exactly one required region has no queen; coverage has a single gap.",
+          "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+        }
+      },
+      "candidate_05_valid": {
+        "type": "noul",
+        "noul": 0.015295390971004963
+      },
+      "candidate_05_coverage": {
+        "type": "score",
+        "probabilities": {
+          "0": 0.914054274559021,
+          "1": 0.0744502991437912,
+          "2": 0.011495430953800678
+        },
+        "confidence": 0.8538382584229112,
+        "score": 0.09744116105139256,
+        "legend": {
+          "0": "At least two required regions have no queen; coverage has multiple gaps.",
+          "1": "Exactly one required region has no queen; coverage has a single gap.",
+          "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+        }
+      },
+      "candidate_06_valid": {
+        "type": "noul",
+        "noul": 0.019542839378118515
+      },
+      "candidate_06_coverage": {
+        "type": "score",
+        "probabilities": {
+          "0": 0.19130085408687592,
+          "1": 0.7917782068252563,
+          "2": 0.01692098192870617
+        },
+        "confidence": 0.6876672459766269,
+        "score": 0.8256201706826687,
+        "legend": {
+          "0": "At least two required regions have no queen; coverage has multiple gaps.",
+          "1": "Exactly one required region has no queen; coverage has a single gap.",
+          "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+        }
+      },
+      "candidate_07_valid": {
+        "type": "noul",
+        "noul": 0.01106230728328228
+      },
+      "candidate_07_coverage": {
+        "type": "score",
+        "probabilities": {
+          "0": 0.925408124923706,
+          "1": 0.06457134336233139,
+          "2": 0.010020561516284943
+        },
+        "confidence": 0.8730813004076481,
+        "score": 0.08461246639490128,
+        "legend": {
+          "0": "At least two required regions have no queen; coverage has multiple gaps.",
+          "1": "Exactly one required region has no queen; coverage has a single gap.",
+          "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+        }
+      },
+      "candidate_08_valid": {
+        "type": "noul",
+        "noul": 0.039329029619693756
+      }
+    },
+    "usage": {
+      "input_tokens": 3522,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.6096843750000005,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0825483,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 1071,
+    "billing_confirmed": false
+  }
+}

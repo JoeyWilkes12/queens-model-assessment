@@ -1,0 +1,814 @@
+{
+  "schema_version": 1,
+  "study": "2026-10-13-subq-split-replay",
+  "model": "subq-snap-preview",
+  "created_utc": "2026-10-13T06:00:55.573001+00:00",
+  "scheduled_calls": 36,
+  "unique_source_requests": 18,
+  "planned_logical_tasks": 18,
+  "schedule": [
+    {
+      "call_id": "001_heldout-5-1_regions_absent_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-5-1",
+      "size": 5,
+      "fixture": "fixtures/001_heldout-5-1_regions_absent_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "077_heldout-5-1_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_regions_absent"
+    },
+    {
+      "call_id": "002_heldout-5-1_regions_absent_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-5-1",
+      "size": 5,
+      "fixture": "fixtures/002_heldout-5-1_regions_absent_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "077_heldout-5-1_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_regions_absent"
+    },
+    {
+      "call_id": "003_heldout-5-1_regions_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-5-1",
+      "size": 5,
+      "fixture": "fixtures/003_heldout-5-1_regions_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "078_heldout-5-1_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_regions_present"
+    },
+    {
+      "call_id": "004_heldout-5-1_regions_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-5-1",
+      "size": 5,
+      "fixture": "fixtures/004_heldout-5-1_regions_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "078_heldout-5-1_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_regions_present"
+    },
+    {
+      "call_id": "005_heldout-5-1_vectors_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-5-1",
+      "size": 5,
+      "fixture": "fixtures/005_heldout-5-1_vectors_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "079_heldout-5-1_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present"
+    },
+    {
+      "call_id": "006_heldout-5-1_vectors_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-5-1",
+      "size": 5,
+      "fixture": "fixtures/006_heldout-5-1_vectors_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "079_heldout-5-1_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present"
+    },
+    {
+      "call_id": "007_heldout-5-2_regions_absent_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-5-2",
+      "size": 5,
+      "fixture": "fixtures/007_heldout-5-2_regions_absent_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "082_heldout-5-2_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_regions_absent"
+    },
+    {
+      "call_id": "008_heldout-5-2_regions_absent_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-5-2",
+      "size": 5,
+      "fixture": "fixtures/008_heldout-5-2_regions_absent_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "082_heldout-5-2_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_regions_absent"
+    },
+    {
+      "call_id": "009_heldout-5-2_regions_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-5-2",
+      "size": 5,
+      "fixture": "fixtures/009_heldout-5-2_regions_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "083_heldout-5-2_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present"
+    },
+    {
+      "call_id": "010_heldout-5-2_regions_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-5-2",
+      "size": 5,
+      "fixture": "fixtures/010_heldout-5-2_regions_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "083_heldout-5-2_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present"
+    },
+    {
+      "call_id": "011_heldout-5-2_vectors_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-5-2",
+      "size": 5,
+      "fixture": "fixtures/011_heldout-5-2_vectors_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "084_heldout-5-2_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_vectors_present"
+    },
+    {
+      "call_id": "012_heldout-5-2_vectors_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-5-2",
+      "size": 5,
+      "fixture": "fixtures/012_heldout-5-2_vectors_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "084_heldout-5-2_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_vectors_present"
+    },
+    {
+      "call_id": "013_heldout-7-1_regions_absent_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-7-1",
+      "size": 7,
+      "fixture": "fixtures/013_heldout-7-1_regions_absent_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "087_heldout-7-1_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent"
+    },
+    {
+      "call_id": "014_heldout-7-1_regions_absent_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-7-1",
+      "size": 7,
+      "fixture": "fixtures/014_heldout-7-1_regions_absent_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "087_heldout-7-1_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent"
+    },
+    {
+      "call_id": "015_heldout-7-1_regions_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-7-1",
+      "size": 7,
+      "fixture": "fixtures/015_heldout-7-1_regions_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "088_heldout-7-1_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present"
+    },
+    {
+      "call_id": "016_heldout-7-1_regions_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-7-1",
+      "size": 7,
+      "fixture": "fixtures/016_heldout-7-1_regions_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "088_heldout-7-1_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present"
+    },
+    {
+      "call_id": "017_heldout-7-1_vectors_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-7-1",
+      "size": 7,
+      "fixture": "fixtures/017_heldout-7-1_vectors_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "089_heldout-7-1_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present"
+    },
+    {
+      "call_id": "018_heldout-7-1_vectors_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-7-1",
+      "size": 7,
+      "fixture": "fixtures/018_heldout-7-1_vectors_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "089_heldout-7-1_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present"
+    },
+    {
+      "call_id": "019_heldout-7-2_regions_absent_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-7-2",
+      "size": 7,
+      "fixture": "fixtures/019_heldout-7-2_regions_absent_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "092_heldout-7-2_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent"
+    },
+    {
+      "call_id": "020_heldout-7-2_regions_absent_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-7-2",
+      "size": 7,
+      "fixture": "fixtures/020_heldout-7-2_regions_absent_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "092_heldout-7-2_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent"
+    },
+    {
+      "call_id": "021_heldout-7-2_regions_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-7-2",
+      "size": 7,
+      "fixture": "fixtures/021_heldout-7-2_regions_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "093_heldout-7-2_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_regions_present"
+    },
+    {
+      "call_id": "022_heldout-7-2_regions_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-7-2",
+      "size": 7,
+      "fixture": "fixtures/022_heldout-7-2_regions_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "093_heldout-7-2_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_regions_present"
+    },
+    {
+      "call_id": "023_heldout-7-2_vectors_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-7-2",
+      "size": 7,
+      "fixture": "fixtures/023_heldout-7-2_vectors_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "094_heldout-7-2_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present"
+    },
+    {
+      "call_id": "024_heldout-7-2_vectors_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-7-2",
+      "size": 7,
+      "fixture": "fixtures/024_heldout-7-2_vectors_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "094_heldout-7-2_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present"
+    },
+    {
+      "call_id": "025_heldout-9-1_regions_absent_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-9-1",
+      "size": 9,
+      "fixture": "fixtures/025_heldout-9-1_regions_absent_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "097_heldout-9-1_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_regions_absent"
+    },
+    {
+      "call_id": "026_heldout-9-1_regions_absent_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-9-1",
+      "size": 9,
+      "fixture": "fixtures/026_heldout-9-1_regions_absent_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "097_heldout-9-1_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_regions_absent"
+    },
+    {
+      "call_id": "027_heldout-9-1_regions_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-9-1",
+      "size": 9,
+      "fixture": "fixtures/027_heldout-9-1_regions_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "098_heldout-9-1_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_regions_present"
+    },
+    {
+      "call_id": "028_heldout-9-1_regions_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-9-1",
+      "size": 9,
+      "fixture": "fixtures/028_heldout-9-1_regions_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "098_heldout-9-1_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_regions_present"
+    },
+    {
+      "call_id": "029_heldout-9-1_vectors_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-9-1",
+      "size": 9,
+      "fixture": "fixtures/029_heldout-9-1_vectors_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "099_heldout-9-1_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present"
+    },
+    {
+      "call_id": "030_heldout-9-1_vectors_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-9-1",
+      "size": 9,
+      "fixture": "fixtures/030_heldout-9-1_vectors_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "099_heldout-9-1_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present"
+    },
+    {
+      "call_id": "031_heldout-9-2_regions_absent_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-9-2",
+      "size": 9,
+      "fixture": "fixtures/031_heldout-9-2_regions_absent_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "103_heldout-9-2_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_regions_absent"
+    },
+    {
+      "call_id": "032_heldout-9-2_regions_absent_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_absent",
+      "family": "split_heldout_regions_absent",
+      "repeat": 1,
+      "board": "heldout-9-2",
+      "size": 9,
+      "fixture": "fixtures/032_heldout-9-2_regions_absent_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "103_heldout-9-2_regions_absent_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_regions_absent"
+    },
+    {
+      "call_id": "033_heldout-9-2_regions_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-9-2",
+      "size": 9,
+      "fixture": "fixtures/033_heldout-9-2_regions_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "104_heldout-9-2_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present"
+    },
+    {
+      "call_id": "034_heldout-9-2_regions_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present",
+      "family": "split_heldout_regions_present",
+      "repeat": 1,
+      "board": "heldout-9-2",
+      "size": 9,
+      "fixture": "fixtures/034_heldout-9-2_regions_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "104_heldout-9-2_regions_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present"
+    },
+    {
+      "call_id": "035_heldout-9-2_vectors_present_part1",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-9-2",
+      "size": 9,
+      "fixture": "fixtures/035_heldout-9-2_vectors_present_part1.json",
+      "part": 1,
+      "total_parts": 2,
+      "parent_call_id": "105_heldout-9-2_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_vectors_present"
+    },
+    {
+      "call_id": "036_heldout-9-2_vectors_present_part2",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_vectors_present",
+      "family": "split_heldout_vectors_present",
+      "repeat": 1,
+      "board": "heldout-9-2",
+      "size": 9,
+      "fixture": "fixtures/036_heldout-9-2_vectors_present_part2.json",
+      "part": 2,
+      "total_parts": 2,
+      "parent_call_id": "105_heldout-9-2_vectors_present_repeat1",
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_vectors_present"
+    }
+  ],
+  "logical_tasks": [
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_regions_absent",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_absent",
+      "parent_call_id": "077_heldout-5-1_regions_absent_repeat1",
+      "board": "heldout-5-1",
+      "size": 5,
+      "family": "split_heldout_regions_absent",
+      "parent_fixture": "parents/077_heldout-5-1_regions_absent_repeat1.json",
+      "parts": [
+        "001_heldout-5-1_regions_absent_part1",
+        "002_heldout-5-1_regions_absent_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_regions_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_regions_present",
+      "parent_call_id": "078_heldout-5-1_regions_present_repeat1",
+      "board": "heldout-5-1",
+      "size": 5,
+      "family": "split_heldout_regions_present",
+      "parent_fixture": "parents/078_heldout-5-1_regions_present_repeat1.json",
+      "parts": [
+        "003_heldout-5-1_regions_present_part1",
+        "004_heldout-5-1_regions_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present",
+      "parent_call_id": "079_heldout-5-1_vectors_present_repeat1",
+      "board": "heldout-5-1",
+      "size": 5,
+      "family": "split_heldout_vectors_present",
+      "parent_fixture": "parents/079_heldout-5-1_vectors_present_repeat1.json",
+      "parts": [
+        "005_heldout-5-1_vectors_present_part1",
+        "006_heldout-5-1_vectors_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_regions_absent",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_absent",
+      "parent_call_id": "082_heldout-5-2_regions_absent_repeat1",
+      "board": "heldout-5-2",
+      "size": 5,
+      "family": "split_heldout_regions_absent",
+      "parent_fixture": "parents/082_heldout-5-2_regions_absent_repeat1.json",
+      "parts": [
+        "007_heldout-5-2_regions_absent_part1",
+        "008_heldout-5-2_regions_absent_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_regions_present",
+      "parent_call_id": "083_heldout-5-2_regions_present_repeat1",
+      "board": "heldout-5-2",
+      "size": 5,
+      "family": "split_heldout_regions_present",
+      "parent_fixture": "parents/083_heldout-5-2_regions_present_repeat1.json",
+      "parts": [
+        "009_heldout-5-2_regions_present_part1",
+        "010_heldout-5-2_regions_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-5-2_vectors_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-5-2_vectors_present",
+      "parent_call_id": "084_heldout-5-2_vectors_present_repeat1",
+      "board": "heldout-5-2",
+      "size": 5,
+      "family": "split_heldout_vectors_present",
+      "parent_fixture": "parents/084_heldout-5-2_vectors_present_repeat1.json",
+      "parts": [
+        "011_heldout-5-2_vectors_present_part1",
+        "012_heldout-5-2_vectors_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_absent",
+      "parent_call_id": "087_heldout-7-1_regions_absent_repeat1",
+      "board": "heldout-7-1",
+      "size": 7,
+      "family": "split_heldout_regions_absent",
+      "parent_fixture": "parents/087_heldout-7-1_regions_absent_repeat1.json",
+      "parts": [
+        "013_heldout-7-1_regions_absent_part1",
+        "014_heldout-7-1_regions_absent_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_regions_present",
+      "parent_call_id": "088_heldout-7-1_regions_present_repeat1",
+      "board": "heldout-7-1",
+      "size": 7,
+      "family": "split_heldout_regions_present",
+      "parent_fixture": "parents/088_heldout-7-1_regions_present_repeat1.json",
+      "parts": [
+        "015_heldout-7-1_regions_present_part1",
+        "016_heldout-7-1_regions_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-1_vectors_present",
+      "parent_call_id": "089_heldout-7-1_vectors_present_repeat1",
+      "board": "heldout-7-1",
+      "size": 7,
+      "family": "split_heldout_vectors_present",
+      "parent_fixture": "parents/089_heldout-7-1_vectors_present_repeat1.json",
+      "parts": [
+        "017_heldout-7-1_vectors_present_part1",
+        "018_heldout-7-1_vectors_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_absent",
+      "parent_call_id": "092_heldout-7-2_regions_absent_repeat1",
+      "board": "heldout-7-2",
+      "size": 7,
+      "family": "split_heldout_regions_absent",
+      "parent_fixture": "parents/092_heldout-7-2_regions_absent_repeat1.json",
+      "parts": [
+        "019_heldout-7-2_regions_absent_part1",
+        "020_heldout-7-2_regions_absent_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_regions_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_regions_present",
+      "parent_call_id": "093_heldout-7-2_regions_present_repeat1",
+      "board": "heldout-7-2",
+      "size": 7,
+      "family": "split_heldout_regions_present",
+      "parent_fixture": "parents/093_heldout-7-2_regions_present_repeat1.json",
+      "parts": [
+        "021_heldout-7-2_regions_present_part1",
+        "022_heldout-7-2_regions_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present",
+      "parent_call_id": "094_heldout-7-2_vectors_present_repeat1",
+      "board": "heldout-7-2",
+      "size": 7,
+      "family": "split_heldout_vectors_present",
+      "parent_fixture": "parents/094_heldout-7-2_vectors_present_repeat1.json",
+      "parts": [
+        "023_heldout-7-2_vectors_present_part1",
+        "024_heldout-7-2_vectors_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_regions_absent",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_absent",
+      "parent_call_id": "097_heldout-9-1_regions_absent_repeat1",
+      "board": "heldout-9-1",
+      "size": 9,
+      "family": "split_heldout_regions_absent",
+      "parent_fixture": "parents/097_heldout-9-1_regions_absent_repeat1.json",
+      "parts": [
+        "025_heldout-9-1_regions_absent_part1",
+        "026_heldout-9-1_regions_absent_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_regions_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_regions_present",
+      "parent_call_id": "098_heldout-9-1_regions_present_repeat1",
+      "board": "heldout-9-1",
+      "size": 9,
+      "family": "split_heldout_regions_present",
+      "parent_fixture": "parents/098_heldout-9-1_regions_present_repeat1.json",
+      "parts": [
+        "027_heldout-9-1_regions_present_part1",
+        "028_heldout-9-1_regions_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+      "parent_call_id": "099_heldout-9-1_vectors_present_repeat1",
+      "board": "heldout-9-1",
+      "size": 9,
+      "family": "split_heldout_vectors_present",
+      "parent_fixture": "parents/099_heldout-9-1_vectors_present_repeat1.json",
+      "parts": [
+        "029_heldout-9-1_vectors_present_part1",
+        "030_heldout-9-1_vectors_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_regions_absent",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_absent",
+      "parent_call_id": "103_heldout-9-2_regions_absent_repeat1",
+      "board": "heldout-9-2",
+      "size": 9,
+      "family": "split_heldout_regions_absent",
+      "parent_fixture": "parents/103_heldout-9-2_regions_absent_repeat1.json",
+      "parts": [
+        "031_heldout-9-2_regions_absent_part1",
+        "032_heldout-9-2_regions_absent_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present",
+      "parent_call_id": "104_heldout-9-2_regions_present_repeat1",
+      "board": "heldout-9-2",
+      "size": 9,
+      "family": "split_heldout_regions_present",
+      "parent_fixture": "parents/104_heldout-9-2_regions_present_repeat1.json",
+      "parts": [
+        "033_heldout-9-2_regions_present_part1",
+        "034_heldout-9-2_regions_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    },
+    {
+      "logical_id": "2026-09-19-jev-primitives:heldout-9-2_vectors_present",
+      "source_id": "2026-09-19-jev-primitives:heldout-9-2_vectors_present",
+      "parent_call_id": "105_heldout-9-2_vectors_present_repeat1",
+      "board": "heldout-9-2",
+      "size": 9,
+      "family": "split_heldout_vectors_present",
+      "parent_fixture": "parents/105_heldout-9-2_vectors_present_repeat1.json",
+      "parts": [
+        "035_heldout-9-2_vectors_present_part1",
+        "036_heldout-9-2_vectors_present_part2"
+      ],
+      "parent_question_count": 25,
+      "part_question_counts": [
+        16,
+        9
+      ]
+    }
+  ],
+  "design": "Observed provider limit adaptation; each 25-question original is split into contiguous groups of 16 and 9.",
+  "caveats": [
+    "This is a separately labeled grouped-batch condition, not exact request-body replication.",
+    "Board state and every question's instructions, criteria, labels and option order are unchanged. Only the per-request question group changes.",
+    "These historical questions are independent judgments; questions do not consume one another's answers. Batching context can still affect results.",
+    "Merged answers are an offline aggregation of separate successful provider receipts. No model returned the merged object in a single call.",
+    "Logical-task validity is graded only after every part succeeds. Incomplete parts remain visible and are not silently repaired or retried.",
+    "The initial original requests rejected with HTTP 422 and later local compatibility skips remain in the exact-replay study; they are not Queens model failures."
+  ]
+}

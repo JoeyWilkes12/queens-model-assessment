@@ -1,0 +1,62 @@
+{
+  "trajectory_id": "sequence-7-3_raw_a3",
+  "board_id": "sequence-7-3",
+  "size": 7,
+  "mode": "raw",
+  "replicate": 3,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-13T05:59:57.545388+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "sequence-7-3_raw_a3_p01_region",
+      "region_forced": false,
+      "region": "B",
+      "candidate_count": 2,
+      "cell_call": "sequence-7-3_raw_a3_p01_cell",
+      "cell_forced": false,
+      "top_probability": 0.6022553443908691,
+      "cell": [
+        1,
+        4
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "sequence-7-3_raw_a3_p02_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 5,
+      "cell_call": "sequence-7-3_raw_a3_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.5150195360183716,
+      "cell": [
+        3,
+        7
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 4,
+  "forced_decisions": 0,
+  "api_elapsed_seconds": 1.3810585850000052,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 2,
+  "placement_prefix": [
+    [
+      1,
+      4
+    ],
+    [
+      3,
+      7
+    ]
+  ],
+  "correct_queens_before_failure": 1,
+  "elapsed_seconds": 1.4469434589999537,
+  "ended_utc": "2026-10-13T05:59:58.992829+00:00"
+}

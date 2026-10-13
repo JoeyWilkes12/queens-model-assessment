@@ -1,0 +1,76 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 5,
+  "graded_question_count": 5,
+  "correct_questions": 1,
+  "questions": {
+    "row_1": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "5",
+      "probability_sum": 1.0000000149011612,
+      "confidence": 0.2636765539646148,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.4109412431716919
+    },
+    "row_2": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "2",
+      "probability_sum": 0.999999962747097,
+      "confidence": 0.24603417515754697,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.345313161611557
+    },
+    "row_3": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "2",
+      "probability_sum": 0.9999999962747097,
+      "confidence": 0.3134597316384315,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.22812296450138092
+    },
+    "row_4": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 1.0,
+      "confidence": 0.3572916463017463,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.14449292421340942
+    },
+    "row_5": {
+      "kind": "row_construction",
+      "correct": false,
+      "selected": "1",
+      "probability_sum": 1.0000000670552254,
+      "confidence": 0.3359630182385444,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.258380651473999
+    }
+  },
+  "columns_by_row": [
+    5,
+    2,
+    2,
+    1,
+    1
+  ],
+  "checks": {
+    "shape": true,
+    "one_per_row": true,
+    "one_per_column": false,
+    "one_per_region": false,
+    "no_touch": false,
+    "correct": false
+  },
+  "outcome": "model_failure"
+}

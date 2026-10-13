@@ -65,7 +65,7 @@ Use the Agent Skills Resource Library design system at `/Users/joeywilkes/Deskto
 - Jev larger-board scale study: `../../2026-09-19-jev-scale/`.
 - Jev held-out primitive study: `../../2026-09-19-jev-primitives/`.
 - Five report illustrations: `../assets/`.
-- The PDF remains a stable download for readers who do not need the evidence atlas.
+- The current book and sanitized receipts are the publication; the incomplete historical PDF has been removed.
 - Earlier-generation replay: `../../2026-10-01-earlier-generations/`, with strict and deterministic written-answer diagnostic grades kept separate.
 
 No testimonial or population-level benchmark claim is available and none may be fabricated. The public deployment is [Queens model assessment](https://joeywilkes12.github.io/queens-model-assessment/).

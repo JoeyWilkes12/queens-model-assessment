@@ -1,0 +1,31 @@
+{
+  "source_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/request.json",
+    "response": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/response.json",
+    "metadata": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/metadata.json",
+    "grade": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "bfcadef0cf6ac29181459e0ec62fb03b567f07fcf70d21637a8737e1bfaec3f9",
+  "source_semantics_sha256": "ddfd83f3346fc5d6d7eac8e5f70e29e29521714ed9db2a1f097d49bad4f17cde",
+  "reference_grade": {
+    "call_id": "heldout-9-1_vectors_present",
+    "board_id": "heldout-9-1",
+    "size": 9,
+    "family": "vectors",
+    "request_sha256": "95a1bcbda07a198c325c455c41a30cd119a5a91d3b6f34e1464d5a24e7470ded",
+    "answer_present": true,
+    "seconds": 0.28534850012511015,
+    "cost_usd": 0.000197106,
+    "raw_sha256": "e46d237190e09fda38914eff12a40206d39740c15a3e5e4ef06095937c496c20",
+    "typed_questions": 25,
+    "choice_correct": false,
+    "choice_none": true,
+    "noul_top_correct": false,
+    "score_top_correct": false,
+    "score_valid_probability_top_correct": false,
+    "noul_positive_count": 1,
+    "score_positive_count": 1
+  }
+}

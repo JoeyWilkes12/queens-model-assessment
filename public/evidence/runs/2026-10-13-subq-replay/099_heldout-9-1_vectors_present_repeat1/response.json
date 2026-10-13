@@ -1,0 +1,6 @@
+{
+  "local_compatibility_skip": true,
+  "recognized_question_limit": 16,
+  "question_count": 25,
+  "reason": "Live provider validation established a question-count limit; original oversized request not dispatched again."
+}

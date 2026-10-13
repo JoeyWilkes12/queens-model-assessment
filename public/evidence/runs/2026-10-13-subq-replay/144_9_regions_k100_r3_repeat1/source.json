@@ -1,0 +1,38 @@
+{
+  "source_id": "2026-09-19-jev-scale:9_regions_k100_r3",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-scale/9_regions_k100_r3/request.json",
+    "response": "runs/2026-09-19-jev-scale/9_regions_k100_r3/response.json",
+    "metadata": "runs/2026-09-19-jev-scale/9_regions_k100_r3/metadata.json",
+    "grade": "runs/2026-09-19-jev-scale/9_regions_k100_r3/grade.json"
+  },
+  "source_outcome": "success",
+  "source_request_file_sha256": "e5b18a8fb3aa671a68b166e9495dd3928e1e8af00d8af68c65eb9e59c72e6cc7",
+  "source_semantics_sha256": "ae7d70ec61409092b6cbeefa743e54881c06cbb0cf6af251f2e70e5e15d0580a",
+  "reference_grade": {
+    "call_id": "9_regions_k100_r3",
+    "size": 9,
+    "family": "regions",
+    "candidate_count": 100,
+    "replicate": 3,
+    "endpoint": "/api/alpha/decisions",
+    "request_sha256": "80937b9183ab1feb0f9fb0f9690d3fd6d629bf5704a80963ebe2243323866659",
+    "distractor_distinct_region_histogram": {
+      "8": 99
+    },
+    "seconds": 0.40087070781737566,
+    "http_status": 200,
+    "actual_usd": 0.000389298,
+    "reserve_usd": 0,
+    "raw_sha256": "072808f66dac17f84bc7b6f08ced4d21e896942a75f00d041ce8afb72a32b7e9",
+    "input_tokens": 9269,
+    "correct": true,
+    "correct_probability": 0.54,
+    "confidence": 0.52,
+    "probability_sum": 0.99,
+    "correct_rank_optimistic": 1,
+    "correct_rank_pessimistic": 1,
+    "selected_distinct_regions": 9,
+    "random_baseline": 0.01
+  }
+}

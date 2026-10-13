@@ -1,0 +1,27 @@
+{
+  "source_id": "2026-09-18-jev-deep-dive:05_grid_reading_5",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-deep-dive/05_grid_reading_5/request.json",
+    "response": "runs/2026-09-18-jev-deep-dive/05_grid_reading_5/response.json",
+    "metadata": "runs/2026-09-18-jev-deep-dive/05_grid_reading_5/metadata.json",
+    "grade": "runs/2026-09-18-jev-deep-dive/05_grid_reading_5/grade.json"
+  },
+  "source_outcome": "success",
+  "source_request_file_sha256": "a94846c40a070086314b3262ed1ea7329396f959774f0a97b5c79d95e19d70dc",
+  "source_semantics_sha256": "d401515df0335fcf7935844af084259fb6b8c869d16afb3a5157d80a86560eb8",
+  "reference_grade": {
+    "correct": 9,
+    "total": 9,
+    "checks": {
+      "cell_1_1": true,
+      "cell_1_5": true,
+      "cell_2_4": true,
+      "cell_3_2": true,
+      "cell_3_3": true,
+      "cell_4_1": true,
+      "cell_4_4": true,
+      "cell_5_2": true,
+      "cell_5_5": true
+    }
+  }
+}

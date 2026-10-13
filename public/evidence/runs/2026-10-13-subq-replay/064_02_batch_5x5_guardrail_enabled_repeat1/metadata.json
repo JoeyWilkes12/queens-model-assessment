@@ -1,0 +1,27 @@
+{
+  "call_id": "064_02_batch_5x5_guardrail_enabled_repeat1",
+  "source_id": "2026-09-18-jev-deep-dive:02_batch_5x5_guardrail_enabled",
+  "family": "deep_dive_02_batch_5x5_guardrail_enabled",
+  "repeat": 1,
+  "board": "queens-5-easy",
+  "size": 5,
+  "fixture": "fixtures/2026-09-18-jev-deep-dive__02_batch_5x5_guardrail_enabled.json",
+  "completed_utc": "2026-10-13T05:53:13.150889+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.40098245899997664,
+  "request_sha256": "e6d9419d09c0afc0a1142df1f9e55448493a1887ad04dab1e3c690688dedb679",
+  "response_sha256": "1c76a2c7534c0bc9bb4fb862ac77611afa3efb1aa27932d9aa16be3ea4367818",
+  "source_semantics_sha256": "9649bfe4ac56ca8147481469d1f4811d5c20c619122fb1e365ae2e6f08c6eadd",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 999,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.00334455,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 64,
+    "billing_confirmed": false
+  }
+}

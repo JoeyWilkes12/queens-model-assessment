@@ -1,0 +1,27 @@
+{
+  "call_id": "072_04_recognition_5_all120_repeat1",
+  "source_id": "2026-09-18-jev-deep-dive:04_recognition_5_all120",
+  "family": "deep_dive_04_recognition_5_all120",
+  "repeat": 1,
+  "board": "queens-5-easy",
+  "size": 5,
+  "fixture": "fixtures/2026-09-18-jev-deep-dive__04_recognition_5_all120.json",
+  "completed_utc": "2026-10-13T05:53:17.022269+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.4760958760000449,
+  "request_sha256": "a3764e331a01668fbf5d750c9a299d7644dd08bed1015ca3789a8bf7fba8fb0d",
+  "response_sha256": "6f42acb96f6d94d27f5fd5285681735371b6c71165dddf9a3325c1cc5badb7a9",
+  "source_semantics_sha256": "70899b8798613a7e9151befba3baf583be4b0dae56a13768d03a7f1c1415da96",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 4626,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.00389105,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 72,
+    "billing_confirmed": false
+  }
+}

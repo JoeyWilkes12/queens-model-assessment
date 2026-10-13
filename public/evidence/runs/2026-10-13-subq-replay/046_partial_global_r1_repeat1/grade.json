@@ -1,0 +1,26 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 1,
+  "graded_question_count": 1,
+  "correct_questions": 0,
+  "questions": {
+    "pick": {
+      "kind": "global_move",
+      "correct": false,
+      "selected": "option_06",
+      "probability_sum": 1.00000003981404,
+      "confidence": 0.4288284995339134,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.18202446401119232,
+      "cell": {
+        "row": 2,
+        "column": 1
+      },
+      "locally_legal": true
+    }
+  },
+  "outcome": "model_failure"
+}

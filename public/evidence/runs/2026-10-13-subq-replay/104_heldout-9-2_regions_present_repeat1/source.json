@@ -1,0 +1,31 @@
+{
+  "source_id": "2026-09-19-jev-primitives:heldout-9-2_regions_present",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_present/request.json",
+    "response": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_present/response.json",
+    "metadata": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_present/metadata.json",
+    "grade": "runs/2026-09-19-jev-primitives/heldout-9-2_regions_present/grade.json"
+  },
+  "source_outcome": "success",
+  "source_request_file_sha256": "5d48036b467fc0ca4960a05215b88fb0e7f90f02b96fe69bf0167bc37ae780b2",
+  "source_semantics_sha256": "4cbdd301d3435951cf6b4b80133202fcfa9c1451acc1bb067463534ad9833c4c",
+  "reference_grade": {
+    "call_id": "heldout-9-2_regions_present",
+    "board_id": "heldout-9-2",
+    "size": 9,
+    "family": "regions",
+    "request_sha256": "45318bc99ac9bbf6931cfdf842505355310e4e34f43aa2e495cb179ba77237c2",
+    "answer_present": true,
+    "seconds": 0.42889354191720486,
+    "cost_usd": 0.000263634,
+    "raw_sha256": "1826935de177cf91bc6f1ed195dfd5215c4509ba83fe7bdcb5613b9da4112a91",
+    "typed_questions": 25,
+    "choice_correct": true,
+    "choice_none": false,
+    "noul_top_correct": true,
+    "score_top_correct": true,
+    "score_valid_probability_top_correct": true,
+    "noul_positive_count": 3,
+    "score_positive_count": 2
+  }
+}

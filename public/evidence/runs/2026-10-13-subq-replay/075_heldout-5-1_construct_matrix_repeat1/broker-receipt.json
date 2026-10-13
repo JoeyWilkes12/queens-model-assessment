@@ -1,0 +1,81 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "row_1": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.09056971967220306,
+          "2": 0.1443970650434494,
+          "3": 0.1564444899559021,
+          "4": 0.3003852963447571,
+          "5": 0.3082033693790436
+        },
+        "confidence": 0.13525421172380445,
+        "choice": "5"
+      },
+      "row_2": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.24473191797733307,
+          "2": 0.28445443511009216,
+          "3": 0.10227856785058975,
+          "4": 0.1601841002702713,
+          "5": 0.2083509862422943
+        },
+        "confidence": 0.10556804388761519,
+        "choice": "2"
+      },
+      "row_3": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.19705502688884735,
+          "2": 0.5337093472480774,
+          "3": 0.07691797614097595,
+          "4": 0.07034379988908768,
+          "5": 0.12197374552488327
+        },
+        "confidence": 0.4171366840600967,
+        "choice": "2"
+      },
+      "row_4": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.48095834255218506,
+          "2": 0.3106103241443634,
+          "3": 0.07110852748155594,
+          "4": 0.06906069815158844,
+          "5": 0.06826216727495193
+        },
+        "confidence": 0.35119792819023127,
+        "choice": "1"
+      },
+      "row_5": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.2388155609369278,
+          "2": 0.14584891498088837,
+          "3": 0.10261949151754379,
+          "4": 0.07809180021286011,
+          "5": 0.43462416529655457
+        },
+        "confidence": 0.29328020662069315,
+        "choice": "5"
+      }
+    },
+    "usage": {
+      "input_tokens": 999,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.3987157510000543,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0040564500000000005,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 75,
+    "billing_confirmed": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": true,
+  "question_count": 9,
+  "graded_question_count": 9,
+  "correct_questions": 9,
+  "questions": {
+    "cell_1_1": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "A",
+      "probability_sum": 1.0000000917352736,
+      "confidence": 0.9661287665367126,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9729030132293701
+    },
+    "cell_1_5": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "C",
+      "probability_sum": 1.0000000670552254,
+      "confidence": 0.9622952938079834,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9698362350463867
+    },
+    "cell_2_4": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "D",
+      "probability_sum": 1.0000000284053385,
+      "confidence": 0.9676139652729034,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9740911722183228
+    },
+    "cell_3_2": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "E",
+      "probability_sum": 1.0000000565778464,
+      "confidence": 0.9741532653570175,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.979322612285614
+    },
+    "cell_3_3": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "B",
+      "probability_sum": 1.0000000491272658,
+      "confidence": 0.960675835609436,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9685406684875488
+    },
+    "cell_4_1": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "A",
+      "probability_sum": 0.9999999566935003,
+      "confidence": 0.9610264599323273,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9688211679458618
+    },
+    "cell_4_4": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "D",
+      "probability_sum": 1.000000037951395,
+      "confidence": 0.9724345654249191,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9779476523399353
+    },
+    "cell_5_2": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "E",
+      "probability_sum": 1.0000000281725079,
+      "confidence": 0.9710559099912643,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9768447279930115
+    },
+    "cell_5_5": {
+      "kind": "grid_reading",
+      "correct": true,
+      "selected": "D",
+      "probability_sum": 0.9999999722931534,
+      "confidence": 0.976562038064003,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.9812496304512024
+    }
+  },
+  "outcome": "success"
+}

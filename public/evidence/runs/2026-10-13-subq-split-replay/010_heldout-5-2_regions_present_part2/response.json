@@ -1,0 +1,100 @@
+{
+  "model": "subq-snap-preview",
+  "answers": {
+    "candidate_08_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.15948602557182312,
+        "1": 0.8106107115745544,
+        "2": 0.029903218150138855
+      },
+      "confidence": 0.715916134417057,
+      "score": 0.8704171478748322,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_09_valid": {
+      "type": "noul",
+      "noul": 0.0526563785970211
+    },
+    "candidate_09_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.18829424679279327,
+        "1": 0.7667440176010132,
+        "2": 0.044961750507354736
+      },
+      "confidence": 0.650116004049778,
+      "score": 0.8566675186157227,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_10_valid": {
+      "type": "noul",
+      "noul": 0.009414653293788433
+    },
+    "candidate_10_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9101503491401672,
+        "1": 0.07688923925161362,
+        "2": 0.012960466556251049
+      },
+      "confidence": 0.8457847414538264,
+      "score": 0.10281017236411572,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_11_valid": {
+      "type": "noul",
+      "noul": 0.019116703420877457
+    },
+    "candidate_11_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.23711256682872772,
+        "1": 0.7449997067451477,
+        "2": 0.017887726426124573
+      },
+      "confidence": 0.6174995601177216,
+      "score": 0.7807751595973969,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    },
+    "candidate_12_valid": {
+      "type": "noul",
+      "noul": 0.011277372017502785
+    },
+    "candidate_12_coverage": {
+      "type": "score",
+      "probabilities": {
+        "0": 0.9231342077255249,
+        "1": 0.06350362300872803,
+        "2": 0.013362211175262928
+      },
+      "confidence": 0.8646579319611192,
+      "score": 0.09022804535925388,
+      "legend": {
+        "0": "At least two required regions have no queen; coverage has multiple gaps.",
+        "1": "Exactly one required region has no queen; coverage has a single gap.",
+        "2": "Every required region has exactly one queen; coverage is complete with no duplicate region."
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 2107,
+    "output_tokens": 0
+  }
+}

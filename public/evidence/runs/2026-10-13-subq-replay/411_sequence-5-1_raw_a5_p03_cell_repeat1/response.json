@@ -1,0 +1,20 @@
+{
+  "model": "subq-snap-preview",
+  "answers": {
+    "cell": {
+      "type": "choice",
+      "probabilities": {
+        "r3c4": 0.5533066987991333,
+        "r3c5": 0.008103753440082073,
+        "r4c4": 0.4000806212425232,
+        "r4c5": 0.038508981466293335
+      },
+      "confidence": 0.40440893173217773,
+      "choice": "r3c4"
+    }
+  },
+  "usage": {
+    "input_tokens": 782,
+    "output_tokens": 0
+  }
+}

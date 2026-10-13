@@ -1,0 +1,18 @@
+{
+  "source_id": "2026-09-19-jev-primitives:heldout-9-2_construct_matrix",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix/request.json",
+    "response": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix/response.json",
+    "metadata": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix/metadata.json",
+    "grade": "runs/2026-09-19-jev-primitives/heldout-9-2_construct_matrix/grade.json"
+  },
+  "source_outcome": "request_failure",
+  "source_request_file_sha256": "28ae39f46274566278c2402a834646e61b6a3f4809885cd7936e53fb2425e32c",
+  "source_semantics_sha256": "4d19d9488f8d8583f1fa1de22c72a9d97e025b3d864a283d3aca7e38094ed0be",
+  "reference_grade": {
+    "call_id": "heldout-9-2_construct_matrix",
+    "http_status": 520,
+    "reserve_usd": 0.012497446,
+    "raw_sha256": "f893c8167e00e5191735f6efacd5052c141228e0b9a6e71a886cc17ecc830394"
+  }
+}

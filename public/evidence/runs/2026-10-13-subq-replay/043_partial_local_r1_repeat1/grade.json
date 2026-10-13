@@ -1,0 +1,26 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": true,
+  "question_count": 1,
+  "graded_question_count": 1,
+  "correct_questions": 1,
+  "questions": {
+    "pick": {
+      "kind": "local_move",
+      "correct": true,
+      "selected": "option_06",
+      "probability_sum": 0.999999878462404,
+      "confidence": 0.33829695528203796,
+      "selected_below_reported_max": false,
+      "acceptable_count": 9,
+      "correct_probability_mass": 0.9726287797093391,
+      "cell": {
+        "row": 2,
+        "column": 1
+      },
+      "locally_legal": true
+    }
+  },
+  "outcome": "success"
+}

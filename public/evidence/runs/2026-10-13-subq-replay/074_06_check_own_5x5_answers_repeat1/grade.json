@@ -1,0 +1,95 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 12,
+  "graded_question_count": 12,
+  "correct_questions": 11,
+  "questions": {
+    "batch_columns": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.017442649230360985,
+      "brier": 0.00030424601217341266
+    },
+    "batch_regions": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.030831869691610336,
+      "brier": 0.0009506041886804401
+    },
+    "batch_no_touch": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.05011359602212906,
+      "brier": 0.0025113725062691494
+    },
+    "batch_all_rules": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.014526784420013428,
+      "brier": 0.00021102746558554486
+    },
+    "sequential_columns": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": true,
+      "noul": 0.9696316123008728,
+      "brier": 0.0009222389714445001
+    },
+    "sequential_regions": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.1850302517414093,
+      "brier": 0.0342361940594893
+    },
+    "sequential_no_touch": {
+      "kind": "rule_judgment",
+      "correct": false,
+      "truth": false,
+      "noul": 0.8282338380813599,
+      "brier": 0.6859712905429802
+    },
+    "sequential_all_rules": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.22960740327835083,
+      "brier": 0.05271955964022723
+    },
+    "recognition_columns": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": true,
+      "noul": 0.9238873720169067,
+      "brier": 0.0057931321384927514
+    },
+    "recognition_regions": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.19195660948753357,
+      "brier": 0.03684733992594946
+    },
+    "recognition_no_touch": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": true,
+      "noul": 0.5643236041069031,
+      "brier": 0.18981392193839852
+    },
+    "recognition_all_rules": {
+      "kind": "rule_judgment",
+      "correct": true,
+      "truth": false,
+      "noul": 0.06037956103682518,
+      "brier": 0.0036456913909996974
+    }
+  },
+  "outcome": "model_failure"
+}

@@ -1,0 +1,27 @@
+{
+  "call_id": "076_heldout-5-1_construct_prose_repeat1",
+  "source_id": "2026-09-19-jev-primitives:heldout-5-1_construct_prose",
+  "family": "heldout_construct_prose",
+  "repeat": 1,
+  "board": "heldout-5-1",
+  "size": 5,
+  "fixture": "fixtures/2026-09-19-jev-primitives__heldout-5-1_construct_prose.json",
+  "completed_utc": "2026-10-13T05:53:19.180093+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.40945637499999066,
+  "request_sha256": "946ad1f303cb89e24778ce85b448f7ec25e1444e204de3d10c76160984b714c1",
+  "response_sha256": "f8d01ae8d9a898856b3ef06c2ec4ed7b84ebbe6cdf06a26470a38af33a23c8e6",
+  "source_semantics_sha256": "795ed4e58105a7ae30c4a066db71faa80e96ea74524018aa4c5437a76b006049",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 1029,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0041079,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 76,
+    "billing_confirmed": false
+  }
+}

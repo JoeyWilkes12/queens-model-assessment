@@ -1,0 +1,29 @@
+{
+  "source_id": "2026-09-18-jev-5x5-variations:partial_local_r3",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-5x5-variations/partial_local_r3/request.json",
+    "response": "runs/2026-09-18-jev-5x5-variations/partial_local_r3/response.json",
+    "metadata": "runs/2026-09-18-jev-5x5-variations/partial_local_r3/metadata.json",
+    "grade": "runs/2026-09-18-jev-5x5-variations/partial_local_r3/grade.json"
+  },
+  "source_outcome": "success",
+  "source_request_file_sha256": "98d1dc68fd90950bba9264d49472d1693dcdc16a5166e1ac8026371dbf775ad5",
+  "source_semantics_sha256": "a7387001989f2ea154f59d2f14166e2de397863d67206fda39a612880ca25096",
+  "reference_grade": {
+    "call_id": "partial_local_r3",
+    "family": "partial_local",
+    "replicate": 3,
+    "task_correct": true,
+    "locally_legal": true,
+    "globally_extendable": false,
+    "correct_option_probability_mass": 0.79,
+    "best_correct_rank_optimistic": 1,
+    "selected_confidence": 0.28,
+    "seconds": 0.2700148751027882,
+    "cost_usd": 4.0698e-05,
+    "input_tokens": 969,
+    "candidate_count": 12,
+    "acceptable_count": 5,
+    "raw_sha256": "ee8dd048884fe6472acd9490bfaf6cfd62f05732879fdcc76f4a5258ba346537"
+  }
+}

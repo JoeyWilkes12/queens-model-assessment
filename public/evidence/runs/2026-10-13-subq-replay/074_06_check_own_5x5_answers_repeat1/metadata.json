@@ -1,0 +1,27 @@
+{
+  "call_id": "074_06_check_own_5x5_answers_repeat1",
+  "source_id": "2026-09-18-jev-deep-dive:06_check_own_5x5_answers",
+  "family": "deep_dive_06_check_own_5x5_answers",
+  "repeat": 1,
+  "board": "queens-5-easy",
+  "size": 5,
+  "fixture": "fixtures/2026-09-18-jev-deep-dive__06_check_own_5x5_answers.json",
+  "completed_utc": "2026-10-13T05:53:18.190266+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.47257712599997603,
+  "request_sha256": "6121a1f1c1e304577962ecdf570bf69f66485ce9c4a7657655414af964b867f5",
+  "response_sha256": "12a98e472c1032f6be54aa7cbd4e4fd6f68766df99ce2607add79ea64d8eb952",
+  "source_semantics_sha256": "d542c4c58dbb377d831ec9c2c76fe22e22d724a0b683f8f8f1ae5f9bdc61de05",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 1251,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0040065000000000005,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 74,
+    "billing_confirmed": false
+  }
+}

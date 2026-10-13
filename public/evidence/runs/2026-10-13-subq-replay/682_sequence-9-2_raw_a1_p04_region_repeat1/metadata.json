@@ -1,0 +1,27 @@
+{
+  "call_id": "682_sequence-9-2_raw_a1_p04_region_repeat1",
+  "source_id": "2026-09-30-jev-trajectories:sequence-9-2_raw_a1_p04_region",
+  "family": "remaining_2026-09-30-jev-trajectories",
+  "repeat": 1,
+  "board": "sequence-9-2",
+  "size": 9,
+  "fixture": "fixtures/2026-09-30-jev-trajectories__sequence-9-2_raw_a1_p04_region.json",
+  "completed_utc": "2026-10-13T06:11:44.519260+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.37318887500009623,
+  "request_sha256": "388476119f7d69570eb858b202e7a727f29ecb83c0370c6266b1aee3a17cf27b",
+  "response_sha256": "3232ab1a9a57e444ead16ad34f3f66bd2e6c179a20820505dc11698d7b7e0054",
+  "source_semantics_sha256": "2850eb237aeb15d2a5ba607b61f368c3a96c4ad7bd24ae9ac39309c792e2ae43",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 1626,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0757275,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 992,
+    "billing_confirmed": false
+  }
+}

@@ -3,4 +3,9 @@ dist/
 output/
 .playwright-cli/
 *.tsbuildinfo
-
+.env
+.env.*
+!.env.example
+.worktrees/
+__pycache__/
+scripts/subq/input/

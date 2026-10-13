@@ -1,0 +1,21 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": true,
+  "question_count": 1,
+  "graded_question_count": 1,
+  "correct_questions": 1,
+  "questions": {
+    "row_4": {
+      "kind": "row_construction",
+      "correct": true,
+      "selected": "4",
+      "probability_sum": 1.000000063329935,
+      "confidence": 0.4874157756567001,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.5899326205253601
+    }
+  },
+  "outcome": "success"
+}

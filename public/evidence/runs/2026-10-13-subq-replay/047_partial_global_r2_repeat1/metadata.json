@@ -1,0 +1,27 @@
+{
+  "call_id": "047_partial_global_r2_repeat1",
+  "source_id": "2026-09-18-jev-5x5-variations:partial_global_r2",
+  "family": "control_partial_global",
+  "repeat": 1,
+  "board": "queens-5-easy",
+  "size": 5,
+  "fixture": "fixtures/2026-09-18-jev-5x5-variations__partial_global_r2.json",
+  "completed_utc": "2026-10-13T05:53:05.917804+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.3474989160000064,
+  "request_sha256": "0f68ca16533c440d41020421781dba024cd1951ff12c24be0d4fea6ec2755aa1",
+  "response_sha256": "6d98181ce1d08a8386b98d12325dc417084a7c17f8dd3843704ad516f971c399",
+  "source_semantics_sha256": "1a0394f8948fdbbac1af2b756f953e29cdd8a598968225dd8494824d953e0dcc",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 621,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.00245145,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 47,
+    "billing_confirmed": false
+  }
+}

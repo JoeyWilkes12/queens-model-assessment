@@ -1,0 +1,83 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": null,
+  "question_count": 9,
+  "graded_question_count": 0,
+  "correct_questions": 0,
+  "questions": {
+    "sequence-5-1": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "B",
+      "probability_sum": 1.0000000968575478,
+      "confidence": 0.25768803805112833,
+      "selected_below_reported_max": false
+    },
+    "sequence-5-2": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "B",
+      "probability_sum": 0.9999998956918716,
+      "confidence": 0.08441655337810515,
+      "selected_below_reported_max": false
+    },
+    "sequence-5-3": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "C",
+      "probability_sum": 0.999999962747097,
+      "confidence": 0.387684091925621,
+      "selected_below_reported_max": false
+    },
+    "sequence-7-1": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "B",
+      "probability_sum": 1.0000000819563866,
+      "confidence": 0.30935206512610114,
+      "selected_below_reported_max": false
+    },
+    "sequence-7-2": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "A",
+      "probability_sum": 1.000000011175871,
+      "confidence": 0.20500471691290537,
+      "selected_below_reported_max": false
+    },
+    "sequence-7-3": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "B",
+      "probability_sum": 0.9999999925494194,
+      "confidence": 0.08088301618893942,
+      "selected_below_reported_max": false
+    },
+    "sequence-9-1": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "I",
+      "probability_sum": 0.9999999739229679,
+      "confidence": 0.36022156849503517,
+      "selected_below_reported_max": false
+    },
+    "sequence-9-2": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "A",
+      "probability_sum": 0.9999998603016138,
+      "confidence": 0.5062139704823494,
+      "selected_below_reported_max": false
+    },
+    "sequence-9-3": {
+      "kind": "ungraded",
+      "correct": null,
+      "selected": "C",
+      "probability_sum": 0.9999999888241291,
+      "confidence": 0.23281610384583476,
+      "selected_below_reported_max": false
+    }
+  },
+  "outcome": "ungraded"
+}

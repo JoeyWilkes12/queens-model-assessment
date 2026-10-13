@@ -1,0 +1,19 @@
+{
+  "call_id": "094_heldout-7-2_vectors_present_repeat1",
+  "source_id": "2026-09-19-jev-primitives:heldout-7-2_vectors_present",
+  "family": "heldout_vectors_present",
+  "repeat": 1,
+  "board": "heldout-7-2",
+  "size": 7,
+  "fixture": "fixtures/2026-09-19-jev-primitives__heldout-7-2_vectors_present.json",
+  "completed_utc": "2026-10-13T06:04:43.905228+00:00",
+  "http_status": null,
+  "elapsed_seconds": 0,
+  "request_sha256": "388ef871c5d4c76f541a93d450e4a1729bc8cebaf87b1df664ee0a16554dceaf",
+  "response_sha256": "710d928c788098fc26f3654a660ad4a969339a69a9a69a4c21f1eb10357b4c4e",
+  "source_semantics_sha256": "3f63af8cb04b8b1f07d994c14fd6e66f8f2a60297577acc1f4b5f19a7f623df7",
+  "returned_model": null,
+  "usage": null,
+  "budget": null,
+  "local_compatibility_skip": true
+}

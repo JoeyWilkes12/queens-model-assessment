@@ -1,0 +1,40 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 1,
+  "graded_question_count": 1,
+  "correct_questions": 0,
+  "questions": {
+    "pick": {
+      "kind": "complete_recognition",
+      "correct": false,
+      "selected": "option_100",
+      "probability_sum": 0.9999999549618224,
+      "confidence": 0.13869741952090753,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.04243720322847366,
+      "columns_by_row": [
+        6,
+        2,
+        4,
+        7,
+        1,
+        9,
+        3,
+        5,
+        8
+      ],
+      "checks": {
+        "shape": true,
+        "one_per_row": true,
+        "one_per_column": true,
+        "one_per_region": false,
+        "no_touch": true,
+        "correct": false
+      }
+    }
+  },
+  "outcome": "model_failure"
+}

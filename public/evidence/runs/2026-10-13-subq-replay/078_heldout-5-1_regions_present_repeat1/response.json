@@ -1,0 +1,7 @@
+{
+  "receipt_filter": "provider error/body withheld; consult HTTP status",
+  "error_type": "validation_error",
+  "diagnostic_terms": [
+    "questions"
+  ]
+}

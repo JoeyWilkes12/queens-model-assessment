@@ -1,0 +1,81 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "row_1": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.17364639043807983,
+          "2": 0.16261467337608337,
+          "3": 0.12730038166046143,
+          "4": 0.12549732625484467,
+          "5": 0.4109412431716919
+        },
+        "confidence": 0.2636765539646148,
+        "choice": "5"
+      },
+      "row_2": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.06954968720674515,
+          "2": 0.3968273401260376,
+          "3": 0.345313161611557,
+          "4": 0.09271341562271118,
+          "5": 0.09559635818004608
+        },
+        "confidence": 0.24603417515754697,
+        "choice": "2"
+      },
+      "row_3": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.22812296450138092,
+          "2": 0.45076778531074524,
+          "3": 0.19168539345264435,
+          "4": 0.050010230392217636,
+          "5": 0.07941362261772156
+        },
+        "confidence": 0.3134597316384315,
+        "choice": "2"
+      },
+      "row_4": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.4858333170413971,
+          "2": 0.06583766639232635,
+          "3": 0.1476871818304062,
+          "4": 0.14449292421340942,
+          "5": 0.15614891052246094
+        },
+        "confidence": 0.3572916463017463,
+        "choice": "1"
+      },
+      "row_5": {
+        "type": "choice",
+        "probabilities": {
+          "1": 0.46877041459083557,
+          "2": 0.258380651473999,
+          "3": 0.08729303628206253,
+          "4": 0.07116881757974625,
+          "5": 0.114387147128582
+        },
+        "confidence": 0.3359630182385444,
+        "choice": "1"
+      }
+    },
+    "usage": {
+      "input_tokens": 999,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.40098245899997664,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.00334455,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 64,
+    "billing_confirmed": false
+  }
+}

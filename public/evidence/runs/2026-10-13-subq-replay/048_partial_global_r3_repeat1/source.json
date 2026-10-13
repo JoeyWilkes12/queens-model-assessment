@@ -1,0 +1,29 @@
+{
+  "source_id": "2026-09-18-jev-5x5-variations:partial_global_r3",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-5x5-variations/partial_global_r3/request.json",
+    "response": "runs/2026-09-18-jev-5x5-variations/partial_global_r3/response.json",
+    "metadata": "runs/2026-09-18-jev-5x5-variations/partial_global_r3/metadata.json",
+    "grade": "runs/2026-09-18-jev-5x5-variations/partial_global_r3/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "4bfed0ce2c4be2703d5504c1e0c1dc69dc4b30dea06b6f95da1caa0289c55f8c",
+  "source_semantics_sha256": "4ef66a2b2d5ff77c3d67cbb44c6843f10863f932e4059f57ba3dfc551b9d818c",
+  "reference_grade": {
+    "call_id": "partial_global_r3",
+    "family": "partial_global",
+    "replicate": 3,
+    "task_correct": false,
+    "locally_legal": true,
+    "globally_extendable": false,
+    "correct_option_probability_mass": 0.07,
+    "best_correct_rank_optimistic": 7,
+    "selected_confidence": 0.22,
+    "seconds": 0.23175475001335144,
+    "cost_usd": 4.0698e-05,
+    "input_tokens": 969,
+    "candidate_count": 12,
+    "acceptable_count": 1,
+    "raw_sha256": "b6401a114839e6adf8526e237da27295f4f700b9ed7cbf7c35ccfe8a9a8029e6"
+  }
+}

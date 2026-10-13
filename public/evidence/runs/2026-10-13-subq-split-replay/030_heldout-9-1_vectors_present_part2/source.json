@@ -1,0 +1,24 @@
+{
+  "source_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/request.json",
+    "response": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/response.json",
+    "metadata": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/metadata.json",
+    "grade": "runs/2026-09-19-jev-primitives/heldout-9-1_vectors_present/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "bfcadef0cf6ac29181459e0ec62fb03b567f07fcf70d21637a8737e1bfaec3f9",
+  "reference_grade": null,
+  "source_semantics_sha256": "70ca2aad1c6dcea558c3cdbf2dc299e123b321b0f1ccfae072275087f70b130a",
+  "parent_source_semantics_sha256": "ddfd83f3346fc5d6d7eac8e5f70e29e29521714ed9db2a1f097d49bad4f17cde",
+  "parent_call_id": "099_heldout-9-1_vectors_present_repeat1",
+  "logical_id": "2026-09-19-jev-primitives:heldout-9-1_vectors_present",
+  "adaptation": {
+    "kind": "question_batch_split",
+    "part": 2,
+    "parts": 2,
+    "question_count": 9,
+    "parent_question_count": 25,
+    "observed_provider_max_questions": 16
+  }
+}

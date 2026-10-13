@@ -1,0 +1,154 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 16,
+  "graded_question_count": 16,
+  "correct_questions": 9,
+  "questions": {
+    "choose": {
+      "kind": "complete_recognition",
+      "correct": false,
+      "selected": "none",
+      "probability_sum": 1.0000000381842256,
+      "confidence": 0.13676842177907625,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.042188871651887894
+    },
+    "candidate_01_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.09549713879823685,
+      "brier": 0.009119703518649713
+    },
+    "candidate_01_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.7668761909008026,
+      "true_level": 1,
+      "absolute_error": 0.2331238090991974,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.11871172487735748
+    },
+    "candidate_02_valid": {
+      "kind": "candidate_validity",
+      "correct": false,
+      "truth": true,
+      "noul": 0.04250924661755562,
+      "brier": 0.9167885428128809
+    },
+    "candidate_02_coverage": {
+      "kind": "coverage_score",
+      "correct": false,
+      "score": 0.5174837782979012,
+      "true_level": 2,
+      "absolute_error": 1.4825162217020988,
+      "modal_levels": [
+        0
+      ],
+      "valid_probability": 0.05422450974583626
+    },
+    "candidate_03_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.13117757439613342,
+      "brier": 0.01720755602445312
+    },
+    "candidate_03_coverage": {
+      "kind": "coverage_score",
+      "correct": false,
+      "score": 0.7353987842798233,
+      "true_level": 0,
+      "absolute_error": 0.7353987842798233,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.10349724441766739
+    },
+    "candidate_04_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.1118430495262146,
+      "brier": 0.012508867727323292
+    },
+    "candidate_04_coverage": {
+      "kind": "coverage_score",
+      "correct": false,
+      "score": 0.7037146687507629,
+      "true_level": 0,
+      "absolute_error": 0.7037146687507629,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.06692668795585632
+    },
+    "candidate_05_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.15303869545459747,
+      "brier": 0.023420842306445033
+    },
+    "candidate_05_coverage": {
+      "kind": "coverage_score",
+      "correct": false,
+      "score": 0.8493702113628387,
+      "true_level": 0,
+      "absolute_error": 0.8493702113628387,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.14272402226924896
+    },
+    "candidate_06_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.25497427582740784,
+      "brier": 0.06501188133371105
+    },
+    "candidate_06_coverage": {
+      "kind": "coverage_score",
+      "correct": true,
+      "score": 0.9835841655731201,
+      "true_level": 1,
+      "absolute_error": 0.016415834426879883,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.2113141417503357
+    },
+    "candidate_07_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.08338816463947296,
+      "brier": 0.006953586001939849
+    },
+    "candidate_07_coverage": {
+      "kind": "coverage_score",
+      "correct": false,
+      "score": 0.6954466849565506,
+      "true_level": 0,
+      "absolute_error": 0.6954466849565506,
+      "modal_levels": [
+        1
+      ],
+      "valid_probability": 0.0912240520119667
+    },
+    "candidate_08_valid": {
+      "kind": "candidate_validity",
+      "correct": true,
+      "truth": false,
+      "noul": 0.24328655004501343,
+      "brier": 0.05918834543280482
+    }
+  },
+  "outcome": "model_failure"
+}

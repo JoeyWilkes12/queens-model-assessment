@@ -1,0 +1,24 @@
+{
+  "call_id": "079_heldout-5-1_vectors_present_repeat1",
+  "source_id": "2026-09-19-jev-primitives:heldout-5-1_vectors_present",
+  "family": "heldout_vectors_present",
+  "repeat": 1,
+  "board": "heldout-5-1",
+  "size": 5,
+  "fixture": "fixtures/2026-09-19-jev-primitives__heldout-5-1_vectors_present.json",
+  "completed_utc": "2026-10-13T05:56:02.836293+00:00",
+  "http_status": 422,
+  "elapsed_seconds": 0.25346491700008755,
+  "request_sha256": "d4c5ec42a707dac1694ca6cae1192a96c8a158dadb8e90e601d44c3e8597af73",
+  "response_sha256": "660444ec8a2153af09cc82781420775ae664267029cdefad569a24f09c1df250",
+  "source_semantics_sha256": "1da7c7c4bbb325ff37f00915736463a313d4ceaa6e54ee16ab17c13d25d2610e",
+  "returned_model": null,
+  "usage": null,
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0041079,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 79,
+    "billing_confirmed": false
+  }
+}

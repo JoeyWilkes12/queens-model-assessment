@@ -1,0 +1,13 @@
+{
+  "source_id": "2026-09-18-jev-deep-dive:02_batch_5x5_guardrail_enabled",
+  "source_files": {
+    "request": "runs/2026-09-18-jev-deep-dive/02_batch_5x5_guardrail_enabled/request.json",
+    "response": "runs/2026-09-18-jev-deep-dive/02_batch_5x5_guardrail_enabled/response.json",
+    "metadata": "runs/2026-09-18-jev-deep-dive/02_batch_5x5_guardrail_enabled/metadata.json",
+    "grade": null
+  },
+  "source_outcome": "ungraded",
+  "source_request_file_sha256": "64cf4ca9e7f7700ee663e73e029c5eb6a342ce803b4453e8f2ef30542e9e9d2a",
+  "source_semantics_sha256": "9649bfe4ac56ca8147481469d1f4811d5c20c619122fb1e365ae2e6f08c6eadd",
+  "reference_grade": null
+}

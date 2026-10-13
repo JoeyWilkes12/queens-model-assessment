@@ -1,0 +1,32 @@
+{
+  "source_id": "2026-09-19-jev-scale:construction_9",
+  "source_files": {
+    "request": "runs/2026-09-19-jev-scale/construction_9/request.json",
+    "response": "runs/2026-09-19-jev-scale/construction_9/response.json",
+    "metadata": "runs/2026-09-19-jev-scale/construction_9/metadata.json",
+    "grade": "runs/2026-09-19-jev-scale/construction_9/grade.json"
+  },
+  "source_outcome": "model_failure",
+  "source_request_file_sha256": "3ded741cead0be087fbcac39584b3e6777bfe277c39ac83370e7bfd56107a0d1",
+  "source_semantics_sha256": "dfcee65649b63ed3322ae8ccbd270ae2ad25b91ef046df5ed52a6fd9afbc2d37",
+  "reference_grade": {
+    "call_id": "construction_9",
+    "size": 9,
+    "family": "construction",
+    "endpoint": "/api/alpha/decisions",
+    "request_sha256": "0e85a0c51025e8fd46cb22535d8f1b3f8319247e677982c6fd02f552939366c7",
+    "seconds": 0.3345812503248453,
+    "http_status": 200,
+    "actual_usd": 0.000129276,
+    "reserve_usd": 0,
+    "raw_sha256": "ba5064601d7f61bee584933bd44dc1517ec74531395b4bd170e4260735b1c9e5",
+    "input_tokens": 3078,
+    "correct": false,
+    "checks": {
+      "one_per_row": true,
+      "one_per_column": false,
+      "one_per_region": false,
+      "no_touch": false
+    }
+  }
+}

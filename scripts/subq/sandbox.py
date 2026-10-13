@@ -1,0 +1,105 @@
+"""Launch isolated deterministic replay; never reveal or copy credential to disk.
+
+Run `python3 scripts/subq/sandbox.py --limit 1` for pilot, then increase the
+limit. Requires explicit human authorization for API spending and Docker use.
+The credential file is JSON, not a shell dotenv; it is never sourced.
+"""
+import argparse
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import time
+
+ROOT = Path(__file__).resolve().parents[2]
+IMAGE = "python@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1"
+BROKER = "queens-subq-broker"
+VOLUME = "queens-subq-ipc"
+
+
+def docker(*args, **kwargs):
+    return subprocess.run(["docker", *args], check=True, **kwargs)
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--limit", type=int, default=1)
+    p.add_argument("--mode", choices=("replay", "trajectories", "split"), default="replay")
+    p.add_argument("--key-file", type=Path,
+                   default=ROOT.parents[1] / ".env")
+    args = p.parse_args()
+    if not 1 <= args.limit <= 2000:
+        raise SystemExit("Invalid limit")
+    out = ROOT / ("output/subq" if args.mode == "replay" else "output/subq-" + args.mode)
+    ledger = ROOT / "output/subq-ledger"
+    out.mkdir(parents=True, exist_ok=True)
+    ledger.mkdir(parents=True, exist_ok=True)
+    docker("volume", "create", VOLUME, stdout=subprocess.DEVNULL)
+    existing = subprocess.run(["docker", "inspect", BROKER], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if existing.returncode == 0:
+        raise SystemExit("Existing broker found; inspect/stop it explicitly before restarting")
+    # Key bytes never enter tool output, argv, environment, worker or public files.
+    try:
+        raw = args.key_file.read_text()
+        try:
+            credential = json.loads(raw)
+        except json.JSONDecodeError:
+            credential = json.loads(re.sub(r",\s*([}\]])", r"\1", raw))
+        key = credential["SubQ API KEY"]
+        if not isinstance(key, str) or len(key) != 40 or not key.isascii() or any(c.isspace() for c in key):
+            raise ValueError()
+    except Exception:
+        raise SystemExit("Credential could not be parsed/validated; no contents logged") from None
+    common = ["--read-only", "--cap-drop=ALL", "--security-opt=no-new-privileges",
+              "--user", f"{os.getuid()}:{os.getgid()}", "--pids-limit=64", "--memory=256m", "--cpus=1",
+              "--tmpfs", "/tmp:rw,noexec,nosuid,size=16m"]
+    command = ["docker", "run", "--rm", "-i", "--name", BROKER, *common,
+               "--mount", f"type=volume,src={VOLUME},dst=/ipc",
+               "--mount", f"type=bind,src={ledger},dst=/ledger",
+               "--mount", f"type=bind,src={ROOT / 'scripts/subq/broker.py'},dst=/broker.py,readonly",
+               IMAGE, "python", "-u", "-B", "/broker.py"]
+    # Initialize native volume ownership without mounting any host files/secrets.
+    docker("run", "--rm", "--network=none", "--cap-drop=ALL", "--cap-add=CHOWN",
+           "--security-opt=no-new-privileges", "--mount", f"type=volume,src={VOLUME},dst=/ipc",
+           IMAGE, "chown", f"{os.getuid()}:{os.getgid()}", "/ipc")
+    log = (ledger / "broker-start.log").open("ab")
+    broker_process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=log, stderr=log)
+    broker_process.stdin.write((key + "\n").encode())
+    broker_process.stdin.close()
+    del key, raw, credential
+    try:
+        for _ in range(30):
+            if broker_process.poll() is not None:
+                raise SystemExit("Broker startup failed; inspect sanitized startup log")
+            ready = subprocess.run(["docker", "exec", BROKER, "python", "-c",
+                                    "import os;raise SystemExit(0 if os.path.exists('/ipc/subq.sock') else 1)"],
+                                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if ready.returncode == 0:
+                break
+            time.sleep(0.2)
+        else:
+            raise SystemExit("Broker socket readiness timed out")
+        worker = ["run", "--rm", "--name", "queens-subq-worker", *common, "--network=none",
+                  "--mount", f"type=volume,src={VOLUME},dst=/ipc,readonly",
+                  "--mount", f"type=bind,src={ROOT / 'scripts/subq/replay.py'},dst=/replay.py,readonly",
+                  "--mount", f"type=bind,src={ROOT / 'scripts/subq/input'},dst=/input,readonly",
+                  "--mount", f"type=bind,src={out},dst=/output"]
+        docker(*worker, "--mount", f"type=bind,src={ROOT / 'scripts/subq/isolation.py'},dst=/isolation.py,readonly",
+               IMAGE, "python", "-u", "-B", "/isolation.py")
+        module = "replay.py" if args.mode == "replay" else "trajectories.py" if args.mode == "trajectories" else "split_replay.py"
+        if args.mode != "replay":
+            worker += ["--mount", f"type=bind,src={ROOT / 'scripts/subq' / module},dst=/{module},readonly"]
+        input_path = "/input/trajectory-input.json" if args.mode == "trajectories" else "/input/split" if args.mode == "split" else "/input"
+        worker += [IMAGE, "python", "-u", "-B", f"/{module}", "run", "--input", input_path,
+                   "--output", "/output", "--limit", str(args.limit), "--broker-socket", "/ipc/subq.sock"]
+        result = subprocess.run(["docker", *worker])
+        raise SystemExit(result.returncode)
+    finally:
+        subprocess.run(["docker", "stop", "--time", "3", BROKER], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        broker_process.wait(timeout=15)
+        log.close()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,144 @@
+{
+  "passed": true,
+  "study": "2026-10-13-subq-trajectories",
+  "audited_utc": "2026-10-13T13:17:43.463140+00:00",
+  "trajectory_attempts": 90,
+  "boards_independently_certified_unique": 9,
+  "model_calls": 325,
+  "forced_decisions": 105,
+  "stop_reasons": {
+    "globally_unextendable_prefix": 70,
+    "solved": 10,
+    "local_rule_violation": 10
+  },
+  "exact_calls_matching_historical_jev_state_and_questions": 220,
+  "new_dynamic_call_states": 105,
+  "unique_model_visible_payloads": 44,
+  "repeated_payload_groups": 44,
+  "repeated_groups_with_choice_variation": 0,
+  "repeated_groups_with_distribution_variation": 0,
+  "selected_below_reported_max": 0,
+  "ordered_trace_groups": [
+    {
+      "board_id": "sequence-5-1",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-5-1",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-5-2",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-5-2",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-5-3",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-5-3",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-7-1",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-7-1",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-7-2",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-7-2",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-7-3",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-7-3",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-9-1",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-9-1",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-9-2",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-9-2",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-9-3",
+      "mode": "local",
+      "attempts": 5,
+      "distinct_traces": 1
+    },
+    {
+      "board_id": "sequence-9-3",
+      "mode": "raw",
+      "attempts": 5,
+      "distinct_traces": 1
+    }
+  ],
+  "checks": [
+    "Independent exhaustive unique solutions",
+    "Every prefix and selected cell",
+    "Raw and local menu membership and order",
+    "Forced transitions",
+    "Model-visible prior placements",
+    "Strict typed response schema",
+    "Exact receipt hashes",
+    "Terminal stop classification",
+    "Completed-board validity",
+    "Model-call/forced/timing totals",
+    "Fresh empty-board restart"
+  ]
+}

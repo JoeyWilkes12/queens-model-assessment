@@ -1,0 +1,27 @@
+{
+  "call_id": "058_7_regions_k12_r1_repeat1",
+  "source_id": "2026-09-19-jev-scale:7_regions_k12_r1",
+  "family": "control_7_regions_k12",
+  "repeat": 1,
+  "board": "queens-7-medium",
+  "size": 7,
+  "fixture": "fixtures/2026-09-19-jev-scale__7_regions_k12_r1.json",
+  "completed_utc": "2026-10-13T05:53:10.519849+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.3493075830000407,
+  "request_sha256": "46b81f26ecd9145f6f5d2208f1dda5cfb0aae41d4f7334839a6869fe5cda88e2",
+  "response_sha256": "e32a93f907df58cdcea070320da26508dc90196e90d2b3f4178d6686fbda333a",
+  "source_semantics_sha256": "2c968b6e20e97b96dc4f72497b0a095fde8568df3553847afc41289a78dd1548",
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 1216,
+    "output_tokens": 0
+  },
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.002954,
+    "unresolved_reserve_usd": 0,
+    "calls_reserved": 58,
+    "billing_confirmed": false
+  }
+}
