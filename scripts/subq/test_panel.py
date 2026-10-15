@@ -338,6 +338,25 @@ class HistoricalAnalysisTests(unittest.TestCase):
         self.assertEqual(report["paired_raw_vs_local"]["5"]["local_only"], 2)
         self.assertEqual(report["paired_raw_vs_local"]["5"]["exact_mcnemar_p"], 0.5)
 
+    def test_estimate_recovers_the_historical_campaign(self):
+        with tempfile.TemporaryDirectory() as tmp, quiet():
+            report = pathlib.Path(tmp) / "estimate.json"
+            trajectories.estimate(types.SimpleNamespace(input=str(EVIDENCE / "subq-trajectories-protocol.json"),
+                                                        evidence=str(EVIDENCE), report=str(report)))
+            result = replay.read(report)
+        self.assertEqual(result["totals"]["max_calls"], 1170)
+        self.assertAlmostEqual(result["totals"]["historical_rate_calls"], 325)
+        self.assertAlmostEqual(result["cost_usd"]["historical_rate_calls_x_size_tokens"], 0.0179905)
+        self.assertLess(result["totals"]["random_policy_expected_calls"], 325)
+
+    def test_random_policy_expected_calls_are_bounded_and_mode_sensitive(self):
+        grid = boards.as_grid(replay.read(EVIDENCE / "trajectory-study.json")["boards"][0]["regions"])
+        solution = boards.certify(grid)["solution"]
+        local = trajectories.random_policy_expected_calls(grid, solution, "local")
+        raw = trajectories.random_policy_expected_calls(grid, solution, "raw")
+        self.assertGreater(local, raw)  # local menus keep a random policy alive longer
+        self.assertLessEqual(local, 2 * 5 - 1)
+
     def test_exact_mcnemar_and_holm(self):
         self.assertEqual(trajectories.exact_mcnemar(0, 0), 1.0)
         self.assertAlmostEqual(trajectories.exact_mcnemar(1, 9), 2 * 11 / 1024)

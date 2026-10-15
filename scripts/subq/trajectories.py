@@ -881,6 +881,90 @@ def analyze(args):
         raise SystemExit("Receipts and trajectory records disagree; see consistency_errors")
 
 
+def random_policy_expected_calls(grid, solution, mode):
+    """Exact expected model calls of a uniformly random policy under this protocol
+    (region call when > 1 region is open; cell call when the menu has > 1 cell;
+    the attempt ends at the first off-solution or illegal cell)."""
+    import boards as generator
+    import functools
+    n = len(grid)
+    region_cells = generator.region_cells(grid)
+    truth = {grid[r][solution[r] - 1]: (r, solution[r] - 1) for r in range(n)}
+
+    @functools.lru_cache(maxsize=None)
+    def expected(done):
+        if len(done) == n:
+            return 0.0
+        placed = [truth[g] for g in done]
+        open_regions = [g for g in range(n) if g not in done]
+        total = 0.0
+        for g in open_regions:
+            menu = region_cells[g] if mode == "raw" else [c for c in region_cells[g] if generator.legal(grid, placed, c)]
+            total += (len(open_regions) > 1) + (len(menu) > 1) + expected(tuple(sorted(done + (g,)))) / len(menu)
+        return total / len(open_regions)
+
+    return expected(())
+
+
+def estimate(args):
+    """Offline request/cost estimate for a frozen plan; no API dispatch."""
+    import boards as generator
+    plan = replay.read(args.input)
+    evidence = pathlib.Path(args.evidence)
+    historical = replay.read(evidence / "subq-trajectories-summary.json")
+    per_trajectory = collections.defaultdict(list)
+    for t in historical["trajectories"]:
+        per_trajectory[(t["size"], t["mode"])].append(t["http_calls"])
+    tokens = collections.defaultdict(list)
+    for r in historical["records"]:
+        tokens[r["size"]].append(r["usage"]["input_tokens"])
+    observed_mean = sum(sum(v) for v in tokens.values()) / sum(len(v) for v in tokens.values())
+    by_id = {b["id"]: b for b in plan["boards"]}
+    solutions = {}
+    rows = collections.defaultdict(lambda: {"trajectories": 0, "max_calls": 0, "random_policy_expected_calls": 0.0,
+                                            "historical_rate_calls": 0.0})
+    for entry in plan["schedule"]:
+        board = by_id[entry["board_id"]]
+        grid = generator.as_grid(board["regions"])
+        if board["id"] not in solutions:
+            solutions[board["id"]] = generator.certify(grid)["solution"]
+        row = rows[(entry["size"], entry["mode"])]
+        row["trajectories"] += 1
+        row["max_calls"] += 2 * entry["size"] - 1
+        row["random_policy_expected_calls"] += random_policy_expected_calls(grid, solutions[board["id"]], entry["mode"])
+        history = per_trajectory.get((entry["size"], entry["mode"]))
+        row["historical_rate_calls"] += sum(history) / len(history) if history else 2 * entry["size"] - 1
+    price = PRICE_PER_INPUT_TOKEN_USD
+    size_tokens = {size: sum(v) / len(v) for size, v in tokens.items()}
+    table = []
+    for (size, mode), row in sorted(rows.items()):
+        table.append({"size": size, "mode": mode, **row,
+                      "observed_mean_tokens_for_size": size_tokens.get(size)})
+    totals = {key: sum(r[key] for r in table) for key in ("trajectories", "max_calls", "random_policy_expected_calls", "historical_rate_calls")}
+
+    def cost(calls_key, per_call_tokens=None):
+        if per_call_tokens is not None:
+            return totals[calls_key] * per_call_tokens * price
+        return sum(r[calls_key] * (size_tokens.get(r["size"]) or observed_mean) for r in table) * price
+
+    policy = plan.get("budget_policy", {})
+    result = {"plan": str(args.input), "study": plan.get("study"), "by_size_mode": table, "totals": totals,
+              "observed_mean_tokens_per_call": observed_mean, "observed_mean_tokens_by_size": size_tokens,
+              "central_tokens_per_call": 1100, "pessimistic_tokens_per_call": PESSIMISTIC_TOKENS_PER_CALL,
+              "cost_usd": {"historical_rate_calls_x_1100_tokens": cost("historical_rate_calls", 1100),
+                           "historical_rate_calls_x_size_tokens": cost("historical_rate_calls"),
+                           "random_policy_calls_x_1100_tokens": cost("random_policy_expected_calls", 1100),
+                           "max_calls_x_1100_tokens": cost("max_calls", 1100),
+                           "max_calls_x_size_tokens": cost("max_calls"),
+                           "max_calls_x_pessimistic_tokens": cost("max_calls", PESSIMISTIC_TOKENS_PER_CALL)},
+              "hard_limits": {"max_model_calls": policy.get("max_model_calls"), "spend_ceiling_usd": policy.get("panel_spend_ceiling_usd"),
+                              "max_request_bytes": policy.get("max_request_bytes"),
+                              "max_input_tokens_at_ceiling": (policy.get("panel_spend_ceiling_usd") or 0) / price}}
+    if args.report:
+        replay.save(args.report, result)
+    print(json.dumps(result, indent=1))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -907,6 +991,10 @@ def main():
     study.add_argument("--output", required=True, help="Finished or partial output directory (read only)")
     study.add_argument("--report", required=True, help="Explicit path for the analysis JSON")
     study.add_argument("--corpus", default=None, help="Optional corpus JSON to attach strata")
+    cost = commands.add_parser("estimate", help="Offline request and cost estimate for a frozen plan")
+    cost.add_argument("--input", required=True)
+    cost.add_argument("--evidence", default=str(replay.SITE / "public/evidence"))
+    cost.add_argument("--report", default=None)
     args = parser.parse_args()
     if args.command == "prepare" and args.output is None:
         args.output = str(replay.HERE / ("input/trajectory-input.json" if args.corpus == "historical" else "input/panel/panel-input.json"))
@@ -914,7 +1002,7 @@ def main():
         report, source = pathlib.Path(args.report).resolve(), pathlib.Path(args.output).resolve()
         if source == report or source in report.parents:
             raise SystemExit("Write the report outside the analyzed output directory (it may be read-only evidence)")
-    {"prepare": prepare, "run": run, "audit": audit, "analyze": analyze}[args.command](args)
+    {"prepare": prepare, "run": run, "audit": audit, "analyze": analyze, "estimate": estimate}[args.command](args)
 
 
 if __name__ == "__main__":
