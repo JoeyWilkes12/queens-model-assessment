@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useState, type ComponentType, type ReactNode } from 'react'
+import { useEffect, useId, useMemo, useRef, useState, type ComponentType, type ReactNode, type RefObject } from 'react'
 import './decision-models.css'
 
 type BookUi = {
@@ -76,6 +76,22 @@ const fmt = (value: number, digits = 1) => value.toFixed(digits)
 const money = (value: number | null) => value === null ? 'n/a' : `$${value < 10 ? value.toFixed(1) : Math.round(value)}`
 const seconds = (ms: number | null) => ms === null ? 'n/a' : ms < 1000 ? `${(ms / 1000).toFixed(2)} s` : `${(ms / 1000).toFixed(1)} s`
 
+/** Draw charts in real pixels so text never scales below its CSS size. */
+function useWidth<T extends HTMLElement>(fallback: number): [RefObject<T>, number] {
+  const ref = useRef<T>(null)
+  const [width, setWidth] = useState(fallback)
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
+    const measure = () => setWidth(Math.max(260, Math.round(element.getBoundingClientRect().width)))
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
+  return [ref, width]
+}
+
 function ChartFrame({ title, subtitle, legend, children, table }: { title: string; subtitle: string; legend?: ReactNode; children: ReactNode; table: ReactNode }) {
   const id = useId()
   return <figure className="dm-chart" aria-labelledby={`${id}-title`}>
@@ -92,42 +108,29 @@ function LegendKey({ kind, label }: { kind: 'jev' | 'openai' | 'decision' | 'llm
 
 function IndexBars({ models, includeLlms }: { models: AAModel[]; includeLlms: boolean }) {
   const rows = models.filter(model => includeLlms || model.kind === 'decisionModel').sort((a, b) => b.indexScore - a.indexScore)
-  const [hover, setHover] = useState<string | null>(null)
   const max = 80
-  const rowHeight = 26
-  const labelWidth = 178
-  const width = 640
-  const plot = width - labelWidth - 44
-  const height = rows.length * rowHeight + 26
-  return <div className="dm-svg-wrap">
-    <svg viewBox={`0 0 ${width} ${height}`} className="dm-svg" role="img" aria-label={`Decision Index scores for ${rows.length} models, highest first. Jev 1.13 scores ${fmt(models.find(m => m.name === 'Jev 1.13')?.indexScore ?? 0)}.`}>
-      <defs><pattern id="dm-hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="6" height="6" className="dm-hatch-bg" /><line x1="0" y1="0" x2="0" y2="6" className="dm-hatch-line" /></pattern></defs>
-      {[0, 20, 40, 60, 80].map(tick => <g key={tick}><line x1={labelWidth + plot * tick / max} x2={labelWidth + plot * tick / max} y1={0} y2={height - 20} className="dm-grid" /><text x={labelWidth + plot * tick / max} y={height - 6} textAnchor="middle" className="dm-axis">{tick}</text></g>)}
-      {rows.map((model, index) => {
-        const y = index * rowHeight + 4
-        const w = plot * model.indexScore / max
-        return <g key={model.slug} className={hover && hover !== model.slug ? 'is-faded' : ''} onMouseEnter={() => setHover(model.slug)} onMouseLeave={() => setHover(null)}>
-          <title>{`${model.name} (${model.creatorName}, ${model.kind === 'llm' ? 'language model' : 'decision model'}): index ${fmt(model.indexScore)}`}</title>
-          <text x={labelWidth - 8} y={y + 13} textAnchor="end" className={`dm-label${focal[model.name] ? ' is-focal' : ''}`}>{model.name}</text>
-          <path d={`M${labelWidth} ${y}h${Math.max(0, w - 4)}a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-${Math.max(0, w - 4)}z`} className={`dm-bar ${markClass(model)}`} />
-          <text x={labelWidth + w + 6} y={y + 13} className="dm-value">{fmt(model.indexScore)}</text>
-        </g>
-      })}
-    </svg>
-  </div>
+  return <ol className="dm-bars" aria-label={`Decision Index scores for ${rows.length} models, highest first`}>
+    {rows.map(model => <li key={model.slug} className={focal[model.name] ? 'is-focal' : ''}>
+      <span className="dm-bars-label">{model.name}{model.kind === 'llm' && <span className="dm-bars-kind"> · LLM</span>}</span>
+      <span className="dm-bars-track" aria-hidden="true"><span className={`dm-bars-fill ${markClass(model)}`} style={{ width: `${model.indexScore / max * 100}%` }} /></span>
+      <span className="dm-bars-value">{fmt(model.indexScore)}</span>
+    </li>)}
+  </ol>
 }
 
 function CostScatter({ models }: { models: AAModel[] }) {
   const points = models.filter(model => model.costPer1MTasksUsd !== null)
   const [active, setActive] = useState<AAModel | null>(null)
-  const width = 640, height = 340, left = 46, right = 40, top = 14, bottom = 42
+  const [wrapRef, width] = useWidth<HTMLDivElement>(640)
+  const compact = width < 520
+  const height = compact ? 300 : 340, left = 40, right = compact ? 16 : 40, top = 14, bottom = 42
   const minLog = Math.log10(10), maxLog = Math.log10(100000)
   const x = (cost: number) => left + (Math.log10(cost) - minLog) / (maxLog - minLog) * (width - left - right)
   const y = (score: number) => top + (1 - (score - 40) / 45) * (height - top - bottom)
-  const labelled = new Set(['Jev 1.13', 'GPT-6 Luna (Decisions)', 'Claude Haiku 5.5 (Low)', 'Claude Opus 5.5 (Max, Default Fallback)'])
-  return <div className="dm-svg-wrap dm-scatter">
-    <svg viewBox={`0 0 ${width} ${height}`} className="dm-svg" role="img" aria-label="Decision Index score against cost per one million tasks on a logarithmic axis. Decision models cluster between $17 and $199 per million tasks; language models range from $88 to over $51,000.">
-      {[10, 100, 1000, 10000, 100000].map(tick => <g key={tick}><line x1={x(tick)} x2={x(tick)} y1={top} y2={height - bottom} className="dm-grid" /><text x={x(tick)} y={height - bottom + 16} textAnchor="middle" className="dm-axis">{`$${tick.toLocaleString()}`}</text></g>)}
+  const labelled = new Set(compact ? ['Jev 1.13', 'GPT-6 Luna (Decisions)'] : ['Jev 1.13', 'GPT-6 Luna (Decisions)', 'Claude Haiku 5.5 (Low)', 'Claude Opus 5.5 (Max, Default Fallback)'])
+  return <div className="dm-svg-wrap dm-scatter" ref={wrapRef}>
+    <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} className="dm-svg" role="img" aria-label="Decision Index score against cost per one million tasks on a logarithmic axis. Decision models cluster between $17 and $199 per million tasks; language models range from $88 to over $51,000.">
+      {(compact ? [10, 100, 1000, 10000, 100000].filter((_, i) => i % 2 === 0) : [10, 100, 1000, 10000, 100000]).map(tick => <g key={tick}><line x1={x(tick)} x2={x(tick)} y1={top} y2={height - bottom} className="dm-grid" /><text x={x(tick)} y={height - bottom + 16} textAnchor={tick === 100000 ? 'end' : 'middle'} className="dm-axis">{`$${tick.toLocaleString()}`}</text></g>)}
       {[40, 50, 60, 70, 80].map(tick => <g key={tick}><line x1={left} x2={width - right} y1={y(tick)} y2={y(tick)} className="dm-grid" /><text x={left - 8} y={y(tick) + 4} textAnchor="end" className="dm-axis">{tick}</text></g>)}
       <text x={(width + left) / 2} y={height - 6} textAnchor="middle" className="dm-axis-title">Cost per 1M tasks (USD, log scale)</text>
       {points.map(model => {
@@ -147,11 +150,12 @@ function CostScatter({ models }: { models: AAModel[] }) {
 function CalibrationChart({ models, dataset }: { models: AAModel[]; dataset: string }) {
   const series = models.filter(model => model.kind === 'decisionModel').map(model => ({ model, bins: (dataset === 'all' ? model.calibrationBins : model.byDataset[dataset]?.calibrationBins) || [] })).filter(item => item.bins.length)
   const ordered = [...series.filter(item => !focal[item.model.name]), ...series.filter(item => focal[item.model.name])]
-  const size = 420, pad = 44
+  const [wrapRef, measured] = useWidth<HTMLDivElement>(420)
+  const size = Math.min(460, measured), pad = 44
   const sx = (value: number) => pad + value * (size - pad - 12)
   const sy = (value: number) => size - pad - value * (size - pad - 12)
-  return <div className="dm-svg-wrap dm-calibration">
-    <svg viewBox={`0 0 ${size} ${size}`} className="dm-svg" role="img" aria-label="Reliability diagram: accuracy against stated probability of the chosen answer. Points below the diagonal are overconfident.">
+  return <div className="dm-svg-wrap dm-calibration" ref={wrapRef}>
+    <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} className="dm-svg" role="img" aria-label="Reliability diagram: accuracy against stated probability of the chosen answer. Points below the diagonal are overconfident.">
       {[0, .25, .5, .75, 1].map(tick => <g key={tick}><line x1={sx(tick)} x2={sx(tick)} y1={sy(0)} y2={sy(1)} className="dm-grid" /><line x1={sx(0)} x2={sx(1)} y1={sy(tick)} y2={sy(tick)} className="dm-grid" /><text x={sx(tick)} y={size - pad + 14} textAnchor="middle" className="dm-axis">{tick}</text><text x={pad - 6} y={sy(tick) + 4} textAnchor="end" className="dm-axis">{tick}</text></g>)}
       <line x1={sx(0)} y1={sy(0)} x2={sx(1)} y2={sy(1)} className="dm-ideal" />
       <text x={sx(.5)} y={size - 6} textAnchor="middle" className="dm-axis-title">Stated probability of chosen answer</text>

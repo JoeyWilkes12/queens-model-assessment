@@ -34,5 +34,5 @@ DELIVERABLE.md is complete (about 6,050 words), with all five requested sections
 - No UI built or browser/mobile-tested; responsive details are an implementation contract.
 - No full Z3 historical assignment/reason/backtrack trace captured. Reference execution is not Z3.
 - No DRAT certificate generated/checked. Reference blocked proof checked by reason/resolution replay plus independent Z3 entailment, not DRAT-trim.
-- Counts are run/configuration specific, not performance guarantees. Nine-board first/fresh verbose pipeline not captured.
+- Counts are run/configuration specific, not performance guarantees. 9×9 first/fresh verbose pipeline not captured.
 - Source tree is shared with ongoing orchestrator work; hashes preserve what was read, and other task edits must not be attributed to this run.

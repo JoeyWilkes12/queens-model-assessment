@@ -32,7 +32,7 @@
 .dm-swatch--llm { background: repeating-linear-gradient(45deg, var(--dm-llm-line) 0 1.5px, var(--dm-llm-bg) 1.5px 4px); }
 .dm-swatch--ideal { height: 0; width: 16px; border-top: 2px dashed var(--text-muted); border-radius: 0; }
 .dm-svg-wrap { position: relative; }
-.dm-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dm-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
 .dm-grid { stroke: var(--dm-grid); stroke-width: 1; }
 .dm-axis { fill: var(--text-muted); font-family: var(--mono-font); font-size: 11px; }
 .dm-axis-title { fill: var(--text-secondary); font-size: 11.5px; }
@@ -75,10 +75,22 @@ g.is-faded { opacity: .45; }
 .dm-claims article { padding: 14px 16px; border-left: 3px solid var(--border-strong); background: var(--surface-raised); }
 .dm-claims h3 { margin: 0 0 6px; font-family: var(--display-font); font-size: 1.1rem; font-weight: 400; color: var(--text-primary); }
 .dm-claims p { margin: 0; line-height: 1.62; }
+/* Index bars are HTML so labels keep their CSS size on phones. */
+.dm-bars { display: grid; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.dm-bars li { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) 3.2rem; align-items: center; gap: 10px; }
+.dm-bars-label { overflow: hidden; color: var(--text-secondary); font-size: .8rem; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+.dm-bars li.is-focal .dm-bars-label { color: var(--text-primary); font-weight: 700; }
+.dm-bars-kind { color: var(--text-muted); font-weight: 400; }
+.dm-bars-track { position: relative; height: 16px; background: linear-gradient(90deg, var(--dm-grid) 1px, transparent 1px) 0 0 / 25% 100%; }
+.dm-bars-fill { display: block; height: 100%; border-radius: 0 4px 4px 0; }
+.dm-bars-fill.dm-mark--jev { background: var(--dm-jev); }
+.dm-bars-fill.dm-mark--openai { background: var(--dm-openai); }
+.dm-bars-fill.dm-mark--decision { background: var(--dm-decision); }
+.dm-bars-fill.dm-mark--llm { background: repeating-linear-gradient(45deg, var(--dm-llm-line) 0 1.5px, var(--dm-llm-bg) 1.5px 4px); box-shadow: inset 0 0 0 1px var(--dm-llm-line); }
+.dm-bars-value { color: var(--text-primary); font-family: var(--mono-font); font-size: .78rem; }
 @media (max-width: 520px) {
-  .dm-label { font-size: 14px; }
-  .dm-value { font-size: 13.5px; }
-  .dm-axis { font-size: 13px; }
-  .dm-point-label { font-size: 13px; }
+  .dm-bars li { grid-template-columns: minmax(0, 1fr) 3rem; gap: 2px 8px; }
+  .dm-bars-label { grid-column: 1 / -1; text-align: left; }
+  .dm-bars-track { grid-column: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .dm-bar { transition: none; } }

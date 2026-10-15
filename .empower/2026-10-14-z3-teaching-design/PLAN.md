@@ -12,7 +12,7 @@ Approach and decisions: read the incumbent Atlas, actual solver, assessment-book
 - [x] Develop 7–10 chapters with exact ledes, mathematics, and interactions.
 - [x] Write implementation/data contracts (measurement script complete and run).
 - [x] Self-review mathematical claims, citations, word count, and write boundary.
-- [ ] Refresh usage, review, decisions, progress, and handoff; deliver full data.
+- [x] Refresh usage, review, decisions, progress, and handoff; deliver full data.
 
 ## Acceptance criteria
 - All five requested sections present; 7–10 chapters, each with objective, precise math, visual, lede, and verified paper map.

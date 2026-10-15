@@ -14,3 +14,4 @@ scripts/subq/input/
 research/**/raw-*/
 .empower/**/stderr.log
 .empower/**/stdout.md
+vite.review.config.ts
