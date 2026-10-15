@@ -1,0 +1,73 @@
+{
+  "id": "seven",
+  "label": "7 × 7 target · medium",
+  "size": 7,
+  "coordinateBase": 1,
+  "regions": [
+    [
+      "A",
+      "B",
+      "B",
+      "B",
+      "B",
+      "C",
+      "C"
+    ],
+    [
+      "A",
+      "A",
+      "A",
+      "C",
+      "C",
+      "C",
+      "C"
+    ],
+    [
+      "A",
+      "D",
+      "D",
+      "C",
+      "C",
+      "C",
+      "C"
+    ],
+    [
+      "D",
+      "D",
+      "D",
+      "C",
+      "C",
+      "C",
+      "C"
+    ],
+    [
+      "D",
+      "D",
+      "D",
+      "E",
+      "E",
+      "C",
+      "F"
+    ],
+    [
+      "D",
+      "D",
+      "D",
+      "D",
+      "C",
+      "C",
+      "F"
+    ],
+    [
+      "D",
+      "D",
+      "D",
+      "D",
+      "G",
+      "G",
+      "F"
+    ]
+  ],
+  "partitionSha256": "ca7a1dc2fc501e21e49cf21d5714789d983e36062df72d2ba466e3f6d7b17424",
+  "partitionHashInput": "UTF-8 bytes of the region matrix serialized as JSON with \", \" item separators (Python json.dumps defaults)"
+}
