@@ -24,10 +24,11 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/candidate-engineering`
 - `#/scale-primitives`
 - `#/jev-trajectories`
+- `#/decision-models` (Decision models vs the Artificial Analysis Decision Index; `#/openai-decisions-plan` opens its OpenAI section)
 - `#/subq-assessment`
-- `#/openai-decisions-plan`
 - `#/evidence-atlas`
 - `#/methods-sources`
+- `#/methods-critique`
 - `#/about`
 
 The evidence atlas also supports `#/evidence-atlas/<record-id>` detail routes.
@@ -53,6 +54,10 @@ The October 13 SubQ chapter and executive-summary update read the saved [SubQ su
 Fresh empty-board construction reads the separate [adaptive trajectory summary](public/evidence/subq-trajectories-summary.json). The [split-batch summary](public/evidence/subq-split-summary.json) reports an adapted sixteen-plus-nine question treatment separately from the original twenty-five-question requests, including their retained HTTP 422 and not-run outcomes. None of these denominators are added together as puzzle accuracy.
 
 The [OpenAI Decisions plan](docs/openai-decisions-plan.md), also [published with the evidence](public/evidence/openai-decisions-plan.md), describes a future experiment. No OpenAI result, verified account access, or inference spend is claimed. The incomplete historical PDF has been removed; the current book and its receipts are the publication.
+
+The [methods critique](docs/methods-critique.md) reviews construct validity, sample size and power, baselines, confounds and next experiments. Reproduce its statistics offline with `python3 -I scripts/analysis/methods_critique_calculations.py`.
+
+The Decision models page reads a [data snapshot of the Artificial Analysis Decision Index](public/evidence/external/aa-decision-index-2026-10-14.json), extracted from the public leaderboard page on 14 October 2026. Charts are redrawn from that data. Full third-party page captures are kept locally under `research/` (git-ignored) for provenance and are not redistributed.
 
 ## Local handoff
 

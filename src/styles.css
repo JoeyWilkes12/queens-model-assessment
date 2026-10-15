@@ -380,3 +380,5 @@ code { color: var(--text-primary); font-size: .88em; }
 .featured-replays .board-replay { margin-top: 10px; }
 .featured-takeaway { margin: -12px 0 0; font-size: .9rem; line-height: 1.6; }
 @media (max-width: 600px) { .finding-list > li { grid-template-columns: 1.8rem minmax(0, 1fr); gap: 10px; } .finding-number { font-size: 1.6rem; } }
+
+.reading-column code { overflow-wrap: anywhere; }
