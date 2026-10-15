@@ -559,6 +559,40 @@ def audit(args):
     print(json.dumps({"event": "audit", "attempts": len(attempts), "solved": summary["solved"], "model_calls": len(calls), "budget": summary["budget"]}), flush=True)
 
 
+def acknowledged(output, trajectory_id):
+    """A human-reviewed failure note makes a blocked attempt terminal (never re-run).
+
+    Only panel plans honour notes; the note must match the attempt file's hash."""
+    output = pathlib.Path(output)
+    note = output / "reviews" / (trajectory_id + ".json")
+    if not note.exists() or "budget_policy" not in replay.read(output / "manifest.json"):
+        return False
+    review = replay.read(note)
+    attempt_file = output / "trajectories" / (trajectory_id + ".json")
+    return review.get("trajectory_sha256") == replay.sha(attempt_file.read_bytes())
+
+
+def acknowledge(args):
+    """Record that a failed/censored/in-progress attempt was reviewed. It stays
+    excluded from analysis and is never retried; the schedule may continue."""
+    output = pathlib.Path(args.output)
+    if "budget_policy" not in replay.read(output / "manifest.json"):
+        raise SystemExit("Acknowledgements apply to new-board panel outputs only")
+    attempt_file = output / "trajectories" / (args.trajectory + ".json")
+    result = replay.read(attempt_file)
+    if result["stop_reason"] not in BLOCKING_STOPS:
+        raise SystemExit("Only request_failure, censored_guard or in_progress attempts need acknowledgement")
+    if not args.note.strip():
+        raise SystemExit("A review note is required")
+    note = output / "reviews" / (args.trajectory + ".json")
+    if note.exists():
+        raise SystemExit("Already acknowledged")
+    replay.save(note, {"trajectory_id": args.trajectory, "stop_reason": result["stop_reason"], "note": args.note,
+                       "reviewed_utc": replay.now(), "trajectory_sha256": replay.sha(attempt_file.read_bytes()),
+                       "policy": "Terminal and excluded from analysis; never re-run. Its call receipts and reservations remain counted."})
+    print(json.dumps({"event": "acknowledged", "trajectory_id": args.trajectory, "stop_reason": result["stop_reason"]}), flush=True)
+
+
 def verify_commitments(plan):
     """Panel plans: recompute every board's solution offline and match its commitment."""
     for board in plan["boards"]:
@@ -600,7 +634,7 @@ def run(args):
         prior = output / "trajectories" / (entry["trajectory_id"] + ".json")
         if prior.exists():
             reason = replay.read(prior)["stop_reason"]
-            if reason in BLOCKING_STOPS:
+            if reason in BLOCKING_STOPS and not acknowledged(output, entry["trajectory_id"]):
                 raise RuntimeError("Unresolved prior attempt requires review; no automatic retry: " + entry["trajectory_id"])
             continue
         if completed >= args.limit:
@@ -628,6 +662,27 @@ def exact_mcnemar(b, c):
     if n == 0:
         return 1.0
     return min(1.0, 2 * sum(math.comb(n, i) for i in range(min(b, c) + 1)) / 2 ** n)
+
+
+def clopper_pearson(k, n, level=0.95):
+    """Exact two-sided binomial interval by bisection on the binomial tails."""
+    if n == 0:
+        return None
+    tail = (1 - level) / 2
+
+    def cdf(x, p):
+        return sum(math.comb(n, i) * p ** i * (1 - p) ** (n - i) for i in range(x + 1))
+
+    def solve(fn):
+        lo, hi = 0.0, 1.0
+        for _ in range(80):
+            mid = (lo + hi) / 2
+            lo, hi = (mid, hi) if fn(mid) else (lo, mid)
+        return (lo + hi) / 2
+
+    lower = 0.0 if k == 0 else solve(lambda p: 1 - cdf(k - 1, p) < tail)
+    upper = 1.0 if k == n else solve(lambda p: cdf(k, p) > tail)
+    return [lower, upper]
 
 
 def holm(pvalues):
@@ -807,6 +862,7 @@ def analysis(plan, attempts, load_call, strata=None):
             "solved_trajectories": sum(t["success"] for t in rows),
             "trajectory_solve_rate": sum(t["success"] for t in rows) / len(rows) if rows else None,
             "board_solve_rate_replicate1": sum(t["success"] for t in first) / len(first) if first else None,
+            "board_solve_rate_replicate1_cp95": clopper_pearson(sum(t["success"] for t in first), len(first)),
             "boards_solved_any_replicate": sum(any(t["success"] for t in rows if t["board_id"] == b) for b in boards_in),
             "mean_correct_placements": sum(t["correct_placements"] for t in rows) / len(rows) if rows else None,
             "prefix_survival": survival([t["correct_placements"] for t in rows], size),
@@ -837,6 +893,7 @@ def analysis(plan, attempts, load_call, strata=None):
                              "both_solved": sum(o["raw"] and o["local"] for o in complete.values()), "raw_only": b, "local_only": c,
                              "neither": sum(not o["raw"] and not o["local"] for o in complete.values()),
                              "exact_mcnemar_p": exact_mcnemar(b, c),
+                             "local_share_of_discordant_cp95": clopper_pearson(c, b + c),
                              "difference_local_minus_raw": (c - b) / len(complete) if complete else None}
         if complete:
             pvalues[str(size)] = paired[str(size)]["exact_mcnemar_p"]
@@ -859,7 +916,8 @@ def analysis(plan, attempts, load_call, strata=None):
             "definitions": {"primary_endpoint": "Paired board-level success, replicate 1, raw vs local within size; exact two-sided McNemar on discordant pairs; Holm across sizes.",
                             "nonforced_cell_accuracy": "Share of model-called (menu > 1) cell decisions whose chosen cell is extendable; chance = mean of extendable options / menu size.",
                             "calibration": "Selected-option probability normalized by the response's probability sum; ten equal-width bins, last bin closed; ECE weighted by bin count; multiclass Brier over the menu with extendable options as positives.",
-                            "evaluable": "Trajectories not stopped by request_failure, censored_guard or in_progress. Puzzle failures (local_rule_violation, globally_unextendable_prefix, no_locally_legal_cell) are evaluable failures."},
+                            "evaluable": "Trajectories not stopped by request_failure, censored_guard or in_progress (acknowledged or not). Puzzle failures (local_rule_violation, globally_unextendable_prefix, no_locally_legal_cell, invalid_complete) are evaluable failures.",
+                            "intervals": "Clopper-Pearson 95% for board solve rates and for the local share of discordant pairs."},
             "by_size_mode": groups, "paired_raw_vs_local": paired, "strata": strata_rows, "baselines": baselines,
             "trajectories": trajectories, "labels": {"cells": cells_out, "regions": regions_out, "cell_decisions": decisions}}
 
@@ -991,6 +1049,10 @@ def main():
     study.add_argument("--output", required=True, help="Finished or partial output directory (read only)")
     study.add_argument("--report", required=True, help="Explicit path for the analysis JSON")
     study.add_argument("--corpus", default=None, help="Optional corpus JSON to attach strata")
+    review = commands.add_parser("acknowledge", help="Record a human review of a failed/censored panel attempt (no retry)")
+    review.add_argument("--output", required=True)
+    review.add_argument("--trajectory", required=True)
+    review.add_argument("--note", required=True)
     cost = commands.add_parser("estimate", help="Offline request and cost estimate for a frozen plan")
     cost.add_argument("--input", required=True)
     cost.add_argument("--evidence", default=str(replay.SITE / "public/evidence"))
@@ -1002,7 +1064,8 @@ def main():
         report, source = pathlib.Path(args.report).resolve(), pathlib.Path(args.output).resolve()
         if source == report or source in report.parents:
             raise SystemExit("Write the report outside the analyzed output directory (it may be read-only evidence)")
-    {"prepare": prepare, "run": run, "audit": audit, "analyze": analyze, "estimate": estimate}[args.command](args)
+    {"prepare": prepare, "run": run, "audit": audit, "analyze": analyze, "estimate": estimate,
+     "acknowledge": acknowledge}[args.command](args)
 
 
 if __name__ == "__main__":

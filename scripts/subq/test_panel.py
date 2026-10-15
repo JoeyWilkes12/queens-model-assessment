@@ -232,6 +232,17 @@ class PanelRunTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 self.run_panel(plan_path, out, fake)
             self.assertEqual(len(fake.posts), 2)
+            # After human review the failed attempt is terminal; the schedule continues, no retry.
+            with quiet():
+                trajectories.acknowledge(types.SimpleNamespace(output=str(out), trajectory="dev-7-01_raw_a1", note="5xx reviewed"))
+            fake.fail_at = None
+            self.run_panel(plan_path, out, fake)
+            self.assertEqual(replay.read(out / "trajectories" / "dev-7-01_raw_a1.json")["stop_reason"], "request_failure")
+            self.assertTrue((out / "trajectories" / "dev-7-02_local_a1.json").exists())
+            self.assertFalse(any(p["state"]["board_id"] == "dev-7-01" for p in fake.posts[2:]))
+            results = [replay.read(p) for p in sorted((out / "trajectories").glob("*.json"))]
+            report = trajectories.analysis(replay.read(out / "manifest.json"), results, trajectories.output_loader(out))
+            self.assertEqual(report["denominators"]["excluded_by_stop_reason"], {"request_failure": 1})
 
     def test_admission_ceiling_stops_before_any_dispatch(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -357,7 +368,12 @@ class HistoricalAnalysisTests(unittest.TestCase):
         self.assertGreater(local, raw)  # local menus keep a random policy alive longer
         self.assertLessEqual(local, 2 * 5 - 1)
 
-    def test_exact_mcnemar_and_holm(self):
+    def test_exact_mcnemar_holm_and_clopper_pearson(self):
+        # Values from the methods critique appendix.
+        for (k, n), (lo, hi) in {(1, 9): (.0028, .4825), (2, 9): (.0281, .6001), (0, 6): (0, .4593)}.items():
+            interval = trajectories.clopper_pearson(k, n)
+            self.assertAlmostEqual(interval[0], lo, places=4)
+            self.assertAlmostEqual(interval[1], hi, places=4)
         self.assertEqual(trajectories.exact_mcnemar(0, 0), 1.0)
         self.assertAlmostEqual(trajectories.exact_mcnemar(1, 9), 2 * 11 / 1024)
         self.assertEqual(trajectories.holm({"a": 0.01, "b": 0.04, "c": 0.03}), {"a": 0.03, "c": 0.06, "b": 0.06})
