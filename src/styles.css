@@ -360,3 +360,23 @@ code { color: var(--text-primary); font-size: .88em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; animation-duration: .001ms !important; }
 }
+
+/* Executive summary: numbered findings, limits, featured replays */
+.finding-list { display: grid; gap: 0; margin: 8px 0 22px; padding: 0; list-style: none; border-top: 1px solid var(--border-strong); }
+.finding-list > li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--border-subtle); }
+.finding-number { color: var(--text-accent); font-family: var(--display-font); font-size: 2rem; line-height: 1; }
+.finding-list h3 { margin: 0 0 6px; font-family: var(--display-font); font-size: 1.25rem; font-weight: 400; color: var(--text-primary); }
+.finding-list p { margin: 0; line-height: 1.65; }
+.finding-list p a { white-space: nowrap; }
+.limit-list { margin: 0 0 16px; padding-left: 1.1rem; }
+.limit-list li { margin-bottom: 10px; line-height: 1.6; }
+.edition-line { margin-top: 22px; color: var(--text-muted); font-size: .8rem; line-height: 1.7; }
+.featured-replays { margin-top: 12px; }
+.featured-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
+.featured-tabs button { flex: 0 0 auto; min-height: 44px; padding: 8px 14px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .8rem; font-weight: 700; cursor: pointer; }
+.featured-tabs button.is-active { background: var(--navy-950); color: var(--paper-0, #fffdf8); border-color: var(--navy-950); }
+:root[data-theme='dark'] .featured-tabs button.is-active { background: var(--mint-300); color: var(--navy-950); border-color: var(--mint-300); }
+.featured-tabs button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.featured-replays .board-replay { margin-top: 10px; }
+.featured-takeaway { margin: -12px 0 0; font-size: .9rem; line-height: 1.6; }
+@media (max-width: 600px) { .finding-list > li { grid-template-columns: 1.8rem minmax(0, 1fr); gap: 10px; } .finding-number { font-size: 1.6rem; } }

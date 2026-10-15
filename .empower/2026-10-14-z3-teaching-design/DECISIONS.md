@@ -1,0 +1,12 @@
+# Decisions
+
+- 2026-10-14: Work is research/design data only. All output remains inside the artifact directory. Reject application edits or previews because the brief explicitly forbids writes elsewhere and asks for a specification.
+- 2026-10-14: Use the Impeccable skill's planning/Read guidance to evaluate comprehension and specify interaction; do not apply UI-edit or visual-QA workflows to this planning-only task.
+- 2026-10-14: Usage is unavailable from the mandated script. Record its exact output at each checkpoint; do not invent quota percentages.
+- 2026-10-14: Subsequent usage check succeeded (88% five-hour, 72% weekly remaining). Continue; retain the original unknown result as history.
+- 2026-10-14: Prefer a new part in the assessment book and its 7×7 board; reject silently reusing the Atlas's different 7×7 partition. Use the 5×5 singleton as a clearly labelled inset only.
+- 2026-10-14: The requested `queens_z3_solvers_v1_keep.py` is HTML containing a Google Drive warning. Read the original local `.ipynb` instead; its solve function confirms the production encoding. Do not fetch the Drive account file or execute the invalid `.py`.
+- 2026-10-14: Impeccable's context script resolved the artifact cwd as the project and missed the actual parent PRODUCT.md/DESIGN.md. Read the parent design source directly. The user's fully specified research brief and strict write boundary override skill instructions to create product/UI files or stop for concept confirmation.
+- 2026-10-14: Actual local Z3 4.16 default first-check verbose log runs lia2card → pb2bv → bit-blast → SAT; the same solver's subsequent blocked check uses SMT arithmetic. Fresh blocked checks preserve the tactic route. Teach this measured distinction rather than picking a universal engine claim.
+- 2026-10-14: Use a checked reference CDCL run for the complete trail, reason graph and resolution visual, with a persistent concise engine label, alongside actual Z3 receipts. Python OnClause plus clause_proof changes the pipeline and is not a complete decision/reason/backtrack trace; do not reconstruct missing events from it or label the reference run as Z3.
+- 2026-10-14: Use exact stated encoding variants for clause counters: pairwise; Sinz AMO chain plus one ALO; recursive groups-of-three commander with singleton groups retained. Reject a universal 'commander is smaller' claim because small cases can have overhead.

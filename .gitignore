@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 dist/
 output/
 .playwright-cli/
@@ -9,3 +9,8 @@ output/
 .worktrees/
 __pycache__/
 scripts/subq/input/
+
+# Third-party page captures stay local (copyright); only the extracted data snapshot is published
+research/**/raw-*/
+.empower/**/stderr.log
+.empower/**/stdout.md

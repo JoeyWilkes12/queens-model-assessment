@@ -5,7 +5,10 @@ import { deriveTrajectoryFrames } from './trajectoryBoardData'
 import { ReceiptChainNavigation } from './ReceiptChainNavigation'
 import { FailureComparison } from './FailureComparison'
 import { deriveFailureComparison } from './failureComparisonData'
-import { SubQAssessment, SubQExecutiveSummary, OpenAIDecisionsPlan } from './SubQAssessment'
+import { SubQAssessment } from './SubQAssessment'
+import { DecisionModels } from './DecisionModels'
+import { MethodsCritique } from './MethodsCritique'
+import { FeaturedReplays } from './FeaturedReplays'
 
 type Route = {
   path: string
@@ -87,10 +90,11 @@ const routes: Route[] = [
   { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
   { path: 'scale-primitives', title: 'Scale & primitives', section: 'The Jev question', description: 'Larger menus, Noul, Score, and held-out boards.' },
   { path: 'jev-trajectories', title: 'Jev trajectories', section: 'The Jev question', description: 'Empty-board placement, restarts, repeatability, and batching.' },
+  { path: 'decision-models', title: 'Decision models vs the index', section: 'Decision models', description: 'Jev, SubQ and OpenAI Decisions against the Artificial Analysis Decision Index.' },
   { path: 'subq-assessment', title: 'SubQ Snap replay', section: 'Decision models', description: 'Historical Jev tasks, deterministic results, and every SubQ receipt.' },
-  { path: 'openai-decisions-plan', title: 'OpenAI Decisions plan', section: 'Decision models', description: 'A future comparison, verified API facts, and testable hypotheses.' },
   { path: 'evidence-atlas', title: 'Evidence atlas', section: 'Receipts', description: 'Search sanitized requests, outputs, and metadata.' },
   { path: 'methods-sources', title: 'Methods & sources', section: 'Receipts', description: 'Definitions, limits, and primary links.' },
+  { path: 'methods-critique', title: 'Methods critique', section: 'Receipts', description: 'What the design can and cannot support, and the next experiments.' },
   { path: 'about', title: 'About this book', section: 'About', description: 'Purpose, provenance, source, and a shareable QR code.' },
 ]
 
@@ -396,9 +400,13 @@ function LocalToc({ items }: { items: { id: string; label: string }[] }) {
   return <nav className="local-toc" aria-label="On this page"><span className="toc-label">On this page</span>{items.map(item => <button type="button" key={item.id} onClick={() => jump(item.id)}>{item.label}</button>)}</nav>
 }
 
-function PageHero({ title, deck, trail, action, children }: { title: string; deck: string; trail: string; action?: { label: string; path: string }; children?: ReactNode }) {
+function PageHero({ title, deck, trail, action, children }: { title: string; deck: string; trail: string; action?: { label: string; path?: string; scrollTo?: string }; children?: ReactNode }) {
   const [, navigate] = useHashPath()
-  return <header className="page-hero"><div className="hero-trail">Queens assessment <span>/</span> {trail}</div><h1>{title}</h1><p className="hero-deck">{deck}</p>{action && <button className="button button-mint" onClick={() => navigate(action.path)}>{action.label}<Icon name="arrow" /></button>}{children}</header>
+  const act = () => {
+    if (action?.scrollTo) document.getElementById(action.scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    else if (action?.path) navigate(action.path)
+  }
+  return <header className="page-hero"><div className="hero-trail">Queens assessment <span>/</span> {trail}</div><h1>{title}</h1><p className="hero-deck">{deck}</p>{action && <button className="button button-mint" onClick={act}>{action.label}<Icon name="arrow" /></button>}{children}</header>
 }
 
 function Section({ id, title, children, label, className = '' }: { id?: string; title: string; children: ReactNode; label?: string; className?: string }) {
@@ -438,36 +446,34 @@ const bookUi = { PageHero, LocalToc, Section, Callout, DataTable }
 
 function ExecutiveSummary() {
   return <>
-    <PageHero trail="Read first" title="The solver is not the selector." deck="The expanded Queens assessment finds a sharp boundary: multimodal reasoning models constructed valid written solutions from blank boards, while Jev became reliable only when code made the remaining decision explicit and narrow." action={{ label: 'Open the evidence atlas', path: 'evidence-atlas' }} />
+    <PageHero trail="Read first" title="The solver is not the selector." deck="Frontier reasoning models built valid Queens solutions from a blank image. Decision models picked the right answer from a prepared list, but rarely built one a move at a time." action={{ label: 'Watch the recorded attempts', scrollTo: 'watch' }} />
     <AssessmentReceipt />
     <div className="reading-layout">
-      <LocalToc items={[{ id: 'finding', label: 'The finding' }, { id: 'subq-follow-up', label: 'SubQ follow-up' }, { id: 'board-proof', label: 'Board proof' }, { id: 'comparison', label: 'Comparison' }, { id: 'limits', label: 'Limits' }]} />
+      <LocalToc items={[{ id: 'finding', label: 'Three findings' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'What it does not show' }, { id: 'next', label: 'Where next' }]} />
       <main className="reading-column" id="main-content">
-        <Section id="finding" title="A useful distinction, with a small denominator" label="Executive summary">
-          <Callout tone="evidence" title="September 30 follow-up: Jev completed one new 5×5 board.">A color-then-cell workflow completed one of nine new boards in every attempt, with and without immediate-conflict filtering. The other eight boards remained unsolved. <a href="#/jev-trajectories">Read all 90 trajectories and the exact-request repeatability tests.</a> The original construction results below remain the September 19 baseline.</Callout>
-          <Callout tone="note" title="October 1 comparison: earlier model generations, same three board images.">The historical cohort reuses the original image prompts and separates strict JSON-plus-rules success from a deterministic written-answer extraction diagnostic. <a href="#/earlier-generations">Compare each model and board, inspect the first observed failures, and open every request receipt.</a></Callout>
-          <p className="lead">On six held-out boards, Jev's matrix and prose construction scored <strong>0/6</strong>. When a local generator supplied complete candidates and exposed each candidate's occupied region letters, Choice, Noul ranking, and Score ranking selected the true candidate <strong>6/6</strong>.</p>
-          <p>That is assisted recognition, not unaided whole-puzzle planning. The exact validator remains the authority. The report intentionally preserves both the success and the scaffolding that made it possible.</p>
-          <div className="finding-strip"><div><strong>11 / 11</strong><span>captured reasoning-model answers valid</span></div><div><strong>24 / 24</strong><span>larger-board explicit-region selections</span></div><div><strong>0 / 6</strong><span>new-board native constructions</span></div></div>
+        <Section id="finding" title="What the evidence supports" label="Executive summary">
+          <ol className="finding-list">
+            <li><span className="finding-number">1</span><div><h3>Reasoning models construct.</h3><p>Four frontier models returned <strong>11 valid solutions in 12 attempts</strong> from three board images; the twelfth request timed out. <a href="#/protocol-results">Protocol &amp; results</a></p></div></li>
+            <li><span className="finding-number">2</span><div><h3>Decision models select, when code does the search.</h3><p>Given complete candidates with each candidate's regions spelled out, Jev and SubQ Snap both chose correctly <strong>24/24</strong> times on 7×7 and 9×9 menus of up to 255 options. Given column positions alone, both mostly failed (Jev 1/24; SubQ 4/30 replays). <a href="#/scale-primitives">Scale &amp; primitives</a></p></div></li>
+            <li><span className="finding-number">3</span><div><h3>Decision models rarely build a board.</h3><p>Starting from an empty board, Jev and SubQ each completed <strong>10 of 90</strong> attempts, all on 5×5 boards and not on the same ones. Neither solved any of the six 7×7 or 9×9 boards. <a href="#/decision-models">Decision models</a></p></div></li>
+          </ol>
+          <p>The tie hides different profiles. SubQ's wins needed the code-side conflict filter (5×5: 10/15 filtered, 0/15 raw); Jev's did not (5/15 each). At 9×9, SubQ never placed more than one correct queen; Jev reached five. These are profiles on nine boards, not a ranking.</p>
         </Section>
-        <Section id="subq-follow-up" title="SubQ Snap, against the recorded Jev tasks">
-          <SubQExecutiveSummary ui={bookUi} />
+        <Section id="watch" title="Watch it happen" label="Recorded attempts">
+          <p>Each replay steps through saved decisions: the color the model chose, the cell it proposed, and the checker's verdict. Nothing is simulated.</p>
+          <FeaturedReplays />
         </Section>
-        <Section id="board-proof" title="The condition that keeps getting lost" label="A board, not a metaphor">
-          <div className="split-figure"><BoardDiagram /><div className="figure-copy"><p>Regional Queens adds a fourth condition to the familiar row, column, and non-touching checks: every colored region must contain exactly one queen.</p><p>Jev's first 5×5 recognition choice had clean rows, unique columns, and no touching queens. It repeated region D and left singleton region C empty. One missed global condition made the whole placement invalid.</p><a className="text-link" href="#/candidate-engineering">See the candidate lens <Icon name="arrow" /></a></div></div>
+        <Section id="limits" title="What this does not show">
+          <ul className="limit-list">
+            <li><strong>A ranking.</strong> Nine trajectory boards, three image boards and six held-out boards, all from one synthetic generator. Repeated attempts on a board are strongly correlated.</li>
+            <li><strong>Unaided planning.</strong> Every decision-model success relied on code that generated, filtered or checked options. The deterministic checker, not the model, certifies a solution.</li>
+            <li><strong>General capability.</strong> Queens is one constraint task. For breadth, compare the <a href="#/decision-models">Artificial Analysis Decision Index</a>.</li>
+          </ul>
+          <p><a className="text-link" href="#/methods-critique">Read the methods critique and the next experiments <Icon name="arrow" /></a></p>
         </Section>
-        <Section id="comparison" title="What the comparison supports">
-          <DataTable caption="Capability ledger" headers={['Capability', 'Observed evidence']} rows={[
-            ['Blank-image construction', 'All eleven returned reasoning-model answers were valid; one Grok trial timed out.'],
-            ['Text construction', 'Jev matrix and prose each scored 0/6 on six new boards.'],
-            ['Prepared candidate recognition', 'Explicit region lists scored 6/6 on six held-out boards.'],
-            ['Absolute verification', 'Noul and Score produced false positives despite correct top ranking.'],
-            ['Deterministic correctness', 'The local validator remains authoritative.'],
-          ]} />
-        </Section>
-        <Section id="limits" title="Read the caveats as part of the result">
-          <Callout tone="caution" title="This is not a general intelligence ranking.">Three original boards and six held-out boards all come from a synthetic family. Candidate lists overlap, representation and instruction specificity changed together, and model/provider timing differs. No population-level accuracy or stable price ranking follows.</Callout>
-          <div className="next-actions"><a href="#/queens-rules">Learn the board rules <Icon name="arrow" /></a><a href="#/methods-sources">Read methods and sources <Icon name="arrow" /></a><a href="#/openai-decisions-plan">Read the next test plan <Icon name="arrow" /></a></div>
+        <Section id="next" title="Where next">
+          <div className="next-actions"><a href="#/queens-rules">Learn the board rules <Icon name="arrow" /></a><a href="#/decision-models">Compare decision models <Icon name="arrow" /></a><a href="#/evidence-atlas">Inspect every receipt <Icon name="arrow" /></a></div>
+          <p className="edition-line">This edition combines dated studies: <a href="#/protocol-results">17 Sep one-shot</a> · <a href="#/jev-primer">18–19 Sep Jev</a> · <a href="#/jev-trajectories">30 Sep trajectories</a> · <a href="#/earlier-generations">1 Oct earlier generations</a> · <a href="#/subq-assessment">13 Oct SubQ Snap</a> · <a href="#/decision-models">14 Oct Decision Index comparison</a>.</p>
         </Section>
       </main>
     </div>
@@ -1023,7 +1029,7 @@ function NotFound() {
 function Sidebar({ active, open, onClose }: { active: string; open: boolean; onClose: () => void }) {
   const [, navigate] = useHashPath()
   const groups = Array.from(new Set(routes.map(route => route.section)))
-  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>13 OCT FOLLOW-UP</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
+  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>14 OCT UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
 }
 
 function App() {
@@ -1053,7 +1059,9 @@ function App() {
               : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
-                : active === 'openai-decisions-plan' ? <OpenAIDecisionsPlan ui={bookUi} />
+                : active === 'decision-models' ? <DecisionModels ui={bookUi} />
+                : active === 'openai-decisions-plan' ? <DecisionModels ui={bookUi} focusSection="openai-plan" />
+                : active === 'methods-critique' ? <MethodsCritique ui={bookUi} />
                 : active === 'evidence-atlas' ? <EvidenceExplorer selectedId={selectedId} />
                   : active === 'methods-sources' ? <MethodsSources />
                     : active === 'about' ? <AboutPage /> : <NotFound />

@@ -181,6 +181,7 @@ export function deriveTrajectoryFrames(
   const frames: BoardFrame[] = [{
     id: `${trace.trajectory_id}:empty`,
     label: 'Recorded starting state · empty board',
+    tone: 'start',
     queens: [],
     note: `Attempt ${trace.trajectory_id} started with zero queens. Playback is an explanatory sequence, not model thinking or measured wall-clock timing.`,
     sourceLabel: 'Recorded harness starting state',
@@ -194,6 +195,7 @@ export function deriveTrajectoryFrames(
     frames.push({
       id: `${key}:region`,
       label: `Step ${step.step} · region ${step.region}`,
+      tone: step.region_forced ? 'forced' : 'choice',
       queens: copyCells(accepted),
       highlightRegion: step.region,
       note: `The recorded decision selected region ${step.region}; no queen is placed by a region Choice. The recorded cell menu contained ${step.candidate_count} option${step.candidate_count === 1 ? '' : 's'}. Menu cells are not guessed from the trace.`,
@@ -205,6 +207,7 @@ export function deriveTrajectoryFrames(
       frames.push({
         id: `${key}:unavailable`,
         label: 'No recorded cell placement · attempt stopped',
+        tone: 'fail',
         queens: copyCells(accepted),
         highlightRegion: step.region,
         note: `Recorded terminal outcome: ${trace.stop_reason.replace(/_/g, ' ')}. No cell is invented for this incomplete step.`,
@@ -226,6 +229,7 @@ export function deriveTrajectoryFrames(
     frames.push({
       id: `${key}:proposal`,
       label: `Step ${step.step} · proposed r${row}c${column}`,
+      tone: step.cell_forced ? 'forced' : 'choice',
       queens: copyCells(accepted),
       highlightRegion: step.region,
       selectedCell: cell,
@@ -240,6 +244,7 @@ export function deriveTrajectoryFrames(
       frames.push({
         id: `${key}:outcome`,
         label: 'Evaluator outcome unavailable · playback stopped',
+        tone: 'unknown',
         queens: copyCells(accepted),
         selectedCell: cell,
         selectedCellLabel: 'Proposal with unknown evaluation',
@@ -272,6 +277,7 @@ export function deriveTrajectoryFrames(
     frames.push({
       id: `${key}:outcome`,
       label: `Step ${step.step} · ${outcome}`,
+      tone: localFailure || globalFailure ? 'fail' : solved ? 'solved' : step.on_unique_solution === true ? 'pass' : 'unknown',
       queens: copyCells(accepted),
       highlightRegion: step.region,
       selectedCell: cell,
