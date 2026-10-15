@@ -27,6 +27,7 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 SITE = HERE.parent.parent
 GENERATOR_VERSION = "boards.py/1"
+PRIVATE_DIR = HERE / "input/panel-private"  # ground truth; outside every worker mount
 GENERATORS = ("solution_first_growth", "partition_first_voronoi")
 
 
@@ -924,7 +925,7 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     b = commands.add_parser("build-panel", help="Generate the frozen development pool and stratified test panel (offline)")
     b.add_argument("--public-dir", default=str(SITE / "public/evidence/subq-panel"))
-    b.add_argument("--private-dir", default=str(HERE / "input/panel-private"))
+    b.add_argument("--private-dir", default=str(PRIVATE_DIR))
     b.add_argument("--input-dir", default=str(HERE / "input"))
     p = commands.add_parser("profile", help="Certify and profile boards from a JSON file with boards[].regions")
     p.add_argument("path")
