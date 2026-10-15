@@ -9,9 +9,9 @@ Approach and decisions: read the incumbent Atlas, actual solver, assessment-book
 - [x] Read applicable local instructions, Atlas, solvers, boards, and design system.
 - [x] Diagnose comprehension failures with source-level evidence.
 - [x] Verify Z3 pipeline, instrumentation limits, and scholarly sources.
-- [ ] Develop 7–10 chapters with exact ledes, mathematics, and interactions.
-- [ ] Write implementation/data contracts (measurement script complete and run).
-- [ ] Self-review mathematical claims, citations, word count, and write boundary.
+- [x] Develop 7–10 chapters with exact ledes, mathematics, and interactions.
+- [x] Write implementation/data contracts (measurement script complete and run).
+- [x] Self-review mathematical claims, citations, word count, and write boundary.
 - [ ] Refresh usage, review, decisions, progress, and handoff; deliver full data.
 
 ## Acceptance criteria

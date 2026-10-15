@@ -10,8 +10,8 @@ Checklist:
 - [x] Run initial usage check and identify repository/worktree.
 - [x] Read applicable instructions and analysis skills.
 - [x] Audit studies, source claims, original reports, and harness.
-- [ ] Compute uncertainty, power, offline labels/baselines/calibration where feasible.
-- [ ] Write complete critique and ten exact wording fixes.
-- [ ] Validate citations, calculations, scope, and word count; final usage check.
+- [x] Compute uncertainty, power, offline labels/baselines/calibration where feasible.
+- [x] Write complete critique and ten exact wording fixes.
+- [x] Validate citations, calculations, scope, and word count; final usage check.
 
 Acceptance criteria: all eight requested sections; quantitative, reproducible calculations; exact harness recommendations; limitations stated; ten source-verified quotations; no changes outside artifact directory.

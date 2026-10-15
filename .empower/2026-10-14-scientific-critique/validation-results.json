@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-14T23:19:42.271460-06:00",
+  "passed": true,
+  "checks": [
+    "Word count 4763; all eight sections and calculation appendix",
+    "Ten exact quotes verified against frozen source excerpts",
+    "Current source drift: src/App.tsx, src/SubQAssessment.tsx",
+    "CP boundary intervals match closed forms; planned Fisher sample powers exceed targets",
+    "10/90 totals, 1 versus 2 solved boards, forced Jev local cells, 8/9 singleton boards",
+    "Full greedy no-oracle run independently reproduces same 4/9 valid boards",
+    "241 cell labels reconcile to 41/121 Jev and 40/120 SubQ; selected probabilities reconcile",
+    "Random expectation and ledger arithmetic reconcile"
+  ],
+  "source_drift_since_snapshot": [
+    "src/App.tsx",
+    "src/SubQAssessment.tsx"
+  ],
+  "limitations": [
+    "No new inference, no browser/rendered or deployed-site validation",
+    "No external semantic review; original reports skimmed, raw evidence selected programmatically",
+    "Small generator-family corpus; descriptive calibration, not population certainty"
+  ]
+}

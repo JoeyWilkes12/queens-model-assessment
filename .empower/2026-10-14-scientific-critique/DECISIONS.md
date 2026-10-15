@@ -9,3 +9,5 @@
 - User requested audit-only Markdown deliverable; no web app, browser validation, or delegated model review is appropriate.
 
 - Concurrent source edits changed the executive summary during review. Refresh all wording fixes to the current source instead of preserving stale quotes; record source hashes at final. This agent did not make those source edits.
+
+- Handoff Git inspection found a concurrent commit advanced HEAD to5fdfb5b. Record the actual final revision; do not attribute that commit or outside-artifact edits to this critique run.

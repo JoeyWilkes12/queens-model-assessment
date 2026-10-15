@@ -1,6 +1,6 @@
 # Scientific critique: Queens decision models and the limits of selection
 
-**Assessment: needs revision before broad capability claims are published.** The receipts support selective candidate recognition and selective first-path construction. They do not support a general solver-versus-selector taxonomy, equal model ability from 10/90 versus 10/90, or a validated difficulty curve. A newly computed, deterministic greedy baseline completes four of the nine trajectory boards, including larger boards neither model completed. This materially changes the comparison.
+**Assessment of the reviewed snapshot: needs revision before broad capability claims are published.** The receipts support selective candidate recognition and selective first-path construction. They do not support a general solver-versus-selector taxonomy, equal model ability from 10/90 versus 10/90, or a validated difficulty curve. A newly computed, deterministic greedy baseline completes four of the nine trajectory boards, including larger boards neither model completed. This materially changes the comparison.
 
 All project paths below are relative to `/Users/joeywilkes/Desktop/scripts/queens-model-assessment/.worktrees/decision-models-refresh`. `E` means `public/evidence/`. `O` means the read-only original evaluation directory `/Users/joeywilkes/Desktop/Macbook Air/Scripts & Code/all specifications (monorepo)/Games/Queens/screenshot-solver/evaluations/`. New calculations are reproducible in this artifact directory’s `calculations.py` and `calculation-results.json`; no new inference was performed. Source inspection does not establish the deployed website’s rendered behavior. Published-wording citations are frozen in SOURCE-SNAPSHOT.md because the source changed concurrently during review.
 
@@ -17,7 +17,7 @@ All project paths below are relative to `/Users/joeywilkes/Desktop/scripts/queen
 
 Sources: `O/2026-09-19-comprehensive/REPORT.md:7–13,99–127`; `O/2026-09-19-jev-scale/ASSESSMENT.md:25–36,65–75`; `O/2026-09-19-jev-primitives/PROTOCOL.md:20–52`; `E/trajectory-PROTOCOL.md:22–34`; `E/subq-REPORT.md:27–31`; `E/diagnostic-completion-PROTOCOL.md:19–64`.
 
-“The solver is not the selector” is defensible as an **engineering distinction between assigned tasks**: code supplies a candidate space, while a model ranks it. It is overdrawn as a distinction between model classes. A decision head can be embedded in search, and a generative model’s correct placement does not reveal whether its internal process was search. The current hero’s “rarely built one a move at a time” should be attached to the nine tested boards and first-path protocol, rather than read as a population capability claim (`src/App.tsx:449,458`). Keep the thesis, but attach it to the workflow and tested corpus.
+“The solver is not the selector” is defensible as an **engineering distinction between assigned tasks**: code supplies a candidate space, while a model ranks it. It is overdrawn as a distinction between model classes. A decision head can be embedded in search, and a generative model’s correct placement does not reveal whether its internal process was search. The reviewed hero’s “rarely built one a move at a time” should be attached to the nine tested boards and first-path protocol, rather than read as a population capability claim (`src/App.tsx:449,458`). Keep the thesis, but attach it to the workflow and tested corpus.
 
 The apparent planning result particularly needs decomposition. On Jev’s successful `sequence-5-1` local paths, **all five cell placements were forced**; its four paid decisions selected regions. Raw successes required seven non-forced decisions. SubQ’s successful local paths required six calls and four forced transitions. Thus completion belongs to the combined policy and harness. Region ordering can be useful, but it is not five independent demonstrations of difficult cell inference (`E/trajectory-study.json:trajectories[trajectory_id=sequence-5-1_local_a1].steps`, `audit.per_board`; `E/subq-trajectories-summary.json:families`).
 
@@ -156,7 +156,7 @@ Cost scenarios are not guarantees. New difficult boards may survive longer and r
 
 These proposed replacements target scope and interpretation; they do not imply that every existing sentence is false. Quotations retain visible wording; JSX tags around text are omitted.
 
-| # | Current wording and location | Proposed replacement |
+| # | Reviewed wording and location | Proposed replacement |
 |---|---|---|
 | 1 | “The solver is not the selector.” — `src/App.tsx:449`, hero title | “Selecting a prepared solution is a different task from constructing one.” |
 | 2 | “Frontier reasoning models built valid Queens solutions from a blank image. Decision models picked the right answer from a prepared list, but rarely built one a move at a time.” — `src/App.tsx:449`, deck | “On three synthetic images, 11 of 12 scheduled generative-model requests delivered valid placements, nine with strict JSON. Decision models were strongest on prepared menus, but each also completed 10/90 scaffolded construction attempts.” |
@@ -179,7 +179,7 @@ python3 -I calculations.py > calculation-output.txt
 
 The script uses only Python’s standard library. It enumerates column permutations independently for all nine boards, checks exactly one valid solution, reconstructs menus and chosen-cell truth, reproduces all 18 retained random probabilities, and recomputes the 18 split logical grades. It saves full outputs and 241 non-forced cell probability/label rows. Ground truth is never transmitted.
 
-Core snippets, also present in the runnable file:
+Core calculations, shown here as condensed equivalent snippets:
 
 ```python
 # Two-sided CP limits: invert binomial tails using bisection.
@@ -197,7 +197,7 @@ P = lambda n,p,k: math.comb(n,k)*p**k*(1-p)**(n-k)
 
 # Multiclass Brier and binned ECE:
 brier = sum((p[k] - int(k == truth))**2 for k in p)
-ece = sum(n_b * abs(mean_p_b - accuracy_b) for each_bin)/n
+ece = sum(b['n'] * abs(b['p'] - b['accuracy']) for b in bins) / n
 ```
 
 Selected outputs:
