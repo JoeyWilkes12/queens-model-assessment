@@ -820,22 +820,43 @@ def implication_graphs(existence):
 
             for x in list(nodes) + [0]:
                 rank_of(x)
+            cut_clauses = {}
+            for u in uips:
+                # Conflict side: current-level descendants of u, plus the conflict node.
+                side = {0}
+                frontier = [u]
+                while frontier:
+                    x = frontier.pop()
+                    for y in succ.get(x, []):
+                        if y not in side:
+                            side.add(y)
+                            frontier.append(y)
+                crossing = sorted({ed["from"] for ed in edges if ed["to"] in side and ed["from"] not in side}, key=lambda l: nodes[l]["pos"])
+                cut_clauses[str(u)] = sorted((-l for l in crossing), key=lit_key)
             graphs.append({
                 "conflictSeq": e["seq"], "level": level, "conflictClauseId": cid, "decision": decision,
                 "nodes": [{"literal": x, "level": nodes[x]["level"], "seq": nodes[x]["seq"], "trailPosition": nodes[x]["pos"],
                            "reasonClauseId": nodes[x]["reason"], "rank": rank[x]} for x in sorted(nodes, key=lambda x: nodes[x]["pos"])],
                 "conflictRank": rank[0],
                 "edges": edges, "uips": sorted(uips, key=lambda x: nodes[x]["pos"]), "firstUip": first_uip,
-                "witnessPaths": witnesses,
+                "witnessPaths": witnesses, "cutClauses": cut_clauses,
             })
+    import z3
+    q = {v: z3.Bool(f"v{v}") for v in range(1, len(existence["variables"]) + 1)}
+    lit = lambda l: q[l] if l > 0 else z3.Not(q[-l])
+    base = [z3.Or([lit(l) for l in c["lits"]]) for c in existence["clauses"][:existence["originalClauseCount"]]]
     for g in graphs:
         learn = next(e for e in existence["events"] if e["seq"] == g["conflictSeq"] + 1)
         learned = clauses[learn["learnedClauseId"]]
         check(-g["firstUip"] in learned, f"conflict {g['conflictSeq']}: learned clause contains ¬(first UIP)")
+        check(set(g["cutClauses"][str(g["firstUip"])]) == set(learned), f"conflict {g['conflictSeq']}: first-UIP cut clause equals the learned clause")
+        for u, cut in g["cutClauses"].items():
+            s = z3.Solver(); s.add(base); s.add(z3.Not(z3.Or([lit(l) for l in cut])))
+            check(s.check() == z3.unsat, f"conflict {g['conflictSeq']}: cut clause at UIP {u} is entailed by F")
     g126 = next(g for g in graphs if g["conflictSeq"] == 126)
     check(g126["firstUip"] == 14 and g126["conflictClauseId"] == 477, "event 126: first UIP is q27 and the conflict is region F's ALO clause")
     check(sorted(ed["clauseId"] for ed in g126["edges"] if ed["from"] == 14) == [295, 296, 297], "event 126: q27 excludes q57, q67, q77 through clauses 295–297")
-    passed(f"implication graphs for {len(graphs)} conflicts; each learned clause negates its first UIP; event 126 → ¬q27")
+    passed(f"implication graphs for {len(graphs)} conflicts; first-UIP cut equals each learned clause; every UIP cut clause Z3-entailed; event 126 → ¬q27")
     return graphs
 
 
