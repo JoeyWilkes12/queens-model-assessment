@@ -889,7 +889,10 @@ def analysis(plan, attempts, load_call, strata=None):
         complete = {b: o for b, o in outcome.items() if o.get("raw") is not None and o.get("local") is not None}
         b = sum(o["raw"] and not o["local"] for o in complete.values())
         c = sum(o["local"] and not o["raw"] for o in complete.values())
-        paired[str(size)] = {"complete_pairs": len(complete), "incomplete_or_censored_pairs": len(outcome) - len(complete),
+        excluded = len(outcome) - len(complete)
+        paired[str(size)] = {"complete_pairs": len(complete), "incomplete_or_censored_pairs": excluded,
+                             "sensitivity_excluded_as_raw_only_p": exact_mcnemar(b + excluded, c),
+                             "sensitivity_excluded_as_local_only_p": exact_mcnemar(b, c + excluded),
                              "both_solved": sum(o["raw"] and o["local"] for o in complete.values()), "raw_only": b, "local_only": c,
                              "neither": sum(not o["raw"] and not o["local"] for o in complete.values()),
                              "exact_mcnemar_p": exact_mcnemar(b, c),
@@ -926,12 +929,16 @@ def analyze(args):
     output = pathlib.Path(args.output)
     plan = replay.read(output / "manifest.json")
     attempts = [replay.read(path) for path in sorted((output / "trajectories").glob("*.json"))]
+    cutoff = getattr(args, "completed_before", None)
+    if cutoff:  # date-split cohort: later or unfinished attempts count as not recorded
+        attempts = [t for t in attempts if t.get("ended_utc") and t["ended_utc"] < cutoff]
     strata = None
     if getattr(args, "corpus", None):
         corpus = replay.read(args.corpus)
         strata = {b["id"]: f'{b["stratum"]["singleton_status"]}/{b["stratum"]["tier"]}' for b in corpus["boards"]}
     report = analysis(plan, attempts, output_loader(output), strata)
     report["source_output"] = str(output)
+    report["completed_before"] = cutoff
     replay.save(args.report, report)
     print(json.dumps({"event": "analysis", "report": str(args.report), "trajectories": report["denominators"],
                       "paired": report["paired_raw_vs_local"], "consistency_errors": len(report["consistency_errors"])}), flush=True)
@@ -1049,6 +1056,7 @@ def main():
     study.add_argument("--output", required=True, help="Finished or partial output directory (read only)")
     study.add_argument("--report", required=True, help="Explicit path for the analysis JSON")
     study.add_argument("--corpus", default=None, help="Optional corpus JSON to attach strata")
+    study.add_argument("--completed-before", default=None, help="ISO UTC timestamp; analyze only attempts that ended before it")
     review = commands.add_parser("acknowledge", help="Record a human review of a failed/censored panel attempt (no retry)")
     review.add_argument("--output", required=True)
     review.add_argument("--trajectory", required=True)

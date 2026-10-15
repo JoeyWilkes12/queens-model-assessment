@@ -243,6 +243,9 @@ class PanelRunTests(unittest.TestCase):
             results = [replay.read(p) for p in sorted((out / "trajectories").glob("*.json"))]
             report = trajectories.analysis(replay.read(out / "manifest.json"), results, trajectories.output_loader(out))
             self.assertEqual(report["denominators"]["excluded_by_stop_reason"], {"request_failure": 1})
+            pair = report["paired_raw_vs_local"]["7"]
+            self.assertEqual((pair["complete_pairs"], pair["incomplete_or_censored_pairs"]), (0, 2))
+            self.assertEqual(pair["sensitivity_excluded_as_local_only_p"], trajectories.exact_mcnemar(0, 2))
 
     def test_admission_ceiling_stops_before_any_dispatch(self):
         with tempfile.TemporaryDirectory() as tmp:
