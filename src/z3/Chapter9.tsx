@@ -36,7 +36,7 @@ export function Chapter9({ ui, data }: ChapterProps) {
       <Formula spoken="t if and only if a and b becomes: not t or a; not t or b; t or not a or not b.">t ↔ (a ∧ b) &nbsp;⇝&nbsp; (¬t ∨ a) ∧ (¬t ∨ b) ∧ (t ∨ ¬a ∨ ¬b)</Formula>
     </Statement>
     <Statement kind="Proposition" label="9.2">
-      <p>With the root name asserted, F(x) holds exactly when ∃y T(F)(x, y), where y are the new names. The translation is <em>equisatisfiable</em> after extending the variables, not equivalent over the old ones, which is the same projection idea as Theorem 2.4. Tseitin conversion handles Boolean structure; compiling a count into clauses is a separate choice.</p>
+      <p>With the root name asserted, F(x) holds exactly when ∃y T(F)(x, y), where y are the new names. The translation is equisatisfiable after extending the variables, not equivalent over the old ones, which is the same projection idea as Theorem 2.4.” | The sentence obscures the exact old-variable equivalence just displayed: F(x) is equivalent to ∃y T(F)(x,y). T(F) with free auxiliaries is a different formula over an extended signature. | “The extended formula T(F)(x, y) is equisatisfiable with F(x), and projecting its models onto x gives exactly the models of F: F(x) is equivalent to ∃y T(F)(x, y). This is the same projection idea as Theorem 2.4. Tseitin conversion handles Boolean structure; compiling a count into clauses is a separate choice.</p>
     </Statement>
     <p>In DPLL(T), some propositional atoms stand for arithmetic predicates and a <Term id="theory">theory</Term> solver judges them. Boolean search proposes truth values; the theory either agrees or explains the inconsistency with a clause that joins the Boolean clause set. Linear feasibility over the rationals can be decided with simplex-style tableau operations. Integers need more, such as cuts and branching, because rational feasibility does not imply an integer solution. Calling the whole process “simplex solving Queens” would erase the Boolean search and the finite reductions above.</p>
     <ArithmeticInset />
@@ -53,7 +53,7 @@ export function Chapter9({ ui, data }: ChapterProps) {
     </CheckYourself>
     <ReadSource items={[
       { id: 'P2', locator: '§§3.2, 6', why: 'Z3’s architecture, tactics and arithmetic solvers.' },
-      { id: 'P14', locator: '§§4.3, 9.2.3', why: 'arithmetic in the SMT core and how Z3 compiles constraints.' },
+      { id: 'P14', locator: '§§3.3, 4.3, 9.2.3', why: 'arithmetic in the SMT core and how Z3 compiles constraints.' },
       { id: 'P5', locator: '§1', why: 'definitional names for subformulas (Definition 9.1).' },
     ]} />
   </Section>

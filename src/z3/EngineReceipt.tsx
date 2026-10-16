@@ -87,7 +87,7 @@ export function EngineFigure({ receipts, ui }: { receipts: Z3Receipts; ui: BookU
       <div className="z3-stage">
         <p className="z3-mini-label">Recorded verbose route, in order ({check.route.source})</p>
         {check.route.stages.length ? <ol className="z3-route">
-          {check.route.stages.map((s, i) => <li key={i} className={`z3-route-${s.phase}`}><span className="z3-route-phase">{PHASES.find(p => p.id === s.phase)?.label ?? s.phase}</span><code>{s.name}</code>{s.count > 1 && <span className="z3-route-count">×{s.count}</span>}{metric(firstLines.get(s.name) ?? '') && <span className="z3-route-metric">{metric(firstLines.get(s.name) ?? '')}</span>}</li>)}
+          {check.route.stages.map((s, i) => <li key={i} className={`z3-route-${s.phase}`}><span className="z3-route-phase">{PHASES.find(p => p.id === s.phase)?.label ?? s.phase}</span><code>{s.name}</code>{s.count > 1 && <span className="z3-route-count">{s.count} log entries</span>}{i === check.route.stages.findIndex(stage => stage.name === s.name) && metric(firstLines.get(s.name) ?? '') && <span className="z3-route-metric">{metric(firstLines.get(s.name) ?? '')} (first report)</span>}</li>)}
         </ol> : <p className="z3-unavailable">No verbose output was printed during this check.</p>}
         <div className="z3-lanes">
           <div><span className="z3-mini-label">Board lane</span><strong>{cells} cell variables</strong><span>q<sub>rc</sub>, as in Chapter 1</span></div>

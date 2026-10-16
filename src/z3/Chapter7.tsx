@@ -72,7 +72,7 @@ function ConfinementLab({ data, ui }: { data: TeachingData['confinement']; ui: C
         <p className="z3-fineprint">Edges join a region to every row where it still has a candidate cell. Thick edges show one matching of K into N(K).</p>
         <div className="z3-up-check">
           <button type="button" className="z3-button" onClick={() => setRan(true)} disabled={!hypothesis}>Run unit propagation from ¬q<sub>31</sub></button>
-          {ran && hypothesis && <p role="status"><EngineTag kind="reference" note="precomputed" />Unit propagation adds {data.unitPropagationFromHypothesis.newLiterals} literals. The pairwise CNF has no unit clause, and making r3c1 false leaves every clause with at least two open literals. The Hall argument sees what propagation cannot.</p>}
+          {ran && hypothesis && <p role="status"><EngineTag kind="reference" note="precomputed" />Unit propagation adds {data.unitPropagationFromHypothesis.newLiterals} literals. The pairwise CNF has no unit clause, and making r3c1 false leaves every unsatisfied clause with at least two open literals. The Hall argument sees what propagation cannot.</p>}
         </div>
       </div>
     </div>

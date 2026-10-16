@@ -30,7 +30,7 @@ function describe(event: TraceEvent | undefined, clauseOf: ClauseLookup, origina
     case 'propagate': {
       const c = clauseOf(e.reasonClauseId as number)
       const learned = (e.reasonClauseId as number) >= originalCount
-      return { node: <>Event {e.seq} · <Lit lit={e.literal as number} /> {(e.literal as number) > 0 ? 'is true' : 'is false'}, forced by {learned ? 'the learned clause ' : ''}<ClauseRef id={e.reasonClauseId as number} lits={c.lits} sources={c.sources} />.</>, words: `Event ${e.seq}: ${litWords(e.literal as number)}, forced by clause ${e.reasonClauseId}, ${describeSources(c.sources)}.` }
+      return { node: <>Event {e.seq} · <Lit lit={Math.abs(e.literal as number)} /> {(e.literal as number) > 0 ? 'is true' : 'is false'}, forced by {learned ? 'the learned clause ' : ''}<ClauseRef id={e.reasonClauseId as number} lits={c.lits} sources={c.sources} />.</>, words: `Event ${e.seq}: ${litWords(e.literal as number)}, forced by clause ${e.reasonClauseId}, ${describeSources(c.sources)}.` }
     }
     case 'conflict': {
       const c = clauseOf(e.conflictClauseId as number)
@@ -125,7 +125,7 @@ export function CDCLPlayer({ events, clauseOf, originalCount, ui, bookmarks = []
           </li>)}
         </ol>
         <div className="z3-inspector" aria-live="off">
-          {selected ? <p><Lit lit={selected.lit} /> = {selected.lit > 0 ? 'true' : 'false'} at level {selected.level}, event {selected.seq}. {selected.reason === null ? <>It is a <strong>decision</strong>: no clause forced it, so a backjump can undo it.</> : <>Reason <ClauseRef id={selected.reason} lits={clauseOf(selected.reason).lits} sources={clauseOf(selected.reason).sources} />{selected.reason >= originalCount ? ' (a learned clause)' : ''}.</>}</p>
+          {selected ? <p><Lit lit={Math.abs(selected.lit)} /> = {selected.lit > 0 ? 'true' : 'false'} at level {selected.level}, event {selected.seq}. {selected.reason === null ? <>It is a <strong>decision</strong>: no clause forced it, so a backjump can undo it.</> : <>Reason <ClauseRef id={selected.reason} lits={clauseOf(selected.reason).lits} sources={clauseOf(selected.reason).sources} />{selected.reason >= originalCount ? ' (a learned clause)' : ''}.</>}</p>
             : <p>Select a literal on the trail to see why it is there.</p>}
         </div>
         <details className="z3-disclosure" onToggle={event => setTableOpen((event.target as HTMLDetailsElement).open)}>

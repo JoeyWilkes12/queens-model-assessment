@@ -73,7 +73,7 @@ function PropagationPlayer({ teaching, clauses }: { teaching: TeachingData; clau
     spoken = `Decision: ${cellName(run.decision)} true. Nothing forced yet.`
   } else if (k <= S) {
     const step = run.steps[k - 1], reason = info(step.reasonClauseId)
-    sentence = <>Step {k} of {S}: <Lit lit={step.literal} /> {step.literal > 0 ? 'becomes true' : 'becomes false'}. Every other literal of <ClauseRef id={step.reasonClauseId} lits={reason.lits} sources={reason.sources} /> is false.</>
+    sentence = <>Step {k} of {S}: <Lit lit={Math.abs(step.literal)} /> {step.literal > 0 ? 'becomes true' : 'becomes false'}. Every other literal of <ClauseRef id={step.reasonClauseId} lits={reason.lits} sources={reason.sources} /> is false.</>
     spoken = `Step ${k} of ${S}: ${litWords(step.literal)}, by clause ${step.reasonClauseId}, ${describeSources(reason.sources)}.`
   } else if (run.status === 'conflict') {
     const c = info(run.conflictClauseId as number)
@@ -120,7 +120,7 @@ function PropagationPlayer({ teaching, clauses }: { teaching: TeachingData; clau
           <summary>Written equivalent: every step of this run</summary>
           <ol className="z3-steps">
             <li>Decide <Lit lit={run.decision} /> = true (level 1).</li>
-            {run.steps.map((s, i) => <li key={i}><Lit lit={s.literal} /> {s.literal > 0 ? 'true' : 'false'} — <ClauseRef id={s.reasonClauseId} lits={info(s.reasonClauseId).lits} sources={info(s.reasonClauseId).sources} /></li>)}
+            {run.steps.map((s, i) => <li key={i}><Lit lit={Math.abs(s.literal)} /> {s.literal > 0 ? 'true' : 'false'} — <ClauseRef id={s.reasonClauseId} lits={info(s.reasonClauseId).lits} sources={info(s.reasonClauseId).sources} /></li>)}
             <li>{run.status === 'conflict' ? <>Conflict in <ClauseRef id={run.conflictClauseId as number} lits={info(run.conflictClauseId as number).lits} sources={info(run.conflictClauseId as number).sources} />.</> : <>Fixed point: no clause is unit; {run.unassignedAfter} cells open.</>}</li>
           </ol>
         </details>
@@ -138,7 +138,7 @@ function Inset5({ inset }: { inset: TeachingData['propagation']['inset5'] }) {
       </div>
       <div className="z3-explain">
         <p>On the book’s 5×5 board region C is the single cell r1c5, so its at-least-one clause is the unit clause (q<sub>15</sub>). Propagation at level 0 sets it true before any decision, then excludes {inset.steps.length - 1} more cells.</p>
-        <ol className="z3-steps">{inset.steps.map((s, i) => <li key={i}><Lit lit={s.literal} n={5} /> {s.literal > 0 ? 'true' : 'false'} — #{s.reasonClauseId} <Clause lits={inset.clauses[String(s.reasonClauseId)].lits} n={5} /> · {describeSources(inset.clauses[String(s.reasonClauseId)].sources)}</li>)}</ol>
+        <ol className="z3-steps">{inset.steps.map((s, i) => <li key={i}><Lit lit={Math.abs(s.literal)} n={5} /> {s.literal > 0 ? 'true' : 'false'} — #{s.reasonClauseId} <Clause lits={inset.clauses[String(s.reasonClauseId)].lits} n={5} /> · {describeSources(inset.clauses[String(s.reasonClauseId)].sources)}</li>)}</ol>
         <p className="z3-fineprint">This inset uses the 5×5 board. Every other figure uses the 7×7 board.</p>
       </div>
     </div>
@@ -160,16 +160,16 @@ export function Chapter3({ ui, data }: ChapterProps) {
       <p>If a clause C ∈ F is unit under M with open literal ℓ, replace M by M ∪ {"{"}ℓ{"}"} and record C as the <em>reason</em> for ℓ. If some clause of F is falsified, report a conflict.</p>
     </Statement>
     <Statement kind="Theorem" label="3.2">
-      <p>Let U<sub>F</sub>(M) be the result of applying Rule 3.1 until no clause is unit, or ⊤ if a conflict appears. Then U<sub>F</sub> terminates and is a closure operator on literal sets ordered by inclusion with ⊤ on top: extensive (M ⊆ U<sub>F</sub>(M)), monotone (M ⊆ M′ ⇒ U<sub>F</sub>(M) ⊆ U<sub>F</sub>(M′)) and idempotent. It is sound: F ∧ M ⊨ ℓ for every added ℓ.</p>
+      <p>Let U<sub>F</sub>(M) be the result of applying Rule 3.1 until no clause is unit, or ⊤ if a conflict appears. Then U<sub>F</sub> terminates and is a closure operator on consistent partial assignments ordered by inclusion, with a greatest conflict element ⊤ and U<sub>F</sub>(⊤) = ⊤: extensive (M ⊆ U<sub>F</sub>(M)), monotone (M ⊆ M′ ⇒ U<sub>F</sub>(M) ⊆ U<sub>F</sub>(M′)) and idempotent. It is sound: F ∧ M ⊨ ℓ for every added ℓ.</p>
     </Statement>
-    <Proof>Each application adds a literal on a new variable, and there are 49 variables, so the process stops. Soundness: if C = (ℓ ∨ ℓ<sub>1</sub> ∨ … ∨ ℓ<sub>k</sub>) and M falsifies every ℓ<sub>i</sub>, then any model of F ∧ M satisfies C through ℓ. Adding literals can only make more clauses unit or falsified, never fewer, so the operator “add every forced literal” is monotone; its least fixed point above M is reached by any order of applications that stops only when nothing is unit. Hence the closure is the same for every queue order before a conflict; only the recorded reasons, or which conflict is found first, can differ.</Proof>
+    <Proof>Each propagation assigns a previously unassigned variable, so at most 49 such steps occur. Soundness follows because all other literals of its reason clause are false, so every model extending the current assignment must satisfy the propagated literal. For monotonicity, compare M ⊆ M′. A literal forced under M is either already true under M′, remains unit there, or is false there and makes its reason clause conflicting. Applying this observation inductively shows that a nonconflicting saturated extension contains every literal derived from any smaller starting assignment; a conflicting derivation makes every saturated extension conflicting. In particular, two saturated runs from the same input contain each other, unless both return ⊤. This proves order independence and monotonicity. Extensivity follows because assignments are only added; idempotence follows because a saturated result has no further propagation, and ⊤ remains ⊤. Reasons and the first conflict clause may depend on queue order.</Proof>
     <p>Propagation is weaker than logical consequence. The pairwise CNF has no unit clause, so from the empty assignment nothing at all is forced, yet only seven cells can hold a queen. If you instead decide a cell, the closure often explodes: {failed ?? '…'} of the 49 single-cell decisions end in a conflict by propagation alone. Chapter 7 gives a hypothesis from which propagation derives nothing although six cells are provably impossible.</p>
     <Statement kind="Definition" label="3.3 · two watched literals">
-      <p>For each clause with at least two literals, keep two <em>watches</em> on literals that are not false. When a watched literal becomes false, look for another non-false literal to watch. If there is none, the other watch is true (satisfied), open (the clause is unit: propagate it) or false (conflict). Clauses whose watches are untouched need not be visited at all.</p>
+      <p>For each clause with at least two literals, keep two watched positions. When a watched literal becomes false, first check whether the other watch satisfies the clause. Otherwise seek an unwatched nonfalse literal and move the false watch there. If none exists, the other watch is open (propagate it) or false (report conflict). Unit clauses are handled separately. A watched position may therefore hold a false literal in a satisfied, unit or conflicting clause. Assignments that do not falsify a watch need not trigger a visit to that clause.</p>
     </Statement>
     <p>Watches change the cost, not the mathematics: they detect exactly the unit and falsified clauses of Rule 3.1. Turn on the overlay above to see the watches move on one clause while the reference kernel, which scans every clause, records the same steps.</p>
     <Inset5Wrapper inset={t?.propagation.inset5} />
-    <CheckYourself question={<>In the five-literal clause (q<sub>11</sub> ∨ q<sub>21</sub> ∨ q<sub>22</sub> ∨ q<sub>23</sub> ∨ q<sub>31</sub>), region A’s at-least-one clause, suppose the first four literals are false. Which literal is unit, and what must happen?</>}>
+    <CheckYourself question={<>In the five-literal clause (q<sub>11</sub> ∨ q<sub>21</sub> ∨ q<sub>22</sub> ∨ q<sub>23</sub> ∨ q<sub>31</sub>), region A’s at-least-one clause, suppose the first four literals are false and q₃₁ is unassigned. Which literal is unit, and what must happen?</>}>
       <p>q<sub>31</sub> is the only open literal, so the clause is unit and q<sub>31</sub> must be set true, with this clause as its reason. Choose r1c2 in the player above: q<sub>12</sub> excludes q<sub>11</sub> (row), q<sub>22</sub> (column), q<sub>21</sub> and q<sub>23</sub> (touching), and {q31Step ? <>step {q31Step} sets q<sub>31</sub> true</> : <>a later step sets q<sub>31</sub> true</>} for exactly this reason.</p>
     </CheckYourself>
     <ReadSource items={[

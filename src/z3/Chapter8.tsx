@@ -130,7 +130,7 @@ export function Chapter8({ ui, data }: ChapterProps) {
       <p>Uniqueness is a statement about the cell variables. Blocking an auxiliary pattern fails both ways. The same board may come back with different auxiliary values, so SAT would not mean a second board. And a different board may share the blocked auxiliary values (two placements with queens in the same commander groups have identical commanders), so UNSAT would not rule it out. Z3’s compiled form of this puzzle has more internal variables than cells (Chapter 9), which is why the recorded blockers list the 49 cells.</p>
     </CheckYourself>
     <ReadSource items={[
-      { id: 'P2', locator: '§5.1', why: 'enumerating models with blocking clauses, and what cores are.' },
+      { id: 'P2', locator: '§§4.4, 5.1', why: 'enumerating models with blocking clauses, and what cores are.' },
       { id: 'P13', locator: '§§2–3, Fig. 1', why: 'RUP and RAT, proof logs, deletions and the empty clause.' },
       { id: 'P14', locator: '§6.2', why: 'how Z3 represents proofs and certificates.' },
     ]} />

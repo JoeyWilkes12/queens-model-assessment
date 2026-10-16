@@ -72,7 +72,7 @@ export default function Z3Part({ ui, section }: { ui: BookUi; section?: string }
     return () => window.cancelAnimationFrame(frame)
   }, [section, state.status])
   return <>
-    <PageHero trail="The board / how Z3 solves Queens" title="How Z3 solves Queens" deck="Nine short chapters on the mathematics a solver uses on the book’s 7×7 board: propositions, clauses, propagation, conflict-driven learning, a matching theorem and a proof of uniqueness. Every figure replays recorded, checked evidence." action={{ label: 'Read the explanation', scrollTo: 'z3-variables' }} />
+    <PageHero trail="The board / how Z3 solves Queens" title="How Z3 solves Queens" deck="Nine short chapters on the mathematics a solver uses on the book’s 7×7 board: propositions, clauses, propagation, conflict-driven learning, a matching theorem and a proof of uniqueness. Figures distinguish recorded runs, checked encodings and labelled illustrations." action={{ label: 'Read the explanation', scrollTo: 'z3-variables' }} />
     <div className="reading-layout">
       <LocalToc items={CHAPTERS} />
       <main className="reading-column z3-part" id="main-content">

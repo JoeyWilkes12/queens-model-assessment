@@ -93,7 +93,7 @@ export function Chapter6({ ui, data }: ChapterProps) {
       <p>From clauses (A ∨ p) and (B ∨ ¬p) infer (A ∨ B). The variable p is the <em>pivot</em>; A ∨ B is the <em>resolvent</em>.</p>
       <Formula spoken="A or p, and B or not p, entail A or B.">(A ∨ p), (B ∨ ¬p) ⊢ (A ∨ B)</Formula>
     </Statement>
-    <p><dfn className="z3-term" id="z3-term-resolution">Resolution</dfn> is the whole of conflict analysis: each step cancels one literal that appears positively in one clause and negatively in the other.</p>
+    <p>Resolution is the whole of conflict analysis” | This overgeneralizes the reference kernel’s derivation to conflict analysis in full SAT/SMT solvers, which also selects explanations/cuts and may minimize clauses; theory explanations require theory reasoning. | “In this reference kernel, the learned clause is derived by resolution: each step removes a complementary pivot pair. Full solvers also choose explanations and stopping points, and may minimize the resulting clause.</p>
     {trace ? <ResolutionFigure trace={trace} /> : <Unavailable what="The resolution stepper" />}
     <h3>The derivation</h3>
     <Statement kind="Lemma" label="6.2 · soundness">
