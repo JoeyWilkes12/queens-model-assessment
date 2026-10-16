@@ -375,11 +375,13 @@ const totals = Object.values(coverage).reduce((total, group) => {
   for (const [key, value] of Object.entries(group)) total[key] = (total[key] || 0) + value;
   return total;
 }, {});
-const historicalTotals = Object.entries(coverage).filter(([study]) => !study.includes('subq')).reduce((total, [, group]) => {
+// Follow-up studies (SubQ, and the 16 October Jev and frontier panels) are excluded from the frozen historical corpus.
+const isFollowUp = study => study.includes('subq') || study.startsWith('2026-10-16-')
+const historicalTotals = Object.entries(coverage).filter(([study]) => !isFollowUp(study)).reduce((total, [, group]) => {
   for (const [key, value] of Object.entries(group)) total[key] = (total[key] || 0) + value;
   return total;
 }, {});
-await check('retained historical corpus eligibility remains unchanged when SubQ evidence is added', () => {
+await check('retained historical corpus eligibility remains unchanged when follow-up evidence is added', () => {
   assert.deepEqual(historicalTotals, { failures: 299, eligible: 142, placement: 130, unavailable: 12, complete: 46, partial: 84, ineligible: 157 });
   assert.equal(unavailableTypedRequests, 0);
 });
