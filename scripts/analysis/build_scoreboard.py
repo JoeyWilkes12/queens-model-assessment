@@ -120,7 +120,9 @@ def llm_panel():
                                                  'route': row['route'], 'boards': {}})
         entry['boards'][row['board_id']] = row.get('outcome', 'not_run')
     complete = all(o != 'not_run' for m in models.values() for o in m['boards'].values())
-    return {'status': 'complete' if complete else 'partial', 'study': summary['study'],
+    reruns = [{'model': DISPLAY[r['model']], 'size': r['size'], 'board_id': r['board_id'], 'outcome': r['outcome'], 'reason': r['reason'],
+               'receipt': f"{summary['study']}:{r['call_id']}_rerun-2026-10-16"} for r in summary.get('reruns', [])]
+    return {'status': 'complete' if complete else 'partial', 'study': summary['study'], 'reruns': reruns,
             'boards': [{'id': b, 'size': s} for b, s in sorted(boards.items(), key=lambda kv: (kv[1], kv[0]))],
             'models': sorted(models.values(), key=lambda m: m['name'])}
 

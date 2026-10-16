@@ -1,0 +1,54 @@
+{
+  "id": "gen-1792189141-HzzdpUzSAkVhmavx4nsM",
+  "object": "chat.completion",
+  "created": 1792189141,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-5-11\",\"columns_by_row\":[1,4,2,5,3]}",
+        "refusal": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "I'm mapping out the five regions on the grid, noting that region A only occupies column 1 and region E is confined to column 5 across rows 4-5, which gives me a strong starting constraint for placing queens one per region, row, and column.\n\nTrying the case where E sits at row5-col5 forces D into row4-col4, since D only has options in rows 4-5. That then pushes C into row3-col2, since rows 4 and 5 are already occupied by D and E.\n\nBut checking adjacency, row4-col4 and row5-col5 are diagonally touching, which violates the no-adjacent rule \u2014 so this branch fails. I'm now trying the alternative where E sits at row4-col5 instead, which leaves row5 open for D to pick either col3 or col4, and I need to work out where C fits among the remaining rows.\n\nTesting row2=col1 against row3c2 gives adjacent columns, which is invalid, so row2 must be col4 and row1 takes col1 instead. Checking all adjacency pairs across the final arrangement\u2014columns 1,4,2,5,3 for rows 1-5\u2014confirms no two consecutive rows share adjacent columns, so this assignment works.\n\n",
+            "format": "anthropic-claude-v1",
+            "index": 0,
+            "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1220,
+    "completion_tokens": 1504,
+    "total_tokens": 2724,
+    "cost": 0.0437,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0437,
+      "upstream_inference_prompt_cost": 0.0061,
+      "upstream_inference_completions_cost": 0.0376
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1469,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

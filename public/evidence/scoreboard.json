@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-16T22:43:32+00:00",
+ "generated_utc": "2026-10-16T23:57:21+00:00",
  "builder": "scripts/analysis/build_scoreboard.py",
  "llm": {
   "unit": "boards with a correct full placement",
@@ -113,8 +113,15 @@
     },
     "notes": [
      "7\u00d77: request timed out after 600 s with no answer; not retried.",
-     "Routed through Amazon Bedrock after the default route failed on 5\u00d75 (routing error, not scored)."
-    ]
+     "Routed through Amazon Bedrock after the default route failed on 5\u00d75 (routing error, not scored).",
+     "7\u00d77 re-run on 16 Oct with the identical request: strict; the chart keeps the original timeout as recorded."
+    ],
+    "rerun": {
+     "size": "7",
+     "outcome": "strict",
+     "date": "2026-10-16",
+     "receipt": "2026-10-16-one-shot-rerun:08_queens-7-medium_grok-4.6_bedrock_rerun-2026-10-16"
+    }
    },
    {
     "id": "anthropic/claude-opus-4.6",
@@ -396,9 +403,354 @@
    }
   ],
   "panel": {
-   "status": "running",
-   "boards": [],
-   "models": []
+   "status": "complete",
+   "study": "2026-10-16-frontier-image-panel",
+   "reruns": [
+    {
+     "model": "Gemini 3.1 Pro Preview",
+     "size": 7,
+     "board_id": "panel-7-46",
+     "outcome": "format_only",
+     "reason": "original HTTP 429 before any model answer",
+     "receipt": "2026-10-16-frontier-image-panel:092_panel-7-46_gemini-3.1-pro-preview_rerun-2026-10-16"
+    },
+    {
+     "model": "Gemini 3.1 Pro Preview",
+     "size": 9,
+     "board_id": "panel-9-34",
+     "outcome": "wrong",
+     "reason": "original HTTP 429 before any model answer",
+     "receipt": "2026-10-16-frontier-image-panel:093_panel-9-34_gemini-3.1-pro-preview_rerun-2026-10-16"
+    }
+   ],
+   "boards": [
+    {
+     "id": "panel-5-10",
+     "size": 5
+    },
+    {
+     "id": "panel-5-11",
+     "size": 5
+    },
+    {
+     "id": "panel-5-18",
+     "size": 5
+    },
+    {
+     "id": "panel-5-19",
+     "size": 5
+    },
+    {
+     "id": "panel-5-21",
+     "size": 5
+    },
+    {
+     "id": "panel-5-28",
+     "size": 5
+    },
+    {
+     "id": "panel-5-32",
+     "size": 5
+    },
+    {
+     "id": "panel-5-42",
+     "size": 5
+    },
+    {
+     "id": "panel-5-43",
+     "size": 5
+    },
+    {
+     "id": "panel-5-44",
+     "size": 5
+    },
+    {
+     "id": "panel-5-59",
+     "size": 5
+    },
+    {
+     "id": "panel-5-63",
+     "size": 5
+    },
+    {
+     "id": "panel-7-01",
+     "size": 7
+    },
+    {
+     "id": "panel-7-02",
+     "size": 7
+    },
+    {
+     "id": "panel-7-04",
+     "size": 7
+    },
+    {
+     "id": "panel-7-06",
+     "size": 7
+    },
+    {
+     "id": "panel-7-24",
+     "size": 7
+    },
+    {
+     "id": "panel-7-34",
+     "size": 7
+    },
+    {
+     "id": "panel-7-38",
+     "size": 7
+    },
+    {
+     "id": "panel-7-46",
+     "size": 7
+    },
+    {
+     "id": "panel-7-50",
+     "size": 7
+    },
+    {
+     "id": "panel-7-59",
+     "size": 7
+    },
+    {
+     "id": "panel-7-61",
+     "size": 7
+    },
+    {
+     "id": "panel-7-62",
+     "size": 7
+    },
+    {
+     "id": "panel-9-05",
+     "size": 9
+    },
+    {
+     "id": "panel-9-08",
+     "size": 9
+    },
+    {
+     "id": "panel-9-22",
+     "size": 9
+    },
+    {
+     "id": "panel-9-24",
+     "size": 9
+    },
+    {
+     "id": "panel-9-30",
+     "size": 9
+    },
+    {
+     "id": "panel-9-32",
+     "size": 9
+    },
+    {
+     "id": "panel-9-33",
+     "size": 9
+    },
+    {
+     "id": "panel-9-34",
+     "size": 9
+    },
+    {
+     "id": "panel-9-45",
+     "size": 9
+    },
+    {
+     "id": "panel-9-51",
+     "size": 9
+    },
+    {
+     "id": "panel-9-53",
+     "size": 9
+    },
+    {
+     "id": "panel-9-58",
+     "size": 9
+    }
+   ],
+   "models": [
+    {
+     "id": "anthropic/claude-opus-4.8",
+     "name": "Claude Opus 4.8",
+     "author": "Anthropic",
+     "logo": "assets/logos/anthropic.svg",
+     "route": "on_demand",
+     "boards": {
+      "panel-5-10": "strict",
+      "panel-7-01": "strict",
+      "panel-9-05": "strict",
+      "panel-5-11": "strict",
+      "panel-7-02": "format_only",
+      "panel-9-08": "strict",
+      "panel-5-18": "strict",
+      "panel-7-04": "strict",
+      "panel-9-22": "strict",
+      "panel-5-19": "strict",
+      "panel-7-06": "strict",
+      "panel-9-24": "format_only",
+      "panel-5-21": "strict",
+      "panel-7-24": "strict",
+      "panel-9-30": "strict",
+      "panel-5-28": "strict",
+      "panel-7-34": "strict",
+      "panel-9-32": "strict",
+      "panel-5-32": "strict",
+      "panel-7-38": "strict",
+      "panel-9-33": "format_only",
+      "panel-5-42": "strict",
+      "panel-7-46": "strict",
+      "panel-9-34": "strict",
+      "panel-5-43": "format_only",
+      "panel-7-50": "strict",
+      "panel-9-45": "format_only",
+      "panel-5-44": "strict",
+      "panel-7-59": "strict",
+      "panel-9-51": "format_only",
+      "panel-5-59": "strict",
+      "panel-7-61": "format_only",
+      "panel-9-53": "strict",
+      "panel-5-63": "strict",
+      "panel-7-62": "strict",
+      "panel-9-58": "format_only"
+     }
+    },
+    {
+     "id": "openai/gpt-5.6-sol",
+     "name": "GPT-5.6 Sol",
+     "author": "OpenAI",
+     "logo": "assets/logos/openai.svg",
+     "route": "batch",
+     "boards": {
+      "panel-5-10": "strict",
+      "panel-7-01": "strict",
+      "panel-9-05": "strict",
+      "panel-5-11": "strict",
+      "panel-7-02": "strict",
+      "panel-9-08": "strict",
+      "panel-5-18": "strict",
+      "panel-7-04": "strict",
+      "panel-9-22": "strict",
+      "panel-5-19": "strict",
+      "panel-7-06": "strict",
+      "panel-9-24": "strict",
+      "panel-5-21": "strict",
+      "panel-7-24": "strict",
+      "panel-9-30": "strict",
+      "panel-5-28": "strict",
+      "panel-7-34": "strict",
+      "panel-9-32": "strict",
+      "panel-5-32": "strict",
+      "panel-7-38": "strict",
+      "panel-9-33": "strict",
+      "panel-5-42": "strict",
+      "panel-7-46": "strict",
+      "panel-9-34": "strict",
+      "panel-5-43": "strict",
+      "panel-7-50": "strict",
+      "panel-9-45": "strict",
+      "panel-5-44": "strict",
+      "panel-7-59": "strict",
+      "panel-9-51": "strict",
+      "panel-5-59": "strict",
+      "panel-7-61": "strict",
+      "panel-9-53": "strict",
+      "panel-5-63": "strict",
+      "panel-7-62": "strict",
+      "panel-9-58": "strict"
+     }
+    },
+    {
+     "id": "google/gemini-3.1-pro-preview",
+     "name": "Gemini 3.1 Pro Preview",
+     "author": "Google",
+     "logo": "assets/logos/google-gemini.svg",
+     "route": "on_demand",
+     "boards": {
+      "panel-5-10": "strict",
+      "panel-7-01": "strict",
+      "panel-9-05": "format_only",
+      "panel-5-11": "strict",
+      "panel-7-02": "strict",
+      "panel-9-08": "strict",
+      "panel-5-18": "strict",
+      "panel-7-04": "strict",
+      "panel-9-22": "strict",
+      "panel-5-19": "strict",
+      "panel-7-06": "strict",
+      "panel-9-24": "format_only",
+      "panel-5-21": "strict",
+      "panel-7-24": "format_only",
+      "panel-9-30": "strict",
+      "panel-5-28": "strict",
+      "panel-7-34": "strict",
+      "panel-9-32": "strict",
+      "panel-5-32": "strict",
+      "panel-7-38": "format_only",
+      "panel-9-33": "strict",
+      "panel-5-42": "strict",
+      "panel-7-46": "no_answer",
+      "panel-9-34": "no_answer",
+      "panel-5-43": "strict",
+      "panel-7-50": "strict",
+      "panel-9-45": "strict",
+      "panel-5-44": "strict",
+      "panel-7-59": "strict",
+      "panel-9-51": "strict",
+      "panel-5-59": "strict",
+      "panel-7-61": "format_only",
+      "panel-9-53": "strict",
+      "panel-5-63": "strict",
+      "panel-7-62": "strict",
+      "panel-9-58": "strict"
+     }
+    },
+    {
+     "id": "x-ai/grok-4.6",
+     "name": "Grok 4.6",
+     "author": "xAI",
+     "logo": "assets/logos/xai.png",
+     "route": "on_demand",
+     "boards": {
+      "panel-5-10": "strict",
+      "panel-7-01": "strict",
+      "panel-9-05": "strict",
+      "panel-5-11": "strict",
+      "panel-7-02": "strict",
+      "panel-9-08": "strict",
+      "panel-5-18": "strict",
+      "panel-7-04": "strict",
+      "panel-9-22": "strict",
+      "panel-5-19": "strict",
+      "panel-7-06": "strict",
+      "panel-9-24": "truncated",
+      "panel-5-21": "strict",
+      "panel-7-24": "strict",
+      "panel-9-30": "strict",
+      "panel-5-28": "strict",
+      "panel-7-34": "strict",
+      "panel-9-32": "strict",
+      "panel-5-32": "strict",
+      "panel-7-38": "strict",
+      "panel-9-33": "strict",
+      "panel-5-42": "strict",
+      "panel-7-46": "strict",
+      "panel-9-34": "truncated",
+      "panel-5-43": "strict",
+      "panel-7-50": "strict",
+      "panel-9-45": "strict",
+      "panel-5-44": "strict",
+      "panel-7-59": "strict",
+      "panel-9-51": "strict",
+      "panel-5-59": "strict",
+      "panel-7-61": "strict",
+      "panel-9-53": "strict",
+      "panel-5-63": "strict",
+      "panel-7-62": "strict",
+      "panel-9-58": "strict"
+     }
+    }
+   ]
   }
  },
  "decision": {

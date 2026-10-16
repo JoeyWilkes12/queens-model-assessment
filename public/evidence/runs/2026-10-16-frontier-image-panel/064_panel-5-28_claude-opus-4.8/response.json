@@ -1,0 +1,54 @@
+{
+  "id": "gen-1792191129-LxdKmiOLpfd28d7rvmux",
+  "object": "chat.completion",
+  "created": 1792191129,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-5-28\",\"columns_by_row\":[1,4,2,5,3]}",
+        "refusal": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "Since D fixes row2 col4 and E fixes row5 col3, that forces C into row3 at either col2 or col3, since row2 is unavailable. A stays flexible between row1 col1 or col2. I'm working out how these constraints pin down the remaining cell assignments.\n\nTesting it out: C must take col2 (since col3 is taken by E), which forces A into col1, leaving row4 with col5. Checking the full sequence 1,4,2,5,3 against both column uniqueness and adjacency spacing confirms everything works out validly.\n\n",
+            "format": "anthropic-claude-v1",
+            "index": 0,
+            "signature": "EuoJCsQBCBIYAipA9mzmfYr7aHlYotLJagc1VIsYiW4hDHyCPD+ToxDYbii5BqUVbo8U1KtPir6xQIhLNafegeQH2xit1+aVJ8eC/zIPY2xhdWRlLW9wdXMtNC04OABCCHRoaW5raW5nWiQwZDk4M2YzZi00OWZhLTRhNDYtODI1NC1iMWJiMjQ5MWEyYTl6HnVwcm9mXzAxMUNmQUZ6MWpIUnhZVkhjaDRKVjY2dJoBEQoPY2xhdWRlLW9wdXMtNC04qAGj1crWBhIMwxfNSkWPZ1+3B9isGgzLhVHMHuTIV2iq21EiMGxEC7CZI1LOitTwCsT61XH4V0OZyGu4Cr0ldHRl71IaGC/Qsq5vDpQxn+8yPBUzqirSB9Y7mT+Q4h/NktCvBpklVf4RLjnGQaEKGI+QjgLjdmvRJCA2XRFArXvBK9RMbCRg9+mDXZcM0oSHh70OjVdYJtgZwnw//8mPTLeGatL8cFBPgJHmoAR2Ypz2bUzr0s3gAANGe508S/Qn7feBlqjfYxaXnv+2cHG7aUHmxVILuBAYe4TKxtfUJijqXwNE/hmqmDPFVuSszQKDtoXzidOh/ZYPxnIhi7Ghb4boAc213MjakHUyG4gBTwaWyRvdYGT3Uw9rQT5S0disk11Ffv4B4g+576UgQihC2ACs7oyQcO0tUlMFLTOV2w4we30HVd4+DYHYsjkLVlI5QOPb1v9UykgyGtX62a+dkaN4xa1YjiSQQJvCMOgGLNHnrrpy4eLxQrzr7mbkWaMvdTIDPQPESiWdFeAFvGIVS8NxaH+7eGJJYUE8bBqYcY3WaCfFvXG12b0yH3kMTRHAP6FnbDsq8mcOwLZ2Hne+sNjFqcPeyDWZaz7JMbjeNeYCtEFZHno/IDLGc/F32fdslOyvawp/PtReLxtkuR18k0AwIcbY9NvOIwdZ4SOW6WVs8gvipx2tR36yFqUwzHHo5RyO50/STXFur2Os2GMa5Wza1spgVw9U8M63TXIkcWGpbZVWA2zBatqV8Vic1/FsbZCrLqrUFMs2csvpU5xkWd424ThYMmg1XVqxYe7CeSvmBPMVLJaj87KBo2q5+4KeHAT0wEF6RWXZut5gfTepZy/Arwljf99vt1hvhEDbhPpWi/nF5goqHiOKcoPIxrxIypOybK0tEIASj+2rK4jOKvMUELwR4FXncD+aPkY9yHZhbX2yM7Ig0ZnmsDdAbkceDGmIn/y38Ufw6Qr8LQ5HWydrn6iuojkWpfIJRypitXPO+CFO+PHnbuS/leRhBbkyuNxOHqukOoyNUlLQyiXijC7iUIpxY7MXHtVsmvQ5zHeT3WnyiGQ8ViEJa3J1CR5295Kwhu5BvUStStjtQUx2owWxv5qCykTObiiYUdDrB1Hs+Ptol8WsqXN0mcR1XXjEjipZ7dHGvftWZ+qDPe4A+62gFGvxhY0NlSQVPZfAUoV3ImuFq3ArwF7rU/2K8GSwVxYjDLdyvU6V9GdKhFlE/mki/yGoddbQ+m0nUHm9s+gl2vDg1Dabu26okSS5jjC5FXgZ44WgAwxPOPj8saS2ovKf9dgZ8N511TDJSjOoRQxOgYoK0YtyeLpO8zzoolVHXtVdO7WxxTr1sVZS8WXVBkrqQR7hrdbVvBSCfP4yqmiIHplYlg9vSMuHOoSdOHDzW36wVkdar/tWChgB.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1220,
+    "completion_tokens": 579,
+    "total_tokens": 1799,
+    "cost": 0.020575,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.020575,
+      "upstream_inference_prompt_cost": 0.0061,
+      "upstream_inference_completions_cost": 0.014475
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 544,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

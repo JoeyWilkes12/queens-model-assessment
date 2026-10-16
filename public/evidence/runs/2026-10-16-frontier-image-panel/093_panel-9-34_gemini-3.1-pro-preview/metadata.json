@@ -1,0 +1,17 @@
+{
+  "call_id": "093_panel-9-34_gemini-3.1-pro-preview",
+  "board_id": "panel-9-34",
+  "size": 9,
+  "model": "google/gemini-3.1-pro-preview",
+  "route": "on_demand",
+  "completed_utc": "2026-10-16T23:10:16.075099+00:00",
+  "http_status": 429,
+  "elapsed_seconds": 0.873908209000092,
+  "returned_model": null,
+  "provider": null,
+  "generation_id": null,
+  "finish_reason": null,
+  "usage": null,
+  "cost_usd": null,
+  "response_sha256": "87269a9738289814df2c56768f3f4904cd5b6e723b729e7d48375e06d358a2b7"
+}

@@ -242,7 +242,7 @@ Experiments 1–3 cost nothing and their core results are already in this review
 | 7×7 | 3/64 | 24/64 | 0.9 | 3 vs 0 (0.50) |
 | 9×9 | 0/64 | 14/64 | 0.1 | 0 vs 0 (1.0) |
 
-It cost about $0.08 in estimated SubQ usage over 1,337 calls, with no provider failures. The panel confirms the original nine-board pattern with real intervals. SubQ beats random choice, but the greedy rule solves four times as many boards. Experiments 5–8 remain proposals.
+It cost about $0.08 in estimated SubQ usage over 1,337 calls, with no provider failures. **Experiment 8 followed on 16 October** ([report](new-board-panels-report.md)): Jev 1.13 on the same 192 boards solved 21 (SubQ 19, mostly different boards, none at 9×9), and four frontier models on 36 of them solved 36, 36, 34 and 34 from images in one shot. The panel confirms the original nine-board pattern with real intervals. SubQ beats random choice, but the greedy rule solves four times as many boards. Experiments 5–8 remain proposals.
 
 ## 9. Preregistration checklist
 

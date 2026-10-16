@@ -354,6 +354,18 @@ def batch_poll(args):
 
 # ---------------------------------------------------------------- audit
 
+def classify(meta, strict, diag):
+    if strict.get("correct") and strict.get("format_valid"):
+        return "strict"
+    if diag.get("rule_valid_after_extraction"):
+        return "format_only"
+    if meta.get("http_status") != 200:
+        return "no_answer"  # request failed before any model answer (e.g. HTTP 429, timeout)
+    if meta.get("finish_reason") == "length":
+        return "truncated"  # spent the 12,288-token budget without a final answer
+    return "wrong"
+
+
 def audit(args):
     manifest = read(OUT / "manifest.json")
     rows = []
@@ -365,16 +377,25 @@ def audit(args):
         meta = read(meta_path)
         strict = read(meta_path.parent / "grade.json")
         diag = read(meta_path.parent / "diagnostic.json")
-        outcome = ("strict" if strict.get("correct") and strict.get("format_valid") else
-                   "format_only" if diag.get("rule_valid_after_extraction") else
-                   "no_answer" if meta["http_status"] != 200 else "wrong")
+        outcome = classify(meta, strict, diag)
         rows.append({**call, "state": "recorded", "outcome": outcome, "cost_usd": meta.get("cost_usd"),
                      "elapsed_seconds": meta.get("elapsed_seconds"), "returned_model": meta.get("returned_model"),
                      "provider": meta.get("provider"), "finish_reason": meta.get("finish_reason")})
     table = collections.defaultdict(lambda: collections.Counter())
     for r in rows:
         table[(r["short"], r["size"])][r.get("outcome", r["state"])] += 1
-    summary = {"study": STUDY, "updated_utc": utc(), "rows": rows,
+    reruns = []
+    for directory in sorted((OUT / "reruns").glob("*")) if (OUT / "reruns").exists() else []:
+        meta = read(directory / "metadata.json")
+        reruns.append({"call_id": directory.name, "model": meta["model"], "size": meta["size"], "board_id": meta["board_id"],
+                       "reason": read(directory / "started.json").get("reason"), "cost_usd": meta.get("cost_usd"),
+                       "outcome": classify(meta, read(directory / "grade.json"), read(directory / "diagnostic.json"))})
+    summary = {"study": STUDY, "updated_utc": utc(), "rows": rows, "reruns": reruns,
+               "outcome_definitions": {"strict": "correct placement in the exact JSON-only format",
+                                       "format_only": "correct placement found by the post-hoc single-object extraction, format broken",
+                                       "truncated": "HTTP 200 but the 12,288-token budget ran out with no final answer",
+                                       "wrong": "an answer that is not a correct placement",
+                                       "no_answer": "the request failed before any model answer (HTTP error or timeout); preregistered result keeps it"},
                "by_model_size": [{"model": k[0], "size": k[1], **v} for k, v in sorted(table.items())],
                "cost_usd_reported": round(sum(r.get("cost_usd") or 0 for r in rows), 6),
                "campaign_spend_usd_from_key": round(campaign_spend(), 6)}

@@ -87,6 +87,18 @@ def main():
                                           read(directory / "metadata.json"), read(directory / "grade.json"),
                                           "one-shot image placement (new-board panel)"))
         added += 1
+    for directory in sorted((PANEL / "reruns").glob("*")) if (PANEL / "reruns").exists() else []:
+        call = next(c for c in plan["schedule"] if c["call_id"] == directory.name)
+        png = (PANEL / "images" / f"{call['board_id']}.png").read_bytes()
+        run_id = directory.name + "_rerun-2026-10-16"
+        dest = PUBLIC / "runs" / STUDY / run_id
+        save(dest / "request.json", sanitized(read(PANEL / "requests" / f"{call['call_id']}.json"), png))
+        for name in ("response.json", "metadata.json", "grade.json", "diagnostic.json", "started.json"):
+            shutil.copyfile(directory / name, dest / name)
+        manifest["records"].append(record(STUDY, run_id, call["board_id"], call["size"], call["model"],
+                                          read(directory / "metadata.json"), read(directory / "grade.json"),
+                                          "dated re-run of a panel request that failed before any model answer (HTTP 429)"))
+        added += 1
     manifest["studies"].append(STUDY)
     for directory in sorted(RERUN.glob("*")) if RERUN.exists() else []:
         if not (directory / "metadata.json").exists():
@@ -112,7 +124,7 @@ def main():
     for name in ("submission.json", "settled.json"):
         path = PANEL / "batches/gpt-5.6-sol" / name
         if path.exists():
-            save(PUBLIC / "frontier-image-panel/batch-gpt-5.6-sol-" + name, read(path))
+            save(PUBLIC / "frontier-image-panel" / ("batch-gpt-5.6-sol-" + name), read(path))
     indexes = {key: collections.defaultdict(list) for key in manifest["index"]}
     for item in manifest["records"]:
         for key, values in indexes.items():

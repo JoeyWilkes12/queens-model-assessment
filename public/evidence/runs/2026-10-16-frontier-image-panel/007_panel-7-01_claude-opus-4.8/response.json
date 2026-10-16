@@ -1,0 +1,54 @@
+{
+  "id": "gen-1792188956-lXhGkCu7eNh0AXENbrIL",
+  "object": "chat.completion",
+  "created": 1792188956,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-7-01\",\"columns_by_row\":[6,3,1,5,7,4,2]}",
+        "refusal": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "I'm mapping out the grid regions row by row, tracking which letter occupies each column across rows 1 through 5 to identify the boundaries of each labeled area.\n\nRegion G only appears at row6, col4, so that queen placement is forced. Since region B only exists in row2's first three columns, the B queen must be in row2, and I'm now working through the remaining rows and columns to figure out where regions A, C, D, E, and F fall, applying the no-touching constraint between adjacent columns.\n\nRow5 must be E with column 7. For row7, E and D are taken, leaving F with column options narrowed to {1,2} after excluding adjacency conflicts with row6. Now I'm tracking remaining column assignments for rows 1, 2, 3, 4, and 7, with columns 4 and 7 already used, leaving {1,2,3,5,6} to distribute.\n\nWorking through it, rows 3 and 7 split columns 1 and 2 between them, forcing row2 to take column 3. That leaves rows 1 and 4 to split columns 5 and 6 - checking adjacency against row5's column 7, row4 can't take column 6 since that's too close, so row4 gets 5 and row1 gets 6.\n\nChecking remaining adjacencies, row2's column 3 against row3's possible columns forces row3 to column 1 rather than 2, which then fixes row7 to column 2 - and all the pairwise column differences between adjacent rows check out.\n\n",
+            "format": "anthropic-claude-v1",
+            "index": 0,
+            "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1220,
+    "completion_tokens": 1933,
+    "total_tokens": 3153,
+    "cost": 0.054425,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.054425,
+      "upstream_inference_prompt_cost": 0.0061,
+      "upstream_inference_completions_cost": 0.048325
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1894,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

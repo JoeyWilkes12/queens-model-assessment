@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import './scoreboard.css'
 
-type Outcome = 'strict' | 'format_only' | 'wrong' | 'no_answer'
+type Outcome = 'strict' | 'format_only' | 'wrong' | 'no_answer' | 'truncated'
 type LlmModel = { id: string; name: string; author: string; logo: string; cohort: 'frontier' | 'earlier'; study: string; boards: Record<string, { issued: number; outcome: Outcome; receipt: string }>; notes: string[]; rerun?: { size: string; outcome: Outcome; date: string; receipt: string } }
-type LlmPanel = { status: string; study?: string; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; boards: Record<string, Outcome | 'not_run'> }[] }
+type LlmPanel = { status: string; study?: string; reruns?: { model: string; size: number; board_id: string; outcome: Outcome; reason: string; receipt: string }[]; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; boards: Record<string, Outcome | 'not_run'> }[] }
 type ModeCounts = { raw: [number, number]; local: [number, number] }
 type DecisionModel = { name: string; author: string; logo: string; study: string; per_board: Record<string, ModeCounts>; calls: number; attempts_per_board_mode: number }
 type DecisionSet = {
@@ -123,9 +123,10 @@ function llmPanelRows(panel: LlmPanel, tab: TabKey): Row[] {
     const strict = outcomes.filter(value => value === 'strict').length
     const formatOnly = outcomes.filter(value => value === 'format_only').length
     const noAnswer = outcomes.filter(value => value === 'no_answer').length
+    const truncated = outcomes.filter(value => value === 'truncated').length
     const notRun = outcomes.filter(value => value === 'not_run').length
     const issued = ids.length - notRun
-    const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', noAnswer ? `${noAnswer} no answer` : '', notRun ? `${notRun} not yet run` : ''].filter(Boolean)
+    const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', truncated ? `${truncated} ran out of tokens` : '', noAnswer ? `${noAnswer} request failed before an answer` : '', notRun ? `${notRun} not yet run` : ''].filter(Boolean)
     return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: ids.length,
       label: `${strict + formatOnly}/${issued}`, kind: 'model' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, 16 Oct panel.` }
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
@@ -211,6 +212,8 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <li>36 new boards (12 per size, 3 from each difficulty stratum of the 192-board panel), so every board also has Jev and SubQ results. Images rendered with the September renderer, byte-identical in style; September prompt and settings unchanged.</li>
           <li>GPT-5.6 Sol ran through OpenRouter's Batch API at the September price, with the image by public URL. Claude Opus 4.8, Gemini 3.1 Pro Preview and Grok 4.6 ran on demand with the September provider blocks and inline images. One request per model and board, no retries.</li>
           {panel?.status !== 'complete' && <li><strong>Still running:</strong> bars show the boards recorded so far; the denominator in each label counts only completed requests.</li>}
+          <li>Two Grok 4.6 9×9 answers ran out of the 12,288-token budget without a final answer, the same limit as in September; they count as unsolved.</li>
+          {(panel?.reruns ?? []).length > 0 && <li><strong>Request failures and re-runs:</strong> {panel?.reruns?.map(r => `${r.model}'s ${r.size}×${r.size} request (${r.board_id}) failed with HTTP 429 before any answer`).join('; ')}. The chart keeps the preregistered result (unsolved). Re-sent once, unchanged, on 16 Oct: {panel?.reruns?.map((r, i) => <span key={r.receipt}>{i ? '; ' : ''}<a href={`#/evidence-atlas/${r.receipt}`}>{r.board_id}</a> {r.outcome === 'format_only' ? 'correct, off-format' : r.outcome === 'strict' ? 'correct' : r.outcome.replace('_', ' ')}</span>)}.</li>}
           <li><a href="#/decision-models">Decision models</a> · <a href={evidenceUrl('evidence/frontier-image-panel/summary.json')} download>Panel results (JSON)</a></li>
         </ul> : <ul>
           <li>One request per model and board, the same image and prompt, no tools, no repair turns, no retries.</li>

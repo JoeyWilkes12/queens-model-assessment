@@ -1,0 +1,54 @@
+{
+  "id": "gen-1792193606-TE1fOGaOfw56s54nTfRp",
+  "object": "chat.completion",
+  "created": 1792193606,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-5-59\",\"columns_by_row\":[5,3,1,4,2]}",
+        "refusal": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "I'm mapping out the five regions on the grid, noting which cells belong to each labeled area, and now checking that region E, containing just one cell, must be its own isolated group.\n\nWith E fixed at row4 col4, C must occupy column5 since that's its only column, which restricts it to rows 1, 2, 3, or 5. I'm working through row-by-row elimination based on diagonal adjacency rules, narrowing row3 and row5 to columns 1 and 2, which pushes rows1 and 2 to take columns 3 and 5, meaning the C queen in column5 lands in either row1 or row2.\n\nSince row5's available columns (1,2) both belong to region D, row5 must be D, forcing row3 to take region A at column1, and row5 settles at column2. Checking the diagonal distances confirms no conflicts, and now I'm figuring out how rows1 and 2 split between the remaining columns.\n\nTrying row1=column5 (C) and row2=column3 (B) satisfies both regions with distinct columns across all rows (5,3,1,4,2) and no adjacent-diagonal conflicts so far.\n\n",
+            "format": "anthropic-claude-v1",
+            "index": 0,
+            "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1220,
+    "completion_tokens": 1220,
+    "total_tokens": 2440,
+    "cost": 0.0366,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0366,
+      "upstream_inference_prompt_cost": 0.0061,
+      "upstream_inference_completions_cost": 0.0305
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1185,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
