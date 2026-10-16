@@ -5,7 +5,7 @@
  "z3Version":"Z3 4.16.0.0",
  "pythonVersion":"3.12.12",
  "platform":"macOS-15.7.4",
- "generatedAt":"2026-10-15T21:13:13+00:00",
+ "generatedAt":"2026-10-16T02:27:51+00:00",
  "measureScriptSha256":"520634d9ab8627978de4ca947e6f1147e1028b16dcd20ac40670dd5d696b3ada",
  "notes":["Each board/configuration ran in two separate processes: verbose=0 for the statistics shown, verbose=10 for the route.","A missing counter means the receipt does not report it; it is not a measured zero.","Counters from different engines are not comparable and are never subtracted.","The QF_FD solver keeps one statistics object across checks: its incremental counters include the first check (countersCumulativeWithFirst).","Elapsed seconds are wall-clock times on one machine and are not a benchmark."],
  "boards":[
@@ -42,7 +42,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.004879,
+       "elapsedSeconds":0.005612,
        "statistics":{
         "solve-eqs-steps":4,
         "solve-eqs-elim-vars":4,
@@ -60,7 +60,7 @@
         "rlimit count":12285,
         "max memory":26.27,
         "memory":18.05,
-        "time":0.004
+        "time":0.005
        },
        "reasonUnknown":null,
        "engine":{
@@ -106,7 +106,7 @@
        "query":"incremental-blocked",
        "label":"Same solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.001973,
+       "elapsedSeconds":0.002916,
        "statistics":{
         "conflicts":14,
         "decisions":18,
@@ -133,7 +133,7 @@
         "rlimit count":17964,
         "max memory":26.27,
         "memory":18.34,
-        "time":0.001
+        "time":0.002
        },
        "reasonUnknown":null,
        "engine":{
@@ -165,7 +165,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.001759,
+       "elapsedSeconds":0.001894,
        "statistics":{
         "solve-eqs-steps":4,
         "solve-eqs-elim-vars":4,
@@ -249,7 +249,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.002719,
+       "elapsedSeconds":0.00286,
        "statistics":{
         "sat mk clause 2ary":131,
         "sat mk clause nary":300,
@@ -300,7 +300,7 @@
        "query":"incremental-blocked",
        "label":"Same solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":5.3e-05,
+       "elapsedSeconds":5.5e-05,
        "statistics":{
         "sat mk clause 2ary":133,
         "sat mk clause nary":301,
@@ -338,7 +338,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.000797,
+       "elapsedSeconds":0.000799,
        "statistics":{
         "sat mk clause 2ary":132,
         "sat mk clause nary":302,
@@ -408,7 +408,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.000321,
+       "elapsedSeconds":0.0003,
        "statistics":{
         "pb-compile-card":14,
         "pb-aux-variables":14,
@@ -491,7 +491,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.000212,
+       "elapsedSeconds":0.0002,
        "statistics":{
         "pb-compile-card":14,
         "pb-aux-variables":14,
@@ -572,7 +572,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.003502,
+       "elapsedSeconds":0.003605,
        "statistics":{
         "solve-eqs-steps":27,
         "solve-eqs-elim-vars":27,
@@ -635,7 +635,7 @@
        "query":"incremental-blocked",
        "label":"Same solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.005169,
+       "elapsedSeconds":0.005426,
        "statistics":{
         "conflicts":96,
         "decisions":266,
@@ -694,7 +694,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.002811,
+       "elapsedSeconds":0.003047,
        "statistics":{
         "solve-eqs-steps":27,
         "solve-eqs-elim-vars":27,
@@ -711,7 +711,7 @@
         "rlimit count":91065,
         "max memory":28.49,
         "memory":20.22,
-        "time":0.002
+        "time":0.003
        },
        "reasonUnknown":null,
        "engine":{
@@ -776,7 +776,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.001674,
+       "elapsedSeconds":0.001635,
        "statistics":{
         "sat mk clause 2ary":293,
         "sat mk clause nary":940,
@@ -869,7 +869,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.001434,
+       "elapsedSeconds":0.001417,
        "statistics":{
         "sat mk clause 2ary":302,
         "sat mk clause nary":949,
@@ -941,7 +941,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.00104,
+       "elapsedSeconds":0.001008,
        "statistics":{
         "pb-compile-card":21,
         "pb-aux-variables":21,
@@ -1035,7 +1035,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.000906,
+       "elapsedSeconds":0.000862,
        "statistics":{
         "pb-compile-card":21,
         "pb-aux-variables":21,
@@ -1125,7 +1125,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.003161,
+       "elapsedSeconds":0.002819,
        "statistics":{
         "solve-eqs-steps":25,
         "solve-eqs-elim-vars":25,
@@ -1133,7 +1133,7 @@
         "rlimit count":44607,
         "max memory":18.32,
         "memory":18.32,
-        "time":0.003
+        "time":0.002
        },
        "reasonUnknown":null,
        "engine":{
@@ -1170,7 +1170,7 @@
        "query":"incremental-blocked",
        "label":"Same solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.006349,
+       "elapsedSeconds":0.006402,
        "statistics":{
         "conflicts":113,
         "decisions":382,
@@ -1230,7 +1230,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.002365,
+       "elapsedSeconds":0.002356,
        "statistics":{
         "solve-eqs-steps":25,
         "solve-eqs-elim-vars":25,
@@ -1290,7 +1290,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.003029,
+       "elapsedSeconds":0.003308,
        "statistics":{
         "sat mk clause 2ary":304,
         "sat mk clause nary":1168,
@@ -1306,7 +1306,7 @@
         "rlimit count":39666,
         "max memory":17.69,
         "memory":17.69,
-        "time":0.002
+        "time":0.003
        },
        "reasonUnknown":null,
        "engine":{
@@ -1337,7 +1337,7 @@
        "query":"incremental-blocked",
        "label":"Same solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.000234,
+       "elapsedSeconds":0.000224,
        "statistics":{
         "sat mk clause 2ary":344,
         "sat mk clause nary":1184,
@@ -1382,7 +1382,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.003104,
+       "elapsedSeconds":0.002445,
        "statistics":{
         "sat mk clause 2ary":346,
         "sat mk clause nary":1193,
@@ -1402,7 +1402,7 @@
         "rlimit count":86247,
         "max memory":18.52,
         "memory":18.52,
-        "time":0.003
+        "time":0.002
        },
        "reasonUnknown":null,
        "engine":{
@@ -1454,7 +1454,7 @@
        "query":"first",
        "label":"First check",
        "result":"sat",
-       "elapsedSeconds":0.001372,
+       "elapsedSeconds":0.00124,
        "statistics":{
         "pb-compile-card":24,
         "pb-aux-variables":24,
@@ -1501,7 +1501,7 @@
        "query":"incremental-blocked",
        "label":"Same solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":1.6e-05,
+       "elapsedSeconds":2.2e-05,
        "statistics":{
         "pb-compile-card":24,
         "pb-aux-variables":24,
@@ -1533,7 +1533,7 @@
        "query":"fresh-blocked",
        "label":"Fresh solver + blocking clause",
        "result":"unsat",
-       "elapsedSeconds":0.001005,
+       "elapsedSeconds":0.001018,
        "statistics":{
         "pb-compile-card":24,
         "pb-aux-variables":24,

@@ -17,7 +17,7 @@
 
 /* Inline mathematics */
 .z3-lit { white-space: nowrap; font-family: var(--display-font); font-style: italic; color: var(--text-primary); }
-.z3-lit sub, .z3-math sub, .z3-part p sub, .z3-truth-tile sub { font-size: .7em; line-height: 0; vertical-align: -.3em; font-style: normal; }
+.z3-part sub { font-size: .7em; line-height: 0; vertical-align: -.3em; font-style: normal; }
 .z3-part sup { font-size: .7em; line-height: 0; }
 .z3-clause { font-family: var(--display-font); }
 .z3-clause-lit.is-struck .z3-lit { text-decoration: line-through; text-decoration-color: var(--coral-500); text-decoration-thickness: 2px; color: var(--text-muted); }
@@ -86,8 +86,8 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 .z3-fineprint, .z3-part .z3-fineprint { margin: 8px 0 0; color: var(--text-muted); font-size: .76rem; line-height: 1.5; }
 .z3-unavailable { padding: 14px 16px; border: 1px dashed var(--gold-400); font-size: .85rem; }
 .z3-hint { color: var(--text-muted); font-size: .78rem; }
-@container (min-width: 600px) {
-  .z3-figure-body { grid-template-columns: minmax(280px, 1.05fr) minmax(0, 1fr); }
+@container (min-width: 560px) {
+  .z3-figure-body { grid-template-columns: minmax(260px, 1fr) minmax(0, 1fr); }
   .z3-figure--inset .z3-figure-body { grid-template-columns: minmax(200px, .8fr) minmax(0, 1fr); }
 }
 
@@ -102,8 +102,8 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 .z3-segmented button:last-child { border-right: 0; }
 .z3-segmented button[aria-checked='true'] { background: var(--navy-950); color: var(--paper-0); }
 :root[data-theme='dark'] .z3-segmented button[aria-checked='true'] { background: var(--mint-300); color: var(--navy-950); }
-.z3-select { display: inline-flex; align-items: center; gap: 8px; color: var(--text-primary); font-size: .82rem; font-weight: 700; }
-.z3-select select { min-height: 44px; max-width: 100%; padding: 6px 8px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); }
+.z3-select { display: inline-flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; color: var(--text-primary); font-size: .82rem; font-weight: 700; }
+.z3-select select { flex: 1 1 auto; min-width: 0; min-height: 44px; max-width: 100%; padding: 6px 8px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); }
 .z3-toggle { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--text-primary); font-size: .85rem; font-weight: 600; cursor: pointer; }
 .z3-toggle input, .z3-chips input, .z3-cut input { width: 18px; height: 18px; accent-color: var(--mint-700); }
 .z3-board-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 10px; }
@@ -246,7 +246,7 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 
 /* Chapter 4: CDCL player */
 .z3-bookmarks { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
-.z3-bookmarks button { min-height: 40px; padding: 6px 10px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .76rem; font-weight: 700; }
+.z3-bookmarks button { min-height: 44px; padding: 6px 10px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .76rem; font-weight: 700; }
 .z3-bookmarks button[aria-current='step'] { border-color: var(--coral-500); box-shadow: inset 0 0 0 1px var(--coral-500); }
 .z3-bookmarks button:disabled { color: var(--text-muted); }
 .z3-gate { margin-top: 12px; padding: 12px; border: 1px dashed var(--gold-400); }
@@ -256,7 +256,7 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 .z3-level.is-current { background: color-mix(in srgb, var(--mint-300) 14%, transparent); }
 .z3-level-tag { padding-top: 6px; color: var(--text-primary); font-family: var(--mono-font); font-size: .66rem; font-weight: 700; text-transform: uppercase; }
 .z3-level-trail { display: flex; flex-wrap: wrap; gap: 3px; margin: 0; padding: 0; list-style: none; }
-.z3-chip { display: inline-flex; align-items: center; gap: 3px; min-height: 32px; min-width: 40px; padding: 2px 6px; border: 1px solid var(--border-subtle); border-radius: 0; background: var(--surface-raised); font-size: .82rem; }
+.z3-chip { display: inline-flex; align-items: center; justify-content: center; gap: 3px; min-height: 44px; min-width: 44px; padding: 2px 6px; border: 1px solid var(--border-subtle); border-radius: 0; background: var(--surface-raised); font-size: .82rem; }
 .z3-chip.is-decision { border-color: var(--navy-950); background: var(--navy-950); }
 .z3-chip.is-decision .z3-lit { color: var(--paper-0); }
 .z3-chip-d { color: var(--gold-400); font-family: var(--mono-font); font-size: .62rem; font-weight: 700; }
@@ -294,7 +294,7 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 .z3-cut { margin: 0 0 10px; padding: 0; border: 0; }
 .z3-cut legend { margin-bottom: 6px; color: var(--text-primary); font-size: .84rem; font-weight: 700; }
 .z3-cut-options { display: flex; flex-wrap: wrap; gap: 4px; }
-.z3-cut-options label { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 8px; border: 1px solid var(--border-subtle); font-size: .84rem; cursor: pointer; }
+.z3-cut-options label { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 8px; border: 1px solid var(--border-subtle); font-size: .84rem; cursor: pointer; }
 .z3-cut-options label.is-on { border-color: var(--gold-400); box-shadow: inset 0 0 0 1px var(--gold-400); }
 .z3-cut-result { padding: 10px 12px; border-left: 4px solid var(--border-strong); background: var(--surface-page); }
 .z3-cut-result.is-ok { border-left-color: var(--mint-700); }
@@ -340,7 +340,7 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 .z3-proof-box { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; margin-right: 6px; border: 2px solid var(--text-primary); }
 .z3-proof-steps { margin: 4px 0 4px 6px; padding-left: 1.2rem; border-left: 1px solid var(--border-strong); }
 .z3-proof-steps li { margin: 3px 0; overflow-wrap: anywhere; }
-.z3-proof-node > summary { min-height: 36px; padding: 6px 0; cursor: pointer; }
+.z3-proof-node > summary { min-height: 44px; padding: 10px 0; cursor: pointer; }
 .z3-part .z3-proof-leaf, .z3-part .z3-proof-result { margin: 2px 0; font-size: .84rem; }
 .z3-leaf-tag { padding: 0 4px; border: 1px solid var(--border-subtle); color: var(--text-muted); font-family: var(--mono-font); font-size: .6rem; text-transform: uppercase; }
 
@@ -366,11 +366,11 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 .z3-phases li.is-on { border-style: solid; border-color: var(--mint-700); background: color-mix(in srgb, var(--mint-300) 30%, transparent); }
 .z3-phases li.is-on strong, .z3-phases li.is-on span { color: var(--text-primary); }
 .z3-route { display: grid; gap: 2px; margin: 6px 0 12px; padding: 0; list-style: none; counter-reset: z3route; }
-.z3-route li { display: grid; grid-template-columns: 1.8rem 6.6rem minmax(0, 1fr); align-items: baseline; gap: 2px 8px; padding: 4px 6px; border-left: 3px solid var(--border-strong); font-size: .8rem; counter-increment: z3route; }
-.z3-route li::before { content: counter(z3route); color: var(--text-muted); font-family: var(--mono-font); font-size: .66rem; }
-.z3-route-phase { color: var(--text-muted); font-family: var(--mono-font); font-size: .6rem; text-transform: uppercase; }
+.z3-route li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; padding: 3px 6px; border-left: 3px solid var(--border-strong); font-size: .8rem; counter-increment: z3route; }
+.z3-route li::before { content: counter(z3route); min-width: 1.3rem; color: var(--text-muted); font-family: var(--mono-font); font-size: .66rem; }
+.z3-route-phase { min-width: 7.2rem; color: var(--text-muted); font-family: var(--mono-font); font-size: .6rem; text-transform: uppercase; }
 .z3-route code { color: var(--text-primary); font-size: .78rem; overflow-wrap: anywhere; }
-.z3-route-count, .z3-route-metric { grid-column: 3; color: var(--text-muted); font-family: var(--mono-font); font-size: .66rem; }
+.z3-route-count, .z3-route-metric { color: var(--text-muted); font-family: var(--mono-font); font-size: .66rem; }
 .z3-route-simplify { border-left-color: #6f8fb3 !important; }
 .z3-route-cardinality { border-left-color: var(--gold-400) !important; }
 .z3-route-bit-level { border-left-color: #8e9cff !important; }
@@ -398,8 +398,11 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 
 /* Phones: one reading column, the board fitted to width, and the transport
    pinned to the bottom while its figure is on screen. */
+@media (max-width: 780px) {
+  .z3-part .reading-section, .z3-part .z3-figure { scroll-margin-top: 72px; }
+}
 @media (max-width: 720px) {
-  .z3-figure--player .z3-figure-body { display: flex; flex-direction: column; gap: 14px; }
+  .z3-figure--player .z3-figure-body { display: flex; flex-direction: column; align-items: stretch; gap: 14px; }
   .z3-figure--player .z3-stage { display: contents; }
   .z3-figure--player .z3-transport-dock { order: 10; position: sticky; bottom: 0; z-index: 6; margin: 0 calc(-1 * var(--z3-pad)) calc(-1 * var(--z3-pad)); padding: 8px var(--z3-pad); border-top: 1px solid var(--border-strong); background: color-mix(in srgb, var(--surface-raised) 95%, transparent); backdrop-filter: blur(6px); }
   .z3-receipt-strip { grid-template-columns: minmax(0, 1fr); }
@@ -410,9 +413,6 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 @media (max-width: 460px) {
   .z3-figure { margin-inline: -22px; border-inline: 0; --z3-pad: 10px; }
   .z3-board { grid-template-columns: 1rem repeat(var(--n), minmax(0, 1fr)); }
-  .z3-route li { grid-template-columns: 1.4rem minmax(0, 1fr); }
-  .z3-route-phase { grid-column: 2; }
-  .z3-route code, .z3-route-count, .z3-route-metric { grid-column: 2; }
   .z3-lanes { grid-template-columns: minmax(0, 1fr); }
   .z3-transport { grid-template-columns: 44px 48px 44px minmax(0, 1fr) auto; gap: 4px; }
 }

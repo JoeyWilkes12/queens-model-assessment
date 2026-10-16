@@ -77,6 +77,15 @@ Red crowns and rings mark differences from the unique reference; red cell outlin
 
 Identified evaluator references are a separate versioned registry derived and independently verified from public partitions after evaluation. They are not imported private answer files, returned model answers, repaired responses or changed grades. Some candidate menus may already have included a correct layout as an unidentified option. Publicly identified solutions make these boards unsuitable as secret future benchmarks. Each eligible receipt exposes its written partition, binding/reference provenance, and unchanged raw evidence for inspection.
 
+## Solver teaching part
+
+`#/how-z3-solves-queens` (source in `src/z3/`, lazy-loaded) teaches the mathematics a solver uses on the book's 7×7 board. Its conventions extend, not replace, the field-guide identity:
+
+- Every figure carries one engine caption. **Reference CDCL execution · pairwise encoding** marks the book's own checked kernel; **Recorded Z3 execution · Z3 4.16.0 · configuration** marks real Z3 receipts; new browser runs and illustrations say so. The reference trail is never presented as Z3's.
+- Figures replay committed evidence from `public/evidence/z3/` (generated and validated by `npm run z3:generate`, re-checked by `npm run z3:verify`). A missing file produces an explicit unavailable state, never substitute data.
+- The shared board renderer draws explicit states only: unassigned, queen (true), × (false), with region letters, heavy region boundaries, and D/L badges for decisions and learned reasons. It never reads a saved solution.
+- On phones, player transports pin to the bottom while their figure is on screen (not on short viewports); playback is opt-in, pauses when hidden or offscreen, and is disabled under reduced motion. Every figure has a written equivalent.
+
 ## Responsive behavior
 
 - At and above 1180px, the global book rail and local contents rail can remain visible together.

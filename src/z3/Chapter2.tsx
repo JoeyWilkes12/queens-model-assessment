@@ -65,7 +65,7 @@ function EncodingDrawing({ encoding, enc, row, selected }: { encoding: EncodingN
   const auxName = (id: number) => enc.aux.find(a => a.id === id)?.name ?? ''
   return <svg className="z3-encoding-svg" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${encoding} encoding of exactly one for row ${row}: ${enc.clauses.length} clauses over 7 cell variables and ${enc.aux.length} auxiliary variables. The clause list below is the written equivalent.`}>
     <defs>
-      <marker id={`z3-arrow-${encoding}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" className="z3-enc-arrowhead" /></marker>
+      <marker id={`z3-arrow-${encoding}`} viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" className="z3-enc-arrowhead" /></marker>
     </defs>
     {edges.map((edge, k) => <path key={k} d={edge.d} className={`z3-enc-edge z3-enc-edge--${edge.kind}${edgeOn(edge.a, edge.b) ? ' is-on' : selected ? ' is-off' : ''}`} markerEnd={edge.kind === 'imp' || edge.kind === 'chain' ? `url(#z3-arrow-${encoding})` : undefined} />)}
     {range(1, 7).map(i => <g key={i} className={`z3-enc-cell${on(i) ? '' : ' is-off'}${selected?.has(i) ? ' is-on' : ''}`} transform={`translate(${cx(i) - CELL / 2} ${cellsY})`}>

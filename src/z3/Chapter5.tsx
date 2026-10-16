@@ -38,7 +38,7 @@ function GraphView({ graph, shown, selected, pathSet, conflictSide, onSelect }: 
     row.forEach((x, i) => pos.set(x, [(width - rowWidth) / 2 + i * (W + GX), PAD + r * (H + GY)]))
   })
   return <svg className="z3-graph-svg" viewBox={`0 0 ${width} ${height}`} style={{ minWidth: widest > 4 ? `${width}px` : undefined }} role="img" aria-label="Implication graph. The ordered list below is the written equivalent.">
-    <defs><marker id="z3-graph-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" className="z3-enc-arrowhead" /></marker></defs>
+    <defs><marker id="z3-graph-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10Z" className="z3-enc-arrowhead" /></marker></defs>
     {edges.map((e, k) => {
       const [x1, y1] = pos.get(e.from)!, [x2, y2] = pos.get(e.to)!
       const onPath = pathSet.has(e.from) && pathSet.has(e.to)
