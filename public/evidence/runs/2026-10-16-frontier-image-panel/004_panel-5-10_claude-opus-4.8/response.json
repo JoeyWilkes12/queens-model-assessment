@@ -1,0 +1,54 @@
+{
+  "id": "gen-1792188889-sQ2DTkRWZCsvcFjSp2Vb",
+  "object": "chat.completion",
+  "created": 1792188889,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-5-10\",\"columns_by_row\":[3,5,2,4,1]}",
+        "refusal": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "I'm mapping out which cells belong to each labeled region across the grid, tracing region A's boundaries first.\n\nNow I see D occupies only column 2, forcing B into column 3 since those two regions share overlapping column options. That leaves C and E to split columns 4 and 5 between them, with A naturally taking column 1 since it's the only region spanning all rows there. I'm now working through which specific rows each region's queen lands on, starting with the possible row placements for B and D.\n\nChecking adjacency rules, D can't be row2 col2 since it'd touch B's column, so D takes row3 col2 instead. That forces C into row2, but col4 is blocked by adjacency to B, so C lands at (2,5), leaving E to take col4 in whichever row remains.\n\nWith C=5, E must be col4 at row4, and A fills the last slot at (5,1). Checking every row pair confirms no adjacent queens touch, so this placement of B,C,D,E,A satisfies all constraints and I'm now moving to verify the region assignments match up too.\n\n",
+            "format": "anthropic-claude-v1",
+            "index": 0,
+            "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1220,
+    "completion_tokens": 1507,
+    "total_tokens": 2727,
+    "cost": 0.043775,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.043775,
+      "upstream_inference_prompt_cost": 0.0061,
+      "upstream_inference_completions_cost": 0.037675
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1472,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

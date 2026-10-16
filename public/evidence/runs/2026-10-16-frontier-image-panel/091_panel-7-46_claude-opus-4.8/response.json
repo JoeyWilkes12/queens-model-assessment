@@ -1,0 +1,54 @@
+{
+  "id": "gen-1792192193-JIGurtEItBgfZthkASnZ",
+  "object": "chat.completion",
+  "created": 1792192193,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-7-46\",\"columns_by_row\":[6,3,1,4,2,7,5]}",
+        "refusal": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "I'm mapping out the grid into labeled regions A through G, tracing which cells belong to each letter row by row.\n\nSince D, F, and G are each single-cell regions, their queens are forced: row2 uses column 3, row4 uses column 4, and row7 uses column 5. Now I need to figure out row3's queen placement, which must avoid columns adjacent to both the row2 and row4 queens, narrowing things down significantly.\n\nI'm now mapping out which regions correspond to each remaining column choice for rows 1, 3, 5, and 6, checking row1, row3, row5, and row6 against columns 1, 2, 6, and 7 to see which regions (A, B, C, E) they'd satisfy.\n\nSince E only appears at row5-col2, that placement is forced, and B only appears at row1-col6 once col2 is taken, forcing row1's position too. That leaves rows 3 and 6 to split between columns 1 and 7 for regions A and C, and I'm now checking adjacency constraints to confirm these placements don't conflict with neighboring queens.\n\nThat covers row7 as region G, completing all seven regions. Checking columns gives 6,3,1,4,2,7,5, all distinct, and verifying adjacency differences between every consecutive row pair confirms they're all valid.\n\n",
+            "format": "anthropic-claude-v1",
+            "index": 0,
+            "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1220,
+    "completion_tokens": 1674,
+    "total_tokens": 2894,
+    "cost": 0.04795,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.04795,
+      "upstream_inference_prompt_cost": 0.0061,
+      "upstream_inference_completions_cost": 0.04185
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1635,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

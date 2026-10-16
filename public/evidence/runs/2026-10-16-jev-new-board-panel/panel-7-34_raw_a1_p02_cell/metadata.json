@@ -1,0 +1,29 @@
+{
+  "call_id": "panel-7-34_raw_a1_p02_cell",
+  "trajectory_id": "panel-7-34_raw_a1",
+  "board_id": "panel-7-34",
+  "size": 7,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 131,
+  "block": 22,
+  "mode_position": 1,
+  "phase": "cell",
+  "step": 2,
+  "family": "trajectory",
+  "endpoint": "/api/alpha/decisions",
+  "requested_model": "typesafe/jev-1.13",
+  "completed_utc": "2026-10-16T21:32:07.514680+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.2348724999999945,
+  "request_sha256": "b686e2dd9071b227c9aaae8723332e860ff7fe0c8aceca5b92f20900b31eb04e",
+  "response_sha256": "ad1dfae6d2473b5dd888a48f5a864d43d8300acc8708cfab872ec7b40b1b6770",
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "generation_id": "gen-dec-1792186327-GolabSunLuQ1DmfTjMx4",
+  "usage": {
+    "input_tokens": 1664,
+    "output_tokens": 90,
+    "cost": 6.9888e-05
+  }
+}

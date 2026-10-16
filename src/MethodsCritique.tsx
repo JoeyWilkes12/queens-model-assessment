@@ -80,7 +80,7 @@ export function MethodsCritique({ ui }: { ui: BookUi }) {
             ['5 · SubQ now', 'Answer-position permutations on one frozen state per board', '≈$0.03'],
             ['6 · SubQ now', 'Same question in 1-, 8- and 16-question batches', '≈$0.04'],
             ['7 · later', 'Feedback and backtracking, equal call budgets', '≤$0.29'],
-            ['8 · needs OpenRouter', 'Jev and language models on the same new panel', 'Rediscover prices'],
+            ['8 · done 16 Oct', 'Jev on the same 192-board panel; four frontier models on 36 of its boards', '≈$9.26 (Jev $0.12)'],
           ]} />
           <Callout tone="evidence" title="Experiment 4 ran on 15 October, as preregistered.">On 192 new boards SubQ solved 19: 16 of 64 at 5×5, 3 of 64 at 7×7 and none at 9×9. The greedy rule solved 80; random choice would be expected to solve about 7. The conflict filter helped significantly at 5×5 (15/64 vs 6/64, Holm p = 0.035). <a href="#/subq-assessment/panel">Read the panel results</a>.</Callout>
         </Section>

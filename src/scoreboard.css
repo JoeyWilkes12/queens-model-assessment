@@ -78,3 +78,4 @@
 .sb-explain { padding: 14px 16px; border-left: 3px solid var(--gold-400); background: var(--surface-raised); }
 .sb-explain h3 { margin: 0 0 6px; font-family: var(--display-font); font-size: 1.1rem; font-weight: 400; color: var(--text-primary); }
 .sb-explain p { margin: 0; line-height: 1.62; }
+.sb-segment button:disabled { cursor: not-allowed; color: var(--text-muted); border-color: var(--border-subtle); }

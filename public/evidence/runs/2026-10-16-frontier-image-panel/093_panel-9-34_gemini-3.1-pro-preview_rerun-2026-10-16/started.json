@@ -1,0 +1,5 @@
+{
+  "started_utc": "2026-10-16T23:53:33.354920+00:00",
+  "request_sha256": "199af489fceca2275e5c15be22aa5766936b938c390d1460c7b6e784e246369d",
+  "reason": "original HTTP 429 before any model answer"
+}

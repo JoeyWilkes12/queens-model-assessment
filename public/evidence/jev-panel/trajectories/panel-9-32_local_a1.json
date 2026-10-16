@@ -1,0 +1,103 @@
+{
+  "trajectory_id": "panel-9-32_local_a1",
+  "board_id": "panel-9-32",
+  "size": 9,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 366,
+  "block": 61,
+  "mode_position": 2,
+  "requested_model": "typesafe/jev-1.13",
+  "started_utc": "2026-10-16T21:36:46.686412+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-9-32_local_a1_p01_region",
+      "region_forced": false,
+      "region": "G",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        6,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-9-32_local_a1_p02_region",
+      "region_forced": false,
+      "region": "I",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        9,
+        6
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-9-32_local_a1_p03_region",
+      "region_forced": false,
+      "region": "H",
+      "candidate_count": 2,
+      "cell_call": "panel-9-32_local_a1_p03_cell",
+      "cell_forced": false,
+      "top_probability": 0.55,
+      "cell": [
+        7,
+        4
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-9-32_local_a1_p04_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 2,
+      "cell_call": "panel-9-32_local_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.5,
+      "cell": [
+        2,
+        9
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 6,
+  "forced_decisions": 2,
+  "api_elapsed_seconds": 1.5393041680000579,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 4,
+  "placement_prefix": [
+    [
+      6,
+      1
+    ],
+    [
+      9,
+      6
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      2,
+      9
+    ]
+  ],
+  "correct_queens_before_failure": 3,
+  "elapsed_seconds": 1.5811852090000116,
+  "ended_utc": "2026-10-16T21:36:48.268668+00:00"
+}

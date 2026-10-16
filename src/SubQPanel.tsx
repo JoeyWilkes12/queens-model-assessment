@@ -20,6 +20,7 @@ const p = (value: number) => value < 0.001 ? '< 0.001' : value.toFixed(3)
 export function SubQPanel({ ui }: { ui: Ui }) {
   const { Callout, DataTable } = ui
   const [state, setState] = useState<{ analysis: Analysis; corpus: Corpus; trajectories: Trajectory[] } | null>(null)
+  const [jev, setJev] = useState<Trajectory[] | null>(null)
   const [error, setError] = useState(false)
   const [selected, setSelected] = useState('')
 
@@ -29,6 +30,7 @@ export function SubQPanel({ ui }: { ui: Ui }) {
     Promise.all([get('subq-panel/analysis.json'), get('subq-panel/corpus.json'), get('subq-panel/trajectories-summary.json')])
       .then(([analysis, corpus, summary]) => setState({ analysis, corpus, trajectories: summary.trajectories }))
       .catch(() => { if (!controller.signal.aborted) setError(true) })
+    get('jev-panel/trajectories-summary.json').then(summary => setJev(summary.trajectories)).catch(() => undefined)
     return () => controller.abort()
   }, [])
 
@@ -55,10 +57,11 @@ export function SubQPanel({ ui }: { ui: Ui }) {
     const ids = new Set(state.trajectories.filter(t => t.size === size && t.stop_reason === 'solved').map(t => t.board_id))
     return ids.size
   }
+  const solvedBoards = (trajectories: Trajectory[], size: number) => new Set(trajectories.filter(t => t.size === size && t.stop_reason === 'solved').map(t => t.board_id))
   const baseline = (size: number) => Object.values(analysis.baselines).filter(b => b.size === size)
   return <>
     <p className="lead">On <strong>192 new boards</strong>, preregistered before any call, SubQ solved <strong>{sizes.reduce((sum, size) => sum + boardsSolved(size), 0)}</strong>. A greedy rule with no model solved <strong>{Object.values(analysis.baselines).filter(b => b.greedy.solved).length}</strong>.</p>
-    <p>Each board had one raw-menu and one conflict-filtered attempt under the historical protocol. The boards were certified by three independent solvers and stratified by singleton regions and search difficulty. Jev has not been run on this panel yet: that needs the OpenRouter key.</p>
+    <p>Each board had one raw-menu and one conflict-filtered attempt under the historical protocol. The boards were certified by three independent solvers and stratified by singleton regions and search difficulty. Jev 1.13 ran the identical schedule on 16 October; see the paired comparison below.</p>
     <DataTable caption="Boards solved on the new-board panel" headers={['Size', 'SubQ (either menu)', 'Greedy rule', 'Random choice, expected']} rows={sizes.map(size => [`${size}×${size}`, `${boardsSolved(size)}/64`, `${baseline(size).filter(b => b.greedy.solved).length}/64`, `≈${baseline(size).reduce((sum, b) => sum + 1 - (1 - b.uniform_random_completion.raw) * (1 - b.uniform_random_completion.local), 0).toFixed(1)}`])} />
     <DataTable caption="Primary endpoint: filtered vs raw menu on the same boards (exact McNemar, Holm across sizes)" headers={['Size', 'Filtered solved', 'Raw solved', 'Filtered only / raw only', 'Holm p']} rows={sizes.map(size => {
       const pair = analysis.paired_raw_vs_local[String(size)]
@@ -66,6 +69,16 @@ export function SubQPanel({ ui }: { ui: Ui }) {
     })} />
     <DataTable caption="Per size and menu (non-forced cell decisions only)" headers={['Size · menu', '95% interval, solve rate', 'Picked an extendable cell', 'Random, same menus', 'Mean stated probability']} rows={analysis.by_size_mode.map(row => [`${row.size}×${row.size} · ${row.mode === 'local' ? 'filtered' : 'raw'}`, `${pct(row.board_solve_rate_replicate1_cp95[0])}–${pct(row.board_solve_rate_replicate1_cp95[1])}`, row.nonforced_cell_accuracy == null ? '—' : pct(row.nonforced_cell_accuracy), row.nonforced_uniform_chance == null ? '—' : pct(row.nonforced_uniform_chance), row.nonforced_mean_selected_probability == null ? '—' : pct(row.nonforced_mean_selected_probability)])} />
     <Callout tone="evidence" title="The filter helps at 5×5; nothing solves 9×9 except the heuristic.">The conflict filter raised SubQ's 5×5 first-path success from 6/64 to 15/64, significant after Holm adjustment. At 7×7, three filtered solves are too few to establish an effect, and at 9×9 neither menu solved a board. The greedy rule solved 14 of the same 9×9 boards.</Callout>
+    {jev && <>
+      <h3>Jev 1.13 on the same 192 boards</h3>
+      <p>Same boards, schedule, prompts, menus and stopping rule, on OpenRouter's Decisions route; every reply came from build <code>typesafe/jev-1.13-20260917</code>, the build used in September. Jev solved <strong>{sizes.reduce((sum, size) => sum + solvedBoards(jev, size).size, 0)}</strong> boards; SubQ <strong>{sizes.reduce((sum, size) => sum + boardsSolved(size), 0)}</strong>.</p>
+      <DataTable caption="Boards solved by each model on identical boards (either menu)" headers={['Size', 'Jev 1.13', 'SubQ Snap', 'Both', 'Jev only', 'SubQ only']} rows={sizes.map(size => {
+        const j = solvedBoards(jev, size), q = solvedBoards(state.trajectories, size)
+        const both = [...j].filter(id => q.has(id)).length
+        return [`${size}×${size}`, `${j.size}/64`, `${q.size}/64`, String(both), String(j.size - both), String(q.size - both)]
+      })} />
+      <p className="table-note">The two models mostly solved different boards; with this many discordant boards neither is shown to be better. Jev's non-forced cell choices hit an extendable cell 44% of the time against 33% for a uniform pick from the same menus; SubQ's, 31% against 23%. <a href="#/jev-trajectories">Jev chapter</a> · <a href={url('jev-panel/analysis.json')} download>Jev panel analysis (JSON)</a></p>
+    </>}
     {showcase.length > 0 && <>
       <label className="filter-label" htmlFor="subq-panel-select">Replay a panel attempt (all solved attempts, plus the deepest 9×9 failure)</label>
       <select id="subq-panel-select" className="trajectory-select" value={current?.trajectory_id ?? ''} onChange={event => setSelected(event.target.value)}>

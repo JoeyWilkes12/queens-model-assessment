@@ -1,0 +1,32 @@
+{
+  "completed_utc": "2026-10-16T22:18:48.052303+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 38.027931209,
+  "returned_model": "x-ai/grok-4.6",
+  "provider": "Amazon Bedrock",
+  "generation_id": "gen-1792189090-Bgdv4n3gL3pXocRMfvJ8",
+  "usage": {
+    "prompt_tokens": 872,
+    "completion_tokens": 5416,
+    "total_tokens": 6288,
+    "cost": 0.0374528,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 128,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0374528,
+      "upstream_inference_prompt_cost": 0.0017072,
+      "upstream_inference_completions_cost": 0.0357456
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 5375,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.0374528
+}

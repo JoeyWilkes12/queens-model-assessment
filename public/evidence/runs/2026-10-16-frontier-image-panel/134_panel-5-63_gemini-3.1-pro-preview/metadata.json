@@ -1,0 +1,39 @@
+{
+  "call_id": "134_panel-5-63_gemini-3.1-pro-preview",
+  "board_id": "panel-5-63",
+  "size": 5,
+  "model": "google/gemini-3.1-pro-preview",
+  "route": "on_demand",
+  "completed_utc": "2026-10-16T23:43:50.333364+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 32.46199104199968,
+  "returned_model": "google/gemini-3.1-pro-preview",
+  "provider": "Google AI Studio",
+  "generation_id": "gen-1792194197-LaLWB7nAfdzAQGSZPOsy",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 1366,
+    "completion_tokens": 4702,
+    "total_tokens": 6068,
+    "cost": 0.059156,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.059156,
+      "upstream_inference_prompt_cost": 0.002732,
+      "upstream_inference_completions_cost": 0.056424
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 4674,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.059156,
+  "response_sha256": "c74fe779250ea7ba4ed1eddea47e96396eeb6ae9dd91941a7c0bea8b5fee6b0f"
+}

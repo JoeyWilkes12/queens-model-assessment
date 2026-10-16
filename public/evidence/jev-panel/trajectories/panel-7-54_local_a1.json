@@ -1,0 +1,122 @@
+{
+  "trajectory_id": "panel-7-54_local_a1",
+  "board_id": "panel-7-54",
+  "size": 7,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 368,
+  "block": 62,
+  "mode_position": 2,
+  "requested_model": "typesafe/jev-1.13",
+  "started_utc": "2026-10-16T21:36:49.996786+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-7-54_local_a1_p01_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        4,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-7-54_local_a1_p02_region",
+      "region_forced": false,
+      "region": "F",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        5,
+        7
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-7-54_local_a1_p03_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        1,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-7-54_local_a1_p04_region",
+      "region_forced": false,
+      "region": "G",
+      "candidate_count": 2,
+      "cell_call": "panel-7-54_local_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.58,
+      "cell": [
+        7,
+        5
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 5,
+      "region_call": "panel-7-54_local_a1_p05_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 2,
+      "cell_call": "panel-7-54_local_a1_p05_cell",
+      "cell_forced": false,
+      "top_probability": 0.52,
+      "cell": [
+        2,
+        6
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 7,
+  "forced_decisions": 3,
+  "api_elapsed_seconds": 1.7420114999999896,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 5,
+  "placement_prefix": [
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      2,
+      6
+    ]
+  ],
+  "correct_queens_before_failure": 4,
+  "elapsed_seconds": 1.7740504160000228,
+  "ended_utc": "2026-10-16T21:36:51.771248+00:00"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gen-1792190771-4lGUZnVuS4M8dehxbXi3",
+  "object": "chat.completion",
+  "created": 1792190771,
+  "model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-5-21\",\"columns_by_row\":[2,5,3,1,4]}",
+        "refusal": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "Mapping out the regions, I find B only appears at (1,2), forcing row1's queen there, and E only appears at (5,4), forcing row5's queen there. Since region A spans column1 across all five rows, but rows1 and 5 are already taken, A's queen must land in one of the remaining rows.\n\nWorking through adjacency constraints with the remaining columns (1,3,5) for rows 2-4, I find row2 must take col5 (region D), leaving rows3 and 4 to split between col1 and col3. Checking which placement avoids adjacency conflicts with row5's col4 queen, I determine row4=col1 (region A) and row3=col3 (region C), confirming all adjacency gaps are at least 2.\n\nThis gives a complete assignment: row1 col2 (B), row2 col5 (D), row3 col3 (C), row4 col1 (A), row5 col4 (E) \u2014 all five regions distinct and all adjacency constraints satisfied.\n\n",
+            "format": "anthropic-claude-v1",
+            "index": 0,
+            "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1220,
+    "completion_tokens": 749,
+    "total_tokens": 1969,
+    "cost": 0.024825,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.024825,
+      "upstream_inference_prompt_cost": 0.0061,
+      "upstream_inference_completions_cost": 0.018725
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 714,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

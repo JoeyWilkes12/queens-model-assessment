@@ -1,0 +1,39 @@
+{
+  "call_id": "131_panel-9-53_grok-4.6",
+  "board_id": "panel-9-53",
+  "size": 9,
+  "model": "x-ai/grok-4.6",
+  "route": "on_demand",
+  "completed_utc": "2026-10-16T23:42:53.186335+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 137.1745489169998,
+  "returned_model": "x-ai/grok-4.6",
+  "provider": "Amazon Bedrock",
+  "generation_id": "gen-1792194036-XbahhcAHjKuDmaQxlGNf",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 871,
+    "completion_tokens": 9816,
+    "total_tokens": 10687,
+    "cost": 0.0664906,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 128,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0664906,
+      "upstream_inference_prompt_cost": 0.001705,
+      "upstream_inference_completions_cost": 0.0647856
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 9772,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.0664906,
+  "response_sha256": "7aeeb77fa92de0f2ba5dd283ef267e53c7ccf05c7f7d0ab3b3cd37244fe7af35"
+}

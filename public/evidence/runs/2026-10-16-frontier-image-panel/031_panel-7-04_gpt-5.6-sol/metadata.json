@@ -1,0 +1,35 @@
+{
+  "call_id": "031_panel-7-04_gpt-5.6-sol",
+  "board_id": "panel-7-04",
+  "size": 7,
+  "model": "openai/gpt-5.6-sol",
+  "route": "batch",
+  "completed_utc": "2026-10-16T22:18:48.260924+00:00",
+  "http_status": 200,
+  "elapsed_seconds": null,
+  "returned_model": "openai/gpt-5.6-sol",
+  "provider": "OpenAI",
+  "generation_id": "gen-batch-1792188759-155af163f1af49de4b3d",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 955,
+    "completion_tokens": 1010,
+    "total_tokens": 1965,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 976,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": null,
+  "response_sha256": "c78103d0c0283cccc473a827cab2f403313f6ffa87864af83b431f88b4227cbd",
+  "batch_id": "batch-1792188759-aQW1JeSj3PzdAEW7YbgZ",
+  "batch_request_id": "19fc5c90-a0b2-48af-ae0f-83f7d4751f94",
+  "batch_error": null
+}

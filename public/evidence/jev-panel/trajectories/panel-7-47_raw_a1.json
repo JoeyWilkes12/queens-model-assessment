@@ -1,0 +1,83 @@
+{
+  "trajectory_id": "panel-7-47_raw_a1",
+  "board_id": "panel-7-47",
+  "size": 7,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 184,
+  "block": 31,
+  "mode_position": 2,
+  "requested_model": "typesafe/jev-1.13",
+  "started_utc": "2026-10-16T21:33:15.284106+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-7-47_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        3,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-7-47_raw_a1_p02_region",
+      "region_forced": false,
+      "region": "G",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        7,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-7-47_raw_a1_p03_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 9,
+      "cell_call": "panel-7-47_raw_a1_p03_cell",
+      "cell_forced": false,
+      "top_probability": 0.21,
+      "cell": [
+        6,
+        5
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 4,
+  "forced_decisions": 2,
+  "api_elapsed_seconds": 1.0585619580000127,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 3,
+  "placement_prefix": [
+    [
+      3,
+      1
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      6,
+      5
+    ]
+  ],
+  "correct_queens_before_failure": 2,
+  "elapsed_seconds": 1.0864419999999768,
+  "ended_utc": "2026-10-16T21:33:16.370887+00:00"
+}

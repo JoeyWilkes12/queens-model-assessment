@@ -1,0 +1,32 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "cell": {
+      "type": "choice",
+      "choice": "r5c4",
+      "probabilities": {
+        "r4c7": 0.16,
+        "r5c4": 0.19,
+        "r5c5": 0.1,
+        "r5c6": 0.09,
+        "r5c7": 0.14,
+        "r6c4": 0.09,
+        "r6c5": 0.05,
+        "r6c6": 0.05,
+        "r6c7": 0.09,
+        "r7c4": 0.01,
+        "r7c5": 0.01,
+        "r7c6": 0.01,
+        "r7c7": 0.01
+      },
+      "confidence": 0.12
+    }
+  },
+  "usage": {
+    "input_tokens": 1832,
+    "output_tokens": 150,
+    "cost": 7.6944e-05
+  },
+  "id": "gen-dec-1792186553-zTJPlw37EZTdbi8lXiXO",
+  "provider": "TypeSafe"
+}

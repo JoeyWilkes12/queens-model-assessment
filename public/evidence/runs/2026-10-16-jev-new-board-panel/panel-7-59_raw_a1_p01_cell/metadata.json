@@ -1,0 +1,29 @@
+{
+  "call_id": "panel-7-59_raw_a1_p01_cell",
+  "trajectory_id": "panel-7-59_raw_a1",
+  "board_id": "panel-7-59",
+  "size": 7,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 80,
+  "block": 14,
+  "mode_position": 2,
+  "phase": "cell",
+  "step": 1,
+  "family": "trajectory",
+  "endpoint": "/api/alpha/decisions",
+  "requested_model": "typesafe/jev-1.13",
+  "completed_utc": "2026-10-16T21:30:56.453847+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.2561547920000038,
+  "request_sha256": "3dad328a41898643685db01e254bded596050255c4b643dab4a0b7f4bb31371c",
+  "response_sha256": "064a9d1fd3e0b613e01a0d46e8b7effeab2e8f44e3ce2206f6f706812e307e83",
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "generation_id": "gen-dec-1792186256-roKFD3d7ohA87kpW4vKX",
+  "usage": {
+    "input_tokens": 1503,
+    "output_tokens": 40,
+    "cost": 6.3126e-05
+  }
+}

@@ -92,10 +92,39 @@ def llm_section():
     not_run = [{'id': mid, 'name': DISPLAY.get(mid, mid), **author(mid),
                 'reason': 'Scheduled in the adaptive replay but not run: the family stop rule ended that family first.'}
                for mid in sorted(scheduled - tested)]
+    rerun_dir = E / 'runs/2026-10-16-one-shot-rerun'
+    for directory in sorted(rerun_dir.glob('*')) if rerun_dir.exists() else []:
+        meta = json.loads((directory / 'metadata.json').read_text())
+        grade = json.loads((directory / 'grade.json').read_text())
+        diag = json.loads((directory / 'diagnostic.json').read_text())
+        if 'grok' in directory.name and 'x-ai/grok-4.6' in models:
+            result = outcome(grade.get('correct') and grade.get('format_valid'), diag.get('rule_valid_after_extraction'), meta.get('http_status') == 200)
+            models['x-ai/grok-4.6']['rerun'] = {'size': '7', 'outcome': result, 'date': '2026-10-16',
+                                                'receipt': f'2026-10-16-one-shot-rerun:{directory.name}'}
+            models['x-ai/grok-4.6']['notes'].append(f'7×7 re-run on 16 Oct with the identical request: {result.replace("_", " ")}; the chart keeps the original timeout as recorded.')
     order = ['frontier', 'earlier']
     return {'unit': 'boards with a correct full placement', 'boards': [5, 7, 9],
             'models': sorted(models.values(), key=lambda m: (order.index(m['cohort']), m['name'])),
-            'not_run': not_run}
+            'not_run': not_run, 'panel': llm_panel()}
+
+
+def llm_panel():
+    path = E / 'frontier-image-panel/summary.json'
+    if not path.exists():
+        return {'status': 'running', 'boards': [], 'models': []}
+    summary = json.loads(path.read_text())
+    boards, models = {}, {}
+    for row in summary['rows']:
+        boards[row['board_id']] = row['size']
+        entry = models.setdefault(row['model'], {'id': row['model'], 'name': DISPLAY[row['model']], **author(row['model']),
+                                                 'route': row['route'], 'boards': {}})
+        entry['boards'][row['board_id']] = row.get('outcome', 'not_run')
+    complete = all(o != 'not_run' for m in models.values() for o in m['boards'].values())
+    reruns = [{'model': DISPLAY[r['model']], 'size': r['size'], 'board_id': r['board_id'], 'outcome': r['outcome'], 'reason': r['reason'],
+               'receipt': f"{summary['study']}:{r['call_id']}_rerun-2026-10-16"} for r in summary.get('reruns', [])]
+    return {'status': 'complete' if complete else 'partial', 'study': summary['study'], 'reruns': reruns,
+            'boards': [{'id': b, 'size': s} for b, s in sorted(boards.items(), key=lambda kv: (kv[1], kv[0]))],
+            'models': sorted(models.values(), key=lambda m: m['name'])}
 
 
 def solutions(regions):
@@ -161,23 +190,28 @@ def decision_panel():
         'random_expected_any': {b['id']: 1 - (1 - b['profile']['uniform_random_completion']['raw']) * (1 - b['profile']['uniform_random_completion']['local'])
                                 for b in corpus['boards']},
     }
-    section = {'label': 'New 192-board panel', 'boards': boards, 'baselines': baselines,
-               'pending': [{'name': 'Jev 1.13', **author('typesafe/jev'),
-                            'reason': 'Not yet tested: needs the OpenRouter key, which is unavailable on this device.'}]}
-    if not path.exists():
-        section.update(status='running', models=[])
-        return section
-    summary = json.loads(path.read_text())
-    per_board = {}
-    for t in summary['trajectories']:
-        if t.get('excluded'):
-            continue
-        cell = per_board.setdefault(t['board_id'], {'raw': [0, 0], 'local': [0, 0]})
-        cell[t['mode']][1] += 1
-        cell[t['mode']][0] += int(t['stop_reason'] == 'solved')
-    section.update(status=summary.get('status', 'complete'), models=[
-        {'name': 'SubQ Snap (preview)', **author('subquadratic/snap'), 'study': summary['study'],
-         'per_board': per_board, 'calls': summary['model_calls'], 'attempts_per_board_mode': 1}])
+    section = {'label': 'New 192-board panel', 'boards': boards, 'baselines': baselines, 'pending': [], 'models': []}
+
+    def per_board(summary):
+        out = {}
+        for t in summary['trajectories']:
+            cell = out.setdefault(t['board_id'], {'raw': [0, 0], 'local': [0, 0]})
+            cell[t['mode']][1] += 1
+            cell[t['mode']][0] += int(t['stop_reason'] == 'solved')
+        return out
+
+    jev_path = E / 'jev-panel/trajectories-summary.json'
+    if jev_path.exists():
+        jev = json.loads(jev_path.read_text())
+        section['models'].append({'name': 'Jev 1.13', **author('typesafe/jev'), 'study': jev['study'],
+                                  'per_board': per_board(jev), 'calls': jev['model_calls'], 'attempts_per_board_mode': 1})
+    else:
+        section['pending'].append({'name': 'Jev 1.13', **author('typesafe/jev'), 'reason': 'Not yet tested.'})
+    if path.exists():
+        subq = json.loads(path.read_text())
+        section['models'].append({'name': 'SubQ Snap (preview)', **author('subquadratic/snap'), 'study': subq['study'],
+                                  'per_board': per_board(subq), 'calls': subq['model_calls'], 'attempts_per_board_mode': 1})
+    section['status'] = 'complete' if section['models'] else 'running'
     return section
 
 
