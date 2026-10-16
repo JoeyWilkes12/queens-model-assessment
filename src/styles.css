@@ -356,6 +356,7 @@ code { color: var(--text-primary); font-size: .88em; }
 #trajectory-select, .trajectory-select { max-width: 100%; margin: 12px 0; padding: 10px; border: 1px solid var(--border-strong); color: var(--text-primary); background: var(--surface-raised); font: inherit; }
 #trajectory-trace pre { max-width: 100%; overflow-x: auto; padding: 16px; background: var(--surface-raised); }
 @media (max-width: 700px) { .qr-share { grid-template-columns: minmax(190px, 240px) minmax(0, 1fr); } }
+.atlas-provenance a { color: var(--link-evidence); font-weight: 700; overflow-wrap: anywhere; text-underline-offset: 3px; }
 @media (max-width: 460px) { .about-ledger, .qr-share { grid-template-columns: 1fr; } .qr-share { padding: 18px; } .qr-frame { max-width: 250px; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; animation-duration: .001ms !important; }
