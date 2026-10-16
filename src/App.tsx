@@ -9,6 +9,7 @@ import { SubQAssessment } from './SubQAssessment'
 import { DecisionModels } from './DecisionModels'
 import { MethodsCritique } from './MethodsCritique'
 import { FeaturedReplays } from './FeaturedReplays'
+import { Scoreboard } from './Scoreboard'
 
 type Route = {
   path: string
@@ -449,8 +450,17 @@ function ExecutiveSummary() {
     <PageHero trail="Read first" title="Selecting is not solving." deck="Frontier reasoning models delivered 11 valid solutions in 12 requests from blank board images. Decision models reliably chose the valid board from a prepared list, but built few boards move by move: fewer than a simple greedy rule." action={{ label: 'Watch the recorded attempts', scrollTo: 'watch' }} />
     <AssessmentReceipt />
     <div className="reading-layout">
-      <LocalToc items={[{ id: 'finding', label: 'Three findings' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'What it does not show' }, { id: 'next', label: 'Where next' }]} />
+      <LocalToc items={[{ id: 'scoreboard', label: 'Scoreboard' }, { id: 'finding', label: 'Three findings' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'What it does not show' }, { id: 'next', label: 'Where next' }]} />
       <main className="reading-column" id="main-content">
+        <Section id="scoreboard" title="Scoreboard" label="Evals summary">
+          <p>Two families, two tasks. Each chart counts boards solved; the coverage note under each one lists exactly which tests were issued.</p>
+          <Scoreboard>
+            <aside className="sb-explain" aria-labelledby="sb-not-comparable">
+              <h3 id="sb-not-comparable">Why these charts are not apples to apples</h3>
+              <p>The language models received a picture of an empty board and had to write the whole solution in one response. The decision models never saw an image: they read an exact text grid, and at each step chose one option from a menu our harness built, with single-option moves forced and, in filtered mode, illegal cells removed. One task is construction from scratch; the other is a sequence of guided selections. The language models were also given one attempt per board, the decision models ten. Compare models within a chart, not across charts. A fair cross-family test needs one shared interface, for example language models answering the same step-by-step menus; that is planned, not yet run.</p>
+            </aside>
+          </Scoreboard>
+        </Section>
         <Section id="finding" title="What the evidence supports" label="Executive summary">
           <ol className="finding-list">
             <li><span className="finding-number">1</span><div><h3>Reasoning models construct.</h3><p>Four frontier models returned <strong>11 valid solutions in 12 attempts</strong> from three board images; the twelfth request timed out. <a href="#/protocol-results">Protocol &amp; results</a></p></div></li>

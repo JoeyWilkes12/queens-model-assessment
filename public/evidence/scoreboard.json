@@ -1,0 +1,1842 @@
+{
+ "generated_utc": "2026-10-16T02:21:40+00:00",
+ "builder": "scripts/analysis/build_scoreboard.py",
+ "llm": {
+  "unit": "boards with a correct full placement",
+  "boards": [
+   5,
+   7,
+   9
+  ],
+  "models": [
+   {
+    "id": "anthropic/claude-opus-4.8",
+    "name": "Claude Opus 4.8",
+    "author": "Anthropic",
+    "logo": "assets/logos/anthropic.svg",
+    "cohort": "frontier",
+    "study": "2026-09-17-one-shot",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:04_queens-5-easy_claude-opus-4.8"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-09-17-one-shot:05_queens-7-medium_claude-opus-4.8"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:10_queens-9-hard_claude-opus-4.8"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "openai/gpt-5.6-sol",
+    "name": "GPT-5.6 Sol",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "cohort": "frontier",
+    "study": "2026-09-17-one-shot",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:01_queens-5-easy_gpt-5.6-sol"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:06_queens-7-medium_gpt-5.6-sol"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:12_queens-9-hard_gpt-5.6-sol"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "google/gemini-3.1-pro-preview",
+    "name": "Gemini 3.1 Pro Preview",
+    "author": "Google",
+    "logo": "assets/logos/google-gemini.svg",
+    "cohort": "frontier",
+    "study": "2026-09-17-one-shot",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:02_queens-5-easy_gemini-3.1-pro-preview"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:07_queens-7-medium_gemini-3.1-pro-preview"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-09-17-one-shot:11_queens-9-hard_gemini-3.1-pro-preview"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "x-ai/grok-4.6",
+    "name": "Grok 4.6",
+    "author": "xAI",
+    "logo": "assets/logos/xai.png",
+    "cohort": "frontier",
+    "study": "2026-09-17-one-shot",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:03_queens-5-easy_grok-4.6_bedrock"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "no_answer",
+      "receipt": "2026-09-17-one-shot:08_queens-7-medium_grok-4.6_bedrock"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-09-17-one-shot:09_queens-9-hard_grok-4.6_bedrock"
+     }
+    },
+    "notes": [
+     "7\u00d77: request timed out after 600 s with no answer; not retried.",
+     "Routed through Amazon Bedrock after the default route failed on 5\u00d75 (routing error, not scored)."
+    ]
+   },
+   {
+    "id": "anthropic/claude-opus-4.6",
+    "name": "Claude Opus 4.6",
+    "author": "Anthropic",
+    "logo": "assets/logos/anthropic.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-7-medium_claude-opus-4.6"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-9-hard_claude-opus-4.6"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "anthropic/claude-opus-4.7",
+    "name": "Claude Opus 4.7",
+    "author": "Anthropic",
+    "logo": "assets/logos/anthropic.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-5-easy_claude-opus-4.7"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-7-medium_claude-opus-4.7"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-9-hard_claude-opus-4.7"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "anthropic/claude-sonnet-4",
+    "name": "Claude Sonnet 4",
+    "author": "Anthropic",
+    "logo": "assets/logos/anthropic.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r5_queens-5-easy_claude-sonnet-4"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r5_queens-7-medium_claude-sonnet-4"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "wrong",
+      "receipt": "2026-10-01-earlier-generations:r5_queens-9-hard_claude-sonnet-4"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "openai/gpt-4.1",
+    "name": "GPT-4.1",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "wrong",
+      "receipt": "2026-10-01-earlier-generations:r6_queens-5-easy_gpt-4.1"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "wrong",
+      "receipt": "2026-10-01-earlier-generations:r6_queens-7-medium_gpt-4.1"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "wrong",
+      "receipt": "2026-10-01-earlier-generations:r6_queens-9-hard_gpt-4.1"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "openai/gpt-5",
+    "name": "GPT-5",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r5_queens-5-easy_gpt-5"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r5_queens-7-medium_gpt-5"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r5_queens-9-hard_gpt-5"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "openai/gpt-5.4",
+    "name": "GPT-5.4",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-7-medium_gpt-5.4"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-9-hard_gpt-5.4"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "openai/gpt-5.5",
+    "name": "GPT-5.5",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-5-easy_gpt-5.5"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-7-medium_gpt-5.5"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-9-hard_gpt-5.5"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "google/gemini-2.5-flash",
+    "name": "Gemini 2.5 Flash",
+    "author": "Google",
+    "logo": "assets/logos/google-gemini.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "wrong",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-5-easy_gemini-2.5-flash"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "wrong",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-7-medium_gemini-2.5-flash"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r2_queens-9-hard_gemini-2.5-flash"
+     }
+    },
+    "notes": []
+   },
+   {
+    "id": "google/gemini-2.5-pro",
+    "name": "Gemini 2.5 Pro",
+    "author": "Google",
+    "logo": "assets/logos/google-gemini.svg",
+    "cohort": "earlier",
+    "study": "2026-10-01-earlier-generations",
+    "boards": {
+     "5": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro"
+     },
+     "7": {
+      "issued": 1,
+      "outcome": "format_only",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-7-medium_gemini-2.5-pro"
+     },
+     "9": {
+      "issued": 1,
+      "outcome": "strict",
+      "receipt": "2026-10-01-earlier-generations:r1_queens-9-hard_gemini-2.5-pro"
+     }
+    },
+    "notes": []
+   }
+  ],
+  "not_run": [
+   {
+    "id": "anthropic/claude-opus-4.5",
+    "name": "Claude Opus 4.5",
+    "author": "Anthropic",
+    "logo": "assets/logos/anthropic.svg",
+    "reason": "Scheduled in the adaptive replay but not run: the family stop rule ended that family first."
+   },
+   {
+    "id": "anthropic/claude-sonnet-4.5",
+    "name": "Claude Sonnet 4.5",
+    "author": "Anthropic",
+    "logo": "assets/logos/anthropic.svg",
+    "reason": "Scheduled in the adaptive replay but not run: the family stop rule ended that family first."
+   },
+   {
+    "id": "google/gemini-2.5-flash-lite",
+    "name": "Gemini 2.5 Flash-Lite",
+    "author": "Google",
+    "logo": "assets/logos/google-gemini.svg",
+    "reason": "Scheduled in the adaptive replay but not run: the family stop rule ended that family first."
+   },
+   {
+    "id": "openai/gpt-4o-2024-11-20",
+    "name": "GPT-4o (2024-11-20)",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "reason": "Scheduled in the adaptive replay but not run: the family stop rule ended that family first."
+   },
+   {
+    "id": "openai/gpt-5.1",
+    "name": "GPT-5.1",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "reason": "Scheduled in the adaptive replay but not run: the family stop rule ended that family first."
+   },
+   {
+    "id": "openai/gpt-5.2",
+    "name": "GPT-5.2",
+    "author": "OpenAI",
+    "logo": "assets/logos/openai.svg",
+    "reason": "Scheduled in the adaptive replay but not run: the family stop rule ended that family first."
+   }
+  ]
+ },
+ "decision": {
+  "original": {
+   "label": "Original nine boards",
+   "boards": [
+    {
+     "id": "sequence-5-1",
+     "size": 5
+    },
+    {
+     "id": "sequence-5-2",
+     "size": 5
+    },
+    {
+     "id": "sequence-5-3",
+     "size": 5
+    },
+    {
+     "id": "sequence-7-1",
+     "size": 7
+    },
+    {
+     "id": "sequence-7-2",
+     "size": 7
+    },
+    {
+     "id": "sequence-7-3",
+     "size": 7
+    },
+    {
+     "id": "sequence-9-1",
+     "size": 9
+    },
+    {
+     "id": "sequence-9-2",
+     "size": 9
+    },
+    {
+     "id": "sequence-9-3",
+     "size": 9
+    }
+   ],
+   "models": [
+    {
+     "name": "Jev 1.13",
+     "author": "TypeSafe",
+     "logo": "assets/logos/typesafe.png",
+     "study": "2026-09-30-jev-trajectories",
+     "per_board": {
+      "sequence-5-1": {
+       "raw": [
+        5,
+        5
+       ],
+       "local": [
+        5,
+        5
+       ]
+      },
+      "sequence-5-2": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-5-3": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-7-1": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-7-2": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-7-3": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-9-1": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-9-2": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-9-3": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      }
+     },
+     "calls": 594,
+     "attempts_per_board_mode": 5
+    },
+    {
+     "name": "SubQ Snap (preview)",
+     "author": "Subquadratic",
+     "logo": "assets/logos/subquadratic.svg",
+     "study": "2026-10-13-subq-trajectories",
+     "per_board": {
+      "sequence-5-1": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-5-2": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        5,
+        5
+       ]
+      },
+      "sequence-5-3": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        5,
+        5
+       ]
+      },
+      "sequence-7-1": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-7-2": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-7-3": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-9-1": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-9-2": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      },
+      "sequence-9-3": {
+       "raw": [
+        0,
+        5
+       ],
+       "local": [
+        0,
+        5
+       ]
+      }
+     },
+     "calls": 325,
+     "attempts_per_board_mode": 5
+    }
+   ],
+   "baselines": {
+    "greedy": {
+     "sequence-5-1": true,
+     "sequence-5-2": false,
+     "sequence-5-3": true,
+     "sequence-7-1": true,
+     "sequence-7-2": false,
+     "sequence-7-3": false,
+     "sequence-9-1": false,
+     "sequence-9-2": true,
+     "sequence-9-3": false
+    },
+    "random_expected_any": {
+     "sequence-5-1": 0.5290540392721814,
+     "sequence-5-2": 0.2741379263359134,
+     "sequence-5-3": 0.3160788295967544,
+     "sequence-7-1": 0.09628101271505818,
+     "sequence-7-2": 0.040148926528396744,
+     "sequence-7-3": 0.020555596873593984,
+     "sequence-9-1": 0.006614858219770703,
+     "sequence-9-2": 0.013495326098098226,
+     "sequence-9-3": 0.010360882478909539
+    }
+   },
+   "pending": []
+  },
+  "panel": {
+   "label": "New 192-board panel",
+   "boards": [
+    {
+     "id": "panel-5-01",
+     "size": 5
+    },
+    {
+     "id": "panel-5-02",
+     "size": 5
+    },
+    {
+     "id": "panel-5-03",
+     "size": 5
+    },
+    {
+     "id": "panel-5-04",
+     "size": 5
+    },
+    {
+     "id": "panel-5-05",
+     "size": 5
+    },
+    {
+     "id": "panel-5-06",
+     "size": 5
+    },
+    {
+     "id": "panel-5-07",
+     "size": 5
+    },
+    {
+     "id": "panel-5-08",
+     "size": 5
+    },
+    {
+     "id": "panel-5-09",
+     "size": 5
+    },
+    {
+     "id": "panel-5-10",
+     "size": 5
+    },
+    {
+     "id": "panel-5-11",
+     "size": 5
+    },
+    {
+     "id": "panel-5-12",
+     "size": 5
+    },
+    {
+     "id": "panel-5-13",
+     "size": 5
+    },
+    {
+     "id": "panel-5-14",
+     "size": 5
+    },
+    {
+     "id": "panel-5-15",
+     "size": 5
+    },
+    {
+     "id": "panel-5-16",
+     "size": 5
+    },
+    {
+     "id": "panel-5-17",
+     "size": 5
+    },
+    {
+     "id": "panel-5-18",
+     "size": 5
+    },
+    {
+     "id": "panel-5-19",
+     "size": 5
+    },
+    {
+     "id": "panel-5-20",
+     "size": 5
+    },
+    {
+     "id": "panel-5-21",
+     "size": 5
+    },
+    {
+     "id": "panel-5-22",
+     "size": 5
+    },
+    {
+     "id": "panel-5-23",
+     "size": 5
+    },
+    {
+     "id": "panel-5-24",
+     "size": 5
+    },
+    {
+     "id": "panel-5-25",
+     "size": 5
+    },
+    {
+     "id": "panel-5-26",
+     "size": 5
+    },
+    {
+     "id": "panel-5-27",
+     "size": 5
+    },
+    {
+     "id": "panel-5-28",
+     "size": 5
+    },
+    {
+     "id": "panel-5-29",
+     "size": 5
+    },
+    {
+     "id": "panel-5-30",
+     "size": 5
+    },
+    {
+     "id": "panel-5-31",
+     "size": 5
+    },
+    {
+     "id": "panel-5-32",
+     "size": 5
+    },
+    {
+     "id": "panel-5-33",
+     "size": 5
+    },
+    {
+     "id": "panel-5-34",
+     "size": 5
+    },
+    {
+     "id": "panel-5-35",
+     "size": 5
+    },
+    {
+     "id": "panel-5-36",
+     "size": 5
+    },
+    {
+     "id": "panel-5-37",
+     "size": 5
+    },
+    {
+     "id": "panel-5-38",
+     "size": 5
+    },
+    {
+     "id": "panel-5-39",
+     "size": 5
+    },
+    {
+     "id": "panel-5-40",
+     "size": 5
+    },
+    {
+     "id": "panel-5-41",
+     "size": 5
+    },
+    {
+     "id": "panel-5-42",
+     "size": 5
+    },
+    {
+     "id": "panel-5-43",
+     "size": 5
+    },
+    {
+     "id": "panel-5-44",
+     "size": 5
+    },
+    {
+     "id": "panel-5-45",
+     "size": 5
+    },
+    {
+     "id": "panel-5-46",
+     "size": 5
+    },
+    {
+     "id": "panel-5-47",
+     "size": 5
+    },
+    {
+     "id": "panel-5-48",
+     "size": 5
+    },
+    {
+     "id": "panel-5-49",
+     "size": 5
+    },
+    {
+     "id": "panel-5-50",
+     "size": 5
+    },
+    {
+     "id": "panel-5-51",
+     "size": 5
+    },
+    {
+     "id": "panel-5-52",
+     "size": 5
+    },
+    {
+     "id": "panel-5-53",
+     "size": 5
+    },
+    {
+     "id": "panel-5-54",
+     "size": 5
+    },
+    {
+     "id": "panel-5-55",
+     "size": 5
+    },
+    {
+     "id": "panel-5-56",
+     "size": 5
+    },
+    {
+     "id": "panel-5-57",
+     "size": 5
+    },
+    {
+     "id": "panel-5-58",
+     "size": 5
+    },
+    {
+     "id": "panel-5-59",
+     "size": 5
+    },
+    {
+     "id": "panel-5-60",
+     "size": 5
+    },
+    {
+     "id": "panel-5-61",
+     "size": 5
+    },
+    {
+     "id": "panel-5-62",
+     "size": 5
+    },
+    {
+     "id": "panel-5-63",
+     "size": 5
+    },
+    {
+     "id": "panel-5-64",
+     "size": 5
+    },
+    {
+     "id": "panel-7-01",
+     "size": 7
+    },
+    {
+     "id": "panel-7-02",
+     "size": 7
+    },
+    {
+     "id": "panel-7-03",
+     "size": 7
+    },
+    {
+     "id": "panel-7-04",
+     "size": 7
+    },
+    {
+     "id": "panel-7-05",
+     "size": 7
+    },
+    {
+     "id": "panel-7-06",
+     "size": 7
+    },
+    {
+     "id": "panel-7-07",
+     "size": 7
+    },
+    {
+     "id": "panel-7-08",
+     "size": 7
+    },
+    {
+     "id": "panel-7-09",
+     "size": 7
+    },
+    {
+     "id": "panel-7-10",
+     "size": 7
+    },
+    {
+     "id": "panel-7-11",
+     "size": 7
+    },
+    {
+     "id": "panel-7-12",
+     "size": 7
+    },
+    {
+     "id": "panel-7-13",
+     "size": 7
+    },
+    {
+     "id": "panel-7-14",
+     "size": 7
+    },
+    {
+     "id": "panel-7-15",
+     "size": 7
+    },
+    {
+     "id": "panel-7-16",
+     "size": 7
+    },
+    {
+     "id": "panel-7-17",
+     "size": 7
+    },
+    {
+     "id": "panel-7-18",
+     "size": 7
+    },
+    {
+     "id": "panel-7-19",
+     "size": 7
+    },
+    {
+     "id": "panel-7-20",
+     "size": 7
+    },
+    {
+     "id": "panel-7-21",
+     "size": 7
+    },
+    {
+     "id": "panel-7-22",
+     "size": 7
+    },
+    {
+     "id": "panel-7-23",
+     "size": 7
+    },
+    {
+     "id": "panel-7-24",
+     "size": 7
+    },
+    {
+     "id": "panel-7-25",
+     "size": 7
+    },
+    {
+     "id": "panel-7-26",
+     "size": 7
+    },
+    {
+     "id": "panel-7-27",
+     "size": 7
+    },
+    {
+     "id": "panel-7-28",
+     "size": 7
+    },
+    {
+     "id": "panel-7-29",
+     "size": 7
+    },
+    {
+     "id": "panel-7-30",
+     "size": 7
+    },
+    {
+     "id": "panel-7-31",
+     "size": 7
+    },
+    {
+     "id": "panel-7-32",
+     "size": 7
+    },
+    {
+     "id": "panel-7-33",
+     "size": 7
+    },
+    {
+     "id": "panel-7-34",
+     "size": 7
+    },
+    {
+     "id": "panel-7-35",
+     "size": 7
+    },
+    {
+     "id": "panel-7-36",
+     "size": 7
+    },
+    {
+     "id": "panel-7-37",
+     "size": 7
+    },
+    {
+     "id": "panel-7-38",
+     "size": 7
+    },
+    {
+     "id": "panel-7-39",
+     "size": 7
+    },
+    {
+     "id": "panel-7-40",
+     "size": 7
+    },
+    {
+     "id": "panel-7-41",
+     "size": 7
+    },
+    {
+     "id": "panel-7-42",
+     "size": 7
+    },
+    {
+     "id": "panel-7-43",
+     "size": 7
+    },
+    {
+     "id": "panel-7-44",
+     "size": 7
+    },
+    {
+     "id": "panel-7-45",
+     "size": 7
+    },
+    {
+     "id": "panel-7-46",
+     "size": 7
+    },
+    {
+     "id": "panel-7-47",
+     "size": 7
+    },
+    {
+     "id": "panel-7-48",
+     "size": 7
+    },
+    {
+     "id": "panel-7-49",
+     "size": 7
+    },
+    {
+     "id": "panel-7-50",
+     "size": 7
+    },
+    {
+     "id": "panel-7-51",
+     "size": 7
+    },
+    {
+     "id": "panel-7-52",
+     "size": 7
+    },
+    {
+     "id": "panel-7-53",
+     "size": 7
+    },
+    {
+     "id": "panel-7-54",
+     "size": 7
+    },
+    {
+     "id": "panel-7-55",
+     "size": 7
+    },
+    {
+     "id": "panel-7-56",
+     "size": 7
+    },
+    {
+     "id": "panel-7-57",
+     "size": 7
+    },
+    {
+     "id": "panel-7-58",
+     "size": 7
+    },
+    {
+     "id": "panel-7-59",
+     "size": 7
+    },
+    {
+     "id": "panel-7-60",
+     "size": 7
+    },
+    {
+     "id": "panel-7-61",
+     "size": 7
+    },
+    {
+     "id": "panel-7-62",
+     "size": 7
+    },
+    {
+     "id": "panel-7-63",
+     "size": 7
+    },
+    {
+     "id": "panel-7-64",
+     "size": 7
+    },
+    {
+     "id": "panel-9-01",
+     "size": 9
+    },
+    {
+     "id": "panel-9-02",
+     "size": 9
+    },
+    {
+     "id": "panel-9-03",
+     "size": 9
+    },
+    {
+     "id": "panel-9-04",
+     "size": 9
+    },
+    {
+     "id": "panel-9-05",
+     "size": 9
+    },
+    {
+     "id": "panel-9-06",
+     "size": 9
+    },
+    {
+     "id": "panel-9-07",
+     "size": 9
+    },
+    {
+     "id": "panel-9-08",
+     "size": 9
+    },
+    {
+     "id": "panel-9-09",
+     "size": 9
+    },
+    {
+     "id": "panel-9-10",
+     "size": 9
+    },
+    {
+     "id": "panel-9-11",
+     "size": 9
+    },
+    {
+     "id": "panel-9-12",
+     "size": 9
+    },
+    {
+     "id": "panel-9-13",
+     "size": 9
+    },
+    {
+     "id": "panel-9-14",
+     "size": 9
+    },
+    {
+     "id": "panel-9-15",
+     "size": 9
+    },
+    {
+     "id": "panel-9-16",
+     "size": 9
+    },
+    {
+     "id": "panel-9-17",
+     "size": 9
+    },
+    {
+     "id": "panel-9-18",
+     "size": 9
+    },
+    {
+     "id": "panel-9-19",
+     "size": 9
+    },
+    {
+     "id": "panel-9-20",
+     "size": 9
+    },
+    {
+     "id": "panel-9-21",
+     "size": 9
+    },
+    {
+     "id": "panel-9-22",
+     "size": 9
+    },
+    {
+     "id": "panel-9-23",
+     "size": 9
+    },
+    {
+     "id": "panel-9-24",
+     "size": 9
+    },
+    {
+     "id": "panel-9-25",
+     "size": 9
+    },
+    {
+     "id": "panel-9-26",
+     "size": 9
+    },
+    {
+     "id": "panel-9-27",
+     "size": 9
+    },
+    {
+     "id": "panel-9-28",
+     "size": 9
+    },
+    {
+     "id": "panel-9-29",
+     "size": 9
+    },
+    {
+     "id": "panel-9-30",
+     "size": 9
+    },
+    {
+     "id": "panel-9-31",
+     "size": 9
+    },
+    {
+     "id": "panel-9-32",
+     "size": 9
+    },
+    {
+     "id": "panel-9-33",
+     "size": 9
+    },
+    {
+     "id": "panel-9-34",
+     "size": 9
+    },
+    {
+     "id": "panel-9-35",
+     "size": 9
+    },
+    {
+     "id": "panel-9-36",
+     "size": 9
+    },
+    {
+     "id": "panel-9-37",
+     "size": 9
+    },
+    {
+     "id": "panel-9-38",
+     "size": 9
+    },
+    {
+     "id": "panel-9-39",
+     "size": 9
+    },
+    {
+     "id": "panel-9-40",
+     "size": 9
+    },
+    {
+     "id": "panel-9-41",
+     "size": 9
+    },
+    {
+     "id": "panel-9-42",
+     "size": 9
+    },
+    {
+     "id": "panel-9-43",
+     "size": 9
+    },
+    {
+     "id": "panel-9-44",
+     "size": 9
+    },
+    {
+     "id": "panel-9-45",
+     "size": 9
+    },
+    {
+     "id": "panel-9-46",
+     "size": 9
+    },
+    {
+     "id": "panel-9-47",
+     "size": 9
+    },
+    {
+     "id": "panel-9-48",
+     "size": 9
+    },
+    {
+     "id": "panel-9-49",
+     "size": 9
+    },
+    {
+     "id": "panel-9-50",
+     "size": 9
+    },
+    {
+     "id": "panel-9-51",
+     "size": 9
+    },
+    {
+     "id": "panel-9-52",
+     "size": 9
+    },
+    {
+     "id": "panel-9-53",
+     "size": 9
+    },
+    {
+     "id": "panel-9-54",
+     "size": 9
+    },
+    {
+     "id": "panel-9-55",
+     "size": 9
+    },
+    {
+     "id": "panel-9-56",
+     "size": 9
+    },
+    {
+     "id": "panel-9-57",
+     "size": 9
+    },
+    {
+     "id": "panel-9-58",
+     "size": 9
+    },
+    {
+     "id": "panel-9-59",
+     "size": 9
+    },
+    {
+     "id": "panel-9-60",
+     "size": 9
+    },
+    {
+     "id": "panel-9-61",
+     "size": 9
+    },
+    {
+     "id": "panel-9-62",
+     "size": 9
+    },
+    {
+     "id": "panel-9-63",
+     "size": 9
+    },
+    {
+     "id": "panel-9-64",
+     "size": 9
+    }
+   ],
+   "baselines": {
+    "greedy": {
+     "panel-5-01": false,
+     "panel-5-02": true,
+     "panel-5-03": false,
+     "panel-5-04": false,
+     "panel-5-05": true,
+     "panel-5-06": true,
+     "panel-5-07": false,
+     "panel-5-08": true,
+     "panel-5-09": true,
+     "panel-5-10": false,
+     "panel-5-11": true,
+     "panel-5-12": true,
+     "panel-5-13": true,
+     "panel-5-14": true,
+     "panel-5-15": false,
+     "panel-5-16": false,
+     "panel-5-17": true,
+     "panel-5-18": false,
+     "panel-5-19": false,
+     "panel-5-20": true,
+     "panel-5-21": true,
+     "panel-5-22": true,
+     "panel-5-23": true,
+     "panel-5-24": false,
+     "panel-5-25": true,
+     "panel-5-26": true,
+     "panel-5-27": true,
+     "panel-5-28": true,
+     "panel-5-29": false,
+     "panel-5-30": false,
+     "panel-5-31": false,
+     "panel-5-32": true,
+     "panel-5-33": false,
+     "panel-5-34": true,
+     "panel-5-35": true,
+     "panel-5-36": true,
+     "panel-5-37": false,
+     "panel-5-38": false,
+     "panel-5-39": true,
+     "panel-5-40": true,
+     "panel-5-41": true,
+     "panel-5-42": true,
+     "panel-5-43": false,
+     "panel-5-44": false,
+     "panel-5-45": true,
+     "panel-5-46": true,
+     "panel-5-47": true,
+     "panel-5-48": false,
+     "panel-5-49": true,
+     "panel-5-50": true,
+     "panel-5-51": true,
+     "panel-5-52": true,
+     "panel-5-53": true,
+     "panel-5-54": true,
+     "panel-5-55": false,
+     "panel-5-56": true,
+     "panel-5-57": true,
+     "panel-5-58": true,
+     "panel-5-59": true,
+     "panel-5-60": true,
+     "panel-5-61": true,
+     "panel-5-62": false,
+     "panel-5-63": true,
+     "panel-5-64": false,
+     "panel-7-01": false,
+     "panel-7-02": false,
+     "panel-7-03": true,
+     "panel-7-04": true,
+     "panel-7-05": false,
+     "panel-7-06": false,
+     "panel-7-07": false,
+     "panel-7-08": true,
+     "panel-7-09": true,
+     "panel-7-10": false,
+     "panel-7-11": true,
+     "panel-7-12": true,
+     "panel-7-13": true,
+     "panel-7-14": true,
+     "panel-7-15": true,
+     "panel-7-16": true,
+     "panel-7-17": false,
+     "panel-7-18": true,
+     "panel-7-19": false,
+     "panel-7-20": false,
+     "panel-7-21": false,
+     "panel-7-22": false,
+     "panel-7-23": true,
+     "panel-7-24": true,
+     "panel-7-25": false,
+     "panel-7-26": true,
+     "panel-7-27": false,
+     "panel-7-28": false,
+     "panel-7-29": false,
+     "panel-7-30": true,
+     "panel-7-31": false,
+     "panel-7-32": false,
+     "panel-7-33": false,
+     "panel-7-34": false,
+     "panel-7-35": false,
+     "panel-7-36": false,
+     "panel-7-37": false,
+     "panel-7-38": true,
+     "panel-7-39": true,
+     "panel-7-40": false,
+     "panel-7-41": false,
+     "panel-7-42": true,
+     "panel-7-43": false,
+     "panel-7-44": true,
+     "panel-7-45": false,
+     "panel-7-46": true,
+     "panel-7-47": true,
+     "panel-7-48": false,
+     "panel-7-49": false,
+     "panel-7-50": false,
+     "panel-7-51": false,
+     "panel-7-52": false,
+     "panel-7-53": false,
+     "panel-7-54": true,
+     "panel-7-55": true,
+     "panel-7-56": true,
+     "panel-7-57": false,
+     "panel-7-58": false,
+     "panel-7-59": false,
+     "panel-7-60": false,
+     "panel-7-61": false,
+     "panel-7-62": false,
+     "panel-7-63": false,
+     "panel-7-64": false,
+     "panel-9-01": true,
+     "panel-9-02": false,
+     "panel-9-03": false,
+     "panel-9-04": false,
+     "panel-9-05": true,
+     "panel-9-06": true,
+     "panel-9-07": false,
+     "panel-9-08": false,
+     "panel-9-09": true,
+     "panel-9-10": false,
+     "panel-9-11": false,
+     "panel-9-12": true,
+     "panel-9-13": false,
+     "panel-9-14": false,
+     "panel-9-15": true,
+     "panel-9-16": false,
+     "panel-9-17": false,
+     "panel-9-18": false,
+     "panel-9-19": false,
+     "panel-9-20": false,
+     "panel-9-21": false,
+     "panel-9-22": false,
+     "panel-9-23": false,
+     "panel-9-24": false,
+     "panel-9-25": true,
+     "panel-9-26": true,
+     "panel-9-27": false,
+     "panel-9-28": false,
+     "panel-9-29": true,
+     "panel-9-30": false,
+     "panel-9-31": true,
+     "panel-9-32": true,
+     "panel-9-33": false,
+     "panel-9-34": false,
+     "panel-9-35": false,
+     "panel-9-36": false,
+     "panel-9-37": true,
+     "panel-9-38": false,
+     "panel-9-39": false,
+     "panel-9-40": false,
+     "panel-9-41": false,
+     "panel-9-42": false,
+     "panel-9-43": false,
+     "panel-9-44": false,
+     "panel-9-45": false,
+     "panel-9-46": true,
+     "panel-9-47": false,
+     "panel-9-48": false,
+     "panel-9-49": false,
+     "panel-9-50": true,
+     "panel-9-51": false,
+     "panel-9-52": false,
+     "panel-9-53": false,
+     "panel-9-54": false,
+     "panel-9-55": false,
+     "panel-9-56": false,
+     "panel-9-57": false,
+     "panel-9-58": false,
+     "panel-9-59": false,
+     "panel-9-60": false,
+     "panel-9-61": false,
+     "panel-9-62": false,
+     "panel-9-63": false,
+     "panel-9-64": false
+    },
+    "random_expected_any": {
+     "panel-5-01": 0.04863062575290533,
+     "panel-5-02": 0.2326388342392065,
+     "panel-5-03": 0.036999970769557744,
+     "panel-5-04": 0.07233071428571425,
+     "panel-5-05": 0.05025474580505429,
+     "panel-5-06": 0.10012093249662424,
+     "panel-5-07": 0.12992506795086167,
+     "panel-5-08": 0.040480247891864996,
+     "panel-5-09": 0.06997750388625179,
+     "panel-5-10": 0.07338539201817551,
+     "panel-5-11": 0.06559343126885742,
+     "panel-5-12": 0.06727275350011974,
+     "panel-5-13": 0.28513541666666664,
+     "panel-5-14": 0.09400163116000859,
+     "panel-5-15": 0.05949993670705023,
+     "panel-5-16": 0.07677066514012731,
+     "panel-5-17": 0.18833122570552285,
+     "panel-5-18": 0.08250900714395037,
+     "panel-5-19": 0.05446492564280725,
+     "panel-5-20": 0.18251001371742115,
+     "panel-5-21": 0.1166894227430555,
+     "panel-5-22": 0.09710445815093016,
+     "panel-5-23": 0.09494030264768893,
+     "panel-5-24": 0.0464635204676247,
+     "panel-5-25": 0.04828669710094502,
+     "panel-5-26": 0.10785886381172838,
+     "panel-5-27": 0.29340814393939396,
+     "panel-5-28": 0.23933857284262383,
+     "panel-5-29": 0.07030279729754552,
+     "panel-5-30": 0.051464648372912536,
+     "panel-5-31": 0.0594985817309901,
+     "panel-5-32": 0.08413359829125044,
+     "panel-5-33": 0.057053332949317026,
+     "panel-5-34": 0.2173139660493827,
+     "panel-5-35": 0.09965807827503426,
+     "panel-5-36": 0.1291583815586419,
+     "panel-5-37": 0.04611194582571254,
+     "panel-5-38": 0.05584555226909005,
+     "panel-5-39": 0.06052989567258227,
+     "panel-5-40": 0.07026569598162613,
+     "panel-5-41": 0.05880628714726632,
+     "panel-5-42": 0.25563628499528157,
+     "panel-5-43": 0.033690604627267584,
+     "panel-5-44": 0.0441092303240741,
+     "panel-5-45": 0.04063703601639568,
+     "panel-5-46": 0.06042425540123464,
+     "panel-5-47": 0.13288877523025666,
+     "panel-5-48": 0.05156772792486486,
+     "panel-5-49": 0.16705096473113057,
+     "panel-5-50": 0.06019082695092226,
+     "panel-5-51": 0.08851809728713256,
+     "panel-5-52": 0.04428492638696424,
+     "panel-5-53": 0.055379305448388205,
+     "panel-5-54": 0.07554443478297945,
+     "panel-5-55": 0.047946692309432715,
+     "panel-5-56": 0.12219865642759153,
+     "panel-5-57": 0.0647130973418013,
+     "panel-5-58": 0.19540422769608123,
+     "panel-5-59": 0.0871571701388889,
+     "panel-5-60": 0.07450380883189978,
+     "panel-5-61": 0.06730648087866509,
+     "panel-5-62": 0.039246041369222606,
+     "panel-5-63": 0.05538858882030184,
+     "panel-5-64": 0.057505624645691644,
+     "panel-7-01": 0.009233662757347383,
+     "panel-7-02": 0.00641311803526845,
+     "panel-7-03": 0.027217883169761148,
+     "panel-7-04": 0.03646132101701183,
+     "panel-7-05": 0.009947989736085905,
+     "panel-7-06": 0.0216536820932155,
+     "panel-7-07": 0.010656927660332105,
+     "panel-7-08": 0.023367544989461364,
+     "panel-7-09": 0.04322019784136888,
+     "panel-7-10": 0.004172537049030978,
+     "panel-7-11": 0.02818517092812811,
+     "panel-7-12": 0.006549162095239369,
+     "panel-7-13": 0.004035600469206924,
+     "panel-7-14": 0.008339197851687463,
+     "panel-7-15": 0.03258789335537893,
+     "panel-7-16": 0.008858125022601526,
+     "panel-7-17": 0.007533940004296968,
+     "panel-7-18": 0.010264932450039788,
+     "panel-7-19": 0.006751075134785012,
+     "panel-7-20": 0.0042125131619339395,
+     "panel-7-21": 0.0077236653676959754,
+     "panel-7-22": 0.012077103613296503,
+     "panel-7-23": 0.021229258524463113,
+     "panel-7-24": 0.0071359283769432125,
+     "panel-7-25": 0.004025996871471094,
+     "panel-7-26": 0.03585039693791103,
+     "panel-7-27": 0.005125380110373334,
+     "panel-7-28": 0.013363208659749715,
+     "panel-7-29": 0.0033004417798304653,
+     "panel-7-30": 0.1216841634867063,
+     "panel-7-31": 0.01164878738676034,
+     "panel-7-32": 0.008437458050898905,
+     "panel-7-33": 0.011763728425342568,
+     "panel-7-34": 0.00561137771473863,
+     "panel-7-35": 0.008250029905191303,
+     "panel-7-36": 0.007091870649667875,
+     "panel-7-37": 0.007664755781511046,
+     "panel-7-38": 0.008898773014164307,
+     "panel-7-39": 0.014128772861507266,
+     "panel-7-40": 0.004371734875830868,
+     "panel-7-41": 0.004992579114807549,
+     "panel-7-42": 0.010088018633931717,
+     "panel-7-43": 0.005737302679731937,
+     "panel-7-44": 0.01762738395897312,
+     "panel-7-45": 0.008355348874161672,
+     "panel-7-46": 0.028672572455380907,
+     "panel-7-47": 0.011249829396119626,
+     "panel-7-48": 0.013612997175049824,
+     "panel-7-49": 0.006352663170675399,
+     "panel-7-50": 0.0047992956030799006,
+     "panel-7-51": 0.011507826270522603,
+     "panel-7-52": 0.005539018792847128,
+     "panel-7-53": 0.026359998980052257,
+     "panel-7-54": 0.015908176926775708,
+     "panel-7-55": 0.009909992105150978,
+     "panel-7-56": 0.024629546463359686,
+     "panel-7-57": 0.0076738353255793035,
+     "panel-7-58": 0.006631883029520003,
+     "panel-7-59": 0.011345176814513858,
+     "panel-7-60": 0.012904153914282457,
+     "panel-7-61": 0.00386382352456649,
+     "panel-7-62": 0.005521168016532241,
+     "panel-7-63": 0.03508463597655209,
+     "panel-7-64": 0.006231621078548355,
+     "panel-9-01": 0.01228850784846136,
+     "panel-9-02": 0.015825678158202683,
+     "panel-9-03": 0.00023105980010162952,
+     "panel-9-04": 0.0005464168859936613,
+     "panel-9-05": 0.0020538522800203074,
+     "panel-9-06": 0.0015103633204761602,
+     "panel-9-07": 0.001774857899317528,
+     "panel-9-08": 0.0009982739089640091,
+     "panel-9-09": 0.00993333472773017,
+     "panel-9-10": 0.004049423844203814,
+     "panel-9-11": 0.0035321605826795777,
+     "panel-9-12": 0.0007283777173903161,
+     "panel-9-13": 0.0010682798479798583,
+     "panel-9-14": 0.0010746029455189765,
+     "panel-9-15": 0.004671028907475727,
+     "panel-9-16": 0.00031639440347941417,
+     "panel-9-17": 0.0009570308691159157,
+     "panel-9-18": 0.000600472097775584,
+     "panel-9-19": 0.001465788782427202,
+     "panel-9-20": 0.00043766040558779196,
+     "panel-9-21": 0.00047426523332472215,
+     "panel-9-22": 0.008381552698130679,
+     "panel-9-23": 0.0005734957795102691,
+     "panel-9-24": 0.0005499927110012015,
+     "panel-9-25": 0.0042954666710603995,
+     "panel-9-26": 0.007043801247013537,
+     "panel-9-27": 0.00034188792180278593,
+     "panel-9-28": 0.0004352618543949083,
+     "panel-9-29": 0.0019963246085049624,
+     "panel-9-30": 0.009077821299786626,
+     "panel-9-31": 0.007312632972720112,
+     "panel-9-32": 0.003637055415815049,
+     "panel-9-33": 0.0014426268370673068,
+     "panel-9-34": 0.0005623377858718914,
+     "panel-9-35": 0.00045387863114232374,
+     "panel-9-36": 0.0007485238604630906,
+     "panel-9-37": 0.0008653902221215093,
+     "panel-9-38": 0.0016585310418806287,
+     "panel-9-39": 0.001178543668458154,
+     "panel-9-40": 0.0008544069102073282,
+     "panel-9-41": 0.0013575854189865622,
+     "panel-9-42": 0.0005651586623617311,
+     "panel-9-43": 0.0005002413423882413,
+     "panel-9-44": 0.0005586440294250705,
+     "panel-9-45": 0.0005389745132696744,
+     "panel-9-46": 0.0017597966761638828,
+     "panel-9-47": 0.0005333203433556255,
+     "panel-9-48": 0.0022655610130911663,
+     "panel-9-49": 0.0011265863924618813,
+     "panel-9-50": 0.002056447502584713,
+     "panel-9-51": 0.0005521171578296569,
+     "panel-9-52": 0.0008137075115041137,
+     "panel-9-53": 0.00043255746856385446,
+     "panel-9-54": 0.0012584447110562946,
+     "panel-9-55": 0.0016157983279363464,
+     "panel-9-56": 0.0014026670822605558,
+     "panel-9-57": 0.0003100494502272788,
+     "panel-9-58": 0.0015331392539056354,
+     "panel-9-59": 0.00046983558319468877,
+     "panel-9-60": 0.0014978544911604663,
+     "panel-9-61": 0.00660084530914351,
+     "panel-9-62": 0.0018498083613575078,
+     "panel-9-63": 0.000605796143950843,
+     "panel-9-64": 0.0005326146393739295
+    }
+   },
+   "pending": [
+    {
+     "name": "Jev 1.13",
+     "author": "TypeSafe",
+     "logo": "assets/logos/typesafe.png",
+     "reason": "Not yet tested: needs the OpenRouter key, which is unavailable on this device."
+    }
+   ],
+   "status": "running",
+   "models": []
+  }
+ }
+}
