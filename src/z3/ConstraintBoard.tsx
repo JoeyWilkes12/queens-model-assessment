@@ -11,7 +11,11 @@ export type CellMark = {
   dim?: boolean
   learned?: boolean
   path?: boolean
+  /** A cell fixed by the reader (Chapter 10); framed like a decision. */
+  fixed?: boolean
   note?: string
+  /** Replaces the spoken value words, e.g. "fixed queen (your assumption)". */
+  label?: string
 }
 
 export type ConstraintBoardProps = {
@@ -37,7 +41,7 @@ export function QueenGlyph({ className = '' }: { className?: string }) {
 
 const stateWords = (mark?: CellMark) => {
   if (!mark) return 'unassigned'
-  const value = mark.value === true ? 'queen (true)' : mark.value === false ? 'excluded (false)' : 'unassigned'
+  const value = mark.label ?? (mark.value === true ? 'queen (true)' : mark.value === false ? 'excluded (false)' : 'unassigned')
   const extra = [mark.decision && 'decision', mark.learned && 'by a learned clause', mark.conflict && 'in the conflict clause', mark.highlight && 'highlighted', mark.path && 'on the highlighted path', mark.note].filter(Boolean)
   return extra.length ? `${value}; ${extra.join('; ')}` : value
 }
@@ -92,7 +96,7 @@ export function ConstraintBoard({ regions, label, mark, selectedCell, onSelect, 
             'z3-cell', `z3-region-${regionIndex.get(region)}`,
             m?.value === true && 'is-true', m?.value === false && 'is-false',
             m?.decision && 'is-decision', m?.fresh && 'is-fresh', m?.highlight && 'is-highlight',
-            m?.conflict && 'is-conflict', m?.dim && 'is-dim', m?.path && 'is-path', selected && 'is-selected',
+            m?.conflict && 'is-conflict', m?.dim && 'is-dim', m?.path && 'is-path', m?.fixed && 'is-fixed', selected && 'is-selected',
             brackets.has(R) && 'in-bracket',
             edge(R, C, -1, 0) && 'rb-t', edge(R, C, 1, 0) && 'rb-b', edge(R, C, 0, -1) && 'rb-l', edge(R, C, 0, 1) && 'rb-r',
             isOutlined && edge(R, C, -1, 0) && 'ol-top', isOutlined && edge(R, C, 1, 0) && 'ol-bottom',

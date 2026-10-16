@@ -136,6 +136,7 @@ export function Chapter1({ ui, data }: ChapterProps) {
       <p>A variable is a question about one square, not a queen. An assignment answers all 49 questions at once. The row equations force exactly seven of the answers to be “yes”, one per row. Most of the 2<sup>49</sup> assignments put the wrong number of queens somewhere and make F false.</p>
     </CheckYourself>
     <ReadSource items={[
+      { id: 'P17', locator: 'Rules', why: 'the official rules this chapter formalizes: one crown per row, column and coloured region, none in adjacent cells, including diagonally.' },
       { id: 'P1', locator: 'whole short paper', why: 'the Z3 architecture at the time of its first release; not today’s parameter defaults.' },
       { id: 'P2', locator: '§2', why: 'how Z3’s API states Boolean and arithmetic constraints such as Sum(If(q, 1, 0)) == 1.' },
       { id: 'P12', locator: '§7.2.2.2 (optional)', why: 'a careful introduction to satisfiability as a mathematical object.' },

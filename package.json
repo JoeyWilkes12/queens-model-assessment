@@ -7,8 +7,8 @@
     "evidence:generate": "node scripts/generate-evidence.mjs",
     "receipts:generate": "node scripts/generate-receipt-chains.mjs",
     "receipts:verify": "node scripts/verify-receipt-chains.mjs",
-    "z3:generate": "node scripts/z3/run-python.mjs scripts/z3/build_teaching_data.py && node scripts/verify-z3-teaching.mjs",
-    "z3:verify": "node scripts/z3/run-python.mjs scripts/z3/build_teaching_data.py --verify && node scripts/verify-z3-teaching.mjs",
+    "z3:generate": "node scripts/z3/run-python.mjs scripts/z3/build_teaching_data.py && node scripts/verify-z3-teaching.mjs && node scripts/verify-z3-workbench.mjs",
+    "z3:verify": "node scripts/z3/run-python.mjs scripts/z3/build_teaching_data.py --verify && node scripts/verify-z3-teaching.mjs && node scripts/verify-z3-workbench.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
