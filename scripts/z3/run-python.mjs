@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 /**
  * Runs a scripts/z3 Python entry point with a Z3-capable interpreter.
- * Interpreter: $Z3_PYTHON, else the local Queens venv used to record the
- * receipts (if present), else python3. Fails loudly if z3 cannot be imported.
+ * Interpreter: $Z3_PYTHON if set, else python3. The receipts were recorded with
+ * z3-solver 4.16.0. Fails loudly if z3 cannot be imported.
  */
 import { spawnSync } from 'node:child_process'
 import { existsSync } from 'node:fs'
 
-const candidates = [process.env.Z3_PYTHON, '/Users/joeywilkes/Desktop/scripts/Queens/.local/venv/bin/python', 'python3'].filter(Boolean)
-const python = candidates.find(path => path === 'python3' || existsSync(path))
+const python = process.env.Z3_PYTHON || 'python3'
+if (process.env.Z3_PYTHON && !existsSync(process.env.Z3_PYTHON)) {
+  console.error(`FAIL Z3_PYTHON does not exist: ${process.env.Z3_PYTHON}`)
+  process.exit(1)
+}
 const env = { ...process.env, PYTHONDONTWRITEBYTECODE: '1' }
 const probe = spawnSync(python, ['-c', 'import z3; print(z3.get_full_version())'], { env, encoding: 'utf8' })
 if (probe.status !== 0) {
