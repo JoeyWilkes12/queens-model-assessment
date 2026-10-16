@@ -208,6 +208,8 @@ export const groupLabel = (name: string) => {
 /** Human description of one clause source tag. */
 export function describeSource(source: string) {
   if (source === 'blocker') return 'blocking clause'
+  const fresh = source.match(/^learned@new-run:(.+)$/)
+  if (fresh) return `learned in this new run at event ${fresh[1]}`
   const learned = source.match(/^learned@(existence|blocked):(\d+)$/)
   if (learned) return `learned at ${learned[1]}-run event ${learned[2]}`
   const touch = source.match(/^touching:(r\d+c\d+)-(r\d+c\d+)$/)

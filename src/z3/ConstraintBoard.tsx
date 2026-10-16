@@ -94,6 +94,7 @@ export function ConstraintBoard({ regions, label, mark, selectedCell, onSelect, 
             m?.decision && 'is-decision', m?.fresh && 'is-fresh', m?.highlight && 'is-highlight',
             m?.conflict && 'is-conflict', m?.dim && 'is-dim', m?.path && 'is-path', selected && 'is-selected',
             brackets.has(R) && 'in-bracket',
+            edge(R, C, -1, 0) && 'rb-t', edge(R, C, 1, 0) && 'rb-b', edge(R, C, 0, -1) && 'rb-l', edge(R, C, 0, 1) && 'rb-r',
             isOutlined && edge(R, C, -1, 0) && 'ol-top', isOutlined && edge(R, C, 1, 0) && 'ol-bottom',
             isOutlined && edge(R, C, 0, -1) && 'ol-left', isOutlined && edge(R, C, 0, 1) && 'ol-right',
           ].filter(Boolean).join(' ')
