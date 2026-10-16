@@ -1,0 +1,123 @@
+{
+  "trajectory_id": "panel-9-48_raw_a1",
+  "board_id": "panel-9-48",
+  "size": 9,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 102,
+  "block": 17,
+  "mode_position": 2,
+  "requested_model": "typesafe/jev-1.13",
+  "started_utc": "2026-10-16T21:31:26.827264+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-9-48_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "B",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        1,
+        5
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-9-48_raw_a1_p02_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 6,
+      "cell_call": "panel-9-48_raw_a1_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.32,
+      "cell": [
+        3,
+        9
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-9-48_raw_a1_p03_region",
+      "region_forced": false,
+      "region": "I",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        9,
+        4
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-9-48_raw_a1_p04_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 3,
+      "cell_call": "panel-9-48_raw_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.41,
+      "cell": [
+        4,
+        6
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 5,
+      "region_call": "panel-9-48_raw_a1_p05_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 28,
+      "cell_call": "panel-9-48_raw_a1_p05_cell",
+      "cell_forced": false,
+      "top_probability": 0.13999999999999999,
+      "cell": [
+        6,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 8,
+  "forced_decisions": 2,
+  "api_elapsed_seconds": 2.5058160850000206,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 5,
+  "placement_prefix": [
+    [
+      1,
+      5
+    ],
+    [
+      3,
+      9
+    ],
+    [
+      9,
+      4
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      6,
+      3
+    ]
+  ],
+  "correct_queens_before_failure": 4,
+  "elapsed_seconds": 2.5380468750000205,
+  "ended_utc": "2026-10-16T21:31:29.365558+00:00"
+}

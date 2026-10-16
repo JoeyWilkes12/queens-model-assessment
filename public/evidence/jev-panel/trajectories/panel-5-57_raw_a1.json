@@ -1,0 +1,64 @@
+{
+  "trajectory_id": "panel-5-57_raw_a1",
+  "board_id": "panel-5-57",
+  "size": 5,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 280,
+  "block": 47,
+  "mode_position": 2,
+  "requested_model": "typesafe/jev-1.13",
+  "started_utc": "2026-10-16T21:35:11.930916+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-5-57_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        3,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-5-57_raw_a1_p02_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 4,
+      "cell_call": "panel-5-57_raw_a1_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.39,
+      "cell": [
+        5,
+        5
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 3,
+  "forced_decisions": 1,
+  "api_elapsed_seconds": 0.8279552090000379,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 2,
+  "placement_prefix": [
+    [
+      3,
+      3
+    ],
+    [
+      5,
+      5
+    ]
+  ],
+  "correct_queens_before_failure": 1,
+  "elapsed_seconds": 0.8441577079999547,
+  "ended_utc": "2026-10-16T21:35:12.775801+00:00"
+}

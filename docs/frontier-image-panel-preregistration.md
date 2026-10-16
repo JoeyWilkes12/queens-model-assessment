@@ -77,4 +77,4 @@ OpenRouter's Batch API (launched 22 September 2026) was checked first. It halves
 
 ## Amendments
 
-*None yet.*
+**Amendment 1 (2026-10-16, before any Claude Opus 4.8 request).** OpenRouter rejected the Anthropic batch submission three times with HTTP 400 ("does not have a :batch endpoint"), even though the endpoint is listed in the model catalog. Nothing was run or billed. Switching to Anthropic's native `/v1/messages` batch format would change the request format, so Opus instead runs on demand with the September Anthropic provider block, the inline image and the 600 s timeout, exactly as in September. The batch row in the routes table therefore applies only to GPT-5.6 Sol. Opus's expected cost rises by about $1.50 and stays under the campaign cap.

@@ -1,0 +1,515 @@
+{
+  "study": "2026-10-16-jev-new-board-panel-pilot",
+  "model": "typesafe/jev-1.13",
+  "expected_build": "typesafe/jev-1.13-20260917",
+  "updated_utc": "2026-10-16T21:29:08.324499+00:00",
+  "planned_trajectories": 2,
+  "attempted_trajectories": 2,
+  "remaining_trajectories": 0,
+  "solved": 0,
+  "boards_solved": 0,
+  "model_calls": 7,
+  "forced_decisions": 3,
+  "stop_reasons": {
+    "globally_unextendable_prefix": 2
+  },
+  "returned_models": {
+    "typesafe/jev-1.13-20260917": 7
+  },
+  "providers": {
+    "TypeSafe": 7
+  },
+  "cost_usd_reported": 0.000643398,
+  "trajectories": [
+    {
+      "trajectory_id": "dev-9-01_raw_a1",
+      "board_id": "dev-9-01",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1,
+      "sequence": 1,
+      "requested_model": "typesafe/jev-1.13",
+      "started_utc": "2026-10-16T21:29:06.090439+00:00",
+      "steps": [
+        {
+          "step": 1,
+          "region_call": "dev-9-01_raw_a1_p01_region",
+          "region_forced": false,
+          "region": "D",
+          "candidate_count": 4,
+          "cell_call": "dev-9-01_raw_a1_p01_cell",
+          "cell_forced": false,
+          "top_probability": 0.3,
+          "cell": [
+            3,
+            9
+          ],
+          "local_violations": [],
+          "on_unique_solution": false
+        }
+      ],
+      "success": false,
+      "http_calls": 2,
+      "forced_decisions": 0,
+      "api_elapsed_seconds": 0.661941542,
+      "stop_reason": "globally_unextendable_prefix",
+      "accepted_queens": 1,
+      "placement_prefix": [
+        [
+          3,
+          9
+        ]
+      ],
+      "correct_queens_before_failure": 0,
+      "elapsed_seconds": 0.675407917,
+      "ended_utc": "2026-10-16T21:29:06.766397+00:00"
+    },
+    {
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "requested_model": "typesafe/jev-1.13",
+      "started_utc": "2026-10-16T21:29:06.766926+00:00",
+      "steps": [
+        {
+          "step": 1,
+          "region_call": "dev-9-02_local_a1_p01_region",
+          "region_forced": false,
+          "region": "F",
+          "candidate_count": 1,
+          "cell_call": null,
+          "cell_forced": true,
+          "cell": [
+            3,
+            5
+          ],
+          "local_violations": [],
+          "on_unique_solution": true
+        },
+        {
+          "step": 2,
+          "region_call": "dev-9-02_local_a1_p02_region",
+          "region_forced": false,
+          "region": "C",
+          "candidate_count": 1,
+          "cell_call": null,
+          "cell_forced": true,
+          "cell": [
+            2,
+            1
+          ],
+          "local_violations": [],
+          "on_unique_solution": true
+        },
+        {
+          "step": 3,
+          "region_call": "dev-9-02_local_a1_p03_region",
+          "region_forced": false,
+          "region": "G",
+          "candidate_count": 1,
+          "cell_call": null,
+          "cell_forced": true,
+          "cell": [
+            5,
+            2
+          ],
+          "local_violations": [],
+          "on_unique_solution": true
+        },
+        {
+          "step": 4,
+          "region_call": "dev-9-02_local_a1_p04_region",
+          "region_forced": false,
+          "region": "A",
+          "candidate_count": 3,
+          "cell_call": "dev-9-02_local_a1_p04_cell",
+          "cell_forced": false,
+          "top_probability": 0.41,
+          "cell": [
+            1,
+            4
+          ],
+          "local_violations": [],
+          "on_unique_solution": false
+        }
+      ],
+      "success": false,
+      "http_calls": 5,
+      "forced_decisions": 3,
+      "api_elapsed_seconds": 1.5112227090000003,
+      "stop_reason": "globally_unextendable_prefix",
+      "accepted_queens": 4,
+      "placement_prefix": [
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "correct_queens_before_failure": 3,
+      "elapsed_seconds": 1.549621417,
+      "ended_utc": "2026-10-16T21:29:08.317147+00:00"
+    }
+  ],
+  "records": [
+    {
+      "call_id": "dev-9-01_raw_a1_p01_cell",
+      "trajectory_id": "dev-9-01_raw_a1",
+      "board_id": "dev-9-01",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1,
+      "sequence": 1,
+      "phase": "cell",
+      "step": 1,
+      "family": "trajectory",
+      "endpoint": "/api/alpha/decisions",
+      "requested_model": "typesafe/jev-1.13",
+      "completed_utc": "2026-10-16T21:29:06.763796+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.2682755,
+      "request_sha256": "3be249e1c6d3cadab77ec8c2d2b623b3803660b230cb31b0a82caf0f5a1c1874",
+      "response_sha256": "de89425074c6bd25eae278374dce8091504975be25c29d6f2fe4c2ca1a901101",
+      "returned_model": "typesafe/jev-1.13-20260917",
+      "provider": "TypeSafe",
+      "generation_id": "gen-dec-1792186146-lD9RW2R3SlHEcrzSlBkb",
+      "usage": {
+        "input_tokens": 2151,
+        "output_tokens": 60,
+        "cost": 9.0342e-05
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": false,
+        "question_count": 1,
+        "graded_question_count": 1,
+        "correct_questions": 0,
+        "questions": {
+          "cell": {
+            "kind": "frozen_trajectory_cell",
+            "correct": false,
+            "selected": "r3c9",
+            "probability_sum": 1.0,
+            "confidence": 0.07,
+            "selected_below_reported_max": false,
+            "acceptable_count": 1,
+            "correct_probability_mass": 0.28,
+            "cell": {
+              "row": 3,
+              "column": 9
+            }
+          }
+        },
+        "outcome": "model_failure"
+      }
+    },
+    {
+      "call_id": "dev-9-01_raw_a1_p01_region",
+      "trajectory_id": "dev-9-01_raw_a1",
+      "board_id": "dev-9-01",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1,
+      "sequence": 1,
+      "phase": "region",
+      "step": 1,
+      "family": "trajectory",
+      "endpoint": "/api/alpha/decisions",
+      "requested_model": "typesafe/jev-1.13",
+      "completed_utc": "2026-10-16T21:29:06.487404+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.393666042,
+      "request_sha256": "58c39dd779a38dc0b5fcd032ab613cdfef7680f6821f2068dc4fecb9fd9ab9c4",
+      "response_sha256": "bba5cd68a8d6ee946f26834021a751b6082dbb4a3fcd43b5cedd678f30956904",
+      "returned_model": "typesafe/jev-1.13-20260917",
+      "provider": "TypeSafe",
+      "generation_id": "gen-dec-1792186146-jGBk5xOx2HGD7bDtvSoC",
+      "usage": {
+        "input_tokens": 2193,
+        "output_tokens": 80,
+        "cost": 9.2106e-05
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "D",
+            "probability_sum": 1.0,
+            "confidence": 0.35,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p01_region",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "region",
+      "step": 1,
+      "family": "trajectory",
+      "endpoint": "/api/alpha/decisions",
+      "requested_model": "typesafe/jev-1.13",
+      "completed_utc": "2026-10-16T21:29:07.058656+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.287244167,
+      "request_sha256": "33bd004a1a32ae55bad5718b3625f75ffc9a6fd23f9eb0ed83da4f74d05148c6",
+      "response_sha256": "e7c148b2a4eea731ab2e9f7aaecf676428873851fa063efc79f4c6f290f1083a",
+      "returned_model": "typesafe/jev-1.13-20260917",
+      "provider": "TypeSafe",
+      "generation_id": "gen-dec-1792186146-AX0bY1KhC4KA9KcAvKXh",
+      "usage": {
+        "input_tokens": 2193,
+        "output_tokens": 80,
+        "cost": 9.2106e-05
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "F",
+            "probability_sum": 1.0,
+            "confidence": 0.21,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p02_region",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "region",
+      "step": 2,
+      "family": "trajectory",
+      "endpoint": "/api/alpha/decisions",
+      "requested_model": "typesafe/jev-1.13",
+      "completed_utc": "2026-10-16T21:29:07.340582+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.2765446250000001,
+      "request_sha256": "b7e449b6140d0aa2fd5ce72e0136a03256854aee6c7078c9b8265e1b9cd20b4f",
+      "response_sha256": "a3709498e0440dac34f89a4875b240ede04f3180619fc7e477fe07f929956e2f",
+      "returned_model": "typesafe/jev-1.13-20260917",
+      "provider": "TypeSafe",
+      "generation_id": "gen-dec-1792186147-kzdeo5ws0PwvD88DVLNQ",
+      "usage": {
+        "input_tokens": 2195,
+        "output_tokens": 73,
+        "cost": 9.219e-05
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "C",
+            "probability_sum": 1.0,
+            "confidence": 0.26,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p03_region",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "region",
+      "step": 3,
+      "family": "trajectory",
+      "endpoint": "/api/alpha/decisions",
+      "requested_model": "typesafe/jev-1.13",
+      "completed_utc": "2026-10-16T21:29:07.670542+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.32260599999999995,
+      "request_sha256": "7f9804729bd7160cb8af521de2bbce66b5c5a91f571074953fdc61e4aca027d5",
+      "response_sha256": "7f7354f2869915e7989a52f4bd49d5166c071f54e5ed9aeddc9e080aa3863095",
+      "returned_model": "typesafe/jev-1.13-20260917",
+      "provider": "TypeSafe",
+      "generation_id": "gen-dec-1792186147-sGqzGuAa9xwoR0cG6VpI",
+      "usage": {
+        "input_tokens": 2198,
+        "output_tokens": 66,
+        "cost": 9.2316e-05
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "G",
+            "probability_sum": 1.0000000000000002,
+            "confidence": 0.24,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p04_cell",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "cell",
+      "step": 4,
+      "family": "trajectory",
+      "endpoint": "/api/alpha/decisions",
+      "requested_model": "typesafe/jev-1.13",
+      "completed_utc": "2026-10-16T21:29:08.314675+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.2859156250000001,
+      "request_sha256": "bc3a8b3f1520e7295765db3f64e2e80428a59f5e95965ff30d4b35203b7c171e",
+      "response_sha256": "c6267138fa08b2191a73b1e29fab81dc27c762252c067b241f6ff364c172dff0",
+      "returned_model": "typesafe/jev-1.13-20260917",
+      "provider": "TypeSafe",
+      "generation_id": "gen-dec-1792186148-gXm4u3XS54yTi9uZRlh9",
+      "usage": {
+        "input_tokens": 2188,
+        "output_tokens": 50,
+        "cost": 9.1896e-05
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": false,
+        "question_count": 1,
+        "graded_question_count": 1,
+        "correct_questions": 0,
+        "questions": {
+          "cell": {
+            "kind": "frozen_trajectory_cell",
+            "correct": false,
+            "selected": "r1c4",
+            "probability_sum": 1.0,
+            "confidence": 0.11,
+            "selected_below_reported_max": false,
+            "acceptable_count": 1,
+            "correct_probability_mass": 0.37,
+            "cell": {
+              "row": 1,
+              "column": 4
+            }
+          }
+        },
+        "outcome": "model_failure"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p04_region",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "region",
+      "step": 4,
+      "family": "trajectory",
+      "endpoint": "/api/alpha/decisions",
+      "requested_model": "typesafe/jev-1.13",
+      "completed_utc": "2026-10-16T21:29:08.019104+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.33891229200000006,
+      "request_sha256": "842ba02545ebd409f69d2dd7bb7ef2b805728b38e40c870ae5fc3f3f044dfbb8",
+      "response_sha256": "f3de6c56122f53cb9afc13ca2bc8ae13e685644826a143a12bc35a0375dc4a41",
+      "returned_model": "typesafe/jev-1.13-20260917",
+      "provider": "TypeSafe",
+      "generation_id": "gen-dec-1792186147-waBVtkt0ok3NGIGMtmZH",
+      "usage": {
+        "input_tokens": 2201,
+        "output_tokens": 59,
+        "cost": 9.2442e-05
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "A",
+            "probability_sum": 1.0,
+            "confidence": 0.15,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    }
+  ],
+  "caveats": [
+    "Same request templates, rules, option ordering and stopping criteria as the historical trajectory study.",
+    "Singleton menus use a forced harness transition and no inference. Forced decisions and model calls are counted separately.",
+    "Local mode filters immediate row, column, region and touching conflicts only. The full solver never filters candidates or supplies answers.",
+    "Ground-truth solutions are not in this plan; the worker recomputes the unique solution offline and checks it against each board's sha256 commitment before any request.",
+    "Board ids are neutral; stratum, generator and difficulty profile are not in this plan or any request.",
+    "Budget guard, provider and schema failures stop the campaign and are reported separately from puzzle failures; no automatic retries.",
+    "Same boards, schedule order, state, questions and stopping rule as the SubQ panel; only the transport and model envelope differ.",
+    "Jev runs on OpenRouter's Decisions route, pinned to typesafe/jev-1.13 with the September provider block; the reply must report build typesafe/jev-1.13-20260917."
+  ],
+  "campaign_budget": null
+}

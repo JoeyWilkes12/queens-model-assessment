@@ -1,0 +1,200 @@
+{
+  "model": "typesafe/jev-1.13",
+  "provider": {
+    "only": [
+      "typesafe"
+    ],
+    "order": [
+      "typesafe"
+    ],
+    "allow_fallbacks": false,
+    "max_price": {
+      "prompt": 0.042,
+      "completion": 0
+    }
+  },
+  "state": {
+    "board_id": "panel-5-37",
+    "size": 5,
+    "rules": [
+      "Exactly one queen per row, column, and color region.",
+      "Queens cannot touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed; this is regional Queens, not chess N-Queens.",
+      "Exactly one full solution exists. Coordinates are 1-based."
+    ],
+    "coordinates": "Rows top to bottom; columns left to right; both start at 1.",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "C",
+        "C",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "C",
+        "C",
+        "C",
+        "B",
+        "B"
+      ],
+      [
+        "D",
+        "D",
+        "E",
+        "E",
+        "B"
+      ],
+      [
+        "D",
+        "E",
+        "E",
+        "E",
+        "E"
+      ]
+    ],
+    "regions": {
+      "A": [
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        }
+      ],
+      "B": [
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 5
+        }
+      ],
+      "C": [
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 3,
+          "column": 3
+        }
+      ],
+      "D": [
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 1
+        }
+      ],
+      "E": [
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    },
+    "placed_queens": [
+      {
+        "row": 1,
+        "column": 2,
+        "region": "A"
+      },
+      {
+        "row": 3,
+        "column": 3,
+        "region": "C"
+      }
+    ],
+    "instruction": "Keep placed queens fixed. Select a next decision consistent with the unique complete solution. No backtracking or solution feedback is supplied."
+  },
+  "questions": {
+    "region": {
+      "type": "choice",
+      "instructions": "Which unoccupied color region should receive the next queen? Choose a region you can place correctly toward the unique complete solution. Any region order may be valid; then a separate request will ask for its cell.",
+      "criteria": {
+        "B": "Place the next queen in region B.",
+        "D": "Place the next queen in region D.",
+        "E": "Place the next queen in region E."
+      }
+    }
+  }
+}

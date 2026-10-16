@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import './scoreboard.css'
 
 type Outcome = 'strict' | 'format_only' | 'wrong' | 'no_answer'
-type LlmModel = { id: string; name: string; author: string; logo: string; cohort: 'frontier' | 'earlier'; study: string; boards: Record<string, { issued: number; outcome: Outcome; receipt: string }>; notes: string[] }
+type LlmModel = { id: string; name: string; author: string; logo: string; cohort: 'frontier' | 'earlier'; study: string; boards: Record<string, { issued: number; outcome: Outcome; receipt: string }>; notes: string[]; rerun?: { size: string; outcome: Outcome; date: string; receipt: string } }
+type LlmPanel = { status: string; study?: string; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; boards: Record<string, Outcome | 'not_run'> }[] }
 type ModeCounts = { raw: [number, number]; local: [number, number] }
 type DecisionModel = { name: string; author: string; logo: string; study: string; per_board: Record<string, ModeCounts>; calls: number; attempts_per_board_mode: number }
 type DecisionSet = {
@@ -15,7 +16,7 @@ type DecisionSet = {
 }
 type ScoreboardData = {
   generated_utc: string
-  llm: { boards: number[]; models: LlmModel[]; not_run: { name: string; author: string; logo: string; reason: string }[] }
+  llm: { boards: number[]; models: LlmModel[]; not_run: { name: string; author: string; logo: string; reason: string }[]; panel?: LlmPanel }
   decision: { original: DecisionSet; panel: DecisionSet }
 }
 
@@ -115,6 +116,21 @@ function llmRows(data: ScoreboardData['llm'], tab: TabKey, includeEarlier: boole
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
 }
 
+function llmPanelRows(panel: LlmPanel, tab: TabKey): Row[] {
+  const ids = panel.boards.filter(board => tab === 'all' || String(board.size) === tab).map(board => board.id)
+  return panel.models.map(model => {
+    const outcomes = ids.map(id => model.boards[id] ?? 'not_run')
+    const strict = outcomes.filter(value => value === 'strict').length
+    const formatOnly = outcomes.filter(value => value === 'format_only').length
+    const noAnswer = outcomes.filter(value => value === 'no_answer').length
+    const notRun = outcomes.filter(value => value === 'not_run').length
+    const issued = ids.length - notRun
+    const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', noAnswer ? `${noAnswer} no answer` : '', notRun ? `${notRun} not yet run` : ''].filter(Boolean)
+    return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: ids.length,
+      label: `${strict + formatOnly}/${issued}`, kind: 'model' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, 16 Oct panel.` }
+  }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
+}
+
 function decisionRows(set: DecisionSet, tab: TabKey): Row[] {
   const boards = set.boards.filter(board => tab === 'all' || String(board.size) === tab)
   const ids = boards.map(board => board.id)
@@ -145,6 +161,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   const [llmTab, setLlmTab] = useState<TabKey>('all')
   const [decisionTab, setDecisionTab] = useState<TabKey>('all')
   const [includeEarlier, setIncludeEarlier] = useState(false)
+  const [llmSet, setLlmSet] = useState<'original' | 'panel'>('original')
   const [boardSet, setBoardSet] = useState<'original' | 'panel'>('original')
 
   useEffect(() => {
@@ -159,7 +176,11 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   if (error) return <p role="status">The saved scoreboard could not be loaded. No scores are substituted.</p>
   if (!data) return <p role="status">Loading the saved scoreboard…</p>
 
-  const llm = llmRows(data.llm, llmTab, includeEarlier)
+  const panel = data.llm.panel
+  const panelReadyLlm = !!panel && panel.models.length > 0
+  const llm = llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab) : llmRows(data.llm, llmTab, includeEarlier)
+  const llmPanelBoards = panel ? panel.boards.filter(board => llmTab === 'all' || String(board.size) === llmTab).length : 0
+  const reruns = data.llm.models.filter(model => model.rerun)
   const frontierCount = data.llm.models.filter(model => model.cohort === 'frontier').length
   const set = data.decision[boardSet]
   const panelReady = data.decision.panel.models.length > 0
@@ -172,23 +193,33 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
       <figcaption>
         <span className="sb-kicker">Construction from a blank image</span>
         <strong id="sb-llm-title">Reasoning language models: boards solved</strong>
-        <span>Each model received the same {llmTab === 'all' ? 'three boards' : 'board'} as one image, with one request and no retries, and had to write the complete placement.</span>
+        <span>{llmSet === 'panel' ? `Each model received the same ${llmPanelBoards} new boards` : `Each model received the same ${llmTab === 'all' ? 'three boards' : 'board'}`} as one image, with one request and no retries, and had to write the complete placement.</span>
       </figcaption>
       <div className="sb-controls">
         <Tabs value={llmTab} onChange={setLlmTab} label="Board size, language models" />
-        <label className="sb-toggle"><input type="checkbox" checked={includeEarlier} onChange={event => setIncludeEarlier(event.target.checked)} /> Include earlier generations</label>
+        <div className="sb-segment" role="group" aria-label="Board set, language models">
+          <button type="button" aria-pressed={llmSet === 'original'} onClick={() => setLlmSet('original')}>Original 3 boards</button>
+          <button type="button" aria-pressed={llmSet === 'panel'} onClick={() => setLlmSet('panel')} disabled={!panelReadyLlm}>New 36-board panel</button>
+        </div>
+        {llmSet === 'original' && <label className="sb-toggle"><input type="checkbox" checked={includeEarlier} onChange={event => setIncludeEarlier(event.target.checked)} /> Include earlier generations</label>}
       </div>
       <Legend items={[{ kind: 'solid', label: 'Correct, strict JSON' }, { kind: 'hatched', label: 'Correct placement, broke the JSON-only format' }]} />
       <EvalBars rows={llm} unit="Boards with a correct full placement" />
       <details className="sb-coverage">
-        <summary>Test coverage: {includeEarlier ? data.llm.models.length : frontierCount} models × {llmTab === 'all' ? 3 : 1} {llmTab === 'all' ? 'boards' : 'board'}, identical for every model shown</summary>
-        <ul>
+        <summary>Test coverage: {llmSet === 'panel' ? `${panel?.models.length ?? 0} models × ${llmPanelBoards} boards` : `${includeEarlier ? data.llm.models.length : frontierCount} models × ${llmTab === 'all' ? 3 : 1} ${llmTab === 'all' ? 'boards' : 'board'}`}, identical for every model shown</summary>
+        {llmSet === 'panel' ? <ul>
+          <li>36 new boards (12 per size, 3 from each difficulty stratum of the 192-board panel), so every board also has Jev and SubQ results. Images rendered with the September renderer, byte-identical in style; September prompt and settings unchanged.</li>
+          <li>GPT-5.6 Sol ran through OpenRouter's Batch API at the September price, with the image by public URL. Claude Opus 4.8, Gemini 3.1 Pro Preview and Grok 4.6 ran on demand with the September provider blocks and inline images. One request per model and board, no retries.</li>
+          {panel?.status !== 'complete' && <li><strong>Still running:</strong> bars show the boards recorded so far; the denominator in each label counts only completed requests.</li>}
+          <li><a href="#/decision-models">Decision models</a> · <a href={evidenceUrl('evidence/frontier-image-panel/summary.json')} download>Panel results (JSON)</a></li>
+        </ul> : <ul>
           <li>One request per model and board, the same image and prompt, no tools, no repair turns, no retries.</li>
-          {timeouts.map(note => <li key={note}><strong>Needs a re-run:</strong> {note} It is counted as unsolved here.</li>)}
+          {timeouts.map(note => <li key={note}><strong>Timed out:</strong> {note} It is counted as unsolved here, as recorded.</li>)}
+          {reruns.map(model => <li key={model.id}><strong>Re-run on {model.rerun?.date}:</strong> {model.name}'s {model.rerun?.size}×{model.rerun?.size} request was sent again byte for byte: {model.rerun?.outcome === 'strict' ? 'solved, strict JSON' : model.rerun?.outcome.replace('_', ' ')}. <a href={`#/evidence-atlas/${model.rerun?.receipt}`}>Re-run receipt</a>.</li>)}
           {includeEarlier && <li><strong>Scheduled but not run ({data.llm.not_run.length}):</strong> {data.llm.not_run.map(model => model.name).join(', ')}. The adaptive replay stopped those families early; they had no tests and are not shown.</li>}
-          <li>Re-runs, and the unrun models, need the OpenRouter key, which is not available on this device yet. They will be reported as new dated runs, not merged silently.</li>
+          {includeEarlier && <li>The six unrun earlier-generation models have not been scheduled again.</li>}
           <li><a href="#/protocol-results">Protocol and results</a> · <a href="#/earlier-generations">Earlier generations</a> · <a href={evidenceUrl('evidence/scoreboard.json')} download>Scoreboard data (JSON)</a></li>
-        </ul>
+        </ul>}
       </details>
     </figure>
 
@@ -217,7 +248,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
             <li>Jev 1.13 and SubQ Snap received the same nine boards, protocol and menus: five raw and five filtered attempts per board, 90 attempts each. A board counts as solved if any attempt solved it.</li>
             <li>Model calls: {set.models.map(model => `${model.name} ${model.calls}`).join(', ')}. Single-option menus were forced by the harness and made no call.</li>
           </> : <>
-            <li>192 new, independently certified boards (64 per size, stratified by singleton regions and search difficulty), with one raw and one filtered attempt each, preregistered before any call.</li>
+            <li>192 new, independently certified boards (64 per size, stratified by singleton regions and search difficulty), with one raw and one filtered attempt each, preregistered before any call. Jev 1.13 (16 Oct, build jev-1.13-20260917, same build as September) and SubQ Snap (15 Oct) received identical boards, schedule, prompts and stopping rule.</li>
             {set.models.map(model => <li key={model.name}>{model.name}: {model.calls} model calls.</li>)}
             {set.pending.map(model => <li key={model.name}><strong>{model.name} not yet tested:</strong> {model.reason} Until then this panel is not a like-for-like comparison.</li>)}
           </>}

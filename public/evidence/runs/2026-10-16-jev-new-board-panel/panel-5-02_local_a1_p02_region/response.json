@@ -1,0 +1,23 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "region": {
+      "type": "choice",
+      "choice": "E",
+      "probabilities": {
+        "A": 0.16,
+        "B": 0.19,
+        "C": 0.17,
+        "E": 0.48
+      },
+      "confidence": 0.31
+    }
+  },
+  "usage": {
+    "input_tokens": 1079,
+    "output_tokens": 45,
+    "cost": 4.5318e-05
+  },
+  "id": "gen-dec-1792186321-65EXbwSYXrJqyv5l2yJO",
+  "provider": "TypeSafe"
+}

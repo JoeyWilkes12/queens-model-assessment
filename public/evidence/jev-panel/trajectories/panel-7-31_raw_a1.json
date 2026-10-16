@@ -1,0 +1,103 @@
+{
+  "trajectory_id": "panel-7-31_raw_a1",
+  "board_id": "panel-7-31",
+  "size": 7,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 58,
+  "block": 10,
+  "mode_position": 2,
+  "requested_model": "typesafe/jev-1.13",
+  "started_utc": "2026-10-16T21:30:25.813248+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-7-31_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 2,
+      "cell_call": "panel-7-31_raw_a1_p01_cell",
+      "cell_forced": false,
+      "top_probability": 0.54,
+      "cell": [
+        3,
+        7
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-7-31_raw_a1_p02_region",
+      "region_forced": false,
+      "region": "G",
+      "candidate_count": 3,
+      "cell_call": "panel-7-31_raw_a1_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.59,
+      "cell": [
+        6,
+        6
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-7-31_raw_a1_p03_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 2,
+      "cell_call": "panel-7-31_raw_a1_p03_cell",
+      "cell_forced": false,
+      "top_probability": 0.73,
+      "cell": [
+        5,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-7-31_raw_a1_p04_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 7,
+      "cell_call": "panel-7-31_raw_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.43,
+      "cell": [
+        1,
+        1
+      ],
+      "local_violations": [
+        "column_reused"
+      ],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 8,
+  "forced_decisions": 0,
+  "api_elapsed_seconds": 2.716785501000004,
+  "stop_reason": "local_rule_violation",
+  "accepted_queens": 3,
+  "placement_prefix": [
+    [
+      3,
+      7
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      5,
+      1
+    ]
+  ],
+  "correct_queens_before_failure": 3,
+  "elapsed_seconds": 2.763972624999994,
+  "ended_utc": "2026-10-16T21:30:28.577946+00:00"
+}

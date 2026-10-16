@@ -1,0 +1,26 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "cell": {
+      "type": "choice",
+      "choice": "r3c3",
+      "probabilities": {
+        "r1c1": 0.03,
+        "r1c2": 0.02,
+        "r1c3": 0.02,
+        "r2c1": 0.18,
+        "r2c2": 0.16,
+        "r2c3": 0.14,
+        "r3c3": 0.45
+      },
+      "confidence": 0.36
+    }
+  },
+  "usage": {
+    "input_tokens": 1664,
+    "output_tokens": 90,
+    "cost": 6.9888e-05
+  },
+  "id": "gen-dec-1792186327-GolabSunLuQ1DmfTjMx4",
+  "provider": "TypeSafe"
+}

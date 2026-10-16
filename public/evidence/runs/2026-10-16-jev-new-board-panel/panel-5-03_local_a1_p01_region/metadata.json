@@ -1,0 +1,29 @@
+{
+  "call_id": "panel-5-03_local_a1_p01_region",
+  "trajectory_id": "panel-5-03_local_a1",
+  "board_id": "panel-5-03",
+  "size": 5,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 317,
+  "block": 53,
+  "mode_position": 1,
+  "phase": "region",
+  "step": 1,
+  "family": "trajectory",
+  "endpoint": "/api/alpha/decisions",
+  "requested_model": "typesafe/jev-1.13",
+  "completed_utc": "2026-10-16T21:35:53.916883+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.3589291250000315,
+  "request_sha256": "c4f423bd7be29b4ea00679cc9038c1942c20e3d79fd87908d6b8cdbae4c0db24",
+  "response_sha256": "8bf90e05f42e6a5d9b6cd0ae78995cd39ec149cb6a7efe20e31d35bcf3209313",
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "generation_id": "gen-dec-1792186553-Hx4UbzrZ3vZgUgXckmi4",
+  "usage": {
+    "input_tokens": 1077,
+    "output_tokens": 52,
+    "cost": 4.5234e-05
+  }
+}

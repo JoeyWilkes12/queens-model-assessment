@@ -1,0 +1,35 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "cell": {
+      "type": "choice",
+      "choice": "r2c3",
+      "probabilities": {
+        "r1c2": 0.01,
+        "r1c3": 0.01,
+        "r1c4": 0.01,
+        "r2c1": 0.03,
+        "r2c2": 0.02,
+        "r2c3": 0.16,
+        "r3c1": 0.02,
+        "r3c2": 0.07,
+        "r3c3": 0.12,
+        "r4c1": 0.04,
+        "r4c2": 0.1,
+        "r5c1": 0.04,
+        "r5c2": 0.1,
+        "r6c1": 0.08,
+        "r6c2": 0.1,
+        "r7c1": 0.09
+      },
+      "confidence": 0.1
+    }
+  },
+  "usage": {
+    "input_tokens": 1916,
+    "output_tokens": 180,
+    "cost": 8.0472e-05
+  },
+  "id": "gen-dec-1792186538-1ctOnRCGdzKMy48yIZcH",
+  "provider": "TypeSafe"
+}

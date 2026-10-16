@@ -1,0 +1,45 @@
+{
+  "trajectory_id": "panel-5-33_local_a1",
+  "board_id": "panel-5-33",
+  "size": 5,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 46,
+  "block": 8,
+  "mode_position": 2,
+  "requested_model": "typesafe/jev-1.13",
+  "started_utc": "2026-10-16T21:30:10.268903+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-5-33_local_a1_p01_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 8,
+      "cell_call": "panel-5-33_local_a1_p01_cell",
+      "cell_forced": false,
+      "top_probability": 0.21,
+      "cell": [
+        3,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 2,
+  "forced_decisions": 0,
+  "api_elapsed_seconds": 0.6603940429999966,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 1,
+  "placement_prefix": [
+    [
+      3,
+      3
+    ]
+  ],
+  "correct_queens_before_failure": 0,
+  "elapsed_seconds": 0.6668138749999954,
+  "ended_utc": "2026-10-16T21:30:10.935840+00:00"
+}

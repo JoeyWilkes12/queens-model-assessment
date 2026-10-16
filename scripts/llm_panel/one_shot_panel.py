@@ -52,8 +52,12 @@ IMAGE_URL_BASE = "https://raw.githubusercontent.com/JoeyWilkes12/queens-model-as
 MODELS = {
     "gpt-5.6-sol": {"model": "openai/gpt-5.6-sol", "route": "batch", "prices": (2e-6, 1e-5),
                     "batch_provider": {"only": ["openai"], "allow_fallbacks": False}},
-    "claude-opus-4.8": {"model": "anthropic/claude-opus-4.8", "route": "batch", "prices": (2.5e-6, 1.25e-5),
-                        "batch_provider": {"only": ["anthropic"], "allow_fallbacks": False}},
+    # Amendment 1: OpenRouter rejected the Anthropic batch submission three times
+    # ("no :batch endpoint"), so Opus runs on demand with the September provider block.
+    "claude-opus-4.8": {"model": "anthropic/claude-opus-4.8", "route": "on_demand", "prices": (5e-6, 2.5e-5),
+                        "provider": {"order": ["anthropic"], "only": ["anthropic"], "ignore": ["anthropic/fast"],
+                                     "allow_fallbacks": False, "require_parameters": True,
+                                     "max_price": {"prompt": 5, "completion": 25}}},
     "gemini-3.1-pro-preview": {"model": "google/gemini-3.1-pro-preview", "route": "on_demand", "prices": (2e-6, 1.2e-5),
                                "provider": {"order": ["google-ai-studio"], "only": ["google-ai-studio"],
                                             "ignore": ["google-ai-studio/flex", "google-ai-studio/priority"],
@@ -281,7 +285,7 @@ def batch_dir(short):
 def pending_batch_reserve():
     """Provisional reserve for submitted, unsettled batches (historical-mean x1.5 per request)."""
     total = 0.0
-    for short in ("gpt-5.6-sol", "claude-opus-4.8"):
+    for short in ("gpt-5.6-sol",):
         sub = batch_dir(short) / "submission.json"
         if sub.exists() and not (batch_dir(short) / "settled.json").exists():
             total += read(sub)["provisional_reserve_usd"]
@@ -309,7 +313,7 @@ def batch_submit(args):
         body = read(request_path)
         body.pop("model")
         requests.append({"custom_id": call["call_id"], "body": body})
-    payload = {"endpoint": "/v1/chat/completions", "model": MODELS[short]["model"], "provider": MODELS[short]["batch_provider"],
+    payload = {"endpoint": "/v1/chat/completions", "model": MODELS[short].get("batch_model", MODELS[short]["model"]), "provider": MODELS[short]["batch_provider"],
                "completion_window": "24h", "requests": requests}  # requests serialized last, as the API requires
     save(batch_dir(short) / "payload.json", payload)
     status, body = broker("POST", "/api/v1/batches", payload, timeout=120)
@@ -324,7 +328,7 @@ def batch_submit(args):
 
 def batch_poll(args):
     manifest = read(OUT / "manifest.json")
-    for short in ("gpt-5.6-sol", "claude-opus-4.8"):
+    for short in ("gpt-5.6-sol",):
         sub_path = batch_dir(short) / "submission.json"
         if not sub_path.exists() or (batch_dir(short) / "settled.json").exists():
             continue
@@ -380,14 +384,38 @@ def audit(args):
     print(json.dumps({"cost_usd_reported": summary["cost_usd_reported"], "campaign_spend_usd_from_key": summary["campaign_spend_usd_from_key"]}))
 
 
+def amend_opus(args):
+    """Amendment 1: rebuild only the Opus requests for the on-demand route, before any Opus call."""
+    manifest = read(OUT / "manifest.json")
+    if any((OUT / "raw" / c["call_id"] / "started.json").exists() for c in manifest["schedule"] if c["short"] == "claude-opus-4.8"):
+        raise SystemExit("An Opus call already started; refusing to amend")
+    save(OUT / "manifest-before-amendment-1.json", manifest)
+    spec = MODELS["claude-opus-4.8"]
+    for call in manifest["schedule"]:
+        if call["short"] != "claude-opus-4.8":
+            continue
+        path = OUT / "requests" / f"{call['call_id']}.json"
+        body = read(path)
+        png = (OUT / "images" / f"{call['board_id']}.png").read_bytes()
+        assert sha(png) == call["image_sha256"]
+        body["messages"][0]["content"][1]["image_url"] = {"url": "data:image/png;base64," + base64.b64encode(png).decode()}
+        body.update(stream=False, provider=spec["provider"])
+        save(path, body)
+        call.update(route="on_demand", request_sha256=sha(path.read_bytes()), worst_case_usd=worst_case("claude-opus-4.8"))
+    manifest["models"] = MODELS
+    manifest["amendments"] = manifest.get("amendments", []) + [{"id": 1, "utc": utc(), "change": "Claude Opus 4.8 moved from Batch to on-demand with the September Anthropic provider block and inline image, after three batch submissions were rejected with HTTP 400 ('no :batch endpoint') before validation; no Opus request had been sent."}]
+    save(OUT / "manifest.json", manifest)
+    print(json.dumps({"amended": sum(c["short"] == "claude-opus-4.8" for c in manifest["schedule"])}))
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["select", "render", "freeze", "run", "batch-submit", "batch-poll", "audit"])
+    parser.add_argument("mode", choices=["select", "render", "freeze", "run", "batch-submit", "batch-poll", "audit", "amend-opus"])
     parser.add_argument("--model", choices=list(MODELS))
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
     {"select": select, "render": render, "freeze": freeze, "run": run, "batch-submit": batch_submit,
-     "batch-poll": batch_poll, "audit": audit}[args.mode](args)
+     "batch-poll": batch_poll, "audit": audit, "amend-opus": amend_opus}[args.mode](args)
 
 
 if __name__ == "__main__":
