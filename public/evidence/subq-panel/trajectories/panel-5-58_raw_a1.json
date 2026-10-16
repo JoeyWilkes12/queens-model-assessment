@@ -1,0 +1,103 @@
+{
+  "trajectory_id": "panel-5-58_raw_a1",
+  "board_id": "panel-5-58",
+  "size": 5,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 290,
+  "block": 49,
+  "mode_position": 2,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:22:19.331464+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-5-58_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        2,
+        5
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-5-58_raw_a1_p02_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        3,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-5-58_raw_a1_p03_region",
+      "region_forced": false,
+      "region": "B",
+      "candidate_count": 3,
+      "cell_call": "panel-5-58_raw_a1_p03_cell",
+      "cell_forced": false,
+      "top_probability": 0.8770791888237,
+      "cell": [
+        1,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-5-58_raw_a1_p04_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 17,
+      "cell_call": "panel-5-58_raw_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.3305237889289856,
+      "cell": [
+        5,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 6,
+  "forced_decisions": 2,
+  "api_elapsed_seconds": 2.173937376999902,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 4,
+  "placement_prefix": [
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      5,
+      1
+    ]
+  ],
+  "correct_queens_before_failure": 3,
+  "elapsed_seconds": 2.4189718349999794,
+  "ended_utc": "2026-10-16T02:22:21.750837+00:00"
+}

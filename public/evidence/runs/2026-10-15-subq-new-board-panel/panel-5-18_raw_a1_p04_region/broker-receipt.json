@@ -1,0 +1,30 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "region": {
+        "type": "choice",
+        "probabilities": {
+          "C": 0.4501402974128723,
+          "E": 0.5498596429824829
+        },
+        "confidence": 0.09971928596496582,
+        "choice": "E"
+      }
+    },
+    "usage": {
+      "input_tokens": 723,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.3669975419999787,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.14148625,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 2017,
+    "billing_confirmed": false
+  }
+}

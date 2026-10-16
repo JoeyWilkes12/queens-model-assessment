@@ -1,0 +1,310 @@
+{
+  "study": "2026-10-15-subq-new-board-panel-pilot",
+  "model": "subq-snap-preview",
+  "created_utc": "2026-10-15T21:12:13.135558+00:00",
+  "corpus": {
+    "role": "development",
+    "file": "development-corpus.json",
+    "sha256": "e226a73f5c0128b228caff381ed626c2d7803d8cf6a4555908d2d191cdfc680a",
+    "generator_version": "boards.py/1",
+    "boards": 144
+  },
+  "boards": [
+    {
+      "id": "dev-9-01",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          2,
+          3,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          4,
+          2,
+          2,
+          2,
+          2,
+          2,
+          5
+        ],
+        [
+          0,
+          4,
+          4,
+          4,
+          2,
+          2,
+          2,
+          2,
+          5
+        ],
+        [
+          4,
+          4,
+          6,
+          7,
+          7,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          4,
+          4,
+          6,
+          6,
+          7,
+          8,
+          8,
+          5,
+          8
+        ],
+        [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          8,
+          8,
+          8
+        ]
+      ],
+      "solution_sha256": "dab37e44138c3dbb09f2a604919c31a3d9510eb8c4ce027a16e877015203dab8"
+    },
+    {
+      "id": "dev-9-02",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          0,
+          3,
+          3,
+          3,
+          1,
+          1,
+          1
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          5,
+          3,
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          1
+        ],
+        [
+          4,
+          6,
+          4,
+          3,
+          3,
+          3,
+          3,
+          7,
+          7
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          7,
+          7
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          7
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          4,
+          4,
+          8,
+          8,
+          3,
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "solution_sha256": "99dc8e99d9f0a9f2001da8667559cc7b524067676e8399c88bc18893c8a1099a"
+    }
+  ],
+  "schedule": [
+    {
+      "trajectory_id": "dev-9-01_raw_a1",
+      "board_id": "dev-9-01",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1,
+      "sequence": 1
+    },
+    {
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2
+    }
+  ],
+  "scheduled_trajectories": 2,
+  "design": {
+    "modes": [
+      "raw",
+      "local"
+    ],
+    "repeats": 1,
+    "order": "select",
+    "schedule_seed": null,
+    "selection": [
+      [
+        "dev-9-01",
+        "raw"
+      ],
+      [
+        "dev-9-02",
+        "local"
+      ]
+    ]
+  },
+  "certificates": [
+    {
+      "board_id": "dev-9-01",
+      "size": 9,
+      "unique_solutions": 1,
+      "board_sha256": "4c5611c2d3c37bd2b4ef17c491fefb019828d9a3f19fb13fee16473aafe7eb6f",
+      "canonical_sha256": "57cd45a5b2afa18af60b82668b1db2a4d3d0ec81e616a0da569cbf68099321e8",
+      "connected_regions": true,
+      "row_solver_mrv_solver_and_replay_solver_agree": true,
+      "not_symmetry_duplicate_of_historical": true
+    },
+    {
+      "board_id": "dev-9-02",
+      "size": 9,
+      "unique_solutions": 1,
+      "board_sha256": "11f8cc2e10da7ad5c84d665f68b4e61cc7b38bb787108d154617ad43f37c9044",
+      "canonical_sha256": "06eff205df573178aceea6d608084c032fb20eb8550a6f943e58e06b160a72c8",
+      "connected_regions": true,
+      "row_solver_mrv_solver_and_replay_solver_agree": true,
+      "not_symmetry_duplicate_of_historical": true
+    }
+  ],
+  "exact_historical_template_matches": null,
+  "template_check": "Not applicable to new boards. The request templates are the same functions verified against every retained historical Jev trajectory call when the historical corpus is prepared.",
+  "budget_policy": {
+    "panel_spend_ceiling_usd": 0.05,
+    "max_model_calls": 34,
+    "reservation_per_call_usd": 0.019660800000000003,
+    "price_per_input_token_usd": 5.0000000000000004e-08,
+    "max_input_tokens_per_call": 393216,
+    "pessimistic_tokens_per_call": 5000,
+    "shared_ledger_cap_usd": 4.5,
+    "max_request_bytes": 5101,
+    "accounting": "Committed = sum over this output's call receipts of input_tokens x price for HTTP 200 with integer usage, else the full per-call reservation (unknown cost). Mirrors the broker ledger.",
+    "per_call_rule": "Before each call: calls + 1 <= max_model_calls; committed + reservation <= panel ceiling; shared ledger estimated + unresolved + reservation <= shared cap; request bytes <= max_request_bytes. Otherwise stop without dispatch (censored_guard).",
+    "trajectory_admission_rule": "Before each new trajectory of size n: calls + (2n - 1) <= max_model_calls; committed + (2n - 2) x pessimistic call cost + reservation <= panel ceiling; shared ledger + (2n - 2) x pessimistic call cost + reservation <= shared cap. Otherwise stop before the trajectory starts."
+  },
+  "protocol": "2 new certified boards; modes raw/local; 1 fresh empty-board attempt(s) per board and mode; explicit pilot selection. Stop on the first local violation or globally unextendable prefix. No feedback or backtracking.",
+  "caveats": [
+    "Same request templates, rules, option ordering and stopping criteria as the historical trajectory study.",
+    "Singleton menus use a forced harness transition and no inference. Forced decisions and model calls are counted separately.",
+    "Local mode filters immediate row, column, region and touching conflicts only. The full solver never filters candidates or supplies answers.",
+    "Ground-truth solutions are not in this plan; the worker recomputes the unique solution offline and checks it against each board's sha256 commitment before any request.",
+    "Board ids are neutral; stratum, generator and difficulty profile are not in this plan or any request.",
+    "Budget guard, provider and schema failures stop the campaign and are reported separately from puzzle failures; no automatic retries."
+  ]
+}

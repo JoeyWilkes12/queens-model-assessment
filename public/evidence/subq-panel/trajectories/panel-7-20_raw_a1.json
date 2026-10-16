@@ -1,0 +1,45 @@
+{
+  "trajectory_id": "panel-7-20_raw_a1",
+  "board_id": "panel-7-20",
+  "size": 7,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 304,
+  "block": 51,
+  "mode_position": 2,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:22:57.306272+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-7-20_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 5,
+      "cell_call": "panel-7-20_raw_a1_p01_cell",
+      "cell_forced": false,
+      "top_probability": 0.28448358178138733,
+      "cell": [
+        2,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 2,
+  "forced_decisions": 0,
+  "api_elapsed_seconds": 0.711268667000013,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 1,
+  "placement_prefix": [
+    [
+      2,
+      2
+    ]
+  ],
+  "correct_queens_before_failure": 0,
+  "elapsed_seconds": 0.7885517919999074,
+  "ended_utc": "2026-10-16T02:22:58.095371+00:00"
+}

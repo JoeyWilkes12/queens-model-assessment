@@ -1,0 +1,81 @@
+{
+  "trajectory_id": "panel-5-36_raw_a1",
+  "board_id": "panel-5-36",
+  "size": 5,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 3,
+  "block": 1,
+  "mode_position": 1,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:12:58.407099+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-5-36_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        1,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-5-36_raw_a1_p02_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        4,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-5-36_raw_a1_p03_region",
+      "region_forced": false,
+      "region": "B",
+      "candidate_count": 12,
+      "cell_call": "panel-5-36_raw_a1_p03_cell",
+      "cell_forced": false,
+      "top_probability": 0.20058037340641022,
+      "cell": [
+        3,
+        3
+      ],
+      "local_violations": [
+        "queens_touch"
+      ],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 4,
+  "forced_decisions": 2,
+  "api_elapsed_seconds": 1.4486409579999995,
+  "stop_reason": "local_rule_violation",
+  "accepted_queens": 2,
+  "placement_prefix": [
+    [
+      1,
+      1
+    ],
+    [
+      4,
+      2
+    ]
+  ],
+  "correct_queens_before_failure": 2,
+  "elapsed_seconds": 1.5659452509999996,
+  "ended_utc": "2026-10-16T02:12:59.973525+00:00"
+}

@@ -1,0 +1,478 @@
+{
+  "model": "subq-snap-preview",
+  "state": {
+    "board_id": "panel-9-42",
+    "size": 9,
+    "rules": [
+      "Exactly one queen per row, column, and color region.",
+      "Queens cannot touch, including diagonally adjacent cells.",
+      "Long diagonals are allowed; this is regional Queens, not chess N-Queens.",
+      "Exactly one full solution exists. Coordinates are 1-based."
+    ],
+    "coordinates": "Rows top to bottom; columns left to right; both start at 1.",
+    "region_grid_rows": [
+      [
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "C",
+        "A",
+        "A",
+        "A",
+        "B",
+        "B",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "C",
+        "D",
+        "D",
+        "E",
+        "B",
+        "B",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "C",
+        "C",
+        "E",
+        "E",
+        "E",
+        "B",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "F",
+        "E",
+        "E",
+        "E",
+        "B",
+        "B",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "F",
+        "F",
+        "F",
+        "F",
+        "G",
+        "G",
+        "B",
+        "B",
+        "B"
+      ],
+      [
+        "H",
+        "H",
+        "F",
+        "G",
+        "G",
+        "G",
+        "G",
+        "B",
+        "I"
+      ],
+      [
+        "H",
+        "F",
+        "F",
+        "G",
+        "G",
+        "G",
+        "G",
+        "I",
+        "I"
+      ],
+      [
+        "F",
+        "F",
+        "F",
+        "F",
+        "G",
+        "G",
+        "I",
+        "I",
+        "I"
+      ]
+    ],
+    "regions": {
+      "A": [
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 6
+        },
+        {
+          "row": 2,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        }
+      ],
+      "B": [
+        {
+          "row": 1,
+          "column": 7
+        },
+        {
+          "row": 1,
+          "column": 8
+        },
+        {
+          "row": 1,
+          "column": 9
+        },
+        {
+          "row": 2,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 6
+        },
+        {
+          "row": 2,
+          "column": 7
+        },
+        {
+          "row": 2,
+          "column": 8
+        },
+        {
+          "row": 2,
+          "column": 9
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 3,
+          "column": 6
+        },
+        {
+          "row": 3,
+          "column": 7
+        },
+        {
+          "row": 3,
+          "column": 8
+        },
+        {
+          "row": 3,
+          "column": 9
+        },
+        {
+          "row": 4,
+          "column": 6
+        },
+        {
+          "row": 4,
+          "column": 7
+        },
+        {
+          "row": 4,
+          "column": 8
+        },
+        {
+          "row": 4,
+          "column": 9
+        },
+        {
+          "row": 5,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 6
+        },
+        {
+          "row": 5,
+          "column": 7
+        },
+        {
+          "row": 5,
+          "column": 8
+        },
+        {
+          "row": 5,
+          "column": 9
+        },
+        {
+          "row": 6,
+          "column": 7
+        },
+        {
+          "row": 6,
+          "column": 8
+        },
+        {
+          "row": 6,
+          "column": 9
+        },
+        {
+          "row": 7,
+          "column": 8
+        }
+      ],
+      "C": [
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        }
+      ],
+      "D": [
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 3,
+          "column": 3
+        }
+      ],
+      "E": [
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        }
+      ],
+      "F": [
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 6,
+          "column": 1
+        },
+        {
+          "row": 6,
+          "column": 2
+        },
+        {
+          "row": 6,
+          "column": 3
+        },
+        {
+          "row": 6,
+          "column": 4
+        },
+        {
+          "row": 7,
+          "column": 3
+        },
+        {
+          "row": 8,
+          "column": 2
+        },
+        {
+          "row": 8,
+          "column": 3
+        },
+        {
+          "row": 9,
+          "column": 1
+        },
+        {
+          "row": 9,
+          "column": 2
+        },
+        {
+          "row": 9,
+          "column": 3
+        },
+        {
+          "row": 9,
+          "column": 4
+        }
+      ],
+      "G": [
+        {
+          "row": 6,
+          "column": 5
+        },
+        {
+          "row": 6,
+          "column": 6
+        },
+        {
+          "row": 7,
+          "column": 4
+        },
+        {
+          "row": 7,
+          "column": 5
+        },
+        {
+          "row": 7,
+          "column": 6
+        },
+        {
+          "row": 7,
+          "column": 7
+        },
+        {
+          "row": 8,
+          "column": 4
+        },
+        {
+          "row": 8,
+          "column": 5
+        },
+        {
+          "row": 8,
+          "column": 6
+        },
+        {
+          "row": 8,
+          "column": 7
+        },
+        {
+          "row": 9,
+          "column": 5
+        },
+        {
+          "row": 9,
+          "column": 6
+        }
+      ],
+      "H": [
+        {
+          "row": 7,
+          "column": 1
+        },
+        {
+          "row": 7,
+          "column": 2
+        },
+        {
+          "row": 8,
+          "column": 1
+        }
+      ],
+      "I": [
+        {
+          "row": 7,
+          "column": 9
+        },
+        {
+          "row": 8,
+          "column": 8
+        },
+        {
+          "row": 8,
+          "column": 9
+        },
+        {
+          "row": 9,
+          "column": 7
+        },
+        {
+          "row": 9,
+          "column": 8
+        },
+        {
+          "row": 9,
+          "column": 9
+        }
+      ]
+    },
+    "placed_queens": [],
+    "instruction": "Keep placed queens fixed. Select a next decision consistent with the unique complete solution. No backtracking or solution feedback is supplied."
+  },
+  "questions": {
+    "region": {
+      "type": "choice",
+      "instructions": "Which unoccupied color region should receive the next queen? Choose a region you can place correctly toward the unique complete solution. Any region order may be valid; then a separate request will ask for its cell.",
+      "criteria": {
+        "A": "Place the next queen in region A.",
+        "B": "Place the next queen in region B.",
+        "C": "Place the next queen in region C.",
+        "D": "Place the next queen in region D.",
+        "E": "Place the next queen in region E.",
+        "F": "Place the next queen in region F.",
+        "G": "Place the next queen in region G.",
+        "H": "Place the next queen in region H.",
+        "I": "Place the next queen in region I."
+      }
+    }
+  }
+}

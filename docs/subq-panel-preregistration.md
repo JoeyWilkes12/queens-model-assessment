@@ -190,8 +190,8 @@ The pessimistic 5,000 tokens is a conservative bound. The largest possible panel
 All commands run from the worktree root. Steps 0–1 and 4 are offline. Steps 2–3 start Docker and spend SubQ credit; they require the orchestrator's explicit approval. The key file is read only by `sandbox.py`'s loader and is never printed.
 
 ```sh
-cd /Users/joeywilkes/Desktop/scripts/queens-model-assessment/.worktrees/subq-new-board-panel
-LEDGER=/Users/joeywilkes/Desktop/scripts/queens-model-assessment/.worktrees/subq-assessment/output/subq-ledger
+cd <repository root>   # the panel ran from a dedicated worktree
+LEDGER=<shared campaign ledger directory>   # the existing output/subq-ledger, never a fresh one
 
 # 0. Offline checks: frozen corpus hash, full offline test suite (inputs for the
 #    older tests are regenerated from public evidence first).
@@ -255,3 +255,5 @@ Do not re-run step 1 after step 2 or 3 has started. A new `created_utc` makes a 
 Any change after this freeze — to the corpus, plans, templates, limits, endpoints or analysis — is recorded below with a date and reason, before the affected calls. A change made after test-panel calls have started makes the study non-confirmatory for the affected sizes.
 
 **Amendment 1 (2026-10-15, before any panel or pilot call).** The orchestrator's independent review re-certified all 192 test boards: each has connected regions and a unique solution under a separate brute-force permutation solver. It also checked that no solution data reaches the frozen plan or the model-visible state. One descriptive covariate is added. Region letters are assigned in order of first appearance, so a board's solution can align with letter order: the queen in row *i* may sit in the *i*-th lettered region. The panel's mean aligned fraction is 0.49, 0.47 and 0.35 at 5×5, 7×7 and 9×9, against 0.50 for the nine historical boards. Twelve 5×5 and four 7×7 boards align in every row. The analysis will report the aligned fraction per board, and an exploratory solve rate split by full alignment, so that any shortcut a model takes on letter order stays visible. Endpoints, limits and plans are unchanged.
+
+**Editorial note (2026-10-15, after the run).** Two local absolute paths in section 10 were replaced with placeholders for publication. No design, limit, endpoint or analysis changed. Results: [SubQ panel report](subq-panel-report.md).

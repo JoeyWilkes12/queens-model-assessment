@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
 import { BoardReplay } from './BoardReplay'
 import { deriveTrajectoryFrames, type RecordedTrajectory, type RecordedTrajectoryStep } from './trajectoryBoardData'
+import { SubQPanel } from './SubQPanel'
 
 type BookUi = {
   PageHero: ComponentType<{ title: string; deck: string; trail: string; action?: { label: string; path: string } }>
@@ -369,10 +370,15 @@ export function SubQAssessment({ ui, selectedId }: { ui: BookUi; selectedId?: st
   const { PageHero, LocalToc, Section, Callout, DataTable } = ui
   const data = state.status === 'ready' ? state.data : undefined
   const returnedModels = data ? Array.from(new Set(data.records.map(record => record.returned_model).filter(Boolean))) : []
+  useEffect(() => {
+    if (selectedId !== 'panel') return
+    const timer = window.setTimeout(() => document.getElementById('subq-panel')?.scrollIntoView({ block: 'start' }), 400)
+    return () => window.clearTimeout(timer)
+  }, [selectedId])
   return <>
     <PageHero trail="Decision models / SubQ follow-up" title="Replay the decisions. Then start from empty." deck="The frozen Jev-state replay and fresh SubQ construction are separate experiments. Split batches form a third adapted condition. Each retains its own tasks, denominators, failures, and receipts." action={{ label: 'Inspect the evidence atlas', path: 'evidence-atlas' }} />
     <div className="reading-layout">
-      <LocalToc items={[{ id: 'subq-results', label: 'Frozen replay' }, { id: 'subq-adaptive', label: 'Fresh construction' }, { id: 'subq-split', label: 'Adapted split batches' }, { id: 'subq-protocol', label: 'Comparison boundaries' }, { id: 'subq-provider', label: 'Model and interface' }, { id: 'subq-ledger', label: 'Cost and containment' }, { id: 'subq-receipts', label: 'Every replay request' }, { id: 'subq-sources', label: 'Sources and next test' }]} />
+      <LocalToc items={[{ id: 'subq-results', label: 'Frozen replay' }, { id: 'subq-adaptive', label: 'Fresh construction' }, { id: 'subq-panel', label: 'New-board panel' }, { id: 'subq-split', label: 'Adapted split batches' }, { id: 'subq-protocol', label: 'Comparison boundaries' }, { id: 'subq-provider', label: 'Model and interface' }, { id: 'subq-ledger', label: 'Cost and containment' }, { id: 'subq-receipts', label: 'Every replay request' }, { id: 'subq-sources', label: 'Sources and next test' }]} />
       <main className="reading-column" id="main-content">
         <Section id="subq-results" title="Read each task's denominator">
           <SummaryUnavailable state={state} retry={retry} />
@@ -385,7 +391,10 @@ export function SubQAssessment({ ui, selectedId }: { ui: BookUi; selectedId?: st
           </>}
         </Section>
         <Section id="subq-adaptive" title="Fresh paths from the empty board">
-          <TrajectoryResults ui={ui} selectedId={selectedId} />
+          <TrajectoryResults ui={ui} selectedId={selectedId === 'panel' ? undefined : selectedId} />
+        </Section>
+        <Section id="subq-panel" title="192 new boards, preregistered">
+          <SubQPanel ui={ui} />
         </Section>
         <Section id="subq-split" title="When the batch interface changes the experiment">
           <SplitResults ui={ui} replay={data} />

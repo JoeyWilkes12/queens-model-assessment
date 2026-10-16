@@ -1,0 +1,40 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "cell": {
+        "type": "choice",
+        "probabilities": {
+          "r1c3": 0.01979249157011509,
+          "r1c4": 0.08497481048107147,
+          "r1c5": 0.14670224487781525,
+          "r2c1": 0.026173846796154976,
+          "r2c2": 0.04228503257036209,
+          "r2c3": 0.04831506684422493,
+          "r2c4": 0.06917824596166611,
+          "r2c5": 0.17950163781642914,
+          "r3c2": 0.06065525487065315,
+          "r3c3": 0.07332919538021088,
+          "r4c2": 0.13548551499843597,
+          "r4c3": 0.11360665410757065
+        },
+        "confidence": 0.1049108776179227,
+        "choice": "r2c5"
+      }
+    },
+    "usage": {
+      "input_tokens": 1307,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.34326916700001675,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.1430719,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 2045,
+    "billing_confirmed": false
+  }
+}

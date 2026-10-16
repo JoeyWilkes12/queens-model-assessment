@@ -1,0 +1,566 @@
+{
+  "study": "2026-10-15-subq-new-board-panel-pilot",
+  "model": "subq-snap-preview",
+  "updated_utc": "2026-10-15T21:32:11.331109+00:00",
+  "planned_trajectories": 2,
+  "attempted_trajectories": 2,
+  "remaining_trajectories": 0,
+  "solved": 0,
+  "boards_solved": 0,
+  "model_calls": 7,
+  "forced_decisions": 1,
+  "stop_reasons": {
+    "globally_unextendable_prefix": 2
+  },
+  "families": [
+    {
+      "board_id": "dev-9-01",
+      "mode": "raw",
+      "size": 9,
+      "attempts": 1,
+      "solved": 0,
+      "stop_reasons": {
+        "globally_unextendable_prefix": 1
+      },
+      "model_calls": 2,
+      "forced_decisions": 0
+    },
+    {
+      "board_id": "dev-9-02",
+      "mode": "local",
+      "size": 9,
+      "attempts": 1,
+      "solved": 0,
+      "stop_reasons": {
+        "globally_unextendable_prefix": 1
+      },
+      "model_calls": 5,
+      "forced_decisions": 1
+    }
+  ],
+  "trajectories": [
+    {
+      "trajectory_id": "dev-9-01_raw_a1",
+      "board_id": "dev-9-01",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1,
+      "sequence": 1,
+      "requested_model": "subq-snap-preview",
+      "started_utc": "2026-10-15T21:31:58.240477+00:00",
+      "steps": [
+        {
+          "step": 1,
+          "region_call": "dev-9-01_raw_a1_p01_region",
+          "region_forced": false,
+          "region": "A",
+          "candidate_count": 15,
+          "cell_call": "dev-9-01_raw_a1_p01_cell",
+          "cell_forced": false,
+          "top_probability": 0.1153363361954689,
+          "cell": [
+            4,
+            1
+          ],
+          "local_violations": [],
+          "on_unique_solution": false
+        }
+      ],
+      "success": false,
+      "http_calls": 2,
+      "forced_decisions": 0,
+      "api_elapsed_seconds": 0.7775857510000002,
+      "stop_reason": "globally_unextendable_prefix",
+      "accepted_queens": 1,
+      "placement_prefix": [
+        [
+          4,
+          1
+        ]
+      ],
+      "correct_queens_before_failure": 0,
+      "elapsed_seconds": 0.8338583750000002,
+      "ended_utc": "2026-10-15T21:31:59.074875+00:00"
+    },
+    {
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "requested_model": "subq-snap-preview",
+      "started_utc": "2026-10-15T21:31:59.082592+00:00",
+      "steps": [
+        {
+          "step": 1,
+          "region_call": "dev-9-02_local_a1_p01_region",
+          "region_forced": false,
+          "region": "C",
+          "candidate_count": 1,
+          "cell_call": null,
+          "cell_forced": true,
+          "cell": [
+            2,
+            1
+          ],
+          "local_violations": [],
+          "on_unique_solution": true
+        },
+        {
+          "step": 2,
+          "region_call": "dev-9-02_local_a1_p02_region",
+          "region_forced": false,
+          "region": "A",
+          "candidate_count": 4,
+          "cell_call": "dev-9-02_local_a1_p02_cell",
+          "cell_forced": false,
+          "top_probability": 0.3057815432548523,
+          "cell": [
+            1,
+            6
+          ],
+          "local_violations": [],
+          "on_unique_solution": true
+        },
+        {
+          "step": 3,
+          "region_call": "dev-9-02_local_a1_p03_region",
+          "region_forced": false,
+          "region": "B",
+          "candidate_count": 3,
+          "cell_call": "dev-9-02_local_a1_p03_cell",
+          "cell_forced": false,
+          "top_probability": 0.41711583733558655,
+          "cell": [
+            3,
+            9
+          ],
+          "local_violations": [],
+          "on_unique_solution": false
+        }
+      ],
+      "success": false,
+      "http_calls": 5,
+      "forced_decisions": 1,
+      "api_elapsed_seconds": 1.9029685859999992,
+      "stop_reason": "globally_unextendable_prefix",
+      "accepted_queens": 3,
+      "placement_prefix": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          9
+        ]
+      ],
+      "correct_queens_before_failure": 2,
+      "elapsed_seconds": 2.0644464179999997,
+      "ended_utc": "2026-10-15T21:32:01.147644+00:00"
+    }
+  ],
+  "records": [
+    {
+      "call_id": "dev-9-01_raw_a1_p01_cell",
+      "trajectory_id": "dev-9-01_raw_a1",
+      "board_id": "dev-9-01",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1,
+      "sequence": 1,
+      "phase": "cell",
+      "step": 1,
+      "family": "trajectory",
+      "completed_utc": "2026-10-15T21:31:59.071585+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.39576729199999994,
+      "request_sha256": "218cc02fa2b05d16e3687701cf807571ed8e8877a94243a1da8debda0ce26460",
+      "response_sha256": "6ec6546cb24d5dd35e55d800378a8ebe99226f69f52de215e3e008a12e215466",
+      "budget": {
+        "cap_usd": 4.5,
+        "estimated_known_usd": 0.0871277,
+        "unresolved_reserve_usd": 0.058982400000000004,
+        "calls_reserved": 1102,
+        "billing_confirmed": false
+      },
+      "returned_model": "subq-snap-preview",
+      "usage": {
+        "input_tokens": 1841,
+        "output_tokens": 0
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": false,
+        "question_count": 1,
+        "graded_question_count": 1,
+        "correct_questions": 0,
+        "questions": {
+          "cell": {
+            "kind": "frozen_trajectory_cell",
+            "correct": false,
+            "selected": "r4c1",
+            "probability_sum": 1.0000000298023224,
+            "confidence": 0.05214607449514525,
+            "selected_below_reported_max": false,
+            "acceptable_count": 1,
+            "correct_probability_mass": 0.040111154317855835,
+            "cell": {
+              "row": 4,
+              "column": 1
+            }
+          }
+        },
+        "outcome": "model_failure"
+      }
+    },
+    {
+      "call_id": "dev-9-01_raw_a1_p01_region",
+      "trajectory_id": "dev-9-01_raw_a1",
+      "board_id": "dev-9-01",
+      "size": 9,
+      "mode": "raw",
+      "replicate": 1,
+      "sequence": 1,
+      "phase": "region",
+      "step": 1,
+      "family": "trajectory",
+      "completed_utc": "2026-10-15T21:31:58.647909+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.3818184590000002,
+      "request_sha256": "0d299ce226bfa505357b4f1f23d2a9c97e3b4188d44a0c905ab40ce246d84cc8",
+      "response_sha256": "e99641566853e07d384020ef581124db46a65635291c9f679b7aba6f3d33442c",
+      "budget": {
+        "cap_usd": 4.5,
+        "estimated_known_usd": 0.08703565,
+        "unresolved_reserve_usd": 0.058982400000000004,
+        "calls_reserved": 1101,
+        "billing_confirmed": false
+      },
+      "returned_model": "subq-snap-preview",
+      "usage": {
+        "input_tokens": 1612,
+        "output_tokens": 0
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "A",
+            "probability_sum": 1.0000000707805157,
+            "confidence": 0.1585599519312382,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p01_region",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "region",
+      "step": 1,
+      "family": "trajectory",
+      "completed_utc": "2026-10-15T21:31:59.501662+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.37028529200000015,
+      "request_sha256": "0baa8c6ef196099563231715e25bebf60601c13f29e66822c0994d1bf946238b",
+      "response_sha256": "d01090b020825a14f52cf9cf07eb2590d76d5d4483d96007a0a0394056060c6d",
+      "budget": {
+        "cap_usd": 4.5,
+        "estimated_known_usd": 0.0872083,
+        "unresolved_reserve_usd": 0.058982400000000004,
+        "calls_reserved": 1103,
+        "billing_confirmed": false
+      },
+      "returned_model": "subq-snap-preview",
+      "usage": {
+        "input_tokens": 1612,
+        "output_tokens": 0
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "C",
+            "probability_sum": 1.0,
+            "confidence": 0.18040996417403224,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p02_cell",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "cell",
+      "step": 2,
+      "family": "trajectory",
+      "completed_utc": "2026-10-15T21:32:00.309373+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.3716727500000001,
+      "request_sha256": "f8f87e95c575902ed4c9659ceb9b5b997289d64e8e95ce48f80c11ff8a40b58d",
+      "response_sha256": "a5fbd6a416be2ee7adccd63cdabc175612f1cd4b2271ca3762b3146b24bb63cd",
+      "budget": {
+        "cap_usd": 4.5,
+        "estimated_known_usd": 0.08737,
+        "unresolved_reserve_usd": 0.058982400000000004,
+        "calls_reserved": 1105,
+        "billing_confirmed": false
+      },
+      "returned_model": "subq-snap-preview",
+      "usage": {
+        "input_tokens": 1617,
+        "output_tokens": 0
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": true,
+        "question_count": 1,
+        "graded_question_count": 1,
+        "correct_questions": 1,
+        "questions": {
+          "cell": {
+            "kind": "frozen_trajectory_cell",
+            "correct": true,
+            "selected": "r1c6",
+            "probability_sum": 0.9999999701976776,
+            "confidence": 0.07437539100646973,
+            "selected_below_reported_max": false,
+            "acceptable_count": 1,
+            "correct_probability_mass": 0.3057815432548523,
+            "cell": {
+              "row": 1,
+              "column": 6
+            }
+          }
+        },
+        "outcome": "success"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p02_region",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "region",
+      "step": 2,
+      "family": "trajectory",
+      "completed_utc": "2026-10-15T21:31:59.910115+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.3821720009999998,
+      "request_sha256": "acfc20cf6645f2811d8c3ea27d6a674415351408d266635d055ee6bfc6143c56",
+      "response_sha256": "4bb7c0150522846052a6a8eb3091c58e610d030876c93bc7c65f6eaec9c223c0",
+      "budget": {
+        "cap_usd": 4.5,
+        "estimated_known_usd": 0.08728915000000001,
+        "unresolved_reserve_usd": 0.058982400000000004,
+        "calls_reserved": 1104,
+        "billing_confirmed": false
+      },
+      "returned_model": "subq-snap-preview",
+      "usage": {
+        "input_tokens": 1617,
+        "output_tokens": 0
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "A",
+            "probability_sum": 0.9999998807907104,
+            "confidence": 0.2027432918548584,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p03_cell",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "cell",
+      "step": 3,
+      "family": "trajectory",
+      "completed_utc": "2026-10-15T21:32:01.146077+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.3610680419999994,
+      "request_sha256": "cac06cb4fa52354b3f8948990d992637c118d970eb8725d1bfe9ee23d696c2af",
+      "response_sha256": "8b8e507d08cd2564f37a826467eed538ae6f5e2693ba5a8fb7c4fcd980b3ae83",
+      "budget": {
+        "cap_usd": 4.5,
+        "estimated_known_usd": 0.08753175,
+        "unresolved_reserve_usd": 0.058982400000000004,
+        "calls_reserved": 1107,
+        "billing_confirmed": false
+      },
+      "returned_model": "subq-snap-preview",
+      "usage": {
+        "input_tokens": 1613,
+        "output_tokens": 0
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": false,
+        "question_count": 1,
+        "graded_question_count": 1,
+        "correct_questions": 0,
+        "questions": {
+          "cell": {
+            "kind": "frozen_trajectory_cell",
+            "correct": false,
+            "selected": "r3c9",
+            "probability_sum": 1.0,
+            "confidence": 0.12567375600337982,
+            "selected_below_reported_max": false,
+            "acceptable_count": 1,
+            "correct_probability_mass": 0.39707863330841064,
+            "cell": {
+              "row": 3,
+              "column": 9
+            }
+          }
+        },
+        "outcome": "model_failure"
+      }
+    },
+    {
+      "call_id": "dev-9-02_local_a1_p03_region",
+      "trajectory_id": "dev-9-02_local_a1",
+      "board_id": "dev-9-02",
+      "size": 9,
+      "mode": "local",
+      "replicate": 1,
+      "sequence": 2,
+      "phase": "region",
+      "step": 3,
+      "family": "trajectory",
+      "completed_utc": "2026-10-15T21:32:00.756920+00:00",
+      "http_status": 200,
+      "elapsed_seconds": 0.4177705009999997,
+      "request_sha256": "e6006dc17060b2c26e03763d4139e3ff97c0724648d011b1f110857375a87fa7",
+      "response_sha256": "fd48c7e9735ea2ee95ee19a37650350eef87da065471ffd26f6f9bdf2de6d1e6",
+      "budget": {
+        "cap_usd": 4.5,
+        "estimated_known_usd": 0.0874511,
+        "unresolved_reserve_usd": 0.058982400000000004,
+        "calls_reserved": 1106,
+        "billing_confirmed": false
+      },
+      "returned_model": "subq-snap-preview",
+      "usage": {
+        "input_tokens": 1622,
+        "output_tokens": 0
+      },
+      "grade": {
+        "schema_valid": true,
+        "schema_errors": [],
+        "primary_correct": null,
+        "question_count": 1,
+        "graded_question_count": 0,
+        "correct_questions": 0,
+        "questions": {
+          "region": {
+            "kind": "region_preference",
+            "correct": null,
+            "selected": "B",
+            "probability_sum": 1.0000000968575478,
+            "confidence": 0.17104192078113556,
+            "selected_below_reported_max": false
+          }
+        },
+        "outcome": "ungraded"
+      }
+    }
+  ],
+  "caveats": [
+    "Same request templates, rules, option ordering and stopping criteria as the historical trajectory study.",
+    "Singleton menus use a forced harness transition and no inference. Forced decisions and model calls are counted separately.",
+    "Local mode filters immediate row, column, region and touching conflicts only. The full solver never filters candidates or supplies answers.",
+    "Ground-truth solutions are not in this plan; the worker recomputes the unique solution offline and checks it against each board's sha256 commitment before any request.",
+    "Board ids are neutral; stratum, generator and difficulty profile are not in this plan or any request.",
+    "Budget guard, provider and schema failures stop the campaign and are reported separately from puzzle failures; no automatic retries."
+  ],
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.08753175,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 1107,
+    "billing_confirmed": false
+  },
+  "guard": {
+    "policy": {
+      "panel_spend_ceiling_usd": 0.05,
+      "max_model_calls": 34,
+      "reservation_per_call_usd": 0.019660800000000003,
+      "price_per_input_token_usd": 5.0000000000000004e-08,
+      "max_input_tokens_per_call": 393216,
+      "pessimistic_tokens_per_call": 5000,
+      "shared_ledger_cap_usd": 4.5,
+      "max_request_bytes": 5101,
+      "accounting": "Committed = sum over this output's call receipts of input_tokens x price for HTTP 200 with integer usage, else the full per-call reservation (unknown cost). Mirrors the broker ledger.",
+      "per_call_rule": "Before each call: calls + 1 <= max_model_calls; committed + reservation <= panel ceiling; shared ledger estimated + unresolved + reservation <= shared cap; request bytes <= max_request_bytes. Otherwise stop without dispatch (censored_guard).",
+      "trajectory_admission_rule": "Before each new trajectory of size n: calls + (2n - 1) <= max_model_calls; committed + (2n - 2) x pessimistic call cost + reservation <= panel ceiling; shared ledger + (2n - 2) x pessimistic call cost + reservation <= shared cap. Otherwise stop before the trajectory starts."
+    },
+    "call_directories": 7,
+    "committed_usd_from_receipts": 0.0005767000000000001,
+    "censored_trajectories": 0,
+    "request_failures": 0,
+    "unstarted_trajectories": 0
+  },
+  "campaign_budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.16626585000000002,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 2437,
+    "billing_confirmed": false
+  }
+}

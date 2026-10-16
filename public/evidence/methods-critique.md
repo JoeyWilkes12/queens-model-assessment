@@ -234,7 +234,15 @@ Neither benchmark answers the other's question. The index measures breadth over 
 
 ### Decision for this edition
 
-Experiments 1–3 cost nothing and their core results are already in this review. Experiment 4 is the most informative paid study. It needs a board generator with difficulty profiling, the harness changes above, a frozen preregistration and a running Docker engine for the contained runner. The book reports it as planned, not as a result, until those receipts exist.
+Experiments 1–3 cost nothing and their core results are already in this review. **Experiment 4 was run on 15 October 2026** under a frozen [preregistration](subq-panel/PREREGISTRATION.md), after the harness changes above, a two-trajectory pilot and an independent re-certification of every board. See the [results report](subq-panel/REPORT.md).
+
+| Size | SubQ boards solved | Greedy rule | Random, expected | Filtered vs raw (Holm p) |
+|---|---:|---:|---:|---|
+| 5×5 | 16/64 | 42/64 | 6.0 | 15 vs 6 solved (0.035) |
+| 7×7 | 3/64 | 24/64 | 0.9 | 3 vs 0 (0.50) |
+| 9×9 | 0/64 | 14/64 | 0.1 | 0 vs 0 (1.0) |
+
+It cost about $0.08 in estimated SubQ usage over 1,337 calls, with no provider failures. The panel confirms the original nine-board pattern with real intervals. SubQ beats random choice, but the greedy rule solves four times as many boards. Experiments 5–8 remain proposals.
 
 ## 9. Preregistration checklist
 

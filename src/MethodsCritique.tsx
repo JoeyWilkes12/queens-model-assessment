@@ -76,13 +76,13 @@ export function MethodsCritique({ ui }: { ui: BookUi }) {
             ['1 · offline', 'Oracle-label every offered cell in all 180 recorded trajectories', '$0'],
             ['2 · offline', 'Random and greedy baselines on every board (done for the nine)', '$0'],
             ['3 · offline', 'Calibration by task, menu and board', '$0'],
-            ['4 · SubQ now', '64 new certified boards per size, one raw and one local attempt each', '≈$0.14–$1.25'],
+            ['4 · SubQ, done 15 Oct', '64 new certified boards per size, one raw and one local attempt each', '≈$0.08 spent'],
             ['5 · SubQ now', 'Answer-position permutations on one frozen state per board', '≈$0.03'],
             ['6 · SubQ now', 'Same question in 1-, 8- and 16-question batches', '≈$0.04'],
             ['7 · later', 'Feedback and backtracking, equal call budgets', '≤$0.29'],
             ['8 · needs OpenRouter', 'Jev and language models on the same new panel', 'Rediscover prices'],
           ]} />
-          <Callout tone="caution" title="Planned, not run.">The new-board panel needs a difficulty-profiled generator, harness changes and a frozen preregistration before any request is sent. No result is reported until its receipts exist.</Callout>
+          <Callout tone="evidence" title="Experiment 4 ran on 15 October, as preregistered.">On 192 new boards SubQ solved 19: 16 of 64 at 5×5, 3 of 64 at 7×7 and none at 9×9. The greedy rule solved 80; random choice would be expected to solve about 7. The conflict filter helped significantly at 5×5 (15/64 vs 6/64, Holm p = 0.035). <a href="#/subq-assessment/panel">Read the panel results</a>.</Callout>
         </Section>
 
         <Section id="critique-sources" title="Read the full review">

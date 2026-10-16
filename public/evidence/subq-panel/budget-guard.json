@@ -1,0 +1,14 @@
+{
+  "calls": 1330,
+  "committed_usd": 0.0787341000000021,
+  "ledger": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.16626585000000002,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 2437,
+    "billing_confirmed": false
+  },
+  "panel_spend_ceiling_usd": 1.45,
+  "max_model_calls": 4992,
+  "updated_utc": "2026-10-16T02:26:13.635866+00:00"
+}

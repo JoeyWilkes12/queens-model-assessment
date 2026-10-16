@@ -1,0 +1,131 @@
+{
+  "trajectory_id": "panel-5-20_raw_a1",
+  "board_id": "panel-5-20",
+  "size": 5,
+  "mode": "raw",
+  "replicate": 1,
+  "sequence": 12,
+  "block": 2,
+  "mode_position": 2,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:13:09.930136+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-5-20_raw_a1_p01_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        4,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-5-20_raw_a1_p02_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        2,
+        5
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-5-20_raw_a1_p03_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 3,
+      "cell_call": "panel-5-20_raw_a1_p03_cell",
+      "cell_forced": false,
+      "top_probability": 0.7696723341941833,
+      "cell": [
+        1,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-5-20_raw_a1_p04_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 5,
+      "cell_call": "panel-5-20_raw_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.5764669179916382,
+      "cell": [
+        3,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 5,
+      "region_call": null,
+      "region_forced": true,
+      "region": "B",
+      "candidate_count": 15,
+      "cell_call": "panel-5-20_raw_a1_p05_cell",
+      "cell_forced": false,
+      "top_probability": 0.3151530623435974,
+      "cell": [
+        5,
+        4
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    }
+  ],
+  "success": true,
+  "http_calls": 7,
+  "forced_decisions": 3,
+  "api_elapsed_seconds": 2.584114585000002,
+  "stop_reason": "solved",
+  "checks": {
+    "shape": true,
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": true,
+    "no_touch": true,
+    "correct": true
+  },
+  "accepted_queens": 5,
+  "placement_prefix": [
+    [
+      4,
+      1
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      5,
+      4
+    ]
+  ],
+  "correct_queens_before_failure": 5,
+  "elapsed_seconds": 2.7970309590000006,
+  "ended_utc": "2026-10-16T02:13:12.727506+00:00"
+}

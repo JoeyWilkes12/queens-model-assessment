@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "body": {
+    "object": "list",
+    "data": [
+      {
+        "id": "subq-snap-preview"
+      }
+    ]
+  },
+  "elapsed_seconds": 0.3142539169999998,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld"
+}

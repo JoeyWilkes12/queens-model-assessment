@@ -1,0 +1,104 @@
+{
+  "trajectory_id": "panel-9-52_local_a1",
+  "board_id": "panel-9-52",
+  "size": 9,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 34,
+  "block": 6,
+  "mode_position": 2,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:14:22.857236+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-9-52_local_a1_p01_region",
+      "region_forced": false,
+      "region": "I",
+      "candidate_count": 2,
+      "cell_call": "panel-9-52_local_a1_p01_cell",
+      "cell_forced": false,
+      "top_probability": 0.5191646814346313,
+      "cell": [
+        9,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-9-52_local_a1_p02_region",
+      "region_forced": false,
+      "region": "B",
+      "candidate_count": 2,
+      "cell_call": "panel-9-52_local_a1_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.5821384191513062,
+      "cell": [
+        1,
+        4
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-9-52_local_a1_p03_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        2,
+        7
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-9-52_local_a1_p04_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 9,
+      "cell_call": "panel-9-52_local_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.18786726891994476,
+      "cell": [
+        3,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 7,
+  "forced_decisions": 1,
+  "api_elapsed_seconds": 2.5816436270000054,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 4,
+  "placement_prefix": [
+    [
+      9,
+      1
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      2
+    ]
+  ],
+  "correct_queens_before_failure": 3,
+  "elapsed_seconds": 2.8133000009999876,
+  "ended_utc": "2026-10-16T02:14:25.670859+00:00"
+}

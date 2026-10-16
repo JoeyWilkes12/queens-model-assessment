@@ -1,0 +1,32 @@
+{
+  "status": 200,
+  "body": {
+    "model": "subq-snap-preview",
+    "answers": {
+      "cell": {
+        "type": "choice",
+        "probabilities": {
+          "r1c1": 0.3190860450267792,
+          "r1c2": 0.2489924430847168,
+          "r2c2": 0.0714571624994278,
+          "r2c3": 0.36046427488327026
+        },
+        "confidence": 0.14728569984436035,
+        "choice": "r2c3"
+      }
+    },
+    "usage": {
+      "input_tokens": 1113,
+      "output_tokens": 0
+    }
+  },
+  "elapsed_seconds": 0.34952308399999765,
+  "receipt_policy": "documented public labels and bounded numeric fields only; arbitrary provider strings withheld",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.0984646,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 1287,
+    "billing_confirmed": false
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "trajectory_id": "panel-7-42_local_a1",
+  "board_id": "panel-7-42",
+  "size": 7,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 236,
+  "block": 40,
+  "mode_position": 2,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:20:19.380338+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-7-42_local_a1_p01_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        3,
+        5
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-7-42_local_a1_p02_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 2,
+      "cell_call": "panel-7-42_local_a1_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.5456661581993103,
+      "cell": [
+        1,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-7-42_local_a1_p03_region",
+      "region_forced": false,
+      "region": "B",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        2,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-7-42_local_a1_p04_region",
+      "region_forced": false,
+      "region": "C",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        5,
+        6
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 5,
+      "region_call": "panel-7-42_local_a1_p05_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 2,
+      "cell_call": "panel-7-42_local_a1_p05_cell",
+      "cell_forced": false,
+      "top_probability": 0.6755509972572327,
+      "cell": [
+        4,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 6,
+      "region_call": "panel-7-42_local_a1_p06_region",
+      "region_forced": false,
+      "region": "G",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        6,
+        4
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 7,
+      "region_call": null,
+      "region_forced": true,
+      "region": "F",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        7,
+        7
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    }
+  ],
+  "success": true,
+  "http_calls": 8,
+  "forced_decisions": 6,
+  "api_elapsed_seconds": 2.852624418000005,
+  "stop_reason": "solved",
+  "checks": {
+    "shape": true,
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": true,
+    "no_touch": true,
+    "correct": true
+  },
+  "accepted_queens": 7,
+  "placement_prefix": [
+    [
+      3,
+      5
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      7,
+      7
+    ]
+  ],
+  "correct_queens_before_failure": 7,
+  "elapsed_seconds": 3.148622333999981,
+  "ended_utc": "2026-10-16T02:20:22.529585+00:00"
+}

@@ -1,0 +1,85 @@
+{
+  "trajectory_id": "panel-9-62_local_a1",
+  "board_id": "panel-9-62",
+  "size": 9,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 140,
+  "block": 24,
+  "mode_position": 2,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:17:17.021514+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-9-62_local_a1_p01_region",
+      "region_forced": false,
+      "region": "H",
+      "candidate_count": 3,
+      "cell_call": "panel-9-62_local_a1_p01_cell",
+      "cell_forced": false,
+      "top_probability": 0.4359009265899658,
+      "cell": [
+        9,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-9-62_local_a1_p02_region",
+      "region_forced": false,
+      "region": "I",
+      "candidate_count": 2,
+      "cell_call": "panel-9-62_local_a1_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.6197291016578674,
+      "cell": [
+        8,
+        8
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-9-62_local_a1_p03_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 20,
+      "cell_call": "panel-9-62_local_a1_p03_cell",
+      "cell_forced": false,
+      "top_probability": 0.12642061710357666,
+      "cell": [
+        1,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 6,
+  "forced_decisions": 0,
+  "api_elapsed_seconds": 2.1721067509999443,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 3,
+  "placement_prefix": [
+    [
+      9,
+      1
+    ],
+    [
+      8,
+      8
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "correct_queens_before_failure": 2,
+  "elapsed_seconds": 2.3876855849999856,
+  "ended_utc": "2026-10-16T02:17:19.409615+00:00"
+}

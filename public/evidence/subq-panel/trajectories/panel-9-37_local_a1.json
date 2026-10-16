@@ -1,0 +1,123 @@
+{
+  "trajectory_id": "panel-9-37_local_a1",
+  "board_id": "panel-9-37",
+  "size": 9,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 1,
+  "block": 1,
+  "mode_position": 1,
+  "requested_model": "subq-snap-preview",
+  "started_utc": "2026-10-16T02:12:53.982830+00:00",
+  "steps": [
+    {
+      "step": 1,
+      "region_call": "panel-9-37_local_a1_p01_region",
+      "region_forced": false,
+      "region": "H",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        5,
+        8
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 2,
+      "region_call": "panel-9-37_local_a1_p02_region",
+      "region_forced": false,
+      "region": "E",
+      "candidate_count": 3,
+      "cell_call": "panel-9-37_local_a1_p02_cell",
+      "cell_forced": false,
+      "top_probability": 0.43469861149787903,
+      "cell": [
+        6,
+        1
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 3,
+      "region_call": "panel-9-37_local_a1_p03_region",
+      "region_forced": false,
+      "region": "I",
+      "candidate_count": 1,
+      "cell_call": null,
+      "cell_forced": true,
+      "cell": [
+        8,
+        2
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 4,
+      "region_call": "panel-9-37_local_a1_p04_region",
+      "region_forced": false,
+      "region": "A",
+      "candidate_count": 6,
+      "cell_call": "panel-9-37_local_a1_p04_cell",
+      "cell_forced": false,
+      "top_probability": 0.2896207571029663,
+      "cell": [
+        1,
+        4
+      ],
+      "local_violations": [],
+      "on_unique_solution": true
+    },
+    {
+      "step": 5,
+      "region_call": "panel-9-37_local_a1_p05_region",
+      "region_forced": false,
+      "region": "D",
+      "candidate_count": 2,
+      "cell_call": "panel-9-37_local_a1_p05_cell",
+      "cell_forced": false,
+      "top_probability": 0.5685468316078186,
+      "cell": [
+        4,
+        3
+      ],
+      "local_violations": [],
+      "on_unique_solution": false
+    }
+  ],
+  "success": false,
+  "http_calls": 8,
+  "forced_decisions": 2,
+  "api_elapsed_seconds": 2.9615612529999997,
+  "stop_reason": "globally_unextendable_prefix",
+  "accepted_queens": 5,
+  "placement_prefix": [
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      4,
+      3
+    ]
+  ],
+  "correct_queens_before_failure": 4,
+  "elapsed_seconds": 3.201546043,
+  "ended_utc": "2026-10-16T02:12:57.185806+00:00"
+}

@@ -173,7 +173,7 @@ function QueensAAComparison({ ui }: { ui: BookUi }) {
   const { DataTable } = ui
   return <DataTable caption="The same decision models through two lenses" headers={['Model', 'AA Decision Index', 'AA HLE-MultiChoice', 'Queens: prepared candidates, explicit regions', 'Queens: fresh trajectories solved', 'Queens: deepest correct prefix at 9×9']} rows={[
     ['Jev 1.13', '57.5 (top decision model)', '20.9', '24/24 (7×7, 9×9; up to 255 options)', <>10/90 · <a href="#/jev-trajectories">1 of 9 boards</a></>, '5 queens'],
-    ['SubQ Snap (preview)', 'Not listed (14 Oct)', 'Not listed', '24/24 (same requests, replayed)', <>10/90 · <a href="#/subq-assessment">2 of 9 boards</a></>, '1 queen'],
+    ['SubQ Snap (preview)', 'Not listed (14 Oct)', 'Not listed', '24/24 (same requests, replayed)', <>10/90 · <a href="#/subq-assessment">2 of 9 boards</a>; <a href="#/subq-assessment/panel">19 of 192 new boards</a></>, '1 queen (0/64 new 9×9 boards)'],
     ['GPT-6 Luna (Decisions)', '48.5', '11.7', 'Not run', 'Not run', 'Not run'],
   ]} />
 }

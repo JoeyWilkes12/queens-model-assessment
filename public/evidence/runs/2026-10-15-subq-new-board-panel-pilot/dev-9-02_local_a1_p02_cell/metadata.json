@@ -1,0 +1,29 @@
+{
+  "call_id": "dev-9-02_local_a1_p02_cell",
+  "trajectory_id": "dev-9-02_local_a1",
+  "board_id": "dev-9-02",
+  "size": 9,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 2,
+  "phase": "cell",
+  "step": 2,
+  "family": "trajectory",
+  "completed_utc": "2026-10-15T21:32:00.309373+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.3716727500000001,
+  "request_sha256": "f8f87e95c575902ed4c9659ceb9b5b997289d64e8e95ce48f80c11ff8a40b58d",
+  "response_sha256": "a5fbd6a416be2ee7adccd63cdabc175612f1cd4b2271ca3762b3146b24bb63cd",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.08737,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 1105,
+    "billing_confirmed": false
+  },
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 1617,
+    "output_tokens": 0
+  }
+}

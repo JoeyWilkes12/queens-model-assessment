@@ -1,0 +1,21 @@
+{
+  "model": "subq-snap-preview",
+  "answers": {
+    "region": {
+      "type": "choice",
+      "probabilities": {
+        "A": 0.46305662393569946,
+        "B": 0.1546049416065216,
+        "C": 0.15618662536144257,
+        "D": 0.09870588034391403,
+        "E": 0.12744590640068054
+      },
+      "confidence": 0.3288207799196243,
+      "choice": "A"
+    }
+  },
+  "usage": {
+    "input_tokens": 708,
+    "output_tokens": 0
+  }
+}

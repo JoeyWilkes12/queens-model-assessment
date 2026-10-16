@@ -1,0 +1,31 @@
+{
+  "call_id": "panel-7-39_local_a1_p03_region",
+  "trajectory_id": "panel-7-39_local_a1",
+  "board_id": "panel-7-39",
+  "size": 7,
+  "mode": "local",
+  "replicate": 1,
+  "sequence": 136,
+  "block": 23,
+  "mode_position": 2,
+  "phase": "region",
+  "step": 3,
+  "family": "trajectory",
+  "completed_utc": "2026-10-16T02:17:08.279951+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 0.3634351670000342,
+  "request_sha256": "e84254aa0938adc2967422396642db5ce42ff52a752c57d7abf30183189328f5",
+  "response_sha256": "f264200f39c552d83d37e1842c92898bdc3af712d9a07f173ea0b85556120e44",
+  "budget": {
+    "cap_usd": 4.5,
+    "estimated_known_usd": 0.11595870000000001,
+    "unresolved_reserve_usd": 0.058982400000000004,
+    "calls_reserved": 1588,
+    "billing_confirmed": false
+  },
+  "returned_model": "subq-snap-preview",
+  "usage": {
+    "input_tokens": 1110,
+    "output_tokens": 0
+  }
+}

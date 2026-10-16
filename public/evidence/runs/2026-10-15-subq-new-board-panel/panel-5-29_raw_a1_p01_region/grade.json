@@ -1,0 +1,19 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": null,
+  "question_count": 1,
+  "graded_question_count": 0,
+  "correct_questions": 0,
+  "questions": {
+    "region": {
+      "kind": "region_preference",
+      "correct": null,
+      "selected": "A",
+      "probability_sum": 1.0000000074505806,
+      "confidence": 0.13053132593631742,
+      "selected_below_reported_max": false
+    }
+  },
+  "outcome": "ungraded"
+}

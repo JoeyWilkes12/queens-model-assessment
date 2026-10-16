@@ -1,0 +1,25 @@
+{
+  "schema_valid": true,
+  "schema_errors": [],
+  "primary_correct": false,
+  "question_count": 1,
+  "graded_question_count": 1,
+  "correct_questions": 0,
+  "questions": {
+    "cell": {
+      "kind": "frozen_trajectory_cell",
+      "correct": false,
+      "selected": "r5c1",
+      "probability_sum": 0.9999999590218067,
+      "confidence": 0.11886024661362171,
+      "selected_below_reported_max": false,
+      "acceptable_count": 1,
+      "correct_probability_mass": 0.041239526122808456,
+      "cell": {
+        "row": 5,
+        "column": 1
+      }
+    }
+  },
+  "outcome": "model_failure"
+}
