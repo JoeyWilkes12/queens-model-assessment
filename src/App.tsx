@@ -461,7 +461,7 @@ function ExecutiveSummary() {
           <Scoreboard>
             <aside className="sb-explain" aria-labelledby="sb-not-comparable">
               <h3 id="sb-not-comparable">Why these charts are not apples to apples</h3>
-              <p>The language models received a picture of an empty board and had to write the whole solution in one response. The decision models never saw an image: they read an exact text grid, and at each step chose one option from a menu our harness built, with single-option moves forced and, in filtered mode, illegal cells removed. One task is construction from scratch; the other is a sequence of guided selections. The language models were also given one attempt per board, the decision models ten. Compare models within a chart, not across charts. A fair cross-family test needs one shared interface, for example language models answering the same step-by-step menus; that is planned, not yet run.</p>
+              <p>The language models received a picture of an empty board and had to write the whole solution in one response. The decision models never saw an image: they read an exact text grid, and at each step chose one option from a menu our harness built, with single-option moves forced and, in filtered mode, illegal cells removed. One task is construction from scratch; the other is a sequence of guided selections. The language models were also given one attempt per board; the decision models had ten on the original nine boards and two on the new panel. Compare models within a chart, not across charts. A fair cross-family test needs one shared interface, for example language models answering the same step-by-step menus; that is planned, not yet run.</p>
             </aside>
           </Scoreboard>
         </Section>
