@@ -1,0 +1,1581 @@
+{
+ "schemaVersion":1,
+ "kind":"z3-receipts",
+ "caption":"Recorded Z3 execution",
+ "z3Version":"Z3 4.16.0.0",
+ "pythonVersion":"3.12.12",
+ "platform":"macOS-15.7.4",
+ "generatedAt":"2026-10-16T02:27:51+00:00",
+ "measureScriptSha256":"520634d9ab8627978de4ca947e6f1147e1028b16dcd20ac40670dd5d696b3ada",
+ "notes":["Each board/configuration ran in two separate processes: verbose=0 for the statistics shown, verbose=10 for the route.","A missing counter means the receipt does not report it; it is not a measured zero.","Counters from different engines are not comparable and are never subtracted.","The QF_FD solver keeps one statistics object across checks: its incremental counters include the first check (countersCumulativeWithFirst).","Elapsed seconds are wall-clock times on one machine and are not a benchmark."],
+ "boards":[
+  {
+   "id":"five",
+   "size":5,
+   "regions":[
+    ["A","A","B","B","C"],
+    ["A","B","B","D","D"],
+    ["A","E","B","D","D"],
+    ["A","E","D","D","D"],
+    ["E","E","D","D","D"]
+   ],
+   "partitionSha256":"e4e767a7d4a15b53082b1619c3b5dc02e11b4f60558da5888dbbfe4ebe917b90",
+   "runs":[
+    {
+     "mode":"default",
+     "configuration":"Solver() · default parameters · timeout 30 s",
+     "syntax":"Sum(If(q, 1, 0)) == 1 for every row, column and region; Implies(q_u, Not(q_v)) for each directed touching pair",
+     "production":true,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":159,
+     "formulaSha256":"4e39c7ebf4578674d13be50d150cd91d54e2e125713268b1a938aabe93f30072",
+     "blockedFormulaSha256":"7bd64c8a4fb66325460cac16a05970e91bc2e893799e9bc61c081adc527a996b",
+     "freshBlockedFormulaSha256":"a2d22c9ca61fba3ab4f7f76e5df0ad030ce59306ad1ca79251e302d69603701a",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":25,
+      "sha256":"bbe888bf7c9e6d594d1838d3f12902831e3116c3005d4fc0735769827bb7f58b"
+     },
+     "modelColumns":[5,3,1,4,2],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.005612,
+       "statistics":{
+        "solve-eqs-steps":4,
+        "solve-eqs-elim-vars":4,
+        "sat mk clause 2ary":149,
+        "sat mk clause nary":41,
+        "sat mk var":55,
+        "sat del clause":1,
+        "sat conflicts":1,
+        "sat decisions":5,
+        "sat propagations 2ary":66,
+        "sat propagations nary":27,
+        "sat backjumps":1,
+        "sat elim literals":1,
+        "num allocs":203446,
+        "rlimit count":12285,
+        "max memory":26.27,
+        "memory":18.05,
+        "time":0.005
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":2},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"ctx-simplify","phase":"simplify","count":2},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"lia2card","phase":"cardinality","count":1},
+         {"name":"elim-uncnstr","phase":"simplify","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"ilp-model-finder-tactic","phase":"cardinality","count":2},
+         {"name":"pb-tactic","phase":"cardinality","count":1},
+         {"name":"pb2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"aig","phase":"bit-level","count":1},
+         {"name":"ast-table","phase":"bookkeeping","count":1},
+         {"name":"sat-status","phase":"sat-core","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1},
+         {"name":"pb-tactic","phase":"cardinality","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 230 :num-asts 512 :time 0.00 :before-memory 17.30 :after-memory 17.30)","(simplifier :num-exprs 230 :num-asts 512 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(propagate-values :num-exprs 197 :num-asts 524 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(ctx-simplify :num-steps 1550)","(ctx-simplify :num-exprs 197 :num-asts 524 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(simplifier :num-exprs 197 :num-asts 524 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(solve-eqs :num-exprs 190 :num-asts 524 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(:solve-eqs-elim-vars 4"," :solve-eqs-steps     4)","(lia2card :num-exprs 118 :num-asts 531 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(elim-uncnstr :num-exprs 118 :num-asts 531 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(simplifier :num-exprs 116 :num-asts 528 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(ilp-model-finder-tactic start)","(ilp-model-finder-tactic done)","(pb-tactic start)","(pb2bv :num-exprs 565 :num-asts 827 :time 0.00 :before-memory 17.98 :after-memory 17.98)","(simplifier :num-exprs 619 :num-asts 839 :time 0.00 :before-memory 18.08 :after-memory 18.08)","(propagate-values :num-exprs 292 :num-asts 881 :time 0.00 :before-memory 18.08 :after-memory 18.08)","(solve-eqs :num-exprs 262 :num-asts 881 :time 0.00 :before-memory 18.08 :after-memory 18.08)","(:solve-eqs-elim-vars 23"," :solve-eqs-steps     23)","(max-bv-sharing :num-exprs 262 :num-asts 881 :time 0.00 :before-memory 18.08 :after-memory 18.08)","(bit-blast :num-exprs 262 :num-asts 881 :time 0.00 :before-memory 18.08 :after-memory 18.08)","(aig :num-exprs 209 :num-asts 928 :time 0.00 :before-memory 18.08 :after-memory 18.08)","(ast-table :prev-capacity 532480 :capacity 532480 :size 839)","(sat-status","  :inconsistent    false","  :vars            55","  :elim-vars       0","  :lits            421","  :assigned        0","  :binary-clauses  148","  :ternary-clauses 39","  :clauses         2","  :del-clause      0","  :avg-clause-size 2.23","  :memory          18.15)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0   189/148     0/0   0       0    18.15   0.00)"," (sat-cleaner :elim-literals 1 :elim-clauses 0 :cost 125 :time 0.00)","(sat.stats      1      5    0   185/145     0/0   1       0    18.15   0.00)","(pb-tactic done)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.002916,
+       "statistics":{
+        "conflicts":14,
+        "decisions":18,
+        "propagations":201,
+        "binary propagations":194,
+        "added eqs":360,
+        "mk clause":118,
+        "mk clause binary":174,
+        "del clause":117,
+        "minimized lits":18,
+        "num checks":1,
+        "mk bool var":332,
+        "arith eq adapter":117,
+        "arith-lower":106,
+        "arith-upper":86,
+        "arith-conflicts":5,
+        "arith-bound-propagations-lp":10,
+        "arith-diseq":31,
+        "arith-make-feasible":37,
+        "arith-max-columns":39,
+        "arith-max-rows":14,
+        "arith-fixed-eqs":31,
+        "num allocs":322926,
+        "rlimit count":17964,
+        "max memory":26.27,
+        "memory":18.34,
+        "time":0.002
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"smt-core-arithmetic",
+        "label":"SMT core with arithmetic",
+        "basis":["verbose route contains (smt.searching)","statistics report unprefixed SMT search counters","statistics report 10 arithmetic counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"smt.simplify-begin","phase":"smt-core","count":1},
+         {"name":"smt.propagate-values","phase":"smt-core","count":1},
+         {"name":"smt.nnf-cnf","phase":"smt-core","count":1},
+         {"name":"smt.reduce-asserted","phase":"smt-core","count":1},
+         {"name":"smt.maximizing-bv-sharing","phase":"smt-core","count":1},
+         {"name":"smt.reduce-asserted","phase":"smt-core","count":1},
+         {"name":"smt.flatten-clauses","phase":"smt-core","count":1},
+         {"name":"smt.simplifier-done","phase":"smt-core","count":1},
+         {"name":"smt.searching","phase":"smt-core","count":1},
+         {"name":"smt.stats","phase":"smt-core","count":3}
+        ],
+        "lines":["(smt.simplify-begin :num-exprs 254)","(smt.propagate-values :num-exprs 231)","(smt.nnf-cnf :num-exprs 230)","(smt.reduce-asserted :num-exprs 230)","(smt.maximizing-bv-sharing :num-exprs 230)","(smt.reduce-asserted :num-exprs 230)","(smt.flatten-clauses :num-exprs 230)","(smt.simplifier-done :num-exprs 230)","(smt.searching)","(smt.stats :restarts     :decisions :clauses/bin/units      :simplify   :memory)","(smt.stats        :conflicts    :propagations       :lemmas      :deletions   )","(smt.stats    0      0      0      0   155/140/18       0/0     0    0   18.25)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["arith-bound-propagations-lp","arith-conflicts","binary propagations","conflicts","decisions","propagations"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.001894,
+       "statistics":{
+        "solve-eqs-steps":4,
+        "solve-eqs-elim-vars":4,
+        "sat mk clause 2ary":149,
+        "sat mk clause nary":42,
+        "sat mk var":55,
+        "sat del clause":1,
+        "sat conflicts":6,
+        "sat decisions":9,
+        "sat propagations 2ary":99,
+        "sat propagations nary":25,
+        "sat units":8,
+        "sat backjumps":5,
+        "sat elim literals":1,
+        "num allocs":1190819,
+        "rlimit count":30529,
+        "max memory":27.84,
+        "memory":19.62,
+        "time":0.001
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":2},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"ctx-simplify","phase":"simplify","count":2},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"lia2card","phase":"cardinality","count":1},
+         {"name":"elim-uncnstr","phase":"simplify","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"ilp-model-finder-tactic","phase":"cardinality","count":2},
+         {"name":"pb-tactic","phase":"cardinality","count":1},
+         {"name":"pb2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"aig","phase":"bit-level","count":1},
+         {"name":"ast-table","phase":"bookkeeping","count":1},
+         {"name":"sat-status","phase":"sat-core","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1},
+         {"name":"pb-tactic","phase":"cardinality","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 254 :num-asts 721 :time 0.00 :before-memory 18.93 :after-memory 18.93)","(simplifier :num-exprs 254 :num-asts 721 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(propagate-values :num-exprs 217 :num-asts 721 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(ctx-simplify :num-steps 1652)","(ctx-simplify :num-exprs 217 :num-asts 721 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(simplifier :num-exprs 217 :num-asts 721 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(solve-eqs :num-exprs 210 :num-asts 721 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(:solve-eqs-elim-vars 4"," :solve-eqs-steps     4)","(lia2card :num-exprs 138 :num-asts 740 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(elim-uncnstr :num-exprs 138 :num-asts 740 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(simplifier :num-exprs 136 :num-asts 737 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(ilp-model-finder-tactic start)","(ilp-model-finder-tactic done)","(pb-tactic start)","(pb2bv :num-exprs 585 :num-asts 1036 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(simplifier :num-exprs 639 :num-asts 1048 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(propagate-values :num-exprs 305 :num-asts 1090 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(solve-eqs :num-exprs 275 :num-asts 1090 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(:solve-eqs-elim-vars 23"," :solve-eqs-steps     23)","(max-bv-sharing :num-exprs 275 :num-asts 1090 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(bit-blast :num-exprs 275 :num-asts 1090 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(aig :num-exprs 218 :num-asts 1137 :time 0.00 :before-memory 19.60 :after-memory 19.60)","(ast-table :prev-capacity 532480 :capacity 532480 :size 1047)","(sat-status","  :inconsistent    false","  :vars            55","  :elim-vars       0","  :lits            431","  :assigned        0","  :binary-clauses  148","  :ternary-clauses 39","  :clauses         3","  :del-clause      0","  :avg-clause-size 2.27","  :memory          19.72)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0   190/148     0/0   0       0    19.72   0.00)"," (sat-cleaner :elim-literals 1 :elim-clauses 0 :cost 135 :time 0.00)","(sat.stats      6      9    0   187/146     0/0  27       0    19.72   0.00)","(pb-tactic done)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    },
+    {
+     "mode":"fd",
+     "configuration":"SolverFor('QF_FD') · timeout 30 s",
+     "syntax":"Same Sum(If) syntax as production, finite-domain solver",
+     "production":false,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":159,
+     "formulaSha256":"4e39c7ebf4578674d13be50d150cd91d54e2e125713268b1a938aabe93f30072",
+     "blockedFormulaSha256":"bf9f4f607ab34e93189165bd0eb4a84f814b408feb43975f78b2398eacb0ff15",
+     "freshBlockedFormulaSha256":"a2d22c9ca61fba3ab4f7f76e5df0ad030ce59306ad1ca79251e302d69603701a",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":25,
+      "sha256":"bbe888bf7c9e6d594d1838d3f12902831e3116c3005d4fc0735769827bb7f58b"
+     },
+     "modelColumns":[5,3,1,4,2],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.00286,
+       "statistics":{
+        "sat mk clause 2ary":131,
+        "sat mk clause nary":300,
+        "sat mk var":101,
+        "sat del clause":24,
+        "sat conflicts":2,
+        "sat decisions":10,
+        "sat propagations 2ary":66,
+        "sat propagations nary":89,
+        "sat units":6,
+        "sat backjumps":2,
+        "sat elim clauses":12,
+        "sat elim literals":12,
+        "num allocs":46170,
+        "rlimit count":12267,
+        "max memory":17.07,
+        "memory":17.07,
+        "time":0.002
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 536 :num-asts 1408 :time 0.00 :before-memory 16.98 :after-memory 16.98)","(propagate-values :num-exprs 447 :num-asts 1161 :time 0.00 :before-memory 16.98 :after-memory 16.98)","(card2bv :num-exprs 447 :num-asts 1161 :time 0.00 :before-memory 16.98 :after-memory 17.08)","(simplifier :num-exprs 447 :num-asts 1161 :time 0.00 :before-memory 17.08 :after-memory 17.08)","(max-bv-sharing :num-exprs 447 :num-asts 1161 :time 0.00 :before-memory 17.08 :after-memory 17.08)","(bit-blast :num-exprs 234 :num-asts 1061 :time 0.00 :before-memory 17.08 :after-memory 17.08)","(simplifier :num-exprs 234 :num-asts 1061 :time 0.00 :before-memory 17.08 :after-memory 17.08)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0   419/119     0/0   4       0    17.08   0.00)"," (sat-cleaner :elim-literals 12 :elim-clauses 12 :cost 900 :time 0.00)","(sat.stats      2     10    0   397/121     0/0  11       0    17.08   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":5.5e-05,
+       "statistics":{
+        "sat mk clause 2ary":133,
+        "sat mk clause nary":301,
+        "sat mk var":101,
+        "sat del clause":24,
+        "sat conflicts":6,
+        "sat decisions":14,
+        "sat propagations 2ary":177,
+        "sat propagations nary":250,
+        "sat units":11,
+        "sat backjumps":5,
+        "sat elim clauses":12,
+        "sat elim literals":12,
+        "num allocs":62630,
+        "rlimit count":13023,
+        "max memory":17.17,
+        "memory":17.17
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core (incremental; clauses already compiled)",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters","no preprocessing stage recorded during this check"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[{"name":"sat.solver","phase":"sat-core","count":1},{"name":"sat.stats","phase":"sat-core","count":2}],
+        "lines":["(sat.solver)","(sat.stats      2     10    0   398/121     0/0  11       0    17.17   0.00)","(sat.stats      6     14    0   398/121     2/2  83       0    17.17   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":true
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.000799,
+       "statistics":{
+        "sat mk clause 2ary":132,
+        "sat mk clause nary":302,
+        "sat mk var":101,
+        "sat del clause":24,
+        "sat conflicts":8,
+        "sat decisions":11,
+        "sat propagations 2ary":158,
+        "sat propagations nary":205,
+        "sat minimized lits":5,
+        "sat units":30,
+        "sat backjumps":7,
+        "sat elim clauses":12,
+        "sat elim literals":13,
+        "num allocs":239339,
+        "rlimit count":25229,
+        "max memory":17.46,
+        "memory":17.46
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 560 :num-asts 2132 :time 0.00 :before-memory 17.37 :after-memory 17.37)","(propagate-values :num-exprs 467 :num-asts 1884 :time 0.00 :before-memory 17.37 :after-memory 17.37)","(card2bv :num-exprs 467 :num-asts 1884 :time 0.00 :before-memory 17.37 :after-memory 17.37)","(simplifier :num-exprs 467 :num-asts 1884 :time 0.00 :before-memory 17.37 :after-memory 17.37)","(max-bv-sharing :num-exprs 467 :num-asts 1884 :time 0.00 :before-memory 17.37 :after-memory 17.37)","(bit-blast :num-exprs 254 :num-asts 1657 :time 0.00 :before-memory 17.37 :after-memory 17.37)","(simplifier :num-exprs 254 :num-asts 1657 :time 0.00 :before-memory 17.37 :after-memory 17.37)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0   420/119     0/0   4       0    17.47   0.00)"," (sat-cleaner :elim-literals 13 :elim-clauses 12 :cost 921 :time 0.00)","(sat.stats      8     11    0   398/121     2/1  51       0    17.47   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    },
+    {
+     "mode":"pb",
+     "configuration":"SolverFor('QF_FD') · PbEq syntax · timeout 30 s",
+     "syntax":"PbEq([(q, 1), ...], 1) for every row, column and region; same touching implications",
+     "production":false,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":159,
+     "formulaSha256":"c512ea630521e8a0df1f8b6205bcc272ac08437964b1cdbf5b1e4bab7b547222",
+     "blockedFormulaSha256":"285ad8b80df197652dc41b1362cd10cf09220dc016b8a105cb0afdba0c8e0f63",
+     "freshBlockedFormulaSha256":"017e6908ec1467e9ee1078592678b4fe343e3f3f6d0b7e21d01bfce577c7c08f",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":25,
+      "sha256":"bbe888bf7c9e6d594d1838d3f12902831e3116c3005d4fc0735769827bb7f58b"
+     },
+     "modelColumns":[5,3,1,4,2],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.0003,
+       "statistics":{
+        "pb-compile-card":14,
+        "pb-aux-variables":14,
+        "pb-aux-clauses":120,
+        "sat mk clause 2ary":271,
+        "sat mk clause nary":23,
+        "sat mk var":69,
+        "sat del clause":11,
+        "sat conflicts":4,
+        "sat decisions":5,
+        "sat propagations 2ary":59,
+        "sat propagations nary":15,
+        "sat units":47,
+        "sat backjumps":4,
+        "sat elim clauses":5,
+        "sat elim literals":23,
+        "num allocs":20693,
+        "rlimit count":3098,
+        "max memory":16.99,
+        "memory":16.99
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core (incremental; clauses already compiled)",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters","no preprocessing stage recorded during this check"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin    :units        :memory       )","(sat.stats      0      0    0   287/264     0/0  44       0    17.00   0.00)"," (sat-cleaner :elim-literals 23 :elim-clauses 5 :cost 90 :time 0.00)","(sat.stats      4      5    0   150/138     1/1  68       0    17.00   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":1.4e-05,
+       "statistics":{
+        "pb-compile-card":14,
+        "pb-aux-variables":14,
+        "pb-aux-clauses":120,
+        "sat mk clause 2ary":271,
+        "sat mk clause nary":23,
+        "sat mk var":69,
+        "sat del clause":11,
+        "sat conflicts":4,
+        "sat decisions":5,
+        "sat propagations 2ary":59,
+        "sat propagations nary":15,
+        "sat units":47,
+        "sat backjumps":4,
+        "sat elim clauses":5,
+        "sat elim literals":23,
+        "num allocs":20693,
+        "rlimit count":3215,
+        "max memory":16.99,
+        "memory":16.99
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"no-new-search",
+        "label":"Answered by the incremental SAT solver with no new search reported",
+        "basis":["statistics report sat-prefixed search counters","no verbose output during this check","sat-prefixed counters are unchanged from the first check"]
+       },
+       "route":{"source":"separate verbose=10 process, same formula","stages":[],"lines":[]},
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":true
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.0002,
+       "statistics":{
+        "pb-compile-card":14,
+        "pb-aux-variables":14,
+        "pb-aux-clauses":120,
+        "sat mk clause 2ary":271,
+        "sat mk clause nary":24,
+        "sat mk var":69,
+        "sat del clause":11,
+        "sat conflicts":5,
+        "sat decisions":4,
+        "sat propagations 2ary":57,
+        "sat propagations nary":16,
+        "sat units":47,
+        "sat backjumps":4,
+        "sat elim clauses":5,
+        "sat elim literals":30,
+        "num allocs":63823,
+        "rlimit count":6371,
+        "max memory":17.25,
+        "memory":17.25
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core (incremental; clauses already compiled)",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters","no preprocessing stage recorded during this check"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin    :units        :memory       )","(sat.stats      0      0    0   288/264     0/0  44       0    17.25   0.00)"," (sat-cleaner :elim-literals 30 :elim-clauses 5 :cost 111 :time 0.00)","(sat.stats      5      4    0   151/138     1/1  67       0    17.25   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id":"seven",
+   "size":7,
+   "regions":[
+    ["A","B","B","B","B","C","C"],
+    ["A","A","A","C","C","C","C"],
+    ["A","D","D","C","C","C","C"],
+    ["D","D","D","C","C","C","C"],
+    ["D","D","D","E","E","C","F"],
+    ["D","D","D","D","C","C","F"],
+    ["D","D","D","D","G","G","F"]
+   ],
+   "partitionSha256":"ca7a1dc2fc501e21e49cf21d5714789d983e36062df72d2ba466e3f6d7b17424",
+   "runs":[
+    {
+     "mode":"default",
+     "configuration":"Solver() · default parameters · timeout 30 s",
+     "syntax":"Sum(If(q, 1, 0)) == 1 for every row, column and region; Implies(q_u, Not(q_v)) for each directed touching pair",
+     "production":true,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":333,
+     "formulaSha256":"6f909e80d869c3a812f3e98b4e1567967d0e47aafcd25fe00a77c32a21be385a",
+     "blockedFormulaSha256":"f32d2c3d20117ff4db31d21985f9fd14f37986fab884b890a3afd0266036a335",
+     "freshBlockedFormulaSha256":"1d91ff3c7dc9d2b64eee2f87940f7f22e7d008a3ec95eac731545ca4a9f09c68",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":49,
+      "sha256":"2422cf683fdcbd078ca82ef69740f58ab37467a864cd5051bd77234da6f9fe05"
+     },
+     "modelColumns":[3,1,6,2,4,7,5],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.003605,
+       "statistics":{
+        "solve-eqs-steps":27,
+        "solve-eqs-elim-vars":27,
+        "sat mk clause 2ary":567,
+        "sat mk clause nary":184,
+        "sat mk var":210,
+        "sat conflicts":6,
+        "sat decisions":11,
+        "sat propagations 2ary":277,
+        "sat propagations nary":151,
+        "sat units":160,
+        "sat backjumps":6,
+        "num allocs":422220,
+        "rlimit count":29946,
+        "max memory":26.49,
+        "memory":18.25,
+        "time":0.003
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":2},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"ctx-simplify","phase":"simplify","count":2},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"lia2card","phase":"cardinality","count":1},
+         {"name":"elim-uncnstr","phase":"simplify","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"ilp-model-finder-tactic","phase":"cardinality","count":2},
+         {"name":"pb-tactic","phase":"cardinality","count":1},
+         {"name":"pb2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"aig","phase":"bit-level","count":1},
+         {"name":"ast-table","phase":"bookkeeping","count":1},
+         {"name":"sat-status","phase":"sat-core","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1},
+         {"name":"pb-tactic","phase":"cardinality","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 461 :num-asts 872 :time 0.00 :before-memory 17.32 :after-memory 17.32)","(simplifier :num-exprs 461 :num-asts 872 :time 0.00 :before-memory 18.00 :after-memory 18.00)","(propagate-values :num-exprs 461 :num-asts 872 :time 0.00 :before-memory 18.00 :after-memory 18.00)","(ctx-simplify :num-steps 3880)","(ctx-simplify :num-exprs 461 :num-asts 872 :time 0.00 :before-memory 18.00 :after-memory 18.09)","(simplifier :num-exprs 461 :num-asts 872 :time 0.00 :before-memory 18.09 :after-memory 18.09)","(solve-eqs :num-exprs 461 :num-asts 872 :time 0.00 :before-memory 18.09 :after-memory 18.09)","(lia2card :num-exprs 284 :num-asts 900 :time 0.00 :before-memory 18.09 :after-memory 18.09)","(elim-uncnstr :num-exprs 284 :num-asts 900 :time 0.00 :before-memory 18.09 :after-memory 18.09)","(simplifier :num-exprs 284 :num-asts 900 :time 0.00 :before-memory 18.09 :after-memory 18.09)","(ilp-model-finder-tactic start)","(ilp-model-finder-tactic done)","(pb-tactic start)","(pb2bv :num-exprs 1512 :num-asts 1678 :time 0.00 :before-memory 18.09 :after-memory 18.19)","(simplifier :num-exprs 1784 :num-asts 1716 :time 0.00 :before-memory 18.19 :after-memory 18.19)","(propagate-values :num-exprs 1186 :num-asts 1832 :time 0.00 :before-memory 18.19 :after-memory 18.19)","(solve-eqs :num-exprs 1155 :num-asts 1832 :time 0.00 :before-memory 18.19 :after-memory 18.19)","(:solve-eqs-elim-vars 27"," :solve-eqs-steps     27)","(max-bv-sharing :num-exprs 1155 :num-asts 1832 :time 0.00 :before-memory 18.19 :after-memory 18.19)","(bit-blast :num-exprs 1155 :num-asts 1832 :time 0.00 :before-memory 18.19 :after-memory 18.19)","(aig :num-exprs 816 :num-asts 2084 :time 0.00 :before-memory 18.19 :after-memory 18.32)","(ast-table :prev-capacity 532480 :capacity 532480 :size 1771)","(sat-status","  :inconsistent    false","  :vars            210","  :elim-vars       0","  :lits            1713","  :assigned        0","  :binary-clauses  567","  :ternary-clauses 157","  :clauses         27","  :del-clause      0","  :avg-clause-size 2.28","  :memory          18.37)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0   751/567     0/0   0       0    18.37   0.00)"," (sat-cleaner :elim-literals 0 :elim-clauses 0 :cost 579 :time 0.00)","(sat.stats      6     11    0   749/565     0/0 209       0    18.37   0.00)","(pb-tactic done)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.005426,
+       "statistics":{
+        "conflicts":96,
+        "decisions":266,
+        "propagations":2245,
+        "binary propagations":2002,
+        "added eqs":3409,
+        "mk clause":678,
+        "mk clause binary":378,
+        "del clause":653,
+        "minimized lits":56,
+        "num checks":1,
+        "mk bool var":2214,
+        "arith eq adapter":1434,
+        "arith-lower":1508,
+        "arith-upper":800,
+        "arith-fixed-eqs":1,
+        "arith-conflicts":39,
+        "arith-bound-propagations-lp":156,
+        "arith-diseq":582,
+        "arith-make-feasible":480,
+        "arith-max-columns":74,
+        "arith-max-rows":21,
+        "num allocs":977306,
+        "rlimit count":60660,
+        "max memory":26.49,
+        "memory":18.94,
+        "time":0.005
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"smt-core-arithmetic",
+        "label":"SMT core with arithmetic",
+        "basis":["verbose route contains (smt.searching)","statistics report unprefixed SMT search counters","statistics report 10 arithmetic counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"smt.simplify-begin","phase":"smt-core","count":1},
+         {"name":"smt.propagate-values","phase":"smt-core","count":1},
+         {"name":"smt.nnf-cnf","phase":"smt-core","count":1},
+         {"name":"smt.reduce-asserted","phase":"smt-core","count":1},
+         {"name":"smt.maximizing-bv-sharing","phase":"smt-core","count":1},
+         {"name":"smt.reduce-asserted","phase":"smt-core","count":1},
+         {"name":"smt.flatten-clauses","phase":"smt-core","count":1},
+         {"name":"smt.simplifier-done","phase":"smt-core","count":1},
+         {"name":"smt.searching","phase":"smt-core","count":1},
+         {"name":"smt.stats","phase":"smt-core","count":3}
+        ],
+        "lines":["(smt.simplify-begin :num-exprs 509)","(smt.propagate-values :num-exprs 510)","(smt.nnf-cnf :num-exprs 509)","(smt.reduce-asserted :num-exprs 509)","(smt.maximizing-bv-sharing :num-exprs 509)","(smt.reduce-asserted :num-exprs 509)","(smt.flatten-clauses :num-exprs 509)","(smt.simplifier-done :num-exprs 509)","(smt.searching)","(smt.stats :restarts     :decisions :clauses/bin/units      :simplify   :memory)","(smt.stats        :conflicts    :propagations       :lemmas      :deletions   )","(smt.stats    0      0      0      0   327/305/21       0/0     0    0   18.54)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["arith-bound-propagations-lp","arith-conflicts","binary propagations","conflicts","decisions","propagations"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.003047,
+       "statistics":{
+        "solve-eqs-steps":27,
+        "solve-eqs-elim-vars":27,
+        "sat mk clause 2ary":575,
+        "sat mk clause nary":186,
+        "sat mk var":213,
+        "sat conflicts":7,
+        "sat decisions":10,
+        "sat propagations 2ary":258,
+        "sat propagations nary":143,
+        "sat units":162,
+        "sat backjumps":6,
+        "num allocs":3142798,
+        "rlimit count":91065,
+        "max memory":28.49,
+        "memory":20.22,
+        "time":0.003
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":2},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"ctx-simplify","phase":"simplify","count":2},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"lia2card","phase":"cardinality","count":1},
+         {"name":"elim-uncnstr","phase":"simplify","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"ilp-model-finder-tactic","phase":"cardinality","count":2},
+         {"name":"pb-tactic","phase":"cardinality","count":1},
+         {"name":"pb2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"aig","phase":"bit-level","count":1},
+         {"name":"ast-table","phase":"bookkeeping","count":1},
+         {"name":"sat-status","phase":"sat-core","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1},
+         {"name":"pb-tactic","phase":"cardinality","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 509 :num-asts 1398 :time 0.00 :before-memory 19.45 :after-memory 19.45)","(simplifier :num-exprs 509 :num-asts 1398 :time 0.00 :before-memory 20.13 :after-memory 20.13)","(propagate-values :num-exprs 509 :num-asts 1398 :time 0.00 :before-memory 20.13 :after-memory 20.13)","(ctx-simplify :num-steps 4106)","(ctx-simplify :num-exprs 509 :num-asts 1398 :time 0.00 :before-memory 20.13 :after-memory 20.23)","(simplifier :num-exprs 509 :num-asts 1398 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(solve-eqs :num-exprs 509 :num-asts 1398 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(lia2card :num-exprs 332 :num-asts 1426 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(elim-uncnstr :num-exprs 332 :num-asts 1426 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(simplifier :num-exprs 332 :num-asts 1426 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(ilp-model-finder-tactic start)","(ilp-model-finder-tactic done)","(pb-tactic start)","(pb2bv :num-exprs 1560 :num-asts 2196 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(simplifier :num-exprs 1832 :num-asts 2247 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(propagate-values :num-exprs 1230 :num-asts 2343 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(solve-eqs :num-exprs 1199 :num-asts 2343 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(:solve-eqs-elim-vars 27"," :solve-eqs-steps     27)","(max-bv-sharing :num-exprs 1199 :num-asts 2343 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(bit-blast :num-exprs 1199 :num-asts 2343 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(aig :num-exprs 837 :num-asts 2599 :time 0.00 :before-memory 20.23 :after-memory 20.23)","(ast-table :prev-capacity 532480 :capacity 532480 :size 2284)","(sat-status","  :inconsistent    false","  :vars            213","  :elim-vars       0","  :lits            1753","  :assigned        0","  :binary-clauses  575","  :ternary-clauses 159","  :clauses         27","  :del-clause      0","  :avg-clause-size 2.30","  :memory          20.37)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0   761/575     0/0   0       0    20.37   0.00)"," (sat-cleaner :elim-literals 0 :elim-clauses 0 :cost 603 :time 0.00)","(sat.stats      7     10    0   759/573     0/0 176       0    20.37   0.00)","(pb-tactic done)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    },
+    {
+     "mode":"fd",
+     "configuration":"SolverFor('QF_FD') · timeout 30 s",
+     "syntax":"Same Sum(If) syntax as production, finite-domain solver",
+     "production":false,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":333,
+     "formulaSha256":"6f909e80d869c3a812f3e98b4e1567967d0e47aafcd25fe00a77c32a21be385a",
+     "blockedFormulaSha256":"16e172eb55125d97696856528643af40894d4245fce1518c134d1e4757acfa9e",
+     "freshBlockedFormulaSha256":"1d91ff3c7dc9d2b64eee2f87940f7f22e7d008a3ec95eac731545ca4a9f09c68",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":49,
+      "sha256":"2422cf683fdcbd078ca82ef69740f58ab37467a864cd5051bd77234da6f9fe05"
+     },
+     "modelColumns":[3,1,6,2,4,7,5],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.001635,
+       "statistics":{
+        "sat mk clause 2ary":293,
+        "sat mk clause nary":940,
+        "sat mk var":284,
+        "sat del clause":36,
+        "sat conflicts":15,
+        "sat decisions":35,
+        "sat propagations 2ary":245,
+        "sat propagations nary":591,
+        "sat minimized lits":3,
+        "sat subs resolution dyn":2,
+        "sat units":2,
+        "sat backjumps":15,
+        "sat elim clauses":18,
+        "sat elim literals":19,
+        "num allocs":151126,
+        "rlimit count":22622,
+        "max memory":17.36,
+        "memory":17.36,
+        "time":0.001
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 1141 :num-asts 2690 :time 0.00 :before-memory 17.08 :after-memory 17.17)","(propagate-values :num-exprs 1141 :num-asts 2308 :time 0.00 :before-memory 17.17 :after-memory 17.17)","(card2bv :num-exprs 1141 :num-asts 2308 :time 0.00 :before-memory 17.17 :after-memory 17.17)","(simplifier :num-exprs 1141 :num-asts 2308 :time 0.00 :before-memory 17.17 :after-memory 17.17)","(max-bv-sharing :num-exprs 1141 :num-asts 2308 :time 0.00 :before-memory 17.17 :after-memory 17.17)","(bit-blast :num-exprs 595 :num-asts 2072 :time 0.00 :before-memory 17.17 :after-memory 17.17)","(simplifier :num-exprs 595 :num-asts 2072 :time 0.00 :before-memory 17.17 :after-memory 17.17)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0  1202/266     0/0   0       0    17.27   0.00)"," (sat-cleaner :elim-literals 19 :elim-clauses 18 :cost 2821 :time 0.00)","(sat.stats     15     35    0  1176/276    13/9   2       0    17.36   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.00011,
+       "statistics":{
+        "sat mk clause 2ary":298,
+        "sat mk clause nary":950,
+        "sat mk var":284,
+        "sat del clause":36,
+        "sat conflicts":35,
+        "sat decisions":68,
+        "sat propagations 2ary":543,
+        "sat propagations nary":1432,
+        "sat minimized lits":67,
+        "sat subs resolution dyn":11,
+        "sat units":124,
+        "sat backjumps":34,
+        "sat elim clauses":18,
+        "sat elim literals":19,
+        "num allocs":184439,
+        "rlimit count":25105,
+        "max memory":17.46,
+        "memory":17.46
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core (incremental; clauses already compiled)",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters","no preprocessing stage recorded during this check"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[{"name":"sat.solver","phase":"sat-core","count":1},{"name":"sat.stats","phase":"sat-core","count":2}],
+        "lines":["(sat.solver)","(sat.stats     15     35    0  1177/276    13/9   2       0    17.46   0.01)","(sat.stats     35     68    0  1177/276    27/14 133       0    17.46   0.01)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":true
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.001417,
+       "statistics":{
+        "sat mk clause 2ary":302,
+        "sat mk clause nary":949,
+        "sat mk var":284,
+        "sat del clause":36,
+        "sat conflicts":34,
+        "sat decisions":58,
+        "sat propagations 2ary":575,
+        "sat propagations nary":1481,
+        "sat minimized lits":46,
+        "sat subs resolution dyn":11,
+        "sat units":2,
+        "sat backjumps":33,
+        "sat elim clauses":18,
+        "sat elim literals":20,
+        "num allocs":775171,
+        "rlimit count":48438,
+        "max memory":17.85,
+        "memory":17.85,
+        "time":0.001
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 1189 :num-asts 4796 :time 0.00 :before-memory 17.66 :after-memory 17.76)","(propagate-values :num-exprs 1189 :num-asts 4414 :time 0.00 :before-memory 17.76 :after-memory 17.76)","(card2bv :num-exprs 1189 :num-asts 4414 :time 0.00 :before-memory 17.76 :after-memory 17.76)","(simplifier :num-exprs 1189 :num-asts 4414 :time 0.00 :before-memory 17.76 :after-memory 17.76)","(max-bv-sharing :num-exprs 1189 :num-asts 4414 :time 0.00 :before-memory 17.76 :after-memory 17.76)","(bit-blast :num-exprs 643 :num-asts 3843 :time 0.00 :before-memory 17.76 :after-memory 17.76)","(simplifier :num-exprs 643 :num-asts 3843 :time 0.00 :before-memory 17.76 :after-memory 17.76)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin     :units       :memory       )","(sat.stats      0      0    0  1203/266     0/0   0       0    17.85   0.00)"," (sat-cleaner :elim-literals 20 :elim-clauses 18 :cost 2870 :time 0.00)","(sat.stats     34     58    0  1177/276    30/18  39       0    17.85   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    },
+    {
+     "mode":"pb",
+     "configuration":"SolverFor('QF_FD') · PbEq syntax · timeout 30 s",
+     "syntax":"PbEq([(q, 1), ...], 1) for every row, column and region; same touching implications",
+     "production":false,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":333,
+     "formulaSha256":"49c895cdd7be69f9b3c129aa1caeb0b6c5efceef973977d8eb3956e16c67375f",
+     "blockedFormulaSha256":"268604e730719de9a45bf7c8ccb74e08033502c8469f455ef684e60e1dc5fb9e",
+     "freshBlockedFormulaSha256":"4bdde03d4af041d6b1c3484a126b6657352e3e3ac3e029358c33453a18ca36ba",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":49,
+      "sha256":"2422cf683fdcbd078ca82ef69740f58ab37467a864cd5051bd77234da6f9fe05"
+     },
+     "modelColumns":[3,1,6,2,4,7,5],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.001008,
+       "statistics":{
+        "pb-compile-card":21,
+        "pb-aux-variables":21,
+        "pb-aux-clauses":240,
+        "sat mk clause 2ary":359,
+        "sat mk clause nary":58,
+        "sat mk var":105,
+        "sat conflicts":10,
+        "sat decisions":20,
+        "sat propagations 2ary":199,
+        "sat propagations nary":64,
+        "sat minimized lits":2,
+        "sat subs resolution dyn":3,
+        "sat units":50,
+        "sat backjumps":10,
+        "sat elim literals":7,
+        "num allocs":55956,
+        "rlimit count":15005,
+        "max memory":17.09,
+        "memory":17.09
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 1032 :num-asts 1222 :time 0.00 :before-memory 17.09 :after-memory 17.09)","(propagate-values :num-exprs 588 :num-asts 1299 :time 0.00 :before-memory 17.09 :after-memory 17.09)","(card2bv :num-exprs 588 :num-asts 1299 :time 0.00 :before-memory 17.09 :after-memory 17.09)","(simplifier :num-exprs 588 :num-asts 1299 :time 0.00 :before-memory 17.09 :after-memory 17.09)","(max-bv-sharing :num-exprs 588 :num-asts 1299 :time 0.00 :before-memory 17.09 :after-memory 17.09)","(bit-blast :num-exprs 588 :num-asts 1299 :time 0.00 :before-memory 17.09 :after-memory 17.09)","(simplifier :num-exprs 588 :num-asts 1299 :time 0.00 :before-memory 17.09 :after-memory 17.09)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin    :units        :memory       )","(sat.stats      0      0    0   411/359     0/0  25       0    17.09   0.00)"," (sat-cleaner :elim-literals 7 :elim-clauses 0 :cost 289 :time 0.00)","(sat.stats     10     20    0   394/342     6/0  50       0    17.09   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":3.7e-05,
+       "statistics":{
+        "pb-compile-card":21,
+        "pb-aux-variables":21,
+        "pb-aux-clauses":240,
+        "sat mk clause 2ary":361,
+        "sat mk clause nary":59,
+        "sat mk var":105,
+        "sat conflicts":14,
+        "sat decisions":23,
+        "sat propagations 2ary":290,
+        "sat propagations nary":93,
+        "sat minimized lits":8,
+        "sat subs resolution dyn":3,
+        "sat units":50,
+        "sat backjumps":13,
+        "sat elim literals":7,
+        "num allocs":83388,
+        "rlimit count":15787,
+        "max memory":17.18,
+        "memory":17.18
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core (incremental; clauses already compiled)",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters","no preprocessing stage recorded during this check"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[{"name":"sat.solver","phase":"sat-core","count":1},{"name":"sat.stats","phase":"sat-core","count":2}],
+        "lines":["(sat.solver)","(sat.stats     10     20    0   395/342     6/0  50       0    17.19   0.01)","(sat.stats     14     23    0   395/342     8/2  68       0    17.19   0.01)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":true
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.000862,
+       "statistics":{
+        "pb-compile-card":21,
+        "pb-aux-variables":21,
+        "pb-aux-clauses":240,
+        "sat mk clause 2ary":359,
+        "sat mk clause nary":59,
+        "sat mk var":105,
+        "sat conflicts":13,
+        "sat decisions":20,
+        "sat propagations 2ary":235,
+        "sat propagations nary":78,
+        "sat minimized lits":2,
+        "sat subs resolution dyn":3,
+        "sat units":95,
+        "sat backjumps":12,
+        "sat elim literals":8,
+        "num allocs":317874,
+        "rlimit count":30980,
+        "max memory":17.47,
+        "memory":17.47
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 1080 :num-asts 2007 :time 0.00 :before-memory 17.48 :after-memory 17.48)","(propagate-values :num-exprs 632 :num-asts 1963 :time 0.00 :before-memory 17.48 :after-memory 17.48)","(card2bv :num-exprs 632 :num-asts 1963 :time 0.00 :before-memory 17.48 :after-memory 17.48)","(simplifier :num-exprs 632 :num-asts 1963 :time 0.00 :before-memory 17.48 :after-memory 17.48)","(max-bv-sharing :num-exprs 632 :num-asts 1963 :time 0.00 :before-memory 17.48 :after-memory 17.48)","(bit-blast :num-exprs 632 :num-asts 1963 :time 0.00 :before-memory 17.48 :after-memory 17.48)","(simplifier :num-exprs 632 :num-asts 1963 :time 0.00 :before-memory 17.48 :after-memory 17.48)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin    :units        :memory       )","(sat.stats      0      0    0   412/359     0/0  25       0    17.48   0.00)"," (sat-cleaner :elim-literals 8 :elim-clauses 0 :cost 334 :time 0.00)","(sat.stats     13     20    0   395/342     6/0  98       0    17.48   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id":"nine",
+   "size":9,
+   "regions":[
+    ["A","B","B","B","B","C","C","C","C"],
+    ["A","B","B","B","B","B","C","C","C"],
+    ["A","B","B","D","A","B","C","C","C"],
+    ["A","A","A","A","A","A","E","A","A"],
+    ["F","A","A","A","G","A","A","A","H"],
+    ["A","A","A","A","G","G","A","H","H"],
+    ["A","G","G","G","G","G","G","G","H"],
+    ["A","G","G","G","G","G","G","I","I"],
+    ["A","G","G","G","G","G","G","I","I"]
+   ],
+   "partitionSha256":"ebd0dbfe1b9e98e61fe4fb68201a1f25b587ba9603b1a0cbca31a6d8d471f98c",
+   "runs":[
+    {
+     "mode":"default",
+     "configuration":"Solver() · default parameters · timeout 30 s",
+     "syntax":"Sum(If(q, 1, 0)) == 1 for every row, column and region; Implies(q_u, Not(q_v)) for each directed touching pair",
+     "production":true,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":571,
+     "formulaSha256":"7580ca34636dec5d8069c89f06005fce4d8babbdee09bcb698fc366a54bac10f",
+     "blockedFormulaSha256":"0128bfd0a2b5a0133f0d991ecef2396febbdfef086e5b05e2b255653fde81792",
+     "freshBlockedFormulaSha256":"090511cffc635b5b04c5449de6daddd9f5f4bb1af07ad8d7a9abe3b3b266c8d8",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":81,
+      "sha256":"a44fdb49fb04171a85b3250def8eabd537ae14556a4693ebcfa3cf25b5a763d8"
+     },
+     "modelColumns":[6,2,4,7,1,3,9,5,8],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.002819,
+       "statistics":{
+        "solve-eqs-steps":25,
+        "solve-eqs-elim-vars":25,
+        "num allocs":479055,
+        "rlimit count":44607,
+        "max memory":18.32,
+        "memory":18.32,
+        "time":0.002
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"preprocessing-only",
+        "label":"Settled during preprocessing; no search engine reported",
+        "basis":["the last solve-eqs line reports :num-exprs 0"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":2},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"ctx-simplify","phase":"simplify","count":2},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"lia2card","phase":"cardinality","count":1},
+         {"name":"elim-uncnstr","phase":"simplify","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"ilp-model-finder-tactic","phase":"cardinality","count":2},
+         {"name":"pb-tactic","phase":"cardinality","count":1},
+         {"name":"pb2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"pb-tactic","phase":"cardinality","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 768 :num-asts 1366 :time 0.00 :before-memory 17.34 :after-memory 17.44)","(simplifier :num-exprs 768 :num-asts 1366 :time 0.00 :before-memory 18.03 :after-memory 18.13)","(propagate-values :num-exprs 540 :num-asts 1398 :time 0.00 :before-memory 18.13 :after-memory 18.13)","(ctx-simplify :num-steps 3918)","(ctx-simplify :num-exprs 540 :num-asts 1398 :time 0.00 :before-memory 18.13 :after-memory 18.23)","(simplifier :num-exprs 540 :num-asts 1398 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(solve-eqs :num-exprs 493 :num-asts 1398 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(:solve-eqs-elim-vars 25"," :solve-eqs-steps     25)","(lia2card :num-exprs 290 :num-asts 1399 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(elim-uncnstr :num-exprs 290 :num-asts 1399 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(simplifier :num-exprs 285 :num-asts 1391 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(ilp-model-finder-tactic start)","(ilp-model-finder-tactic done)","(pb-tactic start)","(pb2bv :num-exprs 1530 :num-asts 2153 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(simplifier :num-exprs 1814 :num-asts 2207 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(propagate-values :num-exprs 691 :num-asts 2332 :time 0.00 :before-memory 18.23 :after-memory 18.23)","(solve-eqs :num-exprs 0 :num-asts 2154 :time 0.00 :before-memory 18.23 :after-memory 18.33)","(:solve-eqs-elim-vars 131"," :solve-eqs-steps     131)","(pb-tactic done)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":[],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.006402,
+       "statistics":{
+        "conflicts":113,
+        "decisions":382,
+        "propagations":2785,
+        "binary propagations":2502,
+        "restarts":1,
+        "added eqs":3710,
+        "mk clause":842,
+        "mk clause binary":756,
+        "del clause":736,
+        "minimized lits":48,
+        "num checks":1,
+        "mk bool var":2574,
+        "arith eq adapter":1608,
+        "arith-lower":2013,
+        "arith-upper":925,
+        "arith-fixed-eqs":7,
+        "arith-conflicts":46,
+        "arith-bound-propagations-lp":400,
+        "arith-diseq":806,
+        "arith-make-feasible":721,
+        "arith-max-columns":84,
+        "arith-max-rows":23,
+        "num allocs":1404716,
+        "rlimit count":85322,
+        "max memory":19.11,
+        "memory":19.11,
+        "time":0.006
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"smt-core-arithmetic",
+        "label":"SMT core with arithmetic",
+        "basis":["verbose route contains (smt.searching)","statistics report unprefixed SMT search counters","statistics report 10 arithmetic counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"smt.simplify-begin","phase":"smt-core","count":1},
+         {"name":"smt.propagate-values","phase":"smt-core","count":1},
+         {"name":"smt.nnf-cnf","phase":"smt-core","count":1},
+         {"name":"smt.reduce-asserted","phase":"smt-core","count":1},
+         {"name":"smt.maximizing-bv-sharing","phase":"smt-core","count":1},
+         {"name":"smt.reduce-asserted","phase":"smt-core","count":1},
+         {"name":"smt.flatten-clauses","phase":"smt-core","count":1},
+         {"name":"smt.simplifier-done","phase":"smt-core","count":1},
+         {"name":"smt.searching","phase":"smt-core","count":1},
+         {"name":"smt.stats","phase":"smt-core","count":4}
+        ],
+        "lines":["(smt.simplify-begin :num-exprs 848)","(smt.propagate-values :num-exprs 648)","(smt.nnf-cnf :num-exprs 647)","(smt.reduce-asserted :num-exprs 647)","(smt.maximizing-bv-sharing :num-exprs 647)","(smt.reduce-asserted :num-exprs 647)","(smt.flatten-clauses :num-exprs 647)","(smt.simplifier-done :num-exprs 647)","(smt.searching)","(smt.stats :restarts     :decisions :clauses/bin/units      :simplify   :memory)","(smt.stats        :conflicts    :propagations       :lemmas      :deletions   )","(smt.stats    0      0      0      0   354/330/49       0/0     0    0   18.72)","(smt.stats    0    102    366    208   406/403/255      31/16    21   67   19.02)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["arith-bound-propagations-lp","arith-conflicts","binary propagations","conflicts","decisions","propagations","restarts"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.002356,
+       "statistics":{
+        "solve-eqs-steps":25,
+        "solve-eqs-elim-vars":25,
+        "num allocs":3381200,
+        "rlimit count":127214,
+        "max memory":20.42,
+        "memory":20.42,
+        "time":0.002
+       },
+       "reasonUnknown":null,
+       "engine":{"id":"preprocessing-only","label":"Settled during preprocessing; no search engine reported","basis":[]},
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":2},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"ctx-simplify","phase":"simplify","count":2},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"lia2card","phase":"cardinality","count":1},
+         {"name":"elim-uncnstr","phase":"simplify","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"ilp-model-finder-tactic","phase":"cardinality","count":2},
+         {"name":"pb-tactic","phase":"cardinality","count":1},
+         {"name":"pb2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"solve-eqs","phase":"simplify","count":1},
+         {"name":"pb-tactic","phase":"cardinality","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 848 :num-asts 2029 :time 0.00 :before-memory 19.64 :after-memory 19.64)","(simplifier :num-exprs 848 :num-asts 2029 :time 0.00 :before-memory 20.33 :after-memory 20.33)","(propagate-values :num-exprs 595 :num-asts 2034 :time 0.00 :before-memory 20.33 :after-memory 20.33)","(ctx-simplify :num-steps 4168)","(ctx-simplify :num-exprs 595 :num-asts 2034 :time 0.00 :before-memory 20.33 :after-memory 20.42)","(simplifier :num-exprs 595 :num-asts 2034 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(solve-eqs :num-exprs 548 :num-asts 2034 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(:solve-eqs-elim-vars 25"," :solve-eqs-steps     25)","(lia2card :num-exprs 345 :num-asts 2063 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(elim-uncnstr :num-exprs 345 :num-asts 2063 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(simplifier :num-exprs 340 :num-asts 2055 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(ilp-model-finder-tactic start)","(ilp-model-finder-tactic done)","(pb-tactic start)","(pb2bv :num-exprs 1585 :num-asts 2817 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(simplifier :num-exprs 1869 :num-asts 2876 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(propagate-values :num-exprs 717 :num-asts 2979 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(solve-eqs :num-exprs 1 :num-asts 2800 :time 0.00 :before-memory 20.42 :after-memory 20.42)","(:solve-eqs-elim-vars 128"," :solve-eqs-steps     128)","(pb-tactic done)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":[],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    },
+    {
+     "mode":"fd",
+     "configuration":"SolverFor('QF_FD') · timeout 30 s",
+     "syntax":"Same Sum(If) syntax as production, finite-domain solver",
+     "production":false,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":571,
+     "formulaSha256":"7580ca34636dec5d8069c89f06005fce4d8babbdee09bcb698fc366a54bac10f",
+     "blockedFormulaSha256":"ca721f5005f2053c5a26e2da92a41d8fdbd88006f088ea17afa89933fbf598c8",
+     "freshBlockedFormulaSha256":"090511cffc635b5b04c5449de6daddd9f5f4bb1af07ad8d7a9abe3b3b266c8d8",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":81,
+      "sha256":"a44fdb49fb04171a85b3250def8eabd537ae14556a4693ebcfa3cf25b5a763d8"
+     },
+     "modelColumns":[6,2,4,7,1,3,9,5,8],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.003308,
+       "statistics":{
+        "sat mk clause 2ary":304,
+        "sat mk clause nary":1168,
+        "sat mk var":382,
+        "sat conflicts":6,
+        "sat decisions":17,
+        "sat propagations 2ary":162,
+        "sat propagations nary":488,
+        "sat minimized lits":1,
+        "sat units":29,
+        "sat backjumps":6,
+        "num allocs":469156,
+        "rlimit count":39666,
+        "max memory":17.69,
+        "memory":17.69,
+        "time":0.003
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":4}
+        ],
+        "lines":["(simplifier :num-exprs 2108 :num-asts 4470 :time 0.00 :before-memory 17.28 :after-memory 17.50)","(propagate-values :num-exprs 1436 :num-asts 3544 :time 0.00 :before-memory 17.40 :after-memory 17.50)","(card2bv :num-exprs 1436 :num-asts 3544 :time 0.00 :before-memory 17.50 :after-memory 17.50)","(simplifier :num-exprs 1436 :num-asts 3544 :time 0.00 :before-memory 17.50 :after-memory 17.50)","(max-bv-sharing :num-exprs 1436 :num-asts 3544 :time 0.00 :before-memory 17.50 :after-memory 17.50)","(bit-blast :num-exprs 750 :num-asts 3281 :time 0.00 :before-memory 17.50 :after-memory 17.50)","(simplifier :num-exprs 750 :num-asts 3281 :time 0.00 :before-memory 17.50 :after-memory 17.50)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin    :units        :memory       )","(sat.stats      0      0    0  1466/302     0/0  29       0    17.70   0.00)","(sat.stats      6     17    0  1466/302     6/2  29       0    17.70   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.000224,
+       "statistics":{
+        "sat mk clause 2ary":344,
+        "sat mk clause nary":1184,
+        "sat mk var":382,
+        "sat del clause":80,
+        "sat conflicts":33,
+        "sat decisions":94,
+        "sat propagations 2ary":842,
+        "sat propagations nary":2742,
+        "sat minimized lits":50,
+        "sat subs resolution dyn":9,
+        "sat units":139,
+        "sat backjumps":32,
+        "sat elim clauses":44,
+        "sat elim literals":40,
+        "num allocs":575239,
+        "rlimit count":44519,
+        "max memory":17.89,
+        "memory":17.89
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core (incremental; clauses already compiled)",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters","no preprocessing stage recorded during this check"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(sat.solver)","(sat.stats      6     17    0  1467/302     6/2  29       0    17.90   0.01)"," (sat-cleaner :elim-literals 40 :elim-clauses 44 :cost 3578 :time 0.00)","(sat.stats     33     94    0  1395/310    25/6 151       0    17.90   0.01)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":true
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.002445,
+       "statistics":{
+        "sat mk clause 2ary":346,
+        "sat mk clause nary":1193,
+        "sat mk var":382,
+        "sat del clause":80,
+        "sat conflicts":43,
+        "sat decisions":71,
+        "sat propagations 2ary":983,
+        "sat propagations nary":2399,
+        "sat minimized lits":60,
+        "sat subs resolution dyn":7,
+        "sat units":88,
+        "sat backjumps":42,
+        "sat elim clauses":44,
+        "sat elim literals":41,
+        "num allocs":2277059,
+        "rlimit count":86247,
+        "max memory":18.52,
+        "memory":18.52,
+        "time":0.002
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":3},
+         {"name":"sat-cleaner","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 2188 :num-asts 7208 :time 0.00 :before-memory 18.23 :after-memory 18.36)","(propagate-values :num-exprs 1491 :num-asts 6279 :time 0.00 :before-memory 18.23 :after-memory 18.33)","(card2bv :num-exprs 1491 :num-asts 6279 :time 0.00 :before-memory 18.33 :after-memory 18.33)","(simplifier :num-exprs 1491 :num-asts 6279 :time 0.00 :before-memory 18.33 :after-memory 18.33)","(max-bv-sharing :num-exprs 1491 :num-asts 6279 :time 0.00 :before-memory 18.33 :after-memory 18.33)","(bit-blast :num-exprs 805 :num-asts 5577 :time 0.00 :before-memory 18.33 :after-memory 18.33)","(simplifier :num-exprs 805 :num-asts 5577 :time 0.00 :before-memory 18.33 :after-memory 18.33)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin    :units        :memory       )","(sat.stats      0      0    0  1467/302     0/0  29       0    18.53   0.00)"," (sat-cleaner :elim-literals 41 :elim-clauses 44 :cost 3579 :time 0.00)","(sat.stats     43     71    0  1395/310    36/8 235       0    18.53   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat backjumps","sat conflicts","sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    },
+    {
+     "mode":"pb",
+     "configuration":"SolverFor('QF_FD') · PbEq syntax · timeout 30 s",
+     "syntax":"PbEq([(q, 1), ...], 1) for every row, column and region; same touching implications",
+     "production":false,
+     "parameters":{"timeout":30000,"verbose":0,"seeds":"unchanged defaults"},
+     "assertions":571,
+     "formulaSha256":"b0b67db24010525e786338b08373cb9588f6070bb362353cb7433db53e37b0ff",
+     "blockedFormulaSha256":"b7b593f15337ebb6daa9cf58dac47ac82adee9d6273897b696a767d3c600c4c2",
+     "freshBlockedFormulaSha256":"fb87b29b5d9faffa3f8d09b86f8b18c7841aefffa9c6ef305814edde1b213416",
+     "blocker":{
+      "form":"Or(cell != model value) over all cells",
+      "literalCount":81,
+      "sha256":"a44fdb49fb04171a85b3250def8eabd537ae14556a4693ebcfa3cf25b5a763d8"
+     },
+     "modelColumns":[6,2,4,7,1,3,9,5,8],
+     "checks":[
+      {
+       "query":"first",
+       "label":"First check",
+       "result":"sat",
+       "elapsedSeconds":0.00124,
+       "statistics":{
+        "pb-compile-card":24,
+        "pb-aux-variables":24,
+        "pb-aux-clauses":429,
+        "sat mk clause 2ary":160,
+        "sat mk clause nary":37,
+        "sat mk var":131,
+        "sat decisions":1,
+        "sat propagations 2ary":36,
+        "sat propagations nary":12,
+        "sat units":82,
+        "num allocs":97723,
+        "rlimit count":17573,
+        "max memory":17.2,
+        "memory":17.2,
+        "time":0.001
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1},
+         {"name":"sat.stats","phase":"sat-core","count":4}
+        ],
+        "lines":["(simplifier :num-exprs 1801 :num-asts 1970 :time 0.00 :before-memory 17.10 :after-memory 17.10)","(propagate-values :num-exprs 444 :num-asts 2011 :time 0.00 :before-memory 17.10 :after-memory 17.21)","(card2bv :num-exprs 444 :num-asts 2011 :time 0.00 :before-memory 17.21 :after-memory 17.21)","(simplifier :num-exprs 444 :num-asts 2011 :time 0.00 :before-memory 17.21 :after-memory 17.21)","(max-bv-sharing :num-exprs 444 :num-asts 2011 :time 0.00 :before-memory 17.21 :after-memory 17.21)","(bit-blast :num-exprs 444 :num-asts 2011 :time 0.00 :before-memory 17.21 :after-memory 17.21)","(simplifier :num-exprs 444 :num-asts 2011 :time 0.00 :before-memory 17.21 :after-memory 17.21)","(sat.solver)","(sat.stats   :conflicts  :restarts       :learned/bin    :gc          :time)","(sat.stats          :decisions :clauses/bin   :units         :memory       )","(sat.stats      0      0    0   197/160     0/0 130       0    17.21   0.00)","(sat.stats      0      1    0   197/160     0/0 130       0    17.21   0.00)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      },
+      {
+       "query":"incremental-blocked",
+       "label":"Same solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":2.2e-05,
+       "statistics":{
+        "pb-compile-card":24,
+        "pb-aux-variables":24,
+        "pb-aux-clauses":429,
+        "sat mk clause 2ary":160,
+        "sat mk clause nary":37,
+        "sat mk var":131,
+        "sat decisions":1,
+        "sat propagations 2ary":36,
+        "sat propagations nary":12,
+        "sat units":82,
+        "num allocs":141155,
+        "rlimit count":17922,
+        "max memory":17.3,
+        "memory":17.3
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"no-new-search",
+        "label":"Answered by the incremental SAT solver with no new search reported",
+        "basis":["statistics report sat-prefixed search counters","no verbose output during this check","sat-prefixed counters are unchanged from the first check"]
+       },
+       "route":{"source":"separate verbose=10 process, same formula","stages":[],"lines":[]},
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat decisions","sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":true
+      },
+      {
+       "query":"fresh-blocked",
+       "label":"Fresh solver + blocking clause",
+       "result":"unsat",
+       "elapsedSeconds":0.001018,
+       "statistics":{
+        "pb-compile-card":24,
+        "pb-aux-variables":24,
+        "pb-aux-clauses":429,
+        "sat mk clause 2ary":160,
+        "sat mk clause nary":38,
+        "sat mk var":131,
+        "sat propagations 2ary":33,
+        "sat propagations nary":13,
+        "sat units":82,
+        "num allocs":454391,
+        "rlimit count":35685,
+        "max memory":17.69,
+        "memory":17.69
+       },
+       "reasonUnknown":null,
+       "engine":{
+        "id":"sat-core",
+        "label":"SAT core after preprocessing",
+        "basis":["verbose route contains (sat.solver)","statistics report sat-prefixed search counters"]
+       },
+       "route":{
+        "source":"separate verbose=10 process, same formula",
+        "stages":[
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"propagate-values","phase":"simplify","count":1},
+         {"name":"card2bv","phase":"cardinality","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"max-bv-sharing","phase":"simplify","count":1},
+         {"name":"bit-blast","phase":"bit-level","count":1},
+         {"name":"simplifier","phase":"simplify","count":1},
+         {"name":"sat.solver","phase":"sat-core","count":1}
+        ],
+        "lines":["(simplifier :num-exprs 1881 :num-asts 2693 :time 0.00 :before-memory 17.60 :after-memory 17.60)","(propagate-values :num-exprs 470 :num-asts 2598 :time 0.00 :before-memory 17.60 :after-memory 17.60)","(card2bv :num-exprs 470 :num-asts 2598 :time 0.00 :before-memory 17.60 :after-memory 17.60)","(simplifier :num-exprs 470 :num-asts 2598 :time 0.00 :before-memory 17.60 :after-memory 17.60)","(max-bv-sharing :num-exprs 470 :num-asts 2598 :time 0.00 :before-memory 17.60 :after-memory 17.60)","(bit-blast :num-exprs 470 :num-asts 2598 :time 0.00 :before-memory 17.60 :after-memory 17.60)","(simplifier :num-exprs 470 :num-asts 2598 :time 0.00 :before-memory 17.60 :after-memory 17.60)","(sat.solver)"]
+       },
+       "verboseRunCountersMatch":true,
+       "comparedCounters":["sat propagations 2ary","sat propagations nary","sat units"],
+       "countersCumulativeWithFirst":false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
