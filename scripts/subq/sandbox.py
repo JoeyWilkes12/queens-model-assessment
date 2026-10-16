@@ -3,6 +3,13 @@
 Run `python3 scripts/subq/sandbox.py --limit 1` for pilot, then increase the
 limit. Requires explicit human authorization for API spending and Docker use.
 The credential file is JSON, not a shell dotenv; it is never sourced.
+
+`--ledger-dir` selects the broker's persistent spending ledger (default:
+this checkout's output/subq-ledger, the previous behaviour). The new-board
+panel modes (`panel`, `panel-pilot`) require an explicit `--ledger-dir`
+that already contains budget.json, so they always continue the shared
+campaign ledger and never start a fresh one. Panel workers mount only their
+own prepared plan directory, never the private solutions directory.
 """
 import argparse
 import json
@@ -22,17 +29,45 @@ def docker(*args, **kwargs):
     return subprocess.run(["docker", *args], check=True, **kwargs)
 
 
-def main():
+PANEL_MODES = ("panel", "panel-pilot")
+
+
+def parse(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("--limit", type=int, default=1)
-    p.add_argument("--mode", choices=("replay", "trajectories", "split"), default="replay")
+    p.add_argument("--mode", choices=("replay", "trajectories", "split", *PANEL_MODES), default="replay")
     p.add_argument("--key-file", type=Path,
                    default=ROOT.parents[1] / ".env")
-    args = p.parse_args()
+    p.add_argument("--ledger-dir", type=Path, default=None,
+                   help="Broker ledger directory (default output/subq-ledger here); required and must already hold budget.json for panel modes")
+    return p.parse_args(argv)
+
+
+def resolve(args):
+    """Validate arguments and choose paths; no side effects (testable offline)."""
     if not 1 <= args.limit <= 2000:
         raise SystemExit("Invalid limit")
     out = ROOT / ("output/subq" if args.mode == "replay" else "output/subq-" + args.mode)
-    ledger = ROOT / "output/subq-ledger"
+    ledger = (args.ledger_dir or ROOT / "output/subq-ledger").resolve()
+    inputs = ROOT / "scripts/subq/input"
+    module = "replay.py" if args.mode == "replay" else "split_replay.py" if args.mode == "split" else "trajectories.py"
+    input_path = "/input/trajectory-input.json" if args.mode == "trajectories" else "/input/split" if args.mode == "split" else "/input"
+    if args.mode in PANEL_MODES:
+        if args.ledger_dir is None:
+            raise SystemExit("Panel modes require --ledger-dir pointing at the existing shared campaign ledger")
+        if not (ledger / "budget.json").is_file():
+            raise SystemExit("Panel modes never start a fresh ledger; budget.json not found in --ledger-dir")
+        inputs = inputs / ("panel" if args.mode == "panel" else "panel-pilot")
+        if not (inputs / "panel-input.json").is_file():
+            raise SystemExit("Prepare the panel plan first (trajectories.py prepare --corpus ...)")
+        input_path = "/input/panel-input.json"
+    return {"out": out, "ledger": ledger, "inputs": inputs, "module": module, "input_path": input_path}
+
+
+def main():
+    args = parse()
+    paths = resolve(args)
+    out, ledger = paths["out"], paths["ledger"]
     out.mkdir(parents=True, exist_ok=True)
     ledger.mkdir(parents=True, exist_ok=True)
     docker("volume", "create", VOLUME, stdout=subprocess.DEVNULL)
@@ -83,14 +118,13 @@ def main():
         worker = ["run", "--rm", "--name", "queens-subq-worker", *common, "--network=none",
                   "--mount", f"type=volume,src={VOLUME},dst=/ipc,readonly",
                   "--mount", f"type=bind,src={ROOT / 'scripts/subq/replay.py'},dst=/replay.py,readonly",
-                  "--mount", f"type=bind,src={ROOT / 'scripts/subq/input'},dst=/input,readonly",
+                  "--mount", f"type=bind,src={paths['inputs']},dst=/input,readonly",
                   "--mount", f"type=bind,src={out},dst=/output"]
         docker(*worker, "--mount", f"type=bind,src={ROOT / 'scripts/subq/isolation.py'},dst=/isolation.py,readonly",
                IMAGE, "python", "-u", "-B", "/isolation.py")
-        module = "replay.py" if args.mode == "replay" else "trajectories.py" if args.mode == "trajectories" else "split_replay.py"
+        module, input_path = paths["module"], paths["input_path"]
         if args.mode != "replay":
             worker += ["--mount", f"type=bind,src={ROOT / 'scripts/subq' / module},dst=/{module},readonly"]
-        input_path = "/input/trajectory-input.json" if args.mode == "trajectories" else "/input/split" if args.mode == "split" else "/input"
         worker += [IMAGE, "python", "-u", "-B", f"/{module}", "run", "--input", input_path,
                    "--output", "/output", "--limit", str(args.limit), "--broker-socket", "/ipc/subq.sock"]
         result = subprocess.run(["docker", *worker])

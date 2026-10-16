@@ -11,6 +11,7 @@ Operational guide updated **2026-10-13**. The runner issues sequential SubQ Snap
 - [Inspect and audit receipts](#inspect-and-audit-receipts)
 - [Budget, failures, and resumption](#budget-failures-and-resumption)
 - [Containment and cleanup](#containment-and-cleanup)
+- [New-board panel](#new-board-panel)
 
 ## Components and prerequisites
 
@@ -20,7 +21,8 @@ Operational guide updated **2026-10-13**. The runner issues sequential SubQ Snap
 | [sandbox.py](sandbox.py) | Starts the hardened broker and worker; supplies the key through standard input |
 | [isolation.py](isolation.py) | Tests the worker's actual runtime permissions and network isolation before inference |
 | [replay.py](replay.py) | Prepares exact historical requests, grades decisions, audits hashes, and resumes completed work |
-| [trajectories.py](trajectories.py) | Recreates the historical adaptive color-then-cell protocol on nine boards |
+| [trajectories.py](trajectories.py) | Recreates the historical adaptive color-then-cell protocol on nine boards; also prepares, guards, estimates and analyzes new-board panels |
+| [boards.py](boards.py) | Generates, certifies, deduplicates and profiles new boards; builds the frozen stratified panel corpus |
 | `split_replay.py` | Separately labeled adaptation for historical requests exceeding the observed 16-question limit |
 | `test_*.py` | Offline regression checks with dummy credentials and synthetic/oracle responses |
 
@@ -119,3 +121,12 @@ docker ps -a --filter name=queens-subq
 ```
 
 Stop an identified interrupted campaign's broker explicitly when needed; do not remove other projects' containers, reset Docker globally, or delete the persistent budget/evidence directories. The host Codex chat itself is not contained by these worker restrictions.
+
+## New-board panel
+
+The planned panel is preregistered in [subq-panel-preregistration.md](../../docs/subq-panel-preregistration.md), which gives the design, limits, estimates and the exact pilot and full-run commands. Nothing in this section has been run against SubQ.
+
+- `boards.py build-panel` regenerates the frozen corpus deterministically, entirely offline. The output is 192 test boards (64 each at 5×5, 7×7 and 9×9, stratified by singleton status × search tier, half from each of two generators) and 144 development boards. Public files go to [public/evidence/subq-panel/](../../public/evidence/subq-panel/). Solutions go only to the ignored `input/panel-private/solutions.json`; the public corpus carries a sha256 per solution.
+- `trajectories.py prepare --corpus <corpus.json>` re-certifies every board and freezes `input/panel/panel-input.json`. The plan has one attempt per board and mode, a seeded interleaved schedule with both modes of a board adjacent, and a `budget_policy`. The pilot plan uses development boards (`--select`, study id `…-pilot`) and goes to `input/panel-pilot/`. Without `--corpus`, `prepare` still builds the historical nine-board plan unchanged.
+- `sandbox.py --mode panel` and `--mode panel-pilot` require `--ledger-dir` pointing at the existing shared ledger, which must already contain `budget.json`. Before every call the worker enforces the plan's call limit, spend ceiling, shared-ledger cap and request-size bound; a guard stop dispatches nothing. Forced transitions make no call, there is no feedback upstream and no automatic retry. A reviewed failure can be made terminal with `trajectories.py acknowledge` so the schedule can continue.
+- `trajectories.py estimate --input <plan>` and `trajectories.py analyze --output <dir> --report <path>` are offline. `analyze` labels every offered region and cell and reports solve rates, prefix survival, non-forced accuracy against chance, calibration, greedy and random baselines, and the paired raw-vs-local exact McNemar test with Holm adjustment. It also reads the historical `output/subq-trajectories` directory without writing to it.
