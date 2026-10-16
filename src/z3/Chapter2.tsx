@@ -3,6 +3,7 @@ import { ConstraintBoard } from './ConstraintBoard'
 import { board, groupLabel, type EncodingName, type TeachingData } from './data'
 import { CheckYourself, Clause, Figure, Formula, Lede, ReadSource, Statement, Term, Unavailable } from './format'
 import { range, type ChapterProps } from './ui'
+import { alternativeModels } from './workbench'
 
 const ENCODINGS: { id: EncodingName; label: string }[] = [
   { id: 'pairwise', label: 'Pairwise' },
@@ -145,6 +146,38 @@ function CountTables({ teaching, ui }: { teaching: TeachingData; ui: ChapterProp
   </>
 }
 
+const alt = alternativeModels(board.regions)
+
+/** Sidebar: the integer-per-row and conflict-graph models (adapted from the Constraint Atlas encodings section). */
+function OtherModels() {
+  const { integer: i, graph: g } = alt
+  return <details className="z3-disclosure z3-sidebar">
+    <summary>Sidebar · Other ways to model the board</summary>
+    <div className="z3-sidebar-body">
+      <p>A Boolean per cell is one choice of variables. Two others are common. On this board each has exactly one solution, the same placement as the Boolean grid (Chapter 8 reveals it).</p>
+      <h4>Integer per row</h4>
+      <Formula spoken="q r is in 1 to 7 for each row r; all different q 1 through q 7; for each region R, the sum over rows r of the indicator that cell r, q r lies in R equals 1; and for r from 1 to 6, the absolute value of q r minus q r plus 1 is not 1.">
+        q<sub>r</sub> ∈ {"{"}1, …, 7{"}"};  AllDifferent(q<sub>1</sub>, …, q<sub>7</sub>);  Σ<sub>r</sub> [(r, q<sub>r</sub>) ∈ R] = 1 for each region R;  |q<sub>r</sub> − q<sub>r+1</sub>| ≠ 1
+      </Formula>
+      <dl className="z3-facts">
+        <div><dt>Variables</dt><dd>{i.variables} integers with domain {"{"}1, …, {i.domain}{"}"}; the row rule holds by construction.</dd></div>
+        <div><dt>Constraints</dt><dd>{i.constraints}: 1 AllDifferent ({i.allDifferentPairs} disequalities if expanded, so {i.constraintsExpanded} in all), {i.regionCounts} region counts using {i.membershipTests} membership tests, and {i.touching} touching disequalities. Same-row touches are impossible, and |Δ| = 0 is already excluded by AllDifferent.</dd></div>
+        <div><dt>Natural when</dt><dd>each item must take exactly one value from a domain (one column per row, one slot per exam); irregular regions then become lookups instead of sums.</dd></div>
+      </dl>
+      <h4>Conflict graph</h4>
+      <Formula spoken="G has the 49 cells as vertices, with an edge between two cells that share a row or a column or touch. A placement is an independent set S with 7 elements that meets every region R exactly once.">
+        G = (V, E), uv ∈ E ⟺ u, v share a row or column or touch;  placement = independent S ⊆ V, |S| = 7, |S ∩ R| = 1 for every region R
+      </Formula>
+      <dl className="z3-facts">
+        <div><dt>Variables</dt><dd>{g.vertices} vertices, one per cell (a Boolean each when written as clauses).</dd></div>
+        <div><dt>Constraints</dt><dd>{g.queenEdges} edges ({g.rowEdges} row pairs, {g.columnEdges} column pairs, {g.touchingEdges} diagonal touches), the size condition |S| = 7, and {g.regions} region conditions. Joining same-region cells too adds {g.regionOnlyEdges} edges; then every independent set of size 7 is a solution, and the {g.allEdges} edges are exactly the clauses of the form (¬q<sub>u</sub> ∨ ¬q<sub>v</sub>) in the pairwise CNF above.</dd></div>
+        <div><dt>Natural when</dt><dd>the problem is mostly pairwise incompatibility, as in frequency assignment or register allocation. A clique holds at most one chosen vertex, which is an at-most-one constraint, so graph tools apply directly.</dd></div>
+      </dl>
+      <p className="z3-fineprint">Counts computed in this page from the board; the build checks them independently and solves the integer model by enumeration and with Z3.</p>
+    </div>
+  </details>
+}
+
 export function Chapter2({ ui, data }: ChapterProps) {
   const { Section } = ui
   const t = data?.teaching
@@ -171,6 +204,7 @@ export function Chapter2({ ui, data }: ChapterProps) {
     <p>The build checks Theorem 2.4 twice. It tries every assignment for 1 ≤ m ≤ 9 ({t ? t.encodings.validation.exhaustiveAssignmentChecks.toLocaleString('en-US') : '2,044'} cases for the two encodings with auxiliaries). It also asks Z3 that E ∧ ¬(exactly one) is UNSAT and that each single-queen input extends, for every group size on this board. For a seven-cell row the counts are 22 clauses with no auxiliaries, 18 with 6, and 20 with 3. Fewer clauses do not prove faster solving.</p>
     <p>This book’s reference CNF uses pairwise exactly-one for all 21 groups, plus one clause (¬q<sub>u</sub> ∨ ¬q<sub>v</sub>) for each diagonally touching pair; orthogonal neighbours are already excluded by the row and column pairs. Generation produces {t ? t.generatedVsDistinct.generated : 664} clauses and {t ? t.generatedVsDistinct.distinct : 513} distinct ones: for example, region B lies inside row 1, so all six of its pairs repeat row 1’s. Every repeat keeps its source label.</p>
     {t && <CountTables teaching={t} ui={ui} />}
+    <OtherModels />
     <CheckYourself question="Why can an auxiliary variable be true without adding a queen?">
       <p>An auxiliary is not a square. In the sequential encoding s<sub>i</sub> says “some cell among the first i is occupied”, not “cell i is occupied”. With only q<sub>13</sub> true in the row, the clauses force s<sub>3</sub>, s<sub>4</sub>, s<sub>5</sub> and s<sub>6</sub> to be true{w ? <> (recorded: s = [{w.exactlyOneX3.s.map(v => v ? 1 : 0).join(', ')}])</> : null} while there is still exactly one queen. In the at-most-one part alone, even with every cell false, s<sub>5</sub> = s<sub>6</sub> = true is allowed{w ? <> (recorded witness: s = [{w.amoOnlyAllFalse.s.map(v => v ? 1 : 0).join(', ')}])</> : null}. Only the projection onto the cell variables has to mean “exactly one”.</p>
     </CheckYourself>
@@ -178,6 +212,7 @@ export function Chapter2({ ui, data }: ChapterProps) {
       { id: 'P3', locator: 'Definition 1, §2, Fig. 1, Theorem 1', why: 'the sequential counter and why only its projection matters.' },
       { id: 'P4', locator: '§§2–2.2, Figs. 1–4', why: 'the commander hierarchy for selecting one of n objects.' },
       { id: 'P5', locator: '§1, printed p. 467', why: 'auxiliary names for subformulas: the idea behind every encoding with extra variables.' },
+      { id: 'P21', locator: 'whole short paper', why: 'drawing a problem as a constraint graph, as in the sidebar, and what its structure shows.' },
     ]} />
   </Section>
 }

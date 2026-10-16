@@ -59,7 +59,7 @@ export function CheckYourself({ question, children }: { question: ReactNode; chi
 
 type Source = { authors: string; title: string; venue: string; url: string; doi?: string; note?: string }
 
-/** Verified paper map from the design specification (checked 14 Oct 2026). */
+/** Verified paper map from the design specification (checked 14 Oct 2026; P17–P22 added 16 Oct 2026). */
 export const SOURCES: Record<string, Source> = {
   P1: { authors: 'Leonardo de Moura and Nikolaj Bjørner', title: 'Z3: An Efficient SMT Solver', venue: 'TACAS 2008, LNCS 4963, 337–340', url: 'https://www.microsoft.com/en-us/research/?p=825739', doi: '10.1007/978-3-540-78800-3_24' },
   P2: { authors: 'Nikolaj Bjørner, Leonardo de Moura, Lev Nachmanson and Christoph M. Wintersteiger', title: 'Programming Z3', venue: 'Engineering Trustworthy Software Systems, LNCS 11430, 148–201, 2019', url: 'https://z3prover.github.io/papers/programmingz3.html', doi: '10.1007/978-3-030-17601-3_4' },
@@ -77,6 +77,13 @@ export const SOURCES: Record<string, Source> = {
   P14: { authors: 'Nikolaj Bjørner, Clemens Eisenhofer, Arie Gurfinkel, Nuno P. Lopes, Leonardo de Moura, Lev Nachmanson and Christoph M. Wintersteiger', title: 'Z3 Internals (Draft)', venue: 'evolving author draft, accessed 14 October 2026', url: 'https://z3prover.github.io/papers/z3internals.html' },
   P15: { authors: 'Ian P. Gent, Christopher Jefferson and Peter Nightingale', title: 'Complexity of n-Queens Completion', venue: 'Journal of Artificial Intelligence Research 59, 815–848, 2017', url: 'https://eprints.whiterose.ac.uk/id/eprint/141513/1/n_queens_jair.pdf', doi: '10.1613/jair.5512' },
   P16: { authors: 'Niklas Eén and Niklas Sörensson', title: 'Translating Pseudo-Boolean Constraints into SAT', venue: 'Journal on Satisfiability, Boolean Modeling and Computation 2, 2006', url: 'https://journals.sagepub.com/doi/10.3233/SAT190014', doi: '10.3233/SAT190014' },
+  // From the Constraint Atlas research ledger (checked 16 Oct 2026); P22 is from its specification.
+  P17: { authors: 'LinkedIn Help', title: 'Play Queens game on LinkedIn', venue: 'official rules of the game, accessed 16 October 2026', url: 'https://www.linkedin.com/help/linkedin/answer/a6269510' },
+  P18: { authors: 'Microsoft Research', title: 'Online Z3 Guide: Propositional Logic', venue: 'official Z3 documentation, accessed 16 October 2026', url: 'https://microsoft.github.io/z3guide/docs/logic/propositional-logic/' },
+  P19: { authors: 'Microsoft Research', title: 'Online Z3 Guide: Arithmetical Optimization', venue: 'official Z3 documentation, accessed 16 October 2026', url: 'https://microsoft.github.io/z3guide/docs/optimization/arithmeticaloptimization/' },
+  P20: { authors: 'Narendra Jussien and Samir Ouis', title: 'User-friendly Explanations for Constraint Programming', venue: 'WLPE 2001 (Eleventh International Workshop on Logic Programming Environments); arXiv cs/0111037', url: 'https://arxiv.org/abs/cs/0111037' },
+  P21: { authors: 'Xingjian Li and Susan L. Epstein', title: 'Visualization for Structured Constraint Satisfaction Problems', venue: 'AAAI-10 Workshop on Visual Representations and Reasoning, 2010', url: 'https://cdn.aaai.org/ocs/ws/ws0590/2029-8494-1-PB.pdf' },
+  P22: { authors: 'Clark Barrett, Pascal Fontaine and Cesare Tinelli', title: 'The SMT-LIB Standard: Version 2.7', venue: 'SMT-LIB initiative, language page accessed 16 October 2026', url: 'https://smt-lib.org/language.shtml' },
 }
 
 export function ReadSource({ items }: { items: { id: keyof typeof SOURCES | string; locator: string; why: string }[] }) {
@@ -96,12 +103,14 @@ export function ReadSource({ items }: { items: { id: keyof typeof SOURCES | stri
   </aside>
 }
 
-export function EngineTag({ kind, version, configuration, note }: { kind: 'reference' | 'z3' | 'new-run' | 'illustration'; version?: string; configuration?: string; note?: string }) {
+export function EngineTag({ kind, version, configuration, note }: { kind: 'reference' | 'z3' | 'new-run' | 'counter' | 'illustration'; version?: string; configuration?: string; note?: string }) {
   const text = kind === 'reference' ? 'Reference CDCL execution · pairwise encoding'
     : kind === 'z3' ? `Recorded Z3 execution · Z3 ${z3VersionShort(version || '')} · ${configuration}`
       : kind === 'new-run' ? 'New run in this browser · reference CDCL kernel · pairwise encoding · not recorded, not Z3'
-        : 'Illustration · not part of any recorded run'
-  return <p className={`z3-engine-tag z3-engine-tag--${kind}`}><span className="z3-engine-mark" aria-hidden="true">{kind === 'z3' ? 'Z3' : kind === 'reference' ? 'REF' : kind === 'new-run' ? 'NEW' : 'ILL'}</span><span>{text}{note ? <> · {note}</> : null}</span></p>
+        : kind === 'counter' ? 'In-browser exact counter · computed in this page · not Z3'
+          : 'Illustration · not part of any recorded run'
+  const mark = { z3: 'Z3', reference: 'REF', 'new-run': 'NEW', counter: 'CNT', illustration: 'ILL' }[kind]
+  return <p className={`z3-engine-tag z3-engine-tag--${kind}`}><span className="z3-engine-mark" aria-hidden="true">{mark}</span><span>{text}{note ? <> · {note}</> : null}</span></p>
 }
 
 export function Figure({ label, title, tag, children, className = '', id }: { label: string; title: string; tag?: ReactNode; children: ReactNode; className?: string; id?: string }) {

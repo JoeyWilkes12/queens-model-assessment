@@ -396,6 +396,53 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
 .z3-run-summary { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--mint-700); background: color-mix(in srgb, var(--mint-300) 15%, transparent); }
 .z3-run-summary p { margin: 0 0 6px; }
 
+/* Provenance note (Atlas fold) */
+.z3-provenance a { color: var(--link-evidence); font-weight: 700; overflow-wrap: anywhere; text-underline-offset: 3px; }
+
+/* Chapter 2 sidebar */
+.z3-sidebar { margin: 26px 0 0; padding: 0 16px; border: 1px solid var(--border-subtle); border-left: 4px solid var(--text-accent); background: var(--surface-raised); }
+.z3-sidebar-body { padding: 0 0 14px; }
+.z3-sidebar-body > p { font-size: .92rem; }
+.z3-sidebar h4 { margin: 18px 0 6px; color: var(--text-primary); font-family: var(--display-font); font-size: 1.08rem; font-weight: 400; }
+.z3-sidebar .z3-math { margin: 8px 0 10px; font-size: .95rem; line-height: 1.7; }
+
+/* Chapter 10: workbench */
+.z3-engine-tag--counter .z3-engine-mark { border-color: var(--navy-950); background: var(--paper-0); color: var(--navy-950); }
+:root[data-theme='dark'] .z3-engine-tag--counter .z3-engine-mark { border-color: var(--paper-0); background: transparent; color: var(--paper-0); }
+.z3-wb-rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; min-width: 0; margin: 0 0 12px; padding: 0; border: 0; }
+.z3-wb-rules legend { margin-bottom: 6px; padding: 0; color: var(--text-primary); font-size: .82rem; font-weight: 700; }
+.z3-wb-rule { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 1px 8px; min-width: 0; min-height: 52px; padding: 6px 10px; border: 1px solid var(--border-strong); background: var(--surface-page); color: var(--text-primary); cursor: pointer; }
+.z3-wb-rule input { grid-row: 1 / span 2; width: 20px; height: 20px; margin: 0; accent-color: var(--mint-700); }
+.z3-wb-rule-name { font-size: .84rem; font-weight: 700; line-height: 1.25; }
+.z3-wb-rule-formula { grid-column: 2; color: var(--text-muted); font-family: var(--display-font); font-size: .82rem; line-height: 1.25; overflow-wrap: anywhere; }
+.z3-wb-rule.is-on { border-color: var(--mint-700); background: color-mix(in srgb, var(--mint-300) 24%, var(--surface-raised)); box-shadow: inset 0 0 0 1px var(--mint-700); }
+.z3-wb-rule:not(.is-on) .z3-wb-rule-name { color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--coral-500); text-decoration-thickness: 2px; }
+:root[data-theme='dark'] .z3-wb-rule input { accent-color: var(--mint-300); }
+.z3-cell.is-fixed > button, .z3-cell.is-fixed > .z3-cell-static { box-shadow: inset 0 0 0 3px var(--navy-950), inset 0 0 0 5px rgba(255, 253, 248, .9); }
+.z3-wb-key { padding: 0 3px; background: var(--navy-950); color: var(--paper-0); font-family: var(--mono-font); font-size: .7rem; font-weight: 700; }
+:root[data-theme='dark'] .z3-wb-key { background: var(--paper-0); color: var(--navy-950); }
+.z3-part .z3-wb-verdict { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0 0 10px; color: var(--text-primary); font-family: var(--display-font); font-size: 1.1rem; }
+.z3-wb-verdict .z3-result { margin: 0; }
+.z3-result--unknown { color: #9b690d; }
+:root[data-theme='dark'] .z3-result--unknown { color: var(--gold-400); }
+.z3-figure .z3-counters.z3-wb-counters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.z3-wb-counters span { overflow-wrap: anywhere; }
+.z3-wb-counters strong { font-size: 1.35rem; overflow-wrap: anywhere; }
+/* Keep the board column wide enough for 44px cells beside the results. */
+@container (min-width: 560px) { .z3-figure-body.z3-wb-body { grid-template-columns: minmax(328px, 1.2fr) minmax(0, 1fr); } }
+.z3-part .z3-wb-line { margin: 8px 0 0; color: var(--text-primary); overflow-wrap: anywhere; }
+.z3-wb-line .z3-mini-label { margin-bottom: 2px; }
+.z3-part .z3-wb-agree { margin: 10px 0 0; padding: 8px 10px; border-left: 3px solid var(--border-strong); background: var(--surface-page); color: var(--text-primary); font-size: .86rem; }
+.z3-wb-agree.is-ok { border-left-color: var(--mint-700); }
+.z3-wb-agree.is-bad { border-left-color: var(--coral-500); }
+.z3-wb-reasons { margin: 8px 0 0; padding-left: 1.2rem; color: var(--text-primary); font-size: .86rem; }
+.z3-wb-export { justify-content: space-between; }
+.z3-wb-export-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.z3-wb-source { max-height: 20rem; border: 1px solid var(--border-subtle); white-space: pre; }
+.z3-part .z3-wb-export-status { min-height: 1.5em; margin: 0; color: var(--text-primary); font-size: .82rem; }
+.z3-wb-drops { display: grid; gap: 0; margin: 0 0 12px; padding: 0; list-style: none; border-top: 1px solid var(--border-subtle); }
+.z3-wb-drops li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; padding: 6px 0; border-bottom: 1px solid var(--border-subtle); color: var(--text-primary); font-size: .9rem; }
+
 /* Phones: one reading column, the board fitted to width, and the transport
    pinned to the bottom while its figure is on screen. */
 @media (max-width: 780px) {
@@ -411,15 +458,23 @@ dfn.z3-term { font-style: normal; font-weight: 700; color: var(--text-primary); 
   .z3-figure--player .z3-transport-dock { position: static; }
 }
 @media (max-width: 460px) {
+  .z3-sidebar { padding-inline: 12px; }
+  .z3-sidebar .z3-facts div { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .z3-figure { margin-inline: -22px; border-inline: 0; --z3-pad: 10px; }
   .z3-board { grid-template-columns: 1rem repeat(var(--n), minmax(0, 1fr)); }
   .z3-lanes { grid-template-columns: minmax(0, 1fr); }
   .z3-transport { grid-template-columns: 44px 48px 44px minmax(0, 1fr) auto; gap: 4px; }
 }
+/* At 320–360px the workbench board runs edge to edge so its cells stay 44px wide. */
+@media (max-width: 360px) {
+  .z3-wb-board { margin-inline: calc(-1 * var(--z3-pad)); }
+  .z3-wb-board .z3-board { grid-template-columns: .75rem repeat(var(--n), minmax(0, 1fr)); }
+}
 @media (prefers-reduced-motion: reduce) {
   .z3-cell.is-fresh > button, .z3-cell.is-fresh > .z3-cell-static { animation: none; }
 }
 @media print {
-  .z3-transport-dock, .z3-bookmarks, .z3-controls button { display: none; }
+  .z3-transport-dock, .z3-bookmarks, .z3-controls button, .z3-wb-drops button { display: none; }
+  .z3-wb-source { max-height: none; white-space: pre-wrap; }
   .z3-figure { break-inside: avoid; }
 }

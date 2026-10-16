@@ -9,6 +9,8 @@ import { Chapter6 } from './Chapter6'
 import { Chapter7 } from './Chapter7'
 import { Chapter8 } from './Chapter8'
 import { Chapter9 } from './Chapter9'
+import { Chapter10 } from './Chapter10'
+import { Beyond } from './Beyond'
 import { Experiment } from './Experiment'
 import { board, evidencePath, FILES, useZ3Data, z3VersionShort, type LoadState } from './data'
 import type { BookUi } from './ui'
@@ -23,8 +25,12 @@ export const CHAPTERS = [
   { id: 'z3-confinement', label: '7 · Confinement' },
   { id: 'z3-uniqueness', label: '8 · Uniqueness' },
   { id: 'z3-engine', label: '9 · Z3’s route' },
+  { id: 'z3-workbench', label: '10 · Workbench' },
   { id: 'z3-experiment', label: 'Open the experiment' },
+  { id: 'z3-beyond', label: 'Appendix · Beyond Queens' },
 ]
+
+export const ATLAS_URL = 'https://joeywilkes12.github.io/constraint-atlas-queens/'
 
 const GLOSSARY: [string, string, string][] = [
   ['Assignment', 'A choice of true or false for every variable.', '1'],
@@ -38,6 +44,7 @@ const GLOSSARY: [string, string, string][] = [
   ['UIP', 'Unique implication point: a current-level assignment on every path from that level’s decision to the conflict.', '5'],
   ['Resolution', 'From (A ∨ p) and (B ∨ ¬p) infer (A ∨ B).', '6'],
   ['Theory', 'In SMT, a mathematical domain such as integer arithmetic that judges atoms like x ≤ 0.', '9'],
+  ['SMT-LIB', 'The standard text language that SMT solvers, Z3 among them, read: declarations, assertions and commands such as (check-sat).', '10'],
 ]
 
 function EvidenceStatus({ state, ui }: { state: LoadState; ui: BookUi }) {
@@ -72,7 +79,7 @@ export default function Z3Part({ ui, section }: { ui: BookUi; section?: string }
     return () => window.cancelAnimationFrame(frame)
   }, [section, state.status])
   return <>
-    <PageHero trail="The board / how Z3 solves Queens" title="How Z3 solves Queens" deck="Nine short chapters on the mathematics a solver uses on the book’s 7×7 board: propositions, clauses, propagation, conflict-driven learning, a matching theorem and a proof of uniqueness. Every figure replays recorded, checked evidence." action={{ label: 'Read the explanation', scrollTo: 'z3-variables' }} />
+    <PageHero trail="The board / how Z3 solves Queens" title="How Z3 solves Queens" deck="Ten short chapters on the mathematics a solver uses on the book’s 7×7 board: propositions, clauses, propagation, conflict-driven learning, a matching theorem, a proof of uniqueness, and a workbench for changing the rules. Figures replay recorded, checked evidence; the workbench computes in this page and says so." action={{ label: 'Read the explanation', scrollTo: 'z3-variables' }} />
     <div className="reading-layout">
       <LocalToc items={CHAPTERS} />
       <main className="reading-column z3-part" id="main-content">
@@ -85,6 +92,7 @@ export default function Z3Part({ ui, section }: { ui: BookUi; section?: string }
           <dl>{GLOSSARY.map(([term, definition, chapter]) => <div key={term}><dt>{term}</dt><dd>{definition} <span className="z3-glossary-ch">Chapter {chapter}</span></dd></div>)}</dl>
         </details>
         <p className="z3-audience">Written for readers comfortable with logic, sets, proofs and graphs who have not met SAT solvers. Coordinates are 1-based: r1c1 is the top-left cell, and its variable is q<sub>11</sub>. The solution stays hidden until Chapter 8.</p>
+        <p className="z3-audience z3-provenance">The standalone Constraint Atlas site (<a href={ATLAS_URL}>{ATLAS_URL}</a>) is kept as a backup; its content now lives in this part. It appears as the Chapter 10 workbench, the Chapter 2 sidebar on other ways to model the board, the Beyond Queens appendix and the added research citations.</p>
         <Chapter1 ui={ui} data={data} />
         <Chapter2 ui={ui} data={data} />
         <Chapter3 ui={ui} data={data} />
@@ -94,7 +102,9 @@ export default function Z3Part({ ui, section }: { ui: BookUi; section?: string }
         <Chapter7 ui={ui} data={data} />
         <Chapter8 ui={ui} data={data} />
         <Chapter9 ui={ui} data={data} />
+        <Chapter10 ui={ui} data={data} />
         <Experiment ui={ui} data={data} />
+        <Beyond ui={ui} data={data} />
       </main>
     </div>
   </>
