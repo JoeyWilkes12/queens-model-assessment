@@ -256,12 +256,12 @@ def batch_submit(args):
         body = read(path)
         requests.append({"custom_id": call["call_id"], "body": messages_shape(body, short) if args.shape == "messages" else body})
     endpoint = "/v1/messages" if args.shape == "messages" else "/v1/chat/completions"
-    payload = {"endpoint": endpoint, "model": MODELS[short]["model"],
+    payload = {"endpoint": endpoint, "model": MODELS[short]["model"] + (":batch" if args.batch_suffix else ""),
                "provider": {"only": [MODELS[short]["batch_provider"]], "allow_fallbacks": False},
                "completion_window": "24h", "requests": requests}  # requests serialized last, as the API requires
     attempt = len(list(batch_dir(short).glob("submission-response-attempt*.json"))) + 1 if batch_dir(short).exists() else 1
     save(batch_dir(short) / f"payload-attempt{attempt}.json", payload)
-    save(batch_dir(short) / "submitting.json", {"utc": utc(), "attempt": attempt, "shape": args.shape})
+    save(batch_dir(short) / "submitting.json", {"utc": utc(), "attempt": attempt, "shape": args.shape, "model": payload["model"]})
     try:
         status, body = C.broker("POST", "/api/v1/batches", payload, timeout=180)
     except (OSError, http.client.HTTPException) as error:
@@ -280,6 +280,7 @@ def batch_submit(args):
 
 
 def attach(short, batch_id, shape, endpoint, requests, reserve, attempt, status):
+    C.mark_key_held(f"legacy-batch-{short}", batch_id)
     save(batch_dir(short) / "submission.json", {"batch_id": batch_id, "submitted_utc": utc(), "http_status": status, "shape": shape,
                                                 "endpoint": endpoint, "provider_only": MODELS[short]["batch_provider"],
                                                 "requests": requests, "provisional_reserve_usd": reserve, "attempt": attempt})
@@ -462,6 +463,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("mode", choices=["freeze", "batch-submit", "batch-poll", "reconcile", "fallback", "run", "audit"])
     parser.add_argument("--batch-id")
+    parser.add_argument("--batch-suffix", action="store_true", help="name the :batch variant explicitly")
     parser.add_argument("--model", choices=list(MODELS))
     parser.add_argument("--shape", choices=["chat", "messages"], default="chat")
     parser.add_argument("--reason")

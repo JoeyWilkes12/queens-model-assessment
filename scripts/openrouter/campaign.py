@@ -39,7 +39,9 @@ CAMPAIGN = "2026-10-17-openrouter-follow-ups"
 # The user added $18 on 16 October; about $1.85 of the earlier $11.11 remained.
 # The cap keeps a margin for the usage counter's reporting lag (observed $0.5-1).
 CAMPAIGN_CAP_USD = 18.75
-LEGACY_SUBCAP_USD = 10.50
+# Amendment (17 Oct, before any on-demand call): every OpenAI and Anthropic batch was rejected, so six
+# models run on demand at twice the batch price; the sub-cap rose from $10.50 so all 36 boards fit.
+LEGACY_SUBCAP_USD = 15.75
 LEGACY_MANIFEST = ROOT / "output/legacy-panel/manifest.json"
 
 
@@ -122,9 +124,12 @@ def recorded_costs(prefix=""):
     return sum(item["usd"] for item in _items("costs", prefix))
 
 
-def reserves(prefix=""):
-    """Unsettled reserves (in-flight calls, submitted batches)."""
-    return sum(item["reserve_usd"] for item in _items("reserves", prefix) if not item.get("settled"))
+def reserves(prefix="", include_key_held=False):
+    """Unsettled reserves (in-flight calls, submitted batches). OpenRouter holds a submitted batch's
+    worst case in the key's usage counter until it settles (observed 17 Oct: +$2.78 at submit), so for
+    the campaign guard those reserves are already counted by spent() and are skipped here."""
+    return sum(item["reserve_usd"] for item in _items("reserves", prefix)
+               if not item.get("settled") and (include_key_held or not item.get("key_held")))
 
 
 def spent():
@@ -140,7 +145,7 @@ def legacy_complete():
 
 
 def legacy_committed():
-    return recorded_costs("legacy-") + reserves("legacy-")
+    return recorded_costs("legacy-") + reserves("legacy-", include_key_held=True)
 
 
 def legacy_outstanding():
@@ -185,6 +190,15 @@ def settle(name, cost_usd, source):
             save(path, item)
 
 
+def mark_key_held(name, batch_id):
+    """A submitted batch: the key counter now carries OpenRouter's own hold for it."""
+    with lock():
+        path = OUT / "reserves" / f"{name}.json"
+        item = read(path)
+        item.update(key_held=True, batch_id=batch_id)
+        save(path, item)
+
+
 def release(name, why):
     """Drop a reserve for a request that was certainly never accepted (an explicit 4xx rejection)."""
     with lock():
@@ -212,6 +226,7 @@ def main():
         numbers = key_numbers()
         print(json.dumps({"key_delta_usd": round(numbers["usage"] - baseline()["usage_usd"], 6),
                           "recorded_costs_usd": round(recorded_costs(), 6), "reserves_usd": round(reserves(), 6),
+                          "key_held_batch_reserves_usd": round(reserves(include_key_held=True) - reserves(), 6),
                           "legacy_committed_usd": round(legacy_committed(), 6), "legacy_complete": legacy_complete(),
                           "limit_remaining_usd": numbers["limit_remaining"], "cap_usd": CAMPAIGN_CAP_USD}))
 

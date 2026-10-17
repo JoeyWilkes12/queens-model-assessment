@@ -563,6 +563,7 @@ def batch_rounds(args):
 
 
 def attach_round(phase, short, rdir, round_no, batch_id, members, reserve):
+    C.mark_key_held(f"traj-batch-{short}-{phase}-r{round_no:02d}", batch_id)
     for member in members:
         turn_dir = tdir(phase, short, member["board_id"]) / f"turn-{member['turn']:02d}"
         if member["resend"]:

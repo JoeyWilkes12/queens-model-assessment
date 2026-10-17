@@ -80,4 +80,21 @@ As requested, the Batch API is used wherever a model has a `:batch` endpoint, ev
 
 ## Amendments
 
-None yet.
+All three were made on 17 October, after the batch submissions and before any on-demand call. No model output had been seen.
+
+**Amendment 1: routes.**
+- **Accepted.** Both Gemini 2.5 batches (Google Vertex only).
+- **Rejected.** Every OpenAI and Anthropic batch, with HTTP 400 ("does not have a :batch endpoint"), although the catalog lists a `:batch` variant for each. That is the same failure as the 16 October Opus 4.8 batch.
+  - OpenAI was tried with both the plain and the explicit `:batch` model ID.
+  - Anthropic was tried in both the chat-completions and Messages shapes.
+- **Fallback.** Nothing was accepted or billed. As preregistered, GPT-5.5, GPT-5.4, GPT-5, GPT-4.1, Opus 4.7 and Opus 4.6 run on demand with their 1 October provider blocks, an inline image and the 600 s timeout, exactly as on 1 October.
+
+**Amendment 2: budget split.**
+- On demand costs twice the batch price, so the expected cost of this study rises from about $8.85 to about $15.6.
+- The sub-cap rises from $10.50 to $15.75 so that all 36 boards per model fit.
+- The $18.75 campaign cap is unchanged. The frontier trajectories receive what remains, through their cost-only block rule.
+
+**Amendment 3: accounting.**
+- OpenRouter holds a submitted batch's worst-case cost in the key's usage counter at submit: +$2.78 for the two Gemini batches, before any processing.
+- The campaign guard therefore no longer adds the local batch reserve on top of that hold.
+- The sub-cap still counts the reserve until the batch settles.
