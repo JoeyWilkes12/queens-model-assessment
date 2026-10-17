@@ -105,3 +105,9 @@ All three were made on 17 October, after the batch submissions and before any on
 - **Next.** They will be sent unchanged once the limit allows.
 - **Runner change.** Both runners now stop at the first such response.
 
+**Amendment 5: sub-cap.**
+- The sub-cap rose from $15.75 to $17.25.
+- **Why.** The sub-cap counts the open Gemini batches at their 1.5× reserve ($3.06), well above their expected cost (about $2). The last calls of the panel would have been stopped although the campaign cap had room.
+- **Unchanged.** The $18.75 campaign cap, and the user's credit balance ($11.51 when the runs resumed), still bound the total.
+- **Trajectories.** The frontier trajectories could not afford a panel block in either case.
+

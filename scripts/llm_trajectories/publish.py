@@ -110,7 +110,7 @@ def main():
         save_public(OUT / f"{phase}.json", data)
         manifest["studies"].append(study)
         published[phase] = {"trajectories": len(rows), "turns": sum(len(r["turns"]) for r in rows)}
-    save_public(OUT / "index.json", {"phases": sorted(published)})
+    save_public(OUT / "index.json", {"phases": sorted(published), "projection": (S.OUT_ROOT / "projection.json").exists()})
     if (S.OUT_ROOT / "projection.json").exists():
         save_public(OUT / "projection.json", S.read(S.OUT_ROOT / "projection.json"))
     rebuild_index(manifest)

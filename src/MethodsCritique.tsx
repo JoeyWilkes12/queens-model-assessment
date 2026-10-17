@@ -74,7 +74,7 @@ export function MethodsCritique({ ui }: { ui: BookUi }) {
         <Section id="next-experiments" title="Next experiments">
           <DataTable caption="Prioritised experiments" headers={['Priority', 'Experiment', 'Cost']} rows={[
             ['1 · offline', 'Oracle-label every offered cell in all 180 recorded trajectories', '$0'],
-            ['2 · offline', 'Random and greedy baselines on every board (done for the nine)', '$0'],
+            ['2 · offline, done', 'Random and greedy baselines on every board; greedy step records for all 201 boards (17 Oct)', '$0'],
             ['3 · offline', 'Calibration by task, menu and board', '$0'],
             ['4 · SubQ, done 15 Oct', '64 new certified boards per size, one raw and one local attempt each', '≈$0.08 spent'],
             ['5 · SubQ now', 'Answer-position permutations on one frozen state per board', '≈$0.03'],

@@ -44,6 +44,7 @@ type Trajectory = {
   turns: Turn[]
 }
 type Comparison = { one_shot: Record<string, string>; jev_solved: boolean | null; subq_solved: boolean | null; greedy_solved: boolean | null }
+type Projection = { blocks: number; projected_block_usd: number; room_usd: number; pilot_cost_per_model_5x5: Record<string, number> }
 type Phase = { study: string; phase: 'pilot' | 'main'; boards: { id: string; size: number; regions: string[][] }[]; trajectories: Trajectory[]; comparisons: Record<string, Comparison> }
 
 const evidenceUrl = (path: string) => `${import.meta.env.BASE_URL}evidence/${path}`
@@ -115,15 +116,17 @@ function framesFor(trajectory: Trajectory, studySource: string): BoardFrame[] {
 }
 
 function usePhases() {
-  const [state, setState] = useState<{ status: 'loading' | 'error' } | { status: 'ready'; phases: Phase[] }>({ status: 'loading' })
+  const [state, setState] = useState<{ status: 'loading' | 'error' } | { status: 'ready'; phases: Phase[]; projection: Projection | null }>({ status: 'loading' })
   useEffect(() => {
     const controller = new AbortController()
     const get = (path: string) => fetch(evidenceUrl(path), { signal: controller.signal }).then(response => response.ok ? response.json() : null)
     get('frontier-trajectories/index.json')
-      .then((index: { phases?: string[] } | null) => Promise.all(['main', 'pilot'].filter(name => index?.phases?.includes(name)).map(name => get(`frontier-trajectories/${name}.json`))))
-      .then(values => {
+      .then((index: { phases?: string[]; projection?: boolean } | null) => Promise.all([
+        Promise.all(['main', 'pilot'].filter(name => index?.phases?.includes(name)).map(name => get(`frontier-trajectories/${name}.json`))),
+        index?.projection ? get('frontier-trajectories/projection.json') : Promise.resolve(null)]))
+      .then(([values, projection]) => {
         const phases = values.filter((value): value is Phase => !!value && Array.isArray(value.trajectories))
-        setState(phases.length ? { status: 'ready', phases } : { status: 'error' })
+        setState(phases.length ? { status: 'ready', phases, projection } : { status: 'error' })
       })
       .catch(() => { if (!controller.signal.aborted) setState({ status: 'error' }) })
     return () => controller.abort()
@@ -212,6 +215,8 @@ export function FrontierTrajectories({ ui }: { ui: BookUi }) {
   const { PageHero, LocalToc, Section, Callout } = ui
   const state = usePhases()
   const phases = state.status === 'ready' ? state.phases : null
+  const projection = state.status === 'ready' ? state.projection : null
+  const pilotOnly = !!phases && !phases.some(p => p.phase === 'main')
   const status = state.status === 'error' ? <p role="status">The saved trajectory evidence could not be loaded. No replay is substituted.</p>
     : state.status === 'loading' ? <p role="status">Loading the saved trajectories…</p> : null
 
@@ -237,6 +242,7 @@ export function FrontierTrajectories({ ui }: { ui: BookUi }) {
           {status ?? (phases && <Replays phases={phases} />)}
         </Section>
         <Section id="ft-limits" title="Limits">
+          {pilotOnly && projection && <Callout tone="stop" title="Only the pilot board ran.">The preregistered rule sets the number of panel blocks (one 5×5, 7×7 and 9×9 board per model) from cost alone: the pilot's cost, scaled by board size, with a 1.5× margin. After the earlier-generation panel, ${projection.room_usd.toFixed(2)} of the campaign cap remained against a projected ${projection.projected_block_usd.toFixed(2)} per block, so the rule allowed {projection.blocks} panel blocks. Each model therefore has one trajectory, on one 5×5 development board. Panel boards can follow with more budget, under the same frozen protocol.</Callout>}
           <Callout tone="caution" title="A small, descriptive sample.">Few boards per model, chosen by a cost-only rule fixed before the panel runs. The text state removes image perception, so these results are not comparable with the one-shot image test as a measure of the same skill. Explanations are the model's own visible text; hidden reasoning is excluded and is not carried between requests.</Callout>
         </Section>
       </main>

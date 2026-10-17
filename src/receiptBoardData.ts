@@ -263,9 +263,35 @@ function jevFrames(request: ObjectValue, output: unknown, board: BoardSource, pl
 }
 
 /** Unsupported or ambiguous board evidence stays in the original raw JSON panels. */
+/** One-queen-per-request turns: the last user message is a JSON document holding the decision-model state. */
+function conversationState(request: ObjectValue): ObjectValue | null {
+  if ('state' in request || !Array.isArray(request.messages)) return null
+  const message = [...request.messages].reverse().find(entry => object(entry)?.role === 'user')
+  const content = object(message)?.content
+  if (typeof content !== 'string' || !content.trimStart().startsWith('{')) return null
+  try {
+    const parsed = object(JSON.parse(content))
+    return parsed && object(parsed.state) ? { state: parsed.state } : null
+  } catch {
+    return null
+  }
+}
+
 export function deriveReceiptBoard(request: unknown, output: unknown, grade?: unknown): { regions: string[][]; frames: BoardFrame[]; description: string } | null {
   const req = object(request)
   if (!req) return null
+  const turn = conversationState(req)
+  if (turn) {
+    const board = stateBoard(turn)
+    const placed = board && inputQueens(board)
+    if (!board || !placed) return null
+    const after = object(grade)?.placed_after
+    const queens = Array.isArray(after) && after.every(cell => Array.isArray(cell) && cell.length === 2 && integer(cell[0]) && integer(cell[1]) && inBounds([cell[0], cell[1]], board.size))
+      ? after.map(cell => [cell[0], cell[1]] as Cell) : null
+    const frames: BoardFrame[] = [{ id: 'model-input', label: placed.length ? 'Input with the queens placed so far' : 'Input board', queens: placed, note: 'Deterministic rendering of the model-visible state in this request. Colors are display encodings of region labels. No hidden solution is used.', sourceLabel: `${board.source}; parsed from the request's last user message` }]
+    if (queens) frames.push({ id: 'after-turn', label: 'Placement after this request', queens, note: 'The harness applied the parsed action exactly as written; the saved grade file records the effect.', sourceLabel: 'grade.placed_after' })
+    return { regions: board.regions, frames, description: `${board.id} · ${board.size}×${board.size} · one turn of a one-queen-per-request conversation; reconstructed only from the receipt.` }
+  }
   // A malformed explicit native state must not silently fall through to another source.
   const board = 'state' in req ? stateBoard(req) : promptBoard(req)
   if (!board) return null

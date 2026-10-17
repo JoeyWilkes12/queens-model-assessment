@@ -41,7 +41,9 @@ CAMPAIGN = "2026-10-17-openrouter-follow-ups"
 CAMPAIGN_CAP_USD = 18.75
 # Amendment (17 Oct, before any on-demand call): every OpenAI and Anthropic batch was rejected, so six
 # models run on demand at twice the batch price; the sub-cap rose from $10.50 so all 36 boards fit.
-LEGACY_SUBCAP_USD = 15.75
+# Amendment 5 (17 Oct): raised again so the panel completes inside the unchanged campaign cap; no trajectory
+# panel block fit the remaining cap either way (about $1.5 left against a projected $5.1 per block).
+LEGACY_SUBCAP_USD = 17.25
 LEGACY_MANIFEST = ROOT / "output/legacy-panel/manifest.json"
 
 
