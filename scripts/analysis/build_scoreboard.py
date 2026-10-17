@@ -114,15 +114,24 @@ def llm_panel():
         return {'status': 'running', 'boards': [], 'models': []}
     summary = json.loads(path.read_text())
     boards, models = {}, {}
-    for row in summary['rows']:
-        boards[row['board_id']] = row['size']
-        entry = models.setdefault(row['model'], {'id': row['model'], 'name': DISPLAY[row['model']], **author(row['model']),
-                                                 'route': row['route'], 'boards': {}})
-        entry['boards'][row['board_id']] = row.get('outcome', 'not_run')
+    sources = [('frontier', summary)]
+    legacy_path = E / 'legacy-panel/summary.json'
+    legacy = json.loads(legacy_path.read_text()) if legacy_path.exists() else None
+    if legacy:
+        sources.append(('earlier', legacy))
+    for cohort, source in sources:
+        for row in source['rows']:
+            boards[row['board_id']] = row['size']
+            entry = models.setdefault(row['model'], {'id': row['model'], 'name': DISPLAY[row['model']], **author(row['model']),
+                                                     'cohort': cohort, 'study': source['study'], 'route': row['route'], 'boards': {}})
+            entry['boards'][row['board_id']] = row.get('outcome', 'not_run')
     complete = all(o != 'not_run' for m in models.values() for o in m['boards'].values())
     reruns = [{'model': DISPLAY[r['model']], 'size': r['size'], 'board_id': r['board_id'], 'outcome': r['outcome'], 'reason': r['reason'],
                'receipt': f"{summary['study']}:{r['call_id']}_rerun-2026-10-16"} for r in summary.get('reruns', [])]
-    return {'status': 'complete' if complete else 'partial', 'study': summary['study'], 'reruns': reruns,
+    retired = [{'id': mid, 'name': DISPLAY.get(mid, mid), **author(mid), 'reason': 'Tested on 1 October, but OpenRouter no longer serves it (no endpoint on 17 October).'}
+               for mid in (legacy or {}).get('retired', {}).values()]
+    return {'status': 'complete' if complete else 'partial', 'study': summary['study'], 'reruns': reruns, 'retired': retired,
+            'earlier_study': legacy['study'] if legacy else None, 'earlier_amendments': (legacy or {}).get('amendments', []),
             'boards': [{'id': b, 'size': s} for b, s in sorted(boards.items(), key=lambda kv: (kv[1], kv[0]))],
             'models': sorted(models.values(), key=lambda m: m['name'])}
 

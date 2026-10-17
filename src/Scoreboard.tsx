@@ -3,7 +3,7 @@ import './scoreboard.css'
 
 type Outcome = 'strict' | 'format_only' | 'wrong' | 'no_answer' | 'truncated'
 type LlmModel = { id: string; name: string; author: string; logo: string; cohort: 'frontier' | 'earlier'; study: string; boards: Record<string, { issued: number; outcome: Outcome; receipt: string }>; notes: string[]; rerun?: { size: string; outcome: Outcome; date: string; receipt: string } }
-type LlmPanel = { status: string; study?: string; reruns?: { model: string; size: number; board_id: string; outcome: Outcome; reason: string; receipt: string }[]; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; boards: Record<string, Outcome | 'not_run'> }[] }
+type LlmPanel = { status: string; study?: string; earlier_study?: string | null; retired?: { name: string; reason: string }[]; reruns?: { model: string; size: number; board_id: string; outcome: Outcome; reason: string; receipt: string }[]; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; cohort?: 'frontier' | 'earlier'; study?: string; boards: Record<string, Outcome | 'not_run'> }[] }
 type ModeCounts = { raw: [number, number]; local: [number, number] }
 type DecisionModel = { name: string; author: string; logo: string; study: string; per_board: Record<string, ModeCounts>; calls: number; attempts_per_board_mode: number }
 type DecisionSet = {
@@ -116,9 +116,9 @@ function llmRows(data: ScoreboardData['llm'], tab: TabKey, includeEarlier: boole
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
 }
 
-function llmPanelRows(panel: LlmPanel, tab: TabKey): Row[] {
+function llmPanelRows(panel: LlmPanel, tab: TabKey, includeEarlier: boolean): Row[] {
   const ids = panel.boards.filter(board => tab === 'all' || String(board.size) === tab).map(board => board.id)
-  return panel.models.map(model => {
+  return panel.models.filter(model => includeEarlier || model.cohort !== 'earlier').map(model => {
     const outcomes = ids.map(id => model.boards[id] ?? 'not_run')
     const strict = outcomes.filter(value => value === 'strict').length
     const formatOnly = outcomes.filter(value => value === 'format_only').length
@@ -128,7 +128,7 @@ function llmPanelRows(panel: LlmPanel, tab: TabKey): Row[] {
     const issued = ids.length - notRun
     const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', truncated ? `${truncated} ran out of tokens` : '', noAnswer ? `${noAnswer} request failed before an answer` : '', notRun ? `${notRun} not yet run` : ''].filter(Boolean)
     return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: ids.length,
-      label: `${strict + formatOnly}/${issued}`, kind: 'model' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, 16 Oct panel.` }
+      label: `${strict + formatOnly}/${issued}`, kind: 'model' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, ${model.cohort === 'earlier' ? '17 Oct earlier-generation panel' : '16 Oct panel'}.` }
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
 }
 
@@ -179,7 +179,9 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
 
   const panel = data.llm.panel
   const panelReadyLlm = !!panel && panel.models.length > 0
-  const llm = llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab) : llmRows(data.llm, llmTab, includeEarlier)
+  const llm = llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab, includeEarlier) : llmRows(data.llm, llmTab, includeEarlier)
+  const panelEarlier = panel?.models.filter(model => model.cohort === 'earlier') ?? []
+  const panelShown = panel ? panel.models.filter(model => includeEarlier || model.cohort !== 'earlier').length : 0
   const llmPanelBoards = panel ? panel.boards.filter(board => llmTab === 'all' || String(board.size) === llmTab).length : 0
   const reruns = data.llm.models.filter(model => model.rerun)
   const frontierCount = data.llm.models.filter(model => model.cohort === 'frontier').length
@@ -202,19 +204,20 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <button type="button" aria-pressed={llmSet === 'original'} onClick={() => setLlmSet('original')}>Original 3 boards</button>
           <button type="button" aria-pressed={llmSet === 'panel'} onClick={() => setLlmSet('panel')} disabled={!panelReadyLlm}>New 36-board panel</button>
         </div>
-        {llmSet === 'original' && <label className="sb-toggle"><input type="checkbox" checked={includeEarlier} onChange={event => setIncludeEarlier(event.target.checked)} /> Include earlier generations</label>}
+        {(llmSet === 'original' || panelEarlier.length > 0) && <label className="sb-toggle"><input type="checkbox" checked={includeEarlier} onChange={event => setIncludeEarlier(event.target.checked)} /> Include earlier generations</label>}
       </div>
       <Legend items={[{ kind: 'solid', label: 'Correct, strict JSON' }, { kind: 'hatched', label: 'Correct placement, broke the JSON-only format' }]} />
       <EvalBars rows={llm} unit="Boards with a correct full placement" />
       <details className="sb-coverage">
-        <summary>Test coverage: {llmSet === 'panel' ? `${panel?.models.length ?? 0} models × ${llmPanelBoards} boards` : `${includeEarlier ? data.llm.models.length : frontierCount} models × ${llmTab === 'all' ? 3 : 1} ${llmTab === 'all' ? 'boards' : 'board'}`}, identical for every model shown</summary>
+        <summary>Test coverage: {llmSet === 'panel' ? `${panelShown} models × ${llmPanelBoards} boards` : `${includeEarlier ? data.llm.models.length : frontierCount} models × ${llmTab === 'all' ? 3 : 1} ${llmTab === 'all' ? 'boards' : 'board'}`}, identical for every model shown</summary>
         {llmSet === 'panel' ? <ul>
           <li>36 new boards (12 per size, 3 from each difficulty stratum of the 192-board panel), so every board also has Jev and SubQ results. Images rendered with the September renderer, byte-identical in style; September prompt and settings unchanged.</li>
           <li>GPT-5.6 Sol ran through OpenRouter's Batch API at the September price, with the image by public URL. Claude Opus 4.8, Gemini 3.1 Pro Preview and Grok 4.6 ran on demand with the September provider blocks and inline images. One request per model and board, no retries.</li>
           {panel?.status !== 'complete' && <li><strong>Still running:</strong> bars show the boards recorded so far; the denominator in each label counts only completed requests.</li>}
           <li>Two Grok 4.6 9×9 answers ran out of the 12,288-token budget without a final answer, the same limit as in September; they count as unsolved.</li>
           {(panel?.reruns ?? []).length > 0 && <li><strong>Request failures and re-runs:</strong> {panel?.reruns?.map(r => `${r.model}'s ${r.size}×${r.size} request (${r.board_id}) failed with HTTP 429 before any answer`).join('; ')}. The chart keeps the preregistered result (unsolved). Re-sent once, unchanged, on 16 Oct: {panel?.reruns?.map((r, i) => <span key={r.receipt}>{i ? '; ' : ''}<a href={`#/evidence-atlas/${r.receipt}`}>{r.board_id}</a> {r.outcome === 'format_only' ? 'correct, off-format' : r.outcome === 'strict' ? 'correct' : r.outcome.replace('_', ' ')}</span>)}.</li>}
-          <li><a href="#/decision-models">Decision models</a> · <a href={evidenceUrl('evidence/frontier-image-panel/summary.json')} download>Panel results (JSON)</a></li>
+          {includeEarlier && panelEarlier.length > 0 && <li><strong>Earlier generations ({panelEarlier.length} models, 17 Oct):</strong> the same 36 boards, images and prompt, with each model's 1 October settings. Gemini 2.5 Pro and Flash ran through the Batch API on Google Vertex. OpenRouter rejected every OpenAI and Anthropic batch ("no :batch endpoint"), so those six ran on demand with their 1 October provider blocks, as preregistered.{(panel?.retired ?? []).length > 0 && <> Not shown: {panel?.retired?.map(model => model.name).join(', ')}, which OpenRouter no longer serves.</>}</li>}
+          <li><a href="#/decision-models">Decision models</a> · <a href="#/earlier-generations">Earlier generations</a> · <a href={evidenceUrl('evidence/frontier-image-panel/summary.json')} download>Panel results (JSON)</a>{panel?.earlier_study && <> · <a href={evidenceUrl('evidence/legacy-panel/summary.json')} download>Earlier-generation results (JSON)</a></>}</li>
         </ul> : <ul>
           <li>One request per model and board, the same image and prompt, no tools, no repair turns, no retries.</li>
           {timeouts.map(note => <li key={note}><strong>Timed out:</strong> {note} It is counted as unsolved here, as recorded.</li>)}

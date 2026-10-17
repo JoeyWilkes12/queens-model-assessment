@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-16T23:57:21+00:00",
+ "generated_utc": "2026-10-17T20:44:15+00:00",
  "builder": "scripts/analysis/build_scoreboard.py",
  "llm": {
   "unit": "boards with a correct full placement",
@@ -423,6 +423,9 @@
      "receipt": "2026-10-16-frontier-image-panel:093_panel-9-34_gemini-3.1-pro-preview_rerun-2026-10-16"
     }
    ],
+   "retired": [],
+   "earlier_study": null,
+   "earlier_amendments": [],
    "boards": [
     {
      "id": "panel-5-10",
@@ -575,6 +578,8 @@
      "name": "Claude Opus 4.8",
      "author": "Anthropic",
      "logo": "assets/logos/anthropic.svg",
+     "cohort": "frontier",
+     "study": "2026-10-16-frontier-image-panel",
      "route": "on_demand",
      "boards": {
       "panel-5-10": "strict",
@@ -620,6 +625,8 @@
      "name": "GPT-5.6 Sol",
      "author": "OpenAI",
      "logo": "assets/logos/openai.svg",
+     "cohort": "frontier",
+     "study": "2026-10-16-frontier-image-panel",
      "route": "batch",
      "boards": {
       "panel-5-10": "strict",
@@ -665,6 +672,8 @@
      "name": "Gemini 3.1 Pro Preview",
      "author": "Google",
      "logo": "assets/logos/google-gemini.svg",
+     "cohort": "frontier",
+     "study": "2026-10-16-frontier-image-panel",
      "route": "on_demand",
      "boards": {
       "panel-5-10": "strict",
@@ -710,6 +719,8 @@
      "name": "Grok 4.6",
      "author": "xAI",
      "logo": "assets/logos/xai.png",
+     "cohort": "frontier",
+     "study": "2026-10-16-frontier-image-panel",
      "route": "on_demand",
      "boards": {
       "panel-5-10": "strict",

@@ -1,0 +1,24 @@
+/* One queen per request chapter: controls in one row above the board, full replies below it. */
+.ft-replays { display: grid; gap: 14px; }
+.ft-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; }
+.ft-field { display: grid; gap: 6px; min-width: 0; }
+.ft-field label { color: var(--text-muted); font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.ft-field select { max-width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .86rem; cursor: pointer; }
+.ft-field--board { flex: 1 1 200px; }
+.ft-field--board select { width: 100%; }
+.ft-models { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 100%; }
+.ft-models button { flex: 1 1 130px; min-height: 44px; padding: 7px 12px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .8rem; font-weight: 700; cursor: pointer; }
+.ft-models button[aria-pressed='true'] { background: var(--navy-950); border-color: var(--navy-950); color: #fffdf8; }
+:root[data-theme='dark'] .ft-models button[aria-pressed='true'] { background: var(--mint-300); border-color: var(--mint-300); color: var(--navy-950); }
+.ft-models button:disabled { opacity: .45; cursor: not-allowed; }
+.ft-models button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.ft-transcript { border-top: 1px solid var(--border-subtle); padding-top: 10px; }
+.ft-transcript summary { cursor: pointer; font-weight: 700; }
+.ft-transcript ol { display: grid; gap: 14px; margin: 14px 0 0; padding-left: 0; list-style: none; }
+.ft-turn-head { margin: 0 0 6px; font-size: .88rem; }
+.ft-turn-head span { color: var(--text-muted); font-size: .8rem; }
+.ft-reply { max-height: 340px; overflow: auto; padding: 12px 14px; border: 1px solid var(--border-subtle); background: var(--surface-raised); font-size: .86rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .ft-field, .ft-field--board { flex: 1 1 100%; }
+  .ft-field select { width: 100%; }
+}

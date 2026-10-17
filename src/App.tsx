@@ -8,6 +8,8 @@ import { deriveFailureComparison } from './failureComparisonData'
 import { SubQAssessment } from './SubQAssessment'
 import { DecisionModels } from './DecisionModels'
 import { GreedyRule } from './GreedyRule'
+import { FrontierTrajectories } from './FrontierTrajectories'
+import { LegacyPanel } from './LegacyPanel'
 import { MethodsCritique } from './MethodsCritique'
 import { FeaturedReplays } from './FeaturedReplays'
 import { Scoreboard } from './Scoreboard'
@@ -91,6 +93,7 @@ const routes: Route[] = [
   { path: 'queens-rules', title: 'Queens rules', section: 'The board', description: 'Regional constraints, boards, and verified solutions.' },
   { path: 'how-z3-solves-queens', title: 'How Z3 solves Queens', section: 'The board', description: 'Propositions, clauses, propagation, learning, a proof of uniqueness, and a rule workbench.' },
   { path: 'protocol-results', title: 'Protocol & results', section: 'The board', description: 'Frozen inputs, entrants, outcomes, and route failures.' },
+  { path: 'frontier-trajectories', title: 'One queen at a time', section: 'The board', description: 'Frontier models place one queen per request and explain each move.' },
   { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
   { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
   { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
@@ -853,8 +856,9 @@ function EarlierGenerations() {
   ]) ?? []
 
   return <><PageHero trail="Model generations / October 1 cohort" title="The same board, across earlier model generations." deck="A sparse, adaptively reprioritized comparison replays the original image prompts and separates strict JSON-plus-rules success from a deterministic written-answer diagnostic." action={{ label: 'Open the request receipts', path: 'evidence-atlas' }} />
-    <div className="reading-layout"><LocalToc items={[{ id: 'earlier-method', label: 'Scoring boundary' }, { id: 'earlier-models', label: 'By model' }, { id: 'earlier-receipts', label: 'Every board receipt' }, { id: 'earlier-failures', label: 'First observed failures' }, { id: 'earlier-diagnostics', label: 'Historical diagnostics' }, { id: 'diagnostic-completion', label: 'Matched completion study' }, { id: 'earlier-limits', label: 'Cost & limits' }]} />
+    <div className="reading-layout"><LocalToc items={[{ id: 'earlier-panel', label: '36-board panel' }, { id: 'earlier-method', label: 'Scoring boundary' }, { id: 'earlier-models', label: 'By model' }, { id: 'earlier-receipts', label: 'Every board receipt' }, { id: 'earlier-failures', label: 'First observed failures' }, { id: 'earlier-diagnostics', label: 'Historical diagnostics' }, { id: 'diagnostic-completion', label: 'Matched completion study' }, { id: 'earlier-limits', label: 'Cost & limits' }]} />
       <main className="reading-column" id="main-content">
+        <Section id="earlier-panel" title="36 boards per model (17 October)"><LegacyPanel ui={bookUi} /></Section>
         {!data && <p role="status">{error ? 'The saved cohort summary is not available. You can still inspect this study’s saved requests and responses in the evidence atlas.' : 'Loading the saved cohort summary…'}</p>}
         {data && <>
           {data.status === 'running' && <Callout tone="caution" title="This cohort is still in progress.">The counts below are a live saved summary, not a final result. Do not interpret unfinished requests or phases as the generation ladder’s stopping point.</Callout>}
@@ -1078,6 +1082,7 @@ function App() {
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
                 : active === 'greedy-rule' ? <GreedyRule ui={bookUi} />
+                : active === 'frontier-trajectories' ? <FrontierTrajectories ui={bookUi} />
                 : active === 'openai-decisions-plan' ? <DecisionModels ui={bookUi} focusSection="openai-plan" />
                 : active === 'methods-critique' ? <MethodsCritique ui={bookUi} />
                 : active === 'evidence-atlas' ? <EvidenceExplorer selectedId={selectedId} />

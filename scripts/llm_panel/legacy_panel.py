@@ -428,6 +428,24 @@ def classify(meta, strict, diag):
     return "wrong"
 
 
+def by_model(rows):
+    """Correct (strict or format-only) and strict counts per model, with Clopper-Pearson 95% intervals."""
+    sys.path.insert(0, str(ROOT / "scripts/subq"))
+    from trajectories import clopper_pearson
+    out = {}
+    for short in MODELS:
+        mine = [r for r in rows if r["short"] == short and r["state"] == "recorded"]
+        correct = sum(r["outcome"] in ("strict", "format_only") for r in mine)
+        strict = sum(r["outcome"] == "strict" for r in mine)
+        out[short] = {"model": MODELS[short]["model"], "recorded": len(mine), "correct": correct, "strict": strict,
+                      "correct_cp95": list(clopper_pearson(correct, len(mine))) if mine else None,
+                      "outcomes": dict(collections.Counter(r["outcome"] for r in mine)),
+                      "cost_usd": round(sum(r.get("cost_usd") or 0 for r in mine), 6),
+                      "route": next((r["route"] for r in mine), None),
+                      "providers": sorted({r.get("provider") for r in mine if r.get("provider")})}
+    return out
+
+
 def audit(args):
     manifest = read(OUT / "manifest.json")
     rows = []
@@ -452,6 +470,7 @@ def audit(args):
                                        "wrong": "an answer that is not a correct placement",
                                        "no_answer": "the request failed before any model answer (HTTP error or timeout)"},
                "by_model_size": [{"model": k[0], "size": k[1], **v} for k, v in sorted(table.items())],
+               "by_model": by_model(rows),
                "cost_usd_reported": round(sum(r.get("cost_usd") or 0 for r in rows), 6)}
     save(OUT / "summary.json", summary)
     for item in summary["by_model_size"]:

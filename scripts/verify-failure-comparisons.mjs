@@ -376,7 +376,7 @@ const totals = Object.values(coverage).reduce((total, group) => {
   return total;
 }, {});
 // Follow-up studies (SubQ, and the 16 October Jev and frontier panels) are excluded from the frozen historical corpus.
-const isFollowUp = study => study.includes('subq') || study.startsWith('2026-10-16-')
+const isFollowUp = study => study.includes('subq') || study.startsWith('2026-10-16-') || study.startsWith('2026-10-17-')
 const historicalTotals = Object.entries(coverage).filter(([study]) => !isFollowUp(study)).reduce((total, [, group]) => {
   for (const [key, value] of Object.entries(group)) total[key] = (total[key] || 0) + value;
   return total;
