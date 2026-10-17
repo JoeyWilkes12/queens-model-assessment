@@ -55,11 +55,15 @@ As requested, the Batch API is used wherever a model has a `:batch` endpoint, ev
 
 ## Budget and stopping
 
-- **Campaign cap.** $18.75 of new OpenRouter spend for this study and the frontier trajectories together, read from the key's usage counter against a baseline recorded before any request. This study has a $10.50 sub-cap.
+- **Campaign cap.** $18.75 of new OpenRouter spend for this study and the frontier trajectories together. This study has a $10.50 sub-cap.
+- **Spend so far** is the larger of two numbers: the key's usage counter minus a baseline recorded before any request, and the costs recorded locally for every settled call or batch. The local record covers the counter's lag of a few minutes.
+- **Batch costs.** Batch items report tokens but no per-item cost. A batch's reported total is recorded when it settles, and each item's cost is its tokens × the batch price. That product reproduces the 16 October GPT batch total exactly.
+- **Commitments.** Each reserve is registered under a file lock before the request is sent, so parallel processes see each other's commitments. A call whose cost is unknown, such as a client timeout, is recorded at its worst case.
 - **Batch guard.** Before each submission, spend so far plus unsettled reserves plus a reserve of 1.5 × (1 October mean cost × 0.5) per request must fit both caps. A batch that does not fit waits until earlier batches settle.
 - **On-demand guard.** Before each call, the call's worst case (12,000 input tokens and 12,288 output tokens at its prices, plus $0.01) must fit.
 - **Expected cost.** About $8.85 at batch prices, from the 1 October mean cost per request.
 - **No retries.** HTTP errors, failed batch items, timeouts and malformed replies count as no answer.
+- **Unknown submissions.** If a batch submission's outcome is unknown (a dropped connection or a 5xx), its reserve stays. Nothing is resubmitted until the batch is found in the account's batch list or confirmed absent. Only an explicit 4xx rejection releases the reserve.
 
 ## Endpoints
 

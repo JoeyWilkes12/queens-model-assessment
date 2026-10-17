@@ -36,6 +36,7 @@ import http.client
 import json
 import pathlib
 import random
+import shutil
 import signal
 import sys
 import time
@@ -307,6 +308,17 @@ def next_request(phase, short, board):
     return {"k": k, "body": request_body(short, messages), "placed": placed}, None
 
 
+def attempt_cost(short, response, route):
+    """Reported usage.cost; batch items carry none, so tokens x batch price (this reproduces batch totals)."""
+    usage = (response.get("usage") or {}) if isinstance(response, dict) else {}
+    if isinstance(usage.get("cost"), (int, float)):
+        return usage["cost"]
+    if route == "batch" and isinstance(usage.get("prompt_tokens"), int) and isinstance(usage.get("completion_tokens"), int):
+        ip, op = MODELS[short]["prices"]
+        return round(usage["prompt_tokens"] * ip + usage["completion_tokens"] * op, 9)
+    return None
+
+
 def record_turn(phase, short, board, k, body, attempts, extra):
     """attempts: list of (status, response, elapsed) for the original send and an optional re-send."""
     turn_dir = tdir(phase, short, board["id"]) / f"turn-{k:02d}"
@@ -319,7 +331,7 @@ def record_turn(phase, short, board, k, body, attempts, extra):
     effect, placed_after, detail = apply_action(board, placed, action) if status == 200 else ("request_failure", placed, {})
     solution = oracle(board)
     usage = response.get("usage") if isinstance(response, dict) else None
-    costs = [((r.get("usage") or {}).get("cost") if isinstance(r, dict) else None) for _, r, _ in attempts]
+    costs = [attempt_cost(short, r, extra.get("route")) for _, r, _ in attempts]
     meta = {"trajectory_id": tid_for(short, board["id"]), "board_id": board["id"], "size": board["size"], "model": MODELS[short]["model"],
             "short": short, "turn": k, "call_id": f"{tid_for(short, board['id'])}_t{k:02d}", "completed_utc": utc(),
             "final_status": status, "attempts": [{"http_status": s, "elapsed_seconds": e,
@@ -330,6 +342,7 @@ def record_turn(phase, short, board, k, body, attempts, extra):
             "generation_id": response.get("id") if isinstance(response, dict) else None,
             "finish_reason": ((response.get("choices") or [{}])[0].get("finish_reason") if isinstance(response, dict) else None),
             "usage": usage, "cost_usd": sum(c or 0 for c in costs),
+            "cost_source": "tokens x batch price (batch items report no per-item cost)" if extra.get("route") == "batch" else "usage.cost",
             "visible_text": text, "action": action, "parse_mode": parse_mode, "effect": effect, "detail": detail,
             "placed_before": [list(c) for c in placed], "placed_after": [list(c) for c in placed_after],
             "labels_after": labels(board, placed_after, solution), **extra}
@@ -403,11 +416,14 @@ class Censored(Exception):
     pass
 
 
-def send_on_demand(short, call_id, body):
-    ok, state = C.guard(worst_case(short, body))
+def send_on_demand(short, call_id, body, turn_dir, attempt):
+    """Reserve the worst case under the ledger lock, send once, save the reply at once, settle the cost."""
+    name = f"traj-inflight-{call_id}"
+    ok, state = C.reserve(name, worst_case(short, body), {"call_id": call_id}, hold_for_legacy=True)
     if not ok:
         raise Censored(json.dumps(state))
-    C.register_reserve(f"traj-inflight-{call_id}", worst_case(short, body), {"call_id": call_id})
+    if attempt == 1:
+        save(turn_dir / "started.json", {"started_utc": utc(), "request_sha256": sha((turn_dir / "request.json").read_bytes())})
     start = time.monotonic()
 
     def deadline(signum, frame):
@@ -420,14 +436,24 @@ def send_on_demand(short, call_id, body):
         status, response = None, {"error": {"type": type(error).__name__}}
     finally:
         signal.alarm(0)
-        C.settle_reserve(f"traj-inflight-{call_id}")
-    return status, response, time.monotonic() - start
+    elapsed = time.monotonic() - start
+    save(turn_dir / f"response-attempt{attempt}.json", response)
+    save(turn_dir / f"attempt{attempt}.json", {"http_status": status, "elapsed_seconds": elapsed, "utc": utc()})
+    cost = attempt_cost(short, response, "on_demand")
+    # An HTTP error body costs nothing; a timeout or transport failure may still bill upstream, so its worst case is kept.
+    C.settle(name, cost if cost is not None else (0.0 if status is not None else None), f"on-demand {call_id}")
+    return status, response, elapsed
 
 
 def run(args):
     short = args.model
     assert MODELS[short]["route"] == "on_demand"
     for board in plan_boards(args.phase):
+        marker = tdir(args.phase, short, board["id"]) / "censored.json"
+        if marker.exists():
+            if not args.resume_censored:
+                raise SystemExit(f"{tid_for(short, board['id'])} was censored by the budget guard; rerun with --resume-censored to continue")
+            marker.rename(marker.with_name(f"censored-resumed-{utc().replace(':', '')}.json"))
         while True:
             nxt, ended = next_request(args.phase, short, board)
             if ended == "incomplete_turn":
@@ -438,19 +464,25 @@ def run(args):
             turn_dir = tdir(args.phase, short, board["id"]) / f"turn-{k:02d}"
             call_id = f"{tid_for(short, board['id'])}_t{k:02d}"
             save(turn_dir / "request.json", body)
-            save(turn_dir / "started.json", {"started_utc": utc(), "request_sha256": sha((turn_dir / "request.json").read_bytes())})
             try:
-                attempts = [send_on_demand(short, call_id, body)]
-                if attempts[-1][0] != 200:
-                    # One identical re-send after a delay, then the attempt ends (preregistered).
-                    save(turn_dir / "resend", {"utc": utc(), "first_status": attempts[-1][0]})
-                    time.sleep(RESEND_DELAY_SECONDS)
-                    attempts.append(send_on_demand(short, call_id + "_resend", body))
-            except Censored as stop:
-                save(tdir(args.phase, short, board["id"]) / "censored.json", {"utc": utc(), "turn": k, "guard": json.loads(str(stop))})
+                attempts = [send_on_demand(short, call_id, body, turn_dir, 1)]
+            except Censored as stop:  # nothing was sent for this turn
+                save(marker, {"utc": utc(), "turn": k, "guard": json.loads(str(stop))})
                 print(json.dumps({"event": "censored_budget", "trajectory": tid_for(short, board["id"]), "turn": k}), flush=True)
                 return
-            record_turn(args.phase, short, board, k, body, attempts, {"route": "on_demand"})
+            extra = {"route": "on_demand"}
+            if attempts[-1][0] != 200:
+                # One identical re-send after a delay, then the attempt ends (preregistered).
+                save(turn_dir / "resend", {"utc": utc(), "first_status": attempts[-1][0]})
+                time.sleep(RESEND_DELAY_SECONDS)
+                try:
+                    attempts.append(send_on_demand(short, call_id + "_resend", body, turn_dir, 2))
+                except Censored as stop:
+                    extra["resend_censored"] = json.loads(str(stop))
+            record_turn(args.phase, short, board, k, body, attempts, extra)
+            if "resend_censored" in extra:
+                save(marker, {"utc": utc(), "turn": k, "guard": extra["resend_censored"], "after_failed_first_attempt": True})
+                return
 
 
 # ---------------------------------------------------------------- batch rounds (GPT-5.6 Sol)
@@ -460,6 +492,13 @@ def batch_rounds(args):
     assert MODELS[short]["route"] == "batch"
     boards = plan_boards(args.phase)
     rounds_dir = out(args.phase) / "batch-rounds" / short
+    if (rounds_dir / "censored.json").exists():
+        if not args.resume_censored:
+            raise SystemExit("Batch rounds were censored by the budget guard; rerun with --resume-censored to continue")
+        (rounds_dir / "censored.json").rename(rounds_dir / f"censored-resumed-{utc().replace(':', '')}.json")
+    for rdir in sorted(rounds_dir.glob("round-*")) if rounds_dir.exists() else []:
+        if (rdir / "submitting.json").exists() and not (rdir / "submission.json").exists():
+            raise SystemExit(f"{rdir.name}: submission outcome unknown; reconcile with --batch-id before continuing")
     round_no = len(list(rounds_dir.glob("round-*"))) if rounds_dir.exists() else 0
     # A submitted but unsettled round is resumed, never resubmitted.
     while True:
@@ -479,55 +518,80 @@ def batch_rounds(args):
         if not pending:
             print(json.dumps({"event": "batch_rounds_complete", "model": short, "rounds": round_no}), flush=True)
             return
-        round_no += 1
-        rdir = rounds_dir / f"round-{round_no:02d}"
         requests, members = [], []
         for board, nxt in pending:
             if nxt is None:
                 # Turn submitted earlier whose batch item failed: re-send once with the identical body.
-                turn = len(load_state(args.phase, short, board)[2]) + 1
-                turn_dir = tdir(args.phase, short, board["id"]) / f"turn-{turn:02d}"
-                body = read(turn_dir / "request.json")
-                k = turn
+                k = len(load_state(args.phase, short, board)[2]) + 1
+                body = read(tdir(args.phase, short, board["id"]) / f"turn-{k:02d}" / "request.json")
             else:
                 k, body = nxt["k"], nxt["body"]
-                turn_dir = tdir(args.phase, short, board["id"]) / f"turn-{k:02d}"
-                save(turn_dir / "request.json", body)  # started.json is written only after a successful submission
+                save(tdir(args.phase, short, board["id"]) / f"turn-{k:02d}" / "request.json", body)  # started.json only after submission
             item = dict(body)
             item.pop("model")
             custom_id = f"{tid_for(short, board['id'])}_t{k:02d}" + ("_resend" if nxt is None else "")
             requests.append({"custom_id": custom_id, "body": item})
             members.append({"custom_id": custom_id, "board_id": board["id"], "turn": k, "resend": nxt is None})
+        name = f"traj-batch-{short}-{args.phase}-r{round_no + 1:02d}"
         reserve = batch_round_reserve(short, requests)
-        ok, state = C.guard(reserve)
+        ok, state = C.reserve(name, reserve, {"members": len(members)}, hold_for_legacy=True)
         if not ok:
-            save(rdir / "censored.json", {"utc": utc(), "guard": state, "members": members})
-            print(json.dumps({"event": "censored_budget", "model": short, "round": round_no, **state}), flush=True)
+            save(rounds_dir / "censored.json", {"utc": utc(), "guard": state, "members": members})
+            print(json.dumps({"event": "censored_budget", "model": short, "round": round_no + 1, **state}), flush=True)
             return
+        round_no += 1
+        rdir = rounds_dir / f"round-{round_no:02d}"
         payload = {"endpoint": "/v1/chat/completions", "model": MODELS[short]["model"], "provider": MODELS[short]["batch_provider"],
                    "completion_window": "24h", "requests": requests}
         save(rdir / "payload.json", payload)
         save(rdir / "members.json", members)
-        status, body = C.broker("POST", "/api/v1/batches", payload, timeout=180)
+        save(rdir / "submitting.json", {"utc": utc(), "reserve": name})
+        try:
+            status, body = C.broker("POST", "/api/v1/batches", payload, timeout=180)
+        except (OSError, http.client.HTTPException) as error:
+            raise SystemExit(f"Round {round_no}: submission outcome unknown ({type(error).__name__}); reconcile before continuing")
         save(rdir / "submission-response.json", {"http_status": status, "body": body})
         batch_id = (body.get("id") or (body.get("data") or {}).get("id")) if isinstance(body, dict) else None
         if status not in (200, 201, 202) or not batch_id:
+            if status is not None and 400 <= status < 500:  # certainly not accepted
+                C.release(name, f"HTTP {status} rejection at submit")
+                save(rounds_dir / f"rejected-round-{round_no:02d}.json", {"http_status": status, "body": body, "utc": utc()})
+                shutil.rmtree(rdir)
             raise SystemExit(f"Round {round_no} submission failed: HTTP {status}")
-        C.register_reserve(f"traj-batch-{short}-{args.phase}-r{round_no:02d}", reserve, {"batch_id": batch_id})
-        for member in members:
-            turn_dir = tdir(args.phase, short, member["board_id"]) / f"turn-{member['turn']:02d}"
-            if member["resend"]:
-                save(turn_dir / "resend", {"utc": utc(), "round": round_no})
-            else:
-                save(turn_dir / "started.json", {"started_utc": utc(), "round": round_no, "batch_id": batch_id,
-                                                 "request_sha256": sha((turn_dir / "request.json").read_bytes())})
-        save(rdir / "submission.json", {"batch_id": batch_id, "submitted_utc": utc(), "requests": len(requests), "reserve_usd": reserve})
-        print(json.dumps({"event": "round_submitted", "round": round_no, "requests": len(requests), "batch_id": batch_id}), flush=True)
+        attach_round(args.phase, short, rdir, round_no, batch_id, members, reserve)
         settle_round(args.phase, short, rdir, boards)
 
 
+def attach_round(phase, short, rdir, round_no, batch_id, members, reserve):
+    for member in members:
+        turn_dir = tdir(phase, short, member["board_id"]) / f"turn-{member['turn']:02d}"
+        if member["resend"]:
+            save(turn_dir / "resend", {"utc": utc(), "round": round_no})
+        else:
+            save(turn_dir / "started.json", {"started_utc": utc(), "round": round_no, "batch_id": batch_id,
+                                             "request_sha256": sha((turn_dir / "request.json").read_bytes())})
+    save(rdir / "submission.json", {"batch_id": batch_id, "submitted_utc": utc(), "requests": len(members), "reserve_usd": reserve})
+    if (rdir / "submitting.json").exists():
+        (rdir / "submitting.json").unlink()
+    print(json.dumps({"event": "round_submitted", "round": round_no, "requests": len(members), "batch_id": batch_id}), flush=True)
+
+
+def reconcile_round(args):
+    """Attach a round whose submission outcome was unknown, once its batch id is found in the account's batch list."""
+    rounds_dir = out(args.phase) / "batch-rounds" / args.model
+    rdir = next(r for r in sorted(rounds_dir.glob("round-*")) if (r / "submitting.json").exists() and not (r / "submission.json").exists())
+    if not args.batch_id:
+        status, body = C.broker("GET", "/api/v1/batches", timeout=120)
+        items = (body.get("data") if isinstance(body, dict) else None) or []
+        print(json.dumps([{k: i.get(k) for k in ("id", "model", "status", "created_at", "request_counts")} for i in items][:20], indent=1))
+        return
+    name = read(rdir / "submitting.json")["reserve"]
+    attach_round(args.phase, args.model, rdir, int(rdir.name.split("-")[1]), args.batch_id, read(rdir / "members.json"),
+                 read(C.OUT / "reserves" / f"{name}.json")["reserve_usd"])
+
+
 def batch_round_reserve(short, requests):
-    """Per request: the worst case, or 3x the mean reported cost of earlier turns of this model if lower."""
+    """Per request: the worst case, or 3x the mean cost of earlier turns of this model if lower."""
     costs = [read(p).get("cost_usd") for p in OUT_ROOT.glob(f"*/trajectories/*_{short}/turn-*/metadata.json")]
     costs = [c for c in costs if isinstance(c, (int, float)) and c > 0]
     mean = sum(costs) / len(costs) if costs else None
@@ -552,12 +616,14 @@ def settle_round(phase, short, rdir, boards):
         board = by_id[member["board_id"]]
         k = member["turn"]
         turn_dir = tdir(phase, short, board["id"]) / f"turn-{k:02d}"
+        prior = turn_dir / "batch-attempt1.json"
+        if (turn_dir / "metadata.json").exists() or (not member["resend"] and prior.exists() and read(prior)["round"] == rdir.name):
+            continue  # already settled by an interrupted earlier pass over this round
         request = read(turn_dir / "request.json")
         item = results.get(custom_id) or {}
         response = item.get("response") or {}
         status_code = response.get("status_code") if response else None
         reply = response.get("body") if response else {"error": item.get("error") or {"type": "missing_result", "batch_status": state}}
-        prior = turn_dir / "batch-attempt1.json"
         if member["resend"]:
             first = read(prior)
             attempts = [(first["status"], first["response"], None), (status_code, reply, None)]
@@ -567,8 +633,10 @@ def settle_round(phase, short, rdir, boards):
         else:
             save(prior, {"status": status_code, "response": reply, "round": rdir.name})
             print(json.dumps({"event": "batch_item_failed", "custom_id": custom_id, "status": status_code}), flush=True)
-    save(rdir / "settled.json", {"settled_utc": utc(), "status": state, "usage": data.get("usage")})
-    C.settle_reserve(f"traj-batch-{short}-{phase}-{rdir.name.replace('round-', 'r')}")
+    usage = data.get("usage") or {}
+    save(rdir / "settled.json", {"settled_utc": utc(), "status": state, "usage": usage})
+    C.settle(f"traj-batch-{short}-{phase}-{rdir.name.replace('round-', 'r')}",
+             usage.get("cost") if isinstance(usage.get("cost"), (int, float)) else None, f"batch {sub['batch_id']} usage.cost")
 
 
 # ---------------------------------------------------------------- audit and projection
@@ -576,7 +644,9 @@ def settle_round(phase, short, rdir, boards):
 def trajectory_summary(phase, short, board):
     messages, placed, turns, ended = load_state(phase, short, board)
     directory = tdir(phase, short, board["id"])
-    if (directory / "censored.json").exists() and not ended:
+    if not ended and ((directory / "censored.json").exists() or (out(phase) / "batch-rounds" / short / "censored.json").exists()):
+        ended = "censored_budget"
+    if any("resend_censored" in t for t in turns):
         ended = "censored_budget"
     solution = oracle(board)
     final_columns = None
@@ -613,12 +683,14 @@ def project(args):
     pilot = read(out("pilot") / "summary.json")
     per_model_5 = {r["short"]: r["cost_usd"] for r in pilot["trajectories"]}
     block = sum(PROJECTION_SAFETY * per_model_5[s] * (size / 5) ** 2 for s in MODELS for size in (5, 7, 9))
-    ok, state = C.guard(0)
-    room = state["cap_usd"] - state["spent_usd"] - state["reserves_usd"]
+    state = C.state()
+    held = C.legacy_outstanding()
+    room = state["cap_usd"] - state["spent_usd"] - state["reserves_usd"] - held
     k = max(0, min(MAX_BLOCKS, int(room // block))) if block > 0 else MAX_BLOCKS
     if k >= 4:
         k -= k % 4  # runs of four blocks are stratum-balanced within each size
     result = {"utc": utc(), "pilot_cost_per_model_5x5": per_model_5, "projected_block_usd": round(block, 4), "room_usd": round(room, 4),
+              "held_for_legacy_panel_usd": round(held, 4), "ledger": state,
               "blocks": k, "rule": "K = min(12, floor(room / projected block)), rounded down to a multiple of 4 when K >= 4; projected board cost = 1.5 x pilot 5x5 cost x (N/5)^2"}
     save(OUT_ROOT / "projection.json", result)
     print(json.dumps(result))
@@ -626,12 +698,15 @@ def project(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["prepare", "run", "batch-rounds", "audit", "project"])
+    parser.add_argument("mode", choices=["prepare", "run", "batch-rounds", "reconcile-round", "audit", "project"])
     parser.add_argument("--phase", choices=["pilot", "main"], default="pilot")
     parser.add_argument("--model", choices=list(MODELS))
     parser.add_argument("--blocks", type=int)
+    parser.add_argument("--batch-id")
+    parser.add_argument("--resume-censored", action="store_true")
     args = parser.parse_args()
-    {"prepare": prepare, "run": run, "batch-rounds": batch_rounds, "audit": audit, "project": project}[args.mode](args)
+    {"prepare": prepare, "run": run, "batch-rounds": batch_rounds, "reconcile-round": reconcile_round, "audit": audit,
+     "project": project}[args.mode](args)
 
 
 if __name__ == "__main__":

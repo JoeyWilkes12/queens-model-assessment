@@ -2,10 +2,20 @@
 
 Both the earlier-generation panel (scripts/llm_panel/legacy_panel.py) and the
 frontier one-queen-at-a-time trajectories (scripts/llm_trajectories/sequential.py)
-spend from one campaign. Spend is read from the key's usage counter against a
-baseline recorded once, before any request of the campaign. Only the numeric
-fields `usage`, `limit` and `limit_remaining` are ever read from /api/v1/key;
-no other field of that response is stored, printed or logged.
+spend from one campaign. Spend so far is the larger of two numbers:
+
+  * the key's usage counter minus a baseline recorded once, before any request;
+  * the costs recorded locally for every settled call or batch.
+
+The key counter lags by minutes, and batch items carry no per-item cost, so the
+local record covers spend the counter has not shown yet. A call whose cost is
+unknown (for example a client timeout) is recorded at its worst case.
+
+Before a call or batch is sent, its worst case (or reserve) is registered under a
+file lock, so parallel processes see each other's commitments. When it settles,
+the reserve is replaced by the cost. Only the numeric fields `usage`, `limit` and
+`limit_remaining` are read from /api/v1/key; no other field of that response is
+stored, printed or logged.
 
 Requests go through the local broker socket, which holds the key in its own
 memory. Nothing here reads, stores or prints a credential.
@@ -14,6 +24,8 @@ memory. Nothing here reads, stores or prints a credential.
     python3 scripts/openrouter/campaign.py status
 """
 import argparse
+import contextlib
+import fcntl
 import http.client
 import json
 import pathlib
@@ -28,6 +40,7 @@ CAMPAIGN = "2026-10-17-openrouter-follow-ups"
 # The cap keeps a margin for the usage counter's reporting lag (observed $0.5-1).
 CAMPAIGN_CAP_USD = 18.75
 LEGACY_SUBCAP_USD = 10.50
+LEGACY_MANIFEST = ROOT / "output/legacy-panel/manifest.json"
 
 
 def utc():
@@ -41,7 +54,9 @@ def read(path):
 def save(path, obj):
     path = pathlib.Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n")
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n")
+    tmp.replace(path)
 
 
 class _Broker(http.client.HTTPConnection):
@@ -87,41 +102,97 @@ def baseline():
     raise SystemExit("No campaign baseline; run `campaign.py baseline` before any request")
 
 
+@contextlib.contextmanager
+def lock():
+    OUT.mkdir(parents=True, exist_ok=True)
+    with open(OUT / "ledger.lock", "w") as handle:
+        fcntl.flock(handle, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(handle, fcntl.LOCK_UN)
+
+
+def _items(kind, prefix=""):
+    directory = OUT / kind
+    return [read(p) for p in sorted(directory.glob(f"{prefix}*.json"))] if directory.exists() else []
+
+
+def recorded_costs(prefix=""):
+    return sum(item["usd"] for item in _items("costs", prefix))
+
+
+def reserves(prefix=""):
+    """Unsettled reserves (in-flight calls, submitted batches)."""
+    return sum(item["reserve_usd"] for item in _items("reserves", prefix) if not item.get("settled"))
+
+
 def spent():
-    """New spend since the campaign baseline, from the key's usage counter."""
-    return key_numbers()["usage"] - baseline()["usage_usd"]
+    """New spend: the larger of the key counter delta and the locally recorded costs."""
+    return max(key_numbers()["usage"] - baseline()["usage_usd"], recorded_costs())
 
 
-def reserves():
-    """Unsettled reserves registered by either study (batch submissions, in-flight calls)."""
-    total = 0.0
-    for path in sorted((OUT / "reserves").glob("*.json")) if (OUT / "reserves").exists() else []:
-        item = read(path)
-        if not item.get("settled"):
-            total += item["reserve_usd"]
-    return total
+def legacy_complete():
+    if not LEGACY_MANIFEST.exists():
+        return False
+    schedule = read(LEGACY_MANIFEST)["schedule"]
+    return all((LEGACY_MANIFEST.parent / "raw" / c["call_id"] / "metadata.json").exists() for c in schedule)
 
 
-def register_reserve(name, reserve_usd, detail):
-    save(OUT / "reserves" / f"{name}.json", {"name": name, "reserve_usd": reserve_usd, "detail": detail,
-                                             "registered_utc": utc(), "settled": False})
+def legacy_committed():
+    return recorded_costs("legacy-") + reserves("legacy-")
 
 
-def settle_reserve(name):
-    path = OUT / "reserves" / f"{name}.json"
-    if path.exists():
-        item = read(path)
-        item.update(settled=True, settled_utc=utc())
-        save(path, item)
+def legacy_outstanding():
+    """Budget held back for the earlier-generation panel until all of its calls are recorded."""
+    return 0.0 if legacy_complete() else max(0.0, LEGACY_SUBCAP_USD - legacy_committed())
 
 
-def guard(next_worst_case_usd, cap_usd=CAMPAIGN_CAP_USD):
-    """Spend so far + unsettled reserves + the next worst case must stay within the cap."""
-    so_far = spent()
-    held = reserves()
-    ok = so_far + held + next_worst_case_usd <= cap_usd
-    return ok, {"spent_usd": round(so_far, 6), "reserves_usd": round(held, 6),
-                "next_worst_case_usd": round(next_worst_case_usd, 6), "cap_usd": cap_usd}
+def state(next_usd=0.0, cap_usd=CAMPAIGN_CAP_USD):
+    so_far, held = spent(), reserves()
+    return {"spent_usd": round(so_far, 6), "reserves_usd": round(held, 6), "next_usd": round(next_usd, 6),
+            "cap_usd": cap_usd, "ok": so_far + held + next_usd <= cap_usd}
+
+
+def reserve(name, amount_usd, detail, legacy=False, hold_for_legacy=False):
+    """Atomically check the cap(s) and register a reserve. Returns (ok, state)."""
+    with lock():
+        current = state(amount_usd)
+        if legacy:
+            current["legacy_committed_usd"] = round(legacy_committed(), 6)
+            current["legacy_subcap_usd"] = LEGACY_SUBCAP_USD
+            current["ok"] = current["ok"] and legacy_committed() + amount_usd <= LEGACY_SUBCAP_USD
+        if hold_for_legacy:
+            held = legacy_outstanding()
+            current["legacy_outstanding_usd"] = round(held, 6)
+            current["ok"] = current["ok"] and current["spent_usd"] + current["reserves_usd"] + held + amount_usd <= CAMPAIGN_CAP_USD
+        if current["ok"]:
+            save(OUT / "reserves" / f"{name}.json", {"name": name, "reserve_usd": amount_usd, "detail": detail,
+                                                     "registered_utc": utc(), "settled": False})
+        return current["ok"], current
+
+
+def settle(name, cost_usd, source):
+    """Replace a reserve by its cost. cost_usd None means unknown: the reserve itself is recorded as spent."""
+    with lock():
+        path = OUT / "reserves" / f"{name}.json"
+        item = read(path) if path.exists() else {"name": name, "reserve_usd": 0.0}
+        usd = item["reserve_usd"] if cost_usd is None else float(cost_usd)
+        save(OUT / "costs" / f"{name}.json", {"name": name, "usd": usd, "source": source if cost_usd is not None else f"{source}; cost unknown, worst case recorded",
+                                              "recorded_utc": utc()})
+        if path.exists():
+            item.update(settled=True, settled_utc=utc())
+            save(path, item)
+
+
+def release(name, why):
+    """Drop a reserve for a request that was certainly never accepted (an explicit 4xx rejection)."""
+    with lock():
+        path = OUT / "reserves" / f"{name}.json"
+        if path.exists():
+            item = read(path)
+            item.update(settled=True, settled_utc=utc(), released=why)
+            save(path, item)
 
 
 def main():
@@ -139,9 +210,10 @@ def main():
         print(json.dumps({"baseline_recorded": True, "limit_remaining_usd": numbers["limit_remaining"]}))
     else:
         numbers = key_numbers()
-        print(json.dumps({"spent_usd": round(numbers["usage"] - baseline()["usage_usd"], 6),
-                          "reserves_usd": round(reserves(), 6), "limit_remaining_usd": numbers["limit_remaining"],
-                          "cap_usd": CAMPAIGN_CAP_USD}))
+        print(json.dumps({"key_delta_usd": round(numbers["usage"] - baseline()["usage_usd"], 6),
+                          "recorded_costs_usd": round(recorded_costs(), 6), "reserves_usd": round(reserves(), 6),
+                          "legacy_committed_usd": round(legacy_committed(), 6), "legacy_complete": legacy_complete(),
+                          "limit_remaining_usd": numbers["limit_remaining"], "cap_usd": CAMPAIGN_CAP_USD}))
 
 
 if __name__ == "__main__":

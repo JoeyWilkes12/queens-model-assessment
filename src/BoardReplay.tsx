@@ -36,13 +36,15 @@ export type BoardReplayProps = {
   compact?: boolean
   /** Optional label rendered above the title, e.g. the model and board. */
   eyebrow?: string
+  /** Outcome names for replays whose states are not model decisions. */
+  toneLabels?: Partial<Record<FrameTone, string>>
 }
 
 const PLAYBACK_MILLISECONDS = 1800
 const CELL_SIZE = 42
 const AXIS_SIZE = 22
 
-const toneLabels: Record<FrameTone, string> = {
+const defaultToneLabels: Record<FrameTone, string> = {
   start: 'Start',
   choice: 'Model choice',
   forced: 'Forced by harness',
@@ -89,7 +91,7 @@ function useReducedMotion() {
 }
 
 /** A read-only view of saved states. It never fills missing cells or searches. */
-export function BoardReplay({ regions, frames, title, description, allowPlayback = true, compact = false, eyebrow }: BoardReplayProps) {
+export function BoardReplay({ regions, frames, title, description, allowPlayback = true, compact = false, eyebrow, toneLabels }: BoardReplayProps) {
   const id = useId()
   const rootRef = useRef<HTMLElement>(null)
   const reducedMotion = useReducedMotion()
@@ -99,6 +101,7 @@ export function BoardReplay({ regions, frames, title, description, allowPlayback
   const index = sameData ? Math.min(position.index, Math.max(0, frames.length - 1)) : 0
   const playing = sameData && position.playing && allowPlayback && !reducedMotion
   const frame = frames[index]
+  const toneNames = { ...defaultToneLabels, ...toneLabels }
   const size = regions.length
   const validBoard = size > 0 && regions.every(row => row.length === size && row.every(region => typeof region === 'string' && region.length > 0))
   const regionNames = useMemo(() => [...new Set(regions.flat())], [regions])
@@ -242,7 +245,7 @@ export function BoardReplay({ regions, frames, title, description, allowPlayback
           </div>
           <div className="board-replay-state">
             <div className="board-replay-current" aria-live="polite" aria-atomic="true">
-              <span className="board-replay-frame-number">State {index + 1} of {frames.length}{frame.tone ? <> · <span className={`board-replay-tone board-replay-tone--${frame.tone}`}>{toneLabels[frame.tone]}</span></> : null}</span>
+              <span className="board-replay-frame-number">State {index + 1} of {frames.length}{frame.tone ? <> · <span className={`board-replay-tone board-replay-tone--${frame.tone}`}>{toneNames[frame.tone]}</span></> : null}</span>
               <h4>{frame.label}</h4>
               <p>{frame.note}</p>
             </div>

@@ -193,14 +193,27 @@ def record(call, body, status, elapsed, extra, directory=None):
             "returned_model": body.get("model") if isinstance(body, dict) else None,
             "provider": body.get("provider") if isinstance(body, dict) else None,
             "generation_id": body.get("id") if isinstance(body, dict) else None,
-            "finish_reason": finish, "usage": usage,
-            "cost_usd": (usage or {}).get("cost") if isinstance(usage, dict) else None,
+            "finish_reason": finish, "usage": usage, **item_cost(call, usage, extra),
             "response_sha256": sha(json.dumps(body, sort_keys=True).encode()), **extra}
     save(directory / "grade.json", strict)
     save(directory / "diagnostic.json", diagnostic)
     save(directory / "metadata.json", meta)
     print(json.dumps({"event": "recorded", "call_id": call["call_id"], "status": status, "strict_correct": strict.get("correct"),
                       "written_correct": diagnostic.get("rule_valid_after_extraction"), "cost": meta["cost_usd"]}), flush=True)
+
+
+def item_cost(call, usage, extra):
+    """Reported cost; for batch items (no per-item cost) tokens x batch price, which reproduces batch totals."""
+    usage = usage if isinstance(usage, dict) else {}
+    if isinstance(usage.get("cost"), (int, float)):
+        return {"cost_usd": usage["cost"], "cost_source": "usage.cost"}
+    if "batch_id" in extra:
+        prompt = usage.get("prompt_tokens", usage.get("input_tokens"))
+        completion = usage.get("completion_tokens", usage.get("output_tokens"))
+        if isinstance(prompt, int) and isinstance(completion, int):
+            ip, op = MODELS[call["short"]]["batch_prices"]
+            return {"cost_usd": round(prompt * ip + completion * op, 9), "cost_source": "tokens x batch price (batch items report no per-item cost)"}
+    return {"cost_usd": None, "cost_source": "not reported"}
 
 
 # ---------------------------------------------------------------- batch
@@ -226,15 +239,16 @@ def batch_submit(args):
     manifest = read(OUT / "manifest.json")
     if (batch_dir(short) / "submission.json").exists():
         raise SystemExit("Batch already submitted for " + short)
+    if (batch_dir(short) / "submitting.json").exists():
+        raise SystemExit("An earlier submission's outcome is unknown; reconcile it (--batch-id) before resubmitting")
     calls = [c for c in manifest["schedule"] if c["short"] == short and c["route"] == "batch"]
     if not calls:
         raise SystemExit("No batch-route calls for " + short)
     reserve = len(calls) * MODELS[short]["mean_cost"] * 0.5 * BATCH_RESERVE_FACTOR
-    ok_total, state_total = C.guard(reserve)
-    legacy = legacy_committed()
-    if not ok_total or legacy + reserve > C.LEGACY_SUBCAP_USD:
-        raise SystemExit("Cap would be exceeded: " + json.dumps({"campaign": state_total, "legacy_committed_usd": round(legacy, 6),
-                                                                 "reserve_usd": reserve, "legacy_subcap_usd": C.LEGACY_SUBCAP_USD}))
+    name = f"legacy-batch-{short}"
+    ok, state = C.reserve(name, reserve, {"study": STUDY, "requests": len(calls)}, legacy=True)
+    if not ok:
+        raise SystemExit("Cap would be exceeded: " + json.dumps(state))
     requests = []
     for call in calls:
         path = OUT / "requests" / f"{call['call_id']}.json"
@@ -247,28 +261,46 @@ def batch_submit(args):
                "completion_window": "24h", "requests": requests}  # requests serialized last, as the API requires
     attempt = len(list(batch_dir(short).glob("submission-response-attempt*.json"))) + 1 if batch_dir(short).exists() else 1
     save(batch_dir(short) / f"payload-attempt{attempt}.json", payload)
-    status, body = C.broker("POST", "/api/v1/batches", payload, timeout=180)
+    save(batch_dir(short) / "submitting.json", {"utc": utc(), "attempt": attempt, "shape": args.shape})
+    try:
+        status, body = C.broker("POST", "/api/v1/batches", payload, timeout=180)
+    except (OSError, http.client.HTTPException) as error:
+        # The server may have accepted it: keep the reserve and the marker until reconciled.
+        raise SystemExit(f"Submission outcome unknown ({type(error).__name__}); reconcile with --batch-id or the batch list")
     save(batch_dir(short) / f"submission-response-attempt{attempt}.json", {"http_status": status, "body": body})
     batch_id = (body.get("id") or (body.get("data") or {}).get("id")) if isinstance(body, dict) else None
     if status not in (200, 201, 202) or not batch_id:
         print(json.dumps({"event": "batch_rejected", "model": short, "status": status, "attempt": attempt,
                           "error": (body.get("error") if isinstance(body, dict) else None)}))
+        if status is not None and 400 <= status < 500:
+            C.release(name, f"HTTP {status} rejection at submit")  # certainly not accepted
+            (batch_dir(short) / "submitting.json").unlink()
         raise SystemExit(1)
-    C.register_reserve(f"legacy-batch-{short}", reserve, {"study": STUDY, "batch_id": batch_id, "requests": len(requests)})
-    save(batch_dir(short) / "submission.json", {"batch_id": batch_id, "submitted_utc": utc(), "http_status": status, "shape": args.shape,
+    attach(short, batch_id, args.shape, endpoint, len(requests), reserve, attempt, status)
+
+
+def attach(short, batch_id, shape, endpoint, requests, reserve, attempt, status):
+    save(batch_dir(short) / "submission.json", {"batch_id": batch_id, "submitted_utc": utc(), "http_status": status, "shape": shape,
                                                 "endpoint": endpoint, "provider_only": MODELS[short]["batch_provider"],
-                                                "requests": len(requests), "provisional_reserve_usd": reserve, "attempt": attempt})
-    print(json.dumps({"event": "batch_submitted", "model": short, "batch_id": batch_id, "requests": len(requests), "status": status}))
+                                                "requests": requests, "provisional_reserve_usd": reserve, "attempt": attempt})
+    marker = batch_dir(short) / "submitting.json"
+    if marker.exists():
+        marker.unlink()
+    print(json.dumps({"event": "batch_submitted", "model": short, "batch_id": batch_id, "requests": requests, "status": status}))
 
 
-def legacy_committed():
-    """Reported cost of recorded legacy calls plus unsettled legacy batch reserves (for the legacy sub-cap)."""
-    held = 0.0
-    for path in (C.OUT / "reserves").glob("legacy-*.json") if (C.OUT / "reserves").exists() else []:
-        item = read(path)
-        if not item.get("settled"):
-            held += item["reserve_usd"]
-    return legacy_reported_total() + held
+def reconcile(args):
+    """Attach a batch whose submission outcome was unknown (found in the account's batch list)."""
+    short = args.model
+    marker = read(batch_dir(short) / "submitting.json")
+    if not args.batch_id:
+        status, body = C.broker("GET", "/api/v1/batches", timeout=120)
+        items = (body.get("data") if isinstance(body, dict) else None) or []
+        print(json.dumps([{k: i.get(k) for k in ("id", "model", "status", "created_at", "request_counts")} for i in items][:20], indent=1))
+        return
+    reserve = read(C.OUT / "reserves" / f"legacy-batch-{short}.json")["reserve_usd"]
+    attach(short, args.batch_id, marker["shape"], "/v1/messages" if marker["shape"] == "messages" else "/v1/chat/completions",
+           sum(c["short"] == short for c in read(OUT / "manifest.json")["schedule"]), reserve, marker["attempt"], None)
 
 
 def batch_poll(args):
@@ -289,16 +321,22 @@ def batch_poll(args):
         by_id = {c["call_id"]: c for c in manifest["schedule"] if c["short"] == short}
         for item in data.get("results") or []:
             call = by_id.get(item.get("custom_id"))
-            if not call:
+            if not call or (OUT / "raw" / call["call_id"] / "metadata.json").exists():
                 continue
             response = item.get("response") or {}
             record(call, response.get("body") if response else {"error": item.get("error")},
                    response.get("status_code") if response else None, None,
                    {"batch_id": sub["batch_id"], "batch_request_id": response.get("request_id"), "batch_error": item.get("error"),
                     "batch_shape": sub.get("shape", "chat")})
-        save(batch_dir(short) / "settled.json", {"settled_utc": utc(), "status": state, "usage": data.get("usage"),
+        for call in by_id.values():  # submitted but absent from the results: no answer
+            if not (OUT / "raw" / call["call_id"] / "metadata.json").exists():
+                record(call, {"error": {"type": "missing_from_batch_results", "batch_status": state}}, None, None,
+                       {"batch_id": sub["batch_id"], "batch_shape": sub.get("shape", "chat")})
+        usage = data.get("usage") or {}
+        save(batch_dir(short) / "settled.json", {"settled_utc": utc(), "status": state, "usage": usage,
                                                  "error": data.get("error"), "provider": data.get("provider")})
-        C.settle_reserve(f"legacy-batch-{short}")
+        C.settle(f"legacy-batch-{short}", usage.get("cost") if isinstance(usage.get("cost"), (int, float)) else None,
+                 f"batch {sub['batch_id']} usage.cost")
 
 
 # ---------------------------------------------------------------- on-demand fallback
@@ -309,6 +347,8 @@ def fallback(args):
     manifest = read(OUT / "manifest.json")
     if (batch_dir(short) / "submission.json").exists() and not (batch_dir(short) / "settled.json").exists():
         raise SystemExit("A batch for this model is still open")
+    if (batch_dir(short) / "submitting.json").exists():
+        raise SystemExit("A submission outcome is unknown; reconcile it first")
     if not args.reason:
         raise SystemExit("--reason is required; it is recorded in the amendment")
     spec = MODELS[short]
@@ -343,9 +383,9 @@ def run(args):
             raise SystemExit("Incomplete call exists; no automatic retry: " + call["call_id"])
         if args.limit is not None and done >= args.limit:
             break
-        ok, state = C.guard(call["worst_case_usd"])
-        ok_legacy = legacy_committed() + call["worst_case_usd"] <= C.LEGACY_SUBCAP_USD
-        if not (ok and ok_legacy):
+        name = f"legacy-call-{call['call_id']}"
+        ok, state = C.reserve(name, call["worst_case_usd"], {"call_id": call["call_id"]}, legacy=True)
+        if not ok:
             print(json.dumps({"event": "cap_stop", **state}))
             break
         request_path = OUT / "requests" / f"{call['call_id']}.json"
@@ -367,11 +407,10 @@ def run(args):
         finally:
             signal.alarm(0)
         record(call, response, status, time.monotonic() - start, extra)
+        cost = ((response.get("usage") or {}).get("cost") if isinstance(response, dict) else None)
+        # A reply without a reported cost: an HTTP error body costs nothing; a timeout's cost is unknown (worst case kept).
+        C.settle(name, cost if isinstance(cost, (int, float)) else (0.0 if status is not None else None), f"on-demand {call['call_id']}")
         done += 1
-
-
-def legacy_reported_total():
-    return sum((read(p).get("cost_usd") or 0) for p in (OUT / "raw").glob("*/metadata.json")) if (OUT / "raw").exists() else 0.0
 
 
 # ---------------------------------------------------------------- audit
@@ -421,13 +460,14 @@ def audit(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["freeze", "batch-submit", "batch-poll", "fallback", "run", "audit"])
+    parser.add_argument("mode", choices=["freeze", "batch-submit", "batch-poll", "reconcile", "fallback", "run", "audit"])
+    parser.add_argument("--batch-id")
     parser.add_argument("--model", choices=list(MODELS))
     parser.add_argument("--shape", choices=["chat", "messages"], default="chat")
     parser.add_argument("--reason")
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
-    {"freeze": freeze, "batch-submit": batch_submit, "batch-poll": batch_poll, "fallback": fallback, "run": run,
+    {"freeze": freeze, "batch-submit": batch_submit, "batch-poll": batch_poll, "reconcile": reconcile, "fallback": fallback, "run": run,
      "audit": audit}[args.mode](args)
 
 

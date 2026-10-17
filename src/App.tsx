@@ -7,6 +7,7 @@ import { FailureComparison } from './FailureComparison'
 import { deriveFailureComparison } from './failureComparisonData'
 import { SubQAssessment } from './SubQAssessment'
 import { DecisionModels } from './DecisionModels'
+import { GreedyRule } from './GreedyRule'
 import { MethodsCritique } from './MethodsCritique'
 import { FeaturedReplays } from './FeaturedReplays'
 import { Scoreboard } from './Scoreboard'
@@ -96,6 +97,7 @@ const routes: Route[] = [
   { path: 'scale-primitives', title: 'Scale & primitives', section: 'The Jev question', description: 'Larger menus, Noul, Score, and held-out boards.' },
   { path: 'jev-trajectories', title: 'Jev trajectories', section: 'The Jev question', description: 'Empty-board placement, restarts, repeatability, and batching.' },
   { path: 'decision-models', title: 'Decision models vs the index', section: 'Decision models', description: 'Jev, SubQ and OpenAI Decisions against the Artificial Analysis Decision Index.' },
+  { path: 'greedy-rule', title: 'Greedy rule baseline', section: 'Decision models', description: 'The no-model rule behind the 80/192 baseline, step by step.' },
   { path: 'subq-assessment', title: 'SubQ Snap replay', section: 'Decision models', description: 'Historical Jev tasks, deterministic results, and every SubQ receipt.' },
   { path: 'evidence-atlas', title: 'Evidence atlas', section: 'Receipts', description: 'Search sanitized requests, outputs, and metadata.' },
   { path: 'methods-sources', title: 'Methods & sources', section: 'Receipts', description: 'Definitions, limits, and primary links.' },
@@ -1075,6 +1077,7 @@ function App() {
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
+                : active === 'greedy-rule' ? <GreedyRule ui={bookUi} />
                 : active === 'openai-decisions-plan' ? <DecisionModels ui={bookUi} focusSection="openai-plan" />
                 : active === 'methods-critique' ? <MethodsCritique ui={bookUi} />
                 : active === 'evidence-atlas' ? <EvidenceExplorer selectedId={selectedId} />

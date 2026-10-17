@@ -15,16 +15,7 @@
       "message": {
         "role": "assistant",
         "content": "{\"board_id\":\"panel-5-42\",\"columns_by_row\":[5,2,4,1,3]}",
-        "refusal": null,
-        "reasoning_details": [
-          {
-            "type": "reasoning.text",
-            "text": "I'm mapping out the fixed queen placements for regions B, C, and D based on their single-cell constraints, then narrowing down where region E's queen must go among the remaining rows.\n\nChecking adjacency rules between rows 1-5, I find row2 can't be column3, forcing row2=2 and row5=3, which satisfies all column uniqueness and non-adjacency constraints. This gives the final solution: columns [5,2,4,1,3] for rows 1 through 5.\n\n",
-            "format": "anthropic-claude-v1",
-            "index": 0,
-            "signature": "EtkJCsQBCBIYAipA/LAq+VJWP0lU5tR1sFg7Nt0q2A1qGZI47GnbiNTl8ECQUJtdtwWnuVpAe0YL/JOd0tVjlP2G1nODFCWPbBCJ0DIPY2xhdWRlLW9wdXMtNC04OABCCHRoaW5raW5nWiQwZDk4M2YzZi00OWZhLTRhNDYtODI1NC1iMWJiMjQ5MWEyYTl6HnVwcm9mXzAxMUNmQUZ6MWpIUnhZVkhjaDRKVjY2dJoBEQoPY2xhdWRlLW9wdXMtNC04qAGL3crWBhIMeYfFtvdAVUWFi7FWGgzVxFGTFFDEMdxaBPIiMJpSbUWB7Y//lSPAr6HvOXGr0OfCyRGSWvDefr6w5d/EpnlUMWqUePUSynYquygv3yrBBw9LBeeb/K7FDWuSMAq2GRyv5z6sE9an04Xuj3alyYXrntX7S+mwChyCyPePFr+R9frVfyCz1u/7atr1L9RuV+FfrLiT4GxOUGUSLYehxwm8H3yj4EdtsakKUFkaovyWs8joZJyrXI8V7fYzR8Xbh0FctlDPsRvbBC6JbQ7h3dWhAnJ1URV3/7mmK+5VZvlowkfYlkU55CPIkO3wxNLATY16mXVQa3jE50+8iAx9Imbpmxny14YB7cFHzAS+6AUqZSCdv9zwvQBYnv8KKCoqL2x6r+EfG5FhAxxgiD0w4KpmmgXO19jVwAW3V9hytl/769WjbeQXYWPg1Yk8g8XzsiD5xi8V+4nFNZw5UT7ufOsSgf/xQog4z1mR46tMeUkJjdF5DyVb8oQkwqUROkOT1DGJXBH8jMfEeDZ5M6ptM6eGu4iv0semHRVYRwOL4khIyv1fXPnypvluKZzJVb1JH4rB2EcLhAnT1L6JuD3iJi0kTEhz2S9gAWCZ2dCnkqCuiGrtG+UBoxxy56vUIqZif7cwef4oSGKokhZReAqKyfKZpt3vPClyHleCtUfzzP/PUOWev2sARjR+kC5u/FXNFbeTIzggziXReXUnOwEJZf9HTbqOFkIbq5ZD5ejqWtcquJugapprmKHBBkQoNQXzSeDpAnD8S/I2M4Qr0AXPVwh1FGVyT9gs425nCiTj5NtNmdT1b8EttZFL/gjaQWfsX/xFV1CRIo6DBjpe7gNVrPFQvBiwvDn3LNAXA+UP13jxko47JWhOKFvLJ9SKrsCimFTp5AJCCawne8PKHmJ8JISdOD91mojFuATGGaXa5uWO1uGLORJ4BNaWUOkTv7QApeaKOz0Nh1bV2EH/Y8z/3gUWNvATTe9Y5/dj1JjCrO5R1hIeGyuBdbKAa1avg8bsy3A5x391YQ71AapXBSw2nuTQC5f5lhFnlTcxnzD70ElFf2w/JseE3djzBGN1Px4AvwfW1Qep9vceSnZPIjtkplxLnzv5mJ+7LuRLB/+fFm8ml+l05k+AYh8p7RTh8EzyhGiuoFu8HhxYso8Sjio8HBZDBB20ic0fdnpMV/i1RIhYE2nt6gqawikbOy2bb3Qm28I46JXTG2DLTYjedlkqzz6JDOWg3xj7YUfBELH83M2t46+0bLBtNwkfGgfhLX2UdqS8MD7tXpHOqC2hbdFmIKY5One+nOyNhDT04UPg0mDvc0otYgVVds6MRZKl0VZ/st9k99jtkkVa7DVOnwwWGAvGX4VJvtq9Gt4Eagh5l6TZrIAYAQ==.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS00Ljgtb3B1cy0yMDI2MDUyOHxhbnRocm9waWMifQ"
-          }
-        ]
+        "refusal": null
       }
     }
   ],

@@ -72,9 +72,20 @@ All four use `max_tokens` 12288 and reasoning effort high with reasoning exclude
 ## Failures and budget
 
 - **Request failures.** A turn whose request fails before any model answer (HTTP error, timeout, or a failed batch item) is re-sent once, unchanged, after 30 s (or in the next round). A second failure ends the trajectory as `request_failure`, counted as unsolved and shown separately.
-- **Guard.** Before every on-demand call, spend so far plus unsettled reserves plus the call's worst case must fit the $18.75 campaign cap shared with the earlier-generation panel. The worst case is the request size in tokens (bytes ÷ 3) at the input price, plus 12,288 output tokens and $0.01. The call's worst case is held as a reserve while it runs.
-- **Batch rounds** reserve, per request, the lower of the worst case and 3 × the model's mean reported turn cost so far.
-- **Censoring.** If a call does not fit, that model's remaining trajectories are not started and are reported as censored, never as failures.
+- **Guard.** Before every on-demand call, spend so far plus unsettled reserves plus the call's worst case must fit the $18.75 campaign cap shared with the earlier-generation panel. The earlier-generation panel's unspent sub-cap is held back for it until all of its calls are recorded.
+  - The worst case is the request size in tokens (bytes ÷ 3) at the input price, plus 12,288 output tokens and $0.01.
+  - It is registered under a file lock before sending.
+  - It is replaced by the reported cost afterwards, or kept in full when the cost is unknown (a timeout).
+- **Spend so far** is the larger of the key's usage counter delta and the locally recorded costs, as in the earlier-generation preregistration.
+- **Batch rounds.**
+  - Each round reserves, per request, the lower of the worst case and 3 × the model's mean turn cost so far.
+  - Batch items carry no per-item cost, so a turn's cost is its tokens × the batch price.
+  - The round's reported total is recorded when it settles.
+  - A round whose submission outcome is unknown is never resubmitted; it is first reconciled against the account's batch list.
+  - Settling a round twice records nothing twice.
+- **Censoring.** If a call does not fit, nothing is sent. That model's remaining trajectories are not started and are reported as `censored_budget`, never as failures.
+  - A run resumes a censored model only when explicitly asked, for example after earlier reserves settle below their estimates.
+  - If a re-send is censored after a failed first attempt, the turn keeps the first attempt's receipt, and the trajectory is reported as censored.
 
 ## Endpoints
 

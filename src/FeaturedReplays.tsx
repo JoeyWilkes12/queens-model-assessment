@@ -70,7 +70,7 @@ export function FeaturedReplays() {
       {data && !view && <p role="status">This saved attempt is unavailable; no trace is reconstructed.</p>}
       {view && <>
         <BoardReplay key={item.key} compact regions={view.regions} frames={view.frames} eyebrow={`${modelName} · board ${view.trace.board_id.replace('sequence-', '')} · ${view.trace.mode === 'local' ? 'conflict-filtered menu' : 'raw menu'}`} title={item.title} />
-        <p className="featured-takeaway">{item.takeaway} <a href={chapter}>Open this attempt with its receipts</a>.</p>
+        <p className="featured-takeaway">{item.takeaway} <a href={chapter}>Open this attempt with its receipts</a>{item.key === 'nine' && <> or <a href="#/greedy-rule">watch the greedy rule solve it</a></>}.</p>
       </>}
     </div>
   </div>

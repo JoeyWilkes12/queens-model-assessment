@@ -13,9 +13,11 @@ import collections
 import hashlib
 import json
 import pathlib
-import shutil
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts/analysis"))
+from public_scrub import save_public  # noqa: E402
 PUBLIC = ROOT / "public/evidence"
 PANEL = ROOT / "output/llm-panel"
 RERUN = ROOT / "output/llm-panel-rerun"
@@ -28,9 +30,7 @@ def read(path):
 
 
 def save(path, value):
-    path = pathlib.Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
+    save_public(path, value)  # drops reasoning_details, user_id and other private fields
 
 
 def sanitized(request, png_bytes):
@@ -82,7 +82,7 @@ def main():
         dest = PUBLIC / "runs" / STUDY / call["call_id"]
         save(dest / "request.json", sanitized(read(PANEL / "requests" / f"{call['call_id']}.json"), png))
         for name in ("response.json", "metadata.json", "grade.json", "diagnostic.json"):
-            shutil.copyfile(directory / name, dest / name)
+            save(dest / name, read(directory / name))
         manifest["records"].append(record(STUDY, call["call_id"], call["board_id"], call["size"], call["model"],
                                           read(directory / "metadata.json"), read(directory / "grade.json"),
                                           "one-shot image placement (new-board panel)"))
@@ -94,7 +94,7 @@ def main():
         dest = PUBLIC / "runs" / STUDY / run_id
         save(dest / "request.json", sanitized(read(PANEL / "requests" / f"{call['call_id']}.json"), png))
         for name in ("response.json", "metadata.json", "grade.json", "diagnostic.json", "started.json"):
-            shutil.copyfile(directory / name, dest / name)
+            save(dest / name, read(directory / name))
         manifest["records"].append(record(STUDY, run_id, call["board_id"], call["size"], call["model"],
                                           read(directory / "metadata.json"), read(directory / "grade.json"),
                                           "dated re-run of a panel request that failed before any model answer (HTTP 429)"))
@@ -109,7 +109,7 @@ def main():
         dest = PUBLIC / "runs" / RERUN_STUDY / directory.name
         save(dest / "request.json", sanitized(request, png))
         for name in ("response.json", "metadata.json", "grade.json", "diagnostic.json"):
-            shutil.copyfile(directory / name, dest / name)
+            save(dest / name, read(directory / name))
         manifest["records"].append(record(RERUN_STUDY, directory.name, "queens-7-medium", 7, request["model"],
                                           read(directory / "metadata.json"), read(directory / "grade.json"),
                                           "dated re-run of a September one-shot request"))

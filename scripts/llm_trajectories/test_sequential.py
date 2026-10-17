@@ -67,11 +67,11 @@ class Harness(unittest.TestCase):
                   reply(fenced({"action": "place", "row": 4, "column": SOLUTION[3]}))]
         sent = []
 
-        def fake(short, call_id, body):
+        def fake(short, call_id, body, turn_dir, attempt):
             sent.append(body)
             return script.pop(0)
         with mock.patch.object(S, "send_on_demand", side_effect=fake):
-            S.run(type("A", (), {"phase": "pilot", "model": "grok-4.6"})())
+            S.run(type("A", (), {"phase": "pilot", "model": "grok-4.6", "resume_censored": False})())
         summary = S.trajectory_summary("pilot", "grok-4.6", BOARD)
         self.assertEqual(summary["end_reason"], "max_requests")
         self.assertEqual(summary["requests"], 5)
@@ -101,13 +101,79 @@ class Harness(unittest.TestCase):
             text = fenced({"action": "place", "row": k, "column": SOLUTION[k - 1]})
             return 200, {"data": {"status": "completed", "results": [{"custom_id": req["custom_id"], "response": {"status_code": 200, "body": reply(text)[1]}}]}}
         with mock.patch.object(S.C, "broker", side_effect=fake_broker):
-            S.batch_rounds(type("A", (), {"phase": "pilot", "model": "gpt-5.6-sol"})())
+            S.batch_rounds(type("A", (), {"phase": "pilot", "model": "gpt-5.6-sol", "resume_censored": False})())
         summary = S.trajectory_summary("pilot", "gpt-5.6-sol", BOARD)
         self.assertTrue(summary["solved"])
         self.assertEqual(summary["requests"], 5)
         self.assertEqual(calls["n"], 6)  # five turns plus one re-send round
         meta = S.read(S.tdir("pilot", "gpt-5.6-sol", "dev-5-01") / "turn-02" / "metadata.json")
         self.assertEqual([a["http_status"] for a in meta["attempts"]], [None, 200])
+
+
+class Ledger(Harness):
+    def test_censored_before_send_is_labelled_and_nothing_started(self):
+        with mock.patch.object(S.C, "CAMPAIGN_CAP_USD", 0.0), mock.patch.object(S.C, "broker") as broker:
+            S.run(type("A", (), {"phase": "pilot", "model": "grok-4.6", "resume_censored": False})())
+            broker.assert_not_called()
+        self.assertEqual(S.trajectory_summary("pilot", "grok-4.6", BOARD)["end_reason"], "censored_budget")
+        self.assertFalse((S.tdir("pilot", "grok-4.6", "dev-5-01") / "turn-01" / "started.json").exists())
+        with self.assertRaises(SystemExit):  # no silent resume
+            S.run(type("A", (), {"phase": "pilot", "model": "grok-4.6", "resume_censored": False})())
+
+    def test_on_demand_cost_is_recorded_and_reserve_settled(self):
+        def fake_broker(method, path, body=None, timeout=60):
+            k = json.loads(body["messages"][-1]["content"])["request"]["number"]
+            return reply(fenced({"action": "place", "row": k, "column": SOLUTION[k - 1]}), cost=0.02)[:2]
+        with mock.patch.object(S.C, "broker", side_effect=fake_broker):
+            S.run(type("A", (), {"phase": "pilot", "model": "grok-4.6", "resume_censored": False})())
+        self.assertAlmostEqual(S.C.recorded_costs(), 0.10)
+        self.assertEqual(S.C.reserves(), 0.0)
+        self.assertTrue(S.trajectory_summary("pilot", "grok-4.6", BOARD)["solved"])
+
+    def test_batch_cost_from_tokens_and_rejected_round_releases_reserve(self):
+        calls = {"n": 0}
+
+        def fake_broker(method, path, body=None, timeout=60):
+            if method == "POST":
+                calls["n"] += 1
+                calls["last"] = body
+                if calls["n"] == 1:
+                    return 400, {"error": {"message": "rejected"}}
+                return 202, {"id": f"batch-{calls['n']}"}
+            req = calls["last"]["requests"][0]
+            k = json.loads(req["body"]["messages"][-1]["content"])["request"]["number"]
+            text = fenced({"action": "place", "row": k, "column": SOLUTION[k - 1]})
+            item_body = {"choices": [{"message": {"content": text}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 1000, "completion_tokens": 500}}
+            return 200, {"data": {"status": "completed", "usage": {"cost": 0.007}, "results": [{"custom_id": req["custom_id"], "response": {"status_code": 200, "body": item_body}}]}}
+        args = type("A", (), {"phase": "pilot", "model": "gpt-5.6-sol", "resume_censored": False})()
+        with mock.patch.object(S.C, "broker", side_effect=fake_broker):
+            with self.assertRaises(SystemExit):
+                S.batch_rounds(args)
+            self.assertEqual(S.C.reserves(), 0.0)  # explicit 4xx: released
+            S.batch_rounds(args)
+        meta = S.read(S.tdir("pilot", "gpt-5.6-sol", "dev-5-01") / "turn-01" / "metadata.json")
+        self.assertAlmostEqual(meta["cost_usd"], 1000 * 2e-6 + 500 * 1e-5)
+        self.assertAlmostEqual(S.C.recorded_costs(), 5 * 0.007)
+        self.assertTrue(S.trajectory_summary("pilot", "gpt-5.6-sol", BOARD)["solved"])
+
+    def test_settle_round_is_idempotent(self):
+        calls = {"n": 0}
+
+        def fake_broker(method, path, body=None, timeout=60):
+            if method == "POST":
+                calls["n"] += 1
+                calls["last"] = body
+                return 202, {"id": f"batch-{calls['n']}"}
+            req = calls["last"]["requests"][0]
+            k = json.loads(req["body"]["messages"][-1]["content"])["request"]["number"]
+            text = fenced({"action": "place", "row": k, "column": SOLUTION[k - 1]})
+            return 200, {"data": {"status": "completed", "usage": {"cost": 0.001}, "results": [{"custom_id": req["custom_id"], "response": {"status_code": 200, "body": reply(text)[1]}}]}}
+        args = type("A", (), {"phase": "pilot", "model": "gpt-5.6-sol", "resume_censored": False})()
+        with mock.patch.object(S.C, "broker", side_effect=fake_broker):
+            S.batch_rounds(args)
+            rdir = S.out("pilot") / "batch-rounds" / "gpt-5.6-sol" / "round-01"
+            S.settle_round("pilot", "gpt-5.6-sol", rdir, S.plan_boards("pilot"))  # an interrupted pass replayed
+        self.assertTrue(S.trajectory_summary("pilot", "gpt-5.6-sol", BOARD)["solved"])
 
 
 if __name__ == "__main__":

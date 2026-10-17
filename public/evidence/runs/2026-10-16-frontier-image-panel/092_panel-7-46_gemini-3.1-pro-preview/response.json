@@ -10,6 +10,5 @@
       "limit_source": "upstream_provider_shared_pool",
       "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
     }
-  },
-  "user_id": "user_3H0umgnnlo8fYUEMKXWOUMtM3pl"
+  }
 }

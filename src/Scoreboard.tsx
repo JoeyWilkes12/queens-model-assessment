@@ -255,7 +255,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
             {set.models.map(model => <li key={model.name}>{model.name}: {model.calls} model calls.</li>)}
             {set.pending.map(model => <li key={model.name}><strong>{model.name} not yet tested:</strong> {model.reason} Until then this panel is not a like-for-like comparison.</li>)}
           </>}
-          <li>Baselines use the same boards: the greedy rule is deterministic; the random value is an exact expectation, not a run.</li>
+          <li>Baselines use the same boards: the greedy rule is deterministic (<a href="#/greedy-rule">rule, results and step-by-step replays</a>); the random value is an exact expectation, not a run.</li>
           <li><a href="#/methods-critique">Methods critique</a> · <a href="#/subq-assessment">SubQ chapter</a> · <a href="#/jev-trajectories">Jev trajectories</a></li>
         </ul>
       </details>

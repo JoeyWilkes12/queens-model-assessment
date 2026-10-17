@@ -41,7 +41,7 @@ export function MethodsCritique({ ui }: { ui: BookUi }) {
         </Section>
 
         <Section id="baselines" title="Baselines the book was missing">
-          <p>A greedy rule needs no model: take the unplaced color with the fewest legal cells, place its first legal cell, never backtrack. It uses the same conflict filter as the "local" menu.</p>
+          <p>A greedy rule needs no model: take the unplaced color with the fewest legal cells, place its first legal cell, never backtrack. It uses the same conflict filter as the "local" menu. <a href="#/greedy-rule">The greedy rule chapter</a> replays it step by step on all 201 boards.</p>
           <DataTable caption="Greedy rule against recorded attempts (decision models: raw · local)" headers={['Board', 'Greedy', 'Jev', 'SubQ']} rows={greedyRows.map(row => [row[0].replace('sequence-', ''), row[1] === 'Solved' ? <strong>Solved</strong> : row[1], row[2], row[3]])} />
           <p>It fails on <code>sequence-5-2</code>, where SubQ succeeds, so it is a reference point, not a ceiling. A uniformly random policy under the same protocol expects 1.6 solves in 90 attempts, almost all from filtered menus; filtering raises the chance of solving <code>sequence-5-1</code> from 0.3% to 13.7%.</p>
           <DataTable caption="Non-forced cell choices against chance" headers={['Model', 'Calls', 'Picked a solution cell', 'Random pick, same menus', 'Mean stated probability']} rows={[

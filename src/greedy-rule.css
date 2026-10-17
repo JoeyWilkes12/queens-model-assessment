@@ -1,0 +1,21 @@
+/* Greedy rule baseline chapter: replay controls sit in one row above the board. */
+.greedy-replays { display: grid; gap: 14px; }
+.gr-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; }
+.gr-field { display: grid; gap: 6px; min-width: 0; }
+.gr-field label { color: var(--text-muted); font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.gr-field select { max-width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .86rem; cursor: pointer; }
+.gr-field--board { flex: 1 1 220px; }
+.gr-field--board select { width: 100%; }
+.gr-featured { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 100%; }
+.gr-featured button { display: grid; gap: 2px; flex: 1 1 140px; min-height: 48px; padding: 7px 12px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .8rem; font-weight: 700; text-align: left; cursor: pointer; }
+.gr-featured button small { color: var(--text-muted); font-family: var(--mono-font); font-size: .7rem; font-weight: 500; }
+.gr-featured button[aria-pressed='true'] { background: var(--navy-950); border-color: var(--navy-950); color: #fffdf8; }
+.gr-featured button[aria-pressed='true'] small { color: #d7e3ef; }
+:root[data-theme='dark'] .gr-featured button[aria-pressed='true'] { background: var(--mint-300); border-color: var(--mint-300); color: var(--navy-950); }
+:root[data-theme='dark'] .gr-featured button[aria-pressed='true'] small { color: var(--navy-950); }
+.gr-featured button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.gr-models { margin: 0; color: var(--text-secondary, var(--text-primary)); font-size: .88rem; }
+@media (max-width: 520px) {
+  .gr-field, .gr-field--board { flex: 1 1 100%; }
+  .gr-field select { width: 100%; }
+}
