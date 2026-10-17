@@ -98,3 +98,10 @@ All three were made on 17 October, after the batch submissions and before any on
 - OpenRouter holds a submitted batch's worst-case cost in the key's usage counter at submit: +$2.78 for the two Gemini batches, before any processing.
 - The campaign guard therefore no longer adds the local batch reserve on top of that hold.
 - The sub-cap still counts the reserve until the batch settles.
+
+**Amendment 4: account budget block.** At 20:49 UTC on 17 October, OpenRouter began rejecting requests with HTTP 403: "Budget limit exceeded (monthly limit) … of $20.00 used". That is an organization guardrail on monthly spend, separate from the key limit and the credit balance.
+- **Scope.** 110 on-demand calls were rejected before reaching any model: GPT-5.5 16, GPT-5.4 19, GPT-5 28, Opus 4.7 19 and Opus 4.6 28.
+- **Classification.** They are not model outcomes. They are reclassified as "not run (blocked)", with their receipts kept in `output/legacy-panel/raw-blocked-403/`. The rule applies to every blocked call regardless of model or board.
+- **Next.** They will be sent unchanged once the limit allows.
+- **Runner change.** Both runners now stop at the first such response.
+

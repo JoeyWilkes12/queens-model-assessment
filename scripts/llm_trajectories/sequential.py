@@ -437,6 +437,13 @@ def send_on_demand(short, call_id, body, turn_dir, attempt):
     finally:
         signal.alarm(0)
     elapsed = time.monotonic() - start
+    if C.governance_block(status, response):
+        # An account budget block is not a model outcome: keep the receipt aside, unmark the turn and stop.
+        save(turn_dir.parent / "blocked-403" / f"{turn_dir.name}-attempt{attempt}-{utc().replace(':', '')}.json", response)
+        if attempt == 1 and (turn_dir / "started.json").exists():
+            (turn_dir / "started.json").unlink()
+        C.settle(name, 0.0, f"blocked {call_id} (HTTP 403 budget limit, no model call)")
+        raise SystemExit("Stopped: OpenRouter budget limit (HTTP 403). Raise the limit, then rerun.")
     save(turn_dir / f"response-attempt{attempt}.json", response)
     save(turn_dir / f"attempt{attempt}.json", {"http_status": status, "elapsed_seconds": elapsed, "utc": utc()})
     cost = attempt_cost(short, response, "on_demand")

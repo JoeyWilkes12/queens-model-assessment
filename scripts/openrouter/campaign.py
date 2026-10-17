@@ -87,6 +87,14 @@ def broker(method, path, body=None, timeout=60):
         connection.close()
 
 
+def governance_block(status, body):
+    """True for OpenRouter's account/organization budget guardrail (HTTP 403 'Budget limit exceeded'):
+    the request never reached a model. Runs stop at once and never record it as a model outcome."""
+    error = body.get("error") if isinstance(body, dict) else None
+    message = error.get("message", "") if isinstance(error, dict) else ""
+    return status == 403 and "budget limit" in message.lower()
+
+
 def key_numbers():
     """Only the numeric spend fields of /api/v1/key; everything else is discarded unread."""
     status, body = broker("GET", "/api/v1/key")

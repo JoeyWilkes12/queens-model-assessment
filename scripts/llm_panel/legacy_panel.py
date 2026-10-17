@@ -407,6 +407,15 @@ def run(args):
             extra = {"halt_reason": "uncertain_network_or_response_failure_no_retry", "exception_type": type(error).__name__}
         finally:
             signal.alarm(0)
+        if C.governance_block(status, response):
+            # Amendment 4: an account budget block is not a model outcome; keep the receipt aside and stop.
+            blocked = OUT / "raw-blocked-403" / call["call_id"]
+            blocked.mkdir(parents=True, exist_ok=True)
+            save(blocked / f"response-{utc().replace(':', '')}.json", response)
+            (directory / "started.json").unlink()
+            C.settle(name, 0.0, f"blocked {call['call_id']} (HTTP 403 budget limit, no model call)")
+            print(json.dumps({"event": "governance_block", "call_id": call["call_id"], "message": response["error"]["message"][:160]}), flush=True)
+            raise SystemExit("Stopped: OpenRouter budget limit (HTTP 403). Raise the limit, then rerun.")
         record(call, response, status, time.monotonic() - start, extra)
         cost = ((response.get("usage") or {}).get("cost") if isinstance(response, dict) else None)
         # A reply without a reported cost: an HTTP error body costs nothing; a timeout's cost is unknown (worst case kept).
