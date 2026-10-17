@@ -1,0 +1,32 @@
+{
+  "model": "anthropic/claude-opus-4.8",
+  "messages": [
+    {
+      "role": "user",
+      "content": "{\"request\":{\"number\":1,\"of\":5},\"state\":{\"board_id\":\"dev-5-01\",\"size\":5,\"rules\":[\"Exactly one queen per row, column, and color region.\",\"Queens cannot touch, including diagonally adjacent cells.\",\"Long diagonals are allowed; this is regional Queens, not chess N-Queens.\",\"Exactly one full solution exists. Coordinates are 1-based.\"],\"coordinates\":\"Rows top to bottom; columns left to right; both start at 1.\",\"region_grid_rows\":[[\"A\",\"A\",\"A\",\"B\",\"B\"],[\"C\",\"A\",\"A\",\"A\",\"B\"],[\"C\",\"D\",\"D\",\"B\",\"B\"],[\"C\",\"E\",\"D\",\"E\",\"B\"],[\"E\",\"E\",\"E\",\"E\",\"E\"]],\"regions\":{\"A\":[{\"row\":1,\"column\":1},{\"row\":1,\"column\":2},{\"row\":1,\"column\":3},{\"row\":2,\"column\":2},{\"row\":2,\"column\":3},{\"row\":2,\"column\":4}],\"B\":[{\"row\":1,\"column\":4},{\"row\":1,\"column\":5},{\"row\":2,\"column\":5},{\"row\":3,\"column\":4},{\"row\":3,\"column\":5},{\"row\":4,\"column\":5}],\"C\":[{\"row\":2,\"column\":1},{\"row\":3,\"column\":1},{\"row\":4,\"column\":1}],\"D\":[{\"row\":3,\"column\":2},{\"row\":3,\"column\":3},{\"row\":4,\"column\":3}],\"E\":[{\"row\":4,\"column\":2},{\"row\":4,\"column\":4},{\"row\":5,\"column\":1},{\"row\":5,\"column\":2},{\"row\":5,\"column\":3},{\"row\":5,\"column\":4},{\"row\":5,\"column\":5}]},\"placed_queens\":[],\"instruction\":\"Work toward the unique complete solution. Each request allows one action: place one queen, revise your placement, or stop. The conversation cannot be restarted, and no solution or correctness feedback is supplied: placed_queens is exactly your current placement.\"},\"question\":{\"type\":\"next_action\",\"instructions\":\"This is request 1 of at most 5. Choose one action toward the unique complete solution, considering every row, column, region and the non-touch rule. First explain why you chose it; explanations are encouraged and are not scored. Then end your reply with the action as one JSON object in a ```json code block.\",\"actions\":{\"place\":{\"json\":{\"action\":\"place\",\"row\":\"integer 1-5\",\"column\":\"integer 1-5\"},\"effect\":\"Add one queen; the queens already placed stay where they are.\"},\"revise\":{\"json\":{\"action\":\"revise\",\"queens\":[{\"row\":\"integer\",\"column\":\"integer\"}]},\"effect\":\"Replace your whole placement with this list. You may move any placed queens and add at most one new queen, so the list holds at most one more queen than placed_queens.\"},\"stop\":{\"json\":{\"action\":\"stop\"},\"effect\":\"End now; your current placement is your final answer.\"}},\"ending\":\"The attempt ends after request 5 or when you stop. placed_queens at that point is graded as your final answer.\"}}"
+    }
+  ],
+  "max_tokens": 12288,
+  "reasoning": {
+    "effort": "high",
+    "exclude": true
+  },
+  "stream": false,
+  "provider": {
+    "order": [
+      "anthropic"
+    ],
+    "only": [
+      "anthropic"
+    ],
+    "ignore": [
+      "anthropic/fast"
+    ],
+    "allow_fallbacks": false,
+    "require_parameters": true,
+    "max_price": {
+      "prompt": 5,
+      "completion": 25
+    }
+  }
+}

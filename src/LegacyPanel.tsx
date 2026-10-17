@@ -43,10 +43,11 @@ export function LegacyPanel({ ui }: { ui: Ui }) {
   const modelRows = Object.entries(legacy.by_model).sort((a, b) => b[1].correct - a[1].correct || a[1].model.localeCompare(b[1].model)).map(([short, m]) => {
     const rows = legacy.rows.filter(r => r.short === short)
     const notRun = rows.filter(r => r.state !== 'recorded').length
+    const route = rows[0]?.route
     const misses = Object.entries(m.outcomes).filter(([key]) => key !== 'strict' && key !== 'format_only').map(([key, count]) => `${count} ${key.replace('_', ' ')}`)
     return [NAMES[m.model] ?? m.model, ...sizes.map(size => cell(rows, size)), <strong key="all">{m.correct}/{m.recorded}</strong>, `${m.strict}/${m.recorded}`,
       m.correct_cp95 ? `${pct(m.correct_cp95[0])}–${pct(m.correct_cp95[1])}` : '—', misses.join(', ') || 'none', oct(m.model),
-      `${m.route === 'batch' ? 'Batch, Vertex' : 'On demand'}${notRun ? ` · ${notRun} not run` : ''}`, `$${m.cost_usd.toFixed(2)}`]
+      `${route === 'batch' ? 'Batch, Google Vertex' : 'On demand'}${notRun ? ` · ${notRun} ${route === 'batch' ? 'pending' : 'not run'}` : ''}`, `$${m.cost_usd.toFixed(2)}`]
   })
   const frontierRows = [...new Set(frontier.rows.map(r => r.model))].map(model => {
     const rows = frontier.rows.filter(r => r.model === model)
@@ -55,7 +56,7 @@ export function LegacyPanel({ ui }: { ui: Ui }) {
   const retired = Object.values(legacy.retired ?? {})
   return <>
     <p className="lead">On 17 October the eight earlier-generation models that OpenRouter still serves each answered the same 36 boards as the 16 October frontier panel: same images, same prompt, and each model's 1 October settings. One request per model and board, no retries.</p>
-    <DataTable caption="Earlier generations on the 36-board panel: correct placements (strict JSON or off-format)" headers={['Model', '5×5', '7×7', '9×9', 'All 36', 'Strict JSON', '95% interval (all)', 'Misses', '1 Oct, 3 boards', 'Route', 'Cost']} rows={modelRows} />
+    <DataTable caption="Earlier generations on the 36-board panel: correct placements (strict JSON or off-format)" headers={['Model', '5×5', '7×7', '9×9', 'All recorded', 'Strict JSON', '95% interval (all)', 'Misses', '1 Oct, 3 boards', 'Route', 'Cost']} rows={modelRows} />
     <DataTable caption="Current frontier models on the same 36 boards (16 October), for comparison" headers={['Model', '5×5', '7×7', '9×9', 'All 36']} rows={frontierRows} />
     <Callout tone="caution" title="Routes changed for six models; one model is gone.">Gemini 2.5 Pro and Flash ran through OpenRouter's Batch API on Google Vertex (1 October used Google AI Studio). OpenRouter rejected every OpenAI and Anthropic batch submission with "does not have a :batch endpoint", so GPT-5.5, GPT-5.4, GPT-5, GPT-4.1 and Claude Opus 4.7 and 4.6 ran on demand with their 1 October provider blocks, as preregistered. {retired.length ? `${retired.map(id => NAMES[id] ?? id).join(', ')} was tested on 1 October but OpenRouter no longer serves it, so it is not here.` : ''} Comparisons between models are descriptive.</Callout>
     <p className="table-note">“1 Oct, 3 boards” is the written-correct count on the three original boards. <a href={url('legacy-panel/summary.json')} download>Results (JSON)</a> · preregistration and amendments in <code>docs/legacy-panel-preregistration.md</code> · total reported cost ${legacy.cost_usd_reported.toFixed(2)}.</p>

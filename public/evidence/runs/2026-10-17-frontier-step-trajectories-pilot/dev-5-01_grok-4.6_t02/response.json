@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269789-NY8Nk2leyxUuw0alfswo",
+  "object": "chat.completion",
+  "created": 1792269789,
+  "model": "x-ai/grok-4.6",
+  "provider": "Amazon Bedrock",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "The queen already at (1,2) occupies region A, row 1 and column 2. Region C occupies only column 1, so the remaining queen in column 1 must be the C-queen (otherwise C is empty). Consequently the E-queen is forced into row 5. The same (1,2) queen also attacks every remaining cell of row 2 except (2,5). That cell belongs to the still-available region B, so the unique legal placement in row 2 is (2,5).\n\n```json\n{\"action\":\"place\",\"row\":2,\"column\":5}\n```",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1617,
+    "completion_tokens": 3175,
+    "total_tokens": 4792,
+    "cost": 0.0234564,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 640,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0234564,
+      "upstream_inference_prompt_cost": 0.0025014,
+      "upstream_inference_completions_cost": 0.020955
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3039,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

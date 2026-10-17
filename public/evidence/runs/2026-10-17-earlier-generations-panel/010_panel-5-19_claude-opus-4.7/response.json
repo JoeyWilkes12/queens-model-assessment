@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269951-AT01sL5W8ruM1xMg6VUH",
+  "object": "chat.completion",
+  "created": 1792269951,
+  "model": "anthropic/claude-opus-4.7",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-5-19\",\"columns_by_row\":[1,3,5,2,4]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1225,
+    "completion_tokens": 695,
+    "total_tokens": 1920,
+    "cost": 0.0235,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0235,
+      "upstream_inference_prompt_cost": 0.006125,
+      "upstream_inference_completions_cost": 0.017375
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 656,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

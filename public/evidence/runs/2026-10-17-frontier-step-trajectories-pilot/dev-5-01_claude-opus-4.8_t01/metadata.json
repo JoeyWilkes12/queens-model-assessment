@@ -1,0 +1,75 @@
+{
+  "trajectory_id": "dev-5-01_claude-opus-4.8",
+  "board_id": "dev-5-01",
+  "size": 5,
+  "model": "anthropic/claude-opus-4.8",
+  "short": "claude-opus-4.8",
+  "turn": 1,
+  "call_id": "dev-5-01_claude-opus-4.8_t01",
+  "completed_utc": "2026-10-17T20:43:24.032742+00:00",
+  "final_status": 200,
+  "attempts": [
+    {
+      "http_status": 200,
+      "elapsed_seconds": 60.632862040999996,
+      "cost_usd": 0.13725,
+      "error": null
+    }
+  ],
+  "returned_model": "anthropic/claude-opus-4.8",
+  "provider": "Anthropic",
+  "generation_id": "gen-1792269743-aydHkYSRrV9bww7cGrSk",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 980,
+    "completion_tokens": 5294,
+    "total_tokens": 6274,
+    "cost": 0.13725,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.13725,
+      "upstream_inference_prompt_cost": 0.0049,
+      "upstream_inference_completions_cost": 0.13235
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 4838,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.13725,
+  "cost_source": "usage.cost",
+  "action": {
+    "action": "place",
+    "row": 4,
+    "column": 1
+  },
+  "parse_mode": "fenced",
+  "effect": "placed",
+  "detail": {
+    "cell": [
+      4,
+      1
+    ],
+    "violations": []
+  },
+  "placed_before": [],
+  "placed_after": [
+    [
+      4,
+      1
+    ]
+  ],
+  "labels_after": {
+    "correct_queens": 1,
+    "off_solution": [],
+    "conflicts": []
+  },
+  "route": "on_demand"
+}

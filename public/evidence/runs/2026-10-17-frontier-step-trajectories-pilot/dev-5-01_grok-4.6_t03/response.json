@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269812-Y1yTNovxDtFuqHcTxCf7",
+  "object": "chat.completion",
+  "created": 1792269812,
+  "model": "x-ai/grok-4.6",
+  "provider": "Amazon Bedrock",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "The two queens already placed occupy rows 1–2, columns 2 and 5, and regions A and B. The only remaining cells of region C therefore lie in column 1 (rows 3 and 4). The only remaining cells of region D therefore lie in columns 2–3 (but column 2 is already occupied). Consequently the unique pair of non-attacking placements that also leave a legal cell for E is D at (3,3) together with C at (4,1). (Any other choice for those two regions produces an immediate adjacency or a missing region.)\n\n```json\n{\"action\":\"place\",\"row\":3,\"column\":3}\n```",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 2515,
+    "completion_tokens": 1885,
+    "total_tokens": 4400,
+    "cost": 0.0154396,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 1536,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0154396,
+      "upstream_inference_prompt_cost": 0.0029986,
+      "upstream_inference_completions_cost": 0.012441
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1737,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

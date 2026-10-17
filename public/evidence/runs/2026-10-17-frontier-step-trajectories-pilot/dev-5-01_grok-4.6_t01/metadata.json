@@ -1,0 +1,75 @@
+{
+  "trajectory_id": "dev-5-01_grok-4.6",
+  "board_id": "dev-5-01",
+  "size": 5,
+  "model": "x-ai/grok-4.6",
+  "short": "grok-4.6",
+  "turn": 1,
+  "call_id": "dev-5-01_grok-4.6_t01",
+  "completed_utc": "2026-10-17T20:43:09.768014+00:00",
+  "final_status": 200,
+  "attempts": [
+    {
+      "http_status": 200,
+      "elapsed_seconds": 46.4728325,
+      "cost_usd": 0.0455576,
+      "error": null
+    }
+  ],
+  "returned_model": "x-ai/grok-4.6",
+  "provider": "Amazon Bedrock",
+  "generation_id": "gen-1792269743-7cm9RRnPptp2FxKRUXJt",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 752,
+    "completion_tokens": 6652,
+    "total_tokens": 7404,
+    "cost": 0.0455576,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0455576,
+      "upstream_inference_prompt_cost": 0.0016544,
+      "upstream_inference_completions_cost": 0.0439032
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 6535,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.0455576,
+  "cost_source": "usage.cost",
+  "action": {
+    "action": "place",
+    "row": 1,
+    "column": 2
+  },
+  "parse_mode": "fenced",
+  "effect": "placed",
+  "detail": {
+    "cell": [
+      1,
+      2
+    ],
+    "violations": []
+  },
+  "placed_before": [],
+  "placed_after": [
+    [
+      1,
+      2
+    ]
+  ],
+  "labels_after": {
+    "correct_queens": 1,
+    "off_solution": [],
+    "conflicts": []
+  },
+  "route": "on_demand"
+}

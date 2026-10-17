@@ -1,0 +1,11 @@
+{
+  "batch_id": "batch-1792269486-swMNe7d0FQdHM8KNfHua",
+  "submitted_utc": "2026-10-17T20:38:07.448383+00:00",
+  "http_status": 202,
+  "shape": "chat",
+  "endpoint": "/v1/chat/completions",
+  "provider_only": "google-vertex/global",
+  "requests": 36,
+  "provisional_reserve_usd": 2.278341,
+  "attempt": 1
+}

@@ -1,0 +1,38 @@
+{
+  "model": "openai/gpt-5.6-sol",
+  "id": "gen-batch-1792269743-6340745f133159032600",
+  "created": 1792269807,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Because row 5 lies entirely in region E, its queen must represent E. Testing the row/column and non-touch constraints forces the column sequence to be \\(2,5,3,1,4\\), so the row-5 queen is at column 4.\n\n```json\n{\"action\":\"place\",\"row\":5,\"column\":4}\n```",
+        "refusal": null
+      },
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "logprobs": null
+    }
+  ],
+  "service_tier": "default",
+  "usage": {
+    "prompt_tokens": 680,
+    "completion_tokens": 1080,
+    "total_tokens": 1760,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1002,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "provider": "OpenAI"
+}

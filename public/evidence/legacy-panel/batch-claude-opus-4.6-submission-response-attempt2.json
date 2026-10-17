@@ -1,0 +1,9 @@
+{
+  "http_status": 400,
+  "body": {
+    "error": {
+      "message": "Model 'anthropic/claude-opus-4.6' does not have a :batch endpoint.",
+      "code": 400
+    }
+  }
+}

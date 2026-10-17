@@ -1,0 +1,38 @@
+{
+  "turn": 2,
+  "action": {
+    "action": "place",
+    "row": 4,
+    "column": 1
+  },
+  "parse_mode": "fenced",
+  "effect": "placed",
+  "detail": {
+    "cell": [
+      4,
+      1
+    ],
+    "violations": []
+  },
+  "placed_before": [
+    [
+      5,
+      4
+    ]
+  ],
+  "placed_after": [
+    [
+      5,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "labels_after": {
+    "correct_queens": 2,
+    "off_solution": [],
+    "conflicts": []
+  }
+}

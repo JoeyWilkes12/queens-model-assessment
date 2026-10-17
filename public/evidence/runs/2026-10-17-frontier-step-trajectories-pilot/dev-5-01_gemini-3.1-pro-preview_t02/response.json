@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269778-FNgstCe4RtmH9EMtfha2",
+  "object": "chat.completion",
+  "created": 1792269778,
+  "model": "google/gemini-3.1-pro-preview",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "With the queen placed at (4,1) for Region C, we can determine the forced placement for Region D.\n\nRegion D consists of three cells: (3,2), (3,3), and (4,3). \n- The cell (4,3) is eliminated because it shares Row 4 with our queen at (4,1).\n- The cell (3,2) is eliminated because it diagonally touches (4,1). \n\nThis leaves only one valid cell for Region D, which is (3,3).\n\n```json\n{\n  \"action\": \"place\",\n  \"row\": 3,\n  \"column\": 3\n}\n```",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1803,
+    "completion_tokens": 2310,
+    "total_tokens": 4113,
+    "cost": 0.031326,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.031326,
+      "upstream_inference_prompt_cost": 0.003606,
+      "upstream_inference_completions_cost": 0.02772
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2164,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

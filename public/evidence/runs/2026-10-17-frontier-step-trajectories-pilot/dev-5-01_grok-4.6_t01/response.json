@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269743-7cm9RRnPptp2FxKRUXJt",
+  "object": "chat.completion",
+  "created": 1792269743,
+  "model": "x-ai/grok-4.6",
+  "provider": "Amazon Bedrock",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "The small regions and the all-E last row force column 1 to be the unique C-queen and row 5 to be the unique E-queen. Exhaustive case analysis on the three candidate cells of C then shows that the only consistent placement is C at (4,1), which immediately forces D at (3,3) and A at (1,2). (The remaining two queens are then forced as well, confirming uniqueness.)\n\n```json\n{\"action\":\"place\",\"row\":1,\"column\":2}\n```",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 752,
+    "completion_tokens": 6652,
+    "total_tokens": 7404,
+    "cost": 0.0455576,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0455576,
+      "upstream_inference_prompt_cost": 0.0016544,
+      "upstream_inference_completions_cost": 0.0439032
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 6535,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

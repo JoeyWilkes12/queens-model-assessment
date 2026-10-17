@@ -1,0 +1,108 @@
+{
+  "trajectory_id": "dev-5-01_gemini-3.1-pro-preview",
+  "board_id": "dev-5-01",
+  "size": 5,
+  "model": "google/gemini-3.1-pro-preview",
+  "short": "gemini-3.1-pro-preview",
+  "turn": 5,
+  "call_id": "dev-5-01_gemini-3.1-pro-preview_t05",
+  "completed_utc": "2026-10-17T20:43:54.969085+00:00",
+  "final_status": 200,
+  "attempts": [
+    {
+      "http_status": 200,
+      "elapsed_seconds": 9.790283082999991,
+      "cost_usd": 0.024864,
+      "error": null
+    }
+  ],
+  "returned_model": "google/gemini-3.1-pro-preview",
+  "provider": "Google AI Studio",
+  "generation_id": "gen-1792269825-az5aWbU1OxMEAmypD7IU",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 4464,
+    "completion_tokens": 1328,
+    "total_tokens": 5792,
+    "cost": 0.024864,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.024864,
+      "upstream_inference_prompt_cost": 0.008928,
+      "upstream_inference_completions_cost": 0.015936
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1060,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.024864,
+  "cost_source": "usage.cost",
+  "action": {
+    "action": "place",
+    "row": 5,
+    "column": 4
+  },
+  "parse_mode": "fenced",
+  "effect": "placed",
+  "detail": {
+    "cell": [
+      5,
+      4
+    ],
+    "violations": []
+  },
+  "placed_before": [
+    [
+      4,
+      1
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      5
+    ]
+  ],
+  "placed_after": [
+    [
+      4,
+      1
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      5,
+      4
+    ]
+  ],
+  "labels_after": {
+    "correct_queens": 5,
+    "off_solution": [],
+    "conflicts": []
+  },
+  "route": "on_demand"
+}

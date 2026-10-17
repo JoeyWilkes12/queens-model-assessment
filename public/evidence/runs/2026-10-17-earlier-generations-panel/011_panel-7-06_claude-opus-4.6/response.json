@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792270192-Wewdp3yQUOya6bfFl1nb",
+  "object": "chat.completion",
+  "created": 1792270192,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to identify the regions and apply the constraints systematically.\n\n**Regions identified:**\n- A: Large region spanning rows 1-7\n- B: Right side, rows 1-5\n- C: (2,6), (2,7), (3,6)\n- D: (4,2), (5,1), (5,2), (6,1), (6,2), (7,1), (7,2)\n- E: Only (5,5)\n- F: (6,6), (6,7)\n- G: (7,3), (7,4)\n\n**Forced placements:**\n- **Region E** has only one cell → **Row 5 = Col 5**\n- **Region D**: Rows 5-7 are occupied by E/F/G, so D must use (4,2) → **Row 4 = Col 2**\n- **Region F**: Row 6 needs col 6 or 7. Row 5 col 5 blocks col 6 (adjacency) → **Row 6 = Col 7**\n- **Region G**: Row 7 needs col 3 or 4. Testing col 3 works → **Row 7 = Col 3**\n\n**Remaining rows 1,2,3 need columns {1, 4, 6}:**\n- **Region C** needs (3,6) → **Row 3 = Col 6**\n- **Region B** needs (2,4) → **Row 2 = Col 4**\n- **Region A** gets (1,1) → **Row 1 = Col 1**\n\n**Verification (no adjacent queens touch diagonally):**\n|1−4|=3 ✓, |4−6|=2 ✓, |6−2|=4 ✓, |2−5|=3 ✓, |5−7|=2 ✓, |7−3|=4 ✓\n\nAll rows, columns, and regions each have exactly one queen. ✓\n\n{\"board_id\":\"panel-7-06\",\"columns_by_row\":[1,4,6,2,5,7,3]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 3866,
+    "total_tokens": 4949,
+    "cost": 0.102065,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.102065,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.09665
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3334,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

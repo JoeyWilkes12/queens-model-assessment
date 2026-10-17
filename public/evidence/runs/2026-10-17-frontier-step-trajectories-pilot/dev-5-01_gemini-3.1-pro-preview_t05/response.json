@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269825-az5aWbU1OxMEAmypD7IU",
+  "object": "chat.completion",
+  "created": 1792269825,
+  "model": "google/gemini-3.1-pro-preview",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "We need to place the final queen in Region E. \n\nLooking at our placed queens, Rows 1, 2, 3, and 4 are currently occupied by queens at (1,2), (2,5), (3,3), and (4,1). Therefore, the only available row is Row 5.\nSimilarly, Columns 1, 2, 3, and 5 are occupied, leaving only Column 4 available. \n\nThis means our final queen must be placed at (5,4). \n\nLet's double-check to ensure (5,4) doesn't diagonally touch any placed queens:\n- (4,1) is far away.\n- (3,3) is two rows up and one column left (a knight's move, not touching).\n- (2,5) is three rows up and one column right.\n- (1,2) is four rows up and two columns left.\n\nThe placement at (5,4) perfectly fulfills all conditions, giving us exactly one queen per row, column, and region, with no queens touching!\n\n```json\n{\n  \"action\": \"place\",\n  \"row\": 5,\n  \"column\": 4\n}\n```",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4464,
+    "completion_tokens": 1328,
+    "total_tokens": 5792,
+    "cost": 0.024864,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.024864,
+      "upstream_inference_prompt_cost": 0.008928,
+      "upstream_inference_completions_cost": 0.015936
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1060,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -113,4 +113,8 @@ Descriptive only; these trajectory samples are small.
 
 ## Amendments
 
-None yet.
+**Amendment 1 (17 October, during the pilot): account budget block.**
+- At 20:49 UTC, OpenRouter's organization monthly budget limit ($20.00) began rejecting requests with HTTP 403, before any model call.
+- **Pilot state.** The three on-demand pilot trajectories had already finished. GPT-5.6 Sol's batch rounds stop at the first rejected round, and its trajectory resumes from the same turn once the limit allows.
+- **Runner change.** Such responses are never recorded as a turn or as a request failure, and the runner stops at once.
+- **Harness hash.** The frozen plan records the hash change; prompts, actions, parsing, grading and routes are unchanged.

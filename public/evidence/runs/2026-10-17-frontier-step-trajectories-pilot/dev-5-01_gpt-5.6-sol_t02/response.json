@@ -1,0 +1,38 @@
+{
+  "model": "openai/gpt-5.6-sol",
+  "id": "gen-batch-1792269926-30062e67076d31a82ed4",
+  "created": 1792269991,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The unique column sequence is \\(2,5,3,1,4\\). Thus row 4’s queen belongs at column 1, representing region C; it neither shares a column nor touches the queen at (5,4).\n\n```json\n{\"action\":\"place\",\"row\":4,\"column\":1}\n```",
+        "refusal": null
+      },
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "logprobs": null
+    }
+  ],
+  "service_tier": "default",
+  "usage": {
+    "prompt_tokens": 1449,
+    "completion_tokens": 170,
+    "total_tokens": 1619,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 99,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "provider": "OpenAI"
+}

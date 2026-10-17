@@ -1,0 +1,23 @@
+{
+  "http_status": 202,
+  "body": {
+    "id": "batch-1792269486-swMNe7d0FQdHM8KNfHua",
+    "object": "batch",
+    "endpoint": "/v1/chat/completions",
+    "model": "google/gemini-2.5-pro",
+    "completion_window": "24h",
+    "status": "validating",
+    "created_at": 1792269486,
+    "finalized_at": null,
+    "provider": "Google",
+    "expires_at": 1792615086,
+    "request_counts": {
+      "total": 36,
+      "completed": 0,
+      "failed": 0
+    },
+    "usage": null,
+    "results": null,
+    "error": null
+  }
+}

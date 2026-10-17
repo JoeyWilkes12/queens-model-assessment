@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269646-kucrQ7mvBDZ4OwkHxHr7",
+  "object": "chat.completion",
+  "created": 1792269646,
+  "model": "openai/gpt-5.4",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"board_id\":\"panel-5-10\",\"columns_by_row\":[3,5,2,4,1]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 955,
+    "completion_tokens": 1912,
+    "total_tokens": 2867,
+    "cost": 0.0310675,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0310675,
+      "upstream_inference_prompt_cost": 0.0023875,
+      "upstream_inference_completions_cost": 0.02868
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1882,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "http_status": 400,
+  "body": {
+    "error": {
+      "message": "Model 'openai/gpt-4.1:batch' does not have a :batch endpoint.",
+      "code": 400
+    }
+  }
+}

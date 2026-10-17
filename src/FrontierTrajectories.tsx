@@ -50,6 +50,7 @@ const evidenceUrl = (path: string) => `${import.meta.env.BASE_URL}evidence/${pat
 const MODEL_NAMES: Record<string, string> = { 'gpt-5.6-sol': 'GPT-5.6 Sol', 'claude-opus-4.8': 'Claude Opus 4.8', 'gemini-3.1-pro-preview': 'Gemini 3.1 Pro Preview', 'grok-4.6': 'Grok 4.6' }
 const MODEL_ORDER = ['gpt-5.6-sol', 'claude-opus-4.8', 'gemini-3.1-pro-preview', 'grok-4.6']
 const ONE_SHOT: Record<string, string> = { strict: 'solved', format_only: 'solved, off-format', wrong: 'wrong', truncated: 'ran out of tokens', no_answer: 'no answer' }
+const FINISHED = ['max_requests', 'stopped', 'request_failure']
 const END: Record<string, string> = { max_requests: 'used every request', stopped: 'stopped early', request_failure: 'request failed', censored_budget: 'not run (budget)', not_run: 'not run', incomplete_turn: 'incomplete' }
 /** These states are a model's own actions in a conversation with no feedback. */
 const toneLabels: Partial<Record<FrameTone, string>> = { pass: 'All queens on the solution', fail: 'Off the solution', choice: 'Revision', unknown: 'No change' }
@@ -66,7 +67,7 @@ function prose(text: string | null) {
 }
 
 function excerpt(text: string, limit = 520) {
-  const flat = text.replace(/[#*`]/g, '').replace(/\s+/g, ' ').trim()
+  const flat = text.split('\n').filter(line => !/^\s*#/.test(line)).join(' ').replace(/[*`]/g, '').replace(/\s+/g, ' ').trim()
   return flat.length > limit ? `${flat.slice(0, limit).replace(/\s\S*$/, '')} …` : flat
 }
 
@@ -106,6 +107,7 @@ function framesFor(trajectory: Trajectory, studySource: string): BoardFrame[] {
   const last = trajectory.turns[trajectory.turns.length - 1]
   frames.push(trajectory.solved
     ? { id: 'end', label: 'Final placement: solved', queens: previous, tone: 'solved', sourceLabel: studySource, note: `The final placement is the board's unique solution, after ${plural(trajectory.requests, 'request')}.` }
+    : !FINISHED.includes(trajectory.end_reason) ? { id: 'end', label: 'Unfinished: the run stopped here', queens: previous, tone: 'unknown', sourceLabel: studySource, note: `Recorded so far: ${plural(trajectory.turns.length, 'request')}. The trajectory resumes from the next request; nothing is graded until it ends.` }
     : { id: 'end', label: `Final placement: not solved (${END[trajectory.end_reason] ?? trajectory.end_reason})`, queens: previous, tone: 'fail', sourceLabel: studySource,
       invalidCells: last?.labels_after.off_solution.length ? last.labels_after.off_solution.map(([r, c]) => [r, c] as const) : undefined,
       note: `${trajectory.final_correct_queens} of ${n} queens on the unique solution at the end.${trajectory.first_off_solution_turn ? ` The first queen off the solution came at request ${trajectory.first_off_solution_turn}.` : ''}` })
@@ -117,7 +119,8 @@ function usePhases() {
   useEffect(() => {
     const controller = new AbortController()
     const get = (path: string) => fetch(evidenceUrl(path), { signal: controller.signal }).then(response => response.ok ? response.json() : null)
-    Promise.all([get('frontier-trajectories/main.json'), get('frontier-trajectories/pilot.json')])
+    get('frontier-trajectories/index.json')
+      .then((index: { phases?: string[] } | null) => Promise.all(['main', 'pilot'].filter(name => index?.phases?.includes(name)).map(name => get(`frontier-trajectories/${name}.json`))))
       .then(values => {
         const phases = values.filter((value): value is Phase => !!value && Array.isArray(value.trajectories))
         setState(phases.length ? { status: 'ready', phases } : { status: 'error' })
@@ -134,14 +137,15 @@ function Summary({ phases, ui }: { phases: Phase[]; ui: BookUi }) {
     const sizes = [...new Set(phase.boards.map(board => board.size))].sort()
     const rows = MODEL_ORDER.filter(short => phase.trajectories.some(t => t.short === short)).map(short => {
       const mine = phase.trajectories.filter(t => t.short === short)
-      const run = mine.filter(t => t.turns.length > 0)
+      const run = mine.filter(t => FINISHED.includes(t.end_reason))
+      const pending = mine.length - run.length
       const firsts = run.map(t => t.first_off_solution_turn).filter((v): v is number => v !== null)
       const revisions = run.reduce((sum, t) => sum + (t.effects.revised ?? 0), 0)
       const stops = run.filter(t => t.end_reason === 'stopped').length
       return [MODEL_NAMES[short] ?? short,
-        ...sizes.map(size => { const s = run.filter(t => t.size === size); return `${s.filter(t => t.solved).length}/${s.length}` }),
+        ...sizes.map(size => { const s = run.filter(t => t.size === size); const open = mine.filter(t => t.size === size).length - s.length; return `${s.filter(t => t.solved).length}/${s.length}${open ? ` (${open} unfinished)` : ''}` }),
         firsts.length ? `${firsts.length} (request ${Math.min(...firsts)}–${Math.max(...firsts)})` : 'none',
-        String(revisions), String(stops), money(mine.reduce((sum, t) => sum + t.cost_usd, 0))]
+        String(revisions), String(stops), `${money(mine.reduce((sum, t) => sum + t.cost_usd, 0))}${pending ? ' so far' : ''}`]
     })
     return <DataTable key={phase.phase} caption={phase.phase === 'pilot' ? 'Pilot: one development board per model (not pooled with the panel)' : `Panel boards: ${phase.boards.length} boards per model`}
       headers={['Model', ...sizes.map(size => `${size}×${size} solved`), 'Left the solution', 'Revisions', 'Stopped early', 'Cost']} rows={rows} />
@@ -191,7 +195,7 @@ function Replays({ phases }: { phases: Phase[] }) {
     {trajectory && trajectory.turns.length ? <>
       <BoardReplay key={trajectory.trajectory_id} regions={board.regions} frames={frames} toneLabels={toneLabels}
         eyebrow={`${MODEL_NAMES[trajectory.short]} · ${board.id} · one queen per request`}
-        title={trajectory.solved ? `Solved in ${plural(trajectory.requests, 'request')}` : `Not solved: ${trajectory.final_correct_queens} of ${trajectory.size} queens right at the end`}
+        title={trajectory.solved ? `Solved in ${plural(trajectory.requests, 'request')}` : !FINISHED.includes(trajectory.end_reason) ? `Unfinished after ${plural(trajectory.requests, 'request')}` : `Not solved: ${trajectory.final_correct_queens} of ${trajectory.size} queens right at the end`}
         description="One state per request. Red marks queens off the board's unique solution, which the model never sees." />
       <details className="ft-transcript">
         <summary>Every reply in full ({plural(trajectory.turns.length, 'request')}, {money(trajectory.cost_usd)})</summary>

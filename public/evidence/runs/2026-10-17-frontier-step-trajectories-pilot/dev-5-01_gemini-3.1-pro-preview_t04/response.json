@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269807-khrGZ74dJL7f7zzF7vAo",
+  "object": "chat.completion",
+  "created": 1792269807,
+  "model": "google/gemini-3.1-pro-preview",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "With queens at (4,1), (3,3), and (1,2), Rows 1, 3, and 4 are currently occupied. \n\nLet's look at the remaining options for **Region B**. \nRegion B consists of cells (1,4), (1,5), (2,5), (3,4), (3,5), and (4,5).\nBecause Rows 1, 3, and 4 already have queens, Region B must place its queen in Row 2. The only cell belonging to Region B in Row 2 is (2,5). \n\nWe can verify that (2,5) is valid because it does not share a column or touch diagonally with any of the currently placed queens.\n\n```json\n{\n  \"action\": \"place\",\n  \"row\": 2,\n  \"column\": 5\n}\n```",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3549,
+    "completion_tokens": 2126,
+    "total_tokens": 5675,
+    "cost": 0.03261,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.03261,
+      "upstream_inference_prompt_cost": 0.007098,
+      "upstream_inference_completions_cost": 0.025512
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1933,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792269836-VhennF86hPUD8kqxnsUU",
+  "object": "chat.completion",
+  "created": 1792269836,
+  "model": "x-ai/grok-4.6",
+  "provider": "Amazon Bedrock",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "The four queens occupy every row except 5, every column except 4, and every region except E. The single remaining legal cell is therefore (5,4). It belongs to E, shares no row/column/region with any existing queen, and has Chebyshev distance at least 2 from all of them, so it completes the unique solution.\n\n```json\n{\"action\":\"place\",\"row\":5,\"column\":4}\n```",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4338,
+    "completion_tokens": 872,
+    "total_tokens": 5210,
+    "cost": 0.0098076,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 3328,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0098076,
+      "upstream_inference_prompt_cost": 0.0040524,
+      "upstream_inference_completions_cost": 0.0057552
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 775,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
