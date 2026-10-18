@@ -69,10 +69,8 @@
 .sb-bars--rows .sb-fill { display: block; height: 100%; }
 .sb-bars--rows .sb-track > .sb-fill:last-child { border-radius: 0 4px 4px 0; }
 .sb-bars--rows .sb-value { grid-area: value; color: var(--text-primary); font-family: var(--mono-font); font-size: .8rem; font-weight: 700; text-align: right; }
-@media (min-width: 700px) {
-  .sb-bars--rows .sb-item { grid-template-columns: 13rem minmax(0, 1fr) 3.4rem 9.5rem; grid-template-areas: 'label track value cost'; }
-  .sb-bars--rows .sb-cost { grid-template-columns: 3.2rem auto; }
-}
+.sb-bars--wide .sb-item { grid-template-columns: 12rem minmax(0, 1fr) 3.4rem 9.5rem; grid-template-areas: 'label track value cost'; }
+.sb-bars--wide .sb-cost { grid-template-columns: 3.2rem auto; }
 
 .sb-logo { display: inline-grid; place-items: center; flex: 0 0 26px; width: 26px; height: 26px; border: 1px solid var(--border-subtle); border-radius: 5px; background: #fffdf8; }
 .sb-logo img { display: block; width: 18px; height: 18px; object-fit: contain; }

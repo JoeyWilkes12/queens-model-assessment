@@ -236,6 +236,7 @@ STUDY_LABELS = {
     '2026-09-30-jev-trajectories': 'Jev trajectories, 9 original boards (30 Sep)',
     '2026-10-01-earlier-generations': 'Earlier generations, 3 original boards (1 Oct)',
     '2026-10-01-diagnostic-completion': 'Diagnostic completion (1 Oct)',
+    '2026-10-01-earlier-generations:text-diagnostics': 'Earlier generations, text-only diagnostics (1 Oct)',
     '2026-10-16-jev-new-board-panel': 'Jev on the 192-board panel (16 Oct)',
     '2026-10-16-jev-new-board-panel-pilot': 'Jev panel pilot (16 Oct)',
     '2026-10-16-frontier-image-panel': 'One shot from an image, 36 panel boards (16 Oct)',
@@ -247,24 +248,26 @@ STUDY_LABELS = {
 
 def attach_costs(out):
     """OpenRouter cost per board on every chart entry, plus a per-evaluation cost table."""
-    index = OC.cost_index()
+    costs = OC.receipt_costs()
     llm = out['llm']
     for model in llm['models']:
-        costs = OC.board_costs(index, model['study'], model['id'])
-        for size, board in model['boards'].items():
-            board_id = next(b for b, s in SIZES.items() if str(s) == size)
-            board['cost_usd'] = costs.get(board_id)
+        for board in model['boards'].values():
+            usd, basis = costs.get(board['receipt'], (None, 'unknown'))
+            board['cost_usd'] = None if basis == 'unknown' else usd  # the scored receipt itself
     for model in llm['panel'].get('models', []):
-        model['costs'] = OC.board_costs(index, model['study'], model['id'])
+        model['costs'] = OC.board_costs(model['study'], model['id'], costs)
     for section in out['decision'].values():
         for model in section['models']:
             jev = model['author'] == 'TypeSafe'
-            model['costs'] = OC.board_costs(index, model['study'], 'typesafe/jev-1.13') if jev else None
+            model['costs'] = OC.board_costs(model['study'], 'typesafe/jev-1.13', costs) if jev else None
             model['cost_note'] = None if jev else 'Not billed through OpenRouter (SubQ preview API); not counted.'
     outcome_ok = ('strict', 'format_only')
     pilot = load('frontier-trajectories/pilot.json') if (E / 'frontier-trajectories/pilot.json').exists() else None
 
     def solved(study, model_id):
+        if study == '2026-10-16-jev-new-board-panel-pilot':
+            summary = load('jev-panel/pilot/summary.json')
+            return summary['boards_solved'], len({t['board_id'] for t in summary['trajectories']})
         for m in llm['models']:
             if m['study'] == study and m['id'] == model_id:
                 return sum(b['outcome'] in outcome_ok for b in m['boards'].values()), len(m['boards'])
@@ -283,14 +286,15 @@ def attach_costs(out):
             return sum(t['solved'] for t in mine), len(mine)
         return None
 
-    rows = OC.evaluations(index, solved)
+    rows = OC.evaluations(solved, costs)
     for row in rows:
         row['label'] = STUDY_LABELS.get(row['study'], row['study'])
         row['model_name'] = DISPLAY.get(row['model'], 'Jev 1.13' if row['model'].startswith('typesafe/jev') else 'Jev (latest alias)' if row['model'] == '~typesafe/jev-latest' else row['model'])
     out['costs'] = {
         'scope': 'OpenRouter spend recorded in the published receipts. SubQ Snap (own preview API) and agent-led use outside the studies are not counted.',
+        'per_board': 'Cost of the graded attempts only: the scored receipts of the boards whose cost is known, divided by their number. Re-runs, version probes and order controls, text-only diagnostics and board-less requests count toward the total, not the per-board figure.',
         'basis': {'reported': 'usage.cost returned by OpenRouter', 'derived': 'batch item: tokens x batch price, cached input at a tenth of the input price (reproduces the billed batch total)',
-                  'unbilled': 'HTTP error before any generation; billed $0', 'unknown': 'client timeout with no generation ID; not counted'},
+                  'unbilled': 'HTTP 4xx rejection before any generation; billed $0', 'unknown': 'no generation ID or usage (client timeout or upstream 5xx); not counted'},
         'total_usd': round(sum(r['cost_usd'] for r in rows), 6),
         'unknown_receipts': sum(r['basis'].get('unknown', 0) for r in rows),
         'evaluations': rows,

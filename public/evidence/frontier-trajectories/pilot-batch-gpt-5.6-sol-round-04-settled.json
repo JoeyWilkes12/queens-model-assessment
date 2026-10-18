@@ -1,0 +1,11 @@
+{
+  "settled_utc": "2026-10-17T20:56:32.894177+00:00",
+  "status": "completed",
+  "usage": {
+    "prompt_tokens": 2997,
+    "completion_tokens": 209,
+    "total_tokens": 3206,
+    "cost": 0.004088,
+    "is_byok": false
+  }
+}

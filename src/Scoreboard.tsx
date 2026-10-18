@@ -48,9 +48,11 @@ function summarizeCost(values: (number | null | undefined)[]): Cost {
 }
 
 const usd = (value: number) => value >= 1 ? `$${value.toFixed(2)}` : value >= 0.01 ? `$${value.toFixed(3)}` : `$${value.toFixed(4)}`
-const costText = (cost: Cost | null, note?: string) => cost && cost.perBoard !== null
-  ? `${usd(cost.perBoard)} per board · ${usd(cost.total)} for ${cost.boards} ${cost.boards === 1 ? 'board' : 'boards'}${cost.unknown ? ` · ${cost.unknown} unknown (timeout)` : ''}`
-  : note ?? 'No OpenRouter cost'
+const costText = (cost: Cost | null, note?: string) => {
+  if (!cost) return note ?? 'No OpenRouter cost'
+  if (cost.perBoard === null) return cost.unknown ? `cost unknown (${cost.unknown} with no generation ID)` : 'no receipts yet'
+  return `${usd(cost.perBoard)} per board · ${usd(cost.total)} for ${cost.boards} ${cost.boards === 1 ? 'board' : 'boards'}${cost.unknown ? ` · ${cost.unknown} more with unknown cost (no generation ID)` : ''}`
+}
 
 /** Performance order is the builders' own order; cost order puts the most expensive model per board first. */
 function sortRows(rows: Row[], key: SortKey): Row[] {
@@ -95,7 +97,9 @@ function CostMark({ row, max }: { row: Row; max: number }) {
   const per = row.cost?.perBoard ?? null
   return <span className="sb-cost" aria-hidden="true">
     <span className="sb-cost-track">{per !== null && <span className="sb-cost-fill" style={{ width: `${Math.max(2, per / max * 100)}%` }} />}</span>
-    <span className="sb-cost-label">{per !== null ? <>{usd(per)}<span className="sb-cost-unit">/board</span></> : row.kind === 'model' ? (row.costNote ? 'not OpenRouter' : '—') : 'no API cost'}</span>
+    <span className="sb-cost-label">{per !== null ? <>{usd(per)}<span className="sb-cost-unit">/board</span>{row.cost?.unknown ? <span className="sb-cost-unit"> +{row.cost.unknown} unknown</span> : null}</>
+      : row.kind === 'baseline' ? 'no API cost' : row.kind === 'pending' ? 'not yet run'
+        : row.costNote ? 'not OpenRouter' : row.cost?.unknown ? 'cost unknown' : 'not run yet'}</span>
   </span>
 }
 
@@ -104,7 +108,8 @@ function EvalBars({ rows, unit }: { rows: Row[]; unit: string }) {
   const vertical = width >= 560 && rows.length <= 9
   const max = Math.max(1, ...rows.map(row => row.denominator))
   const costMax = Math.max(0.000001, ...rows.map(row => row.cost?.perBoard ?? 0))
-  return <div ref={ref} className={`sb-bars ${vertical ? 'sb-bars--columns' : 'sb-bars--rows'}`} role="list" aria-label={unit}>
+  // The wide row grid follows the chart's own width, so the cost column never squeezes the boards-solved track.
+  return <div ref={ref} className={`sb-bars ${vertical ? 'sb-bars--columns' : 'sb-bars--rows'}${!vertical && width >= 640 ? ' sb-bars--wide' : ''}`} role="list" aria-label={unit}>
     {rows.map(row => {
       const solidPct = row.solid / max * 100
       const hatchedPct = row.hatched / max * 100
@@ -269,7 +274,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <li>Two Grok 4.6 9×9 answers ran out of the 12,288-token budget without a final answer, the same limit as in September; they count as unsolved.</li>
           {(panel?.reruns ?? []).length > 0 && <li><strong>Request failures and re-runs:</strong> {panel?.reruns?.map(r => `${r.model}'s ${r.size}×${r.size} request (${r.board_id}) failed with HTTP 429 before any answer`).join('; ')}. The chart keeps the preregistered result (unsolved). Re-sent once, unchanged, on 16 Oct: {panel?.reruns?.map((r, i) => <span key={r.receipt}>{i ? '; ' : ''}<a href={`#/evidence-atlas/${r.receipt}`}>{r.board_id}</a> {r.outcome === 'format_only' ? 'correct, off-format' : r.outcome === 'strict' ? 'correct' : r.outcome.replace('_', ' ')}</span>)}.</li>}
           {includeEarlier && panelEarlier.length > 0 && <li><strong>Earlier generations ({panelEarlier.length} models, 17 Oct):</strong> the same 36 boards, images and prompt, with each model's 1 October settings. Gemini 2.5 Pro and Flash ran through the Batch API on Google Vertex. OpenRouter rejected every OpenAI and Anthropic batch ("no :batch endpoint"), so those six ran on demand with their 1 October provider blocks, as preregistered.{(panel?.retired ?? []).length > 0 && <> Not shown: {panel?.retired?.map(model => model.name).join(', ')}, which OpenRouter no longer serves.</>}</li>}
-<li><strong>Cost:</strong> OpenRouter spend per board from the receipts (<code>usage.cost</code>). GPT-5.6 Sol's 16 October batch items carry no per-item cost, so theirs is tokens × the batch price, which reproduces the billed batch total exactly. Requests that failed before generation cost $0; a timeout's cost is unknown and is not counted. Agent-led OpenRouter use outside these studies is not included. <a href="#/assessment-receipt">Cost by evaluation</a>.</li>
+<li><strong>Cost:</strong> OpenRouter spend on each graded request, from the receipts (<code>usage.cost</code>). GPT-5.6 Sol's 16 October batch items carry no per-item cost, so theirs is tokens × the batch price, which reproduces the billed batch total exactly. Requests rejected before generation (HTTP 4xx, such as Gemini's two 429s) cost $0. Gemini's two dated re-runs ($0.23) are listed in the cost ledger, not in its per-board cost. Agent-led OpenRouter use outside these studies is not included. <a href="#/assessment-receipt">Cost by evaluation</a>.</li>
           <li><a href="#/decision-models">Decision models</a> · <a href="#/earlier-generations">Earlier generations</a> · <a href={evidenceUrl('evidence/frontier-image-panel/summary.json')} download>Panel results (JSON)</a>{panel?.earlier_study && <> · <a href={evidenceUrl('evidence/legacy-panel/summary.json')} download>Earlier-generation results (JSON)</a></>}</li>
         </ul> : <ul>
           <li>One request per model and board, the same image and prompt, no tools, no repair turns, no retries.</li>
@@ -277,7 +282,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           {reruns.map(model => <li key={model.id}><strong>Re-run on {model.rerun?.date}:</strong> {model.name}'s {model.rerun?.size}×{model.rerun?.size} request was sent again byte for byte: {model.rerun?.outcome === 'strict' ? 'solved, strict JSON' : model.rerun?.outcome.replace('_', ' ')}. <a href={`#/evidence-atlas/${model.rerun?.receipt}`}>Re-run receipt</a>.</li>)}
           {includeEarlier && <li><strong>Scheduled but not run ({data.llm.not_run.length}):</strong> {data.llm.not_run.map(model => model.name).join(', ')}. The adaptive replay stopped those families early; they had no tests and are not shown.</li>}
           {includeEarlier && <li>The six unrun earlier-generation models have not been scheduled again.</li>}
-<li><strong>Cost:</strong> OpenRouter spend per board from the receipts (<code>usage.cost</code>). GPT-5.6 Sol's 16 October batch items carry no per-item cost, so theirs is tokens × the batch price, which reproduces the billed batch total exactly. Requests that failed before generation cost $0; a timeout's cost is unknown and is not counted. Agent-led OpenRouter use outside these studies is not included. <a href="#/assessment-receipt">Cost by evaluation</a>.</li>
+<li><strong>Cost:</strong> OpenRouter spend on each graded request, from the receipts (<code>usage.cost</code>). Grok 4.6's 7×7 request timed out with no generation ID, so its cost is unknown and not counted. Agent-led OpenRouter use outside these studies is not included. <a href="#/assessment-receipt">Cost by evaluation</a>.</li>
           <li><a href="#/protocol-results">Protocol and results</a> · <a href="#/earlier-generations">Earlier generations</a> · <a href={evidenceUrl('evidence/scoreboard.json')} download>Scoreboard data (JSON)</a></li>
         </ul>}
       </details>
@@ -313,7 +318,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
             {set.models.map(model => <li key={model.name}>{model.name}: {model.calls} model calls.</li>)}
             {set.pending.map(model => <li key={model.name}><strong>{model.name} not yet tested:</strong> {model.reason} Until then this panel is not a like-for-like comparison.</li>)}
           </>}
-<li><strong>Cost:</strong> Jev's OpenRouter spend per board, summed over every call on that board. SubQ Snap ran on its own preview API, not OpenRouter, so it shows no OpenRouter cost. The baselines make no API calls.</li>
+<li><strong>Cost:</strong> Jev's OpenRouter spend per board on its scored trajectory calls. On the original nine boards, $0.016 of route probes and order controls is listed in the cost ledger instead. SubQ Snap ran on its own preview API, not OpenRouter, so it shows no OpenRouter cost. The baselines make no API calls.</li>
           <li>Baselines use the same boards: the greedy rule is deterministic (<a href="#/greedy-rule">rule, results and step-by-step replays</a>); the random value is an exact expectation, not a run.</li>
           <li><a href="#/methods-critique">Methods critique</a> · <a href="#/subq-assessment">SubQ chapter</a> · <a href="#/jev-trajectories">Jev trajectories</a></li>
         </ul>

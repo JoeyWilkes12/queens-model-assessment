@@ -103,6 +103,10 @@ def main():
         if (S.out(phase) / "summary.json").exists():
             save_public(OUT / f"{phase}-summary.json", S.read(S.out(phase) / "summary.json"))
         save_public(OUT / f"{phase}-plan.json", plan)
+        for rdir in sorted((S.out(phase) / "batch-rounds").glob("*/round-*")) if (S.out(phase) / "batch-rounds").exists() else []:
+            for name in ("submission.json", "settled.json"):  # billed round totals, to check each turn's derived cost
+                if (rdir / name).exists():
+                    save_public(OUT / f"{phase}-batch-{rdir.parent.name}-{rdir.name}-{name}", S.read(rdir / name))
         data = {"study": study, "phase": phase, "models": {s: {"model": m["model"], "route": m["route"]} for s, m in S.MODELS.items()},
                 "boards": [{"id": b["id"], "size": b["size"], "regions": S.grid_letters(b)} for b in boards],
                 "trajectories": rows, "comparisons": comparisons([b["id"] for b in boards]) if phase == "main" else {},

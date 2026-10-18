@@ -315,6 +315,8 @@ code { color: var(--text-primary); font-size: .88em; }
   .atlas-controls > * { grid-column: auto; }
 }
 @media (max-width: 1020px) {
+  /* With the book rail open, the four-cell receipt strip no longer fits beside its lead; stack it. */
+  .receipt { grid-template-columns: 1fr; } .receipt-grid { grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--border-subtle); border-left: 0; padding: 16px 0 0; }
   .book-sidebar { width: 260px; padding-inline: 19px; }
   .page-frame { margin-left: 260px; }
   .receipt { margin-inline: 22px; }
