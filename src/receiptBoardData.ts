@@ -269,12 +269,11 @@ function conversationState(request: ObjectValue): ObjectValue | null {
   const message = [...request.messages].reverse().find(entry => object(entry)?.role === 'user')
   const content = object(message)?.content
   if (typeof content !== 'string' || !content.trimStart().startsWith('{')) return null
-  try {
-    const parsed = object(JSON.parse(content))
-    return parsed && object(parsed.state) ? { state: parsed.state } : null
-  } catch {
-    return null
-  }
+  // The module's parser rejects duplicate keys, so the drawn state is exactly what the model read.
+  const parsed = jsonAt(content)
+  if (!parsed || content.slice(parsed.end).trim()) return null
+  const value = object(parsed.value)
+  return value && object(value.state) ? { state: value.state } : null
 }
 
 export function deriveReceiptBoard(request: unknown, output: unknown, grade?: unknown): { regions: string[][]; frames: BoardFrame[]; description: string } | null {

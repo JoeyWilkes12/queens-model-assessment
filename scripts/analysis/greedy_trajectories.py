@@ -49,7 +49,8 @@ def trace(grid, solution):
         tied = sorted(letter(g) for g in options if len(options[g]) == len(options[region]))
         if not options[region]:
             steps.append({"step": depth, "region": letter(region), "menu_sizes": menu_sizes, "tied_regions": tied,
-                          "candidates": [], "cell": None, "on_unique_solution": None, "empty_menu": True})
+                          "candidates": [], "cell": None, "forced": False, "on_unique_solution": None, "empty_menu": True,
+                          "after_scored_stop": scored_stop is not None})
             scored_stop = scored_stop or {"step": depth, "reason": "empty_menu"}
             break
         cell = options[region][0]

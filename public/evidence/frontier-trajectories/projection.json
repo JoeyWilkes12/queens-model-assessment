@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-18T01:21:15.782423+00:00",
+  "pilot_cost_per_model_5x5": {
+    "gpt-5.6-sol": 0.027292,
+    "claude-opus-4.8": 0.23053,
+    "gemini-3.1-pro-preview": 0.178348,
+    "grok-4.6": 0.105094
+  },
+  "projected_block_usd": 5.0338,
+  "room_usd": 1.233,
+  "held_for_legacy_panel_usd": 5.9617,
+  "ledger": {
+    "spent_usd": 11.555262,
+    "reserves_usd": 0,
+    "next_usd": 0.0,
+    "cap_usd": 18.75,
+    "ok": true
+  },
+  "blocks": 0,
+  "rule": "K = min(12, floor(room / projected block)), rounded down to a multiple of 4 when K >= 4; projected board cost = 1.5 x pilot 5x5 cost x (N/5)^2"
+}

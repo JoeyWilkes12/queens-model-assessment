@@ -57,12 +57,12 @@ As requested, the Batch API is used wherever a model has a `:batch` endpoint, ev
 
 - **Campaign cap.** $18.75 of new OpenRouter spend for this study and the frontier trajectories together. This study has a $10.50 sub-cap.
 - **Spend so far** is the larger of two numbers: the key's usage counter minus a baseline recorded before any request, and the costs recorded locally for every settled call or batch. The local record covers the counter's lag of a few minutes.
-- **Batch costs.** Batch items report tokens but no per-item cost. A batch's reported total is recorded when it settles, and each item's cost is its tokens × the batch price. That product reproduces the 16 October GPT batch total exactly.
+- **Batch costs.** Batch items report tokens but no per-item cost. A batch's reported total is recorded when it settles, and each item's cost is its tokens × the batch price, with cached input at the cached rate (a tenth of the input price). That reproduces the settled batch totals exactly.
 - **Commitments.** Each reserve is registered under a file lock before the request is sent, so parallel processes see each other's commitments. A call whose cost is unknown, such as a client timeout, is recorded at its worst case.
 - **Batch guard.** Before each submission, spend so far plus unsettled reserves plus a reserve of 1.5 × (1 October mean cost × 0.5) per request must fit both caps. A batch that does not fit waits until earlier batches settle.
 - **On-demand guard.** Before each call, the call's worst case (12,000 input tokens and 12,288 output tokens at its prices, plus $0.01) must fit.
 - **Expected cost.** About $8.85 at batch prices, from the 1 October mean cost per request.
-- **No retries.** HTTP errors, failed batch items, timeouts and malformed replies count as no answer.
+- **No retries.** HTTP errors, failed batch items and timeouts count as no answer. A malformed HTTP-200 reply counts as wrong, or as truncated if the token budget ran out.
 - **Unknown submissions.** If a batch submission's outcome is unknown (a dropped connection or a 5xx), its reserve stays. Nothing is resubmitted until the batch is found in the account's batch list or confirmed absent. Only an explicit 4xx rejection releases the reserve.
 
 ## Endpoints
@@ -80,12 +80,12 @@ As requested, the Batch API is used wherever a model has a `:batch` endpoint, ev
 
 ## Amendments
 
-All three were made on 17 October, after the batch submissions and before any on-demand call. No model output had been seen.
+Amendments 1–3 were made on 17 October, after the batch submissions and before any on-demand call; no model output had been seen. Amendments 4–6 were made during the on-demand runs, after outputs had been recorded. None of them changes a request, the grading or any recorded outcome.
 
 **Amendment 1: routes.**
 - **Accepted.** Both Gemini 2.5 batches (Google Vertex only).
 - **Rejected.** Every OpenAI and Anthropic batch, with HTTP 400 ("does not have a :batch endpoint"), although the catalog lists a `:batch` variant for each. That is the same failure as the 16 October Opus 4.8 batch.
-  - OpenAI was tried with both the plain and the explicit `:batch` model ID.
+  - GPT-4.1 was tried with both the plain and the explicit `:batch` model ID; GPT-5.5, GPT-5.4 and GPT-5 with the plain ID only.
   - Anthropic was tried in both the chat-completions and Messages shapes.
 - **Fallback.** Nothing was accepted or billed. As preregistered, GPT-5.5, GPT-5.4, GPT-5, GPT-4.1, Opus 4.7 and Opus 4.6 run on demand with their 1 October provider blocks, an inline image and the 600 s timeout, exactly as on 1 October.
 
@@ -113,5 +113,5 @@ All three were made on 17 October, after the batch submissions and before any on
 
 **Amendment 6: API key budget block.** After the workspace limit was raised, the API key's own weekly limit of $20.00 (which resets 19 October, 00:00 UTC) began rejecting requests at 21:15 UTC with HTTP 403: "API key budget limit exceeded (weekly limit)".
 - **Handling.** Each runner stopped at its first such response, as amendment 4 now requires. No blocked call is recorded as a model outcome.
-- **Remaining.** 67 calls had not been sent. They will be sent unchanged once the key's limit allows.
+- **Remaining.** 72 calls: 67 never sent, plus the 5 rejected at 21:15 UTC. They will be sent unchanged once the key's limit allows.
 

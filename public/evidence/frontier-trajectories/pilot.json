@@ -99,7 +99,7 @@
       "effects": {
         "placed": 5
       },
-      "cost_usd": 0.03928,
+      "cost_usd": 0.027292,
       "turns": [
         {
           "turn": 1,
@@ -224,7 +224,7 @@
           "http_attempts": [
             200
           ],
-          "cost_usd": 0.005906,
+          "cost_usd": 0.0033032,
           "completion_tokens": 146,
           "reasoning_tokens": 87,
           "returned_model": "openai/gpt-5.6-sol",
@@ -275,7 +275,7 @@
           "http_attempts": [
             200
           ],
-          "cost_usd": 0.008084,
+          "cost_usd": 0.004088,
           "completion_tokens": 209,
           "reasoning_tokens": 142,
           "returned_model": "openai/gpt-5.6-sol",
@@ -330,7 +330,7 @@
           "http_attempts": [
             200
           ],
-          "cost_usd": 0.008532,
+          "cost_usd": 0.0031428,
           "completion_tokens": 95,
           "reasoning_tokens": 34,
           "returned_model": "openai/gpt-5.6-sol",

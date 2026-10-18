@@ -52,9 +52,14 @@ const MODEL_NAMES: Record<string, string> = { 'gpt-5.6-sol': 'GPT-5.6 Sol', 'cla
 const MODEL_ORDER = ['gpt-5.6-sol', 'claude-opus-4.8', 'gemini-3.1-pro-preview', 'grok-4.6']
 const ONE_SHOT: Record<string, string> = { strict: 'solved', format_only: 'solved, off-format', wrong: 'wrong', truncated: 'ran out of tokens', no_answer: 'no answer' }
 const FINISHED = ['max_requests', 'stopped', 'request_failure']
+const CENSORED = 'censored_budget'
+/** Result text for a trajectory: graded only once it has ended. */
+const outcome = (t: Trajectory) => t.end_reason === CENSORED ? `censored by the budget guard after ${plural(t.turns.length, 'request')}; not graded`
+  : !FINISHED.includes(t.end_reason) ? (t.turns.length ? `unfinished (${plural(t.turns.length, 'request')} so far)` : END[t.end_reason] ?? t.end_reason)
+    : t.solved ? 'solved' : `not solved (${t.final_correct_queens}/${t.size})`
 const END: Record<string, string> = { max_requests: 'used every request', stopped: 'stopped early', request_failure: 'request failed', censored_budget: 'not run (budget)', not_run: 'not run', incomplete_turn: 'incomplete' }
 /** These states are a model's own actions in a conversation with no feedback. */
-const toneLabels: Partial<Record<FrameTone, string>> = { pass: 'All queens on the solution', fail: 'Off the solution', choice: 'Revision', unknown: 'No change' }
+const toneLabels: Partial<Record<FrameTone, string>> = { pass: 'All queens on the solution', fail: 'Off the solution', choice: 'Revision', unknown: 'No change or not graded' }
 
 const cellText = ([row, column]: readonly number[]) => `r${row}c${column}`
 const money = (value: number) => value < 0.01 ? `$${value.toFixed(4)}` : `$${value.toFixed(2)}`
@@ -88,7 +93,7 @@ function describe(turn: Turn) {
 function framesFor(trajectory: Trajectory, studySource: string): BoardFrame[] {
   const n = trajectory.size
   const frames: BoardFrame[] = [{ id: 'start', label: 'Empty board', queens: [], tone: 'start', sourceLabel: studySource,
-    note: `${n}×${n} board, ${n} colors. The model may send ${n} requests: each places one queen, revises the placement or stops. It never learns whether a queen is right.` }]
+    note: `${n}×${n} board, ${n} colors. The harness sends at most ${n} requests; each reply may place one queen, revise the placement or stop. The model never learns whether a queen is right.` }]
   let previous: Cell[] = []
   for (const turn of trajectory.turns) {
     const queens = turn.placed_after.map(([r, c]) => [r, c] as const)
@@ -108,8 +113,9 @@ function framesFor(trajectory: Trajectory, studySource: string): BoardFrame[] {
   const last = trajectory.turns[trajectory.turns.length - 1]
   frames.push(trajectory.solved
     ? { id: 'end', label: 'Final placement: solved', queens: previous, tone: 'solved', sourceLabel: studySource, note: `The final placement is the board's unique solution, after ${plural(trajectory.requests, 'request')}.` }
+    : trajectory.end_reason === CENSORED ? { id: 'end', label: 'Censored by the budget guard', queens: previous, tone: 'unknown', sourceLabel: studySource, note: `Recorded: ${plural(trajectory.turns.length, 'request')}. The campaign budget guard stopped this run before its next request. It is not graded and is not a failure.` }
     : !FINISHED.includes(trajectory.end_reason) ? { id: 'end', label: 'Unfinished: the run stopped here', queens: previous, tone: 'unknown', sourceLabel: studySource, note: `Recorded so far: ${plural(trajectory.turns.length, 'request')}. The trajectory resumes from the next request; nothing is graded until it ends.` }
-    : { id: 'end', label: `Final placement: not solved (${END[trajectory.end_reason] ?? trajectory.end_reason})`, queens: previous, tone: 'fail', sourceLabel: studySource,
+    : { id: 'end', label: `Final placement: not solved (${END[trajectory.end_reason] ?? trajectory.end_reason})`, queens: previous, tone: last?.labels_after.off_solution.length || last?.labels_after.conflicts.length ? 'fail' : 'unknown', sourceLabel: studySource,
       invalidCells: last?.labels_after.off_solution.length ? last.labels_after.off_solution.map(([r, c]) => [r, c] as const) : undefined,
       note: `${trajectory.final_correct_queens} of ${n} queens on the unique solution at the end.${trajectory.first_off_solution_turn ? ` The first queen off the solution came at request ${trajectory.first_off_solution_turn}.` : ''}` })
   return frames
@@ -121,12 +127,16 @@ function usePhases() {
     const controller = new AbortController()
     const get = (path: string) => fetch(evidenceUrl(path), { signal: controller.signal }).then(response => response.ok ? response.json() : null)
     get('frontier-trajectories/index.json')
-      .then((index: { phases?: string[]; projection?: boolean } | null) => Promise.all([
-        Promise.all(['main', 'pilot'].filter(name => index?.phases?.includes(name)).map(name => get(`frontier-trajectories/${name}.json`))),
-        index?.projection ? get('frontier-trajectories/projection.json') : Promise.resolve(null)]))
-      .then(([values, projection]) => {
+      .then((index: { phases?: string[]; projection?: boolean } | null) => {
+        const listed = ['main', 'pilot'].filter(name => index?.phases?.includes(name))
+        return Promise.all([listed, Promise.all(listed.map(name => get(`frontier-trajectories/${name}.json`))),
+          index?.projection ? get('frontier-trajectories/projection.json') : Promise.resolve(null), !!index?.projection] as const)
+      })
+      .then(([listed, values, projection, wantsProjection]) => {
         const phases = values.filter((value): value is Phase => !!value && Array.isArray(value.trajectories))
-        setState(phases.length ? { status: 'ready', phases, projection } : { status: 'error' })
+        // A listed file that fails to load is an error, never a smaller result.
+        const complete = phases.length > 0 && phases.length === listed.length && (!wantsProjection || !!projection)
+        setState(complete ? { status: 'ready', phases, projection } : { status: 'error' })
       })
       .catch(() => { if (!controller.signal.aborted) setState({ status: 'error' }) })
     return () => controller.abort()
@@ -142,13 +152,14 @@ function Summary({ phases, ui }: { phases: Phase[]; ui: BookUi }) {
       const mine = phase.trajectories.filter(t => t.short === short)
       const run = mine.filter(t => FINISHED.includes(t.end_reason))
       const pending = mine.length - run.length
+      const censored = mine.filter(t => t.end_reason === CENSORED).length
       const firsts = run.map(t => t.first_off_solution_turn).filter((v): v is number => v !== null)
       const revisions = run.reduce((sum, t) => sum + (t.effects.revised ?? 0), 0)
       const stops = run.filter(t => t.end_reason === 'stopped').length
       return [MODEL_NAMES[short] ?? short,
-        ...sizes.map(size => { const s = run.filter(t => t.size === size); const open = mine.filter(t => t.size === size).length - s.length; return `${s.filter(t => t.solved).length}/${s.length}${open ? ` (${open} unfinished)` : ''}` }),
+        ...sizes.map(size => { const s = run.filter(t => t.size === size); const open = mine.filter(t => t.size === size && t.end_reason !== CENSORED).length - s.length; const cut = mine.filter(t => t.size === size && t.end_reason === CENSORED).length; return `${s.filter(t => t.solved).length}/${s.length}${open ? ` (${open} unfinished)` : ''}${cut ? ` (${cut} censored)` : ''}` }),
         firsts.length ? `${firsts.length} (request ${Math.min(...firsts)}–${Math.max(...firsts)})` : 'none',
-        String(revisions), String(stops), `${money(mine.reduce((sum, t) => sum + t.cost_usd, 0))}${pending ? ' so far' : ''}`]
+        String(revisions), String(stops), `${money(mine.reduce((sum, t) => sum + t.cost_usd, 0))}${pending - censored ? ' so far' : ''}`]
     })
     return <DataTable key={phase.phase} caption={phase.phase === 'pilot' ? 'Pilot: one development board per model (not pooled with the panel)' : `Panel boards: ${phase.boards.length} boards per model`}
       headers={['Model', ...sizes.map(size => `${size}×${size} solved`), 'Left the solution', 'Revisions', 'Stopped early', 'Cost']} rows={rows} />
@@ -163,7 +174,7 @@ function Pairs({ phase, ui }: { phase: Phase; ui: BookUi }) {
     const t = phase.trajectories.find(item => item.board_id === board.id && item.short === short)
     if (!t) return null
     const c = phase.comparisons[board.id]
-    return [`${board.id} · ${MODEL_NAMES[short]}`, t.turns.length ? (t.solved ? 'solved' : `not solved (${t.final_correct_queens}/${t.size})`) : END[t.end_reason] ?? t.end_reason, ONE_SHOT[c?.one_shot?.[short]] ?? '—',
+    return [`${board.id} · ${MODEL_NAMES[short]}`, outcome(t), ONE_SHOT[c?.one_shot?.[short]] ?? '—',
       yes(c?.jev_solved ?? null), yes(c?.subq_solved ?? null), yes(c?.greedy_solved ?? null)]
   }).filter((row): row is string[] => !!row))
   return <DataTable caption="Same boards, other tests" headers={['Board · model', 'One queen per request', 'One shot from the image (16 Oct)', 'Jev 1.13', 'SubQ Snap', 'Greedy rule']} rows={rows} />
@@ -198,13 +209,13 @@ function Replays({ phases }: { phases: Phase[] }) {
     {trajectory && trajectory.turns.length ? <>
       <BoardReplay key={trajectory.trajectory_id} regions={board.regions} frames={frames} toneLabels={toneLabels}
         eyebrow={`${MODEL_NAMES[trajectory.short]} · ${board.id} · one queen per request`}
-        title={trajectory.solved ? `Solved in ${plural(trajectory.requests, 'request')}` : !FINISHED.includes(trajectory.end_reason) ? `Unfinished after ${plural(trajectory.requests, 'request')}` : `Not solved: ${trajectory.final_correct_queens} of ${trajectory.size} queens right at the end`}
+        title={trajectory.solved ? `Solved in ${plural(trajectory.requests, 'request')}` : trajectory.end_reason === CENSORED ? `Censored by the budget guard after ${plural(trajectory.requests, 'request')}` : !FINISHED.includes(trajectory.end_reason) ? `Unfinished after ${plural(trajectory.requests, 'request')}` : `Not solved: ${trajectory.final_correct_queens} of ${trajectory.size} queens right at the end`}
         description="One state per request. Red marks queens off the board's unique solution, which the model never sees." />
       <details className="ft-transcript">
         <summary>Every reply in full ({plural(trajectory.turns.length, 'request')}, {money(trajectory.cost_usd)})</summary>
         <ol>{trajectory.turns.map(turn => <li key={turn.call_id}>
           <p className="ft-turn-head"><strong>Request {turn.turn}</strong>: {describe(turn)}. <span>{turn.completion_tokens ? `${turn.completion_tokens.toLocaleString()} output tokens${turn.reasoning_tokens ? `, ${turn.reasoning_tokens.toLocaleString()} of them hidden reasoning` : ''} · ` : ''}{turn.cost_usd !== null ? money(turn.cost_usd) : 'cost not reported'} · <a href={`#/evidence-atlas/${phase.study}:${turn.call_id}`}>receipt</a></span></p>
-          <div className="ft-reply">{prose(turn.text) || '(no visible reply)'}</div>
+          <div className="ft-reply" tabIndex={0} role="region" aria-label={`Request ${turn.turn} reply`}>{prose(turn.text) || '(no visible reply)'}</div>
         </li>)}</ol>
       </details>
     </> : <p role="status">This model has no recorded turns on this board.</p>}
@@ -230,7 +241,7 @@ export function FrontierTrajectories({ ui }: { ui: BookUi }) {
           <div className="rule-list">
             <div><span>IN</span><p><strong>The decision models' state.</strong> Rules, coordinates, the color grid, every color's cells and the queens placed so far, as text: the same state Jev and SubQ receive. No image.</p></div>
             <div><span>OUT</span><p><strong>One action per request.</strong> Place one queen; revise the whole placement (moving any queens, adding at most one); or stop. An explanation first is encouraged and never scored.</p></div>
-            <div><span>NO</span><p><strong>No feedback, no early stop.</strong> The next request shows the updated placement and nothing else. Leaving the solution does not end the attempt.</p></div>
+            <div><span>NO</span><p><strong>No feedback, no forced ending.</strong> The next request shows the updated placement and nothing else. Leaving the solution does not end the attempt.</p></div>
           </div>
           <p>The final placement is graded against the board's unique solution, which is never sent. GPT-5.6 Sol ran through the Batch API, one batch per round of requests; the other three ran on demand with the 16 October provider settings. <a href={evidenceUrl(`frontier-trajectories/${phases?.some(p => p.phase === 'main') ? 'main' : 'pilot'}-plan.json`)} download>Frozen plan</a> · preregistration in <code>docs/frontier-trajectories-preregistration.md</code>.</p>
         </Section>
@@ -242,7 +253,8 @@ export function FrontierTrajectories({ ui }: { ui: BookUi }) {
           {status ?? (phases && <Replays phases={phases} />)}
         </Section>
         <Section id="ft-limits" title="Limits">
-          {pilotOnly && projection && <Callout tone="stop" title="Only the pilot board ran.">The preregistered rule sets the number of panel blocks (one 5×5, 7×7 and 9×9 board per model) from cost alone: the pilot's cost, scaled by board size, with a 1.5× margin. After the earlier-generation panel, ${projection.room_usd.toFixed(2)} of the campaign cap remained against a projected ${projection.projected_block_usd.toFixed(2)} per block, so the rule allowed {projection.blocks} panel blocks. Each model therefore has one trajectory, on one 5×5 development board. Panel boards can follow with more budget, under the same frozen protocol.</Callout>}
+          {pilotOnly && projection && projection.blocks === 0 && <Callout tone="stop" title="Only the pilot board ran.">The preregistered rule sets the number of panel blocks (one 5×5, 7×7 and 9×9 board per model) from cost alone: the pilot's cost, scaled by board size, with a 1.5× margin. With the earlier-generation panel's unspent budget held back, ${projection.room_usd.toFixed(2)} of the campaign cap remained against a projected ${projection.projected_block_usd.toFixed(2)} per block, so the rule allowed no panel block. Each model therefore has one trajectory, on one 5×5 development board. Panel boards can follow with more budget, under the same frozen protocol.</Callout>}
+          {pilotOnly && projection && projection.blocks > 0 && <Callout tone="note" title="Panel trajectories are scheduled but not yet published.">The preregistered cost-only rule allowed {projection.blocks} panel {projection.blocks === 1 ? 'block' : 'blocks'}. Until those runs finish, only the pilot board is shown.</Callout>}
           <Callout tone="caution" title="A small, descriptive sample.">Few boards per model, chosen by a cost-only rule fixed before the panel runs. The text state removes image perception, so these results are not comparable with the one-shot image test as a measure of the same skill. Explanations are the model's own visible text; hidden reasoning is excluded and is not carried between requests.</Callout>
         </Section>
       </main>

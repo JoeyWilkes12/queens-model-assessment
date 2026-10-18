@@ -79,7 +79,7 @@ All four use `max_tokens` 12288 and reasoning effort high with reasoning exclude
 - **Spend so far** is the larger of the key's usage counter delta and the locally recorded costs, as in the earlier-generation preregistration.
 - **Batch rounds.**
   - Each round reserves, per request, the lower of the worst case and 3 × the model's mean turn cost so far.
-  - Batch items carry no per-item cost, so a turn's cost is its tokens × the batch price.
+  - Batch items carry no per-item cost, so a turn's cost is its tokens × the batch price, with cached input at the cached rate. That reproduces each settled round total exactly.
   - The round's reported total is recorded when it settles.
   - A round whose submission outcome is unknown is never resubmitted; it is first reconciled against the account's batch list.
   - Settling a round twice records nothing twice.
@@ -118,3 +118,9 @@ Descriptive only; these trajectory samples are small.
 - **Pilot state.** The three on-demand pilot trajectories had already finished. GPT-5.6 Sol's batch rounds stop at the first rejected round, and its trajectory resumes from the same turn once the limit allows.
 - **Runner change.** Such responses are never recorded as a turn or as a request failure, and the runner stops at once.
 - **Harness hash.** The frozen plan records the hash change; prompts, actions, parsing, grading and routes are unchanged.
+
+**Amendment 2 (17–18 October): cost and budget-block accounting.**
+- **Cost.** A batch turn's cost now prices cached input at the cached rate. This matches OpenRouter's settled totals; the earlier formula overstated GPT-5.6 Sol's pilot cost by 44%.
+- **Budget blocks.** A budget-limit 403 inside a batch result is now kept aside and stops the run, the same as on demand.
+- **Unchanged.** Prompts, actions, parsing and grading.
+

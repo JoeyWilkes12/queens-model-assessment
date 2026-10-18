@@ -223,7 +223,7 @@ export function BoardReplay({ regions, frames, title, description, allowPlayback
                   }))}
                   <rect x={AXIS_SIZE} y={AXIS_SIZE} width={size * CELL_SIZE} height={size * CELL_SIZE} className="board-replay-edge" />
                 </svg>
-                {showBadge && <span className={`board-replay-badge board-replay-badge--${terminalTone}`} aria-hidden="true">{terminalTone === 'solved' ? 'Solved' : 'Stopped'}</span>}
+                {showBadge && terminalTone && <span className={`board-replay-badge board-replay-badge--${terminalTone}`} aria-hidden="true">{toneNames[terminalTone]}</span>}
               </div>
               <figcaption id={`${id}-board-caption`} className="board-replay-sr">{size}×{size} board, 1-based coordinates. Viewer colors distinguish region labels; they are not a new model input.</figcaption>
             </figure>
@@ -262,7 +262,7 @@ export function BoardReplay({ regions, frames, title, description, allowPlayback
                 {!!candidates.length && <li><span className="board-replay-key-candidate" />Candidate cell</li>}
                 {frame.selectedCell && <li><span className="board-replay-key-selected" />{frame.selectedCellLabel || 'Selected cell'}</li>}
                 {!!frame.invalidCells?.length && <li><span className="board-replay-key-invalid" />Flagged by saved evaluation</li>}
-                {hasTimeline && <li><span className="board-replay-key-timeline" />Timeline: choice · forced · pass · stopped · solved</li>}
+                {hasTimeline && <li><span className="board-replay-key-timeline" />Timeline: {[...new Set(frames.map(item => item.tone).filter((tone): tone is FrameTone => !!tone && tone !== 'start'))].map(tone => toneNames[tone]).join(' · ')}</li>}
               </ul>
               <div className="board-replay-occupancy">
                 <h5>Queens per region</h5>

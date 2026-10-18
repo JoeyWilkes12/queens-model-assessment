@@ -78,7 +78,7 @@ function trace(regions, solution) {
     const fewest = menus.get(region).length
     const base = { step: depth, region, menu_sizes: Object.fromEntries([...menus].map(([name, cells]) => [name, cells.length])), tied_regions: [...menus].filter(([, cells]) => cells.length === fewest).map(([name]) => name) }
     if (!fewest) {
-      steps.push({ ...base, candidates: [], cell: null, on_unique_solution: null, empty_menu: true })
+      steps.push({ ...base, candidates: [], cell: null, forced: false, on_unique_solution: null, empty_menu: true, after_scored_stop: stop !== null })
       stop = stop || { step: depth, reason: 'empty_menu' }
       break
     }

@@ -206,13 +206,19 @@
     }
   },
   "first_request_example_sha256": "3207bd3972885e63f759264ccd9251bc3160803125528ff8076677edeba3d4e7",
-  "harness_sha256": "0da286cd43a78712f071e292c3b713fa7cd48ef4e2259c785cc295ca92f1fc1d",
+  "harness_sha256": "dc77ba516bbc2064f7f97cfb547e636af8e46d970be2ffd3cbfb89ea584fa62b",
   "harness_amendments": [
     {
       "utc": "2026-10-17T20:52:52.992506+00:00",
       "from": "e89d08098fc410cc5fcc25ba4897f84511533bd10e3815e30a6100ee889dae36",
       "to": "0da286cd43a78712f071e292c3b713fa7cd48ef4e2259c785cc295ca92f1fc1d",
       "change": "Runner stops at an OpenRouter budget-limit HTTP 403 (no model call) instead of treating it as a request failure; prompts, actions, parsing, grading and routes unchanged."
+    },
+    {
+      "utc": "2026-10-18T01:20:04.911814+00:00",
+      "from": "0da286cd43a78712f071e292c3b713fa7cd48ef4e2259c785cc295ca92f1fc1d",
+      "to": "dc77ba516bbc2064f7f97cfb547e636af8e46d970be2ffd3cbfb89ea584fa62b",
+      "change": "Batch turn cost prices cached input at the cached rate; a budget-limit 403 inside a batch result is kept aside and stops the run. Prompts, actions, parsing, grading and routes unchanged."
     }
   ]
 }

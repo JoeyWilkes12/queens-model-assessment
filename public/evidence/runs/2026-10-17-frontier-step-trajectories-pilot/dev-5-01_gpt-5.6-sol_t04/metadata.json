@@ -12,7 +12,7 @@
     {
       "http_status": 200,
       "elapsed_seconds": null,
-      "cost_usd": 0.008084,
+      "cost_usd": 0.004088,
       "error": null
     }
   ],
@@ -36,8 +36,8 @@
       "audio_tokens": 0
     }
   },
-  "cost_usd": 0.008084,
-  "cost_source": "tokens x batch price (batch items report no per-item cost)",
+  "cost_usd": 0.004088,
+  "cost_source": "tokens x batch price, cached input at the cached rate (batch items report no per-item cost)",
   "action": {
     "action": "place",
     "row": 2,
@@ -92,5 +92,14 @@
   "route": "batch",
   "rounds": [
     "round-04"
+  ],
+  "corrections": [
+    {
+      "utc": "2026-10-18T01:20:04.910624+00:00",
+      "field": "cost_usd",
+      "from": 0.008084,
+      "to": 0.004088,
+      "why": "cached input priced at the cached rate (matches settled round totals)"
+    }
   ]
 }

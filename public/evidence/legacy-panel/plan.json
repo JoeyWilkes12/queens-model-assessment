@@ -4283,21 +4283,24 @@
       "utc": "2026-10-17T20:40:37.569998+00:00",
       "model": "openai/gpt-5.5",
       "moved_calls": 36,
-      "change": "openai/gpt-5.5 moved from Batch to on demand with its 1 October provider block and inline image. Reason: OpenRouter rejected the batch submission with HTTP 400 ('does not have a :batch endpoint') on 17 Oct (OpenAI: plain and :batch model ids; Anthropic: chat-completions and Messages shapes) although the catalog lists a :batch variant; nothing was accepted or billed"
+      "change": "openai/gpt-5.5 moved from Batch to on demand with its 1 October provider block and inline image. Reason: OpenRouter rejected the batch submission with HTTP 400 ('does not have a :batch endpoint') on 17 Oct (OpenAI: plain and :batch model ids; Anthropic: chat-completions and Messages shapes) although the catalog lists a :batch variant; nothing was accepted or billed",
+      "correction": "Correction (18 Oct): only GPT-4.1 was also tried with the explicit :batch model id; this model was tried with the plain id only."
     },
     {
       "id": 2,
       "utc": "2026-10-17T20:40:37.661645+00:00",
       "model": "openai/gpt-5.4",
       "moved_calls": 36,
-      "change": "openai/gpt-5.4 moved from Batch to on demand with its 1 October provider block and inline image. Reason: OpenRouter rejected the batch submission with HTTP 400 ('does not have a :batch endpoint') on 17 Oct (OpenAI: plain and :batch model ids; Anthropic: chat-completions and Messages shapes) although the catalog lists a :batch variant; nothing was accepted or billed"
+      "change": "openai/gpt-5.4 moved from Batch to on demand with its 1 October provider block and inline image. Reason: OpenRouter rejected the batch submission with HTTP 400 ('does not have a :batch endpoint') on 17 Oct (OpenAI: plain and :batch model ids; Anthropic: chat-completions and Messages shapes) although the catalog lists a :batch variant; nothing was accepted or billed",
+      "correction": "Correction (18 Oct): only GPT-4.1 was also tried with the explicit :batch model id; this model was tried with the plain id only."
     },
     {
       "id": 3,
       "utc": "2026-10-17T20:40:37.753852+00:00",
       "model": "openai/gpt-5",
       "moved_calls": 36,
-      "change": "openai/gpt-5 moved from Batch to on demand with its 1 October provider block and inline image. Reason: OpenRouter rejected the batch submission with HTTP 400 ('does not have a :batch endpoint') on 17 Oct (OpenAI: plain and :batch model ids; Anthropic: chat-completions and Messages shapes) although the catalog lists a :batch variant; nothing was accepted or billed"
+      "change": "openai/gpt-5 moved from Batch to on demand with its 1 October provider block and inline image. Reason: OpenRouter rejected the batch submission with HTTP 400 ('does not have a :batch endpoint') on 17 Oct (OpenAI: plain and :batch model ids; Anthropic: chat-completions and Messages shapes) although the catalog lists a :batch variant; nothing was accepted or billed",
+      "correction": "Correction (18 Oct): only GPT-4.1 was also tried with the explicit :batch model id; this model was tried with the plain id only."
     },
     {
       "id": 4,

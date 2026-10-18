@@ -212,7 +212,9 @@ def item_cost(call, usage, extra):
         completion = usage.get("completion_tokens", usage.get("output_tokens"))
         if isinstance(prompt, int) and isinstance(completion, int):
             ip, op = MODELS[call["short"]]["batch_prices"]
-            return {"cost_usd": round(prompt * ip + completion * op, 9), "cost_source": "tokens x batch price (batch items report no per-item cost)"}
+            cached = (usage.get("prompt_tokens_details") or {}).get("cached_tokens") or usage.get("cache_read_input_tokens") or 0
+            return {"cost_usd": round((prompt - cached) * ip + cached * 0.1 * ip + completion * op, 9),
+                    "cost_source": "tokens x batch price, cached input at the cached rate (batch items report no per-item cost)"}
     return {"cost_usd": None, "cost_source": "not reported"}
 
 
@@ -325,12 +327,16 @@ def batch_poll(args):
             if not call or (OUT / "raw" / call["call_id"] / "metadata.json").exists():
                 continue
             response = item.get("response") or {}
+            if C.governance_block(response.get("status_code"), response.get("body")):
+                # Amendments 4 and 6: an account or key budget block is never a model outcome; the call stays not run.
+                save(OUT / "raw-blocked-403" / call["call_id"] / f"batch-item-{utc().replace(':', '')}.json", item)
+                continue
             record(call, response.get("body") if response else {"error": item.get("error")},
                    response.get("status_code") if response else None, None,
                    {"batch_id": sub["batch_id"], "batch_request_id": response.get("request_id"), "batch_error": item.get("error"),
                     "batch_shape": sub.get("shape", "chat")})
         for call in by_id.values():  # submitted but absent from the results: no answer
-            if not (OUT / "raw" / call["call_id"] / "metadata.json").exists():
+            if not (OUT / "raw" / call["call_id"] / "metadata.json").exists() and not (OUT / "raw-blocked-403" / call["call_id"]).exists():
                 record(call, {"error": {"type": "missing_from_batch_results", "batch_status": state}}, None, None,
                        {"batch_id": sub["batch_id"], "batch_shape": sub.get("shape", "chat")})
         usage = data.get("usage") or {}

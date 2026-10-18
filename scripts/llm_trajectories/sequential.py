@@ -308,14 +308,19 @@ def next_request(phase, short, board):
     return {"k": k, "body": request_body(short, messages), "placed": placed}, None
 
 
+CACHED_INPUT_FACTOR = 0.1  # OpenRouter lists cached input at a tenth of the input price for these models
+
+
 def attempt_cost(short, response, route):
-    """Reported usage.cost; batch items carry none, so tokens x batch price (this reproduces batch totals)."""
+    """Reported usage.cost; batch items carry none, so tokens x batch price with cached input at the cached
+    rate. This reproduces every settled pilot round total exactly."""
     usage = (response.get("usage") or {}) if isinstance(response, dict) else {}
     if isinstance(usage.get("cost"), (int, float)):
         return usage["cost"]
     if route == "batch" and isinstance(usage.get("prompt_tokens"), int) and isinstance(usage.get("completion_tokens"), int):
         ip, op = MODELS[short]["prices"]
-        return round(usage["prompt_tokens"] * ip + usage["completion_tokens"] * op, 9)
+        cached = (usage.get("prompt_tokens_details") or {}).get("cached_tokens") or 0
+        return round((usage["prompt_tokens"] - cached) * ip + cached * CACHED_INPUT_FACTOR * ip + usage["completion_tokens"] * op, 9)
     return None
 
 
@@ -342,7 +347,7 @@ def record_turn(phase, short, board, k, body, attempts, extra):
             "generation_id": response.get("id") if isinstance(response, dict) else None,
             "finish_reason": ((response.get("choices") or [{}])[0].get("finish_reason") if isinstance(response, dict) else None),
             "usage": usage, "cost_usd": sum(c or 0 for c in costs),
-            "cost_source": "tokens x batch price (batch items report no per-item cost)" if extra.get("route") == "batch" else "usage.cost",
+            "cost_source": "tokens x batch price, cached input at the cached rate (batch items report no per-item cost)" if extra.get("route") == "batch" else "usage.cost",
             "visible_text": text, "action": action, "parse_mode": parse_mode, "effect": effect, "detail": detail,
             "placed_before": [list(c) for c in placed], "placed_after": [list(c) for c in placed_after],
             "labels_after": labels(board, placed_after, solution), **extra}
@@ -620,6 +625,7 @@ def settle_round(phase, short, rdir, boards):
         time.sleep(60)
     save(rdir / "final.json", body)
     results = {item.get("custom_id"): item for item in data.get("results") or []}
+    blocked_round = False
     for custom_id, member in members.items():
         board = by_id[member["board_id"]]
         k = member["turn"]
@@ -631,6 +637,13 @@ def settle_round(phase, short, rdir, boards):
         item = results.get(custom_id) or {}
         response = item.get("response") or {}
         status_code = response.get("status_code") if response else None
+        if C.governance_block(status_code, response.get("body") if response else None):
+            # A budget block is not a turn or a request failure: keep the item aside, leave the turn unstarted, stop.
+            save(turn_dir.parent / "blocked-403" / f"{turn_dir.name}-{rdir.name}.json", item)
+            if not member["resend"] and (turn_dir / "started.json").exists():
+                (turn_dir / "started.json").unlink()
+            blocked_round = True
+            continue
         reply = response.get("body") if response else {"error": item.get("error") or {"type": "missing_result", "batch_status": state}}
         if member["resend"]:
             first = read(prior)
@@ -642,9 +655,11 @@ def settle_round(phase, short, rdir, boards):
             save(prior, {"status": status_code, "response": reply, "round": rdir.name})
             print(json.dumps({"event": "batch_item_failed", "custom_id": custom_id, "status": status_code}), flush=True)
     usage = data.get("usage") or {}
-    save(rdir / "settled.json", {"settled_utc": utc(), "status": state, "usage": usage})
+    save(rdir / "settled.json", {"settled_utc": utc(), "status": state, "usage": usage, "budget_blocked_items": blocked_round})
     C.settle(f"traj-batch-{short}-{phase}-{rdir.name.replace('round-', 'r')}",
              usage.get("cost") if isinstance(usage.get("cost"), (int, float)) else None, f"batch {sub['batch_id']} usage.cost")
+    if blocked_round:
+        raise SystemExit("Stopped: OpenRouter budget limit (HTTP 403) inside a batch round. Raise the limit, then rerun.")
 
 
 # ---------------------------------------------------------------- audit and projection

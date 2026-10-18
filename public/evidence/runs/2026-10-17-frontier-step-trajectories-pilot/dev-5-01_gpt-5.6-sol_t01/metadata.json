@@ -37,7 +37,7 @@
     }
   },
   "cost_usd": 0.01216,
-  "cost_source": "tokens x batch price (batch items report no per-item cost)",
+  "cost_source": "tokens x batch price, cached input at the cached rate (batch items report no per-item cost)",
   "action": {
     "action": "place",
     "row": 5,
@@ -67,5 +67,14 @@
   "route": "batch",
   "rounds": [
     "round-01"
+  ],
+  "corrections": [
+    {
+      "utc": "2026-10-18T01:20:04.908304+00:00",
+      "field": "cost_usd",
+      "from": 0.01216,
+      "to": 0.01216,
+      "why": "cached input priced at the cached rate (matches settled round totals)"
+    }
   ]
 }

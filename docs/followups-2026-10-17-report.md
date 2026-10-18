@@ -43,7 +43,7 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
 - **Not yet run (144 calls)** are requests blocked by an account or key budget limit before reaching any model, or Gemini batch items still queued on Vertex. None of them is counted as a model outcome.
 - **Gone.** Claude Sonnet 4, tested on 1 October, has no OpenRouter endpoint any more.
 - **Pattern.** The earlier reasoning models were correct on 105 of the 108 boards they answered (93 in strict JSON). Their wrong or missing answers: GPT-5: 3 truncated. Claude Opus 4.6's answers were all correct but wrote text around the JSON. GPT-4.1, which has no reasoning mode, solved 1 of 36.
-- **Comparison.** The current frontier models (16 October, same boards) solved 34–36 of 36. The image test no longer separates generations of reasoning models; it separates reasoning from non-reasoning models.
+- **Comparison.** The current frontier models solved 34–36 of the same 36 boards on 16 October. These comparisons are descriptive.
 <!-- /auto:legacy -->
 
 ## One queen per request
@@ -53,15 +53,16 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
 
 | Model | Boards | Solved | First off-solution request | Revisions | Stops | Requests | Cost |
 |---|---:|---:|---|---:|---:|---:|---:|
-| GPT-5.6 Sol | 1 | 1 | never | 0 | 0 | 5 | $0.04 |
+| GPT-5.6 Sol | 1 | 1 | never | 0 | 0 | 5 | $0.03 |
 | Claude Opus 4.8 | 1 | 1 | never | 0 | 0 | 5 | $0.23 |
 | Gemini 3.1 Pro Preview | 1 | 1 | never | 0 | 0 | 5 | $0.18 |
 | Grok 4.6 | 1 | 1 | never | 0 | 0 | 5 | $0.11 |
 
-- **What the replies show.** Every model worked out the whole board in its first reply, wrote its plan, then placed one queen per request and explained each placement from the rows, columns, regions and touching rule.
+- **What the replies show.** GPT-5.6 Sol and Claude Opus 4.8 stated the full solution in their first reply, then placed it one queen per request. Grok 4.6's first reply named three of the five queens and said the rest were forced. Gemini 3.1 Pro Preview derived one queen per reply from the rows, columns, regions and touching rule.
 - **Self-checking.** Claude Opus 4.8 also checked its earlier queens at each step ("Both placed queens are correct"), from its own reasoning. The harness gave no feedback.
-- **Cost.** The first request cost the most, because the model solved the board there; later requests were cheap.
-- **Block count.** It is fixed by the preregistered cost-only rule once the earlier-generation panel is complete. At current spend it allows no panel block within the $18.75 campaign cap.
+- **Cost.** For every model the first request cost the most, and later requests cost less.
+- **Block count.** The preregistered cost-only rule set the number of panel blocks to **0**. With the earlier-generation panel's unspent budget held back, $1.23 of the campaign cap remained, against a projected $5.03 per block (one 5×5, 7×7 and 9×9 board per model).
+  - Panel trajectories can follow under the same frozen protocol when there is budget.
 <!-- /auto:trajectories -->
 
 ## The greedy rule
@@ -80,13 +81,15 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
 
 ## Batch API, the account guardrail and cost
 
-- **Batch first.** The Batch API was tried for every model before any on-demand call.
+- **Batch first.** The Batch API was tried for every earlier-generation model before any on-demand call. In the trajectories only GPT-5.6 Sol used batch; the other three ran on demand, as preregistered.
   - **Accepted.** Gemini 2.5 Pro and Flash (on Google Vertex, their only batch provider) and the GPT-5.6 Sol trajectory rounds.
-  - **Rejected.** Every OpenAI and Anthropic earlier-generation batch, with HTTP 400 ("does not have a :batch endpoint"), although the catalog lists a `:batch` variant for each. OpenAI was tried with both the plain and the explicit `:batch` model ID; Anthropic was tried in both the chat and Messages shapes.
+  - **Rejected.** Every OpenAI and Anthropic earlier-generation batch, with HTTP 400 ("does not have a :batch endpoint"), although the catalog lists a `:batch` variant for each. GPT-4.1 was tried with both the plain and the explicit `:batch` ID, and GPT-5.5, GPT-5.4 and GPT-5 with the plain ID only. Anthropic was tried in both the chat and Messages shapes.
   - **Fallback.** Those six models ran on demand with their 1 October provider blocks, as preregistered.
 - **Gone.** Claude Sonnet 4 has no OpenRouter endpoint any more and could not be re-run.
 - **Account guardrail.** At 20:49 UTC, the organization's $20 monthly budget limit began rejecting on-demand requests with HTTP 403 before any model call. 110 calls were blocked.
-  - **Not model outcomes.** They were reclassified as "not run" and re-sent unchanged after the limit was raised.
+  - **Not model outcomes.** They were reclassified as "not run".
+  - **Re-sent.** 38 went through unchanged after the organization limit was raised.
+  - **Second block.** At 21:15 UTC the API key's own weekly $20 limit (which resets 19 October, 00:00 UTC) blocked the rest (amendment 6). The remaining 72 calls will be sent unchanged once it allows.
   - **Runner change.** Both runners now stop at the first such response.
 - **Batch holds.** OpenRouter holds a submitted batch's worst-case cost in the key's usage counter until it settles: +$2.78 for the two Gemini batches. The ledger counts that hold once.
 
@@ -94,6 +97,7 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
 - **Recorded so far:** $8.23 for earlier-generation calls and $0.54 for the trajectory pilot.
 - **Gemini.** The two Gemini batches are billed when they settle. OpenRouter holds $2.78 for them meanwhile.
 - **Ceilings.** The campaign cap ($18.75) and the user's credit balance bound all spend.
+- **Account limits.** The organization's monthly limit (raised during the run) and the API key's weekly $20 limit stopped the runners. Both returned HTTP 403 before any model call.
 <!-- /auto:cost -->
 
 ## Published-evidence fix

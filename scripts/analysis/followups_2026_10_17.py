@@ -68,7 +68,7 @@ def block_legacy():
               f"- **Not yet run ({pending} calls)** are requests blocked by an account or key budget limit before reaching any model, or Gemini batch items still queued on Vertex. None of them is counted as a model outcome.",
               "- **Gone.** Claude Sonnet 4, tested on 1 October, has no OpenRouter endpoint any more.",
               pattern(rows),
-              "- **Comparison.** The current frontier models (16 October, same boards) solved 34–36 of 36. The image test no longer separates generations of reasoning models; it separates reasoning from non-reasoning models."]
+              "- **Comparison.** The current frontier models solved 34–36 of the same 36 boards on 16 October. These comparisons are descriptive."]
     return "\n".join(lines)
 
 
@@ -89,14 +89,14 @@ def block_trajectories():
             lines.append(f"| {NAMES[short]} | {len(mine)} | {sum(t['solved'] for t in mine)} | {', '.join(map(str, firsts)) or 'never'} | "
                          f"{sum(t['effects'].get('revised', 0) for t in mine)} | {sum(t['end_reason'] == 'stopped' for t in mine)} | {sum(t['requests'] for t in mine)} | ${sum(t['cost_usd'] for t in mine):.2f} |")
         lines.append("")
-    lines += ["- **What the replies show.** Every model worked out the whole board in its first reply, wrote its plan, then placed one queen per request and explained each placement from the rows, columns, regions and touching rule.",
+    lines += ["- **What the replies show.** GPT-5.6 Sol and Claude Opus 4.8 stated the full solution in their first reply, then placed it one queen per request. Grok 4.6's first reply named three of the five queens and said the rest were forced. Gemini 3.1 Pro Preview derived one queen per reply from the rows, columns, regions and touching rule.",
               "- **Self-checking.** Claude Opus 4.8 also checked its earlier queens at each step (\"Both placed queens are correct\"), from its own reasoning. The harness gave no feedback.",
-              "- **Cost.** The first request cost the most, because the model solved the board there; later requests were cheap."]
+              "- **Cost.** For every model the first request cost the most, and later requests cost less."]
     if projection:
-        lines += [f"- **Block count.** The preregistered cost-only rule set the number of panel blocks to **{projection['blocks']}**. After the earlier-generation panel, ${projection['room_usd']:.2f} of the campaign cap remained, against a projected ${projection['projected_block_usd']:.2f} per block (one 5×5, 7×7 and 9×9 board per model).",
+        lines += [f"- **Block count.** The preregistered cost-only rule set the number of panel blocks to **{projection['blocks']}**. With the earlier-generation panel's unspent budget held back, ${projection['room_usd']:.2f} of the campaign cap remained, against a projected ${projection['projected_block_usd']:.2f} per block (one 5×5, 7×7 and 9×9 board per model).",
                   "  - Panel trajectories can follow under the same frozen protocol when there is budget."]
     else:
-        lines += ["- **Block count.** It is fixed by the preregistered cost-only rule once the earlier-generation panel is complete. At current spend it allows no panel block within the $18.75 campaign cap."]
+        lines += ["- **Block count.** K is fixed after the pilot by the preregistered cost-only rule, with the earlier-generation panel's unspent budget held back. At current spend it allows no panel block within the $18.75 campaign cap."]
     return "\n".join(lines)
 
 
@@ -122,7 +122,8 @@ def block_cost():
     return "\n".join([
         f"- **Recorded so far:** ${legacy:.2f} for earlier-generation calls and ${traj:.2f} for the trajectory pilot.",
         "- **Gemini.** The two Gemini batches are billed when they settle. OpenRouter holds $2.78 for them meanwhile.",
-        "- **Ceilings.** The campaign cap ($18.75) and the user's credit balance bound all spend."])
+        "- **Ceilings.** The campaign cap ($18.75) and the user's credit balance bound all spend.",
+        "- **Account limits.** The organization's monthly limit (raised during the run) and the API key's weekly $20 limit stopped the runners. Both returned HTTP 403 before any model call."])
 
 
 def main():
