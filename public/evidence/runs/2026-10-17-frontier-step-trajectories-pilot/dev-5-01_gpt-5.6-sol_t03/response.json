@@ -1,0 +1,38 @@
+{
+  "model": "openai/gpt-5.6-sol",
+  "id": "gen-batch-1792270470-da3fc8c7f49965bfaab1",
+  "created": 1792270474,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Row 3 must use column 3, placing its queen in region D. It uses a new row, column, and region, and is not adjacent to either existing queen.\n\n```json\n{\"action\":\"place\",\"row\":3,\"column\":3}\n```",
+        "refusal": null
+      },
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "logprobs": null
+    }
+  ],
+  "service_tier": "default",
+  "usage": {
+    "prompt_tokens": 2223,
+    "completion_tokens": 146,
+    "total_tokens": 2369,
+    "prompt_tokens_details": {
+      "cached_tokens": 1446,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 87,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "provider": "OpenAI"
+}

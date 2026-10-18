@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792271522-mGC9EV73LwEGrjjEXajd",
+  "object": "chat.completion",
+  "created": 1792271522,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to place 5 queens — one per row, column, and region (A–E) — with no diagonal/adjacent touching between consecutive rows.\n\n**Key deduction: Region B** only has cells (1,3) and (2,3), both in column 3.\n\n**Testing B at (1,3):** Region A's cells are (1,1), (1,2), (2,2). If row 1 is used for B, then A must go in row 2. But that forces both rows 1-2 to be used for A and B, leaving no room — the remaining regions D/C/E must fill rows 3-5, but checking adjacency constraints leads to contradictions.\n\n**Testing B at (2,3):** Row 2, col 3 → B ✓\n\n- **Row 1:** Must avoid cols 2,3,4 (adjacent to row 2's col 3). Region A's cells are (1,1), (1,2), (2,2); only (1,1) is available. → Row 1, col 1 → A ✓\n- **Row 3:** Must avoid cols 2,4 (adjacent to col 3) and col 1 (taken). Only col 5 works. (3,5) is region C. → Row 3, col 5 → C ✓\n- **Row 4:** Must avoid cols 4,5 (adjacent to col 5), col 1 (taken), col 3 (taken). Only col 2 works. (4,2) is region D. → Row 4, col 2 → D ✓\n- **Row 5:** Must avoid cols 1,3 (adjacent to col 2), col 2 (taken), col 5 (taken). Only col 4 works. (5,4) is region E. → Row 5, col 4 → E ✓\n\n**Verification:** Columns {1,3,5,2,4} all unique ✓ | All regions covered ✓ | Consecutive row column gaps: |1−3|=2, |3−5|=2, |5−2|=3, |2−4|=2 — all ≥ 2 ✓\n\n{\"board_id\":\"panel-5-19\",\"columns_by_row\":[1,3,5,2,4]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 2051,
+    "total_tokens": 3134,
+    "cost": 0.05669,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.05669,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.051275
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1482,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

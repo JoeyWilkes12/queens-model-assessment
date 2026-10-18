@@ -1,0 +1,40 @@
+{
+  "call_id": "023_panel-7-46_gpt-5.5",
+  "board_id": "panel-7-46",
+  "size": 7,
+  "model": "openai/gpt-5.5",
+  "route": "on_demand",
+  "completed_utc": "2026-10-17T21:10:45.496155+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 14.312671624999997,
+  "returned_model": "openai/gpt-5.5",
+  "provider": "OpenAI",
+  "generation_id": "gen-1792271431-vgEG0hfWzNBXm6TghkhY",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 955,
+    "completion_tokens": 1364,
+    "total_tokens": 2319,
+    "cost": 0.045695,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.045695,
+      "upstream_inference_prompt_cost": 0.004775,
+      "upstream_inference_completions_cost": 0.04092
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1330,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.045695,
+  "cost_source": "usage.cost",
+  "response_sha256": "721a6482013346495a7793b7eceac7e4e1dc5661da5bf961da408243a4ad0776"
+}

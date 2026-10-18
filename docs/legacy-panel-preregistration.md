@@ -111,3 +111,7 @@ All three were made on 17 October, after the batch submissions and before any on
 - **Unchanged.** The $18.75 campaign cap, and the user's credit balance ($11.51 when the runs resumed), still bound the total.
 - **Trajectories.** The frontier trajectories could not afford a panel block in either case.
 
+**Amendment 6: API key budget block.** After the workspace limit was raised, the API key's own weekly limit of $20.00 (which resets 19 October, 00:00 UTC) began rejecting requests at 21:15 UTC with HTTP 403: "API key budget limit exceeded (weekly limit)".
+- **Handling.** Each runner stopped at its first such response, as amendment 4 now requires. No blocked call is recorded as a model outcome.
+- **Remaining.** 67 calls had not been sent. They will be sent unchanged once the key's limit allows.
+

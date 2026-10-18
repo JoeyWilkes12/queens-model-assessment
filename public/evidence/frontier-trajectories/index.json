@@ -1,5 +1,6 @@
 {
   "phases": [
     "pilot"
-  ]
+  ],
+  "projection": false
 }

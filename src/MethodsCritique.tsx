@@ -81,6 +81,8 @@ export function MethodsCritique({ ui }: { ui: BookUi }) {
             ['6 · SubQ now', 'Same question in 1-, 8- and 16-question batches', '≈$0.04'],
             ['7 · later', 'Feedback and backtracking, equal call budgets', '≤$0.29'],
             ['8 · done 16 Oct', 'Jev on the same 192-board panel; four frontier models on 36 of its boards', '≈$9.26 (Jev $0.12)'],
+            ['9 · 17 Oct, finishing', 'Eight earlier-generation models on the same 36 boards (batch first; on demand where batch was refused)', '≈$16 expected'],
+            ['10 · pilot done 17 Oct', 'Frontier models place one queen per request from the decision models\' text state, no feedback', '$0.55 pilot; panel blocks need budget'],
           ]} />
           <Callout tone="evidence" title="Experiment 4 ran on 15 October, as preregistered.">On 192 new boards SubQ solved 19: 16 of 64 at 5×5, 3 of 64 at 7×7 and none at 9×9. The greedy rule solved 80; random choice would be expected to solve about 7. The conflict filter helped significantly at 5×5 (15/64 vs 6/64, Holm p = 0.035). <a href="#/subq-assessment/panel">Read the panel results</a>.</Callout>
         </Section>

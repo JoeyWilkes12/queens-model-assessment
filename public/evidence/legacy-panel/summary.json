@@ -1,6 +1,6 @@
 {
   "study": "2026-10-17-earlier-generations-panel",
-  "updated_utc": "2026-10-17T20:52:41.220413+00:00",
+  "updated_utc": "2026-10-17T21:16:20.743956+00:00",
   "rows": [
     {
       "call_id": "001_panel-5-10_gpt-5.5",
@@ -1198,7 +1198,13 @@
       "request_sha256": "3a7563ea55d13c14b04b90f56d107783213b3f5d542e48e351231556835f9468",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.10474,
+      "elapsed_seconds": 58.851470209,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "008_panel-7-04_gemini-2.5-pro",
@@ -1283,7 +1289,13 @@
       "request_sha256": "6875c5d153399f53c3fff09b1234c12aea0e36bf8b539022296105cd5df582ea",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.10909625,
+      "elapsed_seconds": 82.35041391600001,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "009_panel-9-22_gpt-4.1",
@@ -1340,7 +1352,13 @@
       "request_sha256": "918e3326d6a8ca9da964bbf7402e4c8fb786c87996e71d65c98ed4e030e330b8",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.109165,
+      "elapsed_seconds": 62.37301016600001,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "009_panel-9-22_gemini-2.5-pro",
@@ -1425,7 +1443,13 @@
       "request_sha256": "50b2783130257dd2535401594bb3f3544eeafd95a9f88f0888b530e6d1f9e638",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.06737625,
+      "elapsed_seconds": 50.12936887500001,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "010_panel-5-19_gpt-4.1",
@@ -1482,7 +1506,13 @@
       "request_sha256": "7b441a6555c9b3ce38fd9788fef593a2e3bf479d2ea6ee6c08061a1d526664be",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05669,
+      "elapsed_seconds": 33.741931750000006,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "010_panel-5-19_gemini-2.5-pro",
@@ -1567,7 +1597,13 @@
       "request_sha256": "1b49bf3815a1d1a01c901516d5493d948887a327bbe3f84664871e7bdd3819fd",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.09497625,
+      "elapsed_seconds": 84.07903475,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "011_panel-7-06_gpt-4.1",
@@ -1715,7 +1751,13 @@
       "request_sha256": "d871879c9e7f38801a46c2835d4bfe6105f39c2bd46a90a076b424b1e81a5f10",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 89.56942566699999,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "012_panel-9-24_gpt-4.1",
@@ -1772,7 +1814,13 @@
       "request_sha256": "2240162eff13c76929b6262b211d19ce139ccf680f4bf1fac6c8497e0b146bfb",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.274065,
+      "elapsed_seconds": 161.24076308300002,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "012_panel-9-24_gemini-2.5-pro",
@@ -2319,7 +2367,13 @@
       "request_sha256": "ab1d8eabb4631cb3c32dd0e5f53da3bf0bc80ef6d998a34719afa85b0d0d96ca",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.02025,
+      "elapsed_seconds": 10.020934875,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "016_panel-5-28_claude-opus-4.6",
@@ -2455,7 +2509,13 @@
       "request_sha256": "085a8951ac9ef5919b8fd488406f717ced521dc3b6a724b0d3532e93f3203195",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.099875,
+      "elapsed_seconds": 44.550397958,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "017_panel-7-34_claude-opus-4.6",
@@ -2534,7 +2594,13 @@
       "request_sha256": "b7f32ccf647cce912f885b413f227856690454420fdc2147b7cdc50b51bda640",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.1075975,
+      "elapsed_seconds": 77.453299917,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "018_panel-9-32_gpt-5",
@@ -2585,7 +2651,13 @@
       "request_sha256": "cf4a8e913cfdcef16f22b73ddd4c3347863d4501833abe322d48bf66a599014e",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.153625,
+      "elapsed_seconds": 66.57214291599999,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "018_panel-9-32_claude-opus-4.6",
@@ -2664,7 +2736,13 @@
       "request_sha256": "cbd33540f7ec7655e996c4240b13c3d45ad343b82647a2f637d1b1beb83254d4",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0230425,
+      "elapsed_seconds": 16.506063874999995,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "019_panel-5-32_gpt-5",
@@ -2779,7 +2857,13 @@
       "request_sha256": "2c5008b8b75448716ad5f2b59fadf59a231003a06f8c5e2f481bbade3a72dfb9",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.080045,
+      "elapsed_seconds": 27.548464958,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "020_panel-7-38_gpt-5.4",
@@ -2794,7 +2878,13 @@
       "request_sha256": "2725976f600833189d054e4b6798e7436b6183fa446d6896ed3cbde911c562c6",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0416275,
+      "elapsed_seconds": 28.524141459000006,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "020_panel-7-38_gpt-5",
@@ -2845,7 +2935,13 @@
       "request_sha256": "a2acbc44bf4f116e34a7903398071140753d2b1c7a8bf2d7180591fcfaeb043a",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0716,
+      "elapsed_seconds": 32.444130625,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "020_panel-7-38_claude-opus-4.6",
@@ -2903,7 +2999,13 @@
       "request_sha256": "105f6476c75c39813db736f106a3de88096a31b4678b9c78e08237ea04f180df",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.068015,
+      "elapsed_seconds": 23.592166125,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "021_panel-9-33_gpt-5.4",
@@ -2918,7 +3020,13 @@
       "request_sha256": "df6fd2da81cf6ca75c1afc31f052f06c6aa06a215de45ed5725fcb4115c0f5b8",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0534175,
+      "elapsed_seconds": 35.157300084,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "021_panel-9-33_gpt-5",
@@ -2969,7 +3077,13 @@
       "request_sha256": "b07cbf84046a1fed144f668425b282c9a2d83b160bd060c80e3eafa3294a6875",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.2278,
+      "elapsed_seconds": 103.617207917,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "021_panel-9-33_claude-opus-4.6",
@@ -3027,7 +3141,13 @@
       "request_sha256": "d84551839db06cc3f0dc1a6e67cdfd2aa061fb2d883f4cd42facab2785e5ce2c",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.021155,
+      "elapsed_seconds": 6.613266082999999,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "022_panel-5-42_gpt-5.4",
@@ -3042,7 +3162,13 @@
       "request_sha256": "b9308497c5fa1ed394b0faeefbf1cbae332efa8270defcc982d054bba1a2c352",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0121525,
+      "elapsed_seconds": 9.127351708999981,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "022_panel-5-42_gpt-5",
@@ -3093,7 +3219,13 @@
       "request_sha256": "0ce88e2052f2c5954b1b47404a93e85f10169cb9562969d9bbf2b30e597c0c9b",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.019975,
+      "elapsed_seconds": 9.439889333999986,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "022_panel-5-42_claude-opus-4.6",
@@ -3151,7 +3283,13 @@
       "request_sha256": "1305954ccfd9580f463f39f008666837fb2587e61d88816b075976f817331c11",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.045695,
+      "elapsed_seconds": 14.312671624999997,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "023_panel-7-46_gpt-5.4",
@@ -3166,7 +3304,13 @@
       "request_sha256": "45c2e8e381e4958ff0060d25f6fb54f75defb7a6702bbaf9a9149fc06b426bb9",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0303325,
+      "elapsed_seconds": 21.39733849999999,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "023_panel-7-46_gpt-5",
@@ -3217,7 +3361,13 @@
       "request_sha256": "0dbec6a60b7aea5e834097d6f7365f51ddb88c1b650bd7b6dcab54001626d98d",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.04135,
+      "elapsed_seconds": 15.84334445899998,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "023_panel-7-46_claude-opus-4.6",
@@ -3275,7 +3425,13 @@
       "request_sha256": "d5b4c7ef7520cd3ecf4ea4caaceb6ee375efde1cb135ddba198dd888b6a82dde",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.207875,
+      "elapsed_seconds": 73.108788291,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "024_panel-9-34_gpt-5.4",
@@ -3290,7 +3446,13 @@
       "request_sha256": "a0403fb3651dd626a57fab676450a278a0e84a8a4a6fe69202f31c9181a857ef",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.1022125,
+      "elapsed_seconds": 71.661554,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "024_panel-9-34_gpt-5",
@@ -3426,7 +3588,13 @@
       "request_sha256": "2f2305f41cbcfbdecc91e732edde992373c2712e6c025dae13c62079284c92b2",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0337075,
+      "elapsed_seconds": 23.900898374999997,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "025_panel-5-43_gpt-5",
@@ -3477,7 +3645,13 @@
       "request_sha256": "c5397d914754332ccea6af01a371217b567d928d4f63f8cd2b58e5b30ecd328b",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0525,
+      "elapsed_seconds": 22.053468166000016,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "025_panel-5-43_claude-opus-4.6",
@@ -3535,7 +3709,13 @@
       "request_sha256": "9ca8b08065a5b58cf7d9543621abb6822bf3dad4e0a4c8b4fe17812a148ca690",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.089315,
+      "elapsed_seconds": 29.135684083,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "026_panel-7-50_gpt-5.4",
@@ -3550,7 +3730,13 @@
       "request_sha256": "a0d039d4c1c417bc17e314ef96e6ddbb5f7cac25bd3661e359c4b3881f7eba0a",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0601825,
+      "elapsed_seconds": 44.27716854200003,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "026_panel-7-50_gpt-5",
@@ -3601,7 +3787,13 @@
       "request_sha256": "851ab5bc644b72f69144c4ae35f90f102cf1a127b4bfe809e53e77835a9328bd",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.07395,
+      "elapsed_seconds": 34.15586929199998,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "026_panel-7-50_claude-opus-4.6",
@@ -3659,7 +3851,13 @@
       "request_sha256": "44ddb34855c23d353d65e9d54105627c40e457f97a226066e9c6aebe4a41ff46",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.138545,
+      "elapsed_seconds": 48.206676875,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "027_panel-9-45_gpt-5.4",
@@ -3783,7 +3981,13 @@
       "request_sha256": "413f652adcffc117d464f79a9c2b96a264a626c9180410a77d084e70bea9a299",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.042575,
+      "elapsed_seconds": 15.339498082999995,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "028_panel-5-44_gpt-5.4",
@@ -3907,7 +4111,13 @@
       "request_sha256": "bea895ec564c9f48b2f94a6ca205c20a3f5a82787491973bdd31ae614163daf0",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.077045,
+      "elapsed_seconds": 25.143376083999982,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "029_panel-7-59_gpt-5.4",
@@ -4031,7 +4241,13 @@
       "request_sha256": "84312a2e3e62c703c3690f97d85249fa9998d1d710811fccbcac9e399dd92560",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.122645,
+      "elapsed_seconds": 42.76998062500002,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "030_panel-9-51_gpt-5.4",
@@ -4155,7 +4371,13 @@
       "request_sha256": "ea2d88e8bf6d7059d56fa2adce03415903a7f5212107d28d3fc5e8def3e7618d",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.029435,
+      "elapsed_seconds": 10.452783457999999,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "031_panel-5-59_gpt-5.4",
@@ -4279,7 +4501,13 @@
       "request_sha256": "8cc23b33ebad64340dff0119e7290665eabac79f13339075cb6b8721b80b6e98",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.125315,
+      "elapsed_seconds": 42.41335624999999,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "032_panel-7-61_gpt-5.4",
@@ -4945,38 +5173,38 @@
     {
       "model": "claude-opus-4.6",
       "size": 5,
-      "format_only": 3,
-      "not_run": 9
+      "format_only": 4,
+      "not_run": 8
     },
     {
       "model": "claude-opus-4.6",
       "size": 7,
-      "format_only": 3,
-      "not_run": 9
+      "format_only": 4,
+      "not_run": 8
     },
     {
       "model": "claude-opus-4.6",
       "size": 9,
-      "format_only": 2,
-      "not_run": 10
+      "format_only": 4,
+      "not_run": 8
     },
     {
       "model": "claude-opus-4.7",
       "size": 5,
-      "strict": 6,
-      "not_run": 6
+      "strict": 9,
+      "not_run": 3
     },
     {
       "model": "claude-opus-4.7",
       "size": 7,
-      "strict": 5,
-      "not_run": 7
+      "strict": 9,
+      "not_run": 3
     },
     {
       "model": "claude-opus-4.7",
       "size": 9,
-      "strict": 6,
-      "not_run": 6
+      "strict": 8,
+      "not_run": 4
     },
     {
       "model": "gemini-2.5-flash",
@@ -5027,74 +5255,74 @@
     {
       "model": "gpt-5",
       "size": 5,
+      "strict": 4,
+      "not_run": 8
+    },
+    {
+      "model": "gpt-5",
+      "size": 7,
       "strict": 3,
-      "not_run": 9
+      "truncated": 1,
+      "not_run": 8
     },
     {
       "model": "gpt-5",
-      "size": 7,
+      "size": 9,
       "strict": 2,
-      "truncated": 1,
-      "not_run": 9
-    },
-    {
-      "model": "gpt-5",
-      "size": 9,
-      "strict": 1,
-      "truncated": 1,
-      "not_run": 10
+      "truncated": 2,
+      "not_run": 8
     },
     {
       "model": "gpt-5.4",
       "size": 5,
-      "strict": 6,
-      "not_run": 6
+      "strict": 9,
+      "not_run": 3
     },
     {
       "model": "gpt-5.4",
       "size": 7,
-      "strict": 6,
-      "not_run": 6
+      "strict": 9,
+      "not_run": 3
     },
     {
       "model": "gpt-5.4",
       "size": 9,
-      "strict": 5,
-      "not_run": 7
-    },
-    {
-      "model": "gpt-5.5",
-      "size": 5,
       "strict": 8,
       "not_run": 4
     },
     {
       "model": "gpt-5.5",
+      "size": 5,
+      "strict": 11,
+      "not_run": 1
+    },
+    {
+      "model": "gpt-5.5",
       "size": 7,
-      "strict": 6,
-      "not_run": 6
+      "strict": 11,
+      "not_run": 1
     },
     {
       "model": "gpt-5.5",
       "size": 9,
-      "strict": 6,
-      "not_run": 6
+      "strict": 10,
+      "not_run": 2
     }
   ],
   "by_model": {
     "gpt-5.5": {
       "model": "openai/gpt-5.5",
-      "recorded": 20,
-      "correct": 20,
-      "strict": 20,
+      "recorded": 32,
+      "correct": 32,
+      "strict": 32,
       "correct_cp95": [
-        0.8315665290169145,
+        0.8911188393206471,
         1.0
       ],
       "outcomes": {
-        "strict": 20
+        "strict": 32
       },
-      "cost_usd": 1.41022,
+      "cost_usd": 2.45788,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -5102,17 +5330,17 @@
     },
     "gpt-5.4": {
       "model": "openai/gpt-5.4",
-      "recorded": 17,
-      "correct": 17,
-      "strict": 17,
+      "recorded": 26,
+      "correct": 26,
+      "strict": 26,
       "correct_cp95": [
-        0.8049356770309066,
+        0.8677253955022459,
         1.0
       ],
       "outcomes": {
-        "strict": 17
+        "strict": 26
       },
-      "cost_usd": 0.699447,
+      "cost_usd": 1.16372,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -5120,18 +5348,18 @@
     },
     "gpt-5": {
       "model": "openai/gpt-5",
-      "recorded": 8,
-      "correct": 6,
-      "strict": 6,
+      "recorded": 12,
+      "correct": 9,
+      "strict": 9,
       "correct_cp95": [
-        0.34914420558717596,
-        0.9681459737500557
+        0.4281415381218109,
+        0.9451393554720073
       ],
       "outcomes": {
-        "strict": 6,
-        "truncated": 2
+        "strict": 9,
+        "truncated": 3
       },
-      "cost_usd": 0.73005,
+      "cost_usd": 1.125495,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -5158,17 +5386,17 @@
     },
     "claude-opus-4.7": {
       "model": "anthropic/claude-opus-4.7",
-      "recorded": 17,
-      "correct": 17,
-      "strict": 17,
+      "recorded": 26,
+      "correct": 26,
+      "strict": 26,
       "correct_cp95": [
-        0.8049356770309066,
+        0.8677253955022459,
         1.0
       ],
       "outcomes": {
-        "strict": 17
+        "strict": 26
       },
-      "cost_usd": 1.1632,
+      "cost_usd": 1.924125,
       "route": "on_demand",
       "providers": [
         "Anthropic"
@@ -5176,17 +5404,17 @@
     },
     "claude-opus-4.6": {
       "model": "anthropic/claude-opus-4.6",
-      "recorded": 8,
-      "correct": 8,
+      "recorded": 12,
+      "correct": 12,
       "strict": 0,
       "correct_cp95": [
-        0.6305833524471804,
+        0.7353515306029486,
         1.0
       ],
       "outcomes": {
-        "format_only": 8
+        "format_only": 12
       },
-      "cost_usd": 0.933245,
+      "cost_usd": 1.477905,
       "route": "on_demand",
       "providers": [
         "Anthropic"
@@ -5215,5 +5443,5 @@
       "providers": []
     }
   },
-  "cost_usd_reported": 5.018603
+  "cost_usd_reported": 8.231565
 }

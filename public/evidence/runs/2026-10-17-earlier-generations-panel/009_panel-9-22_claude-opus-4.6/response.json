@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792271459-cVcCiGVSZzQlFjcheIHP",
+  "object": "chat.completion",
+  "created": 1792271459,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to identify the forced placements first.\n\n**Single-cell regions (forced):**\n- **Region B:** Only cell (1,4) → Row 1 = Col 4\n- **Region C:** Only cell (2,9) → Row 2 = Col 9\n- **Region D:** Only cell (3,7) → Row 3 = Col 7\n- **Region F:** Only cell (5,6) → Row 5 = Col 6\n\n**Region H:** Cells (7,4), (7,5), (7,6). Columns 4 and 6 are taken → Row 7 = Col 5\n\n**Remaining:** Rows 4, 6, 8, 9 need columns {1, 2, 3, 8} and regions {A, E, G, I}.\n\n**Region A:** Only available cell is (4,1) → Row 4 = Col 1\n\n**Region I:** Cells in rows 8-9, cols 1-2. Col 1 is taken, so col 2 in row 8 or 9.\n**Region G:** Available at (6,8) or (8,8).\n\nTesting assignment: I→(9,2), G→(8,8), E→(6,3):\n- Row 8 col 8 vs Row 9 col 2: |8-2|=6 ✓\n- Row 7 col 5 vs Row 8 col 8: |5-8|=3 ✓\n- Row 6 col 3 vs Row 7 col 5: |3-5|=2 ✓\n- Row 5 col 6 vs Row 6 col 3: |6-3|=3 ✓\n- All consecutive-row column differences ≥ 2 ✓\n- All columns {4,9,7,1,6,3,5,8,2} unique ✓\n- All 9 regions covered ✓\n\n{\"board_id\":\"panel-9-22\",\"columns_by_row\":[4,9,7,1,6,3,5,8,2]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 4150,
+    "total_tokens": 5233,
+    "cost": 0.109165,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.109165,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.10375
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3625,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

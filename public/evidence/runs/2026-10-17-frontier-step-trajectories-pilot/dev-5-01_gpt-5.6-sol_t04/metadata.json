@@ -1,0 +1,96 @@
+{
+  "trajectory_id": "dev-5-01_gpt-5.6-sol",
+  "board_id": "dev-5-01",
+  "size": 5,
+  "model": "openai/gpt-5.6-sol",
+  "short": "gpt-5.6-sol",
+  "turn": 4,
+  "call_id": "dev-5-01_gpt-5.6-sol_t04",
+  "completed_utc": "2026-10-17T20:56:32.892745+00:00",
+  "final_status": 200,
+  "attempts": [
+    {
+      "http_status": 200,
+      "elapsed_seconds": null,
+      "cost_usd": 0.008084,
+      "error": null
+    }
+  ],
+  "returned_model": "openai/gpt-5.6-sol",
+  "provider": "OpenAI",
+  "generation_id": "gen-batch-1792270532-e893002d2c91dd600318",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 2997,
+    "completion_tokens": 209,
+    "total_tokens": 3206,
+    "prompt_tokens_details": {
+      "cached_tokens": 2220,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 142,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.008084,
+  "cost_source": "tokens x batch price (batch items report no per-item cost)",
+  "action": {
+    "action": "place",
+    "row": 2,
+    "column": 5
+  },
+  "parse_mode": "fenced",
+  "effect": "placed",
+  "detail": {
+    "cell": [
+      2,
+      5
+    ],
+    "violations": []
+  },
+  "placed_before": [
+    [
+      5,
+      4
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      3,
+      3
+    ]
+  ],
+  "placed_after": [
+    [
+      5,
+      4
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      2,
+      5
+    ]
+  ],
+  "labels_after": {
+    "correct_queens": 4,
+    "off_solution": [],
+    "conflicts": []
+  },
+  "route": "batch",
+  "rounds": [
+    "round-04"
+  ]
+}
