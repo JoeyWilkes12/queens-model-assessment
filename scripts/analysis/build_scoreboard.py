@@ -10,7 +10,10 @@ Offline, standard library only. The SubQ panel section is included when
 public/evidence/subq-panel/trajectories-summary.json exists.
 """
 from pathlib import Path
-import datetime, itertools, json
+import datetime, itertools, json, sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import openrouter_costs as OC  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 E = ROOT / 'public/evidence'
@@ -224,6 +227,76 @@ def decision_panel():
     return section
 
 
+STUDY_LABELS = {
+    '2026-09-17-one-shot': 'One shot from an image, 3 original boards (17 Sep)',
+    '2026-09-18-jev-5x5-variations': 'Jev 5×5 prompt variations (18 Sep)',
+    '2026-09-18-jev-deep-dive': 'Jev deep dive (18 Sep)',
+    '2026-09-19-jev-primitives': 'Jev primitives (19 Sep)',
+    '2026-09-19-jev-scale': 'Jev scale and held-out boards (19 Sep)',
+    '2026-09-30-jev-trajectories': 'Jev trajectories, 9 original boards (30 Sep)',
+    '2026-10-01-earlier-generations': 'Earlier generations, 3 original boards (1 Oct)',
+    '2026-10-01-diagnostic-completion': 'Diagnostic completion (1 Oct)',
+    '2026-10-16-jev-new-board-panel': 'Jev on the 192-board panel (16 Oct)',
+    '2026-10-16-jev-new-board-panel-pilot': 'Jev panel pilot (16 Oct)',
+    '2026-10-16-frontier-image-panel': 'One shot from an image, 36 panel boards (16 Oct)',
+    '2026-10-16-one-shot-rerun': 'Re-run of the September Grok 7×7 request (16 Oct)',
+    '2026-10-17-earlier-generations-panel': 'Earlier generations, 36 panel boards (17 Oct)',
+    '2026-10-17-frontier-step-trajectories-pilot': 'One queen per request, pilot board (17 Oct)',
+}
+
+
+def attach_costs(out):
+    """OpenRouter cost per board on every chart entry, plus a per-evaluation cost table."""
+    index = OC.cost_index()
+    llm = out['llm']
+    for model in llm['models']:
+        costs = OC.board_costs(index, model['study'], model['id'])
+        for size, board in model['boards'].items():
+            board_id = next(b for b, s in SIZES.items() if str(s) == size)
+            board['cost_usd'] = costs.get(board_id)
+    for model in llm['panel'].get('models', []):
+        model['costs'] = OC.board_costs(index, model['study'], model['id'])
+    for section in out['decision'].values():
+        for model in section['models']:
+            jev = model['author'] == 'TypeSafe'
+            model['costs'] = OC.board_costs(index, model['study'], 'typesafe/jev-1.13') if jev else None
+            model['cost_note'] = None if jev else 'Not billed through OpenRouter (SubQ preview API); not counted.'
+    outcome_ok = ('strict', 'format_only')
+    pilot = load('frontier-trajectories/pilot.json') if (E / 'frontier-trajectories/pilot.json').exists() else None
+
+    def solved(study, model_id):
+        for m in llm['models']:
+            if m['study'] == study and m['id'] == model_id:
+                return sum(b['outcome'] in outcome_ok for b in m['boards'].values()), len(m['boards'])
+            if study == '2026-10-16-one-shot-rerun' and m.get('rerun') and m['id'] == model_id:
+                return int(m['rerun']['outcome'] in outcome_ok), 1
+        for m in llm['panel'].get('models', []):
+            if m['study'] == study and m['id'] == model_id:
+                graded = [o for o in m['boards'].values() if o != 'not_run']
+                return sum(o in outcome_ok for o in graded), len(graded)
+        for section in out['decision'].values():
+            for m in section['models']:
+                if m['study'] == study and model_id.startswith('typesafe/jev'):
+                    return sum(c['raw'][0] > 0 or c['local'][0] > 0 for c in m['per_board'].values()), len(m['per_board'])
+        if pilot and study == pilot['study']:
+            mine = [t for t in pilot['trajectories'] if t['model'] == model_id]
+            return sum(t['solved'] for t in mine), len(mine)
+        return None
+
+    rows = OC.evaluations(index, solved)
+    for row in rows:
+        row['label'] = STUDY_LABELS.get(row['study'], row['study'])
+        row['model_name'] = DISPLAY.get(row['model'], 'Jev 1.13' if row['model'].startswith('typesafe/jev') else 'Jev (latest alias)' if row['model'] == '~typesafe/jev-latest' else row['model'])
+    out['costs'] = {
+        'scope': 'OpenRouter spend recorded in the published receipts. SubQ Snap (own preview API) and agent-led use outside the studies are not counted.',
+        'basis': {'reported': 'usage.cost returned by OpenRouter', 'derived': 'batch item: tokens x batch price, cached input at a tenth of the input price (reproduces the billed batch total)',
+                  'unbilled': 'HTTP error before any generation; billed $0', 'unknown': 'client timeout with no generation ID; not counted'},
+        'total_usd': round(sum(r['cost_usd'] for r in rows), 6),
+        'unknown_receipts': sum(r['basis'].get('unknown', 0) for r in rows),
+        'evaluations': rows,
+    }
+
+
 def main():
     out = {
         'generated_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds'),
@@ -231,6 +304,7 @@ def main():
         'llm': llm_section(),
         'decision': {'original': decision_original(), 'panel': decision_panel()},
     }
+    attach_costs(out)
     (E / 'scoreboard.json').write_text(json.dumps(out, indent=1) + '\n')
     llm = out['llm']
     for m in llm['models']:
@@ -241,6 +315,7 @@ def main():
     print('greedy original:', sum(o['baselines']['greedy'].values()), 'random expected boards:', round(sum(o['baselines']['random_expected_any'].values()), 2))
     p = out['decision']['panel']
     print('panel status:', p['status'], 'greedy panel:', sum(p['baselines']['greedy'].values()))
+    print('OpenRouter cost in receipts: $%.4f; unknown receipts: %d' % (out['costs']['total_usd'], out['costs']['unknown_receipts']))
 
 
 if __name__ == '__main__':

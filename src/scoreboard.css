@@ -7,6 +7,7 @@
   --sb-base: #9aa3ad;
   --sb-base-bg: #eceae4;
   --sb-grid: rgba(7, 27, 51, .1);
+  --sb-cost: #3f63c8;
   display: grid;
   gap: 18px;
 }
@@ -17,6 +18,7 @@
   --sb-base: #7f8b97;
   --sb-base-bg: #1d3a57;
   --sb-grid: rgba(246, 241, 232, .12);
+  --sb-cost: #6a82dc;
 }
 .sb-chart { margin: 0; padding: clamp(12px, 2.5vw, 20px); border: 1px solid var(--border-strong); background: var(--surface-raised); }
 .sb-chart > figcaption { display: grid; gap: 4px; margin-bottom: 12px; }
@@ -38,6 +40,15 @@
 .sb-swatch--hatched, .sb-fill--hatched { background: repeating-linear-gradient(135deg, var(--sb-stripe) 0 2px, var(--sb-stripe-bg) 2px 5px); }
 .sb-swatch--baseline { background: repeating-linear-gradient(135deg, var(--sb-base) 0 2px, var(--sb-base-bg) 2px 5px); }
 .sb-swatch--pending { border: 1.5px dashed var(--text-muted); }
+.sb-swatch--cost { height: 6px; border-radius: 0 3px 3px 0; background: var(--sb-cost); }
+
+/* Cost: a second measure on its own scale, drawn as a thin bar under each entity, never on the bar axis. */
+.sb-cost { display: grid; gap: 3px; width: 100%; min-width: 0; }
+.sb-cost-track { display: block; height: 6px; background: var(--sb-grid); }
+.sb-cost-fill { display: block; height: 100%; border-radius: 0 3px 3px 0; background: var(--sb-cost); }
+.sb-cost-label { color: var(--text-secondary); font-family: var(--mono-font); font-size: .68rem; line-height: 1.2; overflow-wrap: anywhere; }
+.sb-bars--columns .sb-cost { width: min(104px, 100%); text-align: center; }
+.sb-bars--columns .sb-cost-label { white-space: nowrap; }
 
 /* Columns (wide containers): value on the cap, logo and name under the bar. */
 .sb-bars--columns { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; align-items: end; padding-top: 6px; background: linear-gradient(var(--sb-grid) 1px, transparent 1px) 0 26px / 100% 45px; }
@@ -50,7 +61,8 @@
 
 /* Rows (phones and long lists). */
 .sb-bars--rows { display: grid; gap: 8px; }
-.sb-bars--rows .sb-item { display: grid; grid-template-columns: minmax(0, 1fr) 3.4rem; grid-template-areas: 'label label' 'track value'; gap: 3px 8px; align-items: center; }
+.sb-bars--rows .sb-item { display: grid; grid-template-columns: minmax(0, 1fr) 3.4rem; grid-template-areas: 'label label' 'track value' 'cost cost'; gap: 3px 8px; align-items: center; }
+.sb-bars--rows .sb-cost { grid-area: cost; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 8px; }
 .sb-row-label { grid-area: label; display: flex; align-items: center; gap: 8px; min-width: 0; }
 .sb-bars--rows .sb-name { overflow: hidden; color: var(--text-primary); font-size: .82rem; text-overflow: ellipsis; white-space: nowrap; }
 .sb-bars--rows .sb-track { grid-area: track; display: flex; height: 16px; background: linear-gradient(90deg, var(--sb-grid) 1px, transparent 1px) 0 0 / 33.333% 100%; }
@@ -58,7 +70,8 @@
 .sb-bars--rows .sb-track > .sb-fill:last-child { border-radius: 0 4px 4px 0; }
 .sb-bars--rows .sb-value { grid-area: value; color: var(--text-primary); font-family: var(--mono-font); font-size: .8rem; font-weight: 700; text-align: right; }
 @media (min-width: 700px) {
-  .sb-bars--rows .sb-item { grid-template-columns: 13rem minmax(0, 1fr) 3.4rem; grid-template-areas: 'label track value'; }
+  .sb-bars--rows .sb-item { grid-template-columns: 13rem minmax(0, 1fr) 3.4rem 9.5rem; grid-template-areas: 'label track value cost'; }
+  .sb-bars--rows .sb-cost { grid-template-columns: 3.2rem auto; }
 }
 
 .sb-logo { display: inline-grid; place-items: center; flex: 0 0 26px; width: 26px; height: 26px; border: 1px solid var(--border-subtle); border-radius: 5px; background: #fffdf8; }
@@ -79,3 +92,5 @@
 .sb-explain h3 { margin: 0 0 6px; font-family: var(--display-font); font-size: 1.1rem; font-weight: 400; color: var(--text-primary); }
 .sb-explain p { margin: 0; line-height: 1.62; }
 .sb-segment button:disabled { cursor: not-allowed; color: var(--text-muted); border-color: var(--border-subtle); }
+.sb-cost-heading { margin: 26px 0 6px; font-family: var(--display-font); font-size: 1.15rem; font-weight: 400; color: var(--text-primary); }
+.sb-cost-unit { color: var(--text-muted); }

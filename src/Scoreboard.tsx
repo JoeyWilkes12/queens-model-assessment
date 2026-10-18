@@ -2,10 +2,10 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import './scoreboard.css'
 
 type Outcome = 'strict' | 'format_only' | 'wrong' | 'no_answer' | 'truncated'
-type LlmModel = { id: string; name: string; author: string; logo: string; cohort: 'frontier' | 'earlier'; study: string; boards: Record<string, { issued: number; outcome: Outcome; receipt: string }>; notes: string[]; rerun?: { size: string; outcome: Outcome; date: string; receipt: string } }
-type LlmPanel = { status: string; study?: string; earlier_study?: string | null; retired?: { name: string; reason: string }[]; reruns?: { model: string; size: number; board_id: string; outcome: Outcome; reason: string; receipt: string }[]; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; cohort?: 'frontier' | 'earlier'; study?: string; boards: Record<string, Outcome | 'not_run'> }[] }
+type LlmModel = { id: string; name: string; author: string; logo: string; cohort: 'frontier' | 'earlier'; study: string; boards: Record<string, { issued: number; outcome: Outcome; receipt: string; cost_usd?: number | null }>; notes: string[]; rerun?: { size: string; outcome: Outcome; date: string; receipt: string } }
+type LlmPanel = { status: string; study?: string; earlier_study?: string | null; retired?: { name: string; reason: string }[]; reruns?: { model: string; size: number; board_id: string; outcome: Outcome; reason: string; receipt: string }[]; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; cohort?: 'frontier' | 'earlier'; study?: string; boards: Record<string, Outcome | 'not_run'>; costs?: Record<string, number | null> }[] }
 type ModeCounts = { raw: [number, number]; local: [number, number] }
-type DecisionModel = { name: string; author: string; logo: string; study: string; per_board: Record<string, ModeCounts>; calls: number; attempts_per_board_mode: number }
+type DecisionModel = { name: string; author: string; logo: string; study: string; per_board: Record<string, ModeCounts>; calls: number; attempts_per_board_mode: number; costs?: Record<string, number | null> | null; cost_note?: string | null }
 type DecisionSet = {
   label: string
   status?: string
@@ -18,6 +18,7 @@ type ScoreboardData = {
   generated_utc: string
   llm: { boards: number[]; models: LlmModel[]; not_run: { name: string; author: string; logo: string; reason: string }[]; panel?: LlmPanel }
   decision: { original: DecisionSet; panel: DecisionSet }
+  costs?: { total_usd: number; unknown_receipts: number }
 }
 
 type Row = {
@@ -31,6 +32,32 @@ type Row = {
   label: string
   kind: 'model' | 'baseline' | 'pending'
   detail: string
+  /** OpenRouter cost over the boards shown; null when not billed through OpenRouter or not a model. */
+  cost: Cost | null
+  costNote?: string
+}
+
+type Cost = { total: number; perBoard: number | null; boards: number; unknown: number }
+type SortKey = 'performance' | 'cost'
+
+/** undefined = no receipt for that board, null = cost unknown (timeout), number = USD. */
+function summarizeCost(values: (number | null | undefined)[]): Cost {
+  const known = values.filter((value): value is number => typeof value === 'number')
+  const total = known.reduce((sum, value) => sum + value, 0)
+  return { total, perBoard: known.length ? total / known.length : null, boards: known.length, unknown: values.filter(value => value === null).length }
+}
+
+const usd = (value: number) => value >= 1 ? `$${value.toFixed(2)}` : value >= 0.01 ? `$${value.toFixed(3)}` : `$${value.toFixed(4)}`
+const costText = (cost: Cost | null, note?: string) => cost && cost.perBoard !== null
+  ? `${usd(cost.perBoard)} per board · ${usd(cost.total)} for ${cost.boards} ${cost.boards === 1 ? 'board' : 'boards'}${cost.unknown ? ` · ${cost.unknown} unknown (timeout)` : ''}`
+  : note ?? 'No OpenRouter cost'
+
+/** Performance order is the builders' own order; cost order puts the most expensive model per board first. */
+function sortRows(rows: Row[], key: SortKey): Row[] {
+  if (key === 'performance') return rows
+  const models = rows.filter(row => row.kind === 'model')
+  const rest = rows.filter(row => row.kind !== 'model')
+  return [...models.sort((a, b) => (b.cost?.perBoard ?? -1) - (a.cost?.perBoard ?? -1) || a.name.localeCompare(b.name)), ...rest]
 }
 
 const evidenceUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`
@@ -64,15 +91,25 @@ function Tabs({ value, onChange, label }: { value: TabKey; onChange: (key: TabKe
 }
 
 /** Artificial Analysis-style columns on wide containers; labelled rows on phones. */
+function CostMark({ row, max }: { row: Row; max: number }) {
+  const per = row.cost?.perBoard ?? null
+  return <span className="sb-cost" aria-hidden="true">
+    <span className="sb-cost-track">{per !== null && <span className="sb-cost-fill" style={{ width: `${Math.max(2, per / max * 100)}%` }} />}</span>
+    <span className="sb-cost-label">{per !== null ? <>{usd(per)}<span className="sb-cost-unit">/board</span></> : row.kind === 'model' ? (row.costNote ? 'not OpenRouter' : '—') : 'no API cost'}</span>
+  </span>
+}
+
 function EvalBars({ rows, unit }: { rows: Row[]; unit: string }) {
   const [ref, width] = useWidth<HTMLDivElement>(700)
   const vertical = width >= 560 && rows.length <= 9
   const max = Math.max(1, ...rows.map(row => row.denominator))
+  const costMax = Math.max(0.000001, ...rows.map(row => row.cost?.perBoard ?? 0))
   return <div ref={ref} className={`sb-bars ${vertical ? 'sb-bars--columns' : 'sb-bars--rows'}`} role="list" aria-label={unit}>
     {rows.map(row => {
       const solidPct = row.solid / max * 100
       const hatchedPct = row.hatched / max * 100
-      return <div key={row.key} role="listitem" className={`sb-item sb-item--${row.kind}`} title={row.detail} aria-label={`${row.name}: ${row.label}. ${row.detail}`}>
+      const costLine = row.kind === 'model' ? ` Cost: ${costText(row.cost, row.costNote)}.` : ''
+      return <div key={row.key} role="listitem" className={`sb-item sb-item--${row.kind}`} title={`${row.detail}${costLine}`} aria-label={`${row.name}: ${row.label}. ${row.detail}${costLine}`}>
         {vertical ? <>
           <span className="sb-value">{row.label}</span>
           <span className="sb-track" aria-hidden="true">
@@ -83,6 +120,7 @@ function EvalBars({ rows, unit }: { rows: Row[]; unit: string }) {
           </span>
           <LogoTile logo={row.logo} author={row.author} />
           <span className="sb-name">{row.name}</span>
+          <CostMark row={row} max={costMax} />
         </> : <>
           <span className="sb-row-label"><LogoTile logo={row.logo} author={row.author} /><span className="sb-name">{row.name}</span></span>
           <span className="sb-track" aria-hidden="true">
@@ -92,14 +130,22 @@ function EvalBars({ rows, unit }: { rows: Row[]; unit: string }) {
             </>}
           </span>
           <span className="sb-value">{row.label}</span>
+          <CostMark row={row} max={costMax} />
         </>}
       </div>
     })}
   </div>
 }
 
-function Legend({ items }: { items: { kind: 'solid' | 'hatched' | 'baseline' | 'pending'; label: string }[] }) {
+function Legend({ items }: { items: { kind: 'solid' | 'hatched' | 'baseline' | 'pending' | 'cost'; label: string }[] }) {
   return <div className="sb-legend">{items.map(item => <span key={item.label}><span className={`sb-swatch sb-swatch--${item.kind}`} aria-hidden="true" />{item.label}</span>)}</div>
+}
+
+function SortControl({ value, onChange, label }: { value: SortKey; onChange: (key: SortKey) => void; label: string }) {
+  return <div className="sb-segment" role="group" aria-label={label}>
+    <button type="button" aria-pressed={value === 'performance'} onClick={() => onChange('performance')}>Sort: boards solved</button>
+    <button type="button" aria-pressed={value === 'cost'} onClick={() => onChange('cost')}>Cost per board, highest first</button>
+  </div>
 }
 
 function llmRows(data: ScoreboardData['llm'], tab: TabKey, includeEarlier: boolean): Row[] {
@@ -112,7 +158,8 @@ function llmRows(data: ScoreboardData['llm'], tab: TabKey, includeEarlier: boole
     const issued = sizes.filter(size => model.boards[size]).length
     const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', noAnswer ? `${noAnswer} timed out with no answer` : ''].filter(Boolean)
     return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: issued, label: `${strict + formatOnly}/${issued}`, kind: 'model' as const,
-      detail: `${parts.join(' · ')}. ${model.cohort === 'frontier' ? '17 Sep study' : '1 Oct earlier-generations replay'}.` }
+      detail: `${parts.join(' · ')}. ${model.cohort === 'frontier' ? '17 Sep study' : '1 Oct earlier-generations replay'}.`,
+      cost: summarizeCost(sizes.filter(size => model.boards[size]).map(size => model.boards[size].cost_usd)) }
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
 }
 
@@ -128,7 +175,8 @@ function llmPanelRows(panel: LlmPanel, tab: TabKey, includeEarlier: boolean): Ro
     const issued = ids.length - notRun
     const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', truncated ? `${truncated} ran out of tokens` : '', noAnswer ? `${noAnswer} request failed before an answer` : '', notRun ? `${notRun} not yet run` : ''].filter(Boolean)
     return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: ids.length,
-      label: `${strict + formatOnly}/${issued}`, kind: 'model' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, ${model.cohort === 'earlier' ? '17 Oct earlier-generation panel' : '16 Oct panel'}.` }
+      label: `${strict + formatOnly}/${issued}`, kind: 'model' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, ${model.cohort === 'earlier' ? '17 Oct earlier-generation panel' : '16 Oct panel'}.`,
+      cost: summarizeCost(ids.filter(id => (model.boards[id] ?? 'not_run') !== 'not_run').map(id => model.costs?.[id])) }
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
 }
 
@@ -146,13 +194,14 @@ function decisionRows(set: DecisionSet, tab: TabKey): Row[] {
     const attempts = ids.reduce((sum, id) => sum + (model.per_board[id]?.raw[1] ?? 0) + (model.per_board[id]?.local[1] ?? 0), 0)
     const solvedAttempts = ids.reduce((sum, id) => sum + (model.per_board[id]?.raw[0] ?? 0) + (model.per_board[id]?.local[0] ?? 0), 0)
     return { key: model.name, name: model.name, author: model.author, logo: model.logo, solid: raw, hatched: localOnly, denominator: ids.length, label: `${raw + localOnly}/${ids.length}`, kind: 'model' as const,
-      detail: `${raw} solved from the raw menu, ${localOnly} only with the conflict filter; ${solvedAttempts}/${attempts} attempts solved.` }
+      detail: `${raw} solved from the raw menu, ${localOnly} only with the conflict filter; ${solvedAttempts}/${attempts} attempts solved.`,
+      cost: model.costs ? summarizeCost(ids.map(id => model.costs?.[id])) : null, costNote: model.cost_note ?? undefined }
   })
-  for (const pending of set.pending) rows.push({ key: pending.name, name: pending.name, author: pending.author, logo: pending.logo, solid: 0, hatched: 0, denominator: ids.length, label: '—', kind: 'pending', detail: pending.reason })
+  for (const pending of set.pending) rows.push({ key: pending.name, name: pending.name, author: pending.author, logo: pending.logo, solid: 0, hatched: 0, denominator: ids.length, label: '—', kind: 'pending', detail: pending.reason, cost: null })
   const greedy = ids.filter(id => set.baselines.greedy[id]).length
-  rows.push({ key: 'greedy', name: 'Greedy rule (no model)', solid: 0, hatched: greedy, denominator: ids.length, label: `${greedy}/${ids.length}`, kind: 'baseline', detail: 'Fewest-legal-cells color first, first legal cell, never backtracks. Uses the conflict filter.' })
+  rows.push({ key: 'greedy', name: 'Greedy rule (no model)', solid: 0, hatched: greedy, denominator: ids.length, label: `${greedy}/${ids.length}`, kind: 'baseline', detail: 'Fewest-legal-cells color first, first legal cell, never backtracks. Uses the conflict filter.', cost: null })
   const random = ids.reduce((sum, id) => sum + (set.baselines.random_expected_any[id] ?? 0), 0)
-  rows.push({ key: 'random', name: 'Random menu choice', solid: 0, hatched: random, denominator: ids.length, label: `≈${random < 10 ? random.toFixed(1) : Math.round(random)}`, kind: 'baseline', detail: 'Expected boards solved at least once by uniform random choices under the same protocol and attempt allowance.' })
+  rows.push({ key: 'random', name: 'Random menu choice', solid: 0, hatched: random, denominator: ids.length, label: `≈${random < 10 ? random.toFixed(1) : Math.round(random)}`, kind: 'baseline', detail: 'Expected boards solved at least once by uniform random choices under the same protocol and attempt allowance.', cost: null })
   return rows
 }
 
@@ -164,6 +213,8 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   const [includeEarlier, setIncludeEarlier] = useState(false)
   const [llmSet, setLlmSet] = useState<'original' | 'panel'>('original')
   const [boardSet, setBoardSet] = useState<'original' | 'panel'>('original')
+  const [llmSort, setLlmSort] = useState<SortKey>('performance')
+  const [decisionSort, setDecisionSort] = useState<SortKey>('performance')
 
   useEffect(() => {
     const controller = new AbortController()
@@ -179,7 +230,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
 
   const panel = data.llm.panel
   const panelReadyLlm = !!panel && panel.models.length > 0
-  const llm = llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab, includeEarlier) : llmRows(data.llm, llmTab, includeEarlier)
+  const llm = sortRows(llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab, includeEarlier) : llmRows(data.llm, llmTab, includeEarlier), llmSort)
   const panelEarlier = panel?.models.filter(model => model.cohort === 'earlier') ?? []
   const panelShown = panel ? panel.models.filter(model => includeEarlier || model.cohort !== 'earlier').length : 0
   const llmPanelBoards = panel ? panel.boards.filter(board => llmTab === 'all' || String(board.size) === llmTab).length : 0
@@ -187,7 +238,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   const frontierCount = data.llm.models.filter(model => model.cohort === 'frontier').length
   const set = data.decision[boardSet]
   const panelReady = data.decision.panel.models.length > 0
-  const decision = decisionRows(set, decisionTab)
+  const decision = sortRows(decisionRows(set, decisionTab), decisionSort)
   const decisionBoards = set.boards.filter(board => decisionTab === 'all' || String(board.size) === decisionTab).length
   const timeouts = data.llm.models.flatMap(model => model.notes.filter(note => note.includes('timed out')).map(note => `${model.name}, ${note}`))
 
@@ -204,9 +255,10 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <button type="button" aria-pressed={llmSet === 'original'} onClick={() => setLlmSet('original')}>Original 3 boards</button>
           <button type="button" aria-pressed={llmSet === 'panel'} onClick={() => setLlmSet('panel')} disabled={!panelReadyLlm}>New 36-board panel</button>
         </div>
+        <SortControl value={llmSort} onChange={setLlmSort} label="Sort order, language models" />
         {(llmSet === 'original' || panelEarlier.length > 0) && <label className="sb-toggle"><input type="checkbox" checked={includeEarlier} onChange={event => setIncludeEarlier(event.target.checked)} /> Include earlier generations</label>}
       </div>
-      <Legend items={[{ kind: 'solid', label: 'Correct, strict JSON' }, { kind: 'hatched', label: 'Correct placement, broke the JSON-only format' }]} />
+      <Legend items={[{ kind: 'solid', label: 'Correct, strict JSON' }, { kind: 'hatched', label: 'Correct placement, broke the JSON-only format' }, { kind: 'cost', label: 'OpenRouter cost per board (own scale)' }]} />
       <EvalBars rows={llm} unit="Boards with a correct full placement" />
       <details className="sb-coverage">
         <summary>Test coverage: {llmSet === 'panel' ? `${panelShown} models × ${llmPanelBoards} boards` : `${includeEarlier ? data.llm.models.length : frontierCount} models × ${llmTab === 'all' ? 3 : 1} ${llmTab === 'all' ? 'boards' : 'board'}`}, identical for every model shown</summary>
@@ -217,6 +269,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <li>Two Grok 4.6 9×9 answers ran out of the 12,288-token budget without a final answer, the same limit as in September; they count as unsolved.</li>
           {(panel?.reruns ?? []).length > 0 && <li><strong>Request failures and re-runs:</strong> {panel?.reruns?.map(r => `${r.model}'s ${r.size}×${r.size} request (${r.board_id}) failed with HTTP 429 before any answer`).join('; ')}. The chart keeps the preregistered result (unsolved). Re-sent once, unchanged, on 16 Oct: {panel?.reruns?.map((r, i) => <span key={r.receipt}>{i ? '; ' : ''}<a href={`#/evidence-atlas/${r.receipt}`}>{r.board_id}</a> {r.outcome === 'format_only' ? 'correct, off-format' : r.outcome === 'strict' ? 'correct' : r.outcome.replace('_', ' ')}</span>)}.</li>}
           {includeEarlier && panelEarlier.length > 0 && <li><strong>Earlier generations ({panelEarlier.length} models, 17 Oct):</strong> the same 36 boards, images and prompt, with each model's 1 October settings. Gemini 2.5 Pro and Flash ran through the Batch API on Google Vertex. OpenRouter rejected every OpenAI and Anthropic batch ("no :batch endpoint"), so those six ran on demand with their 1 October provider blocks, as preregistered.{(panel?.retired ?? []).length > 0 && <> Not shown: {panel?.retired?.map(model => model.name).join(', ')}, which OpenRouter no longer serves.</>}</li>}
+<li><strong>Cost:</strong> OpenRouter spend per board from the receipts (<code>usage.cost</code>). GPT-5.6 Sol's 16 October batch items carry no per-item cost, so theirs is tokens × the batch price, which reproduces the billed batch total exactly. Requests that failed before generation cost $0; a timeout's cost is unknown and is not counted. Agent-led OpenRouter use outside these studies is not included. <a href="#/assessment-receipt">Cost by evaluation</a>.</li>
           <li><a href="#/decision-models">Decision models</a> · <a href="#/earlier-generations">Earlier generations</a> · <a href={evidenceUrl('evidence/frontier-image-panel/summary.json')} download>Panel results (JSON)</a>{panel?.earlier_study && <> · <a href={evidenceUrl('evidence/legacy-panel/summary.json')} download>Earlier-generation results (JSON)</a></>}</li>
         </ul> : <ul>
           <li>One request per model and board, the same image and prompt, no tools, no repair turns, no retries.</li>
@@ -224,6 +277,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           {reruns.map(model => <li key={model.id}><strong>Re-run on {model.rerun?.date}:</strong> {model.name}'s {model.rerun?.size}×{model.rerun?.size} request was sent again byte for byte: {model.rerun?.outcome === 'strict' ? 'solved, strict JSON' : model.rerun?.outcome.replace('_', ' ')}. <a href={`#/evidence-atlas/${model.rerun?.receipt}`}>Re-run receipt</a>.</li>)}
           {includeEarlier && <li><strong>Scheduled but not run ({data.llm.not_run.length}):</strong> {data.llm.not_run.map(model => model.name).join(', ')}. The adaptive replay stopped those families early; they had no tests and are not shown.</li>}
           {includeEarlier && <li>The six unrun earlier-generation models have not been scheduled again.</li>}
+<li><strong>Cost:</strong> OpenRouter spend per board from the receipts (<code>usage.cost</code>). GPT-5.6 Sol's 16 October batch items carry no per-item cost, so theirs is tokens × the batch price, which reproduces the billed batch total exactly. Requests that failed before generation cost $0; a timeout's cost is unknown and is not counted. Agent-led OpenRouter use outside these studies is not included. <a href="#/assessment-receipt">Cost by evaluation</a>.</li>
           <li><a href="#/protocol-results">Protocol and results</a> · <a href="#/earlier-generations">Earlier generations</a> · <a href={evidenceUrl('evidence/scoreboard.json')} download>Scoreboard data (JSON)</a></li>
         </ul>}
       </details>
@@ -243,8 +297,9 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <button type="button" aria-pressed={boardSet === 'original'} onClick={() => setBoardSet('original')}>Original 9 boards</button>
           <button type="button" aria-pressed={boardSet === 'panel'} onClick={() => setBoardSet('panel')}>New 192-board panel</button>
         </div>
+        <SortControl value={decisionSort} onChange={setDecisionSort} label="Sort order, decision models" />
       </div>
-      <Legend items={[{ kind: 'solid', label: 'Solved from the raw menu' }, { kind: 'hatched', label: 'Solved only with the conflict filter' }, { kind: 'baseline', label: 'No-model baseline' }, { kind: 'pending', label: 'Not yet tested' }]} />
+      <Legend items={[{ kind: 'solid', label: 'Solved from the raw menu' }, { kind: 'hatched', label: 'Solved only with the conflict filter' }, { kind: 'baseline', label: 'No-model baseline' }, { kind: 'pending', label: 'Not yet tested' }, { kind: 'cost', label: 'OpenRouter cost per board (own scale)' }]} />
       {boardSet === 'panel' && !panelReady ? <p className="sb-note" role="status">The new-board panel is still running. Results appear here when its receipts are complete.</p>
         : <EvalBars rows={decision} unit="Boards solved from an empty board" />}
       <details className="sb-coverage">
@@ -258,6 +313,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
             {set.models.map(model => <li key={model.name}>{model.name}: {model.calls} model calls.</li>)}
             {set.pending.map(model => <li key={model.name}><strong>{model.name} not yet tested:</strong> {model.reason} Until then this panel is not a like-for-like comparison.</li>)}
           </>}
+<li><strong>Cost:</strong> Jev's OpenRouter spend per board, summed over every call on that board. SubQ Snap ran on its own preview API, not OpenRouter, so it shows no OpenRouter cost. The baselines make no API calls.</li>
           <li>Baselines use the same boards: the greedy rule is deterministic (<a href="#/greedy-rule">rule, results and step-by-step replays</a>); the random value is an exact expectation, not a run.</li>
           <li><a href="#/methods-critique">Methods critique</a> · <a href="#/subq-assessment">SubQ chapter</a> · <a href="#/jev-trajectories">Jev trajectories</a></li>
         </ul>
