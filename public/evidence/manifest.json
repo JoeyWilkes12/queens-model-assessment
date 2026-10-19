@@ -25,23 +25,23 @@
   "counts": {
     "studies": 19,
     "requests": 5417,
-    "responses": 5369,
-    "metadata": 5390,
-    "grades": 5384,
+    "responses": 5376,
+    "metadata": 5397,
+    "grades": 5391,
     "gradeSources": 15,
     "inlineImageAssets": 3,
     "excluded": 10,
     "assessmentOutcomes": {
-      "success": 1040,
+      "success": 1044,
       "request_failure": 14,
-      "model_failure": 1523,
-      "not_run": 42,
+      "model_failure": 1526,
+      "not_run": 35,
       "ungraded": 2798
     },
     "statuses": {
-      "success": 5361,
+      "success": 5368,
       "error": 13,
-      "not_run": 42,
+      "not_run": 35,
       "timeout_or_transport_failure": 1
     }
   },
@@ -19598,7 +19598,9 @@
         "2026-10-17-earlier-generations-panel:031_panel-5-59_claude-opus-4.7",
         "2026-10-17-earlier-generations-panel:032_panel-7-61_claude-opus-4.7",
         "2026-10-17-earlier-generations-panel:033_panel-9-53_claude-opus-4.7",
-        "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.7"
+        "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.7",
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.7",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.7"
       ],
       "google/gemini-2.5-pro": [
         "2026-10-01-earlier-generations:r1_queens-5-easy_gemini-2.5-pro",
@@ -19679,7 +19681,8 @@
         "2026-10-17-earlier-generations-panel:032_panel-7-61_gpt-5.5",
         "2026-10-17-earlier-generations-panel:033_panel-9-53_gpt-5.5",
         "2026-10-17-earlier-generations-panel:034_panel-5-63_gpt-5.5",
-        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5.5"
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5.5",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.5"
       ],
       "anthropic/claude-opus-4.6": [
         "2026-10-01-earlier-generations:r2_queens-5-easy_claude-opus-4.6",
@@ -19718,7 +19721,9 @@
         "2026-10-17-earlier-generations-panel:031_panel-5-59_claude-opus-4.6",
         "2026-10-17-earlier-generations-panel:032_panel-7-61_claude-opus-4.6",
         "2026-10-17-earlier-generations-panel:033_panel-9-53_claude-opus-4.6",
-        "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.6"
+        "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.6",
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.6",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.6"
       ],
       "openai/gpt-5.4": [
         "2026-10-01-earlier-generations:r2_queens-5-easy_gpt-5.4",
@@ -19758,7 +19763,8 @@
         "2026-10-17-earlier-generations-panel:032_panel-7-61_gpt-5.4",
         "2026-10-17-earlier-generations-panel:033_panel-9-53_gpt-5.4",
         "2026-10-17-earlier-generations-panel:034_panel-5-63_gpt-5.4",
-        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5.4"
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5.4",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.4"
       ],
       "anthropic/claude-opus-4.5": [
         "2026-10-01-earlier-generations:r3_queens-5-easy_claude-opus-4.5",
@@ -19823,7 +19829,8 @@
         "2026-10-17-earlier-generations-panel:032_panel-7-61_gpt-5",
         "2026-10-17-earlier-generations-panel:033_panel-9-53_gpt-5",
         "2026-10-17-earlier-generations-panel:034_panel-5-63_gpt-5",
-        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5"
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5"
       ],
       "openai/gpt-4o-2024-11-20": [
         "2026-10-01-earlier-generations:r7_queens-5-easy_gpt-4o-2024-11-20",
@@ -22493,6 +22500,9 @@
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5.4",
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5",
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-4.1",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.5",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.4",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5",
         "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-4.1"
       ],
       "Google": [
@@ -22735,7 +22745,11 @@
         "2026-10-17-earlier-generations-panel:033_panel-9-53_claude-opus-4.7",
         "2026-10-17-earlier-generations-panel:033_panel-9-53_claude-opus-4.6",
         "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.7",
-        "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.6"
+        "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.6",
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.7",
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.6",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.7",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.6"
       ],
       "TypeSafe": [
         "2026-09-18-jev-5x5-variations:complete_annotated_r1",
@@ -42461,7 +42475,11 @@
         "2026-10-17-earlier-generations-panel:034_panel-5-63_gemini-2.5-flash",
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5.5",
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5.4",
-        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5"
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-5",
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.7",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.5",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.4",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.7"
       ],
       "request_failure": [
         "2026-09-17-one-shot:03_queens-5-easy_grok-4.6",
@@ -43998,9 +44016,12 @@
         "2026-10-17-earlier-generations-panel:034_panel-5-63_claude-opus-4.6",
         "2026-10-17-earlier-generations-panel:034_panel-5-63_gemini-2.5-pro",
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gpt-4.1",
+        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.6",
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gemini-2.5-pro",
         "2026-10-17-earlier-generations-panel:035_panel-7-62_gemini-2.5-flash",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5",
         "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-4.1",
+        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.6",
         "2026-10-17-earlier-generations-panel:036_panel-9-58_gemini-2.5-pro",
         "2026-10-17-earlier-generations-panel:036_panel-9-58_gemini-2.5-flash"
       ],
@@ -44039,14 +44060,7 @@
         "2026-10-13-subq-replay:099_heldout-9-1_vectors_present_repeat1",
         "2026-10-13-subq-replay:103_heldout-9-2_regions_absent_repeat1",
         "2026-10-13-subq-replay:104_heldout-9-2_regions_present_repeat1",
-        "2026-10-13-subq-replay:105_heldout-9-2_vectors_present_repeat1",
-        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.7",
-        "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.6",
-        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.5",
-        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.4",
-        "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5",
-        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.7",
-        "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.6"
+        "2026-10-13-subq-replay:105_heldout-9-2_vectors_present_repeat1"
       ],
       "ungraded": [
         "2026-09-18-jev-deep-dive:02_batch_5x5_guardrail_enabled",
@@ -197322,17 +197336,22 @@
       "board": "panel-7-62",
       "size": 7,
       "model": "anthropic/claude-opus-4.7",
-      "modelVersion": null,
-      "provider": null,
+      "modelVersion": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
       "run": "035_panel-7-62_claude-opus-4.7",
-      "status": "not_run",
+      "status": "success",
       "kind": "one-shot image placement (earlier generations, 36-board panel)",
-      "hasResponse": false,
-      "hasMetadata": false,
-      "hasGrade": false,
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
       "partialResponse": false,
-      "assessmentOutcome": "not_run",
-      "files": {}
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.7/request.json",
+        "response": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.7/response.json",
+        "metadata": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.7/metadata.json",
+        "grade": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.7/grade.json"
+      }
     },
     {
       "id": "2026-10-17-earlier-generations-panel:035_panel-7-62_claude-opus-4.6",
@@ -197340,17 +197359,22 @@
       "board": "panel-7-62",
       "size": 7,
       "model": "anthropic/claude-opus-4.6",
-      "modelVersion": null,
-      "provider": null,
+      "modelVersion": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
       "run": "035_panel-7-62_claude-opus-4.6",
-      "status": "not_run",
+      "status": "success",
       "kind": "one-shot image placement (earlier generations, 36-board panel)",
-      "hasResponse": false,
-      "hasMetadata": false,
-      "hasGrade": false,
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
       "partialResponse": false,
-      "assessmentOutcome": "not_run",
-      "files": {}
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.6/request.json",
+        "response": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.6/response.json",
+        "metadata": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.6/metadata.json",
+        "grade": "runs/2026-10-17-earlier-generations-panel/035_panel-7-62_claude-opus-4.6/grade.json"
+      }
     },
     {
       "id": "2026-10-17-earlier-generations-panel:035_panel-7-62_gemini-2.5-pro",
@@ -197404,17 +197428,22 @@
       "board": "panel-9-58",
       "size": 9,
       "model": "openai/gpt-5.5",
-      "modelVersion": null,
-      "provider": null,
+      "modelVersion": "openai/gpt-5.5",
+      "provider": "OpenAI",
       "run": "036_panel-9-58_gpt-5.5",
-      "status": "not_run",
+      "status": "success",
       "kind": "one-shot image placement (earlier generations, 36-board panel)",
-      "hasResponse": false,
-      "hasMetadata": false,
-      "hasGrade": false,
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
       "partialResponse": false,
-      "assessmentOutcome": "not_run",
-      "files": {}
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.5/request.json",
+        "response": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.5/response.json",
+        "metadata": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.5/metadata.json",
+        "grade": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.5/grade.json"
+      }
     },
     {
       "id": "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5.4",
@@ -197422,17 +197451,22 @@
       "board": "panel-9-58",
       "size": 9,
       "model": "openai/gpt-5.4",
-      "modelVersion": null,
-      "provider": null,
+      "modelVersion": "openai/gpt-5.4",
+      "provider": "OpenAI",
       "run": "036_panel-9-58_gpt-5.4",
-      "status": "not_run",
+      "status": "success",
       "kind": "one-shot image placement (earlier generations, 36-board panel)",
-      "hasResponse": false,
-      "hasMetadata": false,
-      "hasGrade": false,
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
       "partialResponse": false,
-      "assessmentOutcome": "not_run",
-      "files": {}
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.4/request.json",
+        "response": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.4/response.json",
+        "metadata": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.4/metadata.json",
+        "grade": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5.4/grade.json"
+      }
     },
     {
       "id": "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-5",
@@ -197440,17 +197474,22 @@
       "board": "panel-9-58",
       "size": 9,
       "model": "openai/gpt-5",
-      "modelVersion": null,
-      "provider": null,
+      "modelVersion": "openai/gpt-5",
+      "provider": "OpenAI",
       "run": "036_panel-9-58_gpt-5",
-      "status": "not_run",
+      "status": "success",
       "kind": "one-shot image placement (earlier generations, 36-board panel)",
-      "hasResponse": false,
-      "hasMetadata": false,
-      "hasGrade": false,
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
       "partialResponse": false,
-      "assessmentOutcome": "not_run",
-      "files": {}
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5/request.json",
+        "response": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5/response.json",
+        "metadata": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5/metadata.json",
+        "grade": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_gpt-5/grade.json"
+      }
     },
     {
       "id": "2026-10-17-earlier-generations-panel:036_panel-9-58_gpt-4.1",
@@ -197481,17 +197520,22 @@
       "board": "panel-9-58",
       "size": 9,
       "model": "anthropic/claude-opus-4.7",
-      "modelVersion": null,
-      "provider": null,
+      "modelVersion": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
       "run": "036_panel-9-58_claude-opus-4.7",
-      "status": "not_run",
+      "status": "success",
       "kind": "one-shot image placement (earlier generations, 36-board panel)",
-      "hasResponse": false,
-      "hasMetadata": false,
-      "hasGrade": false,
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
       "partialResponse": false,
-      "assessmentOutcome": "not_run",
-      "files": {}
+      "assessmentOutcome": "success",
+      "files": {
+        "request": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.7/request.json",
+        "response": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.7/response.json",
+        "metadata": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.7/metadata.json",
+        "grade": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.7/grade.json"
+      }
     },
     {
       "id": "2026-10-17-earlier-generations-panel:036_panel-9-58_claude-opus-4.6",
@@ -197499,17 +197543,22 @@
       "board": "panel-9-58",
       "size": 9,
       "model": "anthropic/claude-opus-4.6",
-      "modelVersion": null,
-      "provider": null,
+      "modelVersion": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
       "run": "036_panel-9-58_claude-opus-4.6",
-      "status": "not_run",
+      "status": "success",
       "kind": "one-shot image placement (earlier generations, 36-board panel)",
-      "hasResponse": false,
-      "hasMetadata": false,
-      "hasGrade": false,
+      "hasResponse": true,
+      "hasMetadata": true,
+      "hasGrade": true,
       "partialResponse": false,
-      "assessmentOutcome": "not_run",
-      "files": {}
+      "assessmentOutcome": "model_failure",
+      "files": {
+        "request": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.6/request.json",
+        "response": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.6/response.json",
+        "metadata": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.6/metadata.json",
+        "grade": "runs/2026-10-17-earlier-generations-panel/036_panel-9-58_claude-opus-4.6/grade.json"
+      }
     },
     {
       "id": "2026-10-17-earlier-generations-panel:036_panel-9-58_gemini-2.5-pro",

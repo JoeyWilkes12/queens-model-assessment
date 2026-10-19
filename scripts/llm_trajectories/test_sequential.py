@@ -29,7 +29,12 @@ class Harness(unittest.TestCase):
         self.patches = [mock.patch.object(S, "OUT_ROOT", self.tmp / "ft"),
                         mock.patch.object(S.C, "OUT", self.tmp / "campaign"),
                         mock.patch.object(S.C, "key_numbers", return_value={"usage": 1.0, "limit": None, "limit_remaining": None}),
-                        mock.patch.object(S, "RESEND_DELAY_SECONDS", 0)]
+                        mock.patch.object(S, "RESEND_DELAY_SECONDS", 0),
+                        # Pin the caps these tests were written against, and keep the live earlier-generation
+                        # manifest out of them: the ledger reads it to hold budget back for that panel.
+                        mock.patch.object(S.C, "CAMPAIGN_CAP_USD", 18.75),
+                        mock.patch.object(S.C, "LEGACY_SUBCAP_USD", 17.25),
+                        mock.patch.object(S.C, "LEGACY_MANIFEST", self.tmp / "no-legacy-manifest.json")]
         for p in self.patches:
             p.start()
         S.C.save(S.C.OUT / "baseline.json", {"usage_usd": 1.0})

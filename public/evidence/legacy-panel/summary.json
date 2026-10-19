@@ -1,6 +1,6 @@
 {
   "study": "2026-10-17-earlier-generations-panel",
-  "updated_utc": "2026-10-19T20:59:13.977118+00:00",
+  "updated_utc": "2026-10-19T21:34:09.455474+00:00",
   "rows": [
     {
       "call_id": "001_panel-5-10_gpt-5.5",
@@ -5743,7 +5743,13 @@
       "request_sha256": "e2bf334eb9409bd89db12eb1c63bbdfe611ff821d4fd7fdd1db26dc3c9a84338",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.099125,
+      "elapsed_seconds": 45.616680417000005,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_claude-opus-4.6",
@@ -5758,7 +5764,13 @@
       "request_sha256": "b54c69b62df4c51f23a049047e0eb1a4b877ddc32b4eef0764c8df34388d4434",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.107215,
+      "elapsed_seconds": 68.030502584,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_gemini-2.5-pro",
@@ -5813,7 +5825,13 @@
       "request_sha256": "5df5968a4acecbc355f20950e2be9d60237a33b6ecb3fafa2975300f7e36dbca",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.107825,
+      "elapsed_seconds": 43.312727791,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gpt-5.4",
@@ -5828,7 +5846,13 @@
       "request_sha256": "68d0e4f2d583e4fc66d4188579e565f24423662ac9c027830c8351d50f9f5ac8",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0781075,
+      "elapsed_seconds": 60.899343499999986,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gpt-5",
@@ -5843,7 +5867,13 @@
       "request_sha256": "97eada412501b79e5e6f1ca1af8aa761580a33e3516f67e390fdce26a108335e",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 188.642082166,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "036_panel-9-58_gpt-4.1",
@@ -5879,7 +5909,13 @@
       "request_sha256": "e27c4c4f411cbf944125df37b4bd73432b00ad001672cd32a20c5e25f3525498",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.1213,
+      "elapsed_seconds": 54.45155250000005,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_claude-opus-4.6",
@@ -5894,7 +5930,13 @@
       "request_sha256": "b3332cda82db3e0efa8c32e593bbe107675c635487ce71096d6b568d4e9ce258",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.172765,
+      "elapsed_seconds": 100.73170712500001,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gemini-2.5-pro",
@@ -6003,14 +6045,12 @@
     {
       "model": "claude-opus-4.6",
       "size": 7,
-      "format_only": 11,
-      "not_run": 1
+      "format_only": 12
     },
     {
       "model": "claude-opus-4.6",
       "size": 9,
-      "format_only": 11,
-      "not_run": 1
+      "format_only": 12
     },
     {
       "model": "claude-opus-4.7",
@@ -6020,15 +6060,13 @@
     {
       "model": "claude-opus-4.7",
       "size": 7,
-      "strict": 10,
-      "truncated": 1,
-      "not_run": 1
+      "strict": 11,
+      "truncated": 1
     },
     {
       "model": "claude-opus-4.7",
       "size": 9,
-      "strict": 11,
-      "not_run": 1
+      "strict": 12
     },
     {
       "model": "gemini-2.5-flash",
@@ -6102,8 +6140,7 @@
       "model": "gpt-5",
       "size": 9,
       "strict": 4,
-      "truncated": 7,
-      "not_run": 1
+      "truncated": 8
     },
     {
       "model": "gpt-5.4",
@@ -6118,8 +6155,7 @@
     {
       "model": "gpt-5.4",
       "size": 9,
-      "strict": 11,
-      "not_run": 1
+      "strict": 12
     },
     {
       "model": "gpt-5.5",
@@ -6134,24 +6170,23 @@
     {
       "model": "gpt-5.5",
       "size": 9,
-      "strict": 11,
-      "not_run": 1
+      "strict": 12
     }
   ],
   "by_model": {
     "gpt-5.5": {
       "model": "openai/gpt-5.5",
-      "recorded": 35,
-      "correct": 35,
-      "strict": 35,
+      "recorded": 36,
+      "correct": 36,
+      "strict": 36,
       "correct_cp95": [
-        0.899967564427895,
+        0.902606244085508,
         1.0
       ],
       "outcomes": {
-        "strict": 35
+        "strict": 36
       },
-      "cost_usd": 2.725225,
+      "cost_usd": 2.83305,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -6159,17 +6194,17 @@
     },
     "gpt-5.4": {
       "model": "openai/gpt-5.4",
-      "recorded": 35,
-      "correct": 35,
-      "strict": 35,
+      "recorded": 36,
+      "correct": 36,
+      "strict": 36,
       "correct_cp95": [
-        0.899967564427895,
+        0.902606244085508,
         1.0
       ],
       "outcomes": {
-        "strict": 35
+        "strict": 36
       },
-      "cost_usd": 1.728013,
+      "cost_usd": 1.80612,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -6177,18 +6212,18 @@
     },
     "gpt-5": {
       "model": "openai/gpt-5",
-      "recorded": 35,
+      "recorded": 36,
       "correct": 23,
       "strict": 23,
       "correct_cp95": [
-        0.4778900166064789,
-        0.8086758978117341
+        0.46220900016816413,
+        0.7917770529134072
       ],
       "outcomes": {
         "strict": 23,
-        "truncated": 12
+        "truncated": 13
       },
-      "cost_usd": 3.352909,
+      "cost_usd": 3.476905,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -6215,18 +6250,18 @@
     },
     "claude-opus-4.7": {
       "model": "anthropic/claude-opus-4.7",
-      "recorded": 34,
-      "correct": 33,
-      "strict": 33,
+      "recorded": 36,
+      "correct": 35,
+      "strict": 35,
       "correct_cp95": [
-        0.8467323304396823,
-        0.9992556357653097
+        0.8547107352531467,
+        0.9992969747940952
       ],
       "outcomes": {
-        "strict": 33,
+        "strict": 35,
         "truncated": 1
       },
-      "cost_usd": 2.808225,
+      "cost_usd": 3.02865,
       "route": "on_demand",
       "providers": [
         "Anthropic"
@@ -6234,17 +6269,17 @@
     },
     "claude-opus-4.6": {
       "model": "anthropic/claude-opus-4.6",
-      "recorded": 34,
-      "correct": 34,
+      "recorded": 36,
+      "correct": 36,
       "strict": 0,
       "correct_cp95": [
-        0.8971820757409872,
+        0.902606244085508,
         1.0
       ],
       "outcomes": {
-        "format_only": 34
+        "format_only": 36
       },
-      "cost_usd": 4.174685,
+      "cost_usd": 4.454665,
       "route": "on_demand",
       "providers": [
         "Anthropic"
@@ -6293,5 +6328,5 @@
       ]
     }
   },
-  "cost_usd_reported": 16.898485
+  "cost_usd_reported": 17.708819
 }

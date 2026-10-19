@@ -38,12 +38,16 @@ SOCKET = str(pathlib.Path.home() / "Library/Application Support/OpenRouterBroker
 CAMPAIGN = "2026-10-17-openrouter-follow-ups"
 # The user added $18 on 16 October; about $1.85 of the earlier $11.11 remained.
 # The cap keeps a margin for the usage counter's reporting lag (observed $0.5-1).
-CAMPAIGN_CAP_USD = 18.75
+# Amendment 8 (19 Oct, 21:16 UTC): the user reported $2.53 of credit left and asked for the last 7
+# earlier-generation calls. The cap rose from $18.75 to recorded spend ($17.44) plus that credit,
+# less a $0.10 margin, so no call can be started that would overdraw the balance the user reported.
+CAMPAIGN_CAP_USD = 19.85
 # Amendment (17 Oct, before any on-demand call): every OpenAI and Anthropic batch was rejected, so six
 # models run on demand at twice the batch price; the sub-cap rose from $10.50 so all 36 boards fit.
 # Amendment 5 (17 Oct): raised again so the panel completes inside the unchanged campaign cap; no trajectory
 # panel block fit the remaining cap either way (about $1.5 left against a projected $5.1 per block).
-LEGACY_SUBCAP_USD = 17.25
+# Amendment 8: the sub-cap now equals the campaign cap; the trajectory block count was already fixed at 0.
+LEGACY_SUBCAP_USD = 19.85
 LEGACY_MANIFEST = ROOT / "output/legacy-panel/manifest.json"
 
 

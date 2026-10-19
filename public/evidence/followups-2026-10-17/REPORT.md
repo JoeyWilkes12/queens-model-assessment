@@ -17,7 +17,7 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
 <!-- auto:summary -->
 | Test | Boards | Result |
 |---|---|---|
-| Earlier-generation reasoning models (GPT-5.5, 5.4, 5; Claude Opus 4.7, 4.6), one shot from an image | 36 panel boards each | 160 correct of 173 answered; 7 calls not yet run (budget limits) |
+| Earlier-generation reasoning models (GPT-5.5, 5.4, 5; Claude Opus 4.7, 4.6), one shot from an image | 36 panel boards each | 166 correct of 180 answered |
 | GPT-4.1 (no reasoning), same | 36 | 1/36 |
 | Gemini 2.5 Pro and Flash, same, through the Batch API | 36 each | Gemini 2.5 Pro 27/36; Gemini 2.5 Flash 12/36 |
 | Frontier models, one queen per request, text state, no feedback | 1 development board each | 4 of 4 solved, each in 5 requests |
@@ -29,20 +29,20 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
 <!-- auto:legacy -->
 | Model | 5×5 | 7×7 | 9×9 | Correct / recorded | Strict JSON | Misses | Not yet run | 1 Oct, 3 boards | Route | Cost |
 |---|---:|---:|---:|---:|---:|---|---:|---:|---|---:|
-| Claude Opus 4.6 | 12/12 | 11/11 | 11/11 | **34/34** | 0/34 | none | 2 | 3/3 | On demand | $4.17 |
-| GPT-5.4 | 12/12 | 12/12 | 11/11 | **35/35** | 35/35 | none | 1 | 3/3 | On demand | $1.73 |
-| GPT-5.5 | 12/12 | 12/12 | 11/11 | **35/35** | 35/35 | none | 1 | 3/3 | On demand | $2.73 |
-| Claude Opus 4.7 | 12/12 | 10/11 | 11/11 | **33/34** | 33/34 | 1 truncated | 2 | 3/3 | On demand | $2.81 |
+| Claude Opus 4.6 | 12/12 | 12/12 | 12/12 | **36/36** | 0/36 | none | 0 | 3/3 | On demand | $4.45 |
+| GPT-5.4 | 12/12 | 12/12 | 12/12 | **36/36** | 36/36 | none | 0 | 3/3 | On demand | $1.81 |
+| GPT-5.5 | 12/12 | 12/12 | 12/12 | **36/36** | 36/36 | none | 0 | 3/3 | On demand | $2.83 |
+| Claude Opus 4.7 | 12/12 | 11/12 | 12/12 | **35/36** | 35/36 | 1 truncated | 0 | 3/3 | On demand | $3.03 |
 | Gemini 2.5 Pro | 12/12 | 10/12 | 5/12 | **27/36** | 4/36 | 8 wrong, 1 truncated | 0 | 3/3 | Batch (Vertex) | $1.55 |
-| GPT-5 | 12/12 | 7/12 | 4/11 | **23/35** | 23/35 | 12 truncated | 1 | 3/3 | On demand | $3.35 |
+| GPT-5 | 12/12 | 7/12 | 4/12 | **23/36** | 23/36 | 13 truncated | 0 | 3/3 | On demand | $3.48 |
 | Gemini 2.5 Flash | 9/12 | 3/12 | 0/12 | **12/36** | 2/36 | 17 truncated, 7 wrong | 0 | 1/3 | Batch (Vertex) | $0.48 |
 | GPT-4.1 | 1/12 | 0/12 | 0/12 | **1/36** | 1/36 | 35 wrong | 0 | 0/3 | On demand | $0.08 |
 
 - **Correct** counts strict JSON plus correct-but-off-format answers; the strict column is the preregistered primary score.
 - **1 Oct, 3 boards** is the written-correct count on the three original boards.
-- **Not yet run (7 calls)** are requests not yet sent or blocked by a budget limit before reaching any model. None of them is counted as a model outcome.
+- **Complete.** Every scheduled call has a recorded answer. Calls once blocked by a budget limit were sent unchanged later; no block is counted as a model outcome.
 - **Gone.** Claude Sonnet 4, tested on 1 October, has no OpenRouter endpoint any more.
-- **Pattern.** The earlier reasoning models were correct on 160 of the 173 boards they answered (126 in strict JSON). Their wrong or missing answers: Claude Opus 4.7: 1 truncated; GPT-5: 12 truncated. Claude Opus 4.6's answers were all correct but wrote text around the JSON. GPT-4.1, which has no reasoning mode, solved 1 of 36. Through the Batch API, Gemini 2.5 Pro solved 27 of 36 (4 in strict JSON) and Gemini 2.5 Flash solved 12 of 36 (2 in strict JSON).
+- **Pattern.** The earlier reasoning models were correct on 166 of the 180 boards they answered (130 in strict JSON). Their wrong or missing answers: Claude Opus 4.7: 1 truncated; GPT-5: 13 truncated. Claude Opus 4.6's answers were all correct but wrote text around the JSON. GPT-4.1, which has no reasoning mode, solved 1 of 36. Through the Batch API, Gemini 2.5 Pro solved 27 of 36 (4 in strict JSON) and Gemini 2.5 Flash solved 12 of 36 (2 in strict JSON).
 - **Comparison.** The current frontier models solved 34–36 of the same 36 boards on 16 October. These comparisons are descriptive.
 <!-- /auto:legacy -->
 
@@ -90,12 +90,12 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
   - **Not model outcomes.** They were reclassified as "not run".
   - **Re-sent.** 38 went through unchanged after the organization limit was raised.
   - **Second block.** At 21:15 UTC the API key's own weekly $20 limit (which resets 19 October, 00:00 UTC) blocked the rest (amendment 6).
-  - **Resumed.** On 19 October the key allowed requests again, and 65 of the remaining 72 calls were sent unchanged (amendment 7). The runner stopped at the panel's $17.25 sub-cap with 7 calls left; they wait on a budget decision.
+  - **Resumed.** On 19 October the key allowed requests again, and all 72 remaining calls were sent unchanged (amendments 7 and 8). The last 7 followed after the user confirmed the credit balance.
   - **Runner change.** Both runners now stop at the first such response.
 - **Batch holds.** OpenRouter holds a submitted batch's worst-case cost in the key's usage counter until it settles: +$2.78 for the two Gemini batches. The ledger counts that hold once.
 
 <!-- auto:cost -->
-- **Recorded so far:** $16.90 for earlier-generation calls and $0.54 for the trajectory pilot.
+- **Recorded so far:** $17.71 for earlier-generation calls and $0.54 for the trajectory pilot.
 - **Gemini.** The two Gemini batches settled on 19 October for $2.03, below the $2.78 OpenRouter held while they were queued.
 - **Ceilings.** The campaign cap ($18.75) and the user's credit balance bound all spend.
 - **Account limits.** The organization's monthly limit (raised during the run) and the API key's weekly $20 limit stopped the runners. Both returned HTTP 403 before any model call.

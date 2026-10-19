@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-19T20:59:38+00:00",
+ "generated_utc": "2026-10-19T21:34:21+00:00",
  "builder": "scripts/analysis/build_scoreboard.py",
  "llm": {
   "unit": "boards with a correct full placement",
@@ -584,7 +584,7 @@
    }
   ],
   "panel": {
-   "status": "partial",
+   "status": "complete",
    "study": "2026-10-16-frontier-image-panel",
    "reruns": [
     {
@@ -851,8 +851,8 @@
       "panel-7-61": "format_only",
       "panel-9-53": "format_only",
       "panel-5-63": "format_only",
-      "panel-7-62": "not_run",
-      "panel-9-58": "not_run"
+      "panel-7-62": "format_only",
+      "panel-9-58": "format_only"
      },
      "costs": {
       "panel-5-10": 0.046215,
@@ -888,7 +888,9 @@
       "panel-5-59": 0.05229,
       "panel-7-61": 0.111415,
       "panel-9-53": 0.15559,
-      "panel-5-63": 0.051465
+      "panel-5-63": 0.051465,
+      "panel-7-62": 0.107215,
+      "panel-9-58": 0.172765
      },
      "other_spend": {
       "by_size": {},
@@ -943,8 +945,8 @@
       "panel-7-61": "truncated",
       "panel-9-53": "strict",
       "panel-5-63": "strict",
-      "panel-7-62": "not_run",
-      "panel-9-58": "not_run"
+      "panel-7-62": "strict",
+      "panel-9-58": "strict"
      },
      "costs": {
       "panel-5-10": 0.028875,
@@ -980,7 +982,9 @@
       "panel-5-59": 0.02605,
       "panel-7-61": 0.313325,
       "panel-9-53": 0.15365,
-      "panel-5-63": 0.0299
+      "panel-5-63": 0.0299,
+      "panel-7-62": 0.099125,
+      "panel-9-58": 0.1213
      },
      "other_spend": {
       "by_size": {},
@@ -1224,7 +1228,7 @@
       "panel-9-53": "truncated",
       "panel-5-63": "strict",
       "panel-7-62": "strict",
-      "panel-9-58": "not_run"
+      "panel-9-58": "truncated"
      },
      "costs": {
       "panel-5-10": 0.063526,
@@ -1261,7 +1265,8 @@
       "panel-7-61": 0.123996,
       "panel-9-53": 0.123996,
       "panel-5-63": 0.091306,
-      "panel-7-62": 0.097166
+      "panel-7-62": 0.097166,
+      "panel-9-58": 0.123996
      },
      "other_spend": {
       "by_size": {},
@@ -1317,7 +1322,7 @@
       "panel-9-53": "strict",
       "panel-5-63": "strict",
       "panel-7-62": "strict",
-      "panel-9-58": "not_run"
+      "panel-9-58": "strict"
      },
      "costs": {
       "panel-5-10": 0.031068,
@@ -1354,7 +1359,8 @@
       "panel-7-61": 0.073548,
       "panel-9-53": 0.084693,
       "panel-5-63": 0.024858,
-      "panel-7-62": 0.062058
+      "panel-7-62": 0.062058,
+      "panel-9-58": 0.078107
      },
      "other_spend": {
       "by_size": {},
@@ -1410,7 +1416,7 @@
       "panel-9-53": "strict",
       "panel-5-63": "strict",
       "panel-7-62": "strict",
-      "panel-9-58": "not_run"
+      "panel-9-58": "strict"
      },
      "costs": {
       "panel-5-10": 0.036695,
@@ -1447,7 +1453,8 @@
       "panel-7-61": 0.125315,
       "panel-9-53": 0.129815,
       "panel-5-63": 0.063095,
-      "panel-7-62": 0.074435
+      "panel-7-62": 0.074435,
+      "panel-9-58": 0.107825
      },
      "other_spend": {
       "by_size": {},
@@ -7476,7 +7483,7 @@
    "unbilled": "HTTP 4xx rejection before any generation; billed $0",
    "unknown": "no generation ID or usage (client timeout or upstream 5xx); not counted"
   },
-  "total_usd": 30.503444,
+  "total_usd": 31.313777,
   "unknown_receipts": 2,
   "evaluations": [
    {
@@ -8109,19 +8116,19 @@
    {
     "study": "2026-10-17-earlier-generations-panel",
     "model": "anthropic/claude-opus-4.6",
-    "boards": 34,
-    "receipts": 34,
-    "cost_usd": 4.174685,
-    "scored_cost_usd": 4.174685,
-    "cost_per_board_usd": 0.122785,
+    "boards": 36,
+    "receipts": 36,
+    "cost_usd": 4.454665,
+    "scored_cost_usd": 4.454665,
+    "cost_per_board_usd": 0.123741,
     "unknown_boards": 0,
     "unscored_receipts": 0,
     "unscored_usd": 0.0,
-    "boards_solved": 34,
-    "boards_graded": 34,
-    "cost_per_solved_board_usd": 0.122785,
+    "boards_solved": 36,
+    "boards_graded": 36,
+    "cost_per_solved_board_usd": 0.123741,
     "basis": {
-     "reported": 34
+     "reported": 36
     },
     "label": "Earlier generations, 36 panel boards (17 Oct)",
     "model_name": "Claude Opus 4.6"
@@ -8129,19 +8136,19 @@
    {
     "study": "2026-10-17-earlier-generations-panel",
     "model": "anthropic/claude-opus-4.7",
-    "boards": 34,
-    "receipts": 34,
-    "cost_usd": 2.808225,
-    "scored_cost_usd": 2.808225,
-    "cost_per_board_usd": 0.082595,
+    "boards": 36,
+    "receipts": 36,
+    "cost_usd": 3.02865,
+    "scored_cost_usd": 3.02865,
+    "cost_per_board_usd": 0.084129,
     "unknown_boards": 0,
     "unscored_receipts": 0,
     "unscored_usd": 0.0,
-    "boards_solved": 33,
-    "boards_graded": 34,
-    "cost_per_solved_board_usd": 0.085098,
+    "boards_solved": 35,
+    "boards_graded": 36,
+    "cost_per_solved_board_usd": 0.086533,
     "basis": {
-     "reported": 34
+     "reported": 36
     },
     "label": "Earlier generations, 36 panel boards (17 Oct)",
     "model_name": "Claude Opus 4.7"
@@ -8209,19 +8216,19 @@
    {
     "study": "2026-10-17-earlier-generations-panel",
     "model": "openai/gpt-5",
-    "boards": 35,
-    "receipts": 35,
-    "cost_usd": 3.352909,
-    "scored_cost_usd": 3.352909,
-    "cost_per_board_usd": 0.095797,
+    "boards": 36,
+    "receipts": 36,
+    "cost_usd": 3.476905,
+    "scored_cost_usd": 3.476905,
+    "cost_per_board_usd": 0.096581,
     "unknown_boards": 0,
     "unscored_receipts": 0,
     "unscored_usd": 0.0,
     "boards_solved": 23,
-    "boards_graded": 35,
-    "cost_per_solved_board_usd": 0.145779,
+    "boards_graded": 36,
+    "cost_per_solved_board_usd": 0.15117,
     "basis": {
-     "reported": 35
+     "reported": 36
     },
     "label": "Earlier generations, 36 panel boards (17 Oct)",
     "model_name": "GPT-5"
@@ -8229,19 +8236,19 @@
    {
     "study": "2026-10-17-earlier-generations-panel",
     "model": "openai/gpt-5.4",
-    "boards": 35,
-    "receipts": 35,
-    "cost_usd": 1.728013,
-    "scored_cost_usd": 1.728013,
-    "cost_per_board_usd": 0.049372,
+    "boards": 36,
+    "receipts": 36,
+    "cost_usd": 1.80612,
+    "scored_cost_usd": 1.80612,
+    "cost_per_board_usd": 0.05017,
     "unknown_boards": 0,
     "unscored_receipts": 0,
     "unscored_usd": 0.0,
-    "boards_solved": 35,
-    "boards_graded": 35,
-    "cost_per_solved_board_usd": 0.049372,
+    "boards_solved": 36,
+    "boards_graded": 36,
+    "cost_per_solved_board_usd": 0.05017,
     "basis": {
-     "reported": 35
+     "reported": 36
     },
     "label": "Earlier generations, 36 panel boards (17 Oct)",
     "model_name": "GPT-5.4"
@@ -8249,19 +8256,19 @@
    {
     "study": "2026-10-17-earlier-generations-panel",
     "model": "openai/gpt-5.5",
-    "boards": 35,
-    "receipts": 35,
-    "cost_usd": 2.725225,
-    "scored_cost_usd": 2.725225,
-    "cost_per_board_usd": 0.077864,
+    "boards": 36,
+    "receipts": 36,
+    "cost_usd": 2.83305,
+    "scored_cost_usd": 2.83305,
+    "cost_per_board_usd": 0.078696,
     "unknown_boards": 0,
     "unscored_receipts": 0,
     "unscored_usd": 0.0,
-    "boards_solved": 35,
-    "boards_graded": 35,
-    "cost_per_solved_board_usd": 0.077864,
+    "boards_solved": 36,
+    "boards_graded": 36,
+    "cost_per_solved_board_usd": 0.078696,
     "basis": {
-     "reported": 35
+     "reported": 36
     },
     "label": "Earlier generations, 36 panel boards (17 Oct)",
     "model_name": "GPT-5.5"
