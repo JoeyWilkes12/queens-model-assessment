@@ -419,9 +419,9 @@ def run(args):
             blocked.mkdir(parents=True, exist_ok=True)
             save(blocked / f"response-{utc().replace(':', '')}.json", response)
             (directory / "started.json").unlink()
-            C.settle(name, 0.0, f"blocked {call['call_id']} (HTTP 403 budget limit, no model call)")
+            C.settle(name, 0.0, f"blocked {call['call_id']} (HTTP {status} account block, no model call)")
             print(json.dumps({"event": "governance_block", "call_id": call["call_id"], "message": response["error"]["message"][:160]}), flush=True)
-            raise SystemExit("Stopped: OpenRouter budget limit (HTTP 403). Raise the limit, then rerun.")
+            raise SystemExit("Stopped: OpenRouter account block (HTTP 402 credits or 403 budget limit). Raise the limit or add credits, then rerun.")
         record(call, response, status, time.monotonic() - start, extra)
         cost = ((response.get("usage") or {}).get("cost") if isinstance(response, dict) else None)
         # A reply without a reported cost: an HTTP error body costs nothing; a timeout's cost is unknown (worst case kept).

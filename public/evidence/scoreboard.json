@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-18T06:39:09+00:00",
+ "generated_utc": "2026-10-19T19:22:02+00:00",
  "builder": "scripts/analysis/build_scoreboard.py",
  "llm": {
   "unit": "boards with a correct full placement",
@@ -36,7 +36,17 @@
       "cost_usd": 0.089935
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-09-17-one-shot",
+      "2026-10-16-one-shot-rerun"
+     ]
+    }
    },
    {
     "id": "openai/gpt-5.6-sol",
@@ -65,7 +75,17 @@
       "cost_usd": 0.014578
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-09-17-one-shot",
+      "2026-10-16-one-shot-rerun"
+     ]
+    }
    },
    {
     "id": "google/gemini-3.1-pro-preview",
@@ -94,7 +114,17 @@
       "cost_usd": 0.12712
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-09-17-one-shot",
+      "2026-10-16-one-shot-rerun"
+     ]
+    }
    },
    {
     "id": "x-ai/grok-4.6",
@@ -133,6 +163,19 @@
      "outcome": "strict",
      "date": "2026-10-16",
      "receipt": "2026-10-16-one-shot-rerun:08_queens-7-medium_grok-4.6_bedrock_rerun-2026-10-16"
+    },
+    "other_spend": {
+     "by_size": {
+      "5": 0.0,
+      "7": 0.037453
+     },
+     "unsized": 0.0,
+     "requests": 2,
+     "unknown": 0,
+     "studies": [
+      "2026-09-17-one-shot",
+      "2026-10-16-one-shot-rerun"
+     ]
     }
    },
    {
@@ -162,7 +205,17 @@
       "cost_usd": 0.10824
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "anthropic/claude-opus-4.7",
@@ -191,7 +244,17 @@
       "cost_usd": 0.089435
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "anthropic/claude-sonnet-4",
@@ -220,7 +283,19 @@
       "cost_usd": 0.131136
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {
+      "9": 0.876747
+     },
+     "unsized": 0.0,
+     "requests": 6,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "openai/gpt-4.1",
@@ -249,7 +324,21 @@
       "cost_usd": 0.00232
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {
+      "5": 0.00906,
+      "7": 0.00894,
+      "9": 0.00994
+     },
+     "unsized": 0.0,
+     "requests": 19,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "openai/gpt-5",
@@ -278,7 +367,17 @@
       "cost_usd": 0.103155
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "openai/gpt-5.4",
@@ -307,7 +406,17 @@
       "cost_usd": 0.049545
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "openai/gpt-5.5",
@@ -336,7 +445,17 @@
       "cost_usd": 0.08355
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "google/gemini-2.5-flash",
@@ -365,7 +484,20 @@
       "cost_usd": 0.0248249
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {
+      "5": 0.17735,
+      "7": 0.184875
+     },
+     "unsized": 0.0,
+     "requests": 13,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    },
    {
     "id": "google/gemini-2.5-pro",
@@ -394,7 +526,17 @@
       "cost_usd": 0.08055625
      }
     },
-    "notes": []
+    "notes": [],
+    "other_spend": {
+     "by_size": {},
+     "unsized": 0.0,
+     "requests": 0,
+     "unknown": 0,
+     "studies": [
+      "2026-10-01-earlier-generations",
+      "2026-10-01-diagnostic-completion"
+     ]
+    }
    }
   ],
   "not_run": [
@@ -725,6 +867,15 @@
       "panel-5-19": 0.05669,
       "panel-7-06": 0.102065,
       "panel-9-24": 0.274065
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
      }
     },
     {
@@ -800,6 +951,15 @@
       "panel-9-34": 0.109225,
       "panel-5-43": 0.0525,
       "panel-7-50": 0.07395
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
      }
     },
     {
@@ -885,6 +1045,15 @@
       "panel-5-63": 0.0426,
       "panel-7-62": 0.073025,
       "panel-9-58": 0.1514
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-16-frontier-image-panel"
+      ]
      }
     },
     {
@@ -970,6 +1139,15 @@
       "panel-5-63": 0.002258,
       "panel-7-62": 0.00229,
       "panel-9-58": 0.002322
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
      }
     },
     {
@@ -1031,6 +1209,15 @@
       "panel-5-19": 0.067376,
       "panel-7-06": 0.094976,
       "panel-9-24": 0.123996
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
      }
     },
     {
@@ -1106,6 +1293,15 @@
       "panel-9-34": 0.102212,
       "panel-5-43": 0.033708,
       "panel-7-50": 0.060182
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
      }
     },
     {
@@ -1187,6 +1383,15 @@
       "panel-9-51": 0.122645,
       "panel-5-59": 0.029435,
       "panel-7-61": 0.125315
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
      }
     },
     {
@@ -1272,6 +1477,15 @@
       "panel-5-63": 0.01,
       "panel-7-62": 0.01387,
       "panel-9-58": 0.01961
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-16-frontier-image-panel"
+      ]
      }
     },
     {
@@ -1320,7 +1534,16 @@
       "panel-7-62": "not_run",
       "panel-9-58": "not_run"
      },
-     "costs": {}
+     "costs": {},
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
+     }
     },
     {
      "id": "google/gemini-2.5-pro",
@@ -1368,7 +1591,16 @@
       "panel-7-62": "not_run",
       "panel-9-58": "not_run"
      },
-     "costs": {}
+     "costs": {},
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-17-earlier-generations-panel"
+      ]
+     }
     },
     {
      "id": "google/gemini-3.1-pro-preview",
@@ -1453,6 +1685,18 @@
       "panel-5-63": 0.059156,
       "panel-7-62": 0.11468,
       "panel-9-58": 0.14468
+     },
+     "other_spend": {
+      "by_size": {
+       "7": 0.090008,
+       "9": 0.144752
+      },
+      "unsized": 0.0,
+      "requests": 2,
+      "unknown": 0,
+      "studies": [
+       "2026-10-16-frontier-image-panel"
+      ]
      }
     },
     {
@@ -1538,6 +1782,15 @@
       "panel-5-63": 0.032025,
       "panel-7-62": 0.045344,
       "panel-9-58": 0.073962
+     },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-16-frontier-image-panel"
+      ]
      }
     }
    ]
@@ -1695,6 +1948,19 @@
       "sequence-9-2": 0.004289,
       "sequence-9-3": 0.004965
      },
+     "other_spend": {
+      "by_size": {
+       "5": 0.003419,
+       "7": 0.004749,
+       "9": 0.005171
+      },
+      "unsized": 0.002652,
+      "requests": 200,
+      "unknown": 0,
+      "studies": [
+       "2026-09-30-jev-trajectories"
+      ]
+     },
      "cost_note": null
     },
     {
@@ -1797,6 +2063,7 @@
      "calls": 325,
      "attempts_per_board_mode": 5,
      "costs": null,
+     "other_spend": null,
      "cost_note": "Not billed through OpenRouter (SubQ preview API); not counted."
     }
    ],
@@ -5113,6 +5380,15 @@
       "panel-9-63": 0.000386,
       "panel-9-64": 0.000395
      },
+     "other_spend": {
+      "by_size": {},
+      "unsized": 0.0,
+      "requests": 0,
+      "unknown": 0,
+      "studies": [
+       "2026-10-16-jev-new-board-panel"
+      ]
+     },
      "cost_note": null
     },
     {
@@ -7045,6 +7321,7 @@
      "calls": 1330,
      "attempts_per_board_mode": 1,
      "costs": null,
+     "other_spend": null,
      "cost_note": "Not billed through OpenRouter (SubQ preview API); not counted."
     }
    ],

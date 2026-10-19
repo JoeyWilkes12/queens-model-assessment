@@ -250,16 +250,23 @@ def attach_costs(out):
     """OpenRouter cost per board on every chart entry, plus a per-evaluation cost table."""
     costs = OC.receipt_costs()
     llm = out['llm']
+    # The cost view's "other spend": every non-graded request in the studies behind each chart entry.
+    original_family = {'frontier': ('2026-09-17-one-shot', '2026-10-16-one-shot-rerun'),
+                       'earlier': ('2026-10-01-earlier-generations', '2026-10-01-diagnostic-completion')}
     for model in llm['models']:
         for board in model['boards'].values():
             usd, basis = costs.get(board['receipt'], (None, 'unknown'))
             board['cost_usd'] = None if basis == 'unknown' else usd  # the scored receipt itself
+        graded = {board['receipt'] for board in model['boards'].values()}
+        model['other_spend'] = OC.other_spend(original_family[model['cohort']], model['id'], graded, costs)
     for model in llm['panel'].get('models', []):
         model['costs'] = OC.board_costs(model['study'], model['id'], costs)
+        model['other_spend'] = OC.other_spend((model['study'],), model['id'], None, costs)
     for section in out['decision'].values():
         for model in section['models']:
             jev = model['author'] == 'TypeSafe'
             model['costs'] = OC.board_costs(model['study'], 'typesafe/jev-1.13', costs) if jev else None
+            model['other_spend'] = OC.other_spend((model['study'],), 'typesafe/jev-1.13', None, costs) if jev else None
             model['cost_note'] = None if jev else 'Not billed through OpenRouter (SubQ preview API); not counted.'
     outcome_ok = ('strict', 'format_only')
     pilot = load('frontier-trajectories/pilot.json') if (E / 'frontier-trajectories/pilot.json').exists() else None

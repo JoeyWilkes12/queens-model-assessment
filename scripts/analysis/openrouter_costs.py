@@ -115,6 +115,29 @@ def board_costs(study, model, costs=None):
             for board, items in cells.items()}
 
 
+def other_spend(studies, model, graded_ids=None, costs=None):
+    """Spend on a chart model's requests that are not its graded attempts, from the given studies:
+    re-runs, probes and order controls, diagnostics, board-less calls. graded_ids names the graded
+    receipts when the chart grades something other than scored() (the original three boards).
+    by_size keys a board's size as a string; requests tied to no board are 'unsized'."""
+    costs = costs or receipt_costs()
+    out = {"by_size": collections.defaultdict(float), "unsized": 0.0, "requests": 0, "unknown": 0}
+    for record in records():
+        if record["study"] not in studies or model_key(record["model"]) != model or record["id"] not in costs:
+            continue
+        if (record["id"] in graded_ids) if graded_ids is not None else scored(record):
+            continue
+        usd, basis = costs[record["id"]]
+        out["requests"] += 1
+        out["unknown"] += basis == "unknown"
+        if record.get("board") and record.get("size"):
+            out["by_size"][str(record["size"])] += usd or 0.0
+        else:
+            out["unsized"] += usd or 0.0
+    return {"by_size": {size: round(usd, 6) for size, usd in sorted(out["by_size"].items())}, "unsized": round(out["unsized"], 6),
+            "requests": out["requests"], "unknown": out["unknown"], "studies": list(studies)}
+
+
 def evaluations(solved_lookup, costs=None):
     """One row per evaluation and model. solved_lookup(evaluation, model) -> (solved, graded) or None."""
     costs = costs or receipt_costs()

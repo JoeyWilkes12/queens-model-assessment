@@ -447,8 +447,8 @@ def send_on_demand(short, call_id, body, turn_dir, attempt):
         save(turn_dir.parent / "blocked-403" / f"{turn_dir.name}-attempt{attempt}-{utc().replace(':', '')}.json", response)
         if attempt == 1 and (turn_dir / "started.json").exists():
             (turn_dir / "started.json").unlink()
-        C.settle(name, 0.0, f"blocked {call_id} (HTTP 403 budget limit, no model call)")
-        raise SystemExit("Stopped: OpenRouter budget limit (HTTP 403). Raise the limit, then rerun.")
+        C.settle(name, 0.0, f"blocked {call_id} (HTTP {status} account block, no model call)")
+        raise SystemExit("Stopped: OpenRouter account block (HTTP 402 credits or 403 budget limit). Raise the limit or add credits, then rerun.")
     save(turn_dir / f"response-attempt{attempt}.json", response)
     save(turn_dir / f"attempt{attempt}.json", {"http_status": status, "elapsed_seconds": elapsed, "utc": utc()})
     cost = attempt_cost(short, response, "on_demand")
@@ -659,7 +659,7 @@ def settle_round(phase, short, rdir, boards):
     C.settle(f"traj-batch-{short}-{phase}-{rdir.name.replace('round-', 'r')}",
              usage.get("cost") if isinstance(usage.get("cost"), (int, float)) else None, f"batch {sub['batch_id']} usage.cost")
     if blocked_round:
-        raise SystemExit("Stopped: OpenRouter budget limit (HTTP 403) inside a batch round. Raise the limit, then rerun.")
+        raise SystemExit("Stopped: OpenRouter account block (HTTP 402 credits or 403 budget limit) inside a batch round. Raise the limit or add credits, then rerun.")
 
 
 # ---------------------------------------------------------------- audit and projection

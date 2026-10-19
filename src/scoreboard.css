@@ -8,6 +8,7 @@
   --sb-base-bg: #eceae4;
   --sb-grid: rgba(7, 27, 51, .1);
   --sb-cost: #3f63c8;
+  --sb-cost-bg: #dce3f5;
   display: grid;
   gap: 18px;
 }
@@ -19,6 +20,7 @@
   --sb-base-bg: #1d3a57;
   --sb-grid: rgba(246, 241, 232, .12);
   --sb-cost: #6a82dc;
+  --sb-cost-bg: #1f2b52;
 }
 .sb-chart { margin: 0; padding: clamp(12px, 2.5vw, 20px); border: 1px solid var(--border-strong); background: var(--surface-raised); }
 .sb-chart > figcaption { display: grid; gap: 4px; margin-bottom: 12px; }
@@ -41,6 +43,16 @@
 .sb-swatch--baseline { background: repeating-linear-gradient(135deg, var(--sb-base) 0 2px, var(--sb-base-bg) 2px 5px); }
 .sb-swatch--pending { border: 1.5px dashed var(--text-muted); }
 .sb-swatch--cost { height: 6px; border-radius: 0 3px 3px 0; background: var(--sb-cost); }
+.sb-swatch--spend, .sb-fill--spend { background: var(--sb-cost); }
+.sb-swatch--spend-other, .sb-fill--spend-other { background: repeating-linear-gradient(135deg, var(--sb-cost) 0 2px, var(--sb-cost-bg) 2px 5px); }
+.sb-swatch--perf { height: 6px; border-radius: 0 3px 3px 0; background: var(--sb-solid); }
+.sb-perf-fill { display: block; height: 100%; border-radius: 0 3px 3px 0; background: var(--sb-solid); }
+
+/* View toggle: cost (spend on every request run) or evals (like-for-like samples). */
+.sb-view { display: grid; gap: 6px; }
+.sb-segment--view button { min-width: 88px; font-size: .84rem; }
+.sb-view-note { margin: 0; color: var(--text-secondary); font-size: .8rem; line-height: 1.5; }
+.sb-nowrap { white-space: nowrap; }
 
 /* Cost: a second measure on its own scale, drawn as a thin bar under each entity, never on the bar axis. */
 .sb-cost { display: grid; gap: 3px; width: 100%; min-width: 0; }
@@ -48,7 +60,7 @@
 .sb-cost-fill { display: block; height: 100%; border-radius: 0 3px 3px 0; background: var(--sb-cost); }
 .sb-cost-label { color: var(--text-secondary); font-family: var(--mono-font); font-size: .68rem; line-height: 1.2; overflow-wrap: anywhere; }
 .sb-bars--columns .sb-cost { width: min(104px, 100%); text-align: center; }
-.sb-bars--columns .sb-cost-label { white-space: nowrap; }
+.sb-bars--columns .sb-cost-extra { display: block; }
 
 /* Columns (wide containers): value on the cap, logo and name under the bar. */
 .sb-bars--columns { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; align-items: end; padding-top: 6px; background: linear-gradient(var(--sb-grid) 1px, transparent 1px) 0 26px / 100% 45px; }
@@ -79,6 +91,8 @@
 .sb-item--baseline .sb-name { font-style: italic; }
 .sb-item--pending .sb-track { align-items: center; justify-content: center; border: 1.5px dashed var(--text-muted); }
 .sb-bars--rows .sb-item--pending .sb-track { justify-content: flex-start; padding-left: 8px; }
+.sb-item--empty .sb-track { align-items: center; justify-content: center; }
+.sb-bars--rows .sb-item--empty .sb-track { justify-content: flex-start; }
 .sb-pending-text { color: var(--text-muted); font-size: .68rem; line-height: 1.2; text-align: center; }
 .sb-bars--columns .sb-item--pending .sb-pending-text { padding: 0 4px; }
 .sb-coverage { margin-top: 14px; border-top: 1px solid var(--border-subtle); font-size: .8rem; }
