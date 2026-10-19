@@ -1,0 +1,37 @@
+{
+  "call_id": "009_panel-9-22_gemini-2.5-flash",
+  "board_id": "panel-9-22",
+  "size": 9,
+  "model": "google/gemini-2.5-flash",
+  "route": "batch",
+  "completed_utc": "2026-10-19T19:16:25.230567+00:00",
+  "http_status": 200,
+  "elapsed_seconds": null,
+  "returned_model": "google/gemini-2.5-flash",
+  "provider": "Google",
+  "generation_id": "gen-batch-1792269487-e0062ae59f3e5bcdae87",
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 1566,
+    "completion_tokens": 12284,
+    "total_tokens": 13850,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 9830,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.0155899,
+  "cost_source": "tokens x batch price, cached input at the cached rate (batch items report no per-item cost)",
+  "response_sha256": "b12feccb04f9af32204ef1a8742be064828b070fb528e3b97070dfb66628d57d",
+  "batch_id": "batch-1792269487-xhHWrbCWALsi6L6wpwWS",
+  "batch_request_id": "gTzVatakOtXOj8MPwvPI8Q4",
+  "batch_error": null,
+  "batch_shape": "chat"
+}

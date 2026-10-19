@@ -1,0 +1,38 @@
+{
+  "model": "google/gemini-2.5-pro",
+  "id": "gen-batch-1792269486-0967ed6adbfbb435950d",
+  "created": 1792359276,
+  "system_fingerprint": null,
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "```json\n{\n\"board_id\": \"panel-9-58\",\n\"columns_by_row\": [\n9,\n3,\n8,\n6,\n1,\n4,\n2,\n5,\n7\n]\n}\n```",
+        "refusal": null
+      },
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "logprobs": null
+    }
+  ],
+  "service_tier": null,
+  "usage": {
+    "prompt_tokens": 1566,
+    "completion_tokens": 9888,
+    "total_tokens": 11454,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 9829,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "provider": "Google"
+}

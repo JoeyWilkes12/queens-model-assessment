@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792443227-4Q8rBWgOtybZpeP2NK4r",
+  "object": "chat.completion",
+  "created": 1792443227,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to identify the regions and find valid queen placements.\n\n**Region mapping:**\n- **A:** (1,1), (2,1)\n- **B:** (1,2-4), (2,2-3), (3,1-3), (4,1-4)\n- **C:** (1,5), (2,4-5), (3,4)\n- **D:** (3,5), (4,5), (5,5)\n- **E:** (5,1-4)\n\n**Key deductions:**\n1. **Region D** is entirely in column 5 → D's queen must be in column 5 (row 3, 4, or 5).\n2. **Region C** minus column 5 leaves (2,4) or (3,4).\n3. **Region A** has only (1,1) or (2,1).\n\n**Testing A at (1,1):**\n- Row 1, Col 1 → Region A ✓\n- C at (2,4): Row 2, Col 4 → Region C ✓ (|1−4|=3 ≥ 2 ✓)\n- Row 3: Can't use cols 1,4 (taken), or 3,5 (adjacent to col 4). → Col 2 → Region B ✓ (|4−2|=2 ≥ 2 ✓)\n- Row 4: Can't use cols 1,2,4 (taken), or 1,3 (adjacent to col 2). → Col 5 → Region D ✓ (|2−5|=3 ≥ 2 ✓)\n- Row 5: Can't use cols 1,2,4,5 (taken), or 4,6 (adjacent to col 5). → Col 3 → Region E ✓ (|5−3|=2 ≥ 2 ✓)\n\n**All rules verified:** unique rows ✓, unique columns {1,4,2,5,3} ✓, unique regions {A,C,B,D,E} ✓, no diagonal adjacency ✓.\n\n{\"board_id\":\"panel-5-63\",\"columns_by_row\":[1,4,2,5,3]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 1842,
+    "total_tokens": 2925,
+    "cost": 0.051465,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.051465,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.04605
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1275,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

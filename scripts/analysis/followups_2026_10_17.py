@@ -67,7 +67,9 @@ def block_legacy():
     pending = sum(r["pending"] for r in rows)
     lines += ["", "- **Correct** counts strict JSON plus correct-but-off-format answers; the strict column is the preregistered primary score.",
               "- **1 Oct, 3 boards** is the written-correct count on the three original boards.",
-              (f"- **Not yet run ({pending} calls)** are requests blocked by an account or key budget limit before reaching any model, or Gemini batch items still queued on Vertex. None of them is counted as a model outcome."
+              (f"- **Not yet run ({pending} calls)** are requests not yet sent or blocked by a budget limit before reaching any model"
+               + (", or Gemini batch items still queued on Vertex" if any(r["pending"] for r in rows if r["route"] == "batch") else "")
+               + ". None of them is counted as a model outcome."
                if pending else "- **Complete.** Every scheduled call has a recorded answer. Calls once blocked by a budget limit were sent unchanged later; no block is counted as a model outcome."),
               "- **Gone.** Claude Sonnet 4, tested on 1 October, has no OpenRouter endpoint any more.",
               pattern(rows),

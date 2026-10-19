@@ -1,0 +1,40 @@
+{
+  "call_id": "032_panel-7-61_claude-opus-4.7",
+  "board_id": "panel-7-61",
+  "size": 7,
+  "model": "anthropic/claude-opus-4.7",
+  "route": "on_demand",
+  "completed_utc": "2026-10-19T20:40:46.345095+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 140.93522975000008,
+  "returned_model": "anthropic/claude-opus-4.7",
+  "provider": "Anthropic",
+  "generation_id": "gen-1792442305-wClAUo1i1Np0oflJgRUq",
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 1225,
+    "completion_tokens": 12288,
+    "total_tokens": 13513,
+    "cost": 0.313325,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.313325,
+      "upstream_inference_prompt_cost": 0.006125,
+      "upstream_inference_completions_cost": 0.3072
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 12288,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.313325,
+  "cost_source": "usage.cost",
+  "response_sha256": "d88b31624972612462ebc70771919943740e94ef688499d46a029d8a62af9002"
+}
