@@ -140,7 +140,7 @@ function PerfMark({ row }: { row: Row }) {
   const text = row.kind === 'pending' ? 'not yet tested' : fraction === null ? 'no boards run'
     : row.key === 'random' ? `≈${row.solved.toFixed(1)}/${row.graded} expected` : `${row.solved}/${row.graded} solved`
   return <span className="sb-cost sb-perf" aria-hidden="true">
-    <span className="sb-cost-track">{fraction !== null && <span className="sb-perf-fill" style={{ width: `${Math.max(2, fraction * 100)}%` }} />}</span>
+    <span className="sb-cost-track">{fraction !== null && fraction > 0 && <span className="sb-perf-fill" style={{ width: `${Math.max(2, fraction * 100)}%` }} />}</span>
     <span className="sb-cost-label"><span className="sb-nowrap">{text}</span></span>
   </span>
 }
