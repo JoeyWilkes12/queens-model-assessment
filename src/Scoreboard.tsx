@@ -66,12 +66,12 @@ const costText = (cost: Cost | null, note?: string) => {
 
 const spendTotal = (row: Row) => row.spend ? row.spend.graded + row.spend.other : null
 
-/** Performance order is the builders' own order. Cost order puts the most expensive model first:
-    total spend in the cost view, cost per graded board in the evals view. */
+/** Sort model rows by boards solved or by cost, keeping baselines and pending rows after them.
+    Cost means total spend in the cost view, cost per graded board in the evals view. */
 function sortRows(rows: Row[], key: SortKey, view: View): Row[] {
-  if (key === 'performance') return rows
   const models = rows.filter(row => row.kind === 'model')
   const rest = rows.filter(row => row.kind !== 'model')
+  if (key === 'performance') return [...models.sort((a, b) => b.solved - a.solved || b.solid - a.solid || a.name.localeCompare(b.name)), ...rest]
   const value = (row: Row) => (view === 'cost' ? spendTotal(row) : row.cost?.perBoard) ?? -1
   return [...models.sort((a, b) => value(b) - value(a) || a.name.localeCompare(b.name)), ...rest]
 }
@@ -197,8 +197,8 @@ function Legend({ items }: { items: { kind: 'solid' | 'hatched' | 'baseline' | '
 
 function SortControl({ value, onChange, label, view }: { value: SortKey; onChange: (key: SortKey) => void; label: string; view: View }) {
   return <div className="sb-segment" role="group" aria-label={label}>
-    <button type="button" aria-pressed={value === 'performance'} onClick={() => onChange('performance')}>Sort: boards solved</button>
     <button type="button" aria-pressed={value === 'cost'} onClick={() => onChange('cost')}>{view === 'cost' ? 'Total spend, highest first' : 'Cost per board, highest first'}</button>
+    <button type="button" aria-pressed={value === 'performance'} onClick={() => onChange('performance')}>Sort: boards solved</button>
   </div>
 }
 
@@ -292,11 +292,19 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   const [llmTab, setLlmTab] = useState<TabKey>('all')
   const [decisionTab, setDecisionTab] = useState<TabKey>('all')
   const [includeEarlier, setIncludeEarlier] = useState(false)
-  const [llmSet, setLlmSet] = useState<'original' | 'panel'>('original')
-  const [boardSet, setBoardSet] = useState<'original' | 'panel'>('original')
-  const [llmSort, setLlmSort] = useState<SortKey>('performance')
-  const [decisionSort, setDecisionSort] = useState<SortKey>('performance')
+  const [requestedLlmSet, setLlmSet] = useState<'original' | 'panel'>('panel')
+  const [boardSet, setBoardSet] = useState<'original' | 'panel'>('panel')
+  const [llmSort, setLlmSort] = useState<SortKey>('cost')
+  const [decisionSort, setDecisionSort] = useState<SortKey>('cost')
   const [view, setView] = useState<View>('cost')
+
+  const selectView = (next: View) => {
+    if (next === view) return
+    setView(next)
+    const defaultSort = next === 'cost' ? 'cost' : 'performance'
+    setLlmSort(defaultSort)
+    setDecisionSort(defaultSort)
+  }
 
   useEffect(() => {
     const controller = new AbortController()
@@ -312,6 +320,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
 
   const panel = data.llm.panel
   const panelReadyLlm = !!panel && panel.models.length > 0
+  const llmSet = requestedLlmSet === 'panel' && panelReadyLlm ? 'panel' : 'original'
   const llm = sortRows(llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab, includeEarlier, view) : llmRows(data.llm, llmTab, includeEarlier, view), llmSort, view)
   const panelEarlier = panel?.models.filter(model => model.cohort === 'earlier') ?? []
   const scope = panel ? panelScope(panel, includeEarlier) : null
@@ -331,8 +340,8 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   return <div className="scoreboard">
     <div className="sb-view">
       <div className="sb-segment sb-segment--view" role="group" aria-label="Scoreboard view">
-        <button type="button" aria-pressed={view === 'cost'} onClick={() => setView('cost')}>Cost</button>
-        <button type="button" aria-pressed={view === 'evals'} onClick={() => setView('evals')}>Evals</button>
+        <button type="button" aria-pressed={view === 'cost'} onClick={() => selectView('cost')}>Cost</button>
+        <button type="button" aria-pressed={view === 'evals'} onClick={() => selectView('evals')}>Evals</button>
       </div>
       <p className="sb-view-note">{view === 'cost'
         ? 'AI cost management and observability: API spend (OpenRouter; SubQ for SubQ Snap) on every request each model made for the evaluation shown, including any boards the other models have not run, re-runs and diagnostics. Other studies are itemised in the assessment receipt.'
@@ -347,8 +356,8 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
       <div className="sb-controls">
         <Tabs value={llmTab} onChange={setLlmTab} label="Board size, language models" />
         <div className="sb-segment" role="group" aria-label="Board set, language models">
-          <button type="button" aria-pressed={llmSet === 'original'} onClick={() => setLlmSet('original')}>Original 3 boards</button>
           <button type="button" aria-pressed={llmSet === 'panel'} onClick={() => setLlmSet('panel')} disabled={!panelReadyLlm}>New 36-board panel</button>
+          <button type="button" aria-pressed={llmSet === 'original'} onClick={() => setLlmSet('original')}>Original 3 boards</button>
         </div>
         <SortControl value={llmSort} onChange={setLlmSort} label="Sort order, language models" view={view} />
         {(llmSet === 'original' || panelEarlier.length > 0) && <label className="sb-toggle"><input type="checkbox" checked={includeEarlier} onChange={event => setIncludeEarlier(event.target.checked)} /> Include earlier generations</label>}
@@ -395,8 +404,8 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
       <div className="sb-controls">
         <Tabs value={decisionTab} onChange={setDecisionTab} label="Board size, decision models" />
         <div className="sb-segment" role="group" aria-label="Board set">
-          <button type="button" aria-pressed={boardSet === 'original'} onClick={() => setBoardSet('original')}>Original 9 boards</button>
           <button type="button" aria-pressed={boardSet === 'panel'} onClick={() => setBoardSet('panel')}>New 192-board panel</button>
+          <button type="button" aria-pressed={boardSet === 'original'} onClick={() => setBoardSet('original')}>Original 9 boards</button>
         </div>
         <SortControl value={decisionSort} onChange={setDecisionSort} label="Sort order, decision models" view={view} />
       </div>
