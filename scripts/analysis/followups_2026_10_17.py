@@ -131,10 +131,10 @@ def block_cost():
     traj = sum(c["usd"] for c in costs if c["name"].startswith("traj-"))
     gemini = [c for c in costs if c["name"].startswith("legacy-batch-gemini")]
     return "\n".join([
-        f"- **Recorded so far:** ${legacy:.2f} for earlier-generation calls and ${traj:.2f} for the trajectory pilot.",
-        (f"- **Gemini.** The two Gemini batches settled on 19 October for ${sum(c['usd'] for c in gemini):.2f}, below the $2.78 OpenRouter held while they were queued."
+        f"- **{'Recorded' if gemini and len(gemini) == 2 else 'Recorded so far'}:** ${legacy:.2f} for earlier-generation calls and ${traj:.2f} for the trajectory pilot.",
+        (f"- **Gemini.** The two Gemini batches finished on 18 October, about 25 hours after submission, for ${sum(c['usd'] for c in gemini):.2f}, below the $2.78 OpenRouter held while they were queued."
          if len(gemini) == 2 else "- **Gemini.** The two Gemini batches are billed when they settle. OpenRouter holds $2.78 for them meanwhile."),
-        "- **Ceilings.** The campaign cap ($18.75) and the user's credit balance bound all spend.",
+        "- **Ceilings.** The campaign cap and the user's credit balance bound all spend. The cap was $18.75 until 19 October; amendment 8 raised it to $19.85 for the last 7 calls, within the $2.53 of credit the user reported.",
         "- **Account limits.** The organization's monthly limit (raised during the run) and the API key's weekly $20 limit stopped the runners. Both returned HTTP 403 before any model call."])
 
 

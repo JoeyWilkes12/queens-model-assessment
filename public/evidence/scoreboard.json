@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-19T21:46:32+00:00",
+ "generated_utc": "2026-10-19T22:07:23+00:00",
  "builder": "scripts/analysis/build_scoreboard.py",
  "llm": {
   "unit": "boards with a correct full placement",
@@ -8541,7 +8541,7 @@
     "basis": {
      "reported": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "Claude Opus 4.6"
    },
    {
@@ -8563,7 +8563,7 @@
     "basis": {
      "reported": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "Claude Opus 4.7"
    },
    {
@@ -8585,7 +8585,7 @@
     "basis": {
      "derived": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "Gemini 2.5 Flash"
    },
    {
@@ -8607,7 +8607,7 @@
     "basis": {
      "derived": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "Gemini 2.5 Pro"
    },
    {
@@ -8629,7 +8629,7 @@
     "basis": {
      "reported": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "GPT-4.1"
    },
    {
@@ -8651,7 +8651,7 @@
     "basis": {
      "reported": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "GPT-5"
    },
    {
@@ -8673,7 +8673,7 @@
     "basis": {
      "reported": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "GPT-5.4"
    },
    {
@@ -8695,7 +8695,7 @@
     "basis": {
      "reported": 36
     },
-    "label": "Earlier generations, 36 panel boards (17 Oct)",
+    "label": "Earlier generations, 36 panel boards (17\u201319 Oct)",
     "model_name": "GPT-5.5"
    },
    {

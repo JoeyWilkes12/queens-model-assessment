@@ -246,7 +246,7 @@ STUDY_LABELS = {
     '2026-10-16-jev-new-board-panel-pilot': 'Jev panel pilot (16 Oct)',
     '2026-10-16-frontier-image-panel': 'One shot from an image, 36 panel boards (16 Oct)',
     '2026-10-16-one-shot-rerun': 'Re-run of the September Grok 7×7 request (16 Oct)',
-    '2026-10-17-earlier-generations-panel': 'Earlier generations, 36 panel boards (17 Oct)',
+    '2026-10-17-earlier-generations-panel': 'Earlier generations, 36 panel boards (17–19 Oct)',
     '2026-10-17-frontier-step-trajectories-pilot': 'One queen per request, pilot board (17 Oct)',
     '2026-10-13-subq-replay': 'SubQ replay of the Jev requests (13 Oct)',
     '2026-10-13-subq-trajectories': 'SubQ trajectories, 9 original boards (13 Oct)',

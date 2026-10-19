@@ -116,13 +116,13 @@ Amendments 1–3 were made on 17 October, after the batch submissions and before
 - **Remaining.** 72 calls: 67 never sent, plus the 5 rejected at 21:15 UTC. They will be sent unchanged once the key's limit allows.
 
 **Amendment 7: resumption on 19 October.**
-- **Gemini batches.** Both settled on 19 October, inside the Vertex window, with all 36 items each: $1.55 for Gemini 2.5 Pro and $0.48 for Flash, $2.03 in all. OpenRouter released the rest of its $2.78 hold.
-- **Key limit.** The key allowed requests again on 19 October. The remaining calls were sent unchanged from 19:19 UTC.
+- **Gemini batches.** Both finished on 18 October at about 21:40 UTC, 25 hours after submission: a little over the 24-hour completion window requested, and well before the batches' expiry on 21 October. They returned all 36 items each, for $1.55 (Gemini 2.5 Pro) and $0.48 (Flash), $2.03 in all, and were collected on 19 October. OpenRouter released the rest of its $2.78 hold.
+- **Key limit.** The key allowed requests again on 19 October. The remaining calls were sent unchanged from 19:18 UTC.
 - **Credit stop.** This key cannot read the credit balance; OpenRouter allows that only to management keys. The runners therefore also stop at HTTP 402 (insufficient credits), handled exactly like the budget blocks in amendment 4: never a model outcome, the call stays not run.
 - **Chunked runs.** The session runs background jobs for at most two hours, and a job stopped mid-request would leave a call with no recorded outcome. The runner was therefore paused between calls, by an unsettled hold in the ledger that fails its next cap check, and resumed in chunks of 35 calls. No request, setting or outcome changed.
 - **Outcome.** 65 of the 72 calls were sent and recorded. The runner then stopped at the $17.25 sub-cap, before any request: the next call's worst case ($0.38) exceeded the $0.35 left. The last 7 calls followed under amendment 8.
 
 **Amendment 8: the last 7 calls.** At 21:16 UTC on 19 October the user reported $2.53 of OpenRouter credit left and asked for the last 7 calls to be sent.
-- **Caps.** The campaign cap rose from $18.75 to $19.85: recorded spend ($17.44) plus the reported credit, less a $0.10 margin. The sub-cap rose to the same figure. As before, a call starts only if its worst case fits under both, so no call could overdraw the reported balance.
+- **Caps.** The campaign cap rose from $18.75 to $19.85: recorded spend ($17.44) plus the reported credit ($2.53), less a margin of about $0.12. The sub-cap rose to the same figure. As before, a call starts only if its worst case fits under both, so no call could overdraw the reported balance.
 - **Unchanged.** The requests, settings and grading. The trajectory block count was fixed at 0 after the pilot and is not recomputed.
 - **Outcome.** All 7 were sent unchanged and recorded, for $0.81. All 288 scheduled calls now have a recorded answer.

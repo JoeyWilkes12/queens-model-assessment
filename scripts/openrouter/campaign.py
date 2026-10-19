@@ -40,7 +40,7 @@ CAMPAIGN = "2026-10-17-openrouter-follow-ups"
 # The cap keeps a margin for the usage counter's reporting lag (observed $0.5-1).
 # Amendment 8 (19 Oct, 21:16 UTC): the user reported $2.53 of credit left and asked for the last 7
 # earlier-generation calls. The cap rose from $18.75 to recorded spend ($17.44) plus that credit,
-# less a $0.10 margin, so no call can be started that would overdraw the balance the user reported.
+# less a margin of about $0.12, so no call can be started that would overdraw the balance the user reported.
 CAMPAIGN_CAP_USD = 19.85
 # Amendment (17 Oct, before any on-demand call): every OpenAI and Anthropic batch was rejected, so six
 # models run on demand at twice the batch price; the sub-cap rose from $10.50 so all 36 boards fit.
@@ -168,7 +168,8 @@ def legacy_outstanding():
     return 0.0 if legacy_complete() else max(0.0, LEGACY_SUBCAP_USD - legacy_committed())
 
 
-def state(next_usd=0.0, cap_usd=CAMPAIGN_CAP_USD):
+def state(next_usd=0.0, cap_usd=None):
+    cap_usd = CAMPAIGN_CAP_USD if cap_usd is None else cap_usd  # read at call time, so a patched or amended cap applies
     so_far, held = spent(), reserves()
     return {"spent_usd": round(so_far, 6), "reserves_usd": round(held, 6), "next_usd": round(next_usd, 6),
             "cap_usd": cap_usd, "ok": so_far + held + next_usd <= cap_usd}

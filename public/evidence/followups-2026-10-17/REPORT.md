@@ -95,9 +95,9 @@ Three follow-ups ran under two preregistrations: [earlier-generation panel](lega
 - **Batch holds.** OpenRouter holds a submitted batch's worst-case cost in the key's usage counter until it settles: +$2.78 for the two Gemini batches. The ledger counts that hold once.
 
 <!-- auto:cost -->
-- **Recorded so far:** $17.71 for earlier-generation calls and $0.54 for the trajectory pilot.
-- **Gemini.** The two Gemini batches settled on 19 October for $2.03, below the $2.78 OpenRouter held while they were queued.
-- **Ceilings.** The campaign cap ($18.75) and the user's credit balance bound all spend.
+- **Recorded:** $17.71 for earlier-generation calls and $0.54 for the trajectory pilot.
+- **Gemini.** The two Gemini batches finished on 18 October, about 25 hours after submission, for $2.03, below the $2.78 OpenRouter held while they were queued.
+- **Ceilings.** The campaign cap and the user's credit balance bound all spend. The cap was $18.75 until 19 October; amendment 8 raised it to $19.85 for the last 7 calls, within the $2.53 of credit the user reported.
 - **Account limits.** The organization's monthly limit (raised during the run) and the API key's weekly $20 limit stopped the runners. Both returned HTTP 403 before any model call.
 <!-- /auto:cost -->
 

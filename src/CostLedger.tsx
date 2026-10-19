@@ -43,8 +43,8 @@ export function CostLedger({ ui, compact = false }: { ui: Ui; compact?: boolean 
   if (compact) {
     const rows = costs.evaluations.filter(row => PANELS.includes(row.study))
       .sort((a, b) => (b.boards_solved ?? 0) / Math.max(1, b.boards_graded ?? 1) - (a.boards_solved ?? 0) / Math.max(1, a.boards_graded ?? 1) || (a.cost_per_board_usd ?? 0) - (b.cost_per_board_usd ?? 0))
-    return <DataTable caption="Cost and performance on the 36-board image panel (OpenRouter cost from receipts)" headers={['Model', 'Boards solved', 'Cost per board', 'Cost per request', 'Cost per solved board', 'Total', 'Evaluation']}
-      rows={rows.map(row => [row.model_name, solved(row), usd(row.cost_per_board_usd), atLeast(row, row.cost_per_request_usd), atLeast(row, row.cost_per_solved_board_usd), atLeast(row, row.scored_cost_usd), row.study.startsWith('2026-10-16') ? 'Frontier, 16 Oct' : 'Earlier generation, 17 Oct'])} />
+    return <DataTable caption="Cost and performance on the 36-board image panel (OpenRouter cost of the graded requests, one per board)" headers={['Model', 'Boards solved', 'Cost per board', 'Cost per solved board', 'Total', 'Evaluation']}
+      rows={rows.map(row => [row.model_name, solved(row), usd(row.cost_per_board_usd), atLeast(row, row.cost_per_solved_board_usd), atLeast(row, row.scored_cost_usd), row.study.startsWith('2026-10-16') ? 'Frontier, 16 Oct' : 'Earlier generation, 17–19 Oct'])} />
   }
   const studies = [...new Set(costs.evaluations.map(row => row.study))].sort()
   return <>
@@ -56,7 +56,7 @@ export function CostLedger({ ui, compact = false }: { ui: Ui; compact?: boolean 
         <li><strong>Reported:</strong> <code>usage.cost</code> returned by OpenRouter with the response.</li>
         <li><strong>Derived:</strong> batch items report tokens but no per-item cost. Their cost is tokens × the batch price, with cached input at a tenth of the input price. That reproduces the billed batch total exactly.</li>
         <li><strong>Unbilled:</strong> an HTTP 4xx rejection before any generation, billed $0.</li>
-        <li><strong>SubQ rate:</strong> SubQ Snap requests report input tokens but no cost; their cost is the tokens × SubQ's published $0.05 per million (output is free). On {costs.subq_account.as_of} the SubQ account showed {usd(costs.subq_account.billed_usd)} for all {costs.subq_account.requests.toLocaleString()} SubQ requests made for this book ({costs.subq_account.input_tokens.toLocaleString()} input tokens), and the receipts reproduce it: {usd(costs.subq_account.receipts_usd)}.</li>
+        <li><strong>SubQ rate:</strong> SubQ Snap requests report input tokens but no cost; their cost is the tokens × SubQ's published $0.05 per million (output is free). On {costs.subq_account.as_of} the SubQ account showed ${costs.subq_account.billed_usd.toFixed(2)} for the {costs.subq_account.requests.toLocaleString()} answered SubQ requests made for this book ({costs.subq_account.input_tokens.toLocaleString()} input tokens), and the receipts reproduce it: ${costs.subq_account.receipts_usd.toFixed(4)}, which rounds to the same. Three more SubQ requests were rejected (HTTP 422) and not billed.</li>
         <li><strong>Unknown:</strong> {costs.unknown_receipts} {costs.unknown_receipts === 1 ? 'request' : 'requests'} with no generation ID or usage (a client timeout or an upstream 5xx), not counted. Totals that include one are marked ≥.</li>
         <li><strong>Not included:</strong> requests not yet run or blocked by a budget limit.</li>
       </ul>

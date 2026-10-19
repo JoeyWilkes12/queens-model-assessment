@@ -34,7 +34,7 @@ type BoardReceipt = {
 type IndexEntry = { id: string; size: number; stratum: Stratum; regions: string[][]; solved: number; systems: number; solved_by: string[]; cost_usd: number; requests: number; unknown: number }
 
 const evidence = (path: string) => `${import.meta.env.BASE_URL}evidence/${path}`
-const FAMILY: Record<Family, string> = { frontier: 'Frontier, 16 Oct', earlier: 'Earlier generation, 17 Oct', decision: 'Decision model', baseline: 'No model' }
+const FAMILY: Record<Family, string> = { frontier: 'Frontier, 16 Oct', earlier: 'Earlier generation, 17–19 Oct', decision: 'Decision model', baseline: 'No model' }
 const FAMILY_ORDER: Family[] = ['frontier', 'earlier', 'decision', 'baseline']
 const OUTCOME: Record<string, string> = {
   strict: 'Solved · strict JSON', format_only: 'Solved · off-format', wrong: 'Wrong placement', truncated: 'Ran out of tokens',
@@ -56,8 +56,16 @@ export function money(value: number | null | undefined) {
   return `$${value.toPrecision(2)}`
 }
 const plural = (count: number, word: string) => `${count} ${word}${count === 1 ? '' : 's'}`
-const spendText = (cost: Spend) => cost.requests === 0 ? 'No API calls'
-  : `${cost.unknown ? '≥ ' : ''}${money(cost.total_usd)} · ${plural(cost.requests, 'request')}${cost.requests > 1 && cost.per_request_usd !== null ? ` · ${money(cost.per_request_usd)} each` : ''}`
+/** A one-shot model's re-run (sent again after a request failure) has its own outcome and cost; never average it in. */
+const rerunOf = (system: System) => system.family === 'decision' ? undefined : system.receipts.find(receipt => receipt.role === 're-run')
+const rerunText = (system: System) => { const r = rerunOf(system); return r ? `Re-run: ${OUTCOME[r.outcome ?? ''] ?? r.outcome ?? 'recorded'}, ${money(r.usd)}` : null }
+const spendText = (system: System) => {
+  const cost = system.cost
+  if (cost.requests === 0) return 'No API calls'
+  const total = `${cost.unknown ? '≥ ' : ''}${money(cost.total_usd)}`
+  if (system.family !== 'decision' && cost.requests > 1) return `${total} · ${system.receipts.map(r => `${r.role} ${r.basis === 'unknown' ? 'unknown' : money(r.usd)}`).join(' + ')}`
+  return `${total} · ${plural(cost.requests, 'request')}${cost.requests > 1 && cost.per_request_usd !== null ? ` · ${money(cost.per_request_usd)} average` : ''}`
+}
 
 function useJson<T>(path: string | null) {
   const [state, setState] = useState<{ path: string | null; data: T | null; error: boolean }>({ path: null, data: null, error: false })
@@ -81,7 +89,7 @@ export function BoardReceipts({ ui, boardId }: { ui: Ui; boardId?: string }) {
   if (boardId) {
     const position = boards.findIndex(board => board.id === boardId)
     if (position < 0) return <ui.Callout tone="caution" title="No receipt for this board.">Board receipts cover the 36 boards of the image panel. <a href="#/board-receipts">See all board receipts</a>.</ui.Callout>
-    return <BoardPage ui={ui} entry={boards[position]} previous={boards[position - 1]} next={boards[position + 1]} />
+    return <BoardPage key={boardId} ui={ui} entry={boards[position]} previous={boards[position - 1]} next={boards[position + 1]} />
   }
   return <BoardIndex ui={ui} boards={boards} />
 }
@@ -127,8 +135,9 @@ function OutcomeCost({ systems, sort }: { systems: System[]; sort: 'outcome' | '
     {ordered.map(system => {
       const fill = fillOf(system)
       const outcome = OUTCOME[system.outcome] ?? system.outcome
-      const cost = spendText(system.cost)
-      return <div key={system.key} role="listitem" className={`br-row br-row--${system.family}`} aria-label={`${system.name}, ${FAMILY[system.family]}: ${outcome}. Cost on this board: ${cost}.`}>
+      const rerun = rerunText(system)
+      const cost = spendText(system)
+      return <div key={system.key} role="listitem" className={`br-row br-row--${system.family}`} aria-label={`${system.name}, ${FAMILY[system.family]}: ${outcome}.${rerun ? ` ${rerun}.` : ''} Cost on this board: ${cost}.`}>
         <span className="br-who">
           {system.logo ? <span className="sb-logo"><img src={`${import.meta.env.BASE_URL}${system.logo}`} alt="" width={20} height={20} loading="lazy" /></span> : <span className="sb-logo sb-logo--none" aria-hidden="true">∅</span>}
           <span><span className="br-name">{system.name}</span><span className="br-family">{FAMILY[system.family]}{system.provider ? ` · ${system.provider}` : ''}</span></span>
@@ -136,6 +145,7 @@ function OutcomeCost({ systems, sort }: { systems: System[]; sort: 'outcome' | '
         <span className="br-outcome" aria-hidden="true">
           <span className={`br-outcome-track${system.outcome === 'not_run' ? ' is-not-run' : ''}`}>{fill && <span className={`sb-fill ${fill === 'baseline' ? 'br-fill--baseline' : `sb-fill--${fill}`}`} />}</span>
           <span className="br-outcome-label">{outcome}</span>
+          {rerun && <span className="br-outcome-note">{rerun}</span>}
         </span>
         <span className="br-cost" aria-hidden="true">
           <span className="sb-cost-track">{system.cost.total_usd > 0 && <span className="sb-cost-fill" style={{ width: `${Math.max(2, system.cost.total_usd / max * 100)}%` }} />}</span>
@@ -150,14 +160,15 @@ function answerFrames(data: BoardReceipt): BoardFrame[] {
   const solution: Cell[] = data.board.solution.map((column, row) => [row + 1, column])
   const writers = data.systems.filter(system => system.family === 'frontier' || system.family === 'earlier')
   const source = 'Written answer from the response, graded by the deterministic checker'
-  const frames: BoardFrame[] = [{ id: 'empty', label: 'The board, as text and image', queens: [], note: `${writers.length} language models each received this board as one image and wrote a complete placement in one reply. Each state below is one model's answer.`, sourceLabel: 'Board corpus', tone: 'start' }]
+  const frames: BoardFrame[] = [{ id: 'empty', label: 'The board, as text and image', queens: [], note: `${writers.length} language models each received this board as one image, with one request to write a complete placement. Each state below is one model's reply; a reply with no readable placement shows an empty board.`, sourceLabel: 'Board corpus', tone: 'start' }]
   for (const system of writers) {
     const queens = (system.queens ?? []).map(queen => queen.cell as Cell)
     const wrong = (system.queens ?? []).filter(queen => !queen.on_solution || queen.conflict).map(queen => queen.cell as Cell)
     const outcome = OUTCOME[system.outcome] ?? system.outcome
+    const rerun = rerunText(system) ? ` ${rerunText(system)} (not graded).` : ''
     const note = queens.length
-      ? `${outcome}. ${system.solved ? 'Every queen is on the unique solution.' : `${plural(wrong.length, 'queen')} off the solution or breaking a rule.`}${system.placement_source === 'extracted' ? ' The placement was read from the text around the answer.' : ''} Cost: ${spendText(system.cost)}.`
-      : `${outcome}: no placement could be read. Cost: ${spendText(system.cost)}.`
+      ? `${outcome}. ${system.solved ? 'Every queen is on the unique solution.' : `${plural(wrong.length, 'queen')} off the solution or breaking a rule.`}${system.placement_source === 'extracted' ? ' The placement was read from the text around the answer.' : ''}${rerun} Cost: ${spendText(system)}.`
+      : `${outcome}: no placement could be read.${rerun} Cost: ${spendText(system)}.`
     frames.push({ id: system.key, label: `${system.name}: ${outcome}`, queens, invalidCells: wrong.length ? wrong : undefined, note, sourceLabel: source,
       receiptLinks: system.receipt ? [{ label: 'Receipt', id: system.receipt }] : undefined, tone: queens.length ? (system.solved ? 'pass' : 'fail') : 'unknown' })
   }
@@ -165,13 +176,15 @@ function answerFrames(data: BoardReceipt): BoardFrame[] {
   return frames
 }
 
-type ReplayOption = { key: string; label: string; regions: string[][]; frames: BoardFrame[]; title: string; eyebrow: string; toneLabels?: Partial<Record<FrameTone, string>> }
+type ReplayOption = { key: string; label: string; regions: string[][]; frames: BoardFrame[]; title: string; eyebrow: string; toneLabels?: Partial<Record<FrameTone, string>>; description?: string; allowPlayback?: boolean }
 
 function replayOptions(data: BoardReceipt): ReplayOption[] {
   const { regions, id, size } = data.board
   const options: ReplayOption[] = [{ key: 'answers', label: 'Written answers, model by model', regions, frames: answerFrames(data), eyebrow: `${id} · one shot from the image`,
     title: `${data.systems.filter(s => (s.family === 'frontier' || s.family === 'earlier') && s.solved).length} of 12 language models wrote the solution`,
-    toneLabels: { pass: 'Correct placement', fail: 'Not the solution', unknown: 'No placement', solved: 'Unique solution', start: 'Board' } }]
+    toneLabels: { pass: 'Correct placement', fail: 'Not the solution', unknown: 'No placement', solved: 'Unique solution', start: 'Board' },
+    // Twelve independent answers, not one process: step through them, never autoplay as if they converged.
+    allowPlayback: false, description: 'Step through the twelve written answers, then the unique solution. An X marks a queen that is off the unique solution or breaks a rule. Receipt links open each exact request and response.' }]
   for (const system of data.systems.filter(s => s.family === 'decision')) {
     for (const attempt of system.attempts ?? []) {
       try {
@@ -263,7 +276,7 @@ function BoardPage({ ui, entry, previous, next }: { ui: Ui; entry: IndexEntry; p
               {system.queens ? <MiniBoard regions={board.regions} queens={system.queens.map(q => ({ cell: q.cell, onSolution: q.on_solution, conflict: q.conflict }))} label={`${system.name}'s placement on ${board.id}`} />
                 : <div className="br-empty" role="img" aria-label={`${system.name}: no placement`}>No placement</div>}
               <span className="br-gallery-name">{system.name}</span>
-              <span className="br-gallery-outcome">{OUTCOME[system.outcome] ?? system.outcome}</span>
+              <span className="br-gallery-outcome">{OUTCOME[system.outcome] ?? system.outcome}{rerunText(system) && <><br />{rerunText(system)}</>}</span>
               <span className="br-gallery-cost">{money(system.cost.total_usd)}{system.receipt && <> · <a href={`#/evidence-atlas/${system.receipt}`}>receipt</a></>}</span>
             </li>)}
           </ul>
@@ -275,14 +288,16 @@ function BoardPage({ ui, entry, previous, next }: { ui: Ui; entry: IndexEntry; p
             {options.map(option => <option key={option.key} value={option.key}>{option.label}</option>)}
           </select>
           {current ? <BoardReplay key={`${board.id}-${current.key}`} regions={current.regions} frames={current.frames} eyebrow={current.eyebrow} title={current.title} toneLabels={current.toneLabels}
-            description="Recorded states only. Receipt links open the exact request and response." />
+            allowPlayback={current.allowPlayback ?? true} description={current.description ?? 'Recorded states only. Receipt links open the exact request and response.'} />
             : <Callout tone="caution" title="No replay could be drawn.">The recorded traces for this board could not be drawn.</Callout>}
         </Section>
         <Section id="receipts" title="Receipts and cost">
-          <DataTable caption={`Every API request on ${board.id}, by system`} headers={['System', 'Outcome', 'Requests', 'Cost on this board', 'Per request', 'Receipts']}
+          <DataTable caption={`Every API request on ${board.id}, by system`} headers={['System', 'Outcome', 'Requests', 'Cost on this board', 'Cost per request', 'Receipts']}
             rows={[...systems].sort((a, b) => FAMILY_ORDER.indexOf(a.family) - FAMILY_ORDER.indexOf(b.family) || a.name.localeCompare(b.name)).map(system => [
-              system.name, OUTCOME[system.outcome] ?? system.outcome, String(system.cost.requests),
-              system.cost.requests ? `${system.cost.unknown ? '≥ ' : ''}${money(system.cost.total_usd)}` : '$0', system.cost.per_request_usd !== null ? money(system.cost.per_request_usd) : '—', receiptLinks(system)])} />
+              system.name, `${OUTCOME[system.outcome] ?? system.outcome}${rerunText(system) ? `; ${rerunText(system)}` : ''}`, String(system.cost.requests),
+              system.cost.requests ? `${system.cost.unknown ? '≥ ' : ''}${money(system.cost.total_usd)}` : '$0',
+              system.family !== 'decision' && system.cost.requests > 1 ? system.receipts.map(r => `${r.role} ${money(r.usd)}`).join(' + ')
+                : system.cost.per_request_usd !== null ? `${money(system.cost.per_request_usd)}${system.cost.requests > 1 ? ' average' : ''}` : '—', receiptLinks(system)])} />
           <p className="table-note"><a href={evidence(`board-receipts/${board.id}.json`)} download>Board receipt (JSON)</a> · built by <code>scripts/analysis/build_board_receipts.py</code> from the published receipts.</p>
         </Section>
       </main>

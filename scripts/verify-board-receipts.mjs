@@ -14,6 +14,9 @@
  *    greedy/trajectories.json.
  * 5. Every receipt cost equals costs/receipts.json; each system's total, request count and the board's
  *    total and per-provider split equal the sums of its receipts; SubQ costs equal input tokens x $0.05/M.
+ * 6. No request is missing: each system lists exactly the requests the cost index counts for that model on
+ *    that board, and exactly the manifest records of that study, model and board; the language models'
+ *    totals across the 36 boards equal their panel evaluations' totals in scoreboard.json.
  */
 import { isDeepStrictEqual } from 'node:util'
 import { createHash } from 'node:crypto'
@@ -27,7 +30,7 @@ const failures = []
 let checks = 0
 const check = (label, ok, detail = '') => { checks++; if (!ok) failures.push(`${label}${detail ? `: ${detail}` : ''}`) }
 const same = (label, actual, expected) => check(label, isDeepStrictEqual(actual, expected), `got ${JSON.stringify(actual)}, expected ${JSON.stringify(expected)}`)
-const near = (label, actual, expected) => check(label, Math.abs(actual - expected) < 1e-8, `got ${actual}, expected ${expected}`)
+const near = (label, actual, expected, tolerance = 1e-8) => check(label, Math.abs(actual - expected) < tolerance, `got ${actual}, expected ${expected}`)
 
 const plan = await json('public/evidence/frontier-image-panel/plan.json')
 const corpus = await json('public/evidence/subq-panel/corpus.json')
@@ -36,6 +39,16 @@ const legacy = await json('public/evidence/legacy-panel/summary.json')
 const greedy = await json('public/evidence/greedy/trajectories.json')
 const costs = (await json('public/evidence/costs/receipts.json')).receipts
 const index = await json('public/evidence/board-receipts/index.json')
+const manifest = await json('public/evidence/manifest.json')
+const scoreboard = await json('public/evidence/scoreboard.json')
+const modelKey = model => model.startsWith('typesafe/jev-1.13') ? 'typesafe/jev-1.13' : model
+const answered = new Map()
+for (const record of manifest.records) {
+  if (record.status === 'not_run' || !record.files || !Object.keys(record.files).length || !record.board) continue
+  const key = `${record.study}|${modelKey(record.model)}|${record.board}`
+  answered.set(key, [...(answered.get(key) ?? []), record.id])
+}
+const panelTotals = {}
 
 const boardsById = new Map(corpus.boards.map(board => [board.id, board]))
 const letters = grid => grid.map(row => row.map(region => String.fromCharCode(65 + region)))
@@ -113,6 +126,13 @@ for (const entry of index.boards) {
     }
     near(`${id}/${system.name}: total`, system.cost.total_usd, sum)
     same(`${id}/${system.name}: requests and unknown`, [system.cost.requests, system.cost.unknown], [system.receipts.length, unknown])
+    if (system.receipts.length) {
+      same(`${id}/${system.name}: requests counted by the cost index`, system.receipts.map(r => costOf(r.id)?.[3]), system.receipts.map(() => system.receipts.length))
+      same(`${id}/${system.name}: every manifest record listed`, system.receipts.map(r => r.id).sort(), [...(answered.get(`${system.study}|${system.key}|${id}`) ?? [])].sort())
+      if (unknown) same(`${id}/${system.name}: no cost per request with an unknown cost`, system.cost.per_request_usd, null)
+      else near(`${id}/${system.name}: cost per request`, system.cost.per_request_usd, sum / system.receipts.length, 1e-9)
+    }
+    if (system.family === 'frontier' || system.family === 'earlier') panelTotals[`${system.study}|${system.key}`] = (panelTotals[`${system.study}|${system.key}`] ?? 0) + sum
     total += sum; requests += system.receipts.length
     if (system.provider) byProvider[system.provider] = (byProvider[system.provider] ?? 0) + sum
 
@@ -146,8 +166,15 @@ for (const entry of index.boards) {
   near(`${id}: board total`, data.cost.total_usd, total)
   same(`${id}: board requests`, data.cost.requests, requests)
   for (const [name, value] of Object.entries(byProvider)) near(`${id}: ${name} total`, data.cost.by_provider[name], value)
-  same(`${id}: index entry`, [entry.solved, entry.systems, entry.requests], [data.systems.filter(s => s.solved).length, data.systems.length, requests])
+  same(`${id}: index entry`, [entry.solved, entry.systems, entry.requests, entry.unknown], [data.systems.filter(s => s.solved).length, data.systems.length, requests, data.systems.reduce((n, s) => n + s.cost.unknown, 0)])
   near(`${id}: index cost`, entry.cost_usd, total)
+}
+
+for (const [key, value] of Object.entries(panelTotals)) {
+  const [study, model] = key.split('|')
+  const row = scoreboard.costs.evaluations.find(r => r.study === study && r.model === model)
+  check(`${key}: evaluation row`, !!row)
+  if (row) near(`${key}: 36-board total equals the evaluation total (stored to 6 places)`, value, row.cost_usd, 1e-6)
 }
 
 if (failures.length) {

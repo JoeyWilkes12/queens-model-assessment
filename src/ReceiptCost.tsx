@@ -53,7 +53,7 @@ export function ReceiptCostStrip({ id, board }: { id: string; board?: string }) 
   return <section className="receipt-cost" aria-label="Cost of this receipt">
     <div><span>This request</span><strong>{basis === 'unknown' ? 'Unknown' : money(usd)}</strong><small>{BASIS[basis] ?? basis}</small></div>
     {board && requests > 0 && <div><span>This model on {board}, this study</span><strong>{boardTotal === null ? 'Unknown' : money(boardTotal)}</strong>
-      <small>{requests} {requests === 1 ? 'request' : 'requests'}{boardTotal !== null && requests > 1 ? ` · ${money(boardTotal / requests)} per request` : ''}{unknown ? ` · ${unknown} with unknown cost` : ''}</small></div>}
+      <small>{requests} {requests === 1 ? 'request' : 'requests'}{boardTotal !== null && requests > 1 ? ` · ${money(boardTotal / requests)} average per request` : ''}{unknown ? ` · ${unknown} with unknown cost` : ''}</small></div>}
     {hasPage && <div><span>Every system on this board</span><strong><a href={`#/board-receipts/${board}`}>Board receipt →</a></strong><small>Outcomes, written answers, replays and cost</small></div>}
   </section>
 }

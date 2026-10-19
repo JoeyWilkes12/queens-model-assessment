@@ -420,7 +420,7 @@ def run(args):
             save(blocked / f"response-{utc().replace(':', '')}.json", response)
             (directory / "started.json").unlink()
             C.settle(name, 0.0, f"blocked {call['call_id']} (HTTP {status} account block, no model call)")
-            print(json.dumps({"event": "governance_block", "call_id": call["call_id"], "message": response["error"]["message"][:160]}), flush=True)
+            print(json.dumps({"event": "governance_block", "call_id": call["call_id"], "message": str((response.get("error") or {}).get("message", ""))[:160]}), flush=True)
             raise SystemExit("Stopped: OpenRouter account block (HTTP 402 credits or 403 budget limit). Raise the limit or add credits, then rerun.")
         record(call, response, status, time.monotonic() - start, extra)
         cost = ((response.get("usage") or {}).get("cost") if isinstance(response, dict) else None)
