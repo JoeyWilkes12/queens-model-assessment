@@ -1,0 +1,15 @@
+{
+  "diagnostic_only": true,
+  "candidate_count": 1,
+  "markdown_fence_present": false,
+  "visible_character_count": 1033,
+  "rule_valid_after_extraction": true,
+  "checks": {
+    "one_per_row": true,
+    "one_per_column": true,
+    "one_per_region": true,
+    "no_touch": true
+  },
+  "failure": null,
+  "extra_visible_text": true
+}

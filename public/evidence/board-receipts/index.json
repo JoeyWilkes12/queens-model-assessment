@@ -1,0 +1,3347 @@
+{
+ "builder": "scripts/analysis/build_board_receipts.py",
+ "boards": [
+  {
+   "id": "panel-9-22",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "D",
+     "A",
+     "A"
+    ],
+    [
+     "A",
+     "E",
+     "E",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "E",
+     "E",
+     "A",
+     "A",
+     "A",
+     "F",
+     "A",
+     "G",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "G",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "H",
+     "H",
+     "H",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "I",
+     "I",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "G",
+     "G"
+    ],
+    [
+     "I",
+     "I",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 10,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 0.671721024,
+   "requests": 37,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-30",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "A",
+     "D",
+     "D",
+     "B",
+     "B",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "D",
+     "B",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "E",
+     "D",
+     "D",
+     "D",
+     "D",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "D",
+     "F",
+     "D",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "G",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "D",
+     "H",
+     "H",
+     "D",
+     "I",
+     "D"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "H",
+     "H",
+     "H",
+     "H",
+     "D",
+     "D"
+    ],
+    [
+     "D",
+     "D",
+     "H",
+     "H",
+     "H",
+     "H",
+     "H",
+     "H",
+     "D"
+    ]
+   ],
+   "solved": 10,
+   "systems": 15,
+   "solved_by": [
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 0.70129288,
+   "requests": 44,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-32",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "C",
+     "D"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "C",
+     "E"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "E",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "A",
+     "A",
+     "E",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "G",
+     "F",
+     "F",
+     "A",
+     "A",
+     "E",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "H",
+     "H",
+     "E",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "I",
+     "E",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 10,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 1.138427104,
+   "requests": 36,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-08",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "C",
+     "C",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "C",
+     "C",
+     "C",
+     "D",
+     "D"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "C",
+     "C",
+     "C",
+     "E",
+     "D",
+     "D"
+    ],
+    [
+     "B",
+     "B",
+     "F",
+     "C",
+     "C",
+     "C",
+     "E",
+     "E",
+     "D"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "G",
+     "G",
+     "G",
+     "E",
+     "D"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "G",
+     "G",
+     "H",
+     "D"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "G",
+     "I",
+     "H",
+     "D"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "H",
+     "H",
+     "H"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "H",
+     "H",
+     "H",
+     "H"
+    ]
+   ],
+   "solved": 8,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.121249072,
+   "requests": 30,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-33",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "B",
+     "C",
+     "C",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "C",
+     "C",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "C",
+     "C",
+     "C",
+     "E",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "C",
+     "C",
+     "E",
+     "E",
+     "E",
+     "D"
+    ],
+    [
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "B",
+     "F",
+     "D",
+     "D",
+     "G",
+     "G"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "F",
+     "F",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "B",
+     "H",
+     "H",
+     "F",
+     "F",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "H",
+     "H",
+     "H",
+     "I",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D"
+    ]
+   ],
+   "solved": 9,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.029112436,
+   "requests": 25,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-53",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "A",
+     "D",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "C",
+     "D",
+     "D",
+     "D",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "E",
+     "D",
+     "D",
+     "F",
+     "B",
+     "B",
+     "B",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "D",
+     "F",
+     "F",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "F",
+     "F",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "H",
+     "E",
+     "E",
+     "F",
+     "F",
+     "F",
+     "F",
+     "G",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "F",
+     "F",
+     "F",
+     "I",
+     "I",
+     "G",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "I",
+     "I",
+     "I",
+     "I",
+     "I",
+     "I",
+     "I"
+    ]
+   ],
+   "solved": 8,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.12589333,
+   "requests": 30,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-05",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "C",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "E",
+     "A",
+     "B",
+     "B",
+     "B",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "E",
+     "B",
+     "B",
+     "B",
+     "F",
+     "G",
+     "G",
+     "D",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "B",
+     "B",
+     "F",
+     "G",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "B",
+     "F",
+     "B",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "G",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "H",
+     "G",
+     "G",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "H",
+     "G",
+     "G",
+     "I",
+     "I",
+     "G"
+    ]
+   ],
+   "solved": 11,
+   "systems": 15,
+   "solved_by": [
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.695491472,
+   "requests": 24,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-24",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "B",
+     "C",
+     "C",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "B",
+     "B",
+     "C",
+     "D",
+     "D",
+     "E",
+     "E",
+     "D"
+    ],
+    [
+     "A",
+     "B",
+     "B",
+     "D",
+     "D",
+     "D",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "D",
+     "F",
+     "F",
+     "E",
+     "F",
+     "F"
+    ],
+    [
+     "A",
+     "A",
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "F"
+    ],
+    [
+     "G",
+     "G",
+     "G",
+     "F",
+     "F",
+     "F",
+     "F",
+     "F",
+     "F"
+    ],
+    [
+     "G",
+     "G",
+     "G",
+     "G",
+     "H",
+     "H",
+     "F",
+     "F",
+     "F"
+    ],
+    [
+     "I",
+     "G",
+     "G",
+     "H",
+     "H",
+     "H",
+     "F",
+     "F",
+     "F"
+    ],
+    [
+     "I",
+     "H",
+     "H",
+     "H",
+     "H",
+     "F",
+     "F",
+     "F",
+     "F"
+    ]
+   ],
+   "solved": 7,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.465709592,
+   "requests": 20,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-58",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "D",
+     "A",
+     "A",
+     "A",
+     "E",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "D",
+     "A",
+     "A",
+     "E",
+     "E",
+     "E",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "F",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "D",
+     "G",
+     "D",
+     "F",
+     "H",
+     "H",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "D",
+     "G",
+     "D",
+     "D",
+     "I",
+     "H",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "D",
+     "I",
+     "I",
+     "I",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 8,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.063421544,
+   "requests": 28,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-34",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "D",
+     "B",
+     "B",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "E",
+     "D",
+     "D",
+     "F",
+     "F",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "D",
+     "C",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "D",
+     "C",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "E",
+     "E",
+     "D",
+     "D",
+     "C",
+     "C",
+     "C",
+     "G",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "D",
+     "D",
+     "D",
+     "C",
+     "C",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "H",
+     "H",
+     "H",
+     "H",
+     "H",
+     "C",
+     "I"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "H",
+     "H",
+     "C",
+     "C",
+     "C",
+     "I"
+    ]
+   ],
+   "solved": 7,
+   "systems": 15,
+   "solved_by": [
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 1.326115666,
+   "requests": 25,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-45",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "C",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "C",
+     "C",
+     "C",
+     "B",
+     "B",
+     "B",
+     "D"
+    ],
+    [
+     "E",
+     "A",
+     "C",
+     "C",
+     "C",
+     "C",
+     "D",
+     "B",
+     "D"
+    ],
+    [
+     "E",
+     "F",
+     "F",
+     "C",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "E",
+     "E",
+     "G",
+     "G",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "E",
+     "G",
+     "G",
+     "G",
+     "G",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "E",
+     "G",
+     "G",
+     "H",
+     "D",
+     "D",
+     "I",
+     "D",
+     "D"
+    ],
+    [
+     "G",
+     "G",
+     "G",
+     "H",
+     "I",
+     "I",
+     "I",
+     "D",
+     "D"
+    ]
+   ],
+   "solved": 8,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.394346466,
+   "requests": 24,
+   "unknown": 0
+  },
+  {
+   "id": "panel-9-51",
+   "size": 9,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "C",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "D",
+     "D",
+     "B",
+     "B",
+     "B",
+     "B",
+     "E",
+     "E"
+    ],
+    [
+     "C",
+     "C",
+     "D",
+     "D",
+     "F",
+     "G",
+     "G",
+     "G",
+     "E"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "D",
+     "F",
+     "H",
+     "G",
+     "G",
+     "E"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "H",
+     "H",
+     "H",
+     "G",
+     "E",
+     "E"
+    ],
+    [
+     "C",
+     "C",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "C",
+     "C",
+     "I",
+     "I",
+     "I",
+     "E",
+     "E",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 8,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.070810792,
+   "requests": 24,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-04",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "C",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "B",
+     "C",
+     "C",
+     "C",
+     "D",
+     "B"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "D",
+     "B"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "E",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "B",
+     "F",
+     "F",
+     "F",
+     "F",
+     "B",
+     "B"
+    ],
+    [
+     "B",
+     "B",
+     "F",
+     "F",
+     "F",
+     "F",
+     "B"
+    ],
+    [
+     "B",
+     "G",
+     "F",
+     "F",
+     "F",
+     "B",
+     "B"
+    ]
+   ],
+   "solved": 12,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "Grok 4.6",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.607250666,
+   "requests": 30,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-06",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "C",
+     "B"
+    ],
+    [
+     "A",
+     "D",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "D",
+     "D",
+     "A",
+     "A",
+     "E",
+     "B",
+     "B"
+    ],
+    [
+     "D",
+     "D",
+     "A",
+     "A",
+     "A",
+     "F",
+     "F"
+    ],
+    [
+     "D",
+     "D",
+     "G",
+     "G",
+     "A",
+     "A",
+     "A"
+    ]
+   ],
+   "solved": 12,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "Grok 4.6",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Jev 1.13"
+   ],
+   "cost_usd": 0.63188326,
+   "requests": 38,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-46",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "B",
+     "D",
+     "B",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "E",
+     "F",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "E",
+     "E",
+     "E",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "E",
+     "E",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "G",
+     "C",
+     "C"
+    ]
+   ],
+   "solved": 10,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.49710715,
+   "requests": 34,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-01",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "C",
+     "C",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "C",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "C",
+     "D",
+     "D",
+     "E"
+    ],
+    [
+     "C",
+     "C",
+     "F",
+     "G",
+     "D",
+     "D",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "F",
+     "D",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 10,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "Claude Opus 4.8",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 0.53431212,
+   "requests": 24,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-02",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "B",
+     "D",
+     "E",
+     "C"
+    ],
+    [
+     "F",
+     "G",
+     "D",
+     "D",
+     "D",
+     "E",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "D",
+     "D",
+     "E",
+     "E",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "D",
+     "E",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 8,
+   "systems": 15,
+   "solved_by": [
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 1.093674786,
+   "requests": 26,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-38",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "D",
+     "D",
+     "A",
+     "E",
+     "F",
+     "B"
+    ],
+    [
+     "C",
+     "E",
+     "D",
+     "A",
+     "E",
+     "E",
+     "B"
+    ],
+    [
+     "C",
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "B"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "G",
+     "B",
+     "B"
+    ],
+    [
+     "E",
+     "G",
+     "G",
+     "E",
+     "G",
+     "B",
+     "B"
+    ],
+    [
+     "G",
+     "G",
+     "G",
+     "G",
+     "G",
+     "G",
+     "B"
+    ]
+   ],
+   "solved": 11,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.766061028,
+   "requests": 29,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-24",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "C",
+     "C",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "C",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "C",
+     "C",
+     "E",
+     "C",
+     "F",
+     "F",
+     "D"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "G",
+     "G",
+     "G"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "E",
+     "G",
+     "G"
+    ]
+   ],
+   "solved": 11,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.604588552,
+   "requests": 30,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-34",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "A",
+     "D",
+     "C",
+     "D",
+     "D"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "D",
+     "D",
+     "D",
+     "E"
+    ],
+    [
+     "F",
+     "G",
+     "G",
+     "G",
+     "G",
+     "E",
+     "E"
+    ],
+    [
+     "F",
+     "F",
+     "F",
+     "G",
+     "E",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 10,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 0.91212813,
+   "requests": 24,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-59",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "C"
+    ],
+    [
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "A",
+     "D",
+     "D",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "E",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "E",
+     "F",
+     "F",
+     "F",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "E",
+     "F",
+     "F",
+     "G",
+     "G",
+     "G",
+     "A"
+    ]
+   ],
+   "solved": 9,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "Grok 4.6",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 0.991521312,
+   "requests": 22,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-50",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B"
+    ],
+    [
+     "A",
+     "C",
+     "D",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "C",
+     "D",
+     "D",
+     "D",
+     "B",
+     "B"
+    ],
+    [
+     "E",
+     "C",
+     "C",
+     "D",
+     "D",
+     "F",
+     "F"
+    ],
+    [
+     "E",
+     "C",
+     "D",
+     "D",
+     "F",
+     "F",
+     "F"
+    ],
+    [
+     "E",
+     "C",
+     "C",
+     "F",
+     "F",
+     "F",
+     "F"
+    ],
+    [
+     "G",
+     "G",
+     "C",
+     "C",
+     "F",
+     "F",
+     "F"
+    ]
+   ],
+   "solved": 9,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 0.840971846,
+   "requests": 20,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-61",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "A",
+     "A",
+     "A",
+     "D",
+     "D",
+     "B"
+    ],
+    [
+     "C",
+     "A",
+     "D",
+     "A",
+     "D",
+     "B",
+     "B"
+    ],
+    [
+     "C",
+     "C",
+     "D",
+     "D",
+     "D",
+     "D",
+     "B"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "E",
+     "D",
+     "F",
+     "F"
+    ],
+    [
+     "C",
+     "C",
+     "E",
+     "E",
+     "E",
+     "G",
+     "G"
+    ],
+    [
+     "C",
+     "C",
+     "C",
+     "C",
+     "G",
+     "G",
+     "G"
+    ]
+   ],
+   "solved": 8,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 1.157942264,
+   "requests": 33,
+   "unknown": 0
+  },
+  {
+   "id": "panel-7-62",
+   "size": 7,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B"
+    ],
+    [
+     "C",
+     "C",
+     "D",
+     "E",
+     "A",
+     "A",
+     "B"
+    ],
+    [
+     "C",
+     "D",
+     "D",
+     "E",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "F",
+     "E",
+     "E",
+     "E",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "F",
+     "F",
+     "E",
+     "E",
+     "E",
+     "G",
+     "G"
+    ],
+    [
+     "G",
+     "G",
+     "G",
+     "G",
+     "G",
+     "G",
+     "G"
+    ]
+   ],
+   "solved": 9,
+   "systems": 15,
+   "solved_by": [
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6"
+   ],
+   "cost_usd": 0.752564708,
+   "requests": 20,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-18",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "C",
+     "D",
+     "C",
+     "C"
+    ],
+    [
+     "E",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "E",
+     "C",
+     "C",
+     "C",
+     "C"
+    ]
+   ],
+   "solved": 11,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "SubQ Snap (preview)"
+   ],
+   "cost_usd": 0.344950588,
+   "requests": 32,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-28",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "B",
+     "C",
+     "B",
+     "D",
+     "B"
+    ],
+    [
+     "B",
+     "C",
+     "C",
+     "B",
+     "B"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "B",
+     "B",
+     "E",
+     "B",
+     "B"
+    ]
+   ],
+   "solved": 14,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Jev 1.13",
+    "SubQ Snap (preview)",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.26619346,
+   "requests": 36,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-42",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "C",
+     "A"
+    ],
+    [
+     "D",
+     "A",
+     "A",
+     "E",
+     "A"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "A"
+    ]
+   ],
+   "solved": 13,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Jev 1.13",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.251419454,
+   "requests": 28,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-21",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "C",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "D",
+     "D"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "E",
+     "D"
+    ]
+   ],
+   "solved": 13,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "SubQ Snap (preview)",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.293921292,
+   "requests": 29,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-32",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "B"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "C",
+     "B"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "C",
+     "B"
+    ],
+    [
+     "D",
+     "C",
+     "C",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "C",
+     "C",
+     "E",
+     "C"
+    ]
+   ],
+   "solved": 12,
+   "systems": 15,
+   "solved_by": [
+    "Gemini 3.1 Pro Preview",
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.375181668,
+   "requests": 30,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-59",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "A",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "D",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "E",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "D",
+     "C"
+    ]
+   ],
+   "solved": 11,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.355565936,
+   "requests": 29,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-10",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "D",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "A",
+     "D",
+     "A",
+     "C",
+     "E"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "E",
+     "E"
+    ],
+    [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ]
+   ],
+   "solved": 11,
+   "systems": 15,
+   "solved_by": [
+    "GPT-5.6 Sol",
+    "Grok 4.6",
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash"
+   ],
+   "cost_usd": 0.378444258,
+   "requests": 20,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-11",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "C",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "D",
+     "E"
+    ],
+    [
+     "A",
+     "C",
+     "D",
+     "D",
+     "E"
+    ]
+   ],
+   "solved": 12,
+   "systems": 15,
+   "solved_by": [
+    "Claude Opus 4.8",
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.435230544,
+   "requests": 20,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-63",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "lower_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "C"
+    ],
+    [
+     "A",
+     "B",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "C",
+     "D"
+    ],
+    [
+     "B",
+     "B",
+     "B",
+     "B",
+     "D"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "D"
+    ]
+   ],
+   "solved": 13,
+   "systems": 15,
+   "solved_by": [
+    "Claude Opus 4.8",
+    "Gemini 3.1 Pro Preview",
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "GPT-4.1",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "Greedy rule (no model)"
+   ],
+   "cost_usd": 0.462936188,
+   "requests": 24,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-19",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "A",
+     "B",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "C",
+     "C"
+    ],
+    [
+     "D",
+     "D",
+     "D",
+     "C",
+     "C"
+    ],
+    [
+     "E",
+     "E",
+     "E",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 11,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "Claude Opus 4.8",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash"
+   ],
+   "cost_usd": 0.411268144,
+   "requests": 27,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-43",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "A",
+     "C",
+     "C",
+     "B"
+    ],
+    [
+     "D",
+     "C",
+     "C",
+     "B",
+     "B"
+    ],
+    [
+     "D",
+     "C",
+     "C",
+     "B",
+     "B"
+    ],
+    [
+     "D",
+     "D",
+     "C",
+     "E",
+     "E"
+    ]
+   ],
+   "solved": 10,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "GPT-5.6 Sol",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro"
+   ],
+   "cost_usd": 0.61402816,
+   "requests": 24,
+   "unknown": 0
+  },
+  {
+   "id": "panel-5-44",
+   "size": 5,
+   "stratum": {
+    "singleton_status": "no_singleton",
+    "tier": "higher_search"
+   },
+   "regions": [
+    [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    [
+     "A",
+     "C",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "E",
+     "E",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "E",
+     "C",
+     "C",
+     "C",
+     "D"
+    ],
+    [
+     "E",
+     "E",
+     "D",
+     "D",
+     "D"
+    ]
+   ],
+   "solved": 12,
+   "systems": 15,
+   "solved_by": [
+    "Grok 4.6",
+    "Claude Opus 4.8",
+    "Gemini 3.1 Pro Preview",
+    "GPT-5.6 Sol",
+    "GPT-5.5",
+    "GPT-5.4",
+    "GPT-5",
+    "Claude Opus 4.7",
+    "Claude Opus 4.6",
+    "Gemini 2.5 Pro",
+    "Gemini 2.5 Flash",
+    "SubQ Snap (preview)"
+   ],
+   "cost_usd": 0.465097872,
+   "requests": 36,
+   "unknown": 0
+  }
+ ]
+}

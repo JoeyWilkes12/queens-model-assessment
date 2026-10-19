@@ -20,7 +20,7 @@ const NAMES: Record<string, string> = {
 const pct = (value: number) => `${Math.round(value * 100)}%`
 const solved = (row: Row) => row.outcome === 'strict' || row.outcome === 'format_only'
 
-/** The 17 October extension of the earlier-generation replay to the 36 panel boards. */
+/** The 17–19 October extension of the earlier-generation replay to the 36 panel boards. */
 export function LegacyPanel({ ui }: { ui: Ui }) {
   const { Callout, DataTable } = ui
   const [data, setData] = useState<{ legacy: Summary; frontier: FrontierSummary; october: October } | null>(null)
@@ -55,7 +55,7 @@ export function LegacyPanel({ ui }: { ui: Ui }) {
   })
   const retired = Object.values(legacy.retired ?? {})
   return <>
-    <p className="lead">On 17 October the eight earlier-generation models that OpenRouter still serves each answered the same 36 boards as the 16 October frontier panel: same images, same prompt, and each model's 1 October settings. One request per model and board, no retries.</p>
+    <p className="lead">From 17 to 19 October the eight earlier-generation models that OpenRouter still serves each answered the same 36 boards as the 16 October frontier panel: same images, same prompt, and each model's 1 October settings. One request per model and board, no retries.</p>
     <DataTable caption="Earlier generations on the 36-board panel: correct placements (strict JSON or off-format)" headers={['Model', '5×5', '7×7', '9×9', 'All recorded', 'Strict JSON', '95% interval (all)', 'Misses', '1 Oct, 3 boards', 'Route', 'Cost']} rows={modelRows} />
     <DataTable caption="Current frontier models on the same 36 boards (16 October), for comparison" headers={['Model', '5×5', '7×7', '9×9', 'All 36']} rows={frontierRows} />
     <Callout tone="caution" title="Routes changed for six models; one model is gone.">Gemini 2.5 Pro and Flash ran through OpenRouter's Batch API on Google Vertex (1 October used Google AI Studio). OpenRouter rejected every OpenAI and Anthropic batch submission with "does not have a :batch endpoint", so GPT-5.5, GPT-5.4, GPT-5, GPT-4.1 and Claude Opus 4.7 and 4.6 ran on demand with their 1 October provider blocks, as preregistered. {retired.length ? `${retired.map(id => NAMES[id] ?? id).join(', ')} was tested on 1 October but OpenRouter no longer serves it, so it is not here.` : ''} Comparisons between models are descriptive.</Callout>

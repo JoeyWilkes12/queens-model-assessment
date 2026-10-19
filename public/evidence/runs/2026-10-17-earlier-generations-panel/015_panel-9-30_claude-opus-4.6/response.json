@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792437975-Vu0IsYbR6WWFV4fz1omV",
+  "object": "chat.completion",
+  "created": 1792437975,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at the puzzle, I need to identify the regions and find valid queen placements.\n\n**Singleton regions force placements:**\n- **E** = only (4,2) → Row 4, Col 2\n- **F** = only (5,5) → Row 5, Col 5\n- **G** = only (6,1) → Row 6, Col 1\n- **I** = only (7,8) → Row 7, Col 8\n\n**Checking adjacency constraints from these fixed placements:**\n- Row 3 can't use col 3 (adjacent to row 4, col 2)\n- Row 8 can't use col 7, 8, or 9 (adjacent to row 7, col 8)\n\n**Region B** only appears in rows 1-3 at available columns → forces **(2,6)**.\n\n**Propagating constraints:**\n- Row 1 (Region A): must be col 3 or 4. Row 2 col 6 eliminates col 7. Row 3 needs col ≠5,6,7 from adjacency with row 2.\n- Row 3 available: cols 4 or 9. Row 8 available: cols 3 or 4.\n- If Row 1=col 4 (A), then Row 3=col 9 (C), Row 8=col 3 (D), Row 9=col 7 (H).\n\n**Verification of all adjacency (consecutive row column differences):**\n|4−6|=2, |6−9|=3, |9−2|=7, |2−5|=3, |5−1|=4, |1−8|=7, |8−3|=5, |3−7|=4 — all >1 ✓\n\n**All 9 regions (A,B,C,D,E,F,G,H,I) and columns (1-9) each used exactly once** ✓\n\n{\"board_id\":\"panel-9-30\",\"columns_by_row\":[4,6,9,2,5,1,8,3,7]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 4534,
+    "total_tokens": 5617,
+    "cost": 0.118765,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.118765,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.11335
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 4018,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

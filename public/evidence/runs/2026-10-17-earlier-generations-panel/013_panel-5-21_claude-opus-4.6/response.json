@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792437597-SKAUTVFy6uu589YRsiRW",
+  "object": "chat.completion",
+  "created": 1792437597,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to identify the forced placements first.\n\n**Region B** only contains cell (1,2), so **Row 1 → Column 2**.\n\n**Region E** only contains cell (5,4), so **Row 5 → Column 4**.\n\n**Working through constraints:**\n\n- **Row 4** can't be adjacent to Row 5's column 4 (eliminates cols 3,4,5), and column 2 is taken → **Row 4 → Column 1**.\n- **Row 2** can't be adjacent to Row 1's column 2 (eliminates cols 1,2,3), and column 4 is taken → **Row 2 → Column 5**.\n- **Row 3** can't be adjacent to Row 2's column 5 (eliminates cols 4,5) or Row 4's column 1 (eliminates cols 1,2) → **Row 3 → Column 3**.\n\n**Verification:**\n- Columns: {2,5,3,1,4} — all unique ✓\n- Regions: B(1,2), D(2,5), C(3,3), A(4,1), E(5,4) — one per region ✓\n- No diagonal adjacency: |2−5|=3, |5−3|=2, |3−1|=2, |1−4|=3 — all >1 ✓\n\n{\"board_id\":\"panel-5-21\",\"columns_by_row\":[2,5,3,1,4]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 1133,
+    "total_tokens": 2216,
+    "cost": 0.03374,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.03374,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.028325
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 757,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

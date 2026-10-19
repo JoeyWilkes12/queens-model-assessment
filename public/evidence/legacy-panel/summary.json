@@ -1,6 +1,6 @@
 {
   "study": "2026-10-17-earlier-generations-panel",
-  "updated_utc": "2026-10-18T06:02:33.634531+00:00",
+  "updated_utc": "2026-10-19T21:34:09.455474+00:00",
   "rows": [
     {
       "call_id": "001_panel-5-10_gpt-5.5",
@@ -140,7 +140,13 @@
       "messages_sha256": "552c564bd06dada14b4ec6424e8525ed9ba784c52f31b369ed22f5549907adbd",
       "request_sha256": "ab1a4b7de2b771a80f092646af78c939d4b54f47e209b394cc5870b1c26f1b2e",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.03393375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "001_panel-5-10_gemini-2.5-flash",
@@ -154,7 +160,13 @@
       "messages_sha256": "552c564bd06dada14b4ec6424e8525ed9ba784c52f31b369ed22f5549907adbd",
       "request_sha256": "ab1a4b7de2b771a80f092646af78c939d4b54f47e209b394cc5870b1c26f1b2e",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.01431865,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "002_panel-7-01_gpt-5.5",
@@ -294,7 +306,13 @@
       "messages_sha256": "003a404eb0e6f29281030e831727edecc6f2581035ca12f683e34fa93cc71c3e",
       "request_sha256": "4030a26d3ba438622b3294e3fa8560988e4cadda35e7cea37ad8d881b4e91b70",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04848375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "002_panel-7-01_gemini-2.5-flash",
@@ -308,7 +326,13 @@
       "messages_sha256": "003a404eb0e6f29281030e831727edecc6f2581035ca12f683e34fa93cc71c3e",
       "request_sha256": "4030a26d3ba438622b3294e3fa8560988e4cadda35e7cea37ad8d881b4e91b70",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "003_panel-9-05_gpt-5.5",
@@ -448,7 +472,13 @@
       "messages_sha256": "2e7a0dd1334074214ed9bd5c03b310817adf55354700eb3ced96b7192075a4f0",
       "request_sha256": "34e66a8616014e834172bd6f092f5bdfa9c5497dc52b93130953b5d35e8214c8",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05046875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "003_panel-9-05_gemini-2.5-flash",
@@ -462,7 +492,13 @@
       "messages_sha256": "2e7a0dd1334074214ed9bd5c03b310817adf55354700eb3ced96b7192075a4f0",
       "request_sha256": "34e66a8616014e834172bd6f092f5bdfa9c5497dc52b93130953b5d35e8214c8",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "004_panel-5-11_gpt-5.5",
@@ -602,7 +638,13 @@
       "messages_sha256": "1e1279cac2fab2d889285126966c14d6ae1dc7f1b8ad2bab4578c00bd4db4b0c",
       "request_sha256": "3722406300f9788bf034e026101bd549d7be64937b5e1ec6f516dccae298dc0a",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.03416875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "004_panel-5-11_gemini-2.5-flash",
@@ -616,7 +658,13 @@
       "messages_sha256": "1e1279cac2fab2d889285126966c14d6ae1dc7f1b8ad2bab4578c00bd4db4b0c",
       "request_sha256": "3722406300f9788bf034e026101bd549d7be64937b5e1ec6f516dccae298dc0a",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.0110774,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "005_panel-7-02_gpt-5.5",
@@ -756,7 +804,13 @@
       "messages_sha256": "717ad84caf5f4d2853edf9c282dd658b09bd43577dee510b61fea2feeaa0ff88",
       "request_sha256": "05e72d42c0c2973aa1b122d1483ee19238e2d84cf6836b04d37fe8c8ca13d2a4",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05030375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "005_panel-7-02_gemini-2.5-flash",
@@ -770,7 +824,13 @@
       "messages_sha256": "717ad84caf5f4d2853edf9c282dd658b09bd43577dee510b61fea2feeaa0ff88",
       "request_sha256": "05e72d42c0c2973aa1b122d1483ee19238e2d84cf6836b04d37fe8c8ca13d2a4",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.01256865,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "006_panel-9-08_gpt-5.5",
@@ -910,7 +970,13 @@
       "messages_sha256": "290ebe6ab933b4512ca064c27b50e0f7e3009537b90f1cc94e3e366fdc61bc2c",
       "request_sha256": "1ad56bdd82b5da31116b9ff10560dda5ad1680ed51032c692d9bc4810e60fe3f",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05031375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "006_panel-9-08_gemini-2.5-flash",
@@ -924,7 +990,13 @@
       "messages_sha256": "290ebe6ab933b4512ca064c27b50e0f7e3009537b90f1cc94e3e366fdc61bc2c",
       "request_sha256": "1ad56bdd82b5da31116b9ff10560dda5ad1680ed51032c692d9bc4810e60fe3f",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "007_panel-5-18_gpt-5.5",
@@ -1064,7 +1136,13 @@
       "messages_sha256": "7cff26815992ce899314b334497e3eb7d235010f97d9261499db4eaf5921bcda",
       "request_sha256": "12e2f7b174a30aff8140a13136d1c667e8ccaa09f5f8cfde589422701bb64b58",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.02951375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "007_panel-5-18_gemini-2.5-flash",
@@ -1078,7 +1156,13 @@
       "messages_sha256": "7cff26815992ce899314b334497e3eb7d235010f97d9261499db4eaf5921bcda",
       "request_sha256": "12e2f7b174a30aff8140a13136d1c667e8ccaa09f5f8cfde589422701bb64b58",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "008_panel-7-04_gpt-5.5",
@@ -1218,7 +1302,13 @@
       "messages_sha256": "c477bdc28c3102375c52c0da9f9dc43a38b5b170d078503fc7c96e69c41d25a0",
       "request_sha256": "1db1c432808f8254ba5544797690b9f6e55ba20004368e0a07406a86665d17e1",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04293375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "008_panel-7-04_gemini-2.5-flash",
@@ -1232,7 +1322,13 @@
       "messages_sha256": "c477bdc28c3102375c52c0da9f9dc43a38b5b170d078503fc7c96e69c41d25a0",
       "request_sha256": "1db1c432808f8254ba5544797690b9f6e55ba20004368e0a07406a86665d17e1",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.0123724,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "009_panel-9-22_gpt-5.5",
@@ -1372,7 +1468,13 @@
       "messages_sha256": "1e081e65cdf65326f572b0b91b276c2ae6200f8a249aa1125855de3b994c6baa",
       "request_sha256": "ac59c2ea264f2155b60c1875c372fb162d0dca57f7953458168fb2bb5e9c1b8c",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04530375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "009_panel-9-22_gemini-2.5-flash",
@@ -1386,7 +1488,13 @@
       "messages_sha256": "1e081e65cdf65326f572b0b91b276c2ae6200f8a249aa1125855de3b994c6baa",
       "request_sha256": "ac59c2ea264f2155b60c1875c372fb162d0dca57f7953458168fb2bb5e9c1b8c",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "010_panel-5-19_gpt-5.5",
@@ -1526,7 +1634,13 @@
       "messages_sha256": "c1adf04cfc589ca6bbeec0ec56227a19ff623b78a7b05b0c927ec4faddc3d95e",
       "request_sha256": "de1332861abe21d67b9c8a424b19499040a058e58105702eec2e76c502fa30dd",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.02867375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "010_panel-5-19_gemini-2.5-flash",
@@ -1540,7 +1654,13 @@
       "messages_sha256": "c1adf04cfc589ca6bbeec0ec56227a19ff623b78a7b05b0c927ec4faddc3d95e",
       "request_sha256": "de1332861abe21d67b9c8a424b19499040a058e58105702eec2e76c502fa30dd",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.01255865,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "011_panel-7-06_gpt-5.5",
@@ -1680,7 +1800,13 @@
       "messages_sha256": "4130f2c488c22816abc31aa4b8875708648a377454f20377f1dfb60e70607f9c",
       "request_sha256": "a478512cd890dfacda94ac19b75429a1d9fba3add7bf29a0e672833eca60bcf5",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04410875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "011_panel-7-06_gemini-2.5-flash",
@@ -1694,7 +1820,13 @@
       "messages_sha256": "4130f2c488c22816abc31aa4b8875708648a377454f20377f1dfb60e70607f9c",
       "request_sha256": "a478512cd890dfacda94ac19b75429a1d9fba3add7bf29a0e672833eca60bcf5",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.01256365,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "012_panel-9-24_gpt-5.5",
@@ -1834,7 +1966,13 @@
       "messages_sha256": "cc23980c14e615a4af1968bd3b1dba115a3b18d50c1bb533cdf525edcf5e43bb",
       "request_sha256": "ee158b726b021e93879f7bb8b7bdb44be86183c340dd5a1f2513473bbd19a077",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05230875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "012_panel-9-24_gemini-2.5-flash",
@@ -1848,7 +1986,13 @@
       "messages_sha256": "cc23980c14e615a4af1968bd3b1dba115a3b18d50c1bb533cdf525edcf5e43bb",
       "request_sha256": "ee158b726b021e93879f7bb8b7bdb44be86183c340dd5a1f2513473bbd19a077",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.0125674,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "013_panel-5-21_gpt-5.5",
@@ -1905,7 +2049,13 @@
       "request_sha256": "a725e7b1fd413caa7528d00ec6b4427c4b80b91570d536b4c9d407c909ec6661",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.05512625,
+      "elapsed_seconds": 107.524524917,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "013_panel-5-21_gpt-4.1",
@@ -1962,7 +2112,13 @@
       "request_sha256": "def5322d0ff20a297d648bc2c85cfff55c2ffc4b06529e2b38d29c9888e3ed45",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.03374,
+      "elapsed_seconds": 21.763548041999982,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "013_panel-5-21_gemini-2.5-pro",
@@ -1976,7 +2132,13 @@
       "messages_sha256": "53ba1f551a8e3e5ca88e0a06aba806ab57cae4b39c099d869ce6381c2672b9a0",
       "request_sha256": "6657b2a0eff3aeb6231c43b4aa257f831d80e6f37edcb10b3c024acee364d383",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.02676875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "013_panel-5-21_gemini-2.5-flash",
@@ -1990,7 +2152,13 @@
       "messages_sha256": "53ba1f551a8e3e5ca88e0a06aba806ab57cae4b39c099d869ce6381c2672b9a0",
       "request_sha256": "6657b2a0eff3aeb6231c43b4aa257f831d80e6f37edcb10b3c024acee364d383",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.01465115,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "014_panel-7-24_gpt-5.5",
@@ -2047,7 +2215,13 @@
       "request_sha256": "afe6b0f544748e26410799ef0a981cb0af6d5e9260c2cbe0647409bb28dbf73c",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.07888625,
+      "elapsed_seconds": 127.90907712499998,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "014_panel-7-24_gpt-4.1",
@@ -2104,7 +2278,13 @@
       "request_sha256": "ab621d7f6b55a3d880d5b86afbe1219c820524b5952c84874cbf2b18cf260c74",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.091465,
+      "elapsed_seconds": 60.878039458000046,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "014_panel-7-24_gemini-2.5-pro",
@@ -2118,7 +2298,13 @@
       "messages_sha256": "4ac1fee220f4c61311e3465a385cd7ee446e8f6622f89739e7dd7c08b6ef9c3d",
       "request_sha256": "7e07b66dd7a6946dd465b42f0983374fe2c1bef4f2aca0022ab4996a34d28acd",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04252875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "014_panel-7-24_gemini-2.5-flash",
@@ -2132,7 +2318,13 @@
       "messages_sha256": "4ac1fee220f4c61311e3465a385cd7ee446e8f6622f89739e7dd7c08b6ef9c3d",
       "request_sha256": "7e07b66dd7a6946dd465b42f0983374fe2c1bef4f2aca0022ab4996a34d28acd",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "015_panel-9-30_gpt-5.5",
@@ -2189,7 +2381,13 @@
       "request_sha256": "d02958aa13cf71e2b9d719d4b1f49ea46783fd24d0e3e14fbb1525f36344bffa",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.08870625,
+      "elapsed_seconds": 166.083298292,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "015_panel-9-30_gpt-4.1",
@@ -2246,7 +2444,13 @@
       "request_sha256": "dc214b6c0ca7b8c465ce408827983eacd7de8605d43a657e106b12dbdead3db4",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.118765,
+      "elapsed_seconds": 70.26959612500002,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "015_panel-9-30_gemini-2.5-pro",
@@ -2260,7 +2464,13 @@
       "messages_sha256": "57e9ccfabbed9d79ddda8c5eb49e8aed3e18d4b5d485439b661b5e27ffc9f457",
       "request_sha256": "6cb88e30ade178aa3942ab0aba75ed2ebe1ae87bdbe7988ee280a59ce05800c6",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.05029875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "015_panel-9-30_gemini-2.5-flash",
@@ -2274,7 +2484,13 @@
       "messages_sha256": "57e9ccfabbed9d79ddda8c5eb49e8aed3e18d4b5d485439b661b5e27ffc9f457",
       "request_sha256": "6cb88e30ade178aa3942ab0aba75ed2ebe1ae87bdbe7988ee280a59ce05800c6",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.01559115,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "016_panel-5-28_gpt-5.5",
@@ -2331,7 +2547,13 @@
       "request_sha256": "214adddd81fb15ea014e8b922f04c2d129214f9dd3756a190b87cc5a5669b1c8",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.04830625,
+      "elapsed_seconds": 83.786697584,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "016_panel-5-28_gpt-4.1",
@@ -2388,7 +2610,13 @@
       "request_sha256": "aa0d5dc52beeb485fa73fde275e03605e0ea5855790b336e2fe3989a07125b3c",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04849,
+      "elapsed_seconds": 31.498878042,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "016_panel-5-28_gemini-2.5-pro",
@@ -2402,7 +2630,13 @@
       "messages_sha256": "92a5a637b53a836545218bc3b39d8867dcf60297fe7e5882038d278b96511e8a",
       "request_sha256": "f7ce235a64318e7beb208f9ee143fb54920b917afae7488cc9f5eafdc050cbaa",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.02319875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "016_panel-5-28_gemini-2.5-flash",
@@ -2416,7 +2650,13 @@
       "messages_sha256": "92a5a637b53a836545218bc3b39d8867dcf60297fe7e5882038d278b96511e8a",
       "request_sha256": "f7ce235a64318e7beb208f9ee143fb54920b917afae7488cc9f5eafdc050cbaa",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.0064974,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "017_panel-7-34_gpt-5.5",
@@ -2473,7 +2713,13 @@
       "request_sha256": "5fc0d74d372fc4473ecf31e1bf69060128b30d3ce45383456b6dd01e7cb30998",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.10943625,
+      "elapsed_seconds": 150.861676125,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "017_panel-7-34_gpt-4.1",
@@ -2530,7 +2776,13 @@
       "request_sha256": "4cf29da441fb7f2760da5a6711203de3bbb108b06335ae0df5e23ab1252bc105",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.17514,
+      "elapsed_seconds": 98.66243854100003,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "017_panel-7-34_gemini-2.5-pro",
@@ -2544,7 +2796,13 @@
       "messages_sha256": "cbf081ce8a7a109fe0fdce63fab5768a2b763c055bfc160cda99940f4fd41225",
       "request_sha256": "7f49ff460a4bccdaa53a40cc10cbb93f1231e030e5a39cec58ad2738927ad319",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05029375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "017_panel-7-34_gemini-2.5-flash",
@@ -2558,7 +2816,13 @@
       "messages_sha256": "cbf081ce8a7a109fe0fdce63fab5768a2b763c055bfc160cda99940f4fd41225",
       "request_sha256": "7f49ff460a4bccdaa53a40cc10cbb93f1231e030e5a39cec58ad2738927ad319",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "018_panel-9-32_gpt-5.5",
@@ -2615,7 +2879,13 @@
       "request_sha256": "93159a3eddecab187bee15282b7d26d63e4107e3c4ab98a1fcd8a10ab6427f12",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 217.14873662499997,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "018_panel-9-32_gpt-4.1",
@@ -2672,7 +2942,13 @@
       "request_sha256": "0679393aa5432438daa18fdf7a3fa93e2f3b0ae4efeb25d229de079b0b897e26",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.124215,
+      "elapsed_seconds": 76.70721600000002,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "018_panel-9-32_gemini-2.5-pro",
@@ -2686,7 +2962,13 @@
       "messages_sha256": "d07e6f354eccb834c196fe3c95712cf717bdc4b8a6dfd3121d46103febc7b2a2",
       "request_sha256": "2443eb3169f40ae5a774a9f09f8a765d4f0247a968a8ce2e0f050c090a00db01",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05036375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "018_panel-9-32_gemini-2.5-flash",
@@ -2700,7 +2982,13 @@
       "messages_sha256": "d07e6f354eccb834c196fe3c95712cf717bdc4b8a6dfd3121d46103febc7b2a2",
       "request_sha256": "2443eb3169f40ae5a774a9f09f8a765d4f0247a968a8ce2e0f050c090a00db01",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "019_panel-5-32_gpt-5.5",
@@ -2757,7 +3045,13 @@
       "request_sha256": "526fbc4245da59e802455de97e1f85529216aa453994b2729031e3c8a3a915e1",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.06850625,
+      "elapsed_seconds": 112.79108216600002,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "019_panel-5-32_gpt-4.1",
@@ -2814,7 +3108,13 @@
       "request_sha256": "a7ab4d9b275607fb0cceb85263f147f2b9d4cba351c80d1caff48fba30c9df95",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05504,
+      "elapsed_seconds": 35.952121333000036,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "019_panel-5-32_gemini-2.5-pro",
@@ -2828,7 +3128,13 @@
       "messages_sha256": "890452135c88b011977fa53940925acd8bfd4107b2aaadf00f324f79b18d02da",
       "request_sha256": "a5e3582f4a1802e2dbea55d5eee6fe2516d74018cef335c73fd19c4808581802",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.03195875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "019_panel-5-32_gemini-2.5-flash",
@@ -2842,7 +3148,13 @@
       "messages_sha256": "890452135c88b011977fa53940925acd8bfd4107b2aaadf00f324f79b18d02da",
       "request_sha256": "a5e3582f4a1802e2dbea55d5eee6fe2516d74018cef335c73fd19c4808581802",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.01010615,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "020_panel-7-38_gpt-5.5",
@@ -2899,7 +3211,13 @@
       "request_sha256": "0ca01a9e326402fc31234edfe56c352ea62a963200c1b618ac9a20648f9dba1b",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 172.33674237500009,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "020_panel-7-38_gpt-4.1",
@@ -2956,7 +3274,13 @@
       "request_sha256": "daeb2ae97034aa584df09379e0372de9f3699cf8ed863a2ecbe703594b36d9d8",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.09549,
+      "elapsed_seconds": 60.64115204099994,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "020_panel-7-38_gemini-2.5-pro",
@@ -2970,7 +3294,13 @@
       "messages_sha256": "9584f74f9c45380fe59e0a42be7d7fa31ad84c9ffc9ce32acab7a1e48e944748",
       "request_sha256": "1c06067ad785b6fbf208166913237f549a62670badcbe139caf2f94a4d77f626",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05029375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "020_panel-7-38_gemini-2.5-flash",
@@ -2984,7 +3314,13 @@
       "messages_sha256": "9584f74f9c45380fe59e0a42be7d7fa31ad84c9ffc9ce32acab7a1e48e944748",
       "request_sha256": "1c06067ad785b6fbf208166913237f549a62670badcbe139caf2f94a4d77f626",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.00970865,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "021_panel-9-33_gpt-5.5",
@@ -3041,7 +3377,13 @@
       "request_sha256": "d31de23e9ad3da0f00cd26d3a0be5596afc9effa05169538f7e8d7fde5daf951",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.10953625,
+      "elapsed_seconds": 137.70334733299978,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "021_panel-9-33_gpt-4.1",
@@ -3098,7 +3440,13 @@
       "request_sha256": "6c58812425bb70e3a88e524247f1607b39e6f7f284e936d1051696dcdf1e1404",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.166815,
+      "elapsed_seconds": 105.10720154199998,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "021_panel-9-33_gemini-2.5-pro",
@@ -3112,7 +3460,13 @@
       "messages_sha256": "abf24a873121ea01c5116401fdb45ed8c726cdd17ef65276020bf626e2a6350a",
       "request_sha256": "d54b55c245a6a66c3733d90a431235a7e10181abd49cf891d24efc6d9e939d23",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05032875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "021_panel-9-33_gemini-2.5-flash",
@@ -3126,7 +3480,13 @@
       "messages_sha256": "abf24a873121ea01c5116401fdb45ed8c726cdd17ef65276020bf626e2a6350a",
       "request_sha256": "d54b55c245a6a66c3733d90a431235a7e10181abd49cf891d24efc6d9e939d23",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "022_panel-5-42_gpt-5.5",
@@ -3183,7 +3543,13 @@
       "request_sha256": "de7a0362da0a8604948fe880adc2ad80f8197720a2066134c23f78ea8516c94d",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.04563625,
+      "elapsed_seconds": 54.78703558300003,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "022_panel-5-42_gpt-4.1",
@@ -3240,7 +3606,13 @@
       "request_sha256": "4f40996d3562e1018e0d387c5c56c6b0dea3a619a285b0297c815732c0ec1f6d",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.03854,
+      "elapsed_seconds": 23.24109870899997,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "022_panel-5-42_gemini-2.5-pro",
@@ -3254,7 +3626,13 @@
       "messages_sha256": "933a2bee77d1c08fe543aa8fd6155fde65f266019edf0ea40630f22a5dc49233",
       "request_sha256": "c6e34f879e9d882df1a8d473e3b114df793c9f08d42b9608b647157d33f9eaad",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.02345375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "022_panel-5-42_gemini-2.5-flash",
@@ -3268,7 +3646,13 @@
       "messages_sha256": "933a2bee77d1c08fe543aa8fd6155fde65f266019edf0ea40630f22a5dc49233",
       "request_sha256": "c6e34f879e9d882df1a8d473e3b114df793c9f08d42b9608b647157d33f9eaad",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.00706615,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "023_panel-7-46_gpt-5.5",
@@ -3325,7 +3709,13 @@
       "request_sha256": "c4a4207e151523da5e6dc0f92d4fc8b898a57b2d3167d000f839d3be6c0340f0",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.06103625,
+      "elapsed_seconds": 87.03323162499987,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "023_panel-7-46_gpt-4.1",
@@ -3382,7 +3772,13 @@
       "request_sha256": "90075c92c3e7c63b1232799c520938155e4dbaab2879bfdd0cc0a892351ecff9",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.085815,
+      "elapsed_seconds": 51.4692177500001,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "023_panel-7-46_gemini-2.5-pro",
@@ -3396,7 +3792,13 @@
       "messages_sha256": "f8cb9fc0a0f26b1b270421266a69f71c2b30b9c18c6460513b6ff9523599be1f",
       "request_sha256": "bae78f5e91652316d5ea341d24dd70c14edbfb4fa6a8a65fa6d34447e3857060",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.03587375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "023_panel-7-46_gemini-2.5-flash",
@@ -3410,7 +3812,13 @@
       "messages_sha256": "f8cb9fc0a0f26b1b270421266a69f71c2b30b9c18c6460513b6ff9523599be1f",
       "request_sha256": "bae78f5e91652316d5ea341d24dd70c14edbfb4fa6a8a65fa6d34447e3857060",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "024_panel-9-34_gpt-5.5",
@@ -3467,7 +3875,13 @@
       "request_sha256": "ae2e82cf37b7b7083c1b5863cdffeb3b1dc7f20b09e000b7f483954e673cdc33",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 157.74271441700012,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "024_panel-9-34_gpt-4.1",
@@ -3524,7 +3938,13 @@
       "request_sha256": "8a03e6fb36ee99fe6a7fa5eadda5fa23e3c238f31737ef2e9f98de1783bfa529",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.26199,
+      "elapsed_seconds": 147.3515137500001,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "024_panel-9-34_gemini-2.5-pro",
@@ -3538,7 +3958,13 @@
       "messages_sha256": "cccb564c7821ad3f3d92b4c0c657a1dcb9650e05700aff41d812b55690a4fd53",
       "request_sha256": "3d3259667f2ec0119d6a8390f7ea2f4d1d56a71cd0634e8e22b622c640fcf59a",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05031375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "024_panel-9-34_gemini-2.5-flash",
@@ -3552,7 +3978,13 @@
       "messages_sha256": "cccb564c7821ad3f3d92b4c0c657a1dcb9650e05700aff41d812b55690a4fd53",
       "request_sha256": "3d3259667f2ec0119d6a8390f7ea2f4d1d56a71cd0634e8e22b622c640fcf59a",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.01559115,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "025_panel-5-43_gpt-5.5",
@@ -3609,7 +4041,13 @@
       "request_sha256": "1b39bc54161f58b890c264a999f2ae5a9693672b817cd25b151c8da709cf394d",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.12315625,
+      "elapsed_seconds": 196.12486404200013,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "025_panel-5-43_gpt-4.1",
@@ -3666,7 +4104,13 @@
       "request_sha256": "b54f7e175ca7a15bc2446a38c7443907ac66e9f3bb1bd00919c7da4b6ce30a2d",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.06039,
+      "elapsed_seconds": 39.90070333300014,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "025_panel-5-43_gemini-2.5-pro",
@@ -3680,7 +4124,13 @@
       "messages_sha256": "566716bcc4fc6ee0afd42056ff344da6a29e2305e0c9c6ab02a28b4a8e8456a0",
       "request_sha256": "62565548c99ccb7335334c09dba05d8f1f9991159364d2dfe2f1f657021b8bbe",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.03458375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "025_panel-5-43_gemini-2.5-flash",
@@ -3694,7 +4144,13 @@
       "messages_sha256": "566716bcc4fc6ee0afd42056ff344da6a29e2305e0c9c6ab02a28b4a8e8456a0",
       "request_sha256": "62565548c99ccb7335334c09dba05d8f1f9991159364d2dfe2f1f657021b8bbe",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "026_panel-7-50_gpt-5.5",
@@ -3751,7 +4207,13 @@
       "request_sha256": "052eb27cdec7994771879d1955e07fed688176e72478cf381694dc1f2aa66bdc",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 180.05755062499975,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "026_panel-7-50_gpt-4.1",
@@ -3808,7 +4270,13 @@
       "request_sha256": "c98db33be33aaac51b90213663217c882697263273f1072b027df083dded0088",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.138715,
+      "elapsed_seconds": 81.37474504200009,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "026_panel-7-50_gemini-2.5-pro",
@@ -3822,7 +4290,13 @@
       "messages_sha256": "9b8811e51d8e59aca3f51abc9456a21dca283667f91b45a12ab075dd7b8b5c28",
       "request_sha256": "6418c5e949ad9db60983b34cfb65d0f8141bb8c42ef74f66aa92f0724481219a",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05029375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "026_panel-7-50_gemini-2.5-flash",
@@ -3836,7 +4310,13 @@
       "messages_sha256": "9b8811e51d8e59aca3f51abc9456a21dca283667f91b45a12ab075dd7b8b5c28",
       "request_sha256": "6418c5e949ad9db60983b34cfb65d0f8141bb8c42ef74f66aa92f0724481219a",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.01256615,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "027_panel-9-45_gpt-5.5",
@@ -3872,7 +4352,13 @@
       "request_sha256": "02b6ab9f86ae3842f12ae5abc67939726e9746b49cb6c63437bb55b934cc30e5",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.1324675,
+      "elapsed_seconds": 118.92765016700014,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "027_panel-9-45_gpt-5",
@@ -3887,7 +4373,13 @@
       "request_sha256": "2d6fd1ac37270ef0fea19e0c18f410e38635029ce6c0b49c4a47f087696b5361",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 197.53219545799993,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "027_panel-9-45_gpt-4.1",
@@ -3923,7 +4415,13 @@
       "request_sha256": "ccf98b2cde31108609ef6cdc68b1ab045e1657f577814b972521c71109181e02",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.103975,
+      "elapsed_seconds": 49.61393191700017,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "027_panel-9-45_claude-opus-4.6",
@@ -3938,7 +4436,13 @@
       "request_sha256": "0ac16fa17398ce2276dbe01308388e1d116d12975cb4953e4aca5a71b9cb6bfe",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.31259,
+      "elapsed_seconds": 172.28128104200005,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "027_panel-9-45_gemini-2.5-pro",
@@ -3952,7 +4456,13 @@
       "messages_sha256": "48058fa8500bc8dffe5c7d4d1970f6afca998aa2e53df2dbd7bc1f4e0c51f9bc",
       "request_sha256": "720aaef7717b6d55b2d0c52b6c43752d8fa3b60b973c17eeb7730c2437711ea4",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.06239875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "027_panel-9-45_gemini-2.5-flash",
@@ -3966,7 +4476,13 @@
       "messages_sha256": "48058fa8500bc8dffe5c7d4d1970f6afca998aa2e53df2dbd7bc1f4e0c51f9bc",
       "request_sha256": "720aaef7717b6d55b2d0c52b6c43752d8fa3b60b973c17eeb7730c2437711ea4",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.01559115,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "028_panel-5-44_gpt-5.5",
@@ -4002,7 +4518,13 @@
       "request_sha256": "4e7b210b2a7ec898133aa2e7b1df3a7e47142d0ecb26c7aa7d73ef75636a6a50",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0246775,
+      "elapsed_seconds": 21.48994841700005,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "028_panel-5-44_gpt-5",
@@ -4017,7 +4539,13 @@
       "request_sha256": "9a383d0716bdf3237062461e8a070fd9fa90a6f4b8ae29712ba6601d75905ed4",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.07276625,
+      "elapsed_seconds": 90.86298520800028,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "028_panel-5-44_gpt-4.1",
@@ -4053,7 +4581,13 @@
       "request_sha256": "bf04003ff47845e13c081d486a1fc20f9ff01de840b6c558ca92e671e0d814e3",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.029925,
+      "elapsed_seconds": 15.157703042000321,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "028_panel-5-44_claude-opus-4.6",
@@ -4068,7 +4602,13 @@
       "request_sha256": "b2bbb14050f0aad2bb82e8692a0100fb0416b5bb363245f06238a996128adb6f",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.072915,
+      "elapsed_seconds": 47.25389062499971,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "028_panel-5-44_gemini-2.5-pro",
@@ -4082,7 +4622,13 @@
       "messages_sha256": "561dd086c6e5dcbd60a861b487c2ce28ab3c4e6581ab7f700f69fb179cbe92fb",
       "request_sha256": "caeebdef2a9442aedb6bb2399692fb89af77632bfdd8057d26ddaf4a4074baf6",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04064875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "028_panel-5-44_gemini-2.5-flash",
@@ -4096,7 +4642,13 @@
       "messages_sha256": "561dd086c6e5dcbd60a861b487c2ce28ab3c4e6581ab7f700f69fb179cbe92fb",
       "request_sha256": "caeebdef2a9442aedb6bb2399692fb89af77632bfdd8057d26ddaf4a4074baf6",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.0063924,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "029_panel-7-59_gpt-5.5",
@@ -4132,7 +4684,13 @@
       "request_sha256": "22802b464a4e396701d15dee0d6a67e8b632565f99e1b8c41de2fc85219cce04",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0671875,
+      "elapsed_seconds": 54.85123904200009,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "029_panel-7-59_gpt-5",
@@ -4147,7 +4705,13 @@
       "request_sha256": "6f0c0673257462c5134d5b3fa9ec950a1d9cb34977d45d67ad679397a68df71a",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 163.64851050000016,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "029_panel-7-59_gpt-4.1",
@@ -4183,7 +4747,13 @@
       "request_sha256": "d75a5f3b0df985c896242cc8efb8660d50e4433ff500f5c5fbac21b3621c4b44",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.07905,
+      "elapsed_seconds": 35.47260587500023,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "029_panel-7-59_claude-opus-4.6",
@@ -4198,7 +4768,13 @@
       "request_sha256": "81ea65bb25458eba0a5dfd5201d4f838d910940ff562ef16bdf82ab7d2f4fd83",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.29069,
+      "elapsed_seconds": 172.30699441699971,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "029_panel-7-59_gemini-2.5-pro",
@@ -4212,7 +4788,13 @@
       "messages_sha256": "37e364519554627c9c4a2740d21b5ed800fe67a28104504165220c0a5a548f0a",
       "request_sha256": "cc95e16d10a3bde1281ca51343c7f2aedfafa52559fb60d2733755023e5127d0",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05028875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "029_panel-7-59_gemini-2.5-flash",
@@ -4226,7 +4808,13 @@
       "messages_sha256": "37e364519554627c9c4a2740d21b5ed800fe67a28104504165220c0a5a548f0a",
       "request_sha256": "cc95e16d10a3bde1281ca51343c7f2aedfafa52559fb60d2733755023e5127d0",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.01256115,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "030_panel-9-51_gpt-5.5",
@@ -4262,7 +4850,13 @@
       "request_sha256": "708845f318398a67ac90bffce21b76ce67666f1edfb5ec1385c29d9276fe01e7",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0726625,
+      "elapsed_seconds": 70.64880712500008,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "030_panel-9-51_gpt-5",
@@ -4277,7 +4871,13 @@
       "request_sha256": "e2410b597e8f37d06bc24b66a72bd5d4d2e1e3aa7bd30b18ceefd8efb39c7af4",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 157.66040554199998,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "030_panel-9-51_gpt-4.1",
@@ -4313,7 +4913,13 @@
       "request_sha256": "97bc447b1c106d95fedf0d898ff2219ce374970f3528bcb531ad2307b2e321c8",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.148225,
+      "elapsed_seconds": 67.04444079200002,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "030_panel-9-51_claude-opus-4.6",
@@ -4328,7 +4934,13 @@
       "request_sha256": "bde9ea1020efec97bd456c11dd2a937389b8b101bfcb281165f82c8d4c74bd8c",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.155215,
+      "elapsed_seconds": 87.59257120800001,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "030_panel-9-51_gemini-2.5-pro",
@@ -4342,7 +4954,13 @@
       "messages_sha256": "d215a31992b75677dc4fd85bbb32669c8390c4a035d5de2d44367db62850d9ce",
       "request_sha256": "6cb0f5344845aabc62c20850faa07051b01af5846f190267f300d5db50b627f8",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05050375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "030_panel-9-51_gemini-2.5-flash",
@@ -4356,7 +4974,13 @@
       "messages_sha256": "d215a31992b75677dc4fd85bbb32669c8390c4a035d5de2d44367db62850d9ce",
       "request_sha256": "6cb0f5344845aabc62c20850faa07051b01af5846f190267f300d5db50b627f8",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.0125724,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "031_panel-5-59_gpt-5.5",
@@ -4392,7 +5016,13 @@
       "request_sha256": "c4e2cfbd56319419a92db5bf78921ff88b9ab897043c656cda869f1a588cbaa5",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0221425,
+      "elapsed_seconds": 18.367441999999983,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "031_panel-5-59_gpt-5",
@@ -4407,7 +5037,13 @@
       "request_sha256": "f26d76600d9a72cf04c1e4be14d65a709b3a888677f1825da643b857a8c9c16d",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.06187625,
+      "elapsed_seconds": 88.859189125,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "031_panel-5-59_gpt-4.1",
@@ -4443,7 +5079,13 @@
       "request_sha256": "2669a44137af7e339eb4a9951f8fb98eedbd8f9279bfca9899d6abaab3eb94d7",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.02605,
+      "elapsed_seconds": 17.88093012500002,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "031_panel-5-59_claude-opus-4.6",
@@ -4458,7 +5100,13 @@
       "request_sha256": "52be811be1463c45a29293d693b812a488ca702689b25f0d33764bc8441cddd4",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.05229,
+      "elapsed_seconds": 34.306173375000014,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "031_panel-5-59_gemini-2.5-pro",
@@ -4472,7 +5120,13 @@
       "messages_sha256": "40a8f303dd49be2846a01a50990ee7f98742ffb211cc511fc0bd79f45aa3506c",
       "request_sha256": "1a61c4d88aab8e5879ea264ed564ca318e1fbc6e2bc07d41e3a2046acd4cee0e",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.02497875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "031_panel-5-59_gemini-2.5-flash",
@@ -4486,7 +5140,13 @@
       "messages_sha256": "40a8f303dd49be2846a01a50990ee7f98742ffb211cc511fc0bd79f45aa3506c",
       "request_sha256": "1a61c4d88aab8e5879ea264ed564ca318e1fbc6e2bc07d41e3a2046acd4cee0e",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.01559115,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "032_panel-7-61_gpt-5.5",
@@ -4522,7 +5182,13 @@
       "request_sha256": "e235af8ec18ae2fd73174c465318a5dba981d3eb0f4edf01c79d5abeddd450b7",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0735475,
+      "elapsed_seconds": 56.924699375000046,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "032_panel-7-61_gpt-5",
@@ -4537,7 +5203,13 @@
       "request_sha256": "90ec9e027fc1b54ed625e01858fc29f2becdbf8653fca0029af0250a94b2fff9",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 161.03801870899997,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "032_panel-7-61_gpt-4.1",
@@ -4573,7 +5245,13 @@
       "request_sha256": "bfac6be28c53f5710e7f627ae661af444eca11370fcb4f3275d72056df596259",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.313325,
+      "elapsed_seconds": 140.93522975000008,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "length"
     },
     {
       "call_id": "032_panel-7-61_claude-opus-4.6",
@@ -4588,7 +5266,13 @@
       "request_sha256": "0d862e6b167749673a0dbd7f4a68e4c8df498e9890c075ae053270df7c253c7d",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.111415,
+      "elapsed_seconds": 69.48847475000002,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "032_panel-7-61_gemini-2.5-pro",
@@ -4602,7 +5286,13 @@
       "messages_sha256": "d299e106035e91333ee08327a9ae891e33803a1694d628f42fe49a09d3fd9943",
       "request_sha256": "1e28560d557776ac0d52a25d76e1d39c7cde5cedbf373821b3b2aac60fd951a8",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.03995375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "032_panel-7-61_gemini-2.5-flash",
@@ -4616,7 +5306,13 @@
       "messages_sha256": "d299e106035e91333ee08327a9ae891e33803a1694d628f42fe49a09d3fd9943",
       "request_sha256": "1e28560d557776ac0d52a25d76e1d39c7cde5cedbf373821b3b2aac60fd951a8",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.0125649,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "033_panel-9-53_gpt-5.5",
@@ -4631,7 +5327,13 @@
       "request_sha256": "7dbce4785ce0ecf18a8cda76b1d1f965ed70b01bf35ff94f1d5324ae852b7472",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.129815,
+      "elapsed_seconds": 57.21472604099995,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "033_panel-9-53_gpt-5.4",
@@ -4646,7 +5348,13 @@
       "request_sha256": "74b98512e651c850f51a3f9eb831046fa2635526e26eb0a4726485d76e640879",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0846925,
+      "elapsed_seconds": 68.76541945799988,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "033_panel-9-53_gpt-5",
@@ -4661,7 +5369,13 @@
       "request_sha256": "6ae426e3466e901db93e0da768efedd34bf01f24ab95046a0e31c6c7cf4d9e4c",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 197.93258945799994,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "033_panel-9-53_gpt-4.1",
@@ -4697,7 +5411,13 @@
       "request_sha256": "5115c67b4b11c33ab0fd875cdea6001acc0d532721d9fa0c9f4f10b88656d91d",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.15365,
+      "elapsed_seconds": 77.07871354200006,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "033_panel-9-53_claude-opus-4.6",
@@ -4712,7 +5432,13 @@
       "request_sha256": "d1a2eff241cc4c52a7f7a8ab5adb3959161f2c0736f620c8a0b9c6f946caee40",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.15559,
+      "elapsed_seconds": 93.504736375,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "033_panel-9-53_gemini-2.5-pro",
@@ -4726,7 +5452,13 @@
       "messages_sha256": "51deb6576c3d73d95dd2b8c51812eb6fe9499af060e59dbd3997caeedb2018e8",
       "request_sha256": "95e95758743bfae866e212c4e32693294c6b8d55063ac2b4351e1e78a467834c",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05031375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "033_panel-9-53_gemini-2.5-flash",
@@ -4740,7 +5472,13 @@
       "messages_sha256": "51deb6576c3d73d95dd2b8c51812eb6fe9499af060e59dbd3997caeedb2018e8",
       "request_sha256": "95e95758743bfae866e212c4e32693294c6b8d55063ac2b4351e1e78a467834c",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     },
     {
       "call_id": "034_panel-5-63_gpt-5.5",
@@ -4755,7 +5493,13 @@
       "request_sha256": "d8d314cd9d7ab6a58628fb66a58f1a42644f46ed9cb6be97f50cf0ac0042512b",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.063095,
+      "elapsed_seconds": 25.24200087500003,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "034_panel-5-63_gpt-5.4",
@@ -4770,7 +5514,13 @@
       "request_sha256": "5702cadba1b9fb83dc8b353da210b394aa42c2cbc668effb15826988b26be883",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0248575,
+      "elapsed_seconds": 22.525997666999956,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "034_panel-5-63_gpt-5",
@@ -4785,7 +5535,13 @@
       "request_sha256": "fe6f8f54e4c5554638dbc761c8d8168b923f85f7e0341f024809a958c71ceef5",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.09130625,
+      "elapsed_seconds": 149.86878249999995,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "034_panel-5-63_gpt-4.1",
@@ -4821,7 +5577,13 @@
       "request_sha256": "32a05ba7525e1745bf484d94fdaf444d656e95ccc6eae563ce068d096fc744bf",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0299,
+      "elapsed_seconds": 16.378278832999968,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "034_panel-5-63_claude-opus-4.6",
@@ -4836,7 +5598,13 @@
       "request_sha256": "37fa8f0946b89a15227f17ac72511b3a15f2d5bc2c1ebfd70aa4cf28f7600c2f",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.051465,
+      "elapsed_seconds": 34.532309292000036,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "034_panel-5-63_gemini-2.5-pro",
@@ -4850,7 +5618,13 @@
       "messages_sha256": "676c9cea51d209e1973bbb83450070bd036468988589bb07f1f126f5202db8d9",
       "request_sha256": "434b8c475fc3cdda7644b2ce17443c29d1b23b84ca6945984747d3e8748a9a5b",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.04419375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "034_panel-5-63_gemini-2.5-flash",
@@ -4864,7 +5638,13 @@
       "messages_sha256": "676c9cea51d209e1973bbb83450070bd036468988589bb07f1f126f5202db8d9",
       "request_sha256": "434b8c475fc3cdda7644b2ce17443c29d1b23b84ca6945984747d3e8748a9a5b",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0116124,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_gpt-5.5",
@@ -4879,7 +5659,13 @@
       "request_sha256": "9c2c90067d0ee6fbbb202dcb3bfe4fc7dcf14bdf8a478a849371093356aa1fd2",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.074435,
+      "elapsed_seconds": 29.416752374999987,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_gpt-5.4",
@@ -4894,7 +5680,13 @@
       "request_sha256": "aa672c1dc8df19f381839fad9e951578afd833ba218fb487d3f42959619164ce",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0620575,
+      "elapsed_seconds": 55.46204462500009,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_gpt-5",
@@ -4909,7 +5701,13 @@
       "request_sha256": "dfd35ce019e87f63e7c2dfbd40c053d16f4ba642fc814b1c3727bbafa8971616",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.09716625,
+      "elapsed_seconds": 192.46137912500012,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_gpt-4.1",
@@ -4945,7 +5743,13 @@
       "request_sha256": "e2bf334eb9409bd89db12eb1c63bbdfe611ff821d4fd7fdd1db26dc3c9a84338",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.099125,
+      "elapsed_seconds": 45.616680417000005,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_claude-opus-4.6",
@@ -4960,7 +5764,13 @@
       "request_sha256": "b54c69b62df4c51f23a049047e0eb1a4b877ddc32b4eef0764c8df34388d4434",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.107215,
+      "elapsed_seconds": 68.030502584,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_gemini-2.5-pro",
@@ -4974,7 +5784,13 @@
       "messages_sha256": "fab9b189f0dd226fdafd7858c252ac26c0ddae4e0ae0c55990481815ae74d4dd",
       "request_sha256": "9ab5ae84b1dec5d83098802e99bc769d68c80df59e061c2b353293670e188b06",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05029375,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "035_panel-7-62_gemini-2.5-flash",
@@ -4988,7 +5804,13 @@
       "messages_sha256": "fab9b189f0dd226fdafd7858c252ac26c0ddae4e0ae0c55990481815ae74d4dd",
       "request_sha256": "9ab5ae84b1dec5d83098802e99bc769d68c80df59e061c2b353293670e188b06",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.0125699,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gpt-5.5",
@@ -5003,7 +5825,13 @@
       "request_sha256": "5df5968a4acecbc355f20950e2be9d60237a33b6ecb3fafa2975300f7e36dbca",
       "batch_worst_case_usd": 0.22432000000000002,
       "worst_case_usd": 0.43864000000000003,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.107825,
+      "elapsed_seconds": 43.312727791,
+      "returned_model": "openai/gpt-5.5",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gpt-5.4",
@@ -5018,7 +5846,13 @@
       "request_sha256": "68d0e4f2d583e4fc66d4188579e565f24423662ac9c027830c8351d50f9f5ac8",
       "batch_worst_case_usd": 0.11716,
       "worst_case_usd": 0.22432000000000002,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.0781075,
+      "elapsed_seconds": 60.899343499999986,
+      "returned_model": "openai/gpt-5.4",
+      "provider": "OpenAI",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gpt-5",
@@ -5033,7 +5867,13 @@
       "request_sha256": "97eada412501b79e5e6f1ca1af8aa761580a33e3516f67e390fdce26a108335e",
       "batch_worst_case_usd": 0.07894000000000001,
       "worst_case_usd": 0.14788000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.12399625,
+      "elapsed_seconds": 188.642082166,
+      "returned_model": "openai/gpt-5",
+      "provider": "OpenAI",
+      "finish_reason": "length"
     },
     {
       "call_id": "036_panel-9-58_gpt-4.1",
@@ -5069,7 +5909,13 @@
       "request_sha256": "e27c4c4f411cbf944125df37b4bd73432b00ad001672cd32a20c5e25f3525498",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "strict",
+      "cost_usd": 0.1213,
+      "elapsed_seconds": 54.45155250000005,
+      "returned_model": "anthropic/claude-opus-4.7",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_claude-opus-4.6",
@@ -5084,7 +5930,13 @@
       "request_sha256": "b3332cda82db3e0efa8c32e593bbe107675c635487ce71096d6b568d4e9ce258",
       "batch_worst_case_usd": 0.19360000000000002,
       "worst_case_usd": 0.37720000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "format_only",
+      "cost_usd": 0.172765,
+      "elapsed_seconds": 100.73170712500001,
+      "returned_model": "anthropic/claude-opus-4.6",
+      "provider": "Anthropic",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gemini-2.5-pro",
@@ -5098,7 +5950,13 @@
       "messages_sha256": "c620ec557322e399547e157c44c1aa404093ee4f7dc96a846d4169c0e18f3ae4",
       "request_sha256": "e261ae628e5cd718dbc8e3ea4b92b04d77db4d28442503a2269b115ae5a4ef4b",
       "batch_worst_case_usd": 0.07894000000000001,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "wrong",
+      "cost_usd": 0.05041875,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-pro",
+      "provider": "Google",
+      "finish_reason": "stop"
     },
     {
       "call_id": "036_panel-9-58_gemini-2.5-flash",
@@ -5112,7 +5970,13 @@
       "messages_sha256": "c620ec557322e399547e157c44c1aa404093ee4f7dc96a846d4169c0e18f3ae4",
       "request_sha256": "e261ae628e5cd718dbc8e3ea4b92b04d77db4d28442503a2269b115ae5a4ef4b",
       "batch_worst_case_usd": 0.027160000000000004,
-      "state": "not_run"
+      "state": "recorded",
+      "outcome": "truncated",
+      "cost_usd": 0.0155899,
+      "elapsed_seconds": null,
+      "returned_model": "google/gemini-2.5-flash",
+      "provider": "Google",
+      "finish_reason": "length"
     }
   ],
   "retired": {
@@ -5176,68 +6040,74 @@
     {
       "model": "claude-opus-4.6",
       "size": 5,
-      "format_only": 4,
-      "not_run": 8
+      "format_only": 12
     },
     {
       "model": "claude-opus-4.6",
       "size": 7,
-      "format_only": 4,
-      "not_run": 8
+      "format_only": 12
     },
     {
       "model": "claude-opus-4.6",
       "size": 9,
+      "format_only": 12
+    },
+    {
+      "model": "claude-opus-4.7",
+      "size": 5,
+      "strict": 12
+    },
+    {
+      "model": "claude-opus-4.7",
+      "size": 7,
+      "strict": 11,
+      "truncated": 1
+    },
+    {
+      "model": "claude-opus-4.7",
+      "size": 9,
+      "strict": 12
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "size": 5,
+      "format_only": 8,
+      "truncated": 3,
+      "strict": 1
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "size": 7,
+      "truncated": 4,
+      "wrong": 5,
+      "format_only": 2,
+      "strict": 1
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "size": 9,
+      "truncated": 10,
+      "wrong": 2
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "size": 5,
+      "strict": 3,
+      "format_only": 9
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "size": 7,
+      "format_only": 10,
+      "wrong": 2
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "size": 9,
       "format_only": 4,
-      "not_run": 8
-    },
-    {
-      "model": "claude-opus-4.7",
-      "size": 5,
-      "strict": 9,
-      "not_run": 3
-    },
-    {
-      "model": "claude-opus-4.7",
-      "size": 7,
-      "strict": 9,
-      "not_run": 3
-    },
-    {
-      "model": "claude-opus-4.7",
-      "size": 9,
-      "strict": 8,
-      "not_run": 4
-    },
-    {
-      "model": "gemini-2.5-flash",
-      "size": 5,
-      "not_run": 12
-    },
-    {
-      "model": "gemini-2.5-flash",
-      "size": 7,
-      "not_run": 12
-    },
-    {
-      "model": "gemini-2.5-flash",
-      "size": 9,
-      "not_run": 12
-    },
-    {
-      "model": "gemini-2.5-pro",
-      "size": 5,
-      "not_run": 12
-    },
-    {
-      "model": "gemini-2.5-pro",
-      "size": 7,
-      "not_run": 12
-    },
-    {
-      "model": "gemini-2.5-pro",
-      "size": 9,
-      "not_run": 12
+      "wrong": 6,
+      "strict": 1,
+      "truncated": 1
     },
     {
       "model": "gpt-4.1",
@@ -5258,74 +6128,65 @@
     {
       "model": "gpt-5",
       "size": 5,
+      "strict": 12
+    },
+    {
+      "model": "gpt-5",
+      "size": 7,
+      "strict": 7,
+      "truncated": 5
+    },
+    {
+      "model": "gpt-5",
+      "size": 9,
       "strict": 4,
-      "not_run": 8
-    },
-    {
-      "model": "gpt-5",
-      "size": 7,
-      "strict": 3,
-      "truncated": 1,
-      "not_run": 8
-    },
-    {
-      "model": "gpt-5",
-      "size": 9,
-      "strict": 2,
-      "truncated": 2,
-      "not_run": 8
+      "truncated": 8
     },
     {
       "model": "gpt-5.4",
       "size": 5,
-      "strict": 9,
-      "not_run": 3
+      "strict": 12
     },
     {
       "model": "gpt-5.4",
       "size": 7,
-      "strict": 9,
-      "not_run": 3
+      "strict": 12
     },
     {
       "model": "gpt-5.4",
       "size": 9,
-      "strict": 8,
-      "not_run": 4
+      "strict": 12
     },
     {
       "model": "gpt-5.5",
       "size": 5,
-      "strict": 11,
-      "not_run": 1
+      "strict": 12
     },
     {
       "model": "gpt-5.5",
       "size": 7,
-      "strict": 11,
-      "not_run": 1
+      "strict": 12
     },
     {
       "model": "gpt-5.5",
       "size": 9,
-      "strict": 10,
-      "not_run": 2
+      "strict": 12
     }
   ],
   "by_model": {
     "gpt-5.5": {
       "model": "openai/gpt-5.5",
-      "recorded": 32,
-      "correct": 32,
-      "strict": 32,
+      "recorded": 36,
+      "correct": 36,
+      "strict": 36,
       "correct_cp95": [
-        0.8911188393206471,
+        0.902606244085508,
         1.0
       ],
       "outcomes": {
-        "strict": 32
+        "strict": 36
       },
-      "cost_usd": 2.45788,
+      "cost_usd": 2.83305,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -5333,17 +6194,17 @@
     },
     "gpt-5.4": {
       "model": "openai/gpt-5.4",
-      "recorded": 26,
-      "correct": 26,
-      "strict": 26,
+      "recorded": 36,
+      "correct": 36,
+      "strict": 36,
       "correct_cp95": [
-        0.8677253955022459,
+        0.902606244085508,
         1.0
       ],
       "outcomes": {
-        "strict": 26
+        "strict": 36
       },
-      "cost_usd": 1.16372,
+      "cost_usd": 1.80612,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -5351,18 +6212,18 @@
     },
     "gpt-5": {
       "model": "openai/gpt-5",
-      "recorded": 12,
-      "correct": 9,
-      "strict": 9,
+      "recorded": 36,
+      "correct": 23,
+      "strict": 23,
       "correct_cp95": [
-        0.4281415381218109,
-        0.9451393554720073
+        0.46220900016816413,
+        0.7917770529134072
       ],
       "outcomes": {
-        "strict": 9,
-        "truncated": 3
+        "strict": 23,
+        "truncated": 13
       },
-      "cost_usd": 1.125495,
+      "cost_usd": 3.476905,
       "route": "on_demand",
       "providers": [
         "OpenAI"
@@ -5389,17 +6250,18 @@
     },
     "claude-opus-4.7": {
       "model": "anthropic/claude-opus-4.7",
-      "recorded": 26,
-      "correct": 26,
-      "strict": 26,
+      "recorded": 36,
+      "correct": 35,
+      "strict": 35,
       "correct_cp95": [
-        0.8677253955022459,
-        1.0
+        0.8547107352531467,
+        0.9992969747940952
       ],
       "outcomes": {
-        "strict": 26
+        "strict": 35,
+        "truncated": 1
       },
-      "cost_usd": 1.924125,
+      "cost_usd": 3.02865,
       "route": "on_demand",
       "providers": [
         "Anthropic"
@@ -5407,17 +6269,17 @@
     },
     "claude-opus-4.6": {
       "model": "anthropic/claude-opus-4.6",
-      "recorded": 12,
-      "correct": 12,
+      "recorded": 36,
+      "correct": 36,
       "strict": 0,
       "correct_cp95": [
-        0.7353515306029486,
+        0.902606244085508,
         1.0
       ],
       "outcomes": {
-        "format_only": 12
+        "format_only": 36
       },
-      "cost_usd": 1.477905,
+      "cost_usd": 4.454665,
       "route": "on_demand",
       "providers": [
         "Anthropic"
@@ -5425,26 +6287,46 @@
     },
     "gemini-2.5-pro": {
       "model": "google/gemini-2.5-pro",
-      "recorded": 0,
-      "correct": 0,
-      "strict": 0,
-      "correct_cp95": null,
-      "outcomes": {},
-      "cost_usd": 0,
-      "route": null,
-      "providers": []
+      "recorded": 36,
+      "correct": 27,
+      "strict": 4,
+      "correct_cp95": [
+        0.5779704154218561,
+        0.8787967058761648
+      ],
+      "outcomes": {
+        "strict": 4,
+        "format_only": 23,
+        "wrong": 8,
+        "truncated": 1
+      },
+      "cost_usd": 1.54506,
+      "route": "batch",
+      "providers": [
+        "Google"
+      ]
     },
     "gemini-2.5-flash": {
       "model": "google/gemini-2.5-flash",
-      "recorded": 0,
-      "correct": 0,
-      "strict": 0,
-      "correct_cp95": null,
-      "outcomes": {},
-      "cost_usd": 0,
-      "route": null,
-      "providers": []
+      "recorded": 36,
+      "correct": 12,
+      "strict": 2,
+      "correct_cp95": [
+        0.18556180982592124,
+        0.5097025466518912
+      ],
+      "outcomes": {
+        "format_only": 10,
+        "truncated": 17,
+        "wrong": 7,
+        "strict": 2
+      },
+      "cost_usd": 0.481929,
+      "route": "batch",
+      "providers": [
+        "Google"
+      ]
     }
   },
-  "cost_usd_reported": 8.231565
+  "cost_usd_reported": 17.708819
 }

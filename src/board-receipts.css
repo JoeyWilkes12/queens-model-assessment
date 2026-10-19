@@ -1,0 +1,56 @@
+/* Board receipts: one page per panel board. Colors come from the scoreboard palette (.sb-vars). */
+.mini-board { display: block; width: 100%; height: auto; }
+.mini-board--large { max-width: min(420px, 100%); }
+.mini-board--thumb { width: 64px; flex: 0 0 64px; }
+.mini-board-letter { fill: var(--navy-950); font-family: var(--mono-font); font-size: 7px; font-weight: 600; opacity: .7; }
+.mini-board-queen path, .mini-board-queen circle { fill: var(--navy-950); stroke: var(--navy-950); stroke-width: 1.6px; stroke-linejoin: round; }
+.mini-board-queen path + path { fill: none; }
+.mini-board-off { fill: none; stroke: #941c14; stroke-width: 2px; }
+.mini-board-conflict { fill: none; stroke: #941c14; stroke-width: 2px; stroke-linecap: round; }
+
+.br-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.br-card { display: flex; gap: 12px; align-items: center; min-height: 88px; padding: 10px 12px; border: 1px solid var(--border-strong); background: var(--surface-raised); color: var(--text-primary); text-decoration: none; }
+.br-card:hover { border-color: var(--text-accent); }
+.br-card:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.br-card-text { display: grid; gap: 2px; min-width: 0; font-size: .8rem; color: var(--text-secondary); }
+.br-card-text strong { color: var(--text-primary); font-family: var(--mono-font); font-size: .86rem; }
+.br-card-stratum { color: var(--text-muted); font-size: .72rem; }
+
+.br-pager { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; font-family: var(--mono-font); font-size: .8rem; }
+.br-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: start; }
+.br-board figure { margin: 0; display: grid; gap: 8px; justify-items: center; }
+.br-board img { display: block; width: 100%; max-width: 420px; height: auto; border: 1px solid var(--border-subtle); }
+.br-board figcaption { color: var(--text-secondary); font-size: .8rem; }
+.br-facts { margin: 14px 0 0; padding-left: 1.1rem; font-size: .88rem; line-height: 1.55; }
+
+.br-chart { display: grid; gap: 6px; }
+.br-row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1.2fr); gap: 4px 14px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border-subtle); }
+.br-who { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.br-who > span:last-child { display: grid; min-width: 0; }
+.br-name { overflow: hidden; color: var(--text-primary); font-size: .84rem; text-overflow: ellipsis; white-space: nowrap; }
+.br-family { color: var(--text-muted); font-size: .7rem; }
+.br-row--baseline .br-name { font-style: italic; }
+.br-outcome, .br-cost { display: grid; gap: 3px; min-width: 0; }
+.br-outcome-track { display: flex; height: 14px; background: var(--sb-grid); }
+.br-outcome-track > .sb-fill { flex: 1 1 auto; border-radius: 0 4px 4px 0; }
+.br-outcome-track.is-not-run { background: none; border: 1.5px dashed var(--text-muted); }
+.br-fill--baseline { background: repeating-linear-gradient(135deg, var(--sb-base) 0 2px, var(--sb-base-bg) 2px 5px); }
+.br-outcome-label { color: var(--text-primary); font-size: .74rem; font-weight: 700; }
+.br-outcome-note { color: var(--text-secondary); font-size: .7rem; }
+.br-cost-label { color: var(--text-secondary); font-family: var(--mono-font); font-size: .68rem; line-height: 1.3; }
+@media (max-width: 640px) {
+  .br-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'who who' 'outcome cost'; }
+  .br-who { grid-area: who; }
+  .br-outcome { grid-area: outcome; }
+  .br-cost { grid-area: cost; }
+}
+
+.br-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px 12px; margin: 0; padding: 0; list-style: none; }
+.br-gallery li { display: grid; gap: 3px; align-content: start; padding: 8px; border: 1px solid var(--border-subtle); background: var(--surface-raised); }
+.br-gallery li.is-solved { border-color: var(--sb-solid); }
+.br-gallery-name { color: var(--text-primary); font-size: .8rem; font-weight: 700; }
+.br-gallery-outcome { color: var(--text-secondary); font-size: .74rem; }
+.br-gallery-cost { color: var(--text-secondary); font-family: var(--mono-font); font-size: .7rem; }
+.br-empty { display: grid; place-items: center; aspect-ratio: 1; border: 1.5px dashed var(--text-muted); color: var(--text-muted); font-size: .76rem; }
+.br-links { display: inline-flex; flex-wrap: wrap; gap: 4px 10px; }
+.br-links > span { display: inline-flex; gap: 6px; }

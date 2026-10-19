@@ -1,0 +1,45 @@
+{
+  "id": "gen-1792439509-nvchP0P1JU7CNvYAXtnV",
+  "object": "chat.completion",
+  "created": 1792439509,
+  "model": "anthropic/claude-opus-4.6",
+  "provider": "Anthropic",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "end_turn",
+      "message": {
+        "role": "assistant",
+        "content": "Looking at this puzzle, I need to place 7 queens — one per row, column, and region.\n\n**Identifying forced placements (single-cell regions):**\n- **Region D:** Only cell (2,3) → Row 2 = Col 3\n- **Region F:** Only cell (4,4) → Row 4 = Col 4\n- **Region G:** Only cell (7,5) → Row 7 = Col 5\n\n**Propagating adjacency constraints:**\n- Row 1: Can't be col 2 or 4 (adjacent to R2C3). Available from remaining cols: {1, 6, 7}\n- Row 3: Can't be col 2,4 (adj R2C3) or col 3,5 (adj R4C4). Available: {1, 6, 7}\n- Row 5: Can't be col 3,5 (adj R4C4). Available from remaining: {1, 2, 6, 7}\n- Row 6: Can't be col 4,6 (adj R7C5). Available from remaining: {1, 2, 7}\n\n**Region B** only appears in Row 1 among remaining rows (at col 6). → **Row 1 = Col 6**\n\n**Region E** among remaining options only appears at Row 5, Col 2. → **Row 5 = Col 2**\n\n**Row 6** must differ from Row 5 (col 2) by ≥2. From {1, 7}: only col 7 works. → **Row 6 = Col 7**\n\n**Row 3** gets the last remaining column. → **Row 3 = Col 1**\n\n**Verification:**\n- Columns: 6,3,1,4,2,7,5 — all distinct ✓\n- Regions: B,D,A,F,E,C,G — all distinct ✓\n- Adjacency: |6-3|=3, |3-1|=2, |1-4|=3, |4-2|=2, |2-7|=5, |7-5|=2 — all ≥2 ✓\n\n{\"board_id\":\"panel-7-46\",\"columns_by_row\":[6,3,1,4,2,7,5]}",
+        "refusal": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1083,
+    "completion_tokens": 3216,
+    "total_tokens": 4299,
+    "cost": 0.085815,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.085815,
+      "upstream_inference_prompt_cost": 0.005415,
+      "upstream_inference_completions_cost": 0.0804
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2653,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

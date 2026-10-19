@@ -1,0 +1,10 @@
+{
+  "diagnostic_only": true,
+  "candidate_count": 1,
+  "markdown_fence_present": true,
+  "visible_character_count": 7350,
+  "rule_valid_after_extraction": false,
+  "checks": {},
+  "failure": "schema",
+  "extra_visible_text": true
+}

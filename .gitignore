@@ -17,3 +17,5 @@ research/**/raw-*/
 vite.review.config.ts
 .DS_Store
 .empower/**/npm-cache/
+.venv-z3/
+.venv-z3-python/

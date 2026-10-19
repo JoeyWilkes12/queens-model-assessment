@@ -1,6 +1,7 @@
-"""OpenRouter cost per receipt, board, model and evaluation, from published evidence only.
+"""API cost per receipt, board, model and evaluation, from published evidence only.
 
-Only spend billed through OpenRouter is counted. Each receipt's cost has one basis:
+Two providers bill these studies: OpenRouter (every language model and Jev) and SubQ (SubQ Snap,
+called directly). Each receipt's cost has one basis:
 
   reported   usage.cost returned by OpenRouter (metadata or response);
   derived    a batch item, which reports tokens but no per-item cost: tokens x the
@@ -9,7 +10,10 @@ Only spend billed through OpenRouter is counted. Each receipt's cost has one bas
   unbilled   an HTTP 4xx rejection before any generation (routing, validation, 429);
   unknown    no generation ID or usage: a client timeout or an upstream 5xx. Never
              guessed and never counted as $0;
-  not_run    a scheduled or blocked request that was never answered (excluded).
+  not_run    a scheduled or blocked request that was never answered (excluded);
+  subq_rate  a SubQ Snap request: its input tokens x SubQ's published $0.05 per million (output is
+             free). The 2,434 answered SubQ requests carry 3,325,317 input tokens, $0.1663 at that
+             rate; the SubQ account showed $0.17 for all of them on 19 October.
 
 A receipt is *scored* when it is the attempt the chart grades for its board. Re-runs,
 version probes and order controls, text-only diagnostics and requests tied to no board
@@ -18,7 +22,6 @@ per-board figure is the cost of the graded attempts only. The chart and the ledg
 the same per-board definition: the scored cost of the boards whose cost is known,
 divided by their number.
 
-SubQ Snap uses its own preview API, not OpenRouter, so its receipts are excluded.
 Agent-led OpenRouter use outside these studies is not in the evidence and is not counted.
 """
 import collections
@@ -29,7 +32,8 @@ import pathlib
 E = pathlib.Path(__file__).resolve().parents[2] / "public/evidence"
 CACHED_FACTOR = 0.1
 BATCH_PRICES = {("2026-10-16-frontier-image-panel", "openai/gpt-5.6-sol"): (2e-6, 1e-5)}
-NOT_OPENROUTER = {"SubQ"}
+SUBQ = "SubQ"
+SUBQ_USD_PER_INPUT_TOKEN = 0.05 / 1_000_000
 # Jev's 30 September study scores only the trajectory calls; probes and order controls test the route.
 SCORED_RUN_PREFIX = {"2026-09-30-jev-trajectories": "sequence-"}
 
@@ -57,15 +61,24 @@ def scored(record):
     return record["run"].startswith(prefix) if prefix else True
 
 
+def provider(record):
+    return SUBQ if record.get("provider") == SUBQ else "OpenRouter"
+
+
 def receipt_cost(record):
     """(usd or None, basis) for one manifest record."""
-    if record.get("provider") in NOT_OPENROUTER:
-        return None, "not_openrouter"
     if record.get("status") == "not_run" or not record.get("files"):
         return None, "not_run"
     files = record["files"]
     meta = _read(files["metadata"]) if files.get("metadata") else None
     response = _read(files["response"]) if files.get("response") else None
+    if record.get("provider") == SUBQ:
+        usage = (meta or {}).get("usage") if isinstance(meta, dict) else None
+        tokens = usage.get("input_tokens") if isinstance(usage, dict) else None
+        if record.get("status") == "success" and isinstance(tokens, int):
+            return round(tokens * SUBQ_USD_PER_INPUT_TOKEN, 9), "subq_rate"
+        status = meta.get("http_status") if isinstance(meta, dict) else None
+        return (0.0, "unbilled") if isinstance(status, int) and 400 <= status < 500 else (None, "unknown")
     for source in (meta, response):
         if isinstance(source, dict):
             usage = source.get("usage") if isinstance(source.get("usage"), dict) else {}
@@ -94,14 +107,19 @@ def records():
     return _manifest_records()
 
 
-def receipt_costs():
-    """manifest id -> (usd or None, basis) for every OpenRouter receipt that was answered or failed."""
+@functools.lru_cache(maxsize=None)
+def _receipt_costs():
     out = {}
     for record in records():
         usd, basis = receipt_cost(record)
-        if basis not in ("not_openrouter", "not_run"):
+        if basis != "not_run":
             out[record["id"]] = (usd, basis)
     return out
+
+
+def receipt_costs():
+    """manifest id -> (usd or None, basis) for every receipt that was answered or failed."""
+    return dict(_receipt_costs())
 
 
 def board_costs(study, model, costs=None):
@@ -115,6 +133,29 @@ def board_costs(study, model, costs=None):
             for board, items in cells.items()}
 
 
+def other_spend(studies, model, graded_ids=None, costs=None):
+    """Spend on a chart model's requests that are not its graded attempts, from the given studies:
+    re-runs, probes and order controls, diagnostics, board-less calls. graded_ids names the graded
+    receipts when the chart grades something other than scored() (the original three boards).
+    by_size keys a board's size as a string; requests tied to no board are 'unsized'."""
+    costs = costs or receipt_costs()
+    out = {"by_size": collections.defaultdict(float), "unsized": 0.0, "requests": 0, "unknown": 0}
+    for record in records():
+        if record["study"] not in studies or model_key(record["model"]) != model or record["id"] not in costs:
+            continue
+        if (record["id"] in graded_ids) if graded_ids is not None else scored(record):
+            continue
+        usd, basis = costs[record["id"]]
+        out["requests"] += 1
+        out["unknown"] += basis == "unknown"
+        if record.get("board") and record.get("size"):
+            out["by_size"][str(record["size"])] += usd or 0.0
+        else:
+            out["unsized"] += usd or 0.0
+    return {"by_size": {size: round(usd, 6) for size, usd in sorted(out["by_size"].items())}, "unsized": round(out["unsized"], 6),
+            "requests": out["requests"], "unknown": out["unknown"], "studies": list(studies)}
+
+
 def evaluations(solved_lookup, costs=None):
     """One row per evaluation and model. solved_lookup(evaluation, model) -> (solved, graded) or None."""
     costs = costs or receipt_costs()
@@ -125,6 +166,7 @@ def evaluations(solved_lookup, costs=None):
             continue
         usd, basis = costs[record["id"]]
         row = rows[(evaluation_key(record), model_key(record["model"]))]
+        row["provider"] = provider(record)
         row["receipts"] += 1
         row["basis"][basis] += 1
         row["total"] += usd or 0.0
@@ -139,11 +181,34 @@ def evaluations(solved_lookup, costs=None):
         unknown_boards = len(row["cells"]) - len(known)
         scored_usd = sum(known.values())
         solved = solved_lookup(evaluation, model)
-        out.append({"study": evaluation, "model": model, "boards": len(row["cells"]), "receipts": row["receipts"],
+        out.append({"study": evaluation, "model": model, "provider": row["provider"], "boards": len(row["cells"]), "receipts": row["receipts"],
                     "cost_usd": round(row["total"], 6), "scored_cost_usd": round(scored_usd, 6),
+                    "cost_per_request_usd": round(row["total"] / row["receipts"], 9) if row["receipts"] else None,
                     "cost_per_board_usd": round(scored_usd / len(known), 6) if known else None,
                     "unknown_boards": unknown_boards, "unscored_receipts": row["unscored"], "unscored_usd": round(row["other"], 6),
                     "boards_solved": solved[0] if solved else None, "boards_graded": solved[1] if solved else None,
                     "cost_per_solved_board_usd": round(scored_usd / solved[0], 6) if solved and solved[0] else None,
                     "basis": dict(row["basis"])})
     return out
+
+
+def receipt_index(costs=None):
+    """Per-receipt cost for the evidence pages, grouped by study to keep the file small:
+    {study: {run: [usd or None, basis, board total or None, requests on that board, unknown on that board]}}.
+    The board figures cover every request the same model made on the same board in the same study
+    (graded attempts, re-runs, probes); None when one of them has an unknown cost."""
+    costs = costs or receipt_costs()
+    by_board = collections.defaultdict(list)
+    for record in records():
+        if record["id"] in costs and record.get("board"):
+            by_board[(record["study"], model_key(record["model"]), record["board"])].append(costs[record["id"]])
+    out = collections.defaultdict(dict)
+    for record in records():
+        if record["id"] not in costs:
+            continue
+        usd, basis = costs[record["id"]]
+        items = by_board.get((record["study"], model_key(record["model"]), record.get("board")), [])
+        unknown = sum(b == "unknown" for _, b in items)
+        board_total = None if not items or unknown else round(sum(u or 0.0 for u, _ in items), 9)
+        out[record["study"]][record["run"]] = [None if usd is None else round(usd, 9), basis, board_total, len(items), unknown]
+    return dict(out)
