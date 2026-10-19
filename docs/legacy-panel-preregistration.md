@@ -80,7 +80,7 @@ As requested, the Batch API is used wherever a model has a `:batch` endpoint, ev
 
 ## Amendments
 
-Amendments 1–3 were made on 17 October, after the batch submissions and before any on-demand call; no model output had been seen. Amendments 4–6 were made during the on-demand runs, after outputs had been recorded. None of them changes a request, the grading or any recorded outcome.
+Amendments 1–3 were made on 17 October, after the batch submissions and before any on-demand call; no model output had been seen. Amendments 4–7 were made during the on-demand runs, after outputs had been recorded. None of them changes a request, the grading or any recorded outcome.
 
 **Amendment 1: routes.**
 - **Accepted.** Both Gemini 2.5 batches (Google Vertex only).
@@ -115,3 +115,8 @@ Amendments 1–3 were made on 17 October, after the batch submissions and before
 - **Handling.** Each runner stopped at its first such response, as amendment 4 now requires. No blocked call is recorded as a model outcome.
 - **Remaining.** 72 calls: 67 never sent, plus the 5 rejected at 21:15 UTC. They will be sent unchanged once the key's limit allows.
 
+**Amendment 7: resumption on 19 October.**
+- **Gemini batches.** Both settled on 19 October, inside the Vertex window, with all 36 items each: $1.55 for Gemini 2.5 Pro and $0.48 for Flash, $2.03 in all. OpenRouter released the rest of its $2.78 hold.
+- **Key limit.** The key allowed requests again on 19 October. The remaining calls were sent unchanged from 19:19 UTC.
+- **Credit stop.** This key cannot read the credit balance; OpenRouter allows that only to management keys. The runners therefore also stop at HTTP 402 (insufficient credits), handled exactly like the budget blocks in amendment 4: never a model outcome, the call stays not run.
+- **Chunked runs.** The session runs background jobs for at most two hours, and a job stopped mid-request would leave a call with no recorded outcome. The runner was therefore paused between calls, by an unsettled hold in the ledger that fails its next cap check, and resumed in chunks of 35 calls. No request, setting or outcome changed.
