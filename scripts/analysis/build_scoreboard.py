@@ -36,7 +36,12 @@ DISPLAY = {
     'anthropic/claude-opus-4.5': 'Claude Opus 4.5', 'anthropic/claude-sonnet-4.5': 'Claude Sonnet 4.5',
     'anthropic/claude-sonnet-4': 'Claude Sonnet 4', 'google/gemini-2.5-pro': 'Gemini 2.5 Pro',
     'google/gemini-2.5-flash': 'Gemini 2.5 Flash', 'google/gemini-2.5-flash-lite': 'Gemini 2.5 Flash-Lite',
+    'subq-snap-preview': 'SubQ Snap (preview)',
 }
+SUBQ_MODEL = 'subq-snap-preview'
+# SubQ's own usage page, read by the user on 19 October 2026: every SubQ request made for this book.
+SUBQ_ACCOUNT = {'as_of': '2026-10-19', 'billed_usd': 0.17, 'requests': 2434, 'input_tokens': 3325317,
+                'source': "SubQ account usage, as reported by the user on 19 Oct 2026 (all SubQ requests for this book)"}
 
 
 def load(name):
@@ -243,11 +248,16 @@ STUDY_LABELS = {
     '2026-10-16-one-shot-rerun': 'Re-run of the September Grok 7×7 request (16 Oct)',
     '2026-10-17-earlier-generations-panel': 'Earlier generations, 36 panel boards (17 Oct)',
     '2026-10-17-frontier-step-trajectories-pilot': 'One queen per request, pilot board (17 Oct)',
+    '2026-10-13-subq-replay': 'SubQ replay of the Jev requests (13 Oct)',
+    '2026-10-13-subq-trajectories': 'SubQ trajectories, 9 original boards (13 Oct)',
+    '2026-10-13-subq-split-replay': 'SubQ split replay, held-out boards (13 Oct)',
+    '2026-10-15-subq-new-board-panel': 'SubQ on the 192-board panel (15 Oct)',
+    '2026-10-15-subq-new-board-panel-pilot': 'SubQ panel pilot (15 Oct)',
 }
 
 
 def attach_costs(out):
-    """OpenRouter cost per board on every chart entry, plus a per-evaluation cost table."""
+    """API cost per board on every chart entry, plus a per-evaluation cost table and a per-receipt index."""
     costs = OC.receipt_costs()
     llm = out['llm']
     # The cost view's "other spend": every non-graded request in the studies behind each chart entry.
@@ -264,10 +274,11 @@ def attach_costs(out):
         model['other_spend'] = OC.other_spend((model['study'],), model['id'], None, costs)
     for section in out['decision'].values():
         for model in section['models']:
-            jev = model['author'] == 'TypeSafe'
-            model['costs'] = OC.board_costs(model['study'], 'typesafe/jev-1.13', costs) if jev else None
-            model['other_spend'] = OC.other_spend((model['study'],), 'typesafe/jev-1.13', None, costs) if jev else None
-            model['cost_note'] = None if jev else 'Not billed through OpenRouter (SubQ preview API); not counted.'
+            model_id = 'typesafe/jev-1.13' if model['author'] == 'TypeSafe' else SUBQ_MODEL
+            model['costs'] = OC.board_costs(model['study'], model_id, costs)
+            model['other_spend'] = OC.other_spend((model['study'],), model_id, None, costs)
+            model['provider'] = 'OpenRouter' if model_id.startswith('typesafe/') else 'SubQ'
+            model['cost_note'] = None
     outcome_ok = ('strict', 'format_only')
     pilot = load('frontier-trajectories/pilot.json') if (E / 'frontier-trajectories/pilot.json').exists() else None
 
@@ -286,7 +297,7 @@ def attach_costs(out):
                 return sum(o in outcome_ok for o in graded), len(graded)
         for section in out['decision'].values():
             for m in section['models']:
-                if m['study'] == study and model_id.startswith('typesafe/jev'):
+                if m['study'] == study and (model_id.startswith('typesafe/jev') or model_id == SUBQ_MODEL):
                     return sum(c['raw'][0] > 0 or c['local'][0] > 0 for c in m['per_board'].values()), len(m['per_board'])
         if pilot and study == pilot['study']:
             mine = [t for t in pilot['trajectories'] if t['model'] == model_id]
@@ -297,12 +308,22 @@ def attach_costs(out):
     for row in rows:
         row['label'] = STUDY_LABELS.get(row['study'], row['study'])
         row['model_name'] = DISPLAY.get(row['model'], 'Jev 1.13' if row['model'].startswith('typesafe/jev') else 'Jev (latest alias)' if row['model'] == '~typesafe/jev-latest' else row['model'])
+    subq_tokens = sum((OC._read(r['files']['metadata']) or {}).get('usage', {}).get('input_tokens', 0)
+                      for r in OC.records() if r.get('provider') == OC.SUBQ and r.get('status') == 'success')
+    subq_answered = sum(1 for r in OC.records() if r.get('provider') == OC.SUBQ and r.get('status') == 'success')
+    assert (subq_answered, subq_tokens) == (SUBQ_ACCOUNT['requests'], SUBQ_ACCOUNT['input_tokens']), (subq_answered, subq_tokens)
+    by_provider = {}
+    for row in rows:
+        by_provider[row['provider']] = round(by_provider.get(row['provider'], 0.0) + row['cost_usd'], 6)
     out['costs'] = {
-        'scope': 'OpenRouter spend recorded in the published receipts. SubQ Snap (own preview API) and agent-led use outside the studies are not counted.',
+        'scope': 'API spend recorded in the published receipts: OpenRouter (every language model and Jev) and SubQ (SubQ Snap, billed directly). Agent-led use outside the studies is not counted.',
         'per_board': 'Cost of the graded attempts only: the scored receipts of the boards whose cost is known, divided by their number. Re-runs, version probes and order controls, text-only diagnostics and board-less requests count toward the total, not the per-board figure.',
         'basis': {'reported': 'usage.cost returned by OpenRouter', 'derived': 'batch item: tokens x batch price, cached input at a tenth of the input price (reproduces the billed batch total)',
-                  'unbilled': 'HTTP 4xx rejection before any generation; billed $0', 'unknown': 'no generation ID or usage (client timeout or upstream 5xx); not counted'},
+                  'unbilled': 'HTTP 4xx rejection before any generation; billed $0', 'unknown': 'no generation ID or usage (client timeout or upstream 5xx); not counted',
+                  'subq_rate': "SubQ Snap: input tokens x SubQ's published $0.05 per million (output is free)"},
         'total_usd': round(sum(r['cost_usd'] for r in rows), 6),
+        'by_provider': by_provider,
+        'subq_account': {**SUBQ_ACCOUNT, 'receipts_usd': by_provider.get('SubQ', 0.0)},
         'unknown_receipts': sum(r['basis'].get('unknown', 0) for r in rows),
         'evaluations': rows,
     }
@@ -317,6 +338,11 @@ def main():
     }
     attach_costs(out)
     (E / 'scoreboard.json').write_text(json.dumps(out, indent=1) + '\n')
+    (E / 'costs').mkdir(exist_ok=True)
+    (E / 'costs/receipts.json').write_text(json.dumps({
+        'builder': 'scripts/analysis/build_scoreboard.py', 'basis': out['costs']['basis'],
+        'fields': ['usd (None = unknown)', 'basis', 'board total for this model and study (None if any request on it has an unknown cost)', 'requests on that board', 'requests with unknown cost'],
+        'receipts': OC.receipt_index()}, separators=(',', ':')) + '\n')
     llm = out['llm']
     for m in llm['models']:
         solved = sum(b['outcome'] in ('strict', 'format_only') for b in m['boards'].values())
@@ -326,7 +352,7 @@ def main():
     print('greedy original:', sum(o['baselines']['greedy'].values()), 'random expected boards:', round(sum(o['baselines']['random_expected_any'].values()), 2))
     p = out['decision']['panel']
     print('panel status:', p['status'], 'greedy panel:', sum(p['baselines']['greedy'].values()))
-    print('OpenRouter cost in receipts: $%.4f; unknown receipts: %d' % (out['costs']['total_usd'], out['costs']['unknown_receipts']))
+    print('API cost in receipts: $%.4f %s; unknown receipts: %d' % (out['costs']['total_usd'], out['costs']['by_provider'], out['costs']['unknown_receipts']))
 
 
 if __name__ == '__main__':

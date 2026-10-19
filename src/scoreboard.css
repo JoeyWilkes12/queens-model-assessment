@@ -1,6 +1,7 @@
 /* Executive-summary scoreboard: one hue, texture distinguishes the second
    segment, neutral grey for no-model baselines. */
-.scoreboard {
+/* .sb-vars carries the same palette to other charts (board receipts) without the scoreboard layout. */
+.scoreboard, .sb-vars {
   --sb-solid: #1c795e;
   --sb-stripe: #1c795e;
   --sb-stripe-bg: #d6efe3;
@@ -9,10 +10,9 @@
   --sb-grid: rgba(7, 27, 51, .1);
   --sb-cost: #3f63c8;
   --sb-cost-bg: #dce3f5;
-  display: grid;
-  gap: 18px;
 }
-:root[data-theme='dark'] .scoreboard {
+.scoreboard { display: grid; gap: 18px; }
+:root[data-theme='dark'] .scoreboard, :root[data-theme='dark'] .sb-vars {
   --sb-solid: #6fd0a8;
   --sb-stripe: #6fd0a8;
   --sb-stripe-bg: #17423a;

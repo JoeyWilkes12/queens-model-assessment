@@ -23,7 +23,7 @@ type Step = {
   after_scored_stop?: boolean
 }
 type Source = 'original-nine' | 'panel-192'
-type GreedyBoard = {
+export type GreedyBoard = {
   board_id: string
   size: number
   source: Source
@@ -73,7 +73,7 @@ const findModel = (set: DecisionSet, name: string) => set.models.find(model => m
 const solvedBy = (set: DecisionSet, name: string, id: string) => { const cell = findModel(set, name)?.per_board[id]; return !!cell && (cell.raw[0] > 0 || cell.local[0] > 0) }
 
 /** Start, then two states per step (count legal cells, place), then the end state. */
-function greedyFrames(board: GreedyBoard): BoardFrame[] {
+export function greedyFrames(board: GreedyBoard): BoardFrame[] {
   const n = board.size
   const stop = board.scored_stop.step
   const queens: Cell[] = []

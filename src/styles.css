@@ -385,3 +385,11 @@ code { color: var(--text-primary); font-size: .88em; }
 @media (max-width: 600px) { .finding-list > li { grid-template-columns: 1.8rem minmax(0, 1fr); gap: 10px; } .finding-number { font-size: 1.6rem; } }
 
 .reading-column code { overflow-wrap: anywhere; }
+
+/* Receipt cost: the request's own cost, and the cost of the board it belongs to. */
+.evidence-cost { color: var(--text-secondary); font-family: var(--mono-font); font-size: .72rem; }
+.receipt-cost { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; margin: 14px 0; border: 1px solid var(--border-strong); background: var(--border-subtle); }
+.receipt-cost > div { display: grid; gap: 3px; padding: 10px 12px; background: var(--surface-raised); }
+.receipt-cost span { color: var(--text-muted); font-family: var(--mono-font); font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; }
+.receipt-cost strong { color: var(--text-primary); font-family: var(--mono-font); font-size: 1.05rem; }
+.receipt-cost small { color: var(--text-secondary); font-size: .76rem; line-height: 1.4; }

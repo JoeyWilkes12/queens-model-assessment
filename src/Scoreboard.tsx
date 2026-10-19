@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import './scoreboard.css'
 
 type Outcome = 'strict' | 'format_only' | 'wrong' | 'no_answer' | 'truncated'
-/** Non-graded OpenRouter spend behind a chart entry: re-runs, probes, diagnostics; by board size, plus requests tied to no board. */
+/** Non-graded API spend behind a chart entry: re-runs, probes, diagnostics; by board size, plus requests tied to no board. */
 type OtherSpend = { by_size: Record<string, number>; unsized: number; requests: number; unknown: number; studies: string[] }
 type LlmModel = { id: string; name: string; author: string; logo: string; cohort: 'frontier' | 'earlier'; study: string; boards: Record<string, { issued: number; outcome: Outcome; receipt: string; cost_usd?: number | null }>; notes: string[]; rerun?: { size: string; outcome: Outcome; date: string; receipt: string }; other_spend?: OtherSpend | null }
 type LlmPanel = { status: string; study?: string; earlier_study?: string | null; retired?: { name: string; reason: string }[]; reruns?: { model: string; size: number; board_id: string; outcome: Outcome; reason: string; receipt: string }[]; boards: { id: string; size: number }[]; models: { id: string; name: string; author: string; logo: string; route: string; cohort?: 'frontier' | 'earlier'; study?: string; boards: Record<string, Outcome | 'not_run'>; costs?: Record<string, number | null>; other_spend?: OtherSpend | null }[] }
@@ -34,9 +34,9 @@ type Row = {
   label: string
   kind: 'model' | 'baseline' | 'pending'
   detail: string
-  /** Evals view: OpenRouter cost per graded board shown; null when not billed through OpenRouter or not a model. */
+  /** Evals view: API cost per graded board shown; null when not a model or never billed. */
   cost: Cost | null
-  /** Cost view: OpenRouter spend on every request the model has run on the boards shown; null when nothing was billed. */
+  /** Cost view: API spend on every request the model has run on the boards shown; null when nothing was billed. */
   spend: Spend | null
   /** Boards solved and boards graded (for the random baseline, the expected number solved). */
   solved: number
@@ -59,7 +59,7 @@ function summarizeCost(values: (number | null | undefined)[]): Cost {
 
 const usd = (value: number) => value >= 1 ? `$${value.toFixed(2)}` : value >= 0.01 ? `$${value.toFixed(3)}` : `$${value.toFixed(4)}`
 const costText = (cost: Cost | null, note?: string) => {
-  if (!cost) return note ?? 'No OpenRouter cost'
+  if (!cost) return note ?? 'No API cost'
   if (cost.perBoard === null) return cost.unknown ? `cost unknown (${cost.unknown} with no generation ID)` : 'no receipts yet'
   return `${usd(cost.perBoard)} per board · ${usd(cost.total)} for ${cost.boards} ${cost.boards === 1 ? 'board' : 'boards'}${cost.unknown ? ` · ${cost.unknown} more with unknown cost (no generation ID)` : ''}`
 }
@@ -145,7 +145,7 @@ function PerfMark({ row }: { row: Row }) {
   </span>
 }
 
-/** What the cost view's track says when a row has no OpenRouter spend to draw. */
+/** What the cost view's track says when a row has no API spend to draw. */
 const noSpendText = (row: Row) => row.kind === 'baseline' ? 'No API calls' : row.kind === 'pending' ? 'Not yet tested' : row.costNote ? 'Not billed through OpenRouter' : 'Not run yet'
 
 function EvalBars({ rows, unit, view }: { rows: Row[]; unit: string; view: View }) {
@@ -164,7 +164,7 @@ function EvalBars({ rows, unit, view }: { rows: Row[]; unit: string; view: View 
       const empty = view === 'cost' ? (total === null ? noSpendText(row) : null) : row.kind === 'pending' ? 'Not yet tested' : null
       const value = view === 'cost' ? (total === null ? (row.kind === 'baseline' ? '$0' : '—') : `${row.spend?.unknown ? '≥ ' : ''}${usd(total)}`) : row.label
       const costLine = row.kind === 'model' ? ` Cost: ${costText(row.cost, row.costNote)}.` : ''
-      const spendLine = row.spend ? ` OpenRouter spend ${usd(row.spend.graded + row.spend.other)}: ${usd(row.spend.graded)} on graded requests${row.spend.other ? `, ${usd(row.spend.other)} on re-runs, probes and diagnostics` : ''}${row.spend.unknown ? `; ${row.spend.unknown} more with unknown cost` : ''}.` : ` ${noSpendText(row)}.`
+      const spendLine = row.spend ? ` API spend ${usd(row.spend.graded + row.spend.other)}: ${usd(row.spend.graded)} on graded requests${row.spend.other ? `, ${usd(row.spend.other)} on re-runs, probes and diagnostics` : ''}${row.spend.unknown ? `; ${row.spend.unknown} more with unknown cost` : ''}.` : ` ${noSpendText(row)}.`
       const summary = view === 'cost' ? `${spendLine} ${row.label} boards solved. ${row.detail}` : ` ${row.label}. ${row.detail}${costLine}`
       const track = <span className="sb-track" aria-hidden="true">
         {empty ? <span className="sb-pending-text">{empty}</span> : <>
@@ -335,7 +335,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
         <button type="button" aria-pressed={view === 'evals'} onClick={() => setView('evals')}>Evals</button>
       </div>
       <p className="sb-view-note">{view === 'cost'
-        ? 'AI cost management and observability: OpenRouter spend on every request each model has run, including boards the other models have not run yet, re-runs and diagnostics.'
+        ? 'AI cost management and observability: API spend (OpenRouter; SubQ for SubQ Snap) on every request each model has run, including boards the other models have not run yet, re-runs and diagnostics.'
         : 'Like-for-like evaluation: only the boards every model shown has answered, with the same number at each size.'}</p>
     </div>
     <figure className="sb-chart" aria-labelledby="sb-llm-title">
@@ -389,7 +389,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
     <figure className="sb-chart" aria-labelledby="sb-decision-title">
       <figcaption>
         <span className="sb-kicker">Construction one decision at a time</span>
-        <strong id="sb-decision-title">{view === 'cost' ? 'Decision models: OpenRouter spend' : 'Decision models: boards solved from an empty board'}</strong>
+        <strong id="sb-decision-title">{view === 'cost' ? 'Decision models: API spend' : 'Decision models: boards solved from an empty board'}</strong>
         <span>The harness offered a menu of colors, then of cells; the model chose one option per call, with no backtracking.</span>
       </figcaption>
       <div className="sb-controls">
@@ -402,9 +402,9 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
       </div>
       <Legend items={view === 'cost'
         ? [{ kind: 'spend', label: 'Scored trajectory calls' }, { kind: 'spend-other', label: 'Route probes and order controls' }, { kind: 'perf', label: 'Boards solved (own scale)' }]
-        : [{ kind: 'solid', label: 'Solved from the raw menu' }, { kind: 'hatched', label: 'Solved only with the conflict filter' }, { kind: 'baseline', label: 'No-model baseline' }, ...(set.pending.length ? [{ kind: 'pending' as const, label: 'Not yet tested' }] : []), { kind: 'cost', label: 'OpenRouter cost per board (own scale)' }]} />
+        : [{ kind: 'solid', label: 'Solved from the raw menu' }, { kind: 'hatched', label: 'Solved only with the conflict filter' }, { kind: 'baseline', label: 'No-model baseline' }, ...(set.pending.length ? [{ kind: 'pending' as const, label: 'Not yet tested' }] : []), { kind: 'cost', label: 'API cost per board (own scale)' }]} />
       {boardSet === 'panel' && !panelReady ? <p className="sb-note" role="status">The new-board panel is still running. Results appear here when its receipts are complete.</p>
-        : <EvalBars rows={decision} unit={view === 'cost' ? 'OpenRouter spend per model, US dollars' : 'Boards solved from an empty board'} view={view} />}
+        : <EvalBars rows={decision} unit={view === 'cost' ? 'API spend per model, US dollars' : 'Boards solved from an empty board'} view={view} />}
       <details className="sb-coverage">
         <summary>Test coverage: {decisionBoardCount} {decisionBoardCount === 1 ? 'board' : 'boards'}, {set.models[0]?.attempts_per_board_mode ?? '—'} raw + {set.models[0]?.attempts_per_board_mode ?? '—'} filtered {set.models[0]?.attempts_per_board_mode === 1 ? 'attempt' : 'attempts'} per board</summary>
         <ul>
@@ -416,7 +416,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
             {set.models.map(model => <li key={model.name}>{model.name}: {model.calls} model calls.</li>)}
             {set.pending.map(model => <li key={model.name}><strong>{model.name} not yet tested:</strong> {model.reason} Until then this panel is not a like-for-like comparison.</li>)}
           </>}
-<li><strong>Cost:</strong> Jev's OpenRouter spend per board on its scored trajectory calls. On the original nine boards, $0.016 of route probes and order controls is listed in the cost ledger instead. SubQ Snap ran on its own preview API, not OpenRouter, so it shows no OpenRouter cost. The baselines make no API calls.</li>
+<li><strong>Cost:</strong> each model's API spend per board on its scored trajectory calls. Jev ran through OpenRouter; on the original nine boards, $0.016 of its route probes and order controls is listed in the cost ledger instead. SubQ Snap is billed by SubQ: its input tokens at the published $0.05 per million, with output free. On 19 October the SubQ account showed $0.17 for all 2,434 SubQ requests made for this book, which the receipts reproduce ($0.1663). The baselines make no API calls.</li>
           <li>Baselines use the same boards: the greedy rule is deterministic (<a href="#/greedy-rule">rule, results and step-by-step replays</a>); the random value is an exact expectation, not a run.</li>
           <li><a href="#/methods-critique">Methods critique</a> · <a href="#/subq-assessment">SubQ chapter</a> · <a href="#/jev-trajectories">Jev trajectories</a></li>
         </ul>
