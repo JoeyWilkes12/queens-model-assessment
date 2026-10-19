@@ -126,9 +126,9 @@ for (const entry of index.boards) {
     }
     near(`${id}/${system.name}: total`, system.cost.total_usd, sum)
     same(`${id}/${system.name}: requests and unknown`, [system.cost.requests, system.cost.unknown], [system.receipts.length, unknown])
+    same(`${id}/${system.name}: every manifest record listed`, system.receipts.map(r => r.id).sort(), [...(answered.get(`${system.study}|${system.key}|${id}`) ?? [])].sort())
     if (system.receipts.length) {
       same(`${id}/${system.name}: requests counted by the cost index`, system.receipts.map(r => costOf(r.id)?.[3]), system.receipts.map(() => system.receipts.length))
-      same(`${id}/${system.name}: every manifest record listed`, system.receipts.map(r => r.id).sort(), [...(answered.get(`${system.study}|${system.key}|${id}`) ?? [])].sort())
       if (unknown) same(`${id}/${system.name}: no cost per request with an unknown cost`, system.cost.per_request_usd, null)
       else near(`${id}/${system.name}: cost per request`, system.cost.per_request_usd, sum / system.receipts.length, 1e-9)
     }
