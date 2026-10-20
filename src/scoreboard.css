@@ -32,7 +32,10 @@
 .sb-tabs button, .sb-segment button { min-height: 40px; padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .78rem; font-weight: 700; cursor: pointer; }
 .sb-tabs button.is-active, .sb-segment button[aria-pressed='true'] { background: var(--navy-950); color: #fffdf8; border-color: var(--navy-950); }
 :root[data-theme='dark'] .sb-tabs button.is-active, :root[data-theme='dark'] .sb-segment button[aria-pressed='true'] { background: var(--mint-300); color: var(--navy-950); border-color: var(--mint-300); }
-.sb-tabs button:focus-visible, .sb-segment button:focus-visible, .sb-toggle input:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.sb-tabs button:focus-visible, .sb-segment button:focus-visible, .sb-sort select:focus-visible, .sb-toggle input:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.sb-sort { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; min-width: 0; color: var(--text-primary); font-size: .8rem; font-weight: 700; }
+.sb-sort select { min-width: 0; max-width: 100%; min-height: 44px; padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font: inherit; }
+@media (max-width: 600px) { .sb-sort select { font-size: 1rem; } }
 .sb-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; color: var(--text-primary); font-size: .8rem; cursor: pointer; }
 .sb-toggle input { width: 18px; height: 18px; accent-color: var(--mint-700); }
 .sb-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 12px; color: var(--text-secondary); font-size: .74rem; }
@@ -45,26 +48,23 @@
 .sb-swatch--cost { height: 6px; border-radius: 0 3px 3px 0; background: var(--sb-cost); }
 .sb-swatch--spend, .sb-fill--spend { background: var(--sb-cost); }
 .sb-swatch--spend-other, .sb-fill--spend-other { background: repeating-linear-gradient(135deg, var(--sb-cost) 0 2px, var(--sb-cost-bg) 2px 5px); }
-.sb-swatch--perf { height: 6px; border-radius: 0 3px 3px 0; background: var(--sb-solid); }
-.sb-perf-fill { display: block; height: 100%; border-radius: 0 3px 3px 0; background: var(--sb-solid); }
 
-/* View toggle: cost (spend on every request run) or evals (like-for-like samples). */
-.sb-view { display: grid; gap: 6px; }
-.sb-segment--view button { min-width: 88px; font-size: .84rem; }
-.sb-view-note { margin: 0; color: var(--text-secondary); font-size: .8rem; line-height: 1.5; }
 .sb-nowrap { white-space: nowrap; }
 
 /* Cost: a second measure on its own scale, drawn as a thin bar under each entity, never on the bar axis. */
 .sb-cost { display: grid; gap: 3px; width: 100%; min-width: 0; }
-.sb-cost-track { display: block; height: 6px; background: var(--sb-grid); }
-.sb-cost-fill { display: block; height: 100%; border-radius: 0 3px 3px 0; background: var(--sb-cost); }
+.sb-cost-track { display: flex; height: 6px; overflow: hidden; background: var(--sb-grid); }
+.sb-cost-fill { display: block; flex-shrink: 0; height: 100%; background: var(--sb-cost); }
+.sb-cost-fill.sb-fill--spend-other { background: repeating-linear-gradient(135deg, var(--sb-cost) 0 2px, var(--sb-cost-bg) 2px 5px); }
+.sb-cost-fill:last-child { border-radius: 0 3px 3px 0; }
 .sb-cost-label { color: var(--text-secondary); font-family: var(--mono-font); font-size: .68rem; line-height: 1.2; overflow-wrap: anywhere; }
+.sb-cost-per-board { display: block; margin-top: 3px; color: var(--text-muted); }
+.sb-progress { display: block; margin-top: 3px; font-size: .65rem; font-weight: 400; white-space: normal; }
 .sb-bars--columns .sb-cost { width: min(104px, 100%); text-align: center; }
-.sb-bars--columns .sb-cost-extra { display: block; }
 
 /* Columns (wide containers): value on the cap, logo and name under the bar. */
-.sb-bars--columns { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; align-items: end; padding-top: 6px; background: linear-gradient(var(--sb-grid) 1px, transparent 1px) 0 26px / 100% 45px; }
-.sb-bars--columns .sb-item { display: grid; justify-items: center; gap: 6px; min-width: 0; }
+.sb-bars--columns { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); grid-template-rows: auto 180px 26px auto auto; gap: 6px 10px; align-items: start; padding-top: 6px; background: linear-gradient(var(--sb-grid) 1px, transparent 1px) 0 26px / 100% 45px; }
+.sb-bars--columns .sb-item { display: grid; grid-row: span 5; grid-template-rows: subgrid; justify-items: center; min-width: 0; }
 .sb-bars--columns .sb-value { color: var(--text-primary); font-family: var(--mono-font); font-size: .82rem; font-weight: 700; white-space: nowrap; }
 .sb-bars--columns .sb-track { position: relative; display: flex; flex-direction: column-reverse; width: min(56px, 100%); height: 180px; }
 .sb-bars--columns .sb-fill { display: block; width: 100%; }
@@ -100,9 +100,12 @@
 .sb-coverage ul { margin: 0 0 6px; padding-left: 1.1rem; }
 .sb-coverage li { margin-bottom: 6px; line-height: 1.55; }
 .sb-note { margin: 10px 0; padding: 12px; border: 1px dashed var(--border-strong); color: var(--text-secondary); font-size: .84rem; }
-.sb-explain { padding: 14px 16px; border-left: 3px solid var(--gold-400); background: var(--surface-raised); }
-.sb-explain h3 { margin: 0 0 6px; font-family: var(--display-font); font-size: 1.1rem; font-weight: 400; color: var(--text-primary); }
-.sb-explain p { margin: 0; line-height: 1.62; }
+.sb-explain, .sb-help { border: 1px solid var(--border-strong); background: var(--surface-raised); }
+.sb-explain > summary, .sb-help > summary { min-height: 44px; padding: 12px 16px; font-family: var(--display-font); font-size: 1.1rem; color: var(--text-primary); cursor: pointer; }
+.sb-explain > summary:focus-visible, .sb-help > summary:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+.sb-explain p, .sb-help p { margin: 0; padding: 0 16px 16px; line-height: 1.62; }
+.sb-help p { font-size: .85rem; }
+.sb-ledger { margin-top: 18px; }
+.sb-ledger > .data-table { margin: 0 16px 16px; }
 .sb-segment button:disabled { cursor: not-allowed; color: var(--text-muted); border-color: var(--border-subtle); }
-.sb-cost-heading { margin: 26px 0 6px; font-family: var(--display-font); font-size: 1.15rem; font-weight: 400; color: var(--text-primary); }
 .sb-cost-unit { color: var(--text-muted); }

@@ -34,21 +34,21 @@ type Row = {
   label: string
   kind: 'model' | 'baseline' | 'pending'
   detail: string
-  /** Evals view: API cost per graded board shown; null when not a model or never billed. */
+  /** API cost per graded board in the shared comparison; null for baselines or unavailable costs. */
   cost: Cost | null
-  /** Cost view: API spend on every request the model has run on the boards shown; null when nothing was billed. */
+  /** Every recorded request on the selected sizes, including boards outside the shared comparison. */
   spend: Spend | null
   /** Boards solved and boards graded (for the random baseline, the expected number solved). */
   solved: number
   graded: number
+  completed: number
+  planned: number
   costNote?: string
 }
 
 type Cost = { total: number; perBoard: number | null; boards: number; unknown: number }
 type Spend = { graded: number; other: number; unknown: number }
-type SortKey = 'performance' | 'cost'
-/** Cost: AI cost management and observability, every request run. Evals: like-for-like samples only. */
-type View = 'cost' | 'evals'
+type SortKey = 'performance' | 'cost' | 'perBoard'
 
 /** undefined = no receipt for that board, null = cost unknown (timeout), number = USD. */
 function summarizeCost(values: (number | null | undefined)[]): Cost {
@@ -66,26 +66,26 @@ const costText = (cost: Cost | null, note?: string) => {
 
 const spendTotal = (row: Row) => row.spend ? row.spend.graded + row.spend.other : null
 
-/** Sort model rows by boards solved or by cost, keeping baselines and pending rows after them.
-    Cost means total spend in the cost view, cost per graded board in the evals view. */
-function sortRows(rows: Row[], key: SortKey, view: View): Row[] {
+/** Sorting only changes row order; baselines and pending rows stay after the compared models. */
+function sortRows(rows: Row[], key: SortKey): Row[] {
   const models = rows.filter(row => row.kind === 'model')
   const rest = rows.filter(row => row.kind !== 'model')
   if (key === 'performance') return [...models.sort((a, b) => b.solved - a.solved || b.solid - a.solid || a.name.localeCompare(b.name)), ...rest]
-  const value = (row: Row) => (view === 'cost' ? spendTotal(row) : row.cost?.perBoard) ?? -1
+  const value = (row: Row) => (key === 'cost' ? spendTotal(row) : row.cost?.perBoard) ?? -1
   return [...models.sort((a, b) => value(b) - value(a) || a.name.localeCompare(b.name)), ...rest]
 }
 
-/** Evals view: the boards every model shown has a graded result for, then the same number at each size
+/** The boards every active model has a graded result for, then the same number at each size
     (the first in board order), so each bar counts the same samples. */
 function commonBoards<B extends { id: string; size: number }>(boards: B[], graded: ((id: string) => boolean)[]): B[] {
+  if (!graded.length || !boards.length) return []
   const common = boards.filter(board => graded.every(test => test(board.id)))
   const sizes = [...new Set(boards.map(board => board.size))]
   const perSize = Math.min(...sizes.map(size => common.filter(board => board.size === size).length))
   return sizes.flatMap(size => common.filter(board => board.size === size).slice(0, perSize))
 }
 
-/** Cost view: graded spend on the boards shown plus re-runs, probes and diagnostics on those sizes; board-less requests only under All boards. */
+/** All scored requests on the selected sizes plus re-runs, probes and diagnostics; board-less requests only under All boards. */
 function spendOf(costs: (number | null | undefined)[], other: OtherSpend | null | undefined, sizes: string[], all: boolean): Spend | null {
   const graded = summarizeCost(costs)
   const extra = other ? sizes.reduce((sum, size) => sum + (other.by_size[size] ?? 0), 0) + (all ? other.unsized : 0) : 0
@@ -123,56 +123,52 @@ function Tabs({ value, onChange, label }: { value: TabKey; onChange: (key: TabKe
   </div>
 }
 
-/** Artificial Analysis-style columns on wide containers; labelled rows on phones. */
-function CostMark({ row, max }: { row: Row; max: number }) {
+/** Distinguish zero API use, unrun models and unavailable billing. */
+const noSpendText = (row: Row) => row.kind === 'baseline' ? 'No API calls' : row.kind === 'pending' ? 'Not yet tested' : row.costNote ? 'Not billed through OpenRouter' : 'Spend unavailable'
+
+/** Total spend has its own scale; per-board cost uses only the graded comparison requests. */
+function SpendMark({ row, max }: { row: Row; max: number }) {
+  const total = spendTotal(row)
   const per = row.cost?.perBoard ?? null
   return <span className="sb-cost" aria-hidden="true">
-    <span className="sb-cost-track">{per !== null && <span className="sb-cost-fill" style={{ width: `${Math.max(2, per / max * 100)}%` }} />}</span>
-    <span className="sb-cost-label">{per !== null ? <><span className="sb-nowrap">{usd(per)}<span className="sb-cost-unit">/board</span></span>{row.cost?.unknown ? <span className="sb-cost-unit sb-cost-extra"> +{row.cost.unknown} unknown</span> : null}</>
-      : row.kind === 'baseline' ? 'no API cost' : row.kind === 'pending' ? 'not yet run'
-        : row.costNote ? 'not OpenRouter' : row.cost?.unknown ? 'cost unknown' : 'not run yet'}</span>
+    <span className="sb-cost-track">
+      {row.spend && <>
+        <span className="sb-cost-fill sb-fill--spend" style={{ width: `${row.spend.graded / max * 100}%` }} />
+        <span className="sb-cost-fill sb-fill--spend-other" style={{ width: `${row.spend.other / max * 100}%` }} />
+      </>}
+    </span>
+    <span className="sb-cost-label">
+      <span className="sb-nowrap">{total === null ? row.kind === 'baseline' ? '$0 total' : noSpendText(row) : `${row.spend?.unknown ? '≥ ' : ''}${usd(total)} total`}</span>
+      <span className="sb-cost-per-board">{per !== null ? `${usd(per)}/graded board` : row.kind === 'baseline' ? 'No API calls' : row.cost?.unknown ? 'Graded cost unknown' : 'No graded cost yet'}{row.cost?.unknown && per !== null ? ` · ${row.cost.unknown} unknown` : ''}</span>
+      {!!row.spend?.unknown && <span className="sb-cost-per-board">{row.spend.unknown} {row.spend.unknown === 1 ? 'request' : 'requests'} with unknown cost</span>}
+    </span>
   </span>
 }
 
-/** Cost view's secondary measure: boards solved over boards run, on its own 0–100% scale. */
-function PerfMark({ row }: { row: Row }) {
-  const fraction = row.graded ? row.solved / row.graded : null
-  const text = row.kind === 'pending' ? 'not yet tested' : fraction === null ? 'no boards run'
-    : row.key === 'random' ? `≈${row.solved.toFixed(1)}/${row.graded} expected` : `${row.solved}/${row.graded} solved`
-  return <span className="sb-cost sb-perf" aria-hidden="true">
-    <span className="sb-cost-track">{fraction !== null && fraction > 0 && <span className="sb-perf-fill" style={{ width: `${Math.max(2, fraction * 100)}%` }} />}</span>
-    <span className="sb-cost-label"><span className="sb-nowrap">{text}</span></span>
-  </span>
-}
-
-/** What the cost view's track says when a row has no API spend to draw. */
-const noSpendText = (row: Row) => row.kind === 'baseline' ? 'No API calls' : row.kind === 'pending' ? 'Not yet tested' : row.costNote ? 'Not billed through OpenRouter' : 'Not run yet'
-
-function EvalBars({ rows, unit, view }: { rows: Row[]; unit: string; view: View }) {
+/** Outcome bars and API spend remain visible together; sorting never changes either metric. */
+function EvalBars({ rows, unit }: { rows: Row[]; unit: string }) {
   const [ref, width] = useWidth<HTMLDivElement>(700)
   const vertical = width >= 560 && rows.length <= 9
-  const max = view === 'cost' ? Math.max(0.000001, ...rows.map(row => spendTotal(row) ?? 0)) : Math.max(1, ...rows.map(row => row.denominator))
-  const costMax = Math.max(0.000001, ...rows.map(row => row.cost?.perBoard ?? 0))
+  const max = Math.max(1, ...rows.map(row => row.denominator))
+  const spendMax = Math.max(0.000001, ...rows.map(row => spendTotal(row) ?? 0))
   // The wide row grid follows the chart's own width, so the secondary column never squeezes the main track.
   return <div ref={ref} className={`sb-bars ${vertical ? 'sb-bars--columns' : 'sb-bars--rows'}${!vertical && width >= 640 ? ' sb-bars--wide' : ''}`} role="list" aria-label={unit}>
     {rows.map(row => {
-      const total = spendTotal(row)
-      const [first, second] = view === 'cost' ? [row.spend?.graded ?? 0, row.spend?.other ?? 0] : [row.solid, row.hatched]
-      const firstPct = first / max * 100
-      const secondPct = second / max * 100
-      const fills = view === 'cost' ? ['sb-fill--spend', 'sb-fill--spend-other'] : ['sb-fill--solid', 'sb-fill--hatched']
-      const empty = view === 'cost' ? (total === null ? noSpendText(row) : null) : row.kind === 'pending' ? 'Not yet tested' : null
-      const value = view === 'cost' ? (total === null ? (row.kind === 'baseline' ? '$0' : '—') : `${row.spend?.unknown ? '≥ ' : ''}${usd(total)}`) : row.label
+      const firstPct = row.solid / max * 100
+      const secondPct = row.hatched / max * 100
+      const empty = row.kind === 'pending' ? 'Not yet tested' : !row.graded ? 'No comparable results yet' : null
       const costLine = row.kind === 'model' ? ` Cost: ${costText(row.cost, row.costNote)}.` : ''
       const spendLine = row.spend ? ` API spend ${usd(row.spend.graded + row.spend.other)}: ${usd(row.spend.graded)} on graded requests${row.spend.other ? `, ${usd(row.spend.other)} on re-runs, probes and diagnostics` : ''}${row.spend.unknown ? `; ${row.spend.unknown} more with unknown cost` : ''}.` : ` ${noSpendText(row)}.`
-      const summary = view === 'cost' ? `${spendLine} ${row.label} boards solved. ${row.detail}` : ` ${row.label}. ${row.detail}${costLine}`
+      const progress = row.kind !== 'baseline' && row.completed < row.planned ? ` ${row.completed}/${row.planned} boards recorded.` : ''
+      const summary = ` ${row.graded ? `${row.label} boards solved.` : empty + '.'} ${row.detail}${costLine}${spendLine}${progress}`
       const track = <span className="sb-track" aria-hidden="true">
         {empty ? <span className="sb-pending-text">{empty}</span> : <>
-          <span className={`sb-fill ${fills[0]}`} style={vertical ? { height: `${firstPct}%` } : { width: `${firstPct}%` }} />
-          <span className={`sb-fill ${fills[1]}`} style={vertical ? { height: `${secondPct}%` } : { width: `${secondPct}%` }} />
+          <span className="sb-fill sb-fill--solid" style={vertical ? { height: `${firstPct}%` } : { width: `${firstPct}%` }} />
+          <span className="sb-fill sb-fill--hatched" style={vertical ? { height: `${secondPct}%` } : { width: `${secondPct}%` }} />
         </>}
       </span>
-      const secondary = view === 'cost' ? <PerfMark row={row} /> : <CostMark row={row} max={costMax} />
+      const value = <><span>{row.label}</span>{row.kind !== 'baseline' && row.completed < row.planned && <small className="sb-progress">{row.completed}/{row.planned} recorded</small>}</>
+      const secondary = <SpendMark row={row} max={spendMax} />
       return <div key={row.key} role="listitem" className={`sb-item sb-item--${row.kind}${empty && row.kind !== 'pending' ? ' sb-item--empty' : ''}`} title={summary.trim()} aria-label={`${row.name}:${summary}`}>
         {vertical ? <>
           <span className="sb-value">{value}</span>
@@ -191,41 +187,44 @@ function EvalBars({ rows, unit, view }: { rows: Row[]; unit: string; view: View 
   </div>
 }
 
-function Legend({ items }: { items: { kind: 'solid' | 'hatched' | 'baseline' | 'pending' | 'cost' | 'spend' | 'spend-other' | 'perf'; label: string }[] }) {
+function Legend({ items }: { items: { kind: 'solid' | 'hatched' | 'baseline' | 'pending' | 'spend' | 'spend-other'; label: string }[] }) {
   return <div className="sb-legend">{items.map(item => <span key={item.label}><span className={`sb-swatch sb-swatch--${item.kind}`} aria-hidden="true" />{item.label}</span>)}</div>
 }
 
-function SortControl({ value, onChange, label, view }: { value: SortKey; onChange: (key: SortKey) => void; label: string; view: View }) {
-  return <div className="sb-segment" role="group" aria-label={label}>
-    <button type="button" aria-pressed={value === 'cost'} onClick={() => onChange('cost')}>{view === 'cost' ? 'Total spend, highest first' : 'Cost per board, highest first'}</button>
-    <button type="button" aria-pressed={value === 'performance'} onClick={() => onChange('performance')}>Sort: boards solved</button>
-  </div>
+function SortControl({ value, onChange, label }: { value: SortKey; onChange: (key: SortKey) => void; label: string }) {
+  return <label className="sb-sort"><span>Sort by</span><select aria-label={label} value={value} onChange={event => onChange(event.target.value as SortKey)}>
+    <option value="cost">Total spend, highest first</option>
+    <option value="performance">Boards solved</option>
+    <option value="perBoard">Cost per graded board, highest first</option>
+  </select></label>
 }
 
 const SIZES = ['5', '7', '9']
 const sizesFor = (tab: TabKey) => tab === 'all' ? SIZES : [tab]
 const panelRecorded = (outcome: Outcome | 'not_run' | undefined) => (outcome ?? 'not_run') !== 'not_run'
 
-/** The original three boards (one per size). Evals: sizes every model shown answered; cost: each model's own. */
-function llmRows(data: ScoreboardData['llm'], tab: TabKey, includeEarlier: boolean, view: View): Row[] {
+/** Original-board results share a balanced sample; spend always includes each model's own requests. */
+function llmRows(data: ScoreboardData['llm'], tab: TabKey, includeEarlier: boolean): Row[] {
   const models = data.models.filter(model => includeEarlier || model.cohort === 'frontier')
-  const common = commonBoards(SIZES.map(size => ({ id: size, size: Number(size) })), models.map(model => (size: string) => !!model.boards[size])).map(board => board.id)
+  const answered = models.filter(model => SIZES.some(size => !!model.boards[size]))
+  const common = commonBoards(SIZES.map(size => ({ id: size, size: Number(size) })), answered.map(model => (size: string) => !!model.boards[size])).map(board => board.id)
   return models.map(model => {
-    const sizes = sizesFor(tab).filter(size => view === 'cost' ? !!model.boards[size] : common.includes(size))
+    const own = sizesFor(tab).filter(size => !!model.boards[size])
+    const sizes = common.filter(size => sizesFor(tab).includes(size) && !!model.boards[size])
     const outcomes = sizes.map(size => model.boards[size]?.outcome)
     const strict = outcomes.filter(value => value === 'strict').length
     const formatOnly = outcomes.filter(value => value === 'format_only').length
     const noAnswer = outcomes.filter(value => value === 'no_answer').length
     const issued = sizes.length
-    const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', noAnswer ? `${noAnswer} timed out with no answer` : ''].filter(Boolean)
+    const parts = issued ? [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', noAnswer ? `${noAnswer} timed out with no answer` : ''].filter(Boolean) : ['No comparable results yet']
     const costs = sizes.map(size => model.boards[size].cost_usd)
-    return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: issued, label: `${strict + formatOnly}/${issued}`, kind: 'model' as const,
+    return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: issued, label: issued ? `${strict + formatOnly}/${issued}` : '—', kind: own.length ? 'model' as const : 'pending' as const,
       detail: `${parts.join(' · ')}. ${model.cohort === 'frontier' ? '17 Sep study' : '1 Oct earlier-generations replay'}.`,
-      cost: summarizeCost(costs), spend: spendOf(costs, model.other_spend, sizesFor(tab), tab === 'all'), solved: strict + formatOnly, graded: issued }
+      cost: summarizeCost(costs), spend: spendOf(own.map(size => model.boards[size].cost_usd), model.other_spend, sizesFor(tab), tab === 'all'), solved: strict + formatOnly, graded: issued, completed: own.length, planned: sizesFor(tab).length }
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
 }
 
-/** Panel models shown, and the evals view's common board set (models with no answers yet are left out of it). */
+/** Pending models stay visible, but do not prevent active models from sharing a comparison sample. */
 function panelScope(panel: LlmPanel, includeEarlier: boolean) {
   const models = panel.models.filter(model => includeEarlier || model.cohort !== 'earlier')
   const answered = models.filter(model => panel.boards.some(board => panelRecorded(model.boards[board.id])))
@@ -233,35 +232,39 @@ function panelScope(panel: LlmPanel, includeEarlier: boolean) {
   return { models, answered, common, unanswered: models.filter(model => !answered.includes(model)) }
 }
 
-function llmPanelRows(panel: LlmPanel, tab: TabKey, includeEarlier: boolean, view: View): Row[] {
+function llmPanelRows(panel: LlmPanel, tab: TabKey, includeEarlier: boolean): Row[] {
   const scope = panelScope(panel, includeEarlier)
-  const pool = view === 'evals' ? scope.common : panel.boards
-  const ids = pool.filter(board => tab === 'all' || String(board.size) === tab).map(board => board.id)
-  return (view === 'evals' ? scope.answered : scope.models).map(model => {
+  const selected = panel.boards.filter(board => tab === 'all' || String(board.size) === tab).map(board => board.id)
+  const common = scope.common.filter(board => tab === 'all' || String(board.size) === tab).map(board => board.id)
+  return scope.models.map(model => {
+    const own = selected.filter(id => panelRecorded(model.boards[id]))
+    const ids = common.filter(id => panelRecorded(model.boards[id]))
     const outcomes = ids.map(id => model.boards[id] ?? 'not_run')
     const strict = outcomes.filter(value => value === 'strict').length
     const formatOnly = outcomes.filter(value => value === 'format_only').length
     const noAnswer = outcomes.filter(value => value === 'no_answer').length
     const truncated = outcomes.filter(value => value === 'truncated').length
-    const notRun = outcomes.filter(value => value === 'not_run').length
-    const issued = ids.length - notRun
-    const parts = [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', truncated ? `${truncated} ran out of tokens` : '', noAnswer ? `${noAnswer} request failed before an answer` : '', notRun ? `${notRun} not yet run` : ''].filter(Boolean)
-    const costs = ids.filter(id => panelRecorded(model.boards[id])).map(id => model.costs?.[id])
+    const issued = ids.length
+    const parts = issued ? [`${strict} strict JSON`, formatOnly ? `${formatOnly} correct but off-format` : '', truncated ? `${truncated} ran out of tokens` : '', noAnswer ? `${noAnswer} request failed before an answer` : ''].filter(Boolean) : ['No comparable results yet']
+    const costs = ids.map(id => model.costs?.[id])
     return { key: model.id, name: model.name, author: model.author, logo: model.logo, solid: strict, hatched: formatOnly, denominator: ids.length,
-      label: `${strict + formatOnly}/${issued}`, kind: 'model' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, ${model.cohort === 'earlier' ? '17–19 Oct earlier-generation panel' : '16 Oct panel'}.`,
-      cost: summarizeCost(costs), spend: spendOf(costs, model.other_spend, sizesFor(tab), tab === 'all'), solved: strict + formatOnly, graded: issued }
+      label: issued ? `${strict + formatOnly}/${issued}` : '—', kind: own.length ? 'model' as const : 'pending' as const, detail: `${parts.join(' · ')}. ${model.route === 'batch' ? 'Batch API' : 'On demand'}, ${model.cohort === 'earlier' ? '17–19 Oct earlier-generation panel' : '16 Oct panel'}.`,
+      cost: summarizeCost(costs), spend: spendOf(own.map(id => model.costs?.[id]), model.other_spend, sizesFor(tab), tab === 'all'), solved: strict + formatOnly, graded: issued, completed: own.length, planned: selected.length }
   }).sort((a, b) => (b.solid + b.hatched) - (a.solid + a.hatched) || b.solid - a.solid || a.name.localeCompare(b.name))
 }
 
-/** Evals view: boards every decision model has results for, balanced by size; cost view: every board in the set. */
-function decisionBoards(set: DecisionSet, tab: TabKey, view: View) {
-  const pool = view === 'evals' ? commonBoards(set.boards, set.models.map(model => (id: string) => !!model.per_board[id])) : set.boards
+/** Decision outcomes and baselines use the same balanced sample from models with recorded results. */
+function decisionBoards(set: DecisionSet, tab: TabKey) {
+  const answered = set.models.filter(model => set.boards.some(board => !!model.per_board[board.id]))
+  const pool = commonBoards(set.boards, answered.map(model => (id: string) => !!model.per_board[id]))
   return pool.filter(board => tab === 'all' || String(board.size) === tab)
 }
 
-function decisionRows(set: DecisionSet, tab: TabKey, view: View): Row[] {
-  const ids = decisionBoards(set, tab, view).map(board => board.id)
+function decisionRows(set: DecisionSet, tab: TabKey): Row[] {
+  const ids = decisionBoards(set, tab).map(board => board.id)
+  const selected = set.boards.filter(board => tab === 'all' || String(board.size) === tab).map(board => board.id)
   const rows: Row[] = set.models.map(model => {
+    const own = selected.filter(id => model.per_board[id])
     const mine = ids.filter(id => model.per_board[id])
     let raw = 0, localOnly = 0
     for (const id of mine) {
@@ -272,18 +275,31 @@ function decisionRows(set: DecisionSet, tab: TabKey, view: View): Row[] {
     const attempts = mine.reduce((sum, id) => sum + model.per_board[id].raw[1] + model.per_board[id].local[1], 0)
     const solvedAttempts = mine.reduce((sum, id) => sum + model.per_board[id].raw[0] + model.per_board[id].local[0], 0)
     const costs = model.costs ? mine.map(id => model.costs?.[id]) : null
-    return { key: model.name, name: model.name, author: model.author, logo: model.logo, solid: raw, hatched: localOnly, denominator: ids.length, label: `${raw + localOnly}/${mine.length}`, kind: 'model' as const,
-      detail: `${raw} solved from the raw menu, ${localOnly} only with the conflict filter; ${solvedAttempts}/${attempts} attempts solved.`,
-      cost: costs ? summarizeCost(costs) : null, spend: costs ? spendOf(costs, model.other_spend, sizesFor(tab), tab === 'all') : null,
-      solved: raw + localOnly, graded: mine.length, costNote: model.cost_note ?? undefined }
+    return { key: model.name, name: model.name, author: model.author, logo: model.logo, solid: raw, hatched: localOnly, denominator: mine.length, label: mine.length ? `${raw + localOnly}/${mine.length}` : '—', kind: own.length ? 'model' as const : 'pending' as const,
+      detail: mine.length ? `${raw} solved from the raw menu, ${localOnly} only with the conflict filter; ${solvedAttempts}/${attempts} attempts solved.` : 'No comparable results yet.',
+      cost: costs ? summarizeCost(costs) : null, spend: model.costs ? spendOf(own.map(id => model.costs?.[id]), model.other_spend, sizesFor(tab), tab === 'all') : null,
+      solved: raw + localOnly, graded: mine.length, completed: own.length, planned: selected.length, costNote: model.cost_note ?? undefined }
   })
-  // A model not yet tested has no samples, so the evals view leaves it out; the cost view lists it.
-  if (view === 'cost') for (const pending of set.pending) rows.push({ key: pending.name, name: pending.name, author: pending.author, logo: pending.logo, solid: 0, hatched: 0, denominator: ids.length, label: '—', kind: 'pending', detail: pending.reason, cost: null, spend: null, solved: 0, graded: 0 })
+  for (const pending of set.pending) rows.push({ key: pending.name, name: pending.name, author: pending.author, logo: pending.logo, solid: 0, hatched: 0, denominator: 0, label: '—', kind: 'pending', detail: pending.reason, cost: null, spend: null, solved: 0, graded: 0, completed: 0, planned: selected.length })
   const greedy = ids.filter(id => set.baselines.greedy[id]).length
-  rows.push({ key: 'greedy', name: 'Greedy rule (no model)', solid: 0, hatched: greedy, denominator: ids.length, label: `${greedy}/${ids.length}`, kind: 'baseline', detail: 'Fewest-legal-cells color first, first legal cell, never backtracks. Uses the conflict filter.', cost: null, spend: null, solved: greedy, graded: ids.length })
+  rows.push({ key: 'greedy', name: 'Greedy rule (no model)', solid: 0, hatched: greedy, denominator: ids.length, label: ids.length ? `${greedy}/${ids.length}` : '—', kind: 'baseline', detail: 'Fewest-legal-cells color first, first legal cell, never backtracks. Uses the conflict filter.', cost: null, spend: null, solved: greedy, graded: ids.length, completed: ids.length, planned: ids.length })
   const random = ids.reduce((sum, id) => sum + (set.baselines.random_expected_any[id] ?? 0), 0)
-  rows.push({ key: 'random', name: 'Random menu choice', solid: 0, hatched: random, denominator: ids.length, label: `≈${random < 10 ? random.toFixed(1) : Math.round(random)}`, kind: 'baseline', detail: 'Expected boards solved at least once by uniform random choices under the same protocol and attempt allowance.', cost: null, spend: null, solved: random, graded: ids.length })
+  rows.push({ key: 'random', name: 'Random menu choice', solid: 0, hatched: random, denominator: ids.length, label: ids.length ? `≈${random < 10 ? random.toFixed(1) : Math.round(random)}` : '—', kind: 'baseline', detail: 'Expected boards solved at least once by uniform random choices under the same protocol and attempt allowance.', cost: null, spend: null, solved: random, graded: ids.length, completed: ids.length, planned: ids.length })
   return rows
+}
+
+function CoverageNote({ rows }: { rows: Row[] }) {
+  const models = rows.filter(row => row.kind !== 'baseline')
+  const active = models.filter(row => row.completed > 0)
+  const pending = models.filter(row => !row.completed)
+  const shared = Math.max(0, ...active.map(row => row.graded))
+  const planned = Math.max(0, ...models.map(row => row.planned))
+  if (models.length && !pending.length && shared === planned) return null
+  return <p className="sb-note" role="status">
+    {shared ? `Results and graded cost compare ${active.length} tested models on ${shared} shared boards, balanced by size.` : 'No comparable results yet: there is no shared, balanced board sample at the selected sizes.'}
+    {' '}Total spend still includes every request recorded on the selected sizes, including boards outside that comparison.
+    {pending.length > 0 && <> No results recorded at these sizes: {pending.map(row => row.name).join(', ')}.</>}
+  </p>
 }
 
 export function Scoreboard({ children }: { children?: ReactNode }) {
@@ -296,16 +312,6 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   const [boardSet, setBoardSet] = useState<'original' | 'panel'>('panel')
   const [llmSort, setLlmSort] = useState<SortKey>('cost')
   const [decisionSort, setDecisionSort] = useState<SortKey>('cost')
-  const [view, setView] = useState<View>('cost')
-
-  const selectView = (next: View) => {
-    if (next === view) return
-    setView(next)
-    const defaultSort = next === 'cost' ? 'cost' : 'performance'
-    setLlmSort(defaultSort)
-    setDecisionSort(defaultSort)
-  }
-
   useEffect(() => {
     const controller = new AbortController()
     fetch(evidenceUrl('evidence/scoreboard.json'), { signal: controller.signal })
@@ -321,37 +327,30 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   const panel = data.llm.panel
   const panelReadyLlm = !!panel && panel.models.length > 0
   const llmSet = requestedLlmSet === 'panel' && panelReadyLlm ? 'panel' : 'original'
-  const llm = sortRows(llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab, includeEarlier, view) : llmRows(data.llm, llmTab, includeEarlier, view), llmSort, view)
+  const llm = sortRows(llmSet === 'panel' && panel ? llmPanelRows(panel, llmTab, includeEarlier) : llmRows(data.llm, llmTab, includeEarlier), llmSort)
   const panelEarlier = panel?.models.filter(model => model.cohort === 'earlier') ?? []
-  const scope = panel ? panelScope(panel, includeEarlier) : null
   const inTab = (board: { size: number }, tab: TabKey) => tab === 'all' || String(board.size) === tab
   const llmPanelBoards = panel ? panel.boards.filter(board => inTab(board, llmTab)).length : 0
-  const commonPanelBoards = scope ? scope.common.filter(board => inTab(board, llmTab)).length : 0
-  const runCounts = scope && panel ? scope.models.map(model => panel.boards.filter(board => inTab(board, llmTab) && panelRecorded(model.boards[board.id])).length) : []
-  const llmEmpty = view === 'evals' && llm.length > 0 && llm.every(row => row.graded === 0)
+  const commonLlmBoards = Math.max(0, ...llm.map(row => row.graded))
+  const runCounts = llm.map(row => row.completed)
+  const answeredLlm = llm.filter(row => row.completed > 0).length
   const reruns = data.llm.models.filter(model => model.rerun)
-  const frontierCount = data.llm.models.filter(model => model.cohort === 'frontier').length
   const set = data.decision[boardSet]
-  const panelReady = data.decision.panel.models.length > 0
-  const decision = sortRows(decisionRows(set, decisionTab, view), decisionSort, view)
-  const decisionBoardCount = decisionBoards(set, decisionTab, view).length
+  const decision = sortRows(decisionRows(set, decisionTab), decisionSort)
+  const decisionBoardCount = decisionBoards(set, decisionTab).length
   const timeouts = data.llm.models.flatMap(model => model.notes.filter(note => note.includes('timed out')).map(note => `${model.name}, ${note}`))
 
   return <div className="scoreboard">
-    <div className="sb-view">
-      <div className="sb-segment sb-segment--view" role="group" aria-label="Scoreboard view">
-        <button type="button" aria-pressed={view === 'cost'} onClick={() => selectView('cost')}>Cost</button>
-        <button type="button" aria-pressed={view === 'evals'} onClick={() => selectView('evals')}>Evals</button>
-      </div>
-      <p className="sb-view-note">{view === 'cost'
-        ? 'AI cost management and observability: API spend (OpenRouter; SubQ for SubQ Snap) on every request each model made for the evaluation shown, including any boards the other models have not run, re-runs and diagnostics. Other studies are itemised in the assessment receipt.'
-        : 'Like-for-like evaluation: only the boards every model shown has answered, with the same number at each size.'}</p>
-    </div>
+    <details className="sb-help">
+      <summary>How to read these charts</summary>
+      <p>The main bars count boards solved on the same shared sample, with the same number at each size. Solid and hatched sections distinguish the two kinds of success in each legend. The smaller blue bars show total API spend on their own dollar scale: scored requests plus re-runs, route probes and diagnostics. Sorting changes the order of models, not the measures shown.</p>
+      <p>Total spend covers every recorded request on the selected board sizes, even when a board is outside the shared comparison. Cost per graded board uses the comparison requests with known costs and excludes extra requests; any unknown costs are stated alongside it. Under All boards, total spend also includes requests tied to no board. A missing result is never counted as a failure. OpenRouter bills the language models and Jev; SubQ bills SubQ Snap. <a href="#/assessment-receipt">Cost by evaluation</a>.</p>
+    </details>
     <figure className="sb-chart" aria-labelledby="sb-llm-title">
       <figcaption>
         <span className="sb-kicker">Construction from a blank image</span>
-        <strong id="sb-llm-title">{view === 'cost' ? 'Reasoning language models: OpenRouter spend' : 'Reasoning language models: boards solved'}</strong>
-        <span>{llmSet === 'panel' ? `Each model received the same ${llmPanelBoards} new boards` : `Each model received the same ${llmTab === 'all' ? 'three boards' : 'board'}`} as one image, with one request and no retries, and had to write the complete placement.</span>
+        <strong id="sb-llm-title">Reasoning language models: results and spend</strong>
+        <span>{llmSet === 'panel' ? `${llmPanelBoards} new boards` : `${llmTab === 'all' ? 'Three original boards' : 'One original board'}`}, one image and one scored request per model and board, with no retries. Each answer had to give the complete placement.</span>
       </figcaption>
       <div className="sb-controls">
         <Tabs value={llmTab} onChange={setLlmTab} label="Board size, language models" />
@@ -359,23 +358,19 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <button type="button" aria-pressed={llmSet === 'panel'} onClick={() => setLlmSet('panel')} disabled={!panelReadyLlm}>New 36-board panel</button>
           <button type="button" aria-pressed={llmSet === 'original'} onClick={() => setLlmSet('original')}>Original 3 boards</button>
         </div>
-        <SortControl value={llmSort} onChange={setLlmSort} label="Sort order, language models" view={view} />
+        <SortControl value={llmSort} onChange={setLlmSort} label="Sort order, language models" />
         {(llmSet === 'original' || panelEarlier.length > 0) && <label className="sb-toggle"><input type="checkbox" checked={includeEarlier} onChange={event => setIncludeEarlier(event.target.checked)} /> Include earlier generations</label>}
       </div>
-      <Legend items={view === 'cost'
-        ? [{ kind: 'spend', label: 'Graded requests' }, { kind: 'spend-other', label: 'Re-runs and diagnostics' }, { kind: 'perf', label: 'Boards solved of boards run (own scale)' }]
-        : [{ kind: 'solid', label: 'Correct, strict JSON' }, { kind: 'hatched', label: 'Correct placement, broke the JSON-only format' }, { kind: 'cost', label: 'OpenRouter cost per board (own scale)' }]} />
-      {llmEmpty ? <p className="sb-note" role="status">No board has yet been answered by every model shown at every size. Switch to the cost view, or leave out the earlier generations.</p>
-        : <EvalBars rows={llm} unit={view === 'cost' ? 'OpenRouter spend per model, US dollars' : 'Boards with a correct full placement'} view={view} />}
+      <Legend items={[{ kind: 'solid', label: 'Correct, strict JSON' }, { kind: 'hatched', label: 'Correct placement, off-format' }, { kind: 'spend', label: 'Spend: scored requests' }, { kind: 'spend-other', label: 'Spend: re-runs and diagnostics' }]} />
+      <CoverageNote rows={llm} />
+      <EvalBars rows={llm} unit="Boards with a correct full placement, total API spend and cost per graded board" />
       <details className="sb-coverage">
-        <summary>{view === 'cost'
-          ? `Spend coverage: ${llm.length} models, every request run${llmSet === 'panel' && runCounts.length ? ` (${Math.min(...runCounts) === Math.max(...runCounts) ? Math.max(...runCounts) : `${Math.min(...runCounts)}–${Math.max(...runCounts)}`} of ${llmPanelBoards} boards per model)` : ''}`
-          : `Test coverage: ${llmSet === 'panel' ? `${scope?.answered.length ?? 0} models × ${commonPanelBoards} boards` : `${includeEarlier ? data.llm.models.length : frontierCount} models × ${llmTab === 'all' ? 3 : 1} ${llmTab === 'all' ? 'boards' : 'board'}`}, identical for every model shown`}</summary>
+        <summary>Test coverage: {answeredLlm} models × {commonLlmBoards} shared {commonLlmBoards === 1 ? 'board' : 'boards'} · spend includes every request recorded</summary>
         {llmSet === 'panel' ? <ul>
-          {view === 'evals' && scope && scope.common.length < panel!.boards.length && <li><strong>Common boards only:</strong> the {scope.common.length} boards ({scope.common.length / 3} per size) that every model shown has answered, the first in panel order at each size.{scope.unanswered.length > 0 && <> Not shown, with no answers yet: {scope.unanswered.map(model => model.name).join(', ')}.</>}</li>}
+          {commonLlmBoards < llmPanelBoards && <li><strong>Common boards only:</strong> results use the first shared boards in panel order, balanced across sizes. Each total includes that model's spend on every board it has run at the selected sizes.</li>}
           <li>36 new boards (12 per size, 3 from each difficulty stratum of the 192-board panel), so every board also has Jev and SubQ results. Images rendered with the September renderer, byte-identical in style; September prompt and settings unchanged.</li>
           <li>GPT-5.6 Sol ran through OpenRouter's Batch API at the September price, with the image by public URL. Claude Opus 4.8, Gemini 3.1 Pro Preview and Grok 4.6 ran on demand with the September provider blocks and inline images. One request per model and board, no retries.</li>
-          {view === 'cost' && (scope?.models ?? []).some(model => Object.values(model.boards).includes('not_run')) && <li><strong>Still running:</strong> bars show the boards recorded so far; the denominator in each label counts only completed requests.</li>}
+          {runCounts.some(count => count < llmPanelBoards) && <li><strong>Still running:</strong> {Math.min(...runCounts)}–{Math.max(...runCounts)} of {llmPanelBoards} boards recorded per model at the selected sizes. Result labels use only the shared comparison; pending models stay visible.</li>}
           <li>Two Grok 4.6 9×9 answers ran out of the 12,288-token budget without a final answer, the same limit as in September; they count as unsolved.</li>
           {(panel?.reruns ?? []).length > 0 && <li><strong>Request failures and re-runs:</strong> {panel?.reruns?.map(r => `${r.model}'s ${r.size}×${r.size} request (${r.board_id}) failed with HTTP 429 before any answer`).join('; ')}. The chart keeps the preregistered result (unsolved). Re-sent once, unchanged, on 16 Oct: {panel?.reruns?.map((r, i) => <span key={r.receipt}>{i ? '; ' : ''}<a href={`#/evidence-atlas/${r.receipt}`}>{r.board_id}</a> {r.outcome === 'format_only' ? 'correct, off-format' : r.outcome === 'strict' ? 'correct' : r.outcome.replace('_', ' ')}</span>)}.</li>}
           {includeEarlier && panelEarlier.length > 0 && <li><strong>Earlier generations ({panelEarlier.length} models, 17–19 Oct):</strong> the same 36 boards, images and prompt, with each model's 1 October settings. Gemini 2.5 Pro and Flash ran through the Batch API on Google Vertex. OpenRouter rejected every OpenAI and Anthropic batch ("no :batch endpoint"), so those six ran on demand with their 1 October provider blocks, as preregistered.{(panel?.retired ?? []).length > 0 && <> Not shown: {panel?.retired?.map(model => model.name).join(', ')}, which OpenRouter no longer serves.</>}</li>}
@@ -398,7 +393,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
     <figure className="sb-chart" aria-labelledby="sb-decision-title">
       <figcaption>
         <span className="sb-kicker">Construction one decision at a time</span>
-        <strong id="sb-decision-title">{view === 'cost' ? 'Decision models: API spend' : 'Decision models: boards solved from an empty board'}</strong>
+        <strong id="sb-decision-title">Decision models: results and spend</strong>
         <span>The harness offered a menu of colors, then of cells; the model chose one option per call, with no backtracking.</span>
       </figcaption>
       <div className="sb-controls">
@@ -407,13 +402,11 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
           <button type="button" aria-pressed={boardSet === 'panel'} onClick={() => setBoardSet('panel')}>New 192-board panel</button>
           <button type="button" aria-pressed={boardSet === 'original'} onClick={() => setBoardSet('original')}>Original 9 boards</button>
         </div>
-        <SortControl value={decisionSort} onChange={setDecisionSort} label="Sort order, decision models" view={view} />
+        <SortControl value={decisionSort} onChange={setDecisionSort} label="Sort order, decision models" />
       </div>
-      <Legend items={view === 'cost'
-        ? [{ kind: 'spend', label: 'Scored trajectory calls' }, { kind: 'spend-other', label: 'Route probes and order controls' }, { kind: 'perf', label: 'Boards solved (own scale)' }]
-        : [{ kind: 'solid', label: 'Solved from the raw menu' }, { kind: 'hatched', label: 'Solved only with the conflict filter' }, { kind: 'baseline', label: 'No-model baseline' }, ...(set.pending.length ? [{ kind: 'pending' as const, label: 'Not yet tested' }] : []), { kind: 'cost', label: 'API cost per board (own scale)' }]} />
-      {boardSet === 'panel' && !panelReady ? <p className="sb-note" role="status">The new-board panel is still running. Results appear here when its receipts are complete.</p>
-        : <EvalBars rows={decision} unit={view === 'cost' ? 'API spend per model, US dollars' : 'Boards solved from an empty board'} view={view} />}
+      <Legend items={[{ kind: 'solid', label: 'Solved from the raw menu' }, { kind: 'hatched', label: 'Solved only with the conflict filter' }, { kind: 'baseline', label: 'No-model baseline' }, ...(set.pending.length ? [{ kind: 'pending' as const, label: 'Not yet tested' }] : []), { kind: 'spend', label: 'Spend: scored trajectory calls' }, { kind: 'spend-other', label: 'Spend: route probes and controls' }]} />
+      <CoverageNote rows={decision} />
+      <EvalBars rows={decision} unit="Boards solved from an empty board, total API spend and cost per graded board" />
       <details className="sb-coverage">
         <summary>Test coverage: {decisionBoardCount} {decisionBoardCount === 1 ? 'board' : 'boards'}, {set.models[0]?.attempts_per_board_mode ?? '—'} raw + {set.models[0]?.attempts_per_board_mode ?? '—'} filtered {set.models[0]?.attempts_per_board_mode === 1 ? 'attempt' : 'attempts'} per board</summary>
         <ul>
@@ -425,7 +418,7 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
             {set.models.map(model => <li key={model.name}>{model.name}: {model.calls} model calls.</li>)}
             {set.pending.map(model => <li key={model.name}><strong>{model.name} not yet tested:</strong> {model.reason} Until then this panel is not a like-for-like comparison.</li>)}
           </>}
-<li><strong>Cost:</strong> each model's API spend per board on its scored trajectory calls. Jev ran through OpenRouter. On the original nine boards it also spent $0.016 on route probes and order controls: hatched in the cost view, and left out of the per-board cost in the evals view. SubQ Snap is billed by SubQ: its input tokens at the published $0.05 per million, with output free. On 19 October the SubQ account showed $0.17 for the 2,434 answered SubQ requests made for this book, which the receipts reproduce ($0.1663); three rejected requests (HTTP 422) were not billed. The baselines make no API calls.</li>
+<li><strong>Cost:</strong> each model's API spend per board on its scored trajectory calls. Jev ran through OpenRouter. On the original nine boards it also spent $0.016 on route probes and order controls: hatched in the total-spend bar and excluded from cost per graded board. SubQ Snap is billed by SubQ: its input tokens at the published $0.05 per million, with output free. On 19 October the SubQ account showed $0.17 for the 2,434 answered SubQ requests made for this book, which the receipts reproduce ($0.1663); three rejected requests (HTTP 422) were not billed. The baselines make no API calls.</li>
           <li>Baselines use the same boards: the greedy rule is deterministic (<a href="#/greedy-rule">rule, results and step-by-step replays</a>); the random value is an exact expectation, not a run.</li>
           <li><a href="#/methods-critique">Methods critique</a> · <a href="#/subq-assessment">SubQ chapter</a> · <a href="#/jev-trajectories">Jev trajectories</a></li>
         </ul>

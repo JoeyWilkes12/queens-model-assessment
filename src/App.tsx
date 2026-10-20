@@ -460,22 +460,24 @@ const bookUi = { PageHero, LocalToc, Section, Callout, DataTable }
 
 function ExecutiveSummary() {
   return <>
-    <PageHero trail="Read first" title="Selecting is not solving." deck="Frontier reasoning models delivered 11 valid solutions in 12 requests from blank board images. Decision models reliably chose the valid board from a prepared list, but built few boards move by move: fewer than a simple greedy rule." action={{ label: 'Watch the recorded attempts', scrollTo: 'watch' }} />
+    <PageHero trail="Read first" title="Selecting is not solving." deck="On the 36-board image panel, four frontier reasoning models wrote correct placements in 140 of 144 graded attempts. On a separate 192-board construction panel, Jev solved 21 boards and SubQ 19; the greedy rule solved 80." action={{ label: 'Watch the recorded attempts', scrollTo: 'watch' }} />
     <AssessmentReceipt />
     <div className="reading-layout">
       <LocalToc items={[{ id: 'scoreboard', label: 'Scoreboard' }, { id: 'finding', label: 'Three findings' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'What it does not show' }, { id: 'next', label: 'Where next' }]} />
       <main className="reading-column" id="main-content">
         <Section id="scoreboard" title="Scoreboard" label="Evals summary">
-          <p>Two families, two tasks. The Cost view shows what each model's evaluation cost; the Evals view counts boards solved on the samples every model shown shares. The coverage note under each chart lists exactly which tests were issued.</p>
+          <p>Boards solved and API spend, side by side. The two tasks use different inputs and attempt budgets; compare models within each chart.</p>
           <Scoreboard>
-            <aside className="sb-explain" aria-labelledby="sb-not-comparable">
-              <h3 id="sb-not-comparable">Why these charts are not apples to apples</h3>
+            <details className="sb-explain">
+              <summary>Why these charts are not apples to apples</summary>
               <p>The language models received a picture of an empty board and had to write the whole solution in one response. The decision models never saw an image: they read an exact text grid, and at each step chose one option from a menu our harness built, with single-option moves forced and, in filtered mode, illegal cells removed. One task is construction from scratch; the other is a sequence of guided selections. The language models were also given one attempt per board; the decision models had ten on the original nine boards and two on the new panel. Compare models within a chart, not across charts. A closer test gives the language models the decision models' own text state, one queen per request with no feedback: see <a href="#/frontier-trajectories">One queen at a time</a>. It still differs, because the language models get no menus and may revise.</p>
-            </aside>
+            </details>
           </Scoreboard>
-          <h3 className="sb-cost-heading">Cost against performance</h3>
-          <p>OpenRouter cost per board from the receipts, next to boards solved, on the like-for-like 36-board image panel. Every evaluation, including the decision models, is itemised in the <a href="#/assessment-receipt">assessment receipt</a>, and each of the 36 panel boards has its own <a href="#/board-receipts">board receipt</a>: who solved it, what each model wrote, replays and cost per request.</p>
-          <CostLedger ui={bookUi} compact />
+          <details className="sb-help sb-ledger">
+            <summary>Detailed cost comparison</summary>
+            <p>The 36-board image panel, including cost per solved board and totals for graded requests only. See the <a href="#/assessment-receipt">assessment receipt</a> for every evaluation, or a <a href="#/board-receipts">board receipt</a> for answers, replays and cost per request.</p>
+            <CostLedger ui={bookUi} compact />
+          </details>
         </Section>
         <Section id="finding" title="What the evidence supports" label="Executive summary">
           <ol className="finding-list">
