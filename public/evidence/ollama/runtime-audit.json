@@ -1,0 +1,116 @@
+{
+  "audited_utc": "2026-10-28T17:46:19.851329+00:00",
+  "runtime": {
+    "model": "qwen3.5:4b",
+    "digest": "7f3251fa6878a78a606bcb3c074283306e5ad2ea411a7774a9dd98a4bc7f2d13",
+    "server_version": "0.40.10",
+    "details": {
+      "parent_model": "",
+      "format": "safetensors",
+      "family": "qwen3_5",
+      "families": null,
+      "parameter_size": "4.5B",
+      "quantization_level": "nvfp4",
+      "runner": "mlx"
+    },
+    "model_info": {
+      "general.architecture": "qwen3_5",
+      "general.parameter_count": 4538986496,
+      "qwen3_5.block_count": 32,
+      "qwen3_5.context_length": 262144,
+      "qwen3_5.embedding_length": 2560
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "thinking",
+      "tools"
+    ],
+    "thinking": {
+      "values": [
+        false,
+        true
+      ],
+      "default": true
+    },
+    "parameters_reported": "temperature                    1\ntop_k                          20\ntop_p                          0.95\nmin_p                          0\npresence_penalty               1.5\nrepeat_penalty                 1",
+    "machine_architecture": "arm64",
+    "os": "Darwin",
+    "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+    "transport": "Ollama-compatible local HTTP /api/chat",
+    "host": "loopback"
+  },
+  "runtime_matches_frozen": true,
+  "coverage": "Retrospective metadata check during baseline run. Initial baseline processes compared model digest only; they did not preserve invocation-start server/default snapshots. This check is not per-call or continuous attestation. Hardened future invocations validate and save full snapshots.",
+  "completion_review": {
+    "reviewed_utc": "2026-10-28T22:31:20.469108+00:00",
+    "mode": "offline receipt/source inspection; no Ollama request",
+    "completed_utc": "2026-10-28T18:47:34.711485+00:00",
+    "summary_updated_utc": "2026-10-28T18:47:34.729445+00:00",
+    "receipts": 24,
+    "treatments": {
+      "caveman": 12,
+      "baseline": 12
+    },
+    "http_status_counts": {
+      "200": 24
+    },
+    "finish_reason_counts": {
+      "stop": 8,
+      "length": 16
+    },
+    "overlapping_receipt_intervals": 0,
+    "max_elapsed_seconds": 213.20043145900001,
+    "configured_timeout_seconds": 600,
+    "observed_timeout_errors": 0,
+    "final_runtime_snapshot": null,
+    "final_runtime_snapshot_note": "Not collected after completion. The earlier mid-run snapshot and Caveman invocation-start snapshot remain the available runtime attestations; no retrospective API claim is made.",
+    "length_response_generated_tokens": [
+      12288
+    ],
+    "length_response_final_answer_characters": [
+      0
+    ]
+  },
+  "sequential_execution": {
+    "client": "One blocking request at a time in a serial board loop; all baseline calls before all Caveman calls. No retry loop.",
+    "server_startup_evidence": {
+      "source": "Local Ollama server.log, allowlisted value only",
+      "logged_utc_offset_time": "2026-10-23T12:44:33.724-06:00",
+      "OLLAMA_NUM_PARALLEL": 1
+    },
+    "coverage_note": "The startup setting and non-overlapping receipt intervals support sequential execution of this panel; they do not establish absence of other clients or continuously attest server settings."
+  },
+  "historical_host_conditions": {
+    "source_kind": "user_report_and_local_operating_practices_note",
+    "recorded_after_run": true,
+    "per_receipt_telemetry_available": false,
+    "source_note": "The user reported the measurements during completion review; the separate workflow local best-practices note documents rounded corroborating figures. These are aggregate historical observations, not reconstructed per-call snapshots.",
+    "approximately": true,
+    "ollama_held_memory_gib_start": 4.15,
+    "ollama_held_memory_gib_end": 11.9,
+    "macos_memory_pressure_peak": "Warning",
+    "swap_used_gib_start": 5,
+    "swap_used_gib_end": 18.5,
+    "reported_explanation": "Accumulating MLX prefix cache while the model remained resident with 10-minute keep-alive.",
+    "interpretation": "Host/cache conditions changed over the sequential treatments. All 16 length completions are token-budget outcomes; no transport rejection or observed timeout is recorded."
+  },
+  "future_run_policy": {
+    "applies_to": "Newly frozen studies only; historical plan and 24 requests unchanged",
+    "num_ctx_default": 16384,
+    "keep_alive_default": 0,
+    "reason": "1984 reported input tokens plus 12288 output-token allowance fit within 16384; unload after each response to avoid retaining accumulating cache. Keep-alive zero does not by itself prove the first request is cold.",
+    "host_snapshots": "Future receipts capture allowlisted numeric local host memory/pressure before and after calls, with unavailable measurements explicit.",
+    "journal": "Optional future calls may append allowlisted numeric usage to an explicitly selected Grafana journal. No backfill or test records are appended to the live journal.",
+    "resource_coordination": "One request/model at a time. Check ownership/process lock before future inference; do not unload a model another workflow owns.",
+    "current_embargo_until": "2026-10-29T09:00:00-06:00",
+    "current_embargo_scope": "No requests to local Ollama11434, including metadata or unload requests; separate9b/27b workflow owns endpoint."
+  },
+  "historical_journal_coverage": {
+    "checked_read_only": true,
+    "source": "Persistent Grafana Local Hardware benchmark journal",
+    "matching_qwen4b_events_in_panel_interval": 0,
+    "live_journal_backfilled": false,
+    "note": "This confirms absence of journal coverage for these calls, not absence of host activity. Future journaling is opt-in; synthetic test events stay in temporary files."
+  }
+}

@@ -15,7 +15,9 @@
     "z3:verify": "node scripts/z3/run-python.mjs scripts/z3/build_teaching_data.py --verify && node scripts/verify-z3-teaching.mjs && node scripts/verify-z3-workbench.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ollama:test": "python3 -m unittest discover -s scripts/ollama -p 'test_*.py'",
+    "ollama:verify": "python3 scripts/ollama/panel.py verify --require-complete"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -6,6 +6,7 @@ import { ReceiptChainNavigation } from './ReceiptChainNavigation'
 import { FailureComparison } from './FailureComparison'
 import { deriveFailureComparison } from './failureComparisonData'
 import { SubQAssessment } from './SubQAssessment'
+import { OllamaAssessment } from './OllamaAssessment'
 import { DecisionModels } from './DecisionModels'
 import { GreedyRule } from './GreedyRule'
 import { FrontierTrajectories } from './FrontierTrajectories'
@@ -98,6 +99,7 @@ const routes: Route[] = [
   { path: 'protocol-results', title: 'Protocol & results', section: 'The board', description: 'Frozen inputs, entrants, outcomes, and route failures.' },
   { path: 'frontier-trajectories', title: 'One queen at a time', section: 'The board', description: 'Frontier models place one queen per request and explain each move.' },
   { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
+  { path: 'local-open-models', title: 'Local open models', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
   { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
   { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
   { path: 'scale-primitives', title: 'Scale & primitives', section: 'The Jev question', description: 'Larger menus, Noul, Score, and held-out boards.' },
@@ -500,8 +502,9 @@ function ExecutiveSummary() {
           <p><a className="text-link" href="#/methods-critique">Read the methods critique and the next experiments <Icon name="arrow" /></a></p>
         </Section>
         <Section id="next" title="Where next">
+          <p>The <a href="#/local-open-models">local open-model pilot</a> adds saved Ollama requests, separate strict and extracted-answer grades, and the conditional Caveman comparison. Its results have their own denominator.</p>
           <div className="next-actions"><a href="#/queens-rules">Learn the board rules <Icon name="arrow" /></a><a href="#/decision-models">Compare decision models <Icon name="arrow" /></a><a href="#/evidence-atlas">Inspect every receipt <Icon name="arrow" /></a></div>
-          <p className="edition-line">This edition combines dated studies: <a href="#/protocol-results">17 Sep one-shot</a> · <a href="#/jev-primer">18–19 Sep Jev</a> · <a href="#/jev-trajectories">30 Sep trajectories</a> · <a href="#/earlier-generations">1 Oct earlier generations</a> · <a href="#/subq-assessment">13 Oct SubQ Snap</a> · <a href="#/decision-models">14 Oct Decision Index comparison</a>.</p>
+          <p className="edition-line">This edition combines dated studies: <a href="#/protocol-results">17 Sep one-shot</a> · <a href="#/jev-primer">18–19 Sep Jev</a> · <a href="#/jev-trajectories">30 Sep trajectories</a> · <a href="#/earlier-generations">1 Oct earlier generations</a> · <a href="#/subq-assessment">13 Oct SubQ Snap</a> · <a href="#/decision-models">14 Oct Decision Index comparison</a> · <a href="#/local-open-models">28 Oct local Qwen pilot</a>.</p>
         </Section>
       </main>
     </div>
@@ -1060,7 +1063,7 @@ function NotFound() {
 function Sidebar({ active, open, onClose }: { active: string; open: boolean; onClose: () => void }) {
   const [, navigate] = useHashPath()
   const groups = Array.from(new Set(routes.map(route => route.section)))
-  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>14 OCT UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
+  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>28 OCT UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
 }
 
 function App() {
@@ -1090,6 +1093,7 @@ function App() {
             : active === 'scale-primitives' ? <ScalePrimitives />
               : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
+                : active === 'local-open-models' ? <OllamaAssessment ui={bookUi} />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
                 : active === 'greedy-rule' ? <GreedyRule ui={bookUi} />

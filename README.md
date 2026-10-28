@@ -8,6 +8,7 @@ Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-
 
 - [Routes](#routes)
 - [Evidence boundary](#evidence-boundary)
+- [Local Ollama assessment](#local-ollama-assessment)
 - [Local handoff](#local-handoff)
 - [Design and quality records](#design-and-quality-records)
 
@@ -21,6 +22,7 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/how-z3-solves-queens` (How Z3 solves Queens; see below for its section links)
 - `#/protocol-results`
 - `#/earlier-generations`
+- `#/local-open-models`
 - `#/jev-primer`
 - `#/candidate-engineering`
 - `#/scale-primitives`
@@ -61,6 +63,14 @@ The [methods critique](docs/methods-critique.md) reviews construct validity, sam
 
 The Decision models page reads a [data snapshot of the Artificial Analysis Decision Index](public/evidence/external/aa-decision-index-2026-10-14.json), extracted from the public leaderboard page on 14 October 2026. Charts are redrawn from that data. Full third-party page captures are kept locally under `research/` (git-ignored) for provenance and are not redistributed.
 
+## Local Ollama assessment
+
+The [local open-model chapter](https://joeywilkes12.github.io/queens-model-assessment/#/local-open-models) reads a separate exploratory image pilot for `qwen3.5:4b`: [frozen plan](public/evidence/ollama/plan.json), [saved summary](public/evidence/ollama/summary.json), exact requests/responses, deterministic strict and extraction grades, runtime identity, and a paired Caveman treatment gated on baseline success and review. This reuses existing boards and keeps its denominator separate from the historical panels. The browser never calls Ollama.
+
+Run `npm run ollama:test` and `npm run ollama:verify` to audit the complete saved study offline. PR validation runs these checks, the public evidence scrub and the static build; it never invokes Ollama or deploys.
+
+See the [protocol and reproduction commands](docs/ollama-local-assessment.md), [Caveman security review](docs/caveman-review.md), and [coding-agent tracing and virtual-tag capture limits](docs/observability.md). No global Caveman installation is required.
+
 ## Local handoff
 
 ```bash
@@ -76,3 +86,4 @@ Use `npm run evidence:generate` to explicitly refresh the historical evidence bu
 - [Design system](DESIGN.md)
 - [Evidence bundle contract](evidence/README.md)
 - [Quality check](QUALITY_CHECK.md)
+- [Impeccable 4.6.0 update review and deferral](docs/impeccable-update-review.md)

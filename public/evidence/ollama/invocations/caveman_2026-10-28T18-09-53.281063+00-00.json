@@ -1,0 +1,47 @@
+{
+  "started_utc": "2026-10-28T18:09:53.281063+00:00",
+  "treatment": "caveman",
+  "runtime": {
+    "model": "qwen3.5:4b",
+    "digest": "7f3251fa6878a78a606bcb3c074283306e5ad2ea411a7774a9dd98a4bc7f2d13",
+    "server_version": "0.40.10",
+    "details": {
+      "parent_model": "",
+      "format": "safetensors",
+      "family": "qwen3_5",
+      "families": null,
+      "parameter_size": "4.5B",
+      "quantization_level": "nvfp4",
+      "runner": "mlx"
+    },
+    "model_info": {
+      "general.architecture": "qwen3_5",
+      "general.parameter_count": 4538986496,
+      "qwen3_5.block_count": 32,
+      "qwen3_5.context_length": 262144,
+      "qwen3_5.embedding_length": 2560
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "thinking",
+      "tools"
+    ],
+    "thinking": {
+      "values": [
+        false,
+        true
+      ],
+      "default": true
+    },
+    "parameters_reported": "temperature                    1\ntop_k                          20\ntop_p                          0.95\nmin_p                          0\npresence_penalty               1.5\nrepeat_penalty                 1",
+    "machine_architecture": "arm64",
+    "os": "Darwin",
+    "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+    "transport": "Ollama-compatible local HTTP /api/chat",
+    "host": "loopback"
+  },
+  "runtime_matches_frozen": true,
+  "runner_source_sha256": "788e1aa12df02460f2bb2f07b1ba9026f557cdc85941c6734d0dab110c9a1956",
+  "note": "Invocation-start snapshot; not continuous runtime attestation."
+}
