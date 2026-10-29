@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { CavemanCostExplorer, CavemanOutcomeChart, CavemanTokenChart } from './CavemanVisuals'
 import { artifactLink, receiptLinks } from './OllamaAssessment'
 import { evidenceUrl, measurement, outcomeNames, reportedInputLengths, treatmentName, useSavedOllamaStudy, type BookUi, type ResultRow, type Summary } from './ollamaEvidence'
 import './ollama-comparison.css'
@@ -128,11 +129,13 @@ function CavemanSummary({ summary, data, ui }: { summary: Summary; data: Compari
   const pairs = data.pairs.map(pair => ({ pair, baseline: baseline.find(row => row.call_id === pair.baseline.call_id)!, caveman: caveman.find(row => row.call_id === pair.caveman.call_id)! }))
   const transition = (field: 'strict_correct' | 'rule_valid_after_extraction', left: boolean, right: boolean) => pairs.filter(pair => pair.baseline[field] === left && pair.caveman[field] === right).length
   return <div className="reading-layout ollama-study">
-    <LocalToc items={[{ id: 'caveman-finding', label: 'Observed result' }, { id: 'caveman-usage', label: 'Tokens & time' }, { id: 'caveman-pairs', label: 'Every matched pair' }, { id: 'caveman-limits', label: 'What this supports' }]} />
+    <LocalToc items={[{ id: 'caveman-finding', label: 'Observed result' }, { id: 'caveman-usage', label: 'Tokens & time' }, { id: 'caveman-cost', label: 'Cost tradeoff' }, { id: 'caveman-pairs', label: 'Every matched pair' }, { id: 'caveman-limits', label: 'What this supports' }]} />
     <main className="reading-column" id="main-content">
       <Section id="caveman-finding" title="More strict answers in this sample">
         <p className="lead"><code>{summary.runtime.model}</code> returned <strong>{strict(caveman)} strict correct answers with Caveman</strong>, compared with <strong>{strict(baseline)} without it</strong>. Counting uniquely recoverable off-format answers as a diagnostic, the counts were {valid(caveman)} and {valid(baseline)}.</p>
         <p>This is exploratory: <strong>n=4 boards per size, one run per condition</strong>. Only <code>qwen3.5:4b</code> was tested in this comparison. It cannot establish that Caveman caused the difference or that other Qwen models would behave the same way.</p>
+        <CavemanOutcomeChart rows={summary.rows} />
+        <details className="cv-method"><summary>Exact scores and paired transitions</summary>
         <DataTable caption="Caveman comparison by board size; four paired boards per size" headers={['Board size', 'Baseline strict', 'Caveman strict', 'Baseline valid¹', 'Caveman valid¹', 'Baseline capped²', 'Caveman capped²']} rows={[5, 7, 9].map(size => {
           const b = baseline.filter(row => row.size === size), c = caveman.filter(row => row.size === size)
           return [`${size}×${size}`, strict(b), strict(c), valid(b), valid(c), capped(b), capped(c)]
@@ -142,9 +145,12 @@ function CavemanSummary({ summary, data, ui }: { summary: Summary; data: Compari
           ['Strict JSON + correct', transition('strict_correct', true, true), transition('strict_correct', false, true), transition('strict_correct', true, false), transition('strict_correct', false, false)].map(String),
           ['Valid after extraction', transition('rule_valid_after_extraction', true, true), transition('rule_valid_after_extraction', false, true), transition('rule_valid_after_extraction', true, false), transition('rule_valid_after_extraction', false, false)].map(String),
         ]} />
+        </details>
         <p>The result was not uniformly better: on <a href="#/local-open-models/receipt/baseline_panel-7-01">panel-7-01, baseline returned a valid answer after extraction</a>, while <a href="#/local-open-models/receipt/caveman_panel-7-01">Caveman reached the token cap without a final answer</a>. Neither condition solved a 9×9 board within the budget.</p>
       </Section>
       <Section id="caveman-usage" title="Less generated text; more total reported tokens">
+        <CavemanTokenChart rows={summary.rows} />
+        <details className="cv-method"><summary>Exact token counts and request timing</summary>
         <DataTable caption="Usage and elapsed time across all twelve requests in each condition" headers={['Reported measure', 'Without Caveman', 'With Caveman']} rows={[
           ['Input tokens per request', reportedInputLengths(baseline), reportedInputLengths(caveman)],
           ['Total input tokens', measurement(total(baseline, 'input_tokens')), measurement(total(caveman, 'input_tokens'))],
@@ -152,8 +158,13 @@ function CavemanSummary({ summary, data, ui }: { summary: Summary; data: Compari
           ['Combined input + generated tokens', measurement(combinedTokens(baseline)), measurement(combinedTokens(caveman))],
           ['Sum of request wall times', measurement(total(baseline, 'elapsed_seconds'), 's'), measurement(total(caveman, 'elapsed_seconds'), 's')],
         ]} />
+        </details>
         <p>Caveman added 1,131 reported input tokens to every request: 1,984 versus 853. The skill condition generated fewer tokens in total, but input plus generated tokens increased. Generated counts include thinking and do not measure final-answer verbosity. These receipts do not demonstrate a net token saving.</p>
         <p>The smaller sum of wall times is descriptive. All baseline requests ran before all Caveman requests; order was not counterbalanced. Prefix-cache growth, host memory pressure and swap changed during the run and were not captured per call. The study cannot isolate a speed effect from the skill.</p>
+      </Section>
+      <Section id="caveman-cost" title="Does the output reduction pay for the added input?">
+        <p><strong>Sometimes, under a hosted tariff.</strong> Across these twelve boards, Caveman added 13,572 input tokens and reduced generated tokens by 8,715. The output-token price must exceed <strong>1.5573× the input-token price</strong> for the combined estimated charge to fall. Fewer generated tokens did occur; a net reduction in token count did not.</p>
+        <CavemanCostExplorer rows={summary.rows} ui={ui} />
       </Section>
       <Section id="caveman-pairs" title="Follow the same task through both conditions">
         <p>Open either outcome to read its receipt, switch to its counterpart, inspect the shared configuration, and follow links to the original request, response and grades. The offline audit verifies matching user messages, image bytes, model digests and requested settings; the added Caveman system instruction is the only request-content difference.</p>
@@ -222,7 +233,7 @@ export function OllamaComparison({ ui, view, callId }: { ui: BookUi; view: 'summ
   const { PageHero, Callout, Section } = ui
   const pair = paired.status === 'ready' ? paired.data.pairs.find(pair => pair.baseline.call_id === callId || pair.caveman.call_id === callId) : undefined
   const title = view === 'summary' ? 'Caveman on local Qwen.' : view === 'configuration' ? 'One model configuration, two conditions.' : pair ? `${callId?.startsWith('caveman_') ? 'With Caveman' : 'Without Caveman'} · ${pair.board_id}` : 'Local Qwen receipt'
-  const hero = <PageHero trail="Model generations / Caveman comparison" title={title} deck={view === 'summary' ? 'What changed in the saved qwen3.5:4b pilot: correctness, token use, timing, and the limits of one paired run.' : 'Follow the same board and user prompt from the baseline request to the request with the reviewed Caveman instruction.'} />
+  const hero = <PageHero trail="Model generations / Caveman comparison" title={title} deck={view === 'summary' ? 'The saved qwen3.5:4b pilot, at a glance: final-answer outcomes, the token tradeoff, and when fewer generated tokens would lower a hosted charge.' : 'Follow the same board and user prompt from the baseline request to the request with the reviewed Caveman instruction.'} />
   if (saved.status === 'error' || paired.status === 'error') return <>{hero}<main className="reading-column ollama-standalone" id="main-content"><Callout tone="stop" title="The saved comparison could not be verified."><p>Reload this page, or inspect {artifactLink('comparisons.json', 'the pair index')} and {artifactLink('summary.json', 'the saved results')}. No receipt relationships or results are substituted.</p></Callout></main></>
   if (saved.status !== 'ready' || paired.status !== 'ready') return <>{hero}<main className="reading-column ollama-standalone" id="main-content"><p role="status">Loading the saved paired evidence…</p></main></>
   if (view === 'summary') return <>{hero}<CavemanSummary summary={saved.summary} data={paired.data} ui={ui} /></>

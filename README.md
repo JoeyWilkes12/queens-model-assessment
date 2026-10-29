@@ -76,6 +76,8 @@ See the [protocol and reproduction commands](docs/ollama-local-assessment.md), [
 
 The Caveman comparison chapter reports correctness, paired transitions, token usage and elapsed time for the 4b pilot, with input-length and run-order confounds. Each of the 24 readable receipts links to the other condition on the same board and to its shared model configuration. The derived [comparison index](public/evidence/ollama/comparisons.json) binds both calls to exact user-message, image, request, response and model/configuration hashes. `npm run ollama:verify` checks these relationships offline as well as the original receipts; it never contacts Ollama.
 
+The chapter also visualizes outcomes and token overhead, with an interactive [hosted cost tradeoff](docs/caveman-cost-tradeoff.md) calculator. Its dated OpenRouter tariffs are illustrative repricing of the observed 4b usage, not bills or performance measurements for the reference models. `npm run caveman:verify` checks the cost arithmetic offline; the actual local provider fee remains $0.
+
 ## Local handoff
 
 ```bash

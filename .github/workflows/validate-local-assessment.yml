@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/validate-local-assessment.yml'
       - 'scripts/ollama/**'
+      - 'scripts/verify-caveman-costs.mjs'
       - 'scripts/llm_panel/grading.py'
       - 'scripts/llm_panel/prompt.txt'
       - 'public/evidence/ollama/**'

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-10-29T03:32:37.693426+00:00",
+  "source": {
+    "name": "OpenRouter models API",
+    "url": "https://openrouter.ai/api/v1/models",
+    "pricing_unit": "USD per token",
+    "selection_note": "Dated catalog top-provider/default-condition snapshot. These are reference tariffs, not guaranteed lowest-provider quotes or an actual bill.",
+    "catalog_model_count": 457,
+    "catalog_response_sha256": "e9ceab4182ae5f079e04ae1c592cb46eed37d56b6d3fa1bdaf9ee7d64805db97",
+    "retention_note": "The digest was calculated from the full retrieved catalog response bytes. This snapshot retains only allowlisted reference fields, not the complete catalog response."
+  },
+  "measured_model": "qwen3.5:4b",
+  "exact_model_available": false,
+  "exact_model_note": "The checked OpenRouter catalog did not list Qwen3.5-4B. The other Qwen models below supply illustrative tariffs only; they were not measured in this paired pilot.",
+  "pricing_documentation_url": "https://openrouter.ai/docs/guides/overview/models",
+  "reasoning_documentation_url": "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens",
+  "prompt_caching_documentation_url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching",
+  "catalog_website_mismatch_note": "At the same check, the public Qwen3.5-9B model page displayed $0.08/$0.13 per million input/output tokens, while the Models API returned $0.17/$0.25. The Models API documentation identifies catalog pricing as top-provider/default-condition pricing. This snapshot consistently uses the dated API values, not the model-page quote.",
+  "assumptions": [
+    "Reprice the observed local qwen3.5:4b token counts at illustrative hosted tariffs; these projections are neither observed hosted usage nor an invoice.",
+    "Charge every reported input token at the uncached standard prompt rate.",
+    "Charge every reported generated token, including thinking, once at the completion rate.",
+    "Do not assume hosted tokenizer or image-tokenization equivalence; actual hosted token counts may differ.",
+    "Do not model cache discounts, request or image surcharges, conditional context rates, routing changes, credit-purchase fees or taxes.",
+    "These tariffs do not estimate local electricity, hardware or total local cost. The saved local pilot reports a zero provider inference fee."
+  ],
+  "references": [
+    {
+      "id": "qwen/qwen3.5-9b",
+      "canonical_slug": "qwen/qwen3.5-9b-20260310",
+      "label": "Qwen3.5-9B tariff",
+      "input_usd_per_million": 0.17,
+      "output_usd_per_million": 0.25,
+      "source_url": "https://openrouter.ai/api/v1/models",
+      "model_url": "https://openrouter.ai/qwen/qwen3.5-9b",
+      "raw_pricing": {
+        "prompt": "0.00000017",
+        "completion": "0.00000025"
+      }
+    },
+    {
+      "id": "qwen/qwen3.5-27b",
+      "canonical_slug": "qwen/qwen3.5-27b-20260224",
+      "label": "Qwen3.5-27B tariff",
+      "input_usd_per_million": 0.26,
+      "output_usd_per_million": 2.6,
+      "source_url": "https://openrouter.ai/api/v1/models",
+      "model_url": "https://openrouter.ai/qwen/qwen3.5-27b",
+      "raw_pricing": {
+        "prompt": "0.00000026",
+        "completion": "0.0000026"
+      }
+    },
+    {
+      "id": "qwen/qwen3.5-flash-02-23",
+      "canonical_slug": "qwen/qwen3.5-flash-20260224",
+      "label": "Qwen3.5-Flash tariff",
+      "input_usd_per_million": 0.065,
+      "output_usd_per_million": 0.26,
+      "source_url": "https://openrouter.ai/api/v1/models",
+      "model_url": "https://openrouter.ai/qwen/qwen3.5-flash-02-23",
+      "raw_pricing": {
+        "prompt": "0.000000065",
+        "completion": "0.00000026"
+      }
+    }
+  ]
+}

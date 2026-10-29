@@ -17,7 +17,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "ollama:test": "python3 -m unittest discover -s scripts/ollama -p 'test_*.py'",
-    "ollama:verify": "python3 scripts/ollama/panel.py verify --require-complete && python3 scripts/ollama/comparisons.py --verify"
+    "ollama:verify": "python3 scripts/ollama/panel.py verify --require-complete && python3 scripts/ollama/comparisons.py --verify && npm run caveman:verify",
+    "caveman:verify": "node --experimental-strip-types scripts/verify-caveman-costs.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
