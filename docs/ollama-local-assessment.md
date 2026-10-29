@@ -64,6 +64,12 @@ All **16 budget-limited** responses have `finish_reason="length"`, exactly 12,28
 
 ## Receipts and grading
 
+The website's `#/caveman-summary` page reports the paired results, including the baseline-only valid `panel-7-01` counterexample, total usage and elapsed time, and the exploratory limits. `#/local-open-models/receipt/<call_id>` exposes each call with reciprocal baseline/Caveman navigation and original artifacts; `#/local-open-models/configuration` is the common model-configuration destination.
+
+`comparisons.json` is a derived index, not a new experiment or a change to the frozen plan. It binds all twelve board pairs to matching model tags and weight digests, exact user messages and image bytes, and the same requested generation controls. The Caveman request adds exactly the reviewed system message. Full request hashes therefore differ. Configuration and user-message hashes use the historical receipt convention, SHA-256 of UTF-8 `json.dumps(value, sort_keys=True)`; plan, system and image hashes cover exact file bytes. The configuration hash includes every top-level request field except `messages`.
+
+Regenerate only the derived index with `python3 scripts/ollama/comparisons.py`. `npm run ollama:verify` now verifies the original 24 receipts and checks that this pair index matches their raw evidence without writing files or contacting Ollama. Mutation tests reject mismatched controls, user/system messages, model identities, image bytes, missing calls, stale indexes and tampered hashes. The historical plan, summary and all original receipt files remain unchanged.
+
 Each recorded call has a directory under `public/evidence/ollama/receipts/` containing:
 
 - `request.json`: exact model request, including prompt and base64 input image;

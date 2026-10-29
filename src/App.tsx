@@ -7,6 +7,7 @@ import { FailureComparison } from './FailureComparison'
 import { deriveFailureComparison } from './failureComparisonData'
 import { SubQAssessment } from './SubQAssessment'
 import { OllamaAssessment } from './OllamaAssessment'
+import { OllamaComparison } from './OllamaComparison'
 import { DecisionModels } from './DecisionModels'
 import { GreedyRule } from './GreedyRule'
 import { FrontierTrajectories } from './FrontierTrajectories'
@@ -100,6 +101,7 @@ const routes: Route[] = [
   { path: 'frontier-trajectories', title: 'One queen at a time', section: 'The board', description: 'Frontier models place one queen per request and explain each move.' },
   { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
   { path: 'local-open-models', title: 'Local open models', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
+  { path: 'caveman-summary', title: 'Caveman comparison', section: 'Model generations', description: 'Paired local Qwen receipts, observed correctness and usage, and experimental limits.' },
   { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
   { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
   { path: 'scale-primitives', title: 'Scale & primitives', section: 'The Jev question', description: 'Larger menus, Noul, Score, and held-out boards.' },
@@ -1093,7 +1095,8 @@ function App() {
             : active === 'scale-primitives' ? <ScalePrimitives />
               : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
-                : active === 'local-open-models' ? <OllamaAssessment ui={bookUi} />
+                : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
+                : active === 'caveman-summary' ? <OllamaComparison ui={bookUi} view="summary" />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
                 : active === 'greedy-rule' ? <GreedyRule ui={bookUi} />

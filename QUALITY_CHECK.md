@@ -143,3 +143,19 @@ Validation for this addition:
 Future studies require a distinct identity/output directory, default to 16k context and unload-after-response, and can capture numeric host conditions or opt into the Grafana journal. Those changes were tested with mocks and temporary files, not fresh inference. The reported historical memory/swap observations are retrospective aggregate evidence, not fabricated per-call telemetry. No new Ollama requests, live journal writes, model unloads, server configuration changes or monitoring-service changes were made during completion review. A separate workflow owns the endpoint until at least 29 October 2026 at 09:00 MDT.
 
 The persistent port4598 preview stays available for PR review. Its stop/start lifecycle and preservation of the other Serve ports were verified earlier; localhost and the actual private HTTP tailnet URL were tested from this Mac, including development WebSockets. No actual phone-browser test is claimed. Hosted Langfuse delivery remains unverified; coding-agent hooks and project/worktree virtual tags are distinct from standalone Ollama receipts.
+
+
+## Caveman receipt chains and summary — 28 October 2026
+
+The dedicated `#/caveman-summary` chapter reports the observed 4b-only pilot: strict 1/12 versus 5/12, diagnostic valid 3/12 versus 5/12, and capped 9/12 versus 7/12. It shows paired transitions, the baseline-only valid `panel-7-01` counterexample, and the higher combined token total with Caveman (156,608 versus 151,751). The n=4-per-size, single-run, longer-input, fixed-order, cache and host-condition limits remain explicit; no causal or general saving claim is made.
+
+All 24 readable receipt routes link reciprocally by board to the other condition and to a shared configuration page. The deterministic `comparisons.json` index checks exact user messages/image bytes, model identities/digests, full requested controls, reviewed system text and canonical request/response hashes against frozen evidence. All 166 original protected files retain their original byte hashes.
+
+- `npm run ollama:test`: 37 offline tests pass, including 13 comparison mutation tests.
+- `npm run ollama:verify`: all 24 receipts and 12 pair bindings pass without inference or writes.
+- Public evidence scrub, TypeScript/static build and whitespace checks pass.
+- Desktop 1440×1000 and mobile 390×844 inspection covers the summary and receipt chain. All 24 receipt routes resolve with correct current/counterpart links; switching from an extracted answer to a capped response removes the previous answer. Unknown receipt and missing-index states have explicit recovery links. Light/dark rendering and native table regions are retained. Captures are in ignored `output/playwright/ollama-review/caveman-*.png`.
+- The standalone receipt/configuration pages were given the book's reading margins after the first visual pass; final captures verify the correction.
+- Independent local Codex review of code, saved evidence and five screenshots: **Ship**, no material findings. The existing private HTTP preview serves the new summary and all twelve pair bindings; its HMR WebSocket was observed through the tailnet origin. These tests ran on the Mac, not a phone.
+
+No requests to Ollama, model unloads, monitoring/journal writes or inference-service configuration changes were made. The existing launchd preview remains available for PR review.

@@ -23,6 +23,9 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/protocol-results`
 - `#/earlier-generations`
 - `#/local-open-models`
+- `#/caveman-summary`
+- `#/local-open-models/configuration`
+- `#/local-open-models/receipt/<call_id>`
 - `#/jev-primer`
 - `#/candidate-engineering`
 - `#/scale-primitives`
@@ -70,6 +73,8 @@ The [local open-model chapter](https://joeywilkes12.github.io/queens-model-asses
 Run `npm run ollama:test` and `npm run ollama:verify` to audit the complete saved study offline. PR validation runs these checks, the public evidence scrub and the static build; it never invokes Ollama or deploys.
 
 See the [protocol and reproduction commands](docs/ollama-local-assessment.md), [Caveman security review](docs/caveman-review.md), and [coding-agent tracing and virtual-tag capture limits](docs/observability.md). No global Caveman installation is required.
+
+The Caveman comparison chapter reports correctness, paired transitions, token usage and elapsed time for the 4b pilot, with input-length and run-order confounds. Each of the 24 readable receipts links to the other condition on the same board and to its shared model configuration. The derived [comparison index](public/evidence/ollama/comparisons.json) binds both calls to exact user-message, image, request, response and model/configuration hashes. `npm run ollama:verify` checks these relationships offline as well as the original receipts; it never contacts Ollama.
 
 ## Local handoff
 
