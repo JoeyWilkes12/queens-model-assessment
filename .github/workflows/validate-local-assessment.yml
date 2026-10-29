@@ -1,0 +1,40 @@
+name: Validate local-model assessment
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/validate-local-assessment.yml'
+      - 'scripts/ollama/**'
+      - 'scripts/llm_panel/grading.py'
+      - 'scripts/llm_panel/prompt.txt'
+      - 'public/evidence/ollama/**'
+      - 'src/**'
+      - 'package*.json'
+      - 'tsconfig.json'
+      - 'vite.config.ts'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked website dependencies
+        run: npm ci
+      - name: Test local assessment grading and accounting
+        run: npm run ollama:test
+      - name: Audit complete saved receipts without inference
+        run: npm run ollama:verify
+      - name: Check public evidence boundary
+        run: npm run evidence:check-public
+      - name: Build static site
+        run: npm run build

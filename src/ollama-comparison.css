@@ -1,0 +1,9 @@
+.ollama-study code { overflow-wrap: anywhere; }
+.ollama-study details p { overflow-wrap: anywhere; }
+.ollama-standalone { max-width: 1000px; margin: 0 auto; padding: 40px 28px 80px; }
+.ollama-pair-board { max-width: 26rem; margin: 28px 0; }
+.ollama-pair-board img { width: 100%; height: auto; border: 1px solid var(--border-strong); }
+.ollama-pair-board figcaption { margin-top: 10px; color: var(--text-secondary); font-size: .875rem; }
+@media (max-width: 780px) {
+  .ollama-standalone { padding-inline: 22px; }
+}

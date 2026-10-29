@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "study": "2026-10-28-local-qwen-image-pilot",
+  "model": {
+    "tag": "qwen3.5:4b",
+    "digest": "7f3251fa6878a78a606bcb3c074283306e5ad2ea411a7774a9dd98a4bc7f2d13"
+  },
+  "configuration": {
+    "model": "qwen3.5:4b",
+    "stream": false,
+    "think": true,
+    "options": {
+      "num_predict": 12288,
+      "temperature": 0,
+      "seed": 20261028,
+      "num_ctx": 32768
+    },
+    "keep_alive": "10m"
+  },
+  "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+  "plan_sha256": "16e22205f5ff5eb03d0afba433aa073bc061598f7e75731817ac0b37ee626828",
+  "system_sha256": "b0744da21c12b45d6c0f35c31b517c4df8870951eb33700ec75d1bb1fa39926a",
+  "pairs": [
+    {
+      "board_id": "panel-5-18",
+      "size": 5,
+      "image": "images/panel-5-18.png",
+      "image_sha256": "abb489c16732d1be93d18b4eb240426054a3468690682840cb38097d762220fb",
+      "user_message_sha256": "ae82aa1a39c5e1380fe21caaa35d5b07f791f22f150f97d429ae0d8dd8b5d0a0",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-5-18",
+        "request_sha256": "d4ef8d9904b44ab8864477a15c7b0f5380d3ca18054ad88fc9fce49a60f8f278",
+        "response_sha256": "7001271e17db07c30d04a5cd9938cc2386c0aacd96b80afc58c80dc59b34b3a1"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-5-18",
+        "request_sha256": "378686cbb458cb6c2f56a3d7bc8cfbd1009923757aba4c0348a60efec7062ef4",
+        "response_sha256": "5e8645be63d3dacd1f7d49cd1e60dc3394e0ee146a1d28cfc9b586d62c292870"
+      }
+    },
+    {
+      "board_id": "panel-7-04",
+      "size": 7,
+      "image": "images/panel-7-04.png",
+      "image_sha256": "3241469d2aebfdbd78e47c8e82c61270c874d05cd860cb77b5f7082d5ef9cdc0",
+      "user_message_sha256": "5c33dc03756e3710c9303f6f8980be85f3f71b48f94b408688b3f7a0f2081e2f",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-7-04",
+        "request_sha256": "6d9ee1a1fd6e23b1d97599487d0788240eaa4adf326c814828ce5bb28f9fd870",
+        "response_sha256": "07ed0eb091fe972d24b7f372b6b122c4d13aead82a7df4069f458eb5145da05b"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-7-04",
+        "request_sha256": "8561ae15c8aa0c77606de3b0c9ba3338c64d24dbc4b9d90c22485ac90b8819b2",
+        "response_sha256": "bfda7916422a6304c800dee9e337dc3c9ed0ef8c4ac520c38037e0cda3dde2e4"
+      }
+    },
+    {
+      "board_id": "panel-9-22",
+      "size": 9,
+      "image": "images/panel-9-22.png",
+      "image_sha256": "dfdb01a33db2f7e0dcca3b1fbcbde1e991ebc87b343ab0a7d3897a973d95b9f7",
+      "user_message_sha256": "62b515b6f9a07d5b007eff27593d8bc4e82b3100faefb7525eff6d1623a0c1be",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-9-22",
+        "request_sha256": "7c05852182132cb31541069575c30f28b29453dbd6317124441863641344d103",
+        "response_sha256": "e29829cedfde2c9632842a43fd7babbc4e74efeeb0643a82c5611211b8cb5271"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-9-22",
+        "request_sha256": "c9623e70c8464541e6f5b370fb32db5c00b0482253eafbd9bed33a716a5bac83",
+        "response_sha256": "bca5457796c63896df2f2178566ab177d504b0f742f7c780fa41a418235b7f7c"
+      }
+    },
+    {
+      "board_id": "panel-5-21",
+      "size": 5,
+      "image": "images/panel-5-21.png",
+      "image_sha256": "c6abaab2e37ec6feac1adc0d86411a512385b68fddfec4d8273083698b074150",
+      "user_message_sha256": "333d7ed1ed4c9134560f01749400cd5e1e1355b81996593ac277864e7dbfc973",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-5-21",
+        "request_sha256": "52b7105df9cb37b11c7c772353f5bd5e52453c6067524c58ddb52af5bfdd3934",
+        "response_sha256": "633e8bdbbaf32a545f11704cff406ee7c5fbba598093172b64d992cea9a8b74a"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-5-21",
+        "request_sha256": "c5b958cb4765a175b4527909ab050806702426150c94641e9e25166eede0c511",
+        "response_sha256": "bc78c2438fd6bb357aedb98c9692368a9a47c71d07dfa4267d0c741f161cfc9e"
+      }
+    },
+    {
+      "board_id": "panel-7-01",
+      "size": 7,
+      "image": "images/panel-7-01.png",
+      "image_sha256": "a5f1cb07ab8c79e40ce9d7ddfe9dfd92ce444109d43a8934dfbf930699bcdf71",
+      "user_message_sha256": "c83566f9ca56c5a473b9eb8bb79232ae730a0dbb0e3fbe69b2c0065b95e00920",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-7-01",
+        "request_sha256": "bfdfe5af1b05d5852784a4c2447ce5242d421f175dd9441dcb1efbfde9b65242",
+        "response_sha256": "67ac07e56047c79b40c525fe1c95aacb6cec4e77e85eee67e52b3d75be6d2140"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-7-01",
+        "request_sha256": "6eb2aa87e6b8646ea0e510e61b99b6e30a11cbb61418579bab173e81af2206c2",
+        "response_sha256": "72e16bac0946aea8676f9dae6a83a94d136b0dc33431b7f913bba2823e9ce46e"
+      }
+    },
+    {
+      "board_id": "panel-9-08",
+      "size": 9,
+      "image": "images/panel-9-08.png",
+      "image_sha256": "90729467277953f3bf28da599b1bd1f4182cec291e7b5f6d6e7333d953062a78",
+      "user_message_sha256": "a3c737be74f39f2cc6d8e19d453a8bd7191188ebc6083b0f2b7d4aef73e32d0f",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-9-08",
+        "request_sha256": "84b34bb35cb46f32beba411b1ce37b15b81d8b99567bcd5fbb13ee561f73ae0c",
+        "response_sha256": "b310fb032a504cd8ec94da8993700128edc5263b64ec4b60809c096737536cea"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-9-08",
+        "request_sha256": "4191d7df15ce984567b18bc40c20ae23ad5d588ed18bfe31bfda85e1678af7c8",
+        "response_sha256": "46a0e71faed9fb824356cd2ec5ff453eb495dffcdd62b174e6434db01b81a32d"
+      }
+    },
+    {
+      "board_id": "panel-5-10",
+      "size": 5,
+      "image": "images/panel-5-10.png",
+      "image_sha256": "e4ada8f6e587130e64a50ae701ed3e094cce27ad825e409a762b0d20846abbb0",
+      "user_message_sha256": "4314754ce1798726c2ef4fc4ea1543c1e34d55719ba68052c28ae944018ebd70",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-5-10",
+        "request_sha256": "a38b056ad98d30537735c179f59a70b65d991314c4084a0d3c46e43b7511dc5a",
+        "response_sha256": "ce60f42a6dbbb9a9f2e60537cb7e1d5795a56190f122de5035b4669a7b598a0b"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-5-10",
+        "request_sha256": "c204a7e95e5ac21dc32ca72ac85577885289842cead1ffd4c930e4be248c7176",
+        "response_sha256": "17cee95f731de2a37fa2465669a270843f049ed0582e8ce4062c79da7e7ef7b5"
+      }
+    },
+    {
+      "board_id": "panel-7-24",
+      "size": 7,
+      "image": "images/panel-7-24.png",
+      "image_sha256": "fe37832e3e30131cf25ea8a72bc55fe10cb03a24c23c55d4ce8b59d951b683b3",
+      "user_message_sha256": "6e0318881dad6bf8b4dfb8243a3e8eb588a0598ae0cd5ca03fd983e207e8b589",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-7-24",
+        "request_sha256": "615c915bbb8f8aafcaf4a8710f63d4e797e65f619da0538b7f74957e58cc7f85",
+        "response_sha256": "cb4cbcbc6b6c5d15ed768d4af16cf0670d0133c1b8e19d97ae1ebeb69ef195ce"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-7-24",
+        "request_sha256": "2244680a880f0adccfde3ecc8101023e84b06f2f8af6716fa635851ecf4d8d51",
+        "response_sha256": "21d75e3b2032fc1de8bf0333faa487a44137d0c005c15c35865240e119e6bfbe"
+      }
+    },
+    {
+      "board_id": "panel-9-05",
+      "size": 9,
+      "image": "images/panel-9-05.png",
+      "image_sha256": "570175b1db16f50a05edd006242b02a288b8b158be19c15448cc62990a921a03",
+      "user_message_sha256": "9f162f26cc4aff7c2279cde11bd3323c7c6d50c80e9b7d593c13ae7d2dc076f8",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-9-05",
+        "request_sha256": "2c48ebea00a10bf9a6d3e1a87caf5ca80038cdbe5dc62679cc9d83d0411faa49",
+        "response_sha256": "4156f57157565a5b708834fc16239b6202003fd3f5783bb8d35383f23c3f8e2c"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-9-05",
+        "request_sha256": "a75940b6bd94357090ad571ae16e7066f69a45048b8dd763e929e9934392e994",
+        "response_sha256": "63f9269f87d655d9936052d6ad582abb75cec6104e8f49b6e4617530f85e28cb"
+      }
+    },
+    {
+      "board_id": "panel-5-19",
+      "size": 5,
+      "image": "images/panel-5-19.png",
+      "image_sha256": "1154279d3074685c73297ffb2ee6aa04bd5abcffadac65ac6173c93184a2c16f",
+      "user_message_sha256": "2afc9fc666e64645eb0b8141b411316ab6b1aae8cfaf631853d0a5df0059a674",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-5-19",
+        "request_sha256": "67ef78b9bbd782dd37061ed890e7268566ac6673a02263ece0e7170e98c19f03",
+        "response_sha256": "91d2f699fc8250f6b54e9c5f660ca761df6aa0e10572201f42b1c37d4aa4ff1d"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-5-19",
+        "request_sha256": "da95da1552d093689facde61f7e17ca44113a05e3991d4cd0b96ba27264e6d4b",
+        "response_sha256": "439b6aba58df3cd6ef4b26c286b2541085663ebbf7e356cf4ff8e22d0608faed"
+      }
+    },
+    {
+      "board_id": "panel-7-50",
+      "size": 7,
+      "image": "images/panel-7-50.png",
+      "image_sha256": "7c87c4b79671b9b5d56bf1d572e2ab98ce4b4cfac49d0f9261a32cc9c933b2ff",
+      "user_message_sha256": "ae5e9dd7ab8e77f239df00b2121975d46c31d048f453f49ee0a713db97a30643",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-7-50",
+        "request_sha256": "d244aaef51549b9bc43d088329ca903f095b5319b2b1a1c55c070f6e202fa2c9",
+        "response_sha256": "cfe6522392eb68124a604e6b0681817242dfd94a36e12552f5231b3397152589"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-7-50",
+        "request_sha256": "a494662f4cb93efd63c70932adc1f66eece4858372950f42ee556a02eec45730",
+        "response_sha256": "58d10453ea12cbaf21a7d24cafa1aebf118bb43479e5cf00eee4aa8f466575b5"
+      }
+    },
+    {
+      "board_id": "panel-9-34",
+      "size": 9,
+      "image": "images/panel-9-34.png",
+      "image_sha256": "f9e323dc331b0df07ffc1eba90833e69b5dd8c214222ef8a37f36f379a244ecc",
+      "user_message_sha256": "b6c0aee3497d7dc3405dd8388617c26f98ef1a306b041fe3d16dcd337055c0dc",
+      "configuration_sha256": "39847b124441c2535ba7ba225f6f4c3d9f70106176a27e054f2c262563bcdbbc",
+      "checks": {
+        "same_user_message": true,
+        "same_requested_configuration": true,
+        "same_model_digest": true,
+        "caveman_system_only_difference": true
+      },
+      "baseline": {
+        "call_id": "baseline_panel-9-34",
+        "request_sha256": "6bbb631f48d3b619477846629b7207403763aea2e1fd7f1f4684bfb8fa4e3f6d",
+        "response_sha256": "7bcd17b41041ccfbb280b8ff64bbfaf3f0922e1e5cefdf7a4c4303cd850a7b5b"
+      },
+      "caveman": {
+        "call_id": "caveman_panel-9-34",
+        "request_sha256": "e53dbebd95644420bd5e0ce03aa93db69ed211139059bdeb04ec1a8ac0489450",
+        "response_sha256": "cf9acf87a732d9a6b717ba04f453eb78c9abbc29cdde0c3b687eaf90bbf9d9c4"
+      }
+    }
+  ]
+}
