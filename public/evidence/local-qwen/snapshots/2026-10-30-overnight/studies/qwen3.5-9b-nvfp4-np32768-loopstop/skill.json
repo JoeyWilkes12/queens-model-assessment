@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/juliusbrussee/caveman",
+  "commit": "9b68f7ed12b05e7efaff18e65c5a3fc2849fd0a4",
+  "skill_path": "skills/caveman/SKILL.md",
+  "artifact_sha256": "415d43518f2b1a9498c15a445d4657117b129ee5e81b19454ce348439cc6672b",
+  "system_sha256": "b0744da21c12b45d6c0f35c31b517c4df8870951eb33700ec75d1bb1fa39926a",
+  "review": {
+    "mode": "local Codex semantic + SkillSpector static + skills.sh registry",
+    "report": "caveman-review.json"
+  },
+  "applied_utc": "2026-10-28T17:34:42.992876+00:00",
+  "application": "Reviewed SKILL.md body in fresh system message; no plugin hooks, scripts, tools, global installation or persistence",
+  "body_transform": "YAML frontmatter removed; remaining body bytes unchanged",
+  "source_bytes": 4678,
+  "system_bytes": 4431
+}

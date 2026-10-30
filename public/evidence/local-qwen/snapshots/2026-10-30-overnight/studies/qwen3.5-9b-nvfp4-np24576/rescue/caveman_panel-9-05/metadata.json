@@ -1,0 +1,40 @@
+{
+  "kind": "forced_answer_rescue",
+  "call_id": "caveman_panel-9-05",
+  "board_id": "panel-9-05",
+  "size": 9,
+  "treatment": "caveman",
+  "model": "qwen3.5:9b-nvfp4",
+  "source_receipt": "public/evidence/ollama-models/qwen3.5-9b-nvfp4-np24576/receipts/caveman_panel-9-05",
+  "source_response_sha256": "1d7069ffd5f65aaea49be11cf7f94561c51f4079fe92bdfe4b2bfb79204bfbc7",
+  "method": "replay the truncated thinking as a pre-filled assistant turn, append Qwen's early-stop sentence (the renderer closes </think>), pre-fill the answer prefix; graded as prefix + continuation",
+  "options": {
+    "num_ctx": 28672,
+    "seed": 20261028,
+    "temperature": 0,
+    "num_predict": 256
+  },
+  "thinking_chars_replayed": 50951,
+  "early_stop_text": "\n\nConsidering the limited time by the user, I have to give the solution based on the thinking directly now.",
+  "answer_prefix": "{\"board_id\":\"panel-9-05\",\"columns_by_row\":[",
+  "answer_text": "{\"board_id\":\"panel-9-05\",\"columns_by_row\":[1, 6, 4, 7, 2, 3, 5, 8, 9]}",
+  "started_utc": "2026-10-29T06:37:12.332614+00:00",
+  "completed_utc": "2026-10-29T06:38:21.777168+00:00",
+  "elapsed_seconds": 69.44383937500061,
+  "http_status": 200,
+  "finish_reason": "stop",
+  "input_tokens": 26600,
+  "output_tokens": 26,
+  "strict_correct": false,
+  "rule_valid_after_extraction": false,
+  "outcome": "rescue_incorrect",
+  "placement": [
+    {
+      "wired_limit_mb": "20480",
+      "load_status": 200,
+      "context_length": 28672,
+      "vram_share": 1.0
+    }
+  ],
+  "interpretation": "A rescue is a separate outcome. The original call stays 'truncated'; never count rescues as one-shot strict solves."
+}

@@ -21,6 +21,7 @@ import { ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCos
 
 // The Z3 part is large and self-contained; load it only when its route opens.
 const Z3Part = lazy(() => import('./z3/Z3Part'))
+const LocalQwen = lazy(() => import('./LocalQwen'))
 
 type Route = {
   path: string
@@ -100,7 +101,8 @@ const routes: Route[] = [
   { path: 'protocol-results', title: 'Protocol & results', section: 'The board', description: 'Frozen inputs, entrants, outcomes, and route failures.' },
   { path: 'frontier-trajectories', title: 'One queen at a time', section: 'The board', description: 'Frontier models place one queen per request and explain each move.' },
   { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
-  { path: 'local-open-models', title: 'Local open models', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
+  { path: 'local-qwen', title: 'Local Qwen experiments', section: 'Model generations', description: 'Model scale, sampling, loop-stop policies and hosted cost scenarios.' },
+  { path: 'local-open-models', title: 'Original 4B pilot', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
   { path: 'caveman-summary', title: 'Caveman comparison', section: 'Model generations', description: 'Paired local Qwen receipts, observed correctness and usage, and experimental limits.' },
   { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
   { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
@@ -1096,6 +1098,7 @@ function App() {
               : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
+                : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading Local Qwen experiments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
                 : active === 'caveman-summary' ? <OllamaComparison ui={bookUi} view="summary" />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />

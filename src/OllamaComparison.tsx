@@ -132,6 +132,7 @@ function CavemanSummary({ summary, data, ui }: { summary: Summary; data: Compari
     <LocalToc items={[{ id: 'caveman-finding', label: 'Observed result' }, { id: 'caveman-usage', label: 'Tokens & time' }, { id: 'caveman-cost', label: 'Cost tradeoff' }, { id: 'caveman-pairs', label: 'Every matched pair' }, { id: 'caveman-limits', label: 'What this supports' }]} />
     <main className="reading-column" id="main-content">
       <Section id="caveman-finding" title="More strict answers in this sample">
+        <p><a href="#/local-qwen">Explore the expanded Local Qwen studies</a>: 9B and 27B, sampling rounds, 32K loop-stop conditions and study-specific hosted cost scenarios. This page preserves the original 4B pilot.</p>
         <p className="lead"><code>{summary.runtime.model}</code> returned <strong>{strict(caveman)} strict correct answers with Caveman</strong>, compared with <strong>{strict(baseline)} without it</strong>. Counting uniquely recoverable off-format answers as a diagnostic, the counts were {valid(caveman)} and {valid(baseline)}.</p>
         <p>This is exploratory: <strong>n=4 boards per size, one run per condition</strong>. Only <code>qwen3.5:4b</code> was tested in this comparison. It cannot establish that Caveman caused the difference or that other Qwen models would behave the same way.</p>
         <CavemanOutcomeChart rows={summary.rows} />

@@ -4,6 +4,12 @@ This is the static-compatible Vite + React + TypeScript companion to the expande
 
 Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-model-assessment/)
 
+The Local Qwen chapter (`#/local-qwen`) compares model sizes, sampling and loop-stop
+conditions with paired receipts and illustrative OpenRouter costs. See the
+[offline import workflow](docs/local-qwen-imports.md), [method review](docs/local-qwen-methods.md)
+and [financial estimates](docs/local-qwen-costs.md). Future nights add immutable
+snapshots; this website never sends inference requests.
+
 ## Table of contents
 
 - [Routes](#routes)

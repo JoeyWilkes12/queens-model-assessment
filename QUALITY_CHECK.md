@@ -172,3 +172,37 @@ The follow-up uses the original 24 saved 4b receipts: +13,572 input tokens, −8
 - Independent local Codex review checked source, all raw receipt token counts, offline math/build and seven corrected final screenshots: **Ship**, no material findings. Parent-agent interaction and private HTTP tailnet checks passed from the Mac; no phone-browser test is claimed.
 
 All 166 protected historical evidence files remain byte-identical. No Ollama requests, model changes, monitoring/journal writes or inference-service changes were made; tonight's separate assessment workflow remains untouched. The persistent preview stays available for review.
+
+## Local Qwen expansion — 2026-10-30
+
+- Expanded PR 8's original 4B cost visuals with a lazy-loaded Local Qwen chapter,
+  immutable evidence imports, paired receipt routes, output-length charts,
+  study-specific hosted-price scenarios, rescue accounting and loop-stop methods.
+- Snapshot `2026-10-30-overnight`: eight cohorts, 168 recorded primary calls,
+  1,273 hashed artifacts; prepared 9B sampling round 2 remains pending. All
+  original `public/evidence/ollama/` files match the prior committed pilot.
+- All 51 Python tests pass, including 14 importer mutation tests. Original
+  24-receipt/12-pair audit, new snapshot verification, pure finance checks and
+  independent per-study integration sums pass. Public scrub reports zero private
+  fields. TypeScript and production build pass; the existing main-bundle size
+  advisory remains. The new chapter is a separate lazy-loaded chunk.
+- Browser QA covers all eight study selections, 24-row ledgers, size filtering,
+  tariff/custom/free/invalid prices, full-input rescue accounting, unknown canceled
+  stream costs, prepared studies, reciprocal and cross-study receipt routes,
+  study backlinks, missing receipts, missing pricing/index states and unmatched
+  partial-arm suppression. No JavaScript errors or inference requests observed.
+- Desktop 1440px and mobile 390px/320px have no document overflow. Independent
+  local Codex review inspected all seven desktop/mobile/light/dark captures and
+  returned Ship. It caught a future partial-arm comparison issue; matching unique
+  recorded-board sets now gate deltas, headlines and break-even ratios, with
+  regression tests and a browser fixture confirming the correction.
+- Existing local preview and private HTTP mapping were reused. Local and private
+  preview were tested from this Mac, with the Vite WebSocket observed. No physical
+  phone-browser test is claimed. Review captures stay in ignored output files.
+- Eleven client-canceled streams lack final usage. Their affected total costs
+  remain unknown. The detector was calibrated on prior traces; no independent
+  false-positive rate or isolated stopping-policy savings claim is made. Shared
+  policy within Caveman arms, co-interventions across budgets, post-treatment
+  selection and missing call-time Git revision metadata are explicitly described.
+- No model requests, benchmark changes, service changes, merge or production
+  deployment were performed by this work.
