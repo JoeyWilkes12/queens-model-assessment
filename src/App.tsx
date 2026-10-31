@@ -15,6 +15,7 @@ import { LegacyPanel } from './LegacyPanel'
 import { CostLedger } from './CostLedger'
 import { MethodsCritique } from './MethodsCritique'
 import { FeaturedReplays } from './FeaturedReplays'
+import { PairStrip } from './PairStrip'
 import { Scoreboard } from './Scoreboard'
 import { BoardReceipts } from './BoardReceipts'
 import { ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCost'
@@ -399,13 +400,13 @@ function ReportFigures() {
   </>
 }
 
-function AssessmentReceipt() {
+function AssessmentReceipt({ edition = '14 Oct 2026' }: { edition?: string }) {
   return (
     <section className="receipt" aria-labelledby="receipt-heading">
       <div className="receipt-lead"><span className="receipt-mark">✓</span><div><span className="receipt-label">Assessment receipt</span><h2 id="receipt-heading">A bounded claim with an inspectable trail.</h2></div></div>
       <div className="receipt-grid">
         <div><span className="receipt-label">Source class</span><strong>Independent finding</strong><span>saved experiment records</span></div>
-        <div><span className="receipt-label">Edition</span><strong>14 Oct 2026</strong><span>dated studies retained</span></div>
+        <div><span className="receipt-label">Edition</span><strong>{edition}</strong><span>dated studies retained</span></div>
         <div><span className="receipt-label">Interaction</span><strong>Read-only</strong><span>local evidence only</span></div>
         <div><span className="receipt-label">Outcome</span><strong>Task-specific grades</strong><span>inspect each denominator</span></div>
       </div>
@@ -462,51 +463,163 @@ function DataTable({ caption, headers, rows }: { caption: string; headers: strin
 
 const bookUi = { PageHero, LocalToc, Section, Callout, DataTable }
 
+function Disclosure({ label, children }: { label: string; children: ReactNode }) {
+  return <details className="qa-more"><summary>{label}</summary><div className="qa-more-body">{children}</div></details>
+}
+
+/** One reader question: a number, a one-line answer, and the evidence behind a disclosure. */
+function Answer({ id, question, stat, statLabel, statSr, answer, more, children }: { id: string; question: string; stat: string; statLabel: string; statSr?: string; answer: ReactNode; more: string; children: ReactNode }) {
+  const hidden = statSr ? true : undefined
+  return <li className="qa-item" id={id}>
+    <h3>{question}</h3>
+    <p className="qa-stat"><span className="qa-number" aria-hidden={hidden}>{stat}</span><span className="qa-label" aria-hidden={hidden}>{statLabel}</span>{statSr && <span className="sr-only">{statSr}</span>}</p>
+    <p className="qa-answer">{answer}</p>
+    <Disclosure label={more}>{children}</Disclosure>
+  </li>
+}
+
+function Facts({ items }: { items: [string, ReactNode][] }) {
+  return <dl className="qa-facts">{items.map(([term, text]) => <div key={term}><dt>{term}</dt><dd>{text}</dd></div>)}</dl>
+}
+
+function QaLinks({ links }: { links: [string, string][] }) {
+  return <p className="qa-links">{links.map(([label, href]) => <a key={href} href={href}>{label} <Icon name="arrow" size={14} /></a>)}</p>
+}
+
+/** Every dated study in this edition: ISO date, shown date, title, route, headline result. */
+const studies: [string, string, string, string, string][] = [
+  ['2026-09-17', '17 Sep', 'One-shot image test, 3 boards', 'protocol-results', '11 of 12'],
+  ['2026-09-18', '18–19 Sep', 'Jev probes, menus and scale', 'scale-primitives', '24/24 with regions listed'],
+  ['2026-09-30', '30 Sep', 'Jev builds boards move by move', 'jev-trajectories', '1 of 9 boards'],
+  ['2026-10-01', '1 Oct', 'Earlier models, original 3 boards', 'earlier-generations', '21 of 27'],
+  ['2026-10-13', '13 Oct', 'SubQ Snap replay', 'subq-assessment', '2 of 9 boards'],
+  ['2026-10-14', '14 Oct', 'Decision Index comparison', 'decision-models', 'Jev 57.5'],
+  ['2026-10-15', '15–16 Oct', '192-board decision panel', 'subq-assessment/panel', 'Jev 21, SubQ 19, rule 80'],
+  ['2026-10-16', '16 Oct', '36-board frontier image panel', 'board-receipts', '140 of 144'],
+  ['2026-10-17', '17 Oct', 'One queen at a time, pilot', 'frontier-trajectories', '4 of 4, one 5×5 board'],
+  ['2026-10-17', '17–19 Oct', 'Earlier models, 36 boards', 'earlier-generations', '166 of 180, five models'],
+  ['2026-10-28', '28 Oct', 'Local Qwen and Caveman', 'local-open-models', '1 and 5 of 12'],
+]
+
 function ExecutiveSummary() {
   return <>
-    <PageHero trail="Read first" title="Selecting is not solving." deck="On the 36-board image panel, four frontier reasoning models wrote correct placements in 140 of 144 graded attempts. On a separate 192-board construction panel, Jev solved 21 boards and SubQ 19; the greedy rule solved 80." action={{ label: 'Watch the recorded attempts', scrollTo: 'watch' }} />
-    <AssessmentReceipt />
+    <PageHero trail="Read first" title="Frontier reasoning models solve Queens. Decision models rarely do." deck="Four frontier models each saw 36 new boards as images and solved 140 of 144 between them. Picking one move at a time from menus our code built, Jev and SubQ Snap solved 21 and 19 of 192 boards. A simple rule with no model solved 80." action={{ label: 'Watch the recorded attempts', scrollTo: 'watch' }} />
+    <AssessmentReceipt edition="28 Oct 2026" />
     <div className="reading-layout">
-      <LocalToc items={[{ id: 'scoreboard', label: 'Scoreboard' }, { id: 'finding', label: 'Three findings' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'What it does not show' }, { id: 'next', label: 'Where next' }]} />
+      <LocalToc items={[{ id: 'finding', label: 'Short answers' }, { id: 'scoreboard', label: 'Scoreboard' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'Limits' }, { id: 'next', label: 'Go deeper' }]} />
       <main className="reading-column" id="main-content">
-        <Section id="scoreboard" title="Scoreboard" label="Evals summary">
-          <p>Boards solved and API spend, side by side. The two tasks use different inputs and attempt budgets; compare models within each chart.</p>
+        <Section id="finding" title="Short answers">
+          <p className="qa-rule">Queens asks for one queen in every row, column and colored region, with no two queens touching, even diagonally.</p>
+          <Disclosure label="See a solved board">
+            <div className="split-figure">
+              <BoardDiagram size="five" compact />
+              <div className="figure-copy"><p>A checker tests every answer against those four rules. The repository's Z3 solver works each board from its exact region map as a reference; it never competed.</p><QaLinks links={[['Queens rules', '#/queens-rules'], ['How Z3 solves Queens', '#/how-z3-solves-queens']]} /></div>
+            </div>
+          </Disclosure>
+          <ul className="qa-list">
+            <Answer id="qa-image" question="Can a model solve a board from a picture?" stat="140/144" statLabel="boards, four frontier models" answer="Yes. Each model saw an empty board and wrote the full solution in one reply. Five older OpenAI and Anthropic reasoning models solved 166 of 180." more="Model by model">
+              <Facts items={[
+                ['16 Oct · 36 new boards', 'GPT-5.6 Sol 36, Claude Opus 4.8 36, Grok 4.6 34, Gemini 3.1 Pro Preview 34. 127 of the 140 were strict JSON; 13 were right but off-format. Grok ran out of tokens on two 9×9 boards. Two Gemini requests were rate-limited (HTTP 429) before any answer.'],
+                ['17–19 Oct · Older models', 'GPT-5.5, GPT-5.4, GPT-5, Claude Opus 4.7 and Opus 4.6 solved 166 of 180 on the same boards. All 14 misses ran out of tokens, 13 of them GPT-5’s. Gemini 2.5 Pro solved 27 of 36, Gemini 2.5 Flash 12, GPT-4.1 1.'],
+                ['17 Sep · Original 3 boards', '11 of 12. Grok’s 7×7 request timed out after ten minutes; sent again unchanged on 16 Oct, it came back correct.'],
+                ['1 Oct · Nine earlier models', '21 of 27 on the original boards. A follow-up on 6 failed model-board pairs got 10 of 36.'],
+                ['17 Oct · One queen per request', 'All four frontier models solved a 5×5 practice board in five requests, the fewest possible. The full 36-board run did not fit the budget rule, so it never ran.'],
+                ['Cost per solved board', 'Sol $0.015 on the half-price batch route, Grok $0.045, Opus 4.8 $0.092, Gemini $0.102.'],
+              ]} />
+              <p className="qa-caveat">The boards are synthetic and letter-labelled, and the top models are at the ceiling, so this cannot rank them.</p>
+              <QaLinks links={[['Protocol & results', '#/protocol-results'], ['Earlier generations', '#/earlier-generations'], ['One queen at a time', '#/frontier-trajectories'], ['Board receipts', '#/board-receipts']]} />
+            </Answer>
+            <Answer id="qa-build" question="Can a decision model build a board?" stat="21 · 19" statLabel="of 192 boards, Jev and SubQ Snap" statSr="Jev solved 21 of 192 boards, SubQ Snap 19." answer="Rarely. Neither solved a 9×9, while a simple rule with no model solved 80 boards, 14 of them 9×9." more="Sizes, baselines and the first nine boards">
+              <Facts items={[
+                ['By size, 64 boards each', '5×5, 7×7, 9×9: Jev 14, 7, 0. SubQ Snap 16, 3, 0. Simple rule 42, 24, 14. Random menu picks would solve about 7 in all.'],
+                ['Overlap', 'Only 7 boards were solved by both models; 33 by either.'],
+                ['Illegal-cell filter', 'Removing illegal cells from the menu helped SubQ at 5×5 (15 vs 6 of 64, Holm p = 0.035). Jev’s gain, 13 vs 7, was not significant (p = 0.21).'],
+                ['Unforced picks', 'When the menu left a real choice, Jev’s pick could still reach the solution 43.8% of the time (random: 32.6%), SubQ’s 30.5% (random: 23.4%).'],
+                ['30 Sep and 13 Oct · First nine boards', 'Each model finished 10 of 90 attempts: Jev 1 board, SubQ 2. The simple rule solved 4 of 9, including a 7×7 and a 9×9 that neither model solved.'],
+              ]} />
+              <p className="qa-caveat">The simple rule takes the color with the fewest legal cells, places its first legal cell and never backtracks. The models chose from menus our code built. The 192-board panel was preregistered.</p>
+              <QaLinks links={[['192-board panel', '#/subq-assessment/panel'], ['Greedy rule baseline', '#/greedy-rule'], ['SubQ Snap replay', '#/subq-assessment'], ['Jev trajectories', '#/jev-trajectories']]} />
+            </Answer>
+            <Answer id="qa-jev" question="What is Jev good at?" stat="24/24" statLabel="right picks, regions listed" answer="Picking the finished board from up to 255 options, once code spells out each option’s regions. From column positions alone it got 1 of 24." more="Try both menus">
+              <JevCandidateLens />
+              <Facts items={[
+                ['Input', 'Typed questions (Choice, Noul, Score) about a text grid. Jev never saw an image; the image prompt returned HTTP 400.'],
+                ['Building', '0 of 5 native construction probes were valid, and 0 of 6 held-out boards. On those 6 boards it picked right 6 of 6 times with regions listed, 0 of 6 with columns only.'],
+                ['Confidence', 'Its average confidence in the right option fell from 0.96 with 12 options to 0.67 with 255.'],
+                ['Yes/no checks', 'Noul said yes to the 6 valid candidates and to 5 invalid ones.'],
+                ['Repeatability', 'Identical requests changed its choice in 8 of 17 groups.'],
+                ['14 Oct · Decision Index', 'Jev scores 57.5, the highest of 11 decision models on the Artificial Analysis index. Claude Haiku 5.5 (Low), a general model, scores 60.6.'],
+              ]} />
+              <p className="qa-caveat">The 24 menus reuse two boards, so they are not 24 independent puzzles.</p>
+              <QaLinks links={[['Jev primer', '#/jev-primer'], ['Candidate engineering', '#/candidate-engineering'], ['Scale & primitives', '#/scale-primitives'], ['Decision models vs the index', '#/decision-models']]} />
+            </Answer>
+            <Answer id="qa-local" question="Can a small model running locally do it?" stat="1 · 5" statLabel="of 12 boards, plain and Caveman prompts" statSr="1 of 12 boards with the plain prompt, 5 of 12 with the Caveman prompt." answer="Barely. A 4.5-billion-parameter Qwen model solved 1 board with the plain prompt and 5 when told to answer tersely. Neither run solved a 9×9." more="Board by board, 28 Oct">
+              <PairStrip />
+              <Facts items={[
+                ['Setup', 'qwen3.5:4b in Ollama, no tools. 12 boards from the frontier panel, 4 per size, one request per board per prompt.'],
+                ['Paired', 'Both prompts solved 1 board, only Caveman 4, only the plain prompt 0, neither 7.'],
+                ['Looser grade', 'Counting answers pulled out of longer replies, the plain prompt solved 3 and Caveman still 5.'],
+                ['Token cap', '16 of 24 replies hit the 12,288-token cap with no final answer, including all 8 at 9×9.'],
+                ['Tokens', 'Caveman added 1,131 input tokens per request, so total tokens did not fall: 156,608 vs 151,751.'],
+                ['Caveman', 'A third-party style skill that tells the model to answer tersely, added as a system message after a security review. No provider fee; electricity was not measured.'],
+              ]} />
+              <p className="qa-caveat">Four boards per size, one run each, plain prompt always first: this cannot show that Caveman caused the gain.</p>
+              <QaLinks links={[['Local open models', '#/local-open-models'], ['Caveman comparison', '#/caveman-summary']]} />
+            </Answer>
+            <Answer id="qa-cost" question="What did it cost?" stat="$31.48" statLabel="API spend, every study" answer="Every request, reply and grade is saved, so any number on this page can be traced to its receipt." more="Where the money and records are">
+              <Facts items={[
+                ['By provider', 'OpenRouter $31.31, SubQ $0.17.'],
+                ['Largest items', 'The two 36-board image panels: $17.71 for the older models, $9.10 for the frontier models.'],
+                ['Not counted', '2 requests with unknown cost, agent use outside the studies, and the local pilot, which had no API fee.'],
+                ['Evidence atlas', '5,417 request records from 19 studies. The local pilot keeps its own receipts.'],
+                ['Board receipts', '36 boards, each tried by 15 systems. None was solved by all 15; each was solved by 7 to 14.'],
+              ]} />
+              <QaLinks links={[['Assessment receipt', '#/assessment-receipt'], ['Evidence atlas', '#/evidence-atlas'], ['Board receipts', '#/board-receipts']]} />
+            </Answer>
+          </ul>
+        </Section>
+        <Section id="scoreboard" title="Scoreboard">
+          <p>Long bars count boards solved; the thin blue bars show API spend. The two charts measure different tasks, so compare models within one chart.</p>
           <Scoreboard>
             <details className="sb-explain">
-              <summary>Why these charts are not apples to apples</summary>
-              <p>The language models received a picture of an empty board and had to write the whole solution in one response. The decision models never saw an image: they read an exact text grid, and at each step chose one option from a menu our harness built, with single-option moves forced and, in filtered mode, illegal cells removed. One task is construction from scratch; the other is a sequence of guided selections. The language models were also given one attempt per board; the decision models had ten on the original nine boards and two on the new panel. Compare models within a chart, not across charts. A closer test gives the language models the decision models' own text state, one queen per request with no feedback: see <a href="#/frontier-trajectories">One queen at a time</a>. It still differs, because the language models get no menus and may revise.</p>
+              <summary>Why the two charts differ</summary>
+              <p>The language models saw a picture of an empty board and wrote the whole answer in one reply, with one try per board. The decision models read a text grid and picked one option at a time from a menu our code built. Moves with a single option were made for them, and the filtered menu also removed illegal cells. They had 10 tries per board on the first nine boards and 2 on the 192-board panel. The closest like-for-like test is <a href="#/frontier-trajectories">One queen at a time</a>: the language models get the same text state, with no menu, and may revise.</p>
             </details>
           </Scoreboard>
           <details className="sb-help sb-ledger">
-            <summary>Detailed cost comparison</summary>
-            <p>The 36-board image panel, including cost per solved board and totals for graded requests only. See the <a href="#/assessment-receipt">assessment receipt</a> for every evaluation, or a <a href="#/board-receipts">board receipt</a> for answers, replays and cost per request.</p>
+            <summary>Cost per solved board</summary>
+            <p>Both 36-board image panels, graded requests only. The <a href="#/assessment-receipt">assessment receipt</a> lists every evaluation; each <a href="#/board-receipts">board receipt</a> shows answers, replays and cost per request.</p>
             <CostLedger ui={bookUi} compact />
           </details>
         </Section>
-        <Section id="finding" title="What the evidence supports" label="Executive summary">
-          <ol className="finding-list">
-            <li><span className="finding-number">1</span><div><h3>Reasoning models construct.</h3><p>Four frontier models returned <strong>11 valid solutions in 12 attempts</strong> from three board images; the twelfth timed out, and solved the board when re-sent unchanged. On <strong>36 new boards</strong>, GPT-5.6 Sol and Claude Opus 4.8 solved all 36, Grok 4.6 and Gemini 3.1 Pro 34 each. Five earlier reasoning models were correct in <strong>166 of 180</strong> answers on the same panel, and every miss ran out of tokens. Gemini 2.5 Pro solved 27 of 36 and Gemini 2.5 Flash 12; GPT-4.1, without reasoning, solved 1 of 36. Asked to place one queen per request and explain each move, all four frontier models solved their pilot board in five requests. <a href="#/protocol-results">Protocol &amp; results</a> · <a href="#/earlier-generations">Earlier generations</a> · <a href="#/frontier-trajectories">One queen at a time</a></p></div></li>
-            <li><span className="finding-number">2</span><div><h3>Decision models select, when code does the search.</h3><p>Given complete candidates with each candidate's regions spelled out, Jev and SubQ Snap both chose correctly <strong>24/24</strong> times on 7×7 and 9×9 menus of up to 255 options. Given column positions alone, both mostly failed (Jev 1/24; SubQ 4/30 replays). <a href="#/scale-primitives">Scale &amp; primitives</a></p></div></li>
-            <li><span className="finding-number">3</span><div><h3>Decision models rarely build a board, and a simple rule does better.</h3><p>Starting from an empty board, Jev and SubQ each completed <strong>10 of 90</strong> attempts: one and two 5×5 boards respectively, out of nine. A greedy rule with no model (take the color with the fewest legal cells, place its first legal cell, never backtrack) completes <strong>4 of the 9</strong>, including a 7×7 and a 9×9 that neither model solved. On cell choices the menu did not force, each model picked a solution cell about one time in three (Jev 34%, SubQ 33%), barely above the 29–30% expected from choosing at random within the same menus. A preregistered follow-up on 192 new boards confirmed the pattern: Jev solved 21 and SubQ 19, mostly different boards and none at 9×9, while the greedy rule solved 80. <a href="#/subq-assessment/panel">New-board panel</a></p></div></li>
-          </ol>
-          <p>The tie hides different profiles. SubQ's wins needed the code-side conflict filter (5×5: 10/15 filtered, 0/15 raw); Jev's did not (5/15 each), though on its filtered board every cell was forced and Jev chose only the color order. At 9×9, SubQ never placed more than one correct queen; Jev reached five. These are profiles on nine boards, not a ranking.</p>
-        </Section>
-        <Section id="watch" title="Watch it happen" label="Recorded attempts">
-          <p>Each replay steps through saved decisions: the color the model chose, the cell it proposed, and the checker's verdict. Nothing is simulated.</p>
+        <Section id="watch" title="Watch it happen">
+          <p>Each frame is a saved decision and the checker’s verdict. Nothing is simulated.</p>
           <FeaturedReplays />
+          <div className="next-actions"><a href="#/frontier-trajectories">Frontier models, one queen per request <Icon name="arrow" /></a><a href="#/greedy-rule">The simple rule, step by step <Icon name="arrow" /></a></div>
         </Section>
-        <Section id="limits" title="What this does not show">
+        <Section id="limits" title="What this can’t tell you">
           <ul className="limit-list">
-            <li><strong>A ranking.</strong> All boards are synthetic and letter-labelled, from two generator families; the original studies used three image boards and nine trajectory boards, the follow-up panels 36 and 192. Frontier models are now near ceiling on this task, and the two decision models solve mostly different boards.</li>
-            <li><strong>Unaided planning.</strong> Every decision-model success relied on code that generated, filtered or checked options. The deterministic checker, not the model, certifies a solution.</li>
-            <li><strong>General capability.</strong> Queens is one constraint task. For breadth, compare the <a href="#/decision-models">Artificial Analysis Decision Index</a>.</li>
+            <li><strong>Which model is best.</strong> Queens is one puzzle, the boards are synthetic and letter-labelled, and the frontier models are at its ceiling.</li>
+            <li><strong>Whether decision models plan on their own.</strong> Every success went through code that built, filtered or checked their options.</li>
+            <li><strong>How sure the small studies are.</strong> Jev’s 1 of 9 original boards has a 95% interval of 0.3% to 48.2%.</li>
           </ul>
-          <p><a className="text-link" href="#/methods-critique">Read the methods critique and the next experiments <Icon name="arrow" /></a></p>
+          <Disclosure label="What would settle it">
+            <p>Telling a 20% from a 50% solve rate at 80% power takes 25 to 64 boards per size; the 192-board panel has 64 per size. Still open:</p>
+            <ul className="limit-list">
+              <li>Label every move in all 180 trajectories against the solution ($0).</li>
+              <li>Check calibration by task ($0).</li>
+              <li>Shuffle answer positions (about $0.03) and vary batch size (about $0.04).</li>
+              <li>Add feedback and backtracking (up to $0.29).</li>
+              <li>Run the full one-queen panel once there is budget.</li>
+            </ul>
+            <QaLinks links={[['Methods critique', '#/methods-critique']]} />
+          </Disclosure>
         </Section>
-        <Section id="next" title="Where next">
-          <p>The <a href="#/local-open-models">local open-model pilot</a> adds saved Ollama requests, separate strict and extracted-answer grades, and the conditional Caveman comparison. Its results have their own denominator.</p>
-          <div className="next-actions"><a href="#/queens-rules">Learn the board rules <Icon name="arrow" /></a><a href="#/decision-models">Compare decision models <Icon name="arrow" /></a><a href="#/evidence-atlas">Inspect every receipt <Icon name="arrow" /></a></div>
-          <p className="edition-line">This edition combines dated studies: <a href="#/protocol-results">17 Sep one-shot</a> · <a href="#/jev-primer">18–19 Sep Jev</a> · <a href="#/jev-trajectories">30 Sep trajectories</a> · <a href="#/earlier-generations">1 Oct earlier generations</a> · <a href="#/subq-assessment">13 Oct SubQ Snap</a> · <a href="#/decision-models">14 Oct Decision Index comparison</a> · <a href="#/local-open-models">28 Oct local Qwen pilot</a>.</p>
+        <Section id="next" title="Go deeper">
+          <div className="next-actions"><a href="#/queens-rules">Queens rules <Icon name="arrow" /></a><a href="#/how-z3-solves-queens">How Z3 solves Queens, in ten chapters <Icon name="arrow" /></a><a href="#/board-receipts">36 board receipts <Icon name="arrow" /></a><a href="#/evidence-atlas">Search 5,417 saved requests <Icon name="arrow" /></a></div>
+          <Disclosure label="Every study in this edition, 17 Sep to 28 Oct">
+            <ol className="study-timeline">{studies.map(([iso, date, title, path, result]) => <li key={`${iso}-${title}`}><time dateTime={iso}>{date}</time><a href={`#/${path}`}>{title}</a><span className="study-result">{result}</span></li>)}</ol>
+          </Disclosure>
         </Section>
       </main>
     </div>
