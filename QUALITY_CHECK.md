@@ -232,3 +232,12 @@ All 166 protected historical evidence files remain byte-identical. No Ollama req
   boards, separate formatting/length effects, validate a frozen shadow detector,
   and measure bounded fresh-seed retry costs. The 27B host context limit remains
   binding. No benchmark or service settings were changed.
+- Brought merged PR 9's executive-summary changes into this branch to resolve PR
+  8's base conflicts. Kept both sets of CI path triggers and all receipt/leaderboard
+  gates. The summary now links the expanded Qwen chapter, dates the newer studies,
+  and preserves the original 4B details in their historical disclosure.
+- Post-integration build and 57 tests pass. Board-receipt verification passes
+  8,474 checks; leaderboard verification passes 1,178 checks across 17 systems.
+  Four final desktop/mobile/dark captures cover costs, selected audits, partial
+  27B results and source-linked receipts. The 9B round-2 display explicitly pairs
+  −4.98% workload spend with +18.77% cost per strict solve and 10→8 strict answers.

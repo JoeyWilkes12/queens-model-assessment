@@ -12,6 +12,10 @@ on:
       - 'public/evidence/ollama/**'
       - 'public/evidence/local-qwen/**'
       - 'public/evidence/local-qwen-pricing.json'
+      - 'public/evidence/leaderboard.json'
+      - 'public/evidence/board-receipts/**'
+      - 'scripts/analysis/build_leaderboard.py'
+      - 'scripts/verify-*.mjs'
       - 'src/**'
       - 'package*.json'
       - 'tsconfig.json'
@@ -38,6 +42,8 @@ jobs:
         run: npm run ollama:test
       - name: Audit complete saved receipts without inference
         run: npm run ollama:verify
+      - name: Check the leaderboard and board receipts against saved evidence
+        run: npm run boards:verify
       - name: Check public evidence boundary
         run: npm run evidence:check-public
       - name: Build static site
