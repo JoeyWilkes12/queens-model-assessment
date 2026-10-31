@@ -404,6 +404,7 @@ code { color: var(--text-primary); font-size: .88em; }
 .pair-row-label { padding-right: 8px; color: var(--text-secondary); font-size: .76rem; }
 .pair-cell { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid var(--border-strong); background: var(--surface-raised); }
 .pair-cell.is-solved { border-color: var(--mint-700); background: var(--mint-300); color: var(--navy-950); }
+.pair-cell.is-loose { border-color: var(--mint-700); background: repeating-linear-gradient(135deg, var(--mint-300) 0 3px, var(--surface-raised) 3px 6px); color: var(--navy-950); }
 .pair-crown { width: 16px; height: 18px; }
 .pair-crown path { fill: currentColor; stroke: currentColor; stroke-width: 1.6px; stroke-linejoin: round; }
 .pair-crown path + path { fill: none; }
@@ -431,7 +432,6 @@ code { color: var(--text-primary); font-size: .88em; }
   .qa-item > .qa-more > summary { margin-left: 0; }
   .qa-facts > div { grid-template-columns: minmax(0, 1fr); }
   .study-timeline li { grid-template-columns: minmax(0, 1fr); padding: 8px 0; }
-  .study-timeline a { min-height: 36px; }
   .study-result { text-align: left; }
 }
 

@@ -43,7 +43,7 @@ export function CostLedger({ ui, compact = false }: { ui: Ui; compact?: boolean 
   if (compact) {
     const rows = costs.evaluations.filter(row => PANELS.includes(row.study))
       .sort((a, b) => (b.boards_solved ?? 0) / Math.max(1, b.boards_graded ?? 1) - (a.boards_solved ?? 0) / Math.max(1, a.boards_graded ?? 1) || (a.cost_per_board_usd ?? 0) - (b.cost_per_board_usd ?? 0))
-    return <DataTable caption="Cost and performance on the 36-board image panel (OpenRouter cost of the graded requests, one per board)" headers={['Model', 'Boards solved', 'Cost per board', 'Cost per solved board', 'Total', 'Evaluation']}
+    return <DataTable caption="Cost and performance on both 36-board image panels (OpenRouter cost of the graded requests, one per board)" headers={['Model', 'Boards solved', 'Cost per board', 'Cost per solved board', 'Total', 'Evaluation']}
       rows={rows.map(row => [row.model_name, solved(row), usd(row.cost_per_board_usd), atLeast(row, row.cost_per_solved_board_usd), atLeast(row, row.scored_cost_usd), row.study.startsWith('2026-10-16') ? 'Frontier, 16 Oct' : 'Earlier generation, 17–19 Oct'])} />
   }
   const studies = [...new Set(costs.evaluations.map(row => row.study))].sort()
