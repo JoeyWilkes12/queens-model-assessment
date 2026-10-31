@@ -11,7 +11,7 @@
   --sb-cost: #3f63c8;
   --sb-cost-bg: #dce3f5;
 }
-.scoreboard { display: grid; gap: 18px; }
+.scoreboard { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 :root[data-theme='dark'] .scoreboard, :root[data-theme='dark'] .sb-vars {
   --sb-solid: #6fd0a8;
   --sb-stripe: #6fd0a8;
@@ -33,7 +33,7 @@
 .sb-tabs button.is-active, .sb-segment button[aria-pressed='true'] { background: var(--navy-950); color: #fffdf8; border-color: var(--navy-950); }
 :root[data-theme='dark'] .sb-tabs button.is-active, :root[data-theme='dark'] .sb-segment button[aria-pressed='true'] { background: var(--mint-300); color: var(--navy-950); border-color: var(--mint-300); }
 .sb-tabs button:focus-visible, .sb-segment button:focus-visible, .sb-sort select:focus-visible, .sb-toggle input:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
-.sb-sort { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; min-width: 0; color: var(--text-primary); font-size: .8rem; font-weight: 700; }
+.sb-sort { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; min-width: 0; max-width: 100%; color: var(--text-primary); font-size: .8rem; font-weight: 700; }
 .sb-sort select { min-width: 0; max-width: 100%; min-height: 44px; padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font: inherit; }
 @media (max-width: 600px) { .sb-sort select { font-size: 1rem; } }
 .sb-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; color: var(--text-primary); font-size: .8rem; cursor: pointer; }
