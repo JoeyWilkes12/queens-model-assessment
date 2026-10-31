@@ -25,7 +25,7 @@ ARMS = ("baseline", "caveman")
 TOP_FILES = ("plan.json", "summary.json", "prompt-template.txt", "caveman-system.txt",
              "skill.json", "caveman-review.json", "caveman-LICENSE", "caveman-LICENSE-MIT", "caveman-NOTICE")
 CALL_FILES = ("request.json", "response.json", "metadata.json", "grade.json", "diagnostic.json")
-STUDY_NAME = re.compile(r"qwen3[.]5-(?:9b-nvfp4|27b-q4_K_M)-np24576(?:-qwen-sampling-r[1-9][0-9]*)?$|qwen3[.]5-(?:4b|9b-nvfp4)-np32768-loopstop$")
+STUDY_NAME = re.compile(r"qwen3[.]5-(?:9b-nvfp4|27b-q4_K_M)-np24576(?:-qwen-sampling-r[1-9][0-9]*)?$|qwen3[.]5-(?:4b|9b-nvfp4)-np32768-loopstop(?:-audit)?$")
 HOST_KEYS = ("samples", "max_pressure_level", "swap_used_gib_start", "swap_used_gib_max", "swap_used_gib_end",
              "min_free_plus_inactive_gib", "max_compressor_gib", "max_model_size_gib", "max_model_vram_gib")
 SPEC = importlib.util.spec_from_file_location("local_qwen_grader", ROOT / "scripts/llm_panel/grading.py")
@@ -209,7 +209,7 @@ def validate_rescue(directory, source, board, arm, plan):
             "outcome": meta["outcome"]}
 
 
-def derive_study(directory, relative_root, study_id):
+def derive_study(directory, relative_root, study_id, extended=False):
     """Build a checked UI contract from saved artifacts, supporting partial studies."""
     plan, summary = read(directory / "plan.json"), read(directory / "summary.json")
     require(summary["study"] == plan["study"] and canonical(summary["protocol"]) == canonical(plan["protocol"])
@@ -221,11 +221,21 @@ def derive_study(directory, relative_root, study_id):
     system = (directory / "caveman-system.txt").read_bytes()
     require(sha(template) == plan["prompt_template_sha256"], "Template hash mismatch")
     require(sha(system) == read(directory / "skill.json")["system_sha256"], "Skill body hash mismatch")
+    audit_of = plan.get("audit_of")
+    selected = plan.get("audit_calls") if audit_of else None
+    if audit_of:
+        require(study_id == audit_of + "-audit", "Invalid audit source identity")
+        require(isinstance(selected, list) and len(selected) == len(set(selected)) and selected,
+                "Invalid audit selection")
     rows = []
     expected_ids = {f"{arm}_{board_id}" for board_id in boards for arm in ARMS}
     actual_ids = [r["call_id"] for r in summary["rows"]]
     require(len(actual_ids) == len(expected_ids) and set(actual_ids) == expected_ids, "Missing/duplicate planned rows")
     for saved in summary["rows"]:
+        if selected is not None and saved["call_id"] not in selected:
+            require(saved["state"] == "not_run" and not (directory / "receipts" / saved["call_id"]).exists(),
+                    "Excluded audit call is not unrun")
+            continue
         board, arm = boards[saved["board_id"]], saved["treatment"]
         require(arm in ARMS and saved["call_id"] == f"{arm}_{board['id']}" and saved["size"] == board["size"], "Invalid row identity")
         image_name = f"images/{board['id']}.png"
@@ -256,19 +266,22 @@ def derive_study(directory, relative_root, study_id):
                                  "receipt": relative_root + "/rescue/" + row["call_id"]}
         else:
             require(not (directory / "receipts" / row["call_id"] / "metadata.json").exists(), "Pending row has a completed receipt")
+        if extended:
+            row["audit"] = None
         rows.append(row)
+    require(selected is None or set(selected) == {row["call_id"] for row in rows}, "Audit selection outside panel")
     row_map = {row["call_id"]: row for row in rows}
     for row in rows:
-        row["pair_verified"] = row["state"] == "recorded" and row_map[row["peer_call_id"]]["state"] == "recorded"
+        row["pair_verified"] = row["state"] == "recorded" and row_map.get(row["peer_call_id"], {}).get("state") == "recorded"
     protocol = plan["protocol"]
     sampling = re.search(r"qwen-sampling-r([0-9]+)$", study_id)
     loopstop = bool(protocol.get("loop_stop"))
-    decoding = "sampling" if sampling else "greedy+ls" if loopstop else "greedy"
+    decoding = "loop-audit" if audit_of else "sampling" if sampling else "greedy+ls" if loopstop else "greedy"
     recorded = sum(row["state"] == "recorded" for row in rows)
     model_short = plan["runtime"]["model"].split(":")[-1].split("-")[0].upper()
-    label = f"Qwen3.5 {model_short} · {protocol['num_predict']:,} · " + (f"sampling r{sampling.group(1)}" if sampling else "greedy + loop-stop" if loopstop else "greedy")
+    label = f"Qwen3.5 {model_short} · {protocol['num_predict']:,} · " + ("loop-stop audit" if audit_of else f"sampling r{sampling.group(1)}" if sampling else "greedy + loop-stop" if loopstop else "greedy")
     runtime = {key: plan["runtime"].get(key) for key in ("model", "digest", "server_version", "details", "os", "machine_architecture")}
-    return {"id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
+    return {**({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
             "decoding": decoding, "round": int(sampling.group(1)) if sampling else 0,
             "status": "complete" if recorded == len(rows) else "partial", "planned": len(rows), "recorded": recorded,
             "root": relative_root, "plan": relative_root + "/plan.json", "summary": relative_root + "/summary.json",
@@ -310,13 +323,73 @@ def provenance(source):
 def derive_catalog(base, manifest):
     """Reconstruct the entire displayed catalog from the immutable saved artifacts."""
     prefix = "snapshots/" + manifest["snapshot_id"]
-    studies = [derive_study(base / item["directory"], prefix + "/" + item["directory"], item["id"])
+    studies = [derive_study(base / item["directory"], prefix + "/" + item["directory"], item["id"], manifest["schema_version"] >= 2)
                for item in manifest["study_roots"]]
-    return {"schema_version": 1, "snapshot_id": manifest["snapshot_id"], "captured_utc": manifest["captured_utc"],
+    if manifest["schema_version"] >= 2:
+        validate_audits(base, studies)
+    return {"schema_version": manifest["schema_version"], "snapshot_id": manifest["snapshot_id"], "captured_utc": manifest["captured_utc"],
             "source_commit": manifest["source_commit"], "source_dirty": manifest["source_dirty"],
             "grader_sha256": manifest["grader_sha256"], "manifest": prefix + "/manifest.json",
             "host_note": "Numeric telemetry summarizes the recorded sampling window; a window may include the previously loaded model. It is not a model-only memory measurement.",
             "studies": studies}
+
+
+def validate_audits(base, studies):
+    """Check selected reruns against the separately retained, unchanged source calls."""
+    by_id = {study["id"]: study for study in studies}
+    for audit in studies:
+        if audit["kind"] != "audit":
+            continue
+        source = by_id.get(audit["audit_of"])
+        require(source is not None and source["kind"] == "assessment", "Missing original audit study")
+        audit_dir = base / "studies" / audit["id"]
+        source_dir = base / "studies" / source["id"]
+        plan, original = read(audit_dir / "plan.json"), read(source_dir / "plan.json")
+        require(set(plan["audit_calls"]) == {r["call_id"] for r in source["rows"] if r["loop_stopped"]},
+                "Audit calls differ from original loop-stopped set")
+        require(plan["runtime"] == original["runtime"] and plan["boards"] == original["boards"],
+                "Audit changed frozen model or boards")
+        for name in ("prompt-template.txt", "caveman-system.txt", "skill.json"):
+            require((audit_dir / name).read_bytes() == (source_dir / name).read_bytes(), "Audit changed frozen prompt")
+        ignored = {"loop_stop", "transport", "changes_from_pilot"}
+        require({k: v for k, v in plan["protocol"].items() if k not in ignored} ==
+                {k: v for k, v in original["protocol"].items() if k not in ignored}, "Audit changed frozen controls")
+        require(original["protocol"].get("loop_stop") and original["protocol"].get("transport") == "stream"
+                and not plan["protocol"].get("loop_stop") and plan["protocol"].get("transport") == "nonstream",
+                "Invalid audit transport change")
+        for row in audit["rows"]:
+            if row["state"] != "recorded":
+                continue
+            call_id = row["call_id"]
+            receipt = audit_dir / "receipts" / call_id
+            original_receipt = source_dir / "receipts" / call_id
+            response = read(receipt / "response.json")
+            original_response = read(original_receipt / "response.json")
+            meta = read(receipt / "metadata.json")
+            original_meta = read(original_receipt / "metadata.json")
+            require(original_meta["response_sha256"] == sha(canonical(original_response)), "Audit original hash mismatch")
+            if "source_response_sha256" in meta:
+                require(meta["source_response_sha256"] == original_meta["response_sha256"], "Audit source hash mismatch")
+            request, original_request = read(receipt / "request.json"), read(original_receipt / "request.json")
+            require(original_request.get("stream") is True and request.get("stream") is False and
+                    {k: v for k, v in request.items() if k != "stream"} ==
+                    {k: v for k, v in original_request.items() if k != "stream"}, "Audit request differs beyond transport")
+            thinking = original_response["message"].get("thinking", "")
+            require(isinstance(thinking, str) and thinking, "Missing original thinking")
+            prefix_match = response["message"].get("thinking", "").startswith(thinking)
+            answered = bool(response["message"].get("content", ""))
+            facts = meta.get("audit", {})
+            require(facts.get("source_receipt") == "public/evidence/ollama-models/" + source["id"] + "/receipts/" + call_id,
+                    "Audit source receipt mismatch")
+            require(type(facts.get("source_stopped_at_thinking_chars")) is int and
+                    facts["source_stopped_at_thinking_chars"] == original_meta["loop_stop"]["fired_at_thinking_chars"]
+                    and 0 < facts["source_stopped_at_thinking_chars"] <= len(thinking), "Audit source thinking length mismatch")
+            require(facts.get("identical_up_to_stop") is (response["message"].get("thinking", "")[:facts["source_stopped_at_thinking_chars"]] == thinking[:facts["source_stopped_at_thinking_chars"]]) and facts.get("answered_after_stop") is answered,
+                    "Audit metadata differs from observed text")
+            row["audit"] = {"source_call_id": call_id,
+                            "source_receipt": source["root"] + "/receipts/" + call_id,
+                            "prefix_match": prefix_match, "answered_after_stop": answered,
+                            "source_thinking_chars": len(thinking)}
 
 
 def verify_snapshot(output=DEFAULT_OUT):
@@ -327,7 +400,7 @@ def verify_snapshot(output=DEFAULT_OUT):
     require(re.fullmatch(r"[A-Za-z0-9_-]+", snapshot_id), "Unsafe snapshot ID")
     base = output / "snapshots" / snapshot_id
     manifest = read(base / "manifest.json")
-    require(manifest["snapshot_id"] == snapshot_id and manifest["schema_version"] == 1, "Manifest identity mismatch")
+    require(manifest["snapshot_id"] == snapshot_id and manifest["schema_version"] in (1, 2), "Manifest identity mismatch")
     require(manifest["grader_sha256"] == sha((ROOT / "scripts/llm_panel/grading.py").read_bytes()), "Derived grader changed; review and import a new snapshot")
     for name, digest in manifest["files"].items():
         path = base / safe_relative(name)
@@ -336,7 +409,23 @@ def verify_snapshot(output=DEFAULT_OUT):
     require(actual == set(manifest["files"]) | {"manifest.json"}, "Unexpected or missing snapshot files")
     derived = derive_catalog(base, manifest)
     require(canonical(catalog) == canonical(derived) == canonical(read(base / "catalog.json")), "Derived catalog is stale or altered")
+    for retained in (output / "snapshots").iterdir():
+        if retained.is_dir() and retained != base:
+            verify_retained(retained)
     return catalog
+
+
+def verify_retained(base):
+    """Validate historical snapshots with their original contract, without rewriting."""
+    manifest = read(base / "manifest.json")
+    require(manifest["snapshot_id"] == base.name and manifest["schema_version"] in (1, 2), "Retained identity mismatch")
+    require(manifest["grader_sha256"] == sha((ROOT / "scripts/llm_panel/grading.py").read_bytes()), "Retained grader mismatch")
+    for name, digest in manifest["files"].items():
+        path = base / safe_relative(name)
+        require(path.is_file() and not path.is_symlink() and sha(path.read_bytes()) == digest, "Retained snapshot hash mismatch")
+    require({p.relative_to(base).as_posix() for p in base.rglob("*") if p.is_file()} ==
+            set(manifest["files"]) | {"manifest.json"}, "Retained inventory mismatch")
+    require(canonical(derive_catalog(base, manifest)) == canonical(read(base / "catalog.json")), "Retained catalog mismatch")
 
 
 def discover_sources(source_root):
@@ -362,7 +451,7 @@ def import_snapshot(source_root, snapshot_id, output=DEFAULT_OUT):
     observed = {}
     inventories = {}
     try:
-        manifest = {"schema_version": 1, "snapshot_id": snapshot_id, "captured_utc": datetime.now(timezone.utc).isoformat(),
+        manifest = {"schema_version": 2, "snapshot_id": snapshot_id, "captured_utc": datetime.now(timezone.utc).isoformat(),
                     **provenance(source_root), "grader_sha256": sha((ROOT / "scripts/llm_panel/grading.py").read_bytes()),
                     "study_roots": [], "files": {}}
         for study_id, source in sources:

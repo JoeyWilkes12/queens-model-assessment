@@ -264,6 +264,113 @@ class ImportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "replayed thinking"):
             self.capture()
 
+    def make_audit(self):
+        """Build a selected one-call audit retaining both original planned rows."""
+        self.make_loop_and_rescue()
+        plan = module.read(self.larger / "plan.json")
+        # The synthetic source uses one stop at exactly the observed trace length.
+        meta_path = self.larger / "receipts/baseline_fixture-5/metadata.json"
+        meta = module.read(meta_path)
+        meta["loop_stop"]["fired_at_thinking_chars"] = len("repeat repeat")
+        module.save(meta_path, meta)
+        audit = self.larger.with_name(self.larger.name + "-audit")
+        shutil.copytree(self.larger, audit)
+        shutil.rmtree(audit / "rescue")
+        plan["audit_of"] = self.larger.name
+        plan["audit_calls"] = ["baseline_fixture-5"]
+        plan["protocol"].pop("loop_stop")
+        plan["protocol"]["transport"] = "nonstream"
+        module.save(audit / "plan.json", plan)
+        summary = module.read(audit / "summary.json")
+        summary["protocol"] = plan["protocol"]
+        summary["rows"][1]["state"] = "not_run"
+        shutil.rmtree(audit / "receipts/caveman_fixture-5")
+        receipt = audit / "receipts/baseline_fixture-5"
+        request = module.read(receipt / "request.json")
+        request["stream"] = False
+        response = {"model": plan["runtime"]["model"], "done": True, "done_reason": "length",
+                    "message": {"content": "", "thinking": "repeat repeat more"},
+                    "prompt_eval_count": 10, "eval_count": 20}
+        meta.update(done=True, finish_reason="length", outcome="truncated", input_tokens=10, output_tokens=20,
+                    request_sha256=module.sha(module.canonical(request)), response_sha256=module.sha(module.canonical(response)),
+                    loop_stop={"enabled": False},
+                    audit={"source_receipt": "public/evidence/ollama-models/" + self.larger.name + "/receipts/baseline_fixture-5",
+                           "source_stopped_at_thinking_chars": 13, "identical_up_to_stop": True, "answered_after_stop": False})
+        summary["rows"][0].update(outcome="truncated", input_tokens=10, output_tokens=20)
+        for name, value in (("request", request), ("response", response), ("metadata", meta)):
+            module.save(receipt / (name + ".json"), value)
+        module.save(audit / "summary.json", summary)
+        # Discover normally supports the production audit naming; fixture stays small.
+        original = module.discover_sources
+        patcher = mock.patch.object(module, "discover_sources", side_effect=lambda root: original(root) + [(audit.name, audit)])
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        return audit
+
+    def test_selected_audit_contract(self):
+        """Excluded rows remain raw evidence, not pending audit denominator entries."""
+        audit_dir = self.make_audit()
+        raw = (audit_dir / "summary.json").read_bytes()
+        catalog = self.capture()
+        audit = catalog["studies"][-1]
+        self.assertEqual((audit["kind"], audit["decoding"], audit["planned"], audit["recorded"], audit["status"]),
+                         ("audit", "loop-audit", 1, 1, "complete"))
+        self.assertFalse(audit["rows"][0]["pair_verified"])
+        self.assertTrue(audit["rows"][0]["audit"]["prefix_match"])
+        self.assertFalse(catalog["studies"][1]["rows"][0]["strict_correct"])
+        self.assertEqual((self.output / audit["root"] / "summary.json").read_bytes(), raw)
+
+    def test_audit_linkage_mutation(self):
+        """An untrusted audit claim cannot identify an unrelated source receipt."""
+        audit = self.make_audit()
+        p = audit / "receipts/baseline_fixture-5/metadata.json"
+        meta = module.read(p)
+        meta["audit"]["source_receipt"] += "-wrong"
+        module.save(p, meta)
+        with self.assertRaisesRegex(ValueError, "source receipt"):
+            self.capture()
+
+    def test_audit_excluded_pending_mutation(self):
+        """An excluded row cannot masquerade as a pending selected rerun."""
+        audit = self.make_audit()
+        p = audit / "summary.json"
+        summary = module.read(p)
+        summary["rows"][1]["state"] = "started_unrecorded"
+        module.save(p, summary)
+        with self.assertRaisesRegex(ValueError, "Excluded"):
+            self.capture()
+
+    def test_selected_audit_pending(self):
+        """A selected missing receipt stays pending and makes the audit partial."""
+        audit = self.make_audit()
+        p = audit / "summary.json"
+        summary = module.read(p)
+        summary["rows"][0]["state"] = "not_run"
+        module.save(p, summary)
+        shutil.rmtree(audit / "receipts/baseline_fixture-5")
+        study = self.capture()["studies"][-1]
+        self.assertEqual((study["planned"], study["recorded"], study["status"]), (1, 0, "partial"))
+        self.assertIsNone(study["rows"][0]["audit"])
+
+    def test_audit_selection_mutation(self):
+        """Selection must exactly match stopped originals rather than cherry-picked calls."""
+        audit = self.make_audit()
+        p = audit / "plan.json"
+        plan = module.read(p)
+        plan["audit_calls"].append("caveman_fixture-5")
+        module.save(p, plan)
+        with self.assertRaisesRegex(ValueError, "loop-stopped set"):
+            self.capture()
+
+    def test_retained_snapshot_mutation(self):
+        """Verification also catches a corrupt retained snapshot after pointer advances."""
+        first = self.capture("first")
+        self.capture("second")
+        p = self.output / first["studies"][0]["root"] / "summary.json"
+        p.write_text(p.read_text() + " ")
+        with self.assertRaisesRegex(ValueError, "Retained snapshot hash"):
+            module.verify_snapshot(self.output)
+
     def test_measurement_null_and_invalid(self):
         """Stopped-stream usage stays null and malformed counts never become free calls."""
         self.assertIsNone(module.number(None, "input_tokens", True))

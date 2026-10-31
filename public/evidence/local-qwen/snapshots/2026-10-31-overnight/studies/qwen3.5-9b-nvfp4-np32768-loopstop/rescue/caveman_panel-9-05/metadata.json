@@ -1,0 +1,50 @@
+{
+  "kind": "forced_answer_rescue",
+  "call_id": "caveman_panel-9-05",
+  "board_id": "panel-9-05",
+  "size": 9,
+  "treatment": "caveman",
+  "model": "qwen3.5:9b-nvfp4",
+  "source_receipt": "public/evidence/ollama-models/qwen3.5-9b-nvfp4-np32768-loopstop/receipts/caveman_panel-9-05",
+  "source_response_sha256": "c929167a1a257c20274c492ad0d164fd062b853450e62399cde7f4e71eda098f",
+  "method": "replay the truncated thinking as a pre-filled assistant turn, append Qwen's early-stop sentence (the renderer closes </think>), pre-fill the answer prefix; graded as prefix + continuation",
+  "options": {
+    "num_ctx": 36864,
+    "seed": 20261028,
+    "temperature": 0,
+    "num_predict": 256
+  },
+  "thinking_chars_replayed": 45501,
+  "early_stop_text": "\n\nConsidering the limited time by the user, I have to give the solution based on the thinking directly now.",
+  "answer_prefix": "{\"board_id\":\"panel-9-05\",\"columns_by_row\":[",
+  "answer_text": "{\"board_id\":\"panel-9-05\",\"columns_by_row\":[4,6,8,7,5,1,2,3,9]}",
+  "started_utc": "2026-10-30T09:05:27.477022+00:00",
+  "completed_utc": "2026-10-30T09:06:26.644204+00:00",
+  "elapsed_seconds": 59.16717729099946,
+  "http_status": 200,
+  "finish_reason": "stop",
+  "input_tokens": 23801,
+  "output_tokens": 18,
+  "strict_correct": false,
+  "rule_valid_after_extraction": false,
+  "outcome": "rescue_incorrect",
+  "placement": [
+    {
+      "wired_limit_mb": "20480",
+      "load_status": 200,
+      "context_length": 36864,
+      "vram_share": 1.0
+    }
+  ],
+  "source_outcome": "loop_stopped",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "d1678c181b4d9707d3224ef643427fe0f6edd55f8b17d7df8dcda7e5c39765df",
+    "panel_py_sha256": "788e1aa12df02460f2bb2f07b1ba9026f557cdc85941c6734d0dab110c9a1956",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "interpretation": "A rescue is a separate outcome. The original call stays 'truncated'; never count rescues as one-shot strict solves."
+}

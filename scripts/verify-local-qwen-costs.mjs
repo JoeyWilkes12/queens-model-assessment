@@ -46,6 +46,7 @@ for (const [b,c] of [[141515,132800],[168414,170728],[115628,96546]]) {
 const snapshot=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen-pricing.json',import.meta.url)))
 assert.match(snapshot.catalog_sha256,/^[0-9a-f]{64}$/)
 assert.ok(Number.isFinite(Date.parse(snapshot.checked_utc)))
+assert.equal(snapshot.checked_utc.slice(0,10),'2026-10-30') // Controlled price comparison: never silently refresh tariffs.
 assert.equal(snapshot.absent_models.find(m=>m.id==='qwen/qwen3.5-4b').present,false)
 assert.deepEqual(snapshot.models.find(m=>m.id==='qwen/qwen3.5-9b').usd_per_million,{input:0.17,output:0.25})
 assert.deepEqual(snapshot.models.find(m=>m.id==='qwen/qwen3.5-27b').usd_per_million,{input:0.26,output:2.6})
@@ -59,11 +60,14 @@ const near=(actual,expected)=>expected===null?assert.equal(actual,null):assert.o
 const independentCost=(rows,r)=>!rows.length||rows.some(x=>x.input_tokens===null||x.output_tokens===null)?null:rows.reduce((sum,x)=>sum+x.input_tokens*r.input/1e6+x.output_tokens*r.output/1e6,0)
 for(const study of index.studies) for(const treatment of ['baseline','caveman']) {
  const selected=study.rows.filter(x=>x.treatment===treatment), recorded=selected.filter(x=>x.state==='recorded')
- const result=estimateCohort(selected,rates,true), expected=independentCost(recorded,rates)
+ const tariff=snapshot.models.find(m=>m.id=== (study.model.includes('27b')?'qwen/qwen3.5-27b':study.model.includes('9b')?'qwen/qwen3.5-9b':'qwen/qwen3.5-flash-02-23'))?.usd_per_million
+ assert.ok(tariff,`Missing explicit tariff for ${study.id}`)
+ for (const r of [rates,tariff]) {
+ const result=estimateCohort(selected,r,true), expected=independentCost(recorded,r)
  near(result.oneShotCostUsd,expected)
  assert.equal(result.pendingCount,selected.length-recorded.length)
  const rescues=recorded.flatMap(x=>x.rescue?[x.rescue]:[])
- const extra=rescues.length?independentCost(rescues,rates):0
+ const extra=rescues.length?independentCost(rescues,r):0
  near(result.rescueIncrementalCostUsd,extra)
  near(result.combinedCostUsd,expected===null||extra===null?null:expected+extra)
  const strict=recorded.filter(x=>x.strict_correct).length, combined=recorded.filter(x=>x.strict_correct||x.rescue?.strict_correct).length
@@ -73,6 +77,8 @@ for(const study of index.studies) for(const treatment of ['baseline','caveman'])
  for(const key of ['input_tokens','output_tokens']) {
   const expectedTokens=recorded.length&&!recorded.some(x=>x[key]===null)?recorded.reduce((sum,x)=>sum+x[key],0):null
   assert.equal(result.usage[key==='input_tokens'?'inputTokens':'outputTokens'],expectedTokens)
+  near(result[key==='input_tokens'?'inputCostUsd':'outputCostUsd'],expectedTokens===null?null:expectedTokens*r[key==='input_tokens'?'input':'output']/1e6)
+ }
  }
 }
 const fixtures={'qwen3.5-4b-pilot':[[10236,141515],[23808,132800]],'qwen3.5-9b-nvfp4-np24576':[[10236,168414],[23808,170728]],'qwen3.5-27b-q4_K_M-np24576':[[10236,115628],[23808,96546]]}
@@ -84,3 +90,36 @@ for(const [id,expected] of Object.entries(fixtures)) {
  }
 }
 console.log(`Verified independent integration math across ${index.studies.length} frozen studies.`)
+const oct31Fixtures = {
+ 'qwen3.5-9b-nvfp4-np24576-qwen-sampling-r2': [[12,10236,211838,10],[12,23808,191712,8]],
+ 'qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r2': [[11,9383,112997,7],[11,21824,97334,9]],
+ 'qwen3.5-4b-np32768-loopstop-audit': [[0,null,null,0],[6,11904,196608,0]],
+ 'qwen3.5-9b-nvfp4-np32768-loopstop-audit': [[1,853,32768,0],[4,7936,127398,1]],
+}
+for (const [id, expected] of Object.entries(oct31Fixtures)) {
+ const study=index.studies.find(s=>s.id===id)
+ assert.ok(study,`Missing Oct31 study ${id}`)
+ for (const [i,arm] of ['baseline','caveman'].entries()) {
+  const rows=study.rows.filter(r=>r.state==='recorded'&&r.treatment===arm), usage=aggregateUsage(rows)
+  assert.deepEqual([rows.length,usage.inputTokens,usage.outputTokens,rows.filter(r=>r.strict_correct).length],expected[i])
+ }
+ if (id.endsWith('-audit')) {
+  assert.equal(study.kind,'audit');assert.equal(study.decoding,'loop-audit')
+  assert.equal(isMatchedCohort(study.rows),false) // Selected unmatched arms cannot support a treatment contrast.
+  const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
+  assert.equal(source.rows.length,24) // Preserve raw scheduled summary; price selected eligible calls only.
+  const original=index.studies.find(s=>s.id===study.audit_of)
+  assert.ok(original)
+  const eligible=original.rows.filter(r=>r.loop_stopped)
+  assert.equal(study.rows.length,eligible.length)
+  for (const r of study.rows) {
+   assert.ok(eligible.some(e=>e.call_id===r.call_id))
+   const raw=source.rows.find(x=>x.call_id===r.call_id)
+   assert.ok(raw);assert.equal(r.input_tokens,raw.input_tokens);assert.equal(r.output_tokens,raw.output_tokens)
+  }
+  for (const r of eligible) { assert.equal(r.input_tokens,null);assert.equal(r.output_tokens,null) }
+ } else {
+  assert.equal(isMatchedCohort(study.rows),true)
+ }
+}
+console.log('Verified Oct31 r2 counts, 11-pair partial scope, selected audit source usage and unchanged canceled usage.')

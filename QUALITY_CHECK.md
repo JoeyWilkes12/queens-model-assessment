@@ -206,3 +206,29 @@ All 166 protected historical evidence files remain byte-identical. No Ollama req
   selection and missing call-time Git revision metadata are explicitly described.
 - No model requests, benchmark changes, service changes, merge or production
   deployment were performed by this work.
+
+## October 31 evidence refresh
+
+- Captured a new immutable `2026-10-31-overnight` snapshot: 11 separately labeled
+  conditions, 214 assessment requests plus 11 outcome-selected audit reruns,
+  1,708 hashed artifacts. 9B sampling round 2 is complete; 27B round 2 is 22/24
+  with both panel-9-34 arms pending. Earlier snapshot, pilot and tariffs unchanged.
+- Extended schema 2 to retain selected audit populations and reciprocal source
+  links. Audits contain six and five selected calls, not 24 implied failures or
+  pending requests. All eleven full observed thinking prefixes match; one no-stop
+  9B rerun returns strict correctness at 29,094 tokens. Original grades and null
+  canceled-stream usage stay intact. Audits receive separate workload estimates
+  and no baseline/Caveman treatment contrast.
+- All 57 Python tests pass, including 20 importer tests. Current and retained
+  snapshot checks, independent financial sums, privacy scrub, TypeScript/build and
+  diff checks pass. The main-bundle size advisory is unchanged.
+- Browser checks pass for all eleven selections, partial recorded scope, distinct
+  audit populations/costs, unsupported size exclusion, invalid prices, rescue
+  costs, audit/source/backlink navigation and 320/390px layout. No page errors or
+  inference requests observed. Private HTTP preview and WebSocket were tested
+  from this Mac; no phone-browser test is claimed.
+- Added a dated independent scientific review and proposed assessments. Proposals
+  are not new schedules or inference: finish frozen sampling, evaluate fresh
+  boards, separate formatting/length effects, validate a frozen shadow detector,
+  and measure bounded fresh-seed retry costs. The 27B host context limit remains
+  binding. No benchmark or service settings were changed.

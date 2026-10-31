@@ -1,0 +1,63 @@
+{
+  "call_id": "caveman_panel-7-04",
+  "board_id": "panel-7-04",
+  "size": 7,
+  "treatment": "caveman",
+  "model": "qwen3.5:9b-nvfp4",
+  "model_digest": "8218177ac78e61e0038e60fda513dc9ced4472637f0bc30e45def6aec48649d4",
+  "started_utc": "2026-10-30T07:42:36.536846+00:00",
+  "completed_utc": "2026-10-30T07:49:27.441228+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 410.8758133329993,
+  "returned_model": "qwen3.5:9b-nvfp4",
+  "finish_reason": "stop",
+  "done": true,
+  "input_tokens": 1984,
+  "output_tokens": 16489,
+  "total_duration_ns": 410870544667,
+  "load_duration_ns": 640208,
+  "prompt_eval_duration_ns": 4775202583,
+  "eval_duration_ns": 406062949208,
+  "request_sha256": "41c4efbaf9aebd3cd87e744014bbe8cf79df54e60a50c6c2d065d7492e296988",
+  "response_sha256": "e1ac666d692b6558d3c67c58abb311951580da28c7854083ee55879b48d492c3",
+  "image_sha256": "3241469d2aebfdbd78e47c8e82c61270c874d05cd860cb77b5f7082d5ef9cdc0",
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": true,
+  "rule_valid_after_extraction": true,
+  "outcome": "strict",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "d1678c181b4d9707d3224ef643427fe0f6edd55f8b17d7df8dcda7e5c39765df",
+    "panel_py_sha256": "788e1aa12df02460f2bb2f07b1ba9026f557cdc85941c6734d0dab110c9a1956",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "stream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.0,
+    "last_llama_server_decode": null,
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": true,
+    "policy_version": 1,
+    "detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47",
+    "triggered": false,
+    "checks": 54,
+    "max_metric": 0.376,
+    "fired_at_thinking_chars": null,
+    "stream_chunks": 14057
+  }
+}

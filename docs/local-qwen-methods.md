@@ -1,5 +1,10 @@
 # Local Qwen: results and interpretation
 
+This is the historical October 30 review. The [October 31 update](local-qwen-oct31.md)
+adds the selected no-stop audit, including a previously stopped 9B call that
+continued to a strict solution, and the new sampling rounds. Interpret statements
+below about unavailable audit observations in their original review date.
+
 Read-only review of the receipts available after the 2026-10-29–30 overnight session. Source branch: `claude/ollama-bigger-qwen`, inspected at `563fb4aa`. The session ended at 08:53:03 on October 30, America/Denver. No inference, preparation, selftest, or evidence-writing audit was run for this review.
 
 ## Suggested website copy

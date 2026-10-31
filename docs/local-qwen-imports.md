@@ -31,6 +31,15 @@ Supported discovery covers the 4B pilot, 9B/27B 24,576-token studies and numbere
 sampling rounds, and separately identified 4B/9B 32,768-token loop-stop studies.
 New model names, budgets or interventions require a reviewed importer extension.
 
+Schema 2 additionally imports their separately frozen `-loopstop-audit` reruns.
+Only `audit_calls` enter the derived audit population; unselected `not_run` slots
+remain in the original copied summary but are excluded, not pending, in the UI.
+The importer verifies the selected set against the original loop-stopped set,
+retains source linkage, and independently compares the entire observed thinking
+prefix. Audit results never overwrite original grades or fill canceled usage.
+All retained schema-1 and schema-2 snapshots are verified in place, without
+rewriting historical catalogs.
+
 The importer checks frozen prompts/images/settings, request and response hashes,
 model identity, strict/extraction grades, and rescue source linkage. A separately
 derived conservative formatting diagnostic never changes the original grade.
