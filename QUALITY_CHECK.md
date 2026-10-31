@@ -159,3 +159,85 @@ All 24 readable receipt routes link reciprocally by board to the other condition
 - Independent local Codex review of code, saved evidence and five screenshots: **Ship**, no material findings. The existing private HTTP preview serves the new summary and all twelve pair bindings; its HMR WebSocket was observed through the tailnet origin. These tests ran on the Mac, not a phone.
 
 No requests to Ollama, model unloads, monitoring/journal writes or inference-service configuration changes were made. The existing launchd preview remains available for PR review.
+
+
+## Caveman cost tradeoff and visuals — 28 October 2026
+
+The follow-up uses the original 24 saved 4b receipts: +13,572 input tokens, −8,715 generated tokens, and +4,857 combined tokens. The uncached aggregate break-even output/input price ratio is 1.5573×. A dated, allowlisted OpenRouter API snapshot provides three illustrative Qwen tariffs; no exact hosted 4b listing was found. The site explicitly distinguishes repriced local counts from actual hosted performance or invoices, discloses the API/model-page quote difference, and keeps the local $0 provider fee separate from unmeasured power/hardware costs. Full-catalog nonretention is documented.
+
+- Outcome bars preserve strict, extraction-only and capped outcomes on a four-request scale. Token bars share a zero-based count scale. Charge-contribution bars share a signed scale and aligned zero reference; geometry checks measured zero-pixel offsets for all three rows. Text, signed values and SVG arrows duplicate color cues.
+- `npm run ollama:test`: all 37 offline tests pass. `npm run ollama:verify` checks all 24 original receipts, 12 pairs and the new pure cost verification. Cost checks include per-size reversals, thinking counted once, zero rates and rejection of missing/nonfinite/negative usage or tariffs. Public evidence scrub and the production build pass; the existing large-bundle advisory remains.
+- Browser controls reproduce 9B-reference +0.35%, 27B-reference −5.16%, Flash-reference −3.69%, equal-rate +3.20%, and double-output-rate −1.32% totals. All refer to fixed recorded 4b usage. Nine-by-nine retains the no-output-reduction warning. Free rates retain an undefined baseline percentage; invalid rates and a missing pricing snapshot have explicit unavailable states. Observed outcome charts remain visible when pricing is absent.
+- Desktop 1440×1000 and mobile 390×844 captures cover outcomes, tokens and the cost explorer in light/dark themes. Body widths match 390px and 320px viewports. Final captures use instant scrolling with asserted geometry to avoid smooth-scroll screenshot races; corrected files are retained in ignored `output/playwright/ollama-review/cost-*-final.png`.
+- Independent local Codex review checked source, all raw receipt token counts, offline math/build and seven corrected final screenshots: **Ship**, no material findings. Parent-agent interaction and private HTTP tailnet checks passed from the Mac; no phone-browser test is claimed.
+
+All 166 protected historical evidence files remain byte-identical. No Ollama requests, model changes, monitoring/journal writes or inference-service changes were made; tonight's separate assessment workflow remains untouched. The persistent preview stays available for review.
+
+## Local Qwen expansion — 2026-10-30
+
+- Expanded PR 8's original 4B cost visuals with a lazy-loaded Local Qwen chapter,
+  immutable evidence imports, paired receipt routes, output-length charts,
+  study-specific hosted-price scenarios, rescue accounting and loop-stop methods.
+- Snapshot `2026-10-30-overnight`: eight cohorts, 168 recorded primary calls,
+  1,273 hashed artifacts; prepared 9B sampling round 2 remains pending. All
+  original `public/evidence/ollama/` files match the prior committed pilot.
+- All 51 Python tests pass, including 14 importer mutation tests. Original
+  24-receipt/12-pair audit, new snapshot verification, pure finance checks and
+  independent per-study integration sums pass. Public scrub reports zero private
+  fields. TypeScript and production build pass; the existing main-bundle size
+  advisory remains. The new chapter is a separate lazy-loaded chunk.
+- Browser QA covers all eight study selections, 24-row ledgers, size filtering,
+  tariff/custom/free/invalid prices, full-input rescue accounting, unknown canceled
+  stream costs, prepared studies, reciprocal and cross-study receipt routes,
+  study backlinks, missing receipts, missing pricing/index states and unmatched
+  partial-arm suppression. No JavaScript errors or inference requests observed.
+- Desktop 1440px and mobile 390px/320px have no document overflow. Independent
+  local Codex review inspected all seven desktop/mobile/light/dark captures and
+  returned Ship. It caught a future partial-arm comparison issue; matching unique
+  recorded-board sets now gate deltas, headlines and break-even ratios, with
+  regression tests and a browser fixture confirming the correction.
+- Existing local preview and private HTTP mapping were reused. Local and private
+  preview were tested from this Mac, with the Vite WebSocket observed. No physical
+  phone-browser test is claimed. Review captures stay in ignored output files.
+- Eleven client-canceled streams lack final usage. Their affected total costs
+  remain unknown. The detector was calibrated on prior traces; no independent
+  false-positive rate or isolated stopping-policy savings claim is made. Shared
+  policy within Caveman arms, co-interventions across budgets, post-treatment
+  selection and missing call-time Git revision metadata are explicitly described.
+- No model requests, benchmark changes, service changes, merge or production
+  deployment were performed by this work.
+
+## October 31 evidence refresh
+
+- Captured a new immutable `2026-10-31-overnight` snapshot: 11 separately labeled
+  conditions, 214 assessment requests plus 11 outcome-selected audit reruns,
+  1,708 hashed artifacts. 9B sampling round 2 is complete; 27B round 2 is 22/24
+  with both panel-9-34 arms pending. Earlier snapshot, pilot and tariffs unchanged.
+- Extended schema 2 to retain selected audit populations and reciprocal source
+  links. Audits contain six and five selected calls, not 24 implied failures or
+  pending requests. All eleven full observed thinking prefixes match; one no-stop
+  9B rerun returns strict correctness at 29,094 tokens. Original grades and null
+  canceled-stream usage stay intact. Audits receive separate workload estimates
+  and no baseline/Caveman treatment contrast.
+- All 57 Python tests pass, including 20 importer tests. Current and retained
+  snapshot checks, independent financial sums, privacy scrub, TypeScript/build and
+  diff checks pass. The main-bundle size advisory is unchanged.
+- Browser checks pass for all eleven selections, partial recorded scope, distinct
+  audit populations/costs, unsupported size exclusion, invalid prices, rescue
+  costs, audit/source/backlink navigation and 320/390px layout. No page errors or
+  inference requests observed. Private HTTP preview and WebSocket were tested
+  from this Mac; no phone-browser test is claimed.
+- Added a dated independent scientific review and proposed assessments. Proposals
+  are not new schedules or inference: finish frozen sampling, evaluate fresh
+  boards, separate formatting/length effects, validate a frozen shadow detector,
+  and measure bounded fresh-seed retry costs. The 27B host context limit remains
+  binding. No benchmark or service settings were changed.
+- Brought merged PR 9's executive-summary changes into this branch to resolve PR
+  8's base conflicts. Kept both sets of CI path triggers and all receipt/leaderboard
+  gates. The summary now links the expanded Qwen chapter, dates the newer studies,
+  and preserves the original 4B details in their historical disclosure.
+- Post-integration build and 57 tests pass. Board-receipt verification passes
+  8,474 checks; leaderboard verification passes 1,178 checks across 17 systems.
+  Four final desktop/mobile/dark captures cover costs, selected audits, partial
+  27B results and source-linked receipts. The 9B round-2 display explicitly pairs
+  −4.98% workload spend with +18.77% cost per strict solve and 10→8 strict answers.

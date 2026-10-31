@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-10-30T15:07:15.442210+00:00",
+  "catalog_url": "https://openrouter.ai/api/v1/models",
+  "catalog_sha256": "d294fa1430d73e47347f013cbfd51083d1a4deaf0031a18c26f1fe18d2ccbada",
+  "catalog_model_count": 456,
+  "models": [
+    {
+      "id": "qwen/qwen3.5-9b",
+      "canonical_slug": "qwen/qwen3.5-9b-20260310",
+      "role": "exact_hosted_model",
+      "raw_usd_per_token": {
+        "prompt": "0.00000017",
+        "completion": "0.00000025"
+      },
+      "usd_per_million": {
+        "input": 0.17,
+        "output": 0.25
+      }
+    },
+    {
+      "id": "qwen/qwen3.5-27b",
+      "canonical_slug": "qwen/qwen3.5-27b-20260224",
+      "role": "exact_hosted_model",
+      "raw_usd_per_token": {
+        "prompt": "0.00000026",
+        "completion": "0.0000026"
+      },
+      "usd_per_million": {
+        "input": 0.26,
+        "output": 2.6
+      }
+    },
+    {
+      "id": "qwen/qwen3.5-flash-02-23",
+      "canonical_slug": "qwen/qwen3.5-flash-20260224",
+      "role": "optional_proxy_not_4b",
+      "raw_usd_per_token": {
+        "prompt": "0.000000065",
+        "completion": "0.00000026"
+      },
+      "usd_per_million": {
+        "input": 0.065,
+        "output": 0.26
+      }
+    }
+  ],
+  "absent_models": [
+    {
+      "id": "qwen/qwen3.5-4b",
+      "present": false,
+      "fallback": null
+    }
+  ],
+  "sources": [
+    "https://openrouter.ai/docs/guides/overview/models",
+    "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+  ],
+  "billing_notes": [
+    "Text prompt and completion list rates only; provider-specific cache, image and other fees are unknown in this scenario.",
+    "Reasoning is included in output tokens and must be counted once, including capped outputs.",
+    "Local quantization, runner and tokenizer counts repriced at hosted rates are a scenario, not a hosted-bill prediction.",
+    "Flash is an optional proxy, never an exact 4B replacement.",
+    "Catalog list rates reflect the API default model/provider conditions at check time; route/provider choices and applicable pricing overrides can change actual billing. No provider route was selected or billed."
+  ],
+  "catalog_retention": "Full catalog response was fetched transiently but is not retained in this artifact. SHA-256 identifies those fetched bytes; the digest alone cannot independently reconstruct or verify the complete catalog."
+}

@@ -1,0 +1,17 @@
+.lq-study code { overflow-wrap: anywhere; }
+.lq-study .table-scroll { max-width: 100%; }
+.lq-study-link { color: var(--text-accent); background: none; border: 0; padding: 8px 0; text-align: left; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lq-loop { color: var(--text-primary); background: var(--surface-raised); box-shadow: inset 0 0 0 2px var(--gold-400); }
+.lq-pending { color: var(--text-secondary); border: 1px dashed var(--text-muted); }
+.lq-mid { background: var(--gold-400); color: var(--navy-950); }
+.lq-late { background: var(--navy-800); color: white; }
+:root[data-theme='dark'] .lq-late { background: #8e9cff; color: var(--navy-950); }
+.lq-checkbox { align-content: center; }
+.lq-checkbox label { display: flex; align-items: center; gap: 10px; }
+.lq-checkbox input { width: 18px; min-height: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--mint-700); }
+.lq-checkbox small { font-size: .75rem; color: var(--text-secondary); }
+.lq-status { display: inline-flex; gap: 6px; align-items: baseline; }
+.lq-status svg { flex: 0 0 auto; transform: translateY(3px); }
+.lq-answer { padding: 20px; background: var(--surface-raised); border: 1px solid var(--border-strong); white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85rem; }
+.lq-links { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+@media (max-width: 600px) { .lq-study .cv-outcome-row { grid-template-columns: 76px minmax(0, 1fr) 60px; } }

@@ -119,6 +119,19 @@ The public bundle excludes credentials, private answer keys, encrypted reasoning
 
 ## Deliberate constraints
 
+The Local Qwen chapter (`#/local-qwen`) extends this same reading layout. Study
+identity appears in receipt routes because call names recur across experiments.
+The overview matrix and aligned outcome/completion bars retain planned and
+recorded denominators; model size, token budget, decoding and stopping policy are
+separate cohorts. Mint marks strict success, gold marks formatting recovery,
+outlined neutral marks token caps, and outlined gold marks a client stop. Text
+labels and counts carry every meaning without color. Hosted-cost bars share a
+zero-based USD scale; signed arrows and values distinguish increases and savings.
+Missing canceled-stream usage has no fabricated zero-cost bar. Controls expose
+the selected study, size scope, tariff, editable USD/million rates and explicit
+rescue inclusion. Native tables retain the book's scrolling behavior. Partial
+studies with unmatched recorded boards do not receive a comparative cost claim.
+
 - The repository solver is explanatory context, not a timed competitor.
 - Jev candidate recognition is never presented as autonomous puzzle construction.
 - The three original boards and six held-out boards do not support a general intelligence ranking. The October replay reuses the original three images and adds neither new boards nor independent distribution coverage.

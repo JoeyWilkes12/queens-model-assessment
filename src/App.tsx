@@ -23,6 +23,7 @@ import { ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCos
 
 // The Z3 part is large and self-contained; load it only when its route opens.
 const Z3Part = lazy(() => import('./z3/Z3Part'))
+const LocalQwen = lazy(() => import('./LocalQwen'))
 
 type Route = {
   path: string
@@ -102,7 +103,8 @@ const routes: Route[] = [
   { path: 'protocol-results', title: 'Protocol & results', section: 'The board', description: 'Frozen inputs, entrants, outcomes, and route failures.' },
   { path: 'frontier-trajectories', title: 'One queen at a time', section: 'The board', description: 'Frontier models place one queen per request and explain each move.' },
   { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
-  { path: 'local-open-models', title: 'Local open models', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
+  { path: 'local-qwen', title: 'Local Qwen experiments', section: 'Model generations', description: 'Model scale, sampling, loop-stop policies and hosted cost scenarios.' },
+  { path: 'local-open-models', title: 'Original 4B pilot', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
   { path: 'caveman-summary', title: 'Caveman comparison', section: 'Model generations', description: 'Paired local Qwen receipts, observed correctness and usage, and experimental limits.' },
   { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
   { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
@@ -500,12 +502,14 @@ const studies: [string, string, string, string, string][] = [
   ['2026-10-17', '17 Oct', 'One queen at a time, pilot', 'frontier-trajectories', '4 of 4, one 5×5 board'],
   ['2026-10-17', '17–19 Oct', '36-board picture test, earlier models', 'earlier-generations', '206 of 288, eight models'],
   ['2026-10-28', '28 Oct', 'Small local model and Caveman', 'local-open-models', '3 and 5 of 12'],
+  ['2026-10-31', '29–31 Oct', 'Larger local Qwen, sampling and loop-stop audits', 'local-qwen', 'Separate cohorts; round 2 updated'],
 ]
 
 function ExecutiveSummary() {
   return <>
     <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. Every system in the chart below tried the same boards." />
     <section className="board-cover" aria-labelledby="leaderboard-title"><Leaderboard ui={bookUi} titleId="leaderboard-title" /></section>
+    <p className="qa-caveat" style={{ paddingInline: '28px' }}>The leaderboard retains its dated conditions. <a href="#/local-qwen">Expanded local Qwen experiments</a> report the later model sizes, sampling rounds, token budgets and stopping policies separately.</p>
     <AssessmentReceipt />
     <div className="reading-layout">
       <LocalToc items={[{ id: 'finding', label: 'Short answers' }, { id: 'scoreboard', label: 'Results by task' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'Limits' }, { id: 'next', label: 'Go deeper' }]} />
@@ -554,7 +558,8 @@ function ExecutiveSummary() {
               <p className="qa-caveat">The 24 lists come from two boards, so they are not 24 separate puzzles.</p>
               <QaLinks links={[['Jev primer', '#/jev-primer'], ['Candidate engineering', '#/candidate-engineering'], ['Scale & primitives', '#/scale-primitives'], ['Decision models vs the index', '#/decision-models']]} />
             </Answer>
-            <Answer id="qa-local" question="Can a small model on our own computer do it?" stat="3 · 5" statLabel="of 12 boards, plain and Caveman prompts" statSr="3 of 12 boards with the plain prompt, 5 of 12 with Caveman." answer="Barely. Qwen3.5 4B, a small free model, solved 3 boards with a plain prompt and 5 with Caveman, an add-on that tells it to answer tersely. Neither solved a 9×9." more="Board by board, 28 Oct">
+            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="24/24" statLabel="strict requests, 27B greedy at 24,576 tokens" statSr="27B returned strict correct answers on all 24 requests across 12 boards and two prompt conditions." answer="Yes, with size and budget tradeoffs. Qwen3.5 27B returned strict correct answers on all 24 requests in its greedy study. 9B sampling round 2 returned 18 of 24; 27B round 2 is still partial. These are separate conditions on the same 12 boards, not 24 independent puzzles." more="Original 4B pilot, 28 Oct">
+              <p>The original 4B pilot below is preserved separately from the later larger-budget and larger-model experiments.</p>
               <PairStrip />
               <Facts items={[
                 ['Exact format only', 'Plain prompt 1, Caveman 5: both solved 1 board, only Caveman 4, neither 7.'],
@@ -564,7 +569,7 @@ function ExecutiveSummary() {
                 ['Caveman', 'A free third-party add-on that tells the model to answer in as few words as possible, checked for safety before use. No fee; electricity was not measured.'],
               ]} />
               <p className="qa-caveat">Four boards per size, one run each, plain prompt always first: this cannot show that Caveman caused the gain.</p>
-              <QaLinks links={[['Local open models', '#/local-open-models'], ['Caveman comparison', '#/caveman-summary']]} />
+              <QaLinks links={[['Expanded Qwen experiments', '#/local-qwen'], ['Original 4B pilot', '#/local-open-models'], ['Caveman comparison', '#/caveman-summary']]} />
             </Answer>
             <Answer id="qa-cost" question="What did it cost?" stat="$31.48" statLabel="recorded API spend, all studies" answer="Little. Most went on the two 36-board picture tests, and every request, visible reply and grade is saved." more="Breakdown and records">
               <Facts items={[
@@ -1209,6 +1214,7 @@ function App() {
               : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
+                : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading Local Qwen experiments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
                 : active === 'caveman-summary' ? <OllamaComparison ui={bookUi} view="summary" />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />

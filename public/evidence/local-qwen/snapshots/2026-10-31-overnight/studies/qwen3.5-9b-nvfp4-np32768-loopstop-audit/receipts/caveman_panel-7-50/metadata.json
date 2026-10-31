@@ -1,0 +1,65 @@
+{
+  "call_id": "caveman_panel-7-50",
+  "board_id": "panel-7-50",
+  "size": 7,
+  "treatment": "caveman",
+  "model": "qwen3.5:9b-nvfp4",
+  "model_digest": "8218177ac78e61e0038e60fda513dc9ced4472637f0bc30e45def6aec48649d4",
+  "started_utc": "2026-10-31T06:43:30.710227+00:00",
+  "completed_utc": "2026-10-31T06:56:01.417979+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 750.662140333,
+  "returned_model": "qwen3.5:9b-nvfp4",
+  "finish_reason": "stop",
+  "done": true,
+  "input_tokens": 1984,
+  "output_tokens": 29094,
+  "total_duration_ns": 750655355375,
+  "load_duration_ns": 777000,
+  "prompt_eval_duration_ns": 4745608625,
+  "eval_duration_ns": 745874885500,
+  "request_sha256": "b2565efba1b1be177be0d568e1964058df0ddf7fd44bac0e492b67084bf31c40",
+  "response_sha256": "ec5dcf851afa4d593a49c7f5e2885c3a0d3614d7cedaf4ccc35b8021ace4a26a",
+  "image_sha256": "7c87c4b79671b9b5d56bf1d572e2ab98ce4b4cfac49d0f9261a32cc9c933b2ff",
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": true,
+  "rule_valid_after_extraction": true,
+  "outcome": "strict",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "fefee4d9e835a584af32a0cea85ca0fc7ff759e9f9494c0811e8f59d3ede3d63",
+    "panel_py_sha256": "3087469ff82e442d184ad819174f1f567b4383f685051c81c2f2dc5b33f26e7e",
+    "runtime_lock_sha256": "a4a5cbd736e62c6198900c117845fbb524e202e976a1bde41e4a95cb96dc157b",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "nonstream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.0,
+    "last_llama_server_decode": null,
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "audit": {
+    "source_receipt": "public/evidence/ollama-models/qwen3.5-9b-nvfp4-np32768-loopstop/receipts/caveman_panel-7-50",
+    "source_stopped_at_thinking_chars": 31000,
+    "identical_up_to_stop": true,
+    "answered_after_stop": true,
+    "reading": "answered_after_stop true means the loop-stop changed this call's outcome; false means it only saved time"
+  },
+  "loop_stop": {
+    "enabled": false,
+    "reason": "this study's plan.json has no protocol.loop_stop"
+  }
+}
