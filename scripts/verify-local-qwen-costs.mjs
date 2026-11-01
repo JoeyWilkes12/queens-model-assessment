@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
+import { isLocalIndex } from '../src/localQwenEvidence.ts'
 import { aggregateUsage, estimateCohort, compareArms, parseRate, breakEvenRatio, isMatchedCohort } from '../src/localQwenMath.ts'
 const row = (i, o, extra = {}) => ({state:'recorded',input_tokens:i,output_tokens:o,strict_correct:false,format_only_correct:false,truncated:false,loop_stopped:false,elapsed_seconds:1,treatment:'baseline',rescue:null,...extra})
 const rates = {input:1,output:2}
@@ -56,13 +57,22 @@ for (const model of snapshot.models) {
 }
 console.log('Local Qwen cost verification passed: completeness, partials, caps, loops, rescue uniqueness, overflow, zero denominators, fixture deltas and dated pricing.')
 const index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/index.json',import.meta.url)))
+assert.equal(isLocalIndex(index),true,'Shipped snapshot must pass the actual frontend display contract')
+for (const invalid of [null, {}, {schema_version:3,studies:[null]}, {...index,studies:[{...index.studies[0],arms:{baseline:null}}]}]) {
+ assert.equal(isLocalIndex(invalid),false,'Malformed public data must fail closed without throwing')
+}
+for (const name of fs.readdirSync(new URL('../public/evidence/local-qwen/snapshots/',import.meta.url))) {
+ const catalog=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/snapshots/${name}/catalog.json`,import.meta.url)))
+ assert.equal(isLocalIndex(catalog),true,`Retained ${name} catalog must remain compatible with the frontend`)
+}
 const near=(actual,expected)=>expected===null?assert.equal(actual,null):assert.ok(actual!==null&&Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`)
 const independentCost=(rows,r)=>!rows.length||rows.some(x=>x.input_tokens===null||x.output_tokens===null)?null:rows.reduce((sum,x)=>sum+x.input_tokens*r.input/1e6+x.output_tokens*r.output/1e6,0)
-for(const study of index.studies) for(const treatment of ['baseline','caveman']) {
+for(const study of index.studies) for(const treatment of Object.keys(study.arms ?? {baseline:{},caveman:{}})) {
  const selected=study.rows.filter(x=>x.treatment===treatment), recorded=selected.filter(x=>x.state==='recorded')
- const tariff=snapshot.models.find(m=>m.id=== (study.model.includes('27b')?'qwen/qwen3.5-27b':study.model.includes('9b')?'qwen/qwen3.5-9b':'qwen/qwen3.5-flash-02-23'))?.usd_per_million
- assert.ok(tariff,`Missing explicit tariff for ${study.id}`)
- for (const r of [rates,tariff]) {
+ const tariffId=!study.model.startsWith('qwen3.5:')?null:study.model.includes('27b')?'qwen/qwen3.5-27b':study.model.includes('9b')?'qwen/qwen3.5-9b':'qwen/qwen3.5-flash-02-23'
+ const tariff=snapshot.models.find(m=>m.id===tariffId)?.usd_per_million
+ // Non-Qwen studies have no asserted hosted tariff; verify arithmetic at explicit fixture rates only.
+ for (const r of tariff ? [rates,tariff] : [rates]) {
  const result=estimateCohort(selected,r,true), expected=independentCost(recorded,r)
  near(result.oneShotCostUsd,expected)
  assert.equal(result.pendingCount,selected.length-recorded.length)
@@ -123,3 +133,31 @@ for (const [id, expected] of Object.entries(oct31Fixtures)) {
  }
 }
 console.log('Verified Oct31 r2 counts, 11-pair partial scope, selected audit source usage and unchanged canceled usage.')
+
+const coverageFixtures = {
+ 'gemma4-e4b-fresh1-4arm-np32768': [[12,6600,147364,4],[12,7272,139349,4],[12,19044,151620,2],[12,19920,69352,0]],
+ 'llava-llama3-8b-fresh1-4arm-np4096': [[12,10128,346,0],[12,10824,392,0],[12,22752,348,0],[12,23304,342,0]],
+ 'qwen3.5-9b-nvfp4-fresh1-4arm-np32768': [[12,10236,210412,9],[12,10932,208496,10],[12,22968,219049,9],[12,23808,174627,10]],
+ 'qwen3.5-4b-fresh1-4arm-np32768': [[7,5971,143453,4],[7,6377,184583,2],[8,15312,161556,3],[8,15872,175976,4]],
+ 'qwen3.5-9b-nvfp4': [[3,2559,29091,2],[3,5952,30335,1]],
+ 'qwen3.5-27b-q4_K_M': [[1,853,5915,1],[1,1984,4602,1]],
+}
+for (const [id,expected] of Object.entries(coverageFixtures)) {
+ const study=index.studies.find(s=>s.id===id)
+ assert.ok(study,`Missing coverage study ${id}`)
+ for (const [i,arm] of Object.keys(study.arms).entries()) {
+  const rows=study.rows.filter(r=>r.state==='recorded'&&r.treatment===arm), usage=aggregateUsage(rows)
+  assert.deepEqual([rows.length,usage.inputTokens,usage.outputTokens,rows.filter(r=>r.strict_correct).length],expected[i])
+ }
+}
+const fresh9=index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh1-4arm-np32768')
+const fresh4=index.studies.find(s=>s.id==='qwen3.5-4b-fresh1-4arm-np32768')
+assert.equal(isMatchedCohort(fresh9.rows),true)
+assert.equal(isMatchedCohort(fresh4.rows),false)
+const freshContrast=compareArms(fresh9.rows,{input:0.17,output:0.25})
+near(freshContrast.baseline.costUsd,0.05434312)
+near(freshContrast.caveman.costUsd,0.04770411)
+near(freshContrast.deltaUsd,-0.00663901)
+// Adding the two control arms must never contaminate baseline/Caveman contrast.
+assert.deepEqual(compareArms(fresh9.rows.filter(r=>['baseline','caveman'].includes(r.treatment)),rates),compareArms(fresh9.rows,rates))
+console.log('Verified six previously omitted cohorts, four-arm usage and unmatched partial cost guard.')

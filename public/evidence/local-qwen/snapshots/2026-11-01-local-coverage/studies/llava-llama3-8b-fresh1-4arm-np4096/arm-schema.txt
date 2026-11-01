@@ -1,0 +1,1 @@
+Your final answer must be exactly one JSON object of the form {"board_id": "<the board ID>", "columns_by_row": [<one integer column per row, top to bottom>]}, with no code fences, no prose and nothing else before or after it.

@@ -23,9 +23,11 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUT = ROOT / "public/evidence/local-qwen"
 ARMS = ("baseline", "caveman")
 TOP_FILES = ("plan.json", "summary.json", "prompt-template.txt", "caveman-system.txt",
-             "skill.json", "caveman-review.json", "caveman-LICENSE", "caveman-LICENSE-MIT", "caveman-NOTICE")
+             "skill.json", "arm-schema.txt", "arm-neutral.txt", "caveman-review.json", "caveman-LICENSE", "caveman-LICENSE-MIT", "caveman-NOTICE")
 CALL_FILES = ("request.json", "response.json", "metadata.json", "grade.json", "diagnostic.json")
 STUDY_NAME = re.compile(r"qwen3[.]5-(?:9b-nvfp4|27b-q4_K_M)-np24576(?:-qwen-sampling-r[1-9][0-9]*)?$|qwen3[.]5-(?:4b|9b-nvfp4)-np32768-loopstop(?:-audit)?$")
+FRESH_NAMES = {"gemma4-e4b-fresh1-4arm-np32768", "llava-llama3-8b-fresh1-4arm-np4096", "qwen3.5-4b-fresh1-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-4arm-np32768"}
+PRIMARY_NAMES = {"qwen3.5-9b-nvfp4", "qwen3.5-27b-q4_K_M"}
 HOST_KEYS = ("samples", "max_pressure_level", "swap_used_gib_start", "swap_used_gib_max", "swap_used_gib_end",
              "min_free_plus_inactive_gib", "max_compressor_gib", "max_model_size_gib", "max_model_vram_gib")
 SPEC = importlib.util.spec_from_file_location("local_qwen_grader", ROOT / "scripts/llm_panel/grading.py")
@@ -130,7 +132,7 @@ def validate_call(directory, board, arm, plan, user, system):
     expected = configuration(plan)
     require(canonical({k: v for k, v in request.items() if k != "messages"}) == canonical(expected),
             "Request configuration differs from frozen plan: " + directory.name)
-    messages = [user] if arm == "baseline" else [{"role": "system", "content": system}, user]
+    messages = [user] if system is None else [{"role": "system", "content": system}, user]
     require(canonical(request.get("messages")) == canonical(messages), "Frozen prompt/image mismatch: " + directory.name)
     for key, expected_value in {"call_id": directory.name, "board_id": board["id"], "size": board["size"],
                                 "treatment": arm, "model": plan["runtime"]["model"],
@@ -141,9 +143,12 @@ def validate_call(directory, board, arm, plan, user, system):
             "Unsupported failed/foreign response")
     require(meta["request_sha256"] == sha(canonical(request)), "Request hash mismatch")
     require(meta["response_sha256"] == sha(canonical(response)), "Response hash mismatch")
+    if plan.get("arms"):
+        require(meta.get("loop_stop", {}).get("shadow") is True and meta["loop_stop"].get("enabled") is False,
+                "Shadow detector metadata mismatch")
     stopped = meta.get("outcome") == "loop_stopped"
     if stopped:
-        require(plan["protocol"].get("loop_stop") and response.get("done") is False
+        require(plan["protocol"].get("loop_stop") and not plan["protocol"]["loop_stop"].get("shadow") and response.get("done") is False
                 and response.get("client_stop", {}).get("reason") == "loop_stop"
                 and meta.get("loop_stop", {}).get("triggered") is True, "Invalid client loop stop")
     else:
@@ -165,7 +170,7 @@ def validate_call(directory, board, arm, plan, user, system):
             "input_tokens": meta.get("input_tokens"), "output_tokens": meta.get("output_tokens"),
             "elapsed_seconds": meta.get("elapsed_seconds"), "finish_reason": meta.get("finish_reason"),
             "loop_stop": {key: meta["loop_stop"].get(key) for key in
-                          ("enabled", "triggered", "checks", "max_metric", "fired_at_thinking_chars", "stream_chunks")}
+                          ("enabled", "triggered", "checks", "max_metric", "fired_at_thinking_chars", "stream_chunks", * (("shadow", "would_have_stopped") if plan.get("arms") else ()))}
                          if meta.get("loop_stop") else None}
 
 
@@ -209,7 +214,7 @@ def validate_rescue(directory, source, board, arm, plan):
             "outcome": meta["outcome"]}
 
 
-def derive_study(directory, relative_root, study_id, extended=False):
+def derive_study(directory, relative_root, study_id, extended=False, coverage=False):
     """Build a checked UI contract from saved artifacts, supporting partial studies."""
     plan, summary = read(directory / "plan.json"), read(directory / "summary.json")
     require(summary["study"] == plan["study"] and canonical(summary["protocol"]) == canonical(plan["protocol"])
@@ -221,6 +226,22 @@ def derive_study(directory, relative_root, study_id, extended=False):
     system = (directory / "caveman-system.txt").read_bytes()
     require(sha(template) == plan["prompt_template_sha256"], "Template hash mismatch")
     require(sha(system) == read(directory / "skill.json")["system_sha256"], "Skill body hash mismatch")
+    arms = plan.get("arm_names", list(ARMS))
+    systems = {"baseline": None, "caveman": system.decode()}
+    if plan.get("arms"):
+        require(arms == ["baseline", "schema", "neutral", "caveman"] and set(plan["arms"]) == set(arms), "Unsupported arm design")
+        require(study_id in FRESH_NAMES and plan["board_set"]["name"] == "fresh1", "Unsupported fresh condition")
+        for arm, info in plan["arms"].items():
+            if arm == "baseline":
+                require(info == {"system_file": None, "system_sha256": None, "system_chars": 0, "system_words": 0}, "Invalid baseline arm")
+                continue
+            name = "caveman-system.txt" if arm == "caveman" else "arm-" + arm + ".txt"
+            require(info["system_file"] == name, "Unexpected arm system path")
+            body = (directory / name).read_bytes()
+            require(sha(body) == info["system_sha256"], "Arm system hash mismatch")
+            systems[arm] = body.decode()
+            require(len(systems[arm]) == info["system_chars"] and len(systems[arm].split()) == info["system_words"], "Arm system size mismatch")
+        require(plan["protocol"].get("loop_stop", {}).get("shadow") is True and plan["protocol"].get("rescue") is False, "Fresh study must use shadow and no rescues")
     audit_of = plan.get("audit_of")
     selected = plan.get("audit_calls") if audit_of else None
     if audit_of:
@@ -228,7 +249,7 @@ def derive_study(directory, relative_root, study_id, extended=False):
         require(isinstance(selected, list) and len(selected) == len(set(selected)) and selected,
                 "Invalid audit selection")
     rows = []
-    expected_ids = {f"{arm}_{board_id}" for board_id in boards for arm in ARMS}
+    expected_ids = {f"{arm}_{board_id}" for board_id in boards for arm in arms}
     actual_ids = [r["call_id"] for r in summary["rows"]]
     require(len(actual_ids) == len(expected_ids) and set(actual_ids) == expected_ids, "Missing/duplicate planned rows")
     for saved in summary["rows"]:
@@ -237,7 +258,7 @@ def derive_study(directory, relative_root, study_id, extended=False):
                     "Excluded audit call is not unrun")
             continue
         board, arm = boards[saved["board_id"]], saved["treatment"]
-        require(arm in ARMS and saved["call_id"] == f"{arm}_{board['id']}" and saved["size"] == board["size"], "Invalid row identity")
+        require(arm in arms and saved["call_id"] == f"{arm}_{board['id']}" and saved["size"] == board["size"], "Invalid row identity")
         image_name = f"images/{board['id']}.png"
         require(board["image"] == image_name and saved["image"] == image_name, "Unexpected board image")
         image_bytes = (directory / image_name).read_bytes()
@@ -252,7 +273,7 @@ def derive_study(directory, relative_root, study_id, extended=False):
                "pair_verified": False, "rescue": None, "host": None, "loop_stop": None}
         if row["state"] == "recorded":
             receipt = directory / "receipts" / row["call_id"]
-            row.update(validate_call(receipt, board, arm, plan, user, system.decode()))
+            row.update(validate_call(receipt, board, arm, plan, user, systems[arm]))
             for key in ("strict_correct", "input_tokens", "output_tokens", "elapsed_seconds"):
                 require(canonical(saved.get(key)) == canonical(row[key]), "Summary/receipt mismatch: " + key)
             require(saved["outcome"] == read(receipt / "metadata.json")["outcome"], "Summary outcome mismatch")
@@ -266,22 +287,30 @@ def derive_study(directory, relative_root, study_id, extended=False):
                                  "receipt": relative_root + "/rescue/" + row["call_id"]}
         else:
             require(not (directory / "receipts" / row["call_id"] / "metadata.json").exists(), "Pending row has a completed receipt")
+        if coverage:
+            row["peer_call_ids"] = [f"{other}_{board['id']}" for other in arms if other != arm]
+            if arm not in ARMS:
+                row["peer_call_id"] = None
         if extended:
             row["audit"] = None
         rows.append(row)
     require(selected is None or set(selected) == {row["call_id"] for row in rows}, "Audit selection outside panel")
     row_map = {row["call_id"]: row for row in rows}
     for row in rows:
+        if coverage:
+            row["peer_call_ids"] = [call_id for call_id in row["peer_call_ids"] if call_id in row_map]
         row["pair_verified"] = row["state"] == "recorded" and row_map.get(row["peer_call_id"], {}).get("state") == "recorded"
     protocol = plan["protocol"]
     sampling = re.search(r"qwen-sampling-r([0-9]+)$", study_id)
-    loopstop = bool(protocol.get("loop_stop"))
+    loopstop = bool(protocol.get("loop_stop")) and not (coverage and protocol["loop_stop"].get("shadow"))
     decoding = "loop-audit" if audit_of else "sampling" if sampling else "greedy+ls" if loopstop else "greedy"
     recorded = sum(row["state"] == "recorded" for row in rows)
     model_short = plan["runtime"]["model"].split(":")[-1].split("-")[0].upper()
     label = f"Qwen3.5 {model_short} · {protocol['num_predict']:,} · " + ("loop-stop audit" if audit_of else f"sampling r{sampling.group(1)}" if sampling else "greedy + loop-stop" if loopstop else "greedy")
+    if coverage and plan.get("arms"):
+        label = f"{plan['runtime']['model']} · fresh1 · four arms · {protocol['num_predict']:,} · greedy · shadow detector"
     runtime = {key: plan["runtime"].get(key) for key in ("model", "digest", "server_version", "details", "os", "machine_architecture")}
-    return {**({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
+    return {**({"arms": plan.get("arms", {arm: {"system_file": "caveman-system.txt" if arm == "caveman" else None, "system_sha256": sha(system) if arm == "caveman" else None, "system_chars": len(system.decode()) if arm == "caveman" else 0, "system_words": len(system.decode().split()) if arm == "caveman" else 0} for arm in ARMS}), "board_set": "fresh1" if plan.get("arms") else "legacy", "loop_mode": "shadow" if protocol.get("loop_stop", {}).get("shadow") else "active" if loopstop else "off"} if coverage else {}), **({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
             "decoding": decoding, "round": int(sampling.group(1)) if sampling else 0,
             "status": "complete" if recorded == len(rows) else "partial", "planned": len(rows), "recorded": recorded,
             "root": relative_root, "plan": relative_root + "/plan.json", "summary": relative_root + "/summary.json",
@@ -308,8 +337,9 @@ def source_files(directory):
             result.append(host)
         rescue = directory / "rescue" / row["call_id"]
         if rescue.exists():
+            require(not plan.get("arms"), "Fresh study has an unsupported rescue")
             result += [rescue / name for name in CALL_FILES]
-    require(all(path.is_file() and not path.is_symlink() for path in result), "Missing or symlinked source artifact")
+    require(all(path.is_file() and not path.is_symlink() and path.resolve().is_relative_to(directory.resolve()) for path in result), "Missing or symlinked source artifact")
     return result
 
 
@@ -323,10 +353,16 @@ def provenance(source):
 def derive_catalog(base, manifest):
     """Reconstruct the entire displayed catalog from the immutable saved artifacts."""
     prefix = "snapshots/" + manifest["snapshot_id"]
-    studies = [derive_study(base / item["directory"], prefix + "/" + item["directory"], item["id"], manifest["schema_version"] >= 2)
+    studies = [derive_study(base / item["directory"], prefix + "/" + item["directory"], item["id"], manifest["schema_version"] >= 2, manifest["schema_version"] >= 3)
                for item in manifest["study_roots"]]
     if manifest["schema_version"] >= 2:
         validate_audits(base, studies)
+    if manifest["schema_version"] >= 3:
+        fresh = [read(base / item["directory"] / "plan.json") for item in manifest["study_roots"]
+                 if item["id"] in FRESH_NAMES]
+        if fresh:
+            require(all(plan["boards"] == fresh[0]["boards"] and plan["board_set"] == fresh[0]["board_set"] for plan in fresh),
+                    "Fresh studies disagree on frozen boards")
     return {"schema_version": manifest["schema_version"], "snapshot_id": manifest["snapshot_id"], "captured_utc": manifest["captured_utc"],
             "source_commit": manifest["source_commit"], "source_dirty": manifest["source_dirty"],
             "grader_sha256": manifest["grader_sha256"], "manifest": prefix + "/manifest.json",
@@ -400,7 +436,7 @@ def verify_snapshot(output=DEFAULT_OUT):
     require(re.fullmatch(r"[A-Za-z0-9_-]+", snapshot_id), "Unsafe snapshot ID")
     base = output / "snapshots" / snapshot_id
     manifest = read(base / "manifest.json")
-    require(manifest["snapshot_id"] == snapshot_id and manifest["schema_version"] in (1, 2), "Manifest identity mismatch")
+    require(manifest["snapshot_id"] == snapshot_id and manifest["schema_version"] in (1, 2, 3), "Manifest identity mismatch")
     require(manifest["grader_sha256"] == sha((ROOT / "scripts/llm_panel/grading.py").read_bytes()), "Derived grader changed; review and import a new snapshot")
     for name, digest in manifest["files"].items():
         path = base / safe_relative(name)
@@ -418,7 +454,7 @@ def verify_snapshot(output=DEFAULT_OUT):
 def verify_retained(base):
     """Validate historical snapshots with their original contract, without rewriting."""
     manifest = read(base / "manifest.json")
-    require(manifest["snapshot_id"] == base.name and manifest["schema_version"] in (1, 2), "Retained identity mismatch")
+    require(manifest["snapshot_id"] == base.name and manifest["schema_version"] in (1, 2, 3), "Retained identity mismatch")
     require(manifest["grader_sha256"] == sha((ROOT / "scripts/llm_panel/grading.py").read_bytes()), "Retained grader mismatch")
     for name, digest in manifest["files"].items():
         path = base / safe_relative(name)
@@ -432,8 +468,13 @@ def discover_sources(source_root):
     """Discover only the supported primary conditions, including future sample rounds."""
     sources = [("qwen3.5-4b-pilot", source_root / "public/evidence/ollama")]
     models = source_root / "public/evidence/ollama-models"
+    unknown = [path.name for path in sorted(models.iterdir()) if (path / "plan.json").is_file()
+               and not (STUDY_NAME.fullmatch(path.name) or path.name in FRESH_NAMES | PRIMARY_NAMES)]
+    require(not unknown, "Unsupported frozen study plans (review explicitly): " + ", ".join(unknown))
+    planned = [path for path in sorted(models.iterdir()) if (path / "plan.json").is_file()]
+    require(all((path / "summary.json").is_file() for path in planned), "Frozen study plan missing summary; capture cannot silently omit it")
     sources += [(path.name, path) for path in sorted(models.iterdir())
-                if STUDY_NAME.fullmatch(path.name) and (path / "summary.json").exists()]
+                if (STUDY_NAME.fullmatch(path.name) or path.name in FRESH_NAMES | PRIMARY_NAMES) and (path / "summary.json").exists()]
     return sources
 
 
@@ -451,7 +492,7 @@ def import_snapshot(source_root, snapshot_id, output=DEFAULT_OUT):
     observed = {}
     inventories = {}
     try:
-        manifest = {"schema_version": 2, "snapshot_id": snapshot_id, "captured_utc": datetime.now(timezone.utc).isoformat(),
+        manifest = {"schema_version": 3, "snapshot_id": snapshot_id, "captured_utc": datetime.now(timezone.utc).isoformat(),
                     **provenance(source_root), "grader_sha256": sha((ROOT / "scripts/llm_panel/grading.py").read_bytes()),
                     "study_roots": [], "files": {}}
         for study_id, source in sources:

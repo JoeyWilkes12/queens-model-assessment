@@ -1,4 +1,4 @@
-# Updating Local Qwen experiments
+# Updating local open-weight assessments
 
 The `#/local-qwen` chapter reads `public/evidence/local-qwen/index.json`.
 It never contacts Ollama or polls the overnight runner. The index identifies an
@@ -29,7 +29,16 @@ arms cover the same boards. Sampling rounds never pool with greedy runs.
 
 Supported discovery covers the 4B pilot, 9B/27B 24,576-token studies and numbered
 sampling rounds, and separately identified 4B/9B 32,768-token loop-stop studies.
-New model names, budgets or interventions require a reviewed importer extension.
+Schema 3 also includes the original, partial 9B and 27B 12,288-token studies and
+four explicitly reviewed fresh1 image conditions: Gemma 4 E4B, LLaVA-Llama3,
+Qwen 4B and Qwen 9B. Those studies retain all four frozen arms (`baseline`,
+`schema`, `neutral`, `caveman`), the board-set identity and shadow-detector mode.
+Per-board links connect every arm through the same frozen configuration; only
+baseline/Caveman pairs acquire that two-arm pair verification. A schema-reminder
+prompt is not constrained JSON. Neutral control inputs are not token matched to
+Caveman. Unknown frozen study names cause import failure, rather than silently
+missing future assessment types. New models, text inputs or constrained output
+require a reviewed importer extension before their results can be published.
 
 Schema 2 additionally imports their separately frozen `-loopstop-audit` reruns.
 Only `audit_calls` enter the derived audit population; unselected `not_run` slots
@@ -37,7 +46,7 @@ remain in the original copied summary but are excluded, not pending, in the UI.
 The importer verifies the selected set against the original loop-stopped set,
 retains source linkage, and independently compares the entire observed thinking
 prefix. Audit results never overwrite original grades or fill canceled usage.
-All retained schema-1 and schema-2 snapshots are verified in place, without
+All retained schema-1, schema-2 and schema-3 snapshots are verified in place, without
 rewriting historical catalogs.
 
 The importer checks frozen prompts/images/settings, request and response hashes,
@@ -68,3 +77,9 @@ or forecast. Local power and hardware cost remain unmeasured.
 See [results and stopping-policy interpretation](local-qwen-methods.md) and
 [financial estimates](local-qwen-costs.md). Repeated use of the same 12 boards
 does not increase the number of independent board samples.
+
+The November 1 coverage inventory includes every current frozen assessment plan;
+operational probes, selftests and sessions are excluded from accuracy denominators.
+The separate queue contains unstarted text, constrained-JSON and 27B fresh-board
+conditions. They are described as queued work, without invented plans or receipts.
+See [coverage and completion requirements](local-assessment-coverage.md).

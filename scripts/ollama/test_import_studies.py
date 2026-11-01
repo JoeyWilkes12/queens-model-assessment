@@ -89,6 +89,84 @@ class ImportTests(unittest.TestCase):
             meta[name + "_sha256"] = module.sha(module.canonical(value))
             module.save(directory / "metadata.json", meta)
 
+    def make_four_arm(self):
+        """Add a frozen fresh study with four distinct checked system prompts."""
+        root = self.larger.with_name("qwen3.5-9b-nvfp4-fresh1-4arm-np32768")
+        shutil.copytree(self.larger, root)
+        plan, summary = (module.read(root / name) for name in ("plan.json", "summary.json"))
+        plan["arm_names"] = ["baseline", "schema", "neutral", "caveman"]
+        plan["board_set"] = {"name": "fresh1"}
+        plan["arms"] = {}
+        plan["protocol"].update(transport="stream", loop_stop={"shadow": True}, rescue=False)
+        for arm in plan["arm_names"]:
+            body = None if arm == "baseline" else self.system if arm == "caveman" else "Distinct " + arm
+            name = None if body is None else "caveman-system.txt" if arm == "caveman" else "arm-" + arm + ".txt"
+            if name:
+                (root / name).write_text(body)
+            plan["arms"][arm] = {"system_file": name, "system_sha256": module.sha(body.encode()) if body else None,
+                                  "system_chars": len(body or ""), "system_words": len((body or "").split())}
+            call_id = arm + "_fixture-5"
+            directory = root / "receipts" / call_id
+            if not directory.exists():
+                shutil.copytree(root / "receipts/caveman_fixture-5", directory)
+                row = dict(summary["rows"][1], call_id=call_id, treatment=arm)
+                summary["rows"].append(row)
+            request, meta = (module.read(directory / n) for n in ("request.json", "metadata.json"))
+            request["stream"] = True
+            request["messages"] = ([{"role": "system", "content": body}] if body else []) + [request["messages"][-1]]
+            meta.update(call_id=call_id, treatment=arm, request_sha256=module.sha(module.canonical(request)),
+                        loop_stop={"enabled": False, "shadow": True, "would_have_stopped": True})
+            module.save(directory / "request.json", request)
+            module.save(directory / "metadata.json", meta)
+        summary["protocol"] = plan["protocol"]
+        module.save(root / "plan.json", plan)
+        module.save(root / "summary.json", summary)
+        return root
+
+    def test_four_arm_shadow_contract(self):
+        """A shadow trigger does not censor results or create schema/Caveman pairs."""
+        self.make_four_arm()
+        study = next(s for s in self.capture()["studies"] if s["board_set"] == "fresh1")
+        self.assertEqual((study["planned"], study["recorded"], study["loop_mode"], study["decoding"]), (4, 4, "shadow", "greedy"))
+        self.assertEqual(len(study["arms"]), 4)
+        schema = next(r for r in study["rows"] if r["treatment"] == "schema")
+        self.assertEqual(len(schema["peer_call_ids"]), 3)
+        self.assertIsNone(schema["peer_call_id"])
+        self.assertFalse(schema["pair_verified"])
+        self.assertFalse(schema["loop_stopped"])
+        self.assertTrue(schema["loop_stop"]["would_have_stopped"])
+
+    def test_arm_prompt_mutation(self):
+        """A changed control-arm prompt fails its frozen hash."""
+        root = self.make_four_arm()
+        (root / "arm-neutral.txt").write_text("changed")
+        with self.assertRaisesRegex(ValueError, "Arm system hash"):
+            self.capture()
+
+    def test_supported_plan_without_summary(self):
+        """A known plan without its summary cannot disappear from the capture."""
+        (self.larger / "summary.json").unlink()
+        with self.assertRaisesRegex(ValueError, "missing summary"):
+            self.capture()
+
+    def test_shadow_cannot_be_active_stop(self):
+        """Shadow receipts cannot claim a client-stop outcome."""
+        root = self.make_four_arm()
+        p = root / "receipts/schema_fixture-5/metadata.json"
+        meta = module.read(p)
+        meta["outcome"] = "loop_stopped"
+        module.save(p, meta)
+        with self.assertRaisesRegex(ValueError, "Invalid client loop stop"):
+            self.capture()
+
+    def test_unknown_frozen_condition(self):
+        """An unrecognized frozen plan requires review instead of silently disappearing."""
+        root = self.larger.with_name("unrecognized-model-study")
+        root.mkdir()
+        module.save(root / "plan.json", {})
+        with self.assertRaisesRegex(ValueError, "Unsupported frozen study"):
+            self.capture()
+
     def test_snapshot_and_allowlist(self):
         """Preserve source bytes but omit raw logs and host identities."""
         catalog = self.capture()
@@ -301,8 +379,12 @@ class ImportTests(unittest.TestCase):
             module.save(receipt / (name + ".json"), value)
         module.save(audit / "summary.json", summary)
         # Discover normally supports the production audit naming; fixture stays small.
+        original_pattern = module.STUDY_NAME
+        pattern_patcher = mock.patch.object(module, "STUDY_NAME", __import__("re").compile(original_pattern.pattern + "|" + __import__("re").escape(audit.name)))
+        pattern_patcher.start()
+        self.addCleanup(pattern_patcher.stop)
         original = module.discover_sources
-        patcher = mock.patch.object(module, "discover_sources", side_effect=lambda root: original(root) + [(audit.name, audit)])
+        patcher = mock.patch.object(module, "discover_sources", side_effect=lambda root: original(root))
         patcher.start()
         self.addCleanup(patcher.stop)
         return audit
@@ -316,6 +398,10 @@ class ImportTests(unittest.TestCase):
         self.assertEqual((audit["kind"], audit["decoding"], audit["planned"], audit["recorded"], audit["status"]),
                          ("audit", "loop-audit", 1, 1, "complete"))
         self.assertFalse(audit["rows"][0]["pair_verified"])
+        self.assertEqual(audit["rows"][0]["peer_call_ids"], [])
+        for study in catalog["studies"]:
+            identities = {row["call_id"] for row in study["rows"]}
+            self.assertTrue(all(set(row["peer_call_ids"]) <= identities for row in study["rows"]))
         self.assertTrue(audit["rows"][0]["audit"]["prefix_match"])
         self.assertFalse(catalog["studies"][1]["rows"][0]["strict_correct"])
         self.assertEqual((self.output / audit["root"] / "summary.json").read_bytes(), raw)
