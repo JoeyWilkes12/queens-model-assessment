@@ -3,13 +3,14 @@ import type { CostRow } from './localQwenMath'
 
 export type LocalRow = CostRow & {
   call_id: string; board_id: string; size: number; receipt: string | null; image: string
-  peer_call_id: string | null; pair_verified: boolean; finish_reason: string | null
+  peer_call_ids?: string[]; peer_call_id: string | null; pair_verified: boolean; finish_reason: string | null
   rescue: (NonNullable<CostRow['rescue']> & { receipt: string; outcome: string }) | null
   host: Record<string, number | null> | null; loop_stop: Record<string, unknown> | null
   audit?: { source_call_id: string; source_receipt: string; prefix_match: boolean; answered_after_stop: boolean; source_thinking_chars: number } | null
 }
 export type LocalStudy = {
   id: string; label: string; model: string; budget: number; decoding: 'greedy' | 'sampling' | 'greedy+ls' | 'loop-audit'
+  arms?: Record<string, { system_file: string | null; system_sha256: string | null; system_chars: number; system_words: number }>; board_set?: string; loop_mode?: 'off' | 'active' | 'shadow';
   kind?: 'assessment' | 'audit'; audit_of?: string | null
   round: number; status: 'complete' | 'partial'; planned: number; recorded: number
   root: string; plan: string; summary: string; rows: LocalRow[]
@@ -32,24 +33,30 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
   const count = (v: unknown) => typeof v === 'number' && Number.isSafeInteger(v) && v >= 0
   const optional = (v: unknown) => v === null || count(v)
   const path = (v: unknown) => typeof v === 'string' && /^[a-zA-Z0-9_./-]+$/.test(v) && !v.startsWith('/') && !v.split('/').includes('..')
-  return [1, 2].includes(data.schema_version) && typeof data.snapshot_id === 'string' && typeof data.captured_utc === 'string'
+  try {
+  return [1, 2, 3].includes(data.schema_version) && typeof data.snapshot_id === 'string' && typeof data.captured_utc === 'string'
     && Number.isFinite(Date.parse(data.captured_utc)) && path(data.manifest) && typeof data.source_commit === 'string'
     && Array.isArray(data.studies) && data.studies.length > 0 && new Set(data.studies.map(s => s.id)).size === data.studies.length
     && data.studies.every(s => s && /^[a-zA-Z0-9_.-]+$/.test(s.id) && typeof s.label === 'string' && typeof s.model === 'string'
       && ['greedy', 'sampling', 'greedy+ls', 'loop-audit'].includes(s.decoding) && ['complete', 'partial'].includes(s.status)
       && (s.kind === undefined || ['assessment', 'audit'].includes(s.kind))
       && (s.kind !== 'audit' || (typeof s.audit_of === 'string' && data.studies.some(source => source.id === s.audit_of)))
+      && (data.schema_version !== 3 || (['fresh1', 'legacy'].includes(s.board_set || '') && ['off', 'active', 'shadow'].includes(s.loop_mode || '')
+        && !!s.arms && Object.keys(s.arms).length >= 2 && Object.keys(s.arms).every(arm => ['baseline', 'schema', 'neutral', 'caveman'].includes(arm))
+        && Object.values(s.arms).every(arm => count(arm.system_chars) && count(arm.system_words))))
       && count(s.budget) && s.budget > 0 && count(s.planned) && count(s.recorded) && s.recorded <= s.planned
       && path(s.root) && path(s.plan) && path(s.summary) && !!s.runtime && typeof s.runtime.digest === 'string'
       && Array.isArray(s.rows) && s.rows.length === s.planned && new Set(s.rows.map(r => r.call_id)).size === s.rows.length
       && s.rows.every(r => r && /^[a-zA-Z0-9_-]+$/.test(r.call_id) && typeof r.board_id === 'string' && count(r.size)
-        && ['baseline', 'caveman'].includes(r.treatment) && typeof r.state === 'string' && optional(r.input_tokens) && optional(r.output_tokens)
+        && ['baseline', 'schema', 'neutral', 'caveman'].includes(r.treatment) && typeof r.state === 'string' && optional(r.input_tokens) && optional(r.output_tokens)
         && (r.elapsed_seconds === null || (typeof r.elapsed_seconds === 'number' && Number.isFinite(r.elapsed_seconds) && r.elapsed_seconds >= 0))
         && ['strict_correct', 'format_only_correct', 'truncated', 'loop_stopped', 'pair_verified'].every(k => typeof r[k as keyof LocalRow] === 'boolean')
+        && (data.schema_version !== 3 || (Array.isArray(r.peer_call_ids) && r.peer_call_ids.every(id => s.rows.some(peer => peer.call_id === id && peer.board_id === r.board_id && peer.treatment !== r.treatment)) && !!s.arms?.[r.treatment]))
         && (r.receipt === null || path(r.receipt)) && path(r.image)
         && (r.audit === undefined || r.audit === null || (path(r.audit.source_receipt) && typeof r.audit.source_call_id === 'string'
           && typeof r.audit.prefix_match === 'boolean' && typeof r.audit.answered_after_stop === 'boolean' && count(r.audit.source_thinking_chars)))
         && (r.rescue === null || (path(r.rescue.receipt) && optional(r.rescue.input_tokens) && optional(r.rescue.output_tokens) && typeof r.rescue.strict_correct === 'boolean'))))
+  } catch { return false } // Malformed public data must fail closed rather than crash the page.
 }
 
 /** Fetch one immutable snapshot index with explicit loading/error states and cancellation. */
@@ -67,5 +74,5 @@ export function useLocalStudies(): State {
 
 /** Keep study identity in every receipt URL because call IDs recur across cohorts. */
 export const localReceiptUrl = (study: LocalStudy, row: LocalRow) => `#/local-qwen/receipt/${study.id}/${row.call_id}`
-export const armName = (arm: string) => arm === 'baseline' ? 'Baseline' : '+ Caveman'
+export const armName = (arm: string) => ({ baseline: 'Baseline', schema: 'Schema reminder', neutral: 'Neutral control', caveman: '+ Caveman' }[arm] || arm)
 export const rowOutcome = (r: LocalRow) => r.state !== 'recorded' ? 'Pending / not recorded' : r.strict_correct ? 'Strict correct' : r.format_only_correct ? 'Correct, wrong format' : r.loop_stopped ? 'Client loop-stop' : r.truncated ? 'Token cap reached' : 'Completed incorrect / other'

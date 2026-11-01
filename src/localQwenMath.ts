@@ -1,7 +1,7 @@
 /** Repricing local runner counts is a scenario, not a prediction of a hosted bill.
  * output_tokens must already include thinking exactly once. Cache/image fees are unknown.
  */
-export type CostRow = { state: string; input_tokens: number | null; output_tokens: number | null; strict_correct: boolean; format_only_correct: boolean; truncated: boolean; loop_stopped: boolean; elapsed_seconds: number | null; treatment: 'baseline' | 'caveman'; rescue: null | { input_tokens: number | null; output_tokens: number | null; strict_correct: boolean; elapsed_seconds: number | null } }
+export type CostRow = { state: string; input_tokens: number | null; output_tokens: number | null; strict_correct: boolean; format_only_correct: boolean; truncated: boolean; loop_stopped: boolean; elapsed_seconds: number | null; treatment: 'baseline' | 'schema' | 'neutral' | 'caveman'; rescue: null | { input_tokens: number | null; output_tokens: number | null; strict_correct: boolean; elapsed_seconds: number | null } }
 export type Row = CostRow
 /** USD per million tokens. */
 export type Rates = { input: number; output: number }

@@ -103,7 +103,7 @@ const routes: Route[] = [
   { path: 'protocol-results', title: 'Protocol & results', section: 'The board', description: 'Frozen inputs, entrants, outcomes, and route failures.' },
   { path: 'frontier-trajectories', title: 'One queen at a time', section: 'The board', description: 'Frontier models place one queen per request and explain each move.' },
   { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
-  { path: 'local-qwen', title: 'Local Qwen experiments', section: 'Model generations', description: 'Model scale, sampling, loop-stop policies and hosted cost scenarios.' },
+  { path: 'local-qwen', title: 'Local open-weight assessments', section: 'Model generations', description: 'Gemma, LLaVA and Qwen studies, four prompt arms, coverage and hosted cost scenarios.' },
   { path: 'local-open-models', title: 'Original 4B pilot', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
   { path: 'caveman-summary', title: 'Caveman comparison', section: 'Model generations', description: 'Paired local Qwen receipts, observed correctness and usage, and experimental limits.' },
   { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
@@ -409,7 +409,7 @@ function AssessmentReceipt() {
       <div className="receipt-lead"><span className="receipt-mark">✓</span><div><span className="receipt-label">Assessment receipt</span><h2 id="receipt-heading">A bounded claim with an inspectable trail.</h2></div></div>
       <div className="receipt-grid">
         <div><span className="receipt-label">Source class</span><strong>Independent finding</strong><span>saved experiment records</span></div>
-        <div><span className="receipt-label">Edition</span><strong>28 Oct 2026</strong><span>dated studies retained</span></div>
+        <div><span className="receipt-label">Edition</span><strong>1 Nov 2026</strong><span>dated studies retained</span></div>
         <div><span className="receipt-label">Interaction</span><strong>Read-only</strong><span>local evidence only</span></div>
         <div><span className="receipt-label">Outcome</span><strong>Task-specific grades</strong><span>inspect each denominator</span></div>
       </div>
@@ -503,13 +503,14 @@ const studies: [string, string, string, string, string][] = [
   ['2026-10-17', '17–19 Oct', '36-board picture test, earlier models', 'earlier-generations', '206 of 288, eight models'],
   ['2026-10-28', '28 Oct', 'Small local model and Caveman', 'local-open-models', '3 and 5 of 12'],
   ['2026-10-31', '29–31 Oct', 'Larger local Qwen, sampling and loop-stop audits', 'local-qwen', 'Separate cohorts; round 2 updated'],
+  ['2026-11-01', '1 Nov', 'Fresh-board local models, four prompt arms', 'local-qwen', 'Qwen 9B 38/48; Gemma 10/48; LLaVA 0/48'],
 ]
 
 function ExecutiveSummary() {
   return <>
     <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. Every system in the chart below tried the same boards." />
     <section className="board-cover" aria-labelledby="leaderboard-title"><Leaderboard ui={bookUi} titleId="leaderboard-title" /></section>
-    <p className="qa-caveat" style={{ paddingInline: '28px' }}>The leaderboard retains its dated conditions. <a href="#/local-qwen">Expanded local Qwen experiments</a> report the later model sizes, sampling rounds, token budgets and stopping policies separately.</p>
+    <p className="qa-caveat" style={{ paddingInline: '28px' }}>The leaderboard retains its dated conditions. <a href="#/local-qwen">Local open-weight assessments</a> report Gemma, LLaVA and Qwen, fresh-board prompt controls, sampling rounds and stopping policies separately.</p>
     <AssessmentReceipt />
     <div className="reading-layout">
       <LocalToc items={[{ id: 'finding', label: 'Short answers' }, { id: 'scoreboard', label: 'Results by task' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'Limits' }, { id: 'next', label: 'Go deeper' }]} />
@@ -558,7 +559,7 @@ function ExecutiveSummary() {
               <p className="qa-caveat">The 24 lists come from two boards, so they are not 24 separate puzzles.</p>
               <QaLinks links={[['Jev primer', '#/jev-primer'], ['Candidate engineering', '#/candidate-engineering'], ['Scale & primitives', '#/scale-primitives'], ['Decision models vs the index', '#/decision-models']]} />
             </Answer>
-            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="24/24" statLabel="strict requests, 27B greedy at 24,576 tokens" statSr="27B returned strict correct answers on all 24 requests across 12 boards and two prompt conditions." answer="Yes, with size and budget tradeoffs. Qwen3.5 27B returned strict correct answers on all 24 requests in its greedy study. 9B sampling round 2 returned 18 of 24; 27B round 2 is still partial. These are separate conditions on the same 12 boards, not 24 independent puzzles." more="Original 4B pilot, 28 Oct">
+            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="38/48" statLabel="strict requests, Qwen 9B on fresh1" statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions." answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B is partial at 13 of 30 recorded, with 48 planned. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles." more="Original 4B pilot, 28 Oct">
               <p>The original 4B pilot below is preserved separately from the later larger-budget and larger-model experiments.</p>
               <PairStrip />
               <Facts items={[
@@ -569,7 +570,7 @@ function ExecutiveSummary() {
                 ['Caveman', 'A free third-party add-on that tells the model to answer in as few words as possible, checked for safety before use. No fee; electricity was not measured.'],
               ]} />
               <p className="qa-caveat">Four boards per size, one run each, plain prompt always first: this cannot show that Caveman caused the gain.</p>
-              <QaLinks links={[['Expanded Qwen experiments', '#/local-qwen'], ['Original 4B pilot', '#/local-open-models'], ['Caveman comparison', '#/caveman-summary']]} />
+              <QaLinks links={[['Local open-weight assessments', '#/local-qwen'], ['Original 4B pilot', '#/local-open-models'], ['Caveman comparison', '#/caveman-summary']]} />
             </Answer>
             <Answer id="qa-cost" question="What did it cost?" stat="$31.48" statLabel="recorded API spend, all studies" answer="Little. Most went on the two 36-board picture tests, and every request, visible reply and grade is saved." more="Breakdown and records">
               <Facts items={[
@@ -622,7 +623,7 @@ function ExecutiveSummary() {
         </Section>
         <Section id="next" title="Go deeper">
           <div className="next-actions"><a href="#/queens-rules">Queens rules <Icon name="arrow" /></a><a href="#/how-z3-solves-queens">How Z3 solves Queens, in ten chapters <Icon name="arrow" /></a><a href="#/board-receipts">36 board receipts <Icon name="arrow" /></a><a href="#/evidence-atlas">Search 5,417 saved requests <Icon name="arrow" /></a></div>
-          <Disclosure label="Main studies by date, 17 Sep to 28 Oct">
+          <Disclosure label="Main studies by date, 17 Sep to 1 Nov">
             <ol className="study-timeline">{studies.map(([iso, date, title, path, result]) => <li key={`${iso}-${title}`}><time dateTime={iso}>{date}</time><a href={`#/${path}`}>{title}</a><span className="study-result">{result}</span></li>)}</ol>
           </Disclosure>
         </Section>
@@ -1183,7 +1184,7 @@ function NotFound() {
 function Sidebar({ active, open, onClose }: { active: string; open: boolean; onClose: () => void }) {
   const [, navigate] = useHashPath()
   const groups = Array.from(new Set(routes.map(route => route.section)))
-  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>28 OCT UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
+  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>1 NOV UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
 }
 
 function App() {
@@ -1214,7 +1215,7 @@ function App() {
               : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
-                : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading Local Qwen experiments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
+                : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading local open-weight assessments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
                 : active === 'caveman-summary' ? <OllamaComparison ui={bookUi} view="summary" />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />

@@ -241,3 +241,34 @@ All 166 protected historical evidence files remain byte-identical. No Ollama req
   Four final desktop/mobile/dark captures cover costs, selected audits, partial
   27B results and source-linked receipts. The 9B round-2 display explicitly pairs
   −4.98% workload spend with +18.77% cost per strict solve and 10→8 strict answers.
+
+## November 1 local assessment coverage
+
+- Inventoried all 17 frozen local conditions: 407 primary/audit receipts and 33
+  separate rescues. Added 182 previously absent primary receipts across six
+  roots, including the four fresh1 studies and two partial original-budget Qwen
+  studies. Snapshot `2026-11-01-local-coverage` preserves original bytes; all
+  2,983 files from the two older snapshots are unchanged.
+- Fresh1 strict counts: Gemma 10/48, LLaVA 0/48, Qwen 9B 38/48 and partial Qwen
+  4B 13/30 recorded, 48 planned. Independent source regrading agrees on all 407
+  strict grades. Reports retain four format-only 4B solutions separately.
+- Added four-arm configuration/receipt links, fixed-scale outcome bars, all-arm
+  token/cost tables and scientific-completion notes. Shadow detection never
+  becomes an active-stop outcome. A fresh1 9B shadow trigger still finished
+  strictly correct at 26,779 tokens; the site links that unchanged receipt.
+- 62 Python tests pass, including 25 importer mutation tests. Snapshot checks,
+  actual frontend-contract verification for all three snapshots, independent
+  financial arithmetic and malformed-data guards pass. Public scrub: zero
+  private-field files. Board and leaderboard checks pass (8,474 and 1,178).
+- Independent Codex review found and resolved dangling audit peer IDs; the
+  shipped index now passes the exact frontend guard. No remaining offline
+  review blockers. Browser QA also fixed a hidden shadow-mode detail.
+- Browser checks cover all 17 selections, planned row counts, size/reset controls,
+  four-arm receipt navigation, blank Gemma tariffs, invalid tariffs, unmatched
+  4B cost suppression, matched partial 27B costs, selected audit separation,
+  390/320px layouts and dark theme. Captures are in ignored
+  `output/playwright/local-coverage/`. No uncaught errors or inference requests.
+- Existing launchd preview on port 4598 and its private HTTP Tailscale mapping
+  are reused. Both origins render the updated chapter from this Mac; no physical
+  phone test is claimed. No Ollama request, benchmark/service/queue change or
+  production deployment was made. The existing main-bundle size advisory remains.

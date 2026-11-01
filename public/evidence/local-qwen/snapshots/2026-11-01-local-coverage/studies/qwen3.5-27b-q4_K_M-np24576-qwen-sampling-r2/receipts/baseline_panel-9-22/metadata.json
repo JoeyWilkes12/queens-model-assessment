@@ -1,0 +1,61 @@
+{
+  "call_id": "baseline_panel-9-22",
+  "board_id": "panel-9-22",
+  "size": 9,
+  "treatment": "baseline",
+  "model": "qwen3.5:27b-q4_K_M",
+  "model_digest": "64ae5b1d651fb2709d5928ccb8dcfb4bb2cc9c2c8001ac34497e36a6cf905b59",
+  "started_utc": "2026-10-31T10:53:26.871071+00:00",
+  "completed_utc": "2026-10-31T11:04:43.276021+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 676.3581168750025,
+  "returned_model": "qwen3.5:27b-q4_K_M",
+  "finish_reason": "stop",
+  "done": true,
+  "input_tokens": 853,
+  "output_tokens": 8494,
+  "total_duration_ns": 676341442208,
+  "load_duration_ns": 8596250,
+  "prompt_eval_duration_ns": 8075351000,
+  "eval_duration_ns": 668247527000,
+  "request_sha256": "9b923a5fa028b9b8c56086b1fdc157d09f7c6cba177fdd6f3d028c54eaab3c6b",
+  "response_sha256": "b564d84f5b16dedc71379587f6764c229533f907a3c718f73e46565c6fa5cd86",
+  "image_sha256": "dfdb01a33db2f7e0dcca3b1fbcbde1e991ebc87b343ab0a7d3897a973d95b9f7",
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": false,
+  "rule_valid_after_extraction": true,
+  "outcome": "format_only",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "fefee4d9e835a584af32a0cea85ca0fc7ff759e9f9494c0811e8f59d3ede3d63",
+    "panel_py_sha256": "3087469ff82e442d184ad819174f1f567b4383f685051c81c2f2dc5b33f26e7e",
+    "runtime_lock_sha256": "a4a5cbd736e62c6198900c117845fbb524e202e976a1bde41e4a95cb96dc157b",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "nonstream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 7.8,
+    "last_llama_server_decode": {
+      "tokens": 8393,
+      "tok_per_s": 12.71
+    },
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": false,
+    "reason": "this study's plan.json has no protocol.loop_stop"
+  }
+}

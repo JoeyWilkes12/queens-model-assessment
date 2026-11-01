@@ -4,12 +4,16 @@ This is the static-compatible Vite + React + TypeScript companion to the expande
 
 Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-model-assessment/)
 
-The Local Qwen chapter (`#/local-qwen`) compares model sizes, sampling and loop-stop
-conditions with paired receipts and illustrative OpenRouter costs. See the
+The [local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen)
+cover Gemma 4 E4B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
+original Qwen budget and sampling conditions, and selected loop-stop audits.
+The November 1 snapshot contains 17 conditions and 407 assessment receipts, plus
+33 separate rescues. It includes partial studies without treating unrun requests
+as model failures. See the [coverage and scientific limits](docs/local-assessment-coverage.md),
 [offline import workflow](docs/local-qwen-imports.md), [method review](docs/local-qwen-methods.md),
-[October 31 results and proposed assessments](docs/local-qwen-oct31.md),
-and [financial estimates](docs/local-qwen-costs.md). Future nights add immutable
-snapshots; this website never sends inference requests.
+[historical October 31 results](docs/local-qwen-oct31.md), and
+[updated financial scenarios](docs/local-assessment-costs.md). New nights add immutable
+snapshots; the website never sends inference requests.
 
 ## Table of contents
 
@@ -29,6 +33,9 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/how-z3-solves-queens` (How Z3 solves Queens; see below for its section links)
 - `#/protocol-results`
 - `#/earlier-generations`
+- `#/local-qwen` (all local open-weight cohorts; legacy URL retained)
+- `#/local-qwen/study/<study_id>`
+- `#/local-qwen/receipt/<study_id>/<call_id>`
 - `#/local-open-models`
 - `#/caveman-summary`
 - `#/local-open-models/configuration`

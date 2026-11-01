@@ -1,5 +1,7 @@
 # Local Qwen cost scenarios
 
+Historical October 31 readout. See the [November 1 financial scenarios](local-assessment-costs.md) for the expanded 17-condition snapshot.
+
 Current evidence: `2026-10-31-overnight` (225 recorded calls). Pricing reused unchanged from the October 30 artifact for a controlled price comparison; this is not a price refresh. Pricing checked: 2026-10-30T15:07:15.442210+00:00. B = baseline; C = Caveman. All money is USD.
 
 Local usage is repriced at hosted text list tariffs for comparison; these are scenarios, not hosted bill forecasts. Quantization, runner and tokenizer differ. No inference was purchased for this calculation. Exact 9B tariff: $0.17 input / $0.25 output per million tokens. Exact 27B tariff: $0.26 / $2.60. No exact hosted 4B catalog entry exists: 4B rows below explicitly use the optional Qwen3.5 Flash proxy ($0.065 / $0.26), not an asserted 4B price.

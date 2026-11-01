@@ -119,7 +119,7 @@ The public bundle excludes credentials, private answer keys, encrypted reasoning
 
 ## Deliberate constraints
 
-The Local Qwen chapter (`#/local-qwen`) extends this same reading layout. Study
+The local open-weight chapter (legacy route `#/local-qwen`) extends this same reading layout. Study
 identity appears in receipt routes because call names recur across experiments.
 The overview matrix and aligned outcome/completion bars retain planned and
 recorded denominators; model size, token budget, decoding and stopping policy are
@@ -136,3 +136,12 @@ studies with unmatched recorded boards do not receive a comparative cost claim.
 - Jev candidate recognition is never presented as autonomous puzzle construction.
 - The three original boards and six held-out boards do not support a general intelligence ranking. The October replay reuses the original three images and adds neither new boards nor independent distribution coverage.
 - The website is a read-only static GitHub Pages publication. Analytics, live model calls, and external runtime data fetching remain deferred.
+
+The November 1 expansion adds a zero-based, fixed 48-request outcome strip per
+fresh1 model, followed by the four-arm and size-level views. Strict / recorded
+fractions and planned pending segments remain distinct. The earlier board panel
+and selected audits keep separate tables; schema and neutral arms do not enter
+the baseline/Caveman financial denominator. All four prompt arms link through
+one frozen configuration and the same board. Non-Qwen prices start blank and
+require explicit custom or proxy rates. Shadow detector observations are labeled
+as observations, with completed outcomes preserved.
