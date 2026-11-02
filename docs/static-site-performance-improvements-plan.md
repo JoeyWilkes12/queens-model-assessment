@@ -4,6 +4,10 @@ Prepared November 2, 2026. Repository: `JoeyWilkes12/queens-model-assessment`.
 Working branch: `codex/static-site-performance-improvements`.
 Base: merged `main`, commit `6387576a7c192464b1a4740ffdb6a0fdc7747241`.
 
+## Status (updated November 2, 2026)
+
+Stages 1–3 are implemented on this branch, which is stacked on PR #13 (book organization). Measured results, conditions, validation and the evidence for stages 4–5 are in [implementation results](../output/performance/2026-11-02/implementation/results.md). Stages 4 (local-study presentation data) and 5 (compact atlas index) remain open for a separate, reviewable PR.
+
 ## Assignment and completion boundary
 
 Improve the existing static React/Vite book, in this order: stable loading
