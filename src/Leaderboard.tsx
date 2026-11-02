@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import type { BookUi } from './ollamaEvidence'
 import './leaderboard.css'
 
@@ -173,6 +173,40 @@ function Marker({ row, cx, cy }: { row: Row; cx: number; cy: number }) {
   </>
 }
 
+type Window = { x: [number, number]; y: [number, number] }
+
+const clampWindow = ([a, b]: [number, number], [lo, hi]: [number, number], minSpan: number): [number, number] => {
+  const span = Math.min(hi - lo, Math.max(minSpan, b - a))
+  const start = Math.min(hi - span, Math.max(lo, a))
+  return [start, start + span]
+}
+const sameWindow = (a: Window, b: Window) => [0, 1].every(i => Math.abs(a.x[i] - b.x[i]) < 1e-9 && Math.abs(a.y[i] - b.y[i]) < 1e-9)
+
+/** Tick values for a log axis window: decades when wide, 1-2-5 or every digit when zoomed in. */
+function logTicks(lo: number, hi: number) {
+  const span = hi - lo
+  const steps = span > 1.6 ? [1] : span > .55 ? [1, 2, 5] : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const ticks: number[] = []
+  for (let decade = Math.floor(lo); decade <= Math.ceil(hi); decade++) for (const step of steps) {
+    const value = step * 10 ** decade
+    if (Math.log10(value) >= lo - 1e-9 && Math.log10(value) <= hi + 1e-9) ticks.push(value)
+  }
+  return ticks
+}
+const tickUsd = (value: number) => value >= 1 ? `$${+value.toPrecision(3)}` : `$${value.toFixed(Math.max(0, -Math.floor(Math.log10(value) + 1e-9)))}`
+
+function boardTicks([lo, hi]: [number, number], n: number) {
+  if (lo <= 0 && hi >= n) return [...new Set([0, 1 / 3, 2 / 3, 1].map(share => Math.round(share * n)))]
+  const step = Math.max(1, Math.round((hi - lo) / 4))
+  const ticks: number[] = []
+  for (let tick = Math.max(0, Math.ceil(lo / step) * step); tick <= Math.min(n, hi) + 1e-9; tick += step) ticks.push(tick)
+  return ticks
+}
+
+/**
+ * Boards solved against API cost per board. Zooming rescales the axes rather than magnifying the
+ * marks, so crowded points separate while logos and labels keep their size.
+ */
 function Scatter({ rows, width, pick }: { rows: Row[]; width: number; pick: Pick }) {
   const n = rows[0]?.total ?? 1
   const height = 360, left = 40, lane = 64, right = 28, top = 18, bottom = 46, inset = 16
@@ -180,9 +214,79 @@ function Scatter({ rows, width, pick }: { rows: Row[]; width: number; pick: Pick
   const priced = rows.map(perBoard).filter((value): value is number => value !== null)
   // The cost axis spans the data plus a little room, so close prices are not squeezed into one corner.
   const lo = priced.length ? Math.log10(Math.min(...priced)) - .3 : -3, hi = priced.length ? Math.log10(Math.max(...priced)) + .3 : 0
+  const full: Window = { x: [lo, lo + Math.max(.5, hi - lo)], y: [0, n] }
+  // Zoomed windows may run half a board past either end, so points on 0 or n never sit on the clipped edge.
+  const bounds: Window = { x: full.x, y: [-.5, n + .5] }
+  const minX = .25, minY = Math.min(n, Math.max(2, n / 12))
+  const [view, setView] = useState<Window>(full)
+  const zoomed = !sameWindow(view, full)
   const plotLeft = left + lane
-  const x = (value: number) => plotLeft + inset + (Math.log10(value) - lo) / Math.max(.5, hi - lo) * (width - plotLeft - inset - right)
-  const y = (solved: number) => top + (1 - solved / n) * (height - top - bottom)
+  const x0 = plotLeft + inset, x1 = width - right, y0 = top, y1 = height - bottom
+  const x = (value: number) => x0 + (Math.log10(value) - view.x[0]) / (view.x[1] - view.x[0]) * (x1 - x0)
+  const y = (solved: number) => y0 + (1 - (solved - view.y[0]) / (view.y[1] - view.y[0])) * (y1 - y0)
+
+  const svgRef = useRef<SVGSVGElement>(null)
+  const pointers = useRef(new Map<number, { x: number; y: number }>())
+  const dragged = useRef(false)
+  const toSvg = (clientX: number, clientY: number) => {
+    const box = svgRef.current?.getBoundingClientRect()
+    return box ? { x: (clientX - box.left) * width / box.width, y: (clientY - box.top) * height / box.height } : { x: 0, y: 0 }
+  }
+  /** Zoom by `factor` (above 1 zooms in), keeping the data under (px, py) in place. */
+  const zoomAt = (factor: number, px = (x0 + x1) / 2, py = (y0 + y1) / 2) => setView(current => {
+    const fx = current.x[0] + (Math.min(x1, Math.max(x0, px)) - x0) / (x1 - x0) * (current.x[1] - current.x[0])
+    const fy = current.y[0] + (1 - (Math.min(y1, Math.max(y0, py)) - y0) / (y1 - y0)) * (current.y[1] - current.y[0])
+    const scale = (value: number, [a, b]: [number, number]): [number, number] => [value - (value - a) / factor, value + (b - value) / factor]
+    // Points in the $0 lane have no cost to zoom into; zooming there changes only the boards axis.
+    const next: Window = { x: px < plotLeft ? current.x : clampWindow(scale(fx, current.x), bounds.x, minX), y: clampWindow(scale(fy, current.y), bounds.y, minY) }
+    // Zooming back out past the whole chart returns exactly to the starting view.
+    return next.x[1] - next.x[0] >= full.x[1] - full.x[0] - 1e-9 && next.y[1] - next.y[0] >= full.y[1] - full.y[0] - 1e-9 ? full : next
+  })
+  const panBy = (dx: number, dy: number) => setView(current => ({
+    x: clampWindow([current.x[0] - dx / (x1 - x0) * (current.x[1] - current.x[0]), current.x[1] - dx / (x1 - x0) * (current.x[1] - current.x[0])], full.x, minX),
+    y: clampWindow([current.y[0] + dy / (y1 - y0) * (current.y[1] - current.y[0]), current.y[1] + dy / (y1 - y0) * (current.y[1] - current.y[0])], bounds.y, minY),
+  }))
+
+  // Ctrl or ⌘ + wheel (and trackpad pinch, which browsers report the same way) zooms; a plain wheel still scrolls the page.
+  useEffect(() => {
+    const svg = svgRef.current
+    if (!svg) return
+    const onWheel = (event: WheelEvent) => {
+      if (!event.ctrlKey && !event.metaKey) return
+      event.preventDefault()
+      const point = toSvg(event.clientX, event.clientY)
+      zoomAt(Math.exp(-event.deltaY * .01), point.x, point.y)
+    }
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    return () => svg.removeEventListener('wheel', onWheel)
+  })
+
+  const onPointerDown = (event: ReactPointerEvent<SVGSVGElement>) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+    pointers.current.set(event.pointerId, toSvg(event.clientX, event.clientY))
+    if (pointers.current.size === 1) dragged.current = false
+  }
+  const onPointerMove = (event: ReactPointerEvent<SVGSVGElement>) => {
+    const previous = pointers.current.get(event.pointerId)
+    if (!previous) return
+    const point = toSvg(event.clientX, event.clientY)
+    if (pointers.current.size === 2) {
+      const [other] = [...pointers.current.entries()].filter(([id]) => id !== event.pointerId).map(([, value]) => value)
+      const before = Math.hypot(previous.x - other.x, previous.y - other.y), after = Math.hypot(point.x - other.x, point.y - other.y)
+      if (before > 4) zoomAt(after / before, (point.x + other.x) / 2, (point.y + other.y) / 2)
+      dragged.current = true
+    } else if (pointers.current.size === 1 && zoomed) {
+      const dx = point.x - previous.x, dy = point.y - previous.y
+      if (!dragged.current && Math.hypot(dx, dy) < 4) return
+      if (!dragged.current) svgRef.current?.setPointerCapture(event.pointerId)
+      dragged.current = true
+      panBy(dx, dy)
+    }
+    pointers.current.set(event.pointerId, point)
+  }
+  const onPointerEnd = (event: ReactPointerEvent<SVGSVGElement>) => { pointers.current.delete(event.pointerId) }
+  const choose = (key: string) => { if (!dragged.current) pick.onPick(key) }
+
   const freeRows = rows.filter(row => perBoard(row) === null)
   const spacing = freeRows.length > 1 ? Math.min(22, (lane - 24) / (freeRows.length - 1)) : 0
   const points = rows.map(row => {
@@ -190,29 +294,78 @@ function Scatter({ rows, width, pick }: { rows: Row[]; width: number; pick: Pick
     const cx = value === null ? left + lane / 2 - 4 + (freeRows.indexOf(row) - (freeRows.length - 1) / 2) * spacing : x(value)
     return { row, cx, cy: y(row.solved) }
   })
-  const placed = placeLabels(points, width, height)
-  const ticks = Array.from({ length: Math.max(0, Math.floor(hi) - Math.ceil(lo) + 1) }, (_, index) => 10 ** (Math.ceil(lo) + index))
-  const yTicks = [0, 1 / 3, 2 / 3, 1].map(share => Math.round(share * n))
+  // Points outside the zoomed window are left out entirely, so keyboard focus never lands on a hidden mark.
+  const visible = points.filter(point => (perBoard(point.row) === null || (point.cx >= x0 - 10 && point.cx <= x1 + 10)) && point.cy >= y0 - 12 && point.cy <= y1 + 12)
+  const placed = placeLabels(visible, width, height)
+  const ticks = logTicks(view.x[0], view.x[1])
+  const yTicks = boardTicks(view.y, n)
   const highlight = placed.find(point => point.row.system.key === (pick.peek ?? pick.selected))
-  return <svg className="lb-scatter" viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="group" aria-label={`Boards solved out of ${n} against API cost per board on a logarithmic axis. Systems with no API cost sit in the left lane.`}>
-    {yTicks.map(tick => <g key={tick} aria-hidden="true"><line x1={left} x2={width - right} y1={y(tick)} y2={y(tick)} className="lb-grid" /><text x={left - 8} y={y(tick) + 4} textAnchor="end" className="lb-axis">{tick}</text></g>)}
-    {ticks.map(tick => <g key={tick} aria-hidden="true"><line x1={x(tick)} x2={x(tick)} y1={top} y2={height - bottom} className="lb-grid" /><text x={x(tick)} y={height - bottom + 17} textAnchor="middle" className="lb-axis">{tick >= 1 ? `$${tick}` : `$${tick.toFixed(Math.round(-Math.log10(tick)))}`}</text></g>)}
-    <g aria-hidden="true">
-      <line x1={plotLeft - 6} x2={plotLeft - 6} y1={top} y2={height - bottom} className="lb-lane-edge" />
-      <text x={left + lane / 2 - 4} y={height - bottom + 17} textAnchor="middle" className="lb-axis">$0</text>
-      <text x={(plotLeft + width - right) / 2} y={height - 8} textAnchor="middle" className="lb-axis-title">API cost per board (log scale)</text>
-      <text transform={`translate(12 ${(top + height - bottom) / 2}) rotate(-90)`} textAnchor="middle" className="lb-axis-title">Boards solved</text>
-    </g>
-    {placed.map(({ row, cx, cy, label }) => <g key={row.system.key} className={`lb-point lb-point--${row.system.family}${stateClass(pick, row.system.key)}`} tabIndex={0} role="button" aria-pressed={pick.selected === row.system.key} aria-label={summary(row)}
-      onClick={() => pick.onPick(row.system.key)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); pick.onPick(row.system.key) } }}
-      onMouseEnter={() => pick.onPeek(row.system.key)} onMouseLeave={() => pick.onPeek(null)} onFocus={() => pick.onPeek(row.system.key)} onBlur={() => pick.onPeek(null)}>
-      <circle cx={cx} cy={cy} r={14} className="lb-hit" />
-      <Marker row={row} cx={cx} cy={cy} />
-      {label && <text x={label.x} y={label.y} textAnchor={label.anchor} className="lb-point-label">{shortName(row.system.name)}</text>}
-    </g>)}
-    {/* A drawn copy on top of the pile; the focusable points never move in the DOM. */}
-    {highlight && <g className="lb-point-top" aria-hidden="true"><Marker row={highlight.row} cx={highlight.cx} cy={highlight.cy} /><circle cx={highlight.cx} cy={highlight.cy} r={12.5} className="lb-ring" /></g>}
-  </svg>
+  const clipId = useId().replace(/:/g, '')
+  return <div className="lb-scatter-wrap">
+    <div className="lb-zoom" role="group" aria-label="Zoom the scatter plot">
+      <button type="button" onClick={() => zoomAt(1 / 1.8)} disabled={!zoomed} aria-label="Zoom out">−</button>
+      <button type="button" onClick={() => zoomAt(1.8)} disabled={view.x[1] - view.x[0] <= minX + 1e-6 && view.y[1] - view.y[0] <= minY + 1e-6} aria-label="Zoom in">+</button>
+      <button type="button" onClick={() => setView(full)} disabled={!zoomed}>Reset</button>
+      <span className="lb-zoom-hint">{zoomed ? visible.length ? `${visible.length} of ${rows.length} shown · drag to pan` : 'No systems in this area · drag to pan or reset' : 'Zoom: double-click or double-tap, pinch, or Ctrl/⌘ + scroll'}</span>
+    </div>
+    <svg ref={svgRef} className={`lb-scatter${zoomed ? ' is-zoomed' : ''}`} viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="group" aria-label={`Boards solved out of ${n} against API cost per board on a logarithmic axis. Systems with no API cost sit in the left lane.${zoomed ? ` Zoomed to ${visible.length} of ${rows.length} systems.` : ''}`}
+      onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerEnd} onPointerCancel={onPointerEnd}
+      onDoubleClick={event => { const point = toSvg(event.clientX, event.clientY); zoomAt(1.8, point.x, point.y) }}>
+      {zoomed && <defs><clipPath id={clipId}><rect x={0} y={y0 - 14} width={width} height={y1 - y0 + 28} /></clipPath></defs>}
+      <rect x={left} y={y0} width={x1 - left} height={y1 - y0} className="lb-plot-bg" />
+      {yTicks.map(tick => <g key={tick} aria-hidden="true"><line x1={left} x2={x1} y1={y(tick)} y2={y(tick)} className="lb-grid" /><text x={left - 8} y={y(tick) + 4} textAnchor="end" className="lb-axis">{tick}</text></g>)}
+      {ticks.map(tick => <g key={tick} aria-hidden="true"><line x1={x(tick)} x2={x(tick)} y1={y0} y2={y1} className="lb-grid" /><text x={x(tick)} y={y1 + 17} textAnchor="middle" className="lb-axis">{tickUsd(tick)}</text></g>)}
+      <g aria-hidden="true">
+        <line x1={plotLeft - 6} x2={plotLeft - 6} y1={y0} y2={y1} className="lb-lane-edge" />
+        <text x={left + lane / 2 - 4} y={y1 + 17} textAnchor="middle" className="lb-axis">$0</text>
+        <text x={(plotLeft + x1) / 2} y={height - 8} textAnchor="middle" className="lb-axis-title">API cost per board (log scale)</text>
+        <text transform={`translate(12 ${(y0 + y1) / 2}) rotate(-90)`} textAnchor="middle" className="lb-axis-title">Boards solved</text>
+      </g>
+      <g clipPath={zoomed ? `url(#${clipId})` : undefined}>
+        {placed.map(({ row, cx, cy, label }) => <g key={row.system.key} className={`lb-point lb-point--${row.system.family}${stateClass(pick, row.system.key)}`} tabIndex={0} role="button" aria-pressed={pick.selected === row.system.key} aria-label={summary(row)}
+          onClick={() => choose(row.system.key)} onDoubleClick={event => event.stopPropagation()} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); pick.onPick(row.system.key) } }}
+          onMouseEnter={() => pick.onPeek(row.system.key)} onMouseLeave={() => pick.onPeek(null)} onFocus={() => pick.onPeek(row.system.key)} onBlur={() => pick.onPeek(null)}>
+          <circle cx={cx} cy={cy} r={14} className="lb-hit" />
+          <Marker row={row} cx={cx} cy={cy} />
+          {label && <text x={label.x} y={label.y} textAnchor={label.anchor} className="lb-point-label">{shortName(row.system.name)}</text>}
+        </g>)}
+        {/* A drawn copy on top of the pile; the focusable points never move in the DOM. */}
+        {highlight && <g className="lb-point-top" aria-hidden="true"><Marker row={highlight.row} cx={highlight.cx} cy={highlight.cy} /><circle cx={highlight.cx} cy={highlight.cy} r={12.5} className="lb-ring" /></g>}
+      </g>
+    </svg>
+  </div>
+}
+
+/** True while the viewport is taller than it is wide; updates when the phone turns. */
+function usePortrait() {
+  const query = '(orientation: portrait)'
+  const [portrait, setPortrait] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.(query).matches)
+  useEffect(() => {
+    const media = window.matchMedia?.(query)
+    if (!media) return
+    const update = () => setPortrait(media.matches)
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
+  return portrait
+}
+
+/** Shown in place of the scatter plot when it would be too narrow to read. */
+function RotatePrompt({ portrait, onShow }: { portrait: boolean; onShow: () => void }) {
+  return <div className="lb-rotate" role="note">
+    <svg className="lb-rotate-icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="22" y="8" width="20" height="34" rx="3" />
+      <rect x="14" y="36" width="34" height="20" rx="3" className="lb-rotate-landscape" />
+      <path d="M50 14a14 14 0 0 1 4 12" /><path d="m51 24 3 3 3-4" />
+    </svg>
+    <div>
+      <strong>{portrait ? 'Turn your phone sideways for this chart' : 'This chart needs a wider window'}</strong>
+      <p>{portrait ? 'Solved vs cost places every system by its result and its price per board. In landscape it appears here, at a readable size.' : 'Solved vs cost places every system by its result and its price per board. Widen the window and it appears here.'}</p>
+      <button type="button" className="lb-rotate-show" onClick={onShow}>Show it here anyway</button>
+      <span className="lb-rotate-note">The narrow plot zooms, so crowded points can be pulled apart. The table below has the same numbers.</span>
+    </div>
+  </div>
 }
 
 function Detail({ row }: { row: Row | null }) {
@@ -263,8 +416,10 @@ export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
     const pool = scope === 'local' ? data.local_boards : data.boards.map(board => board.id)
     return pool.filter(id => size === 'all' || String(data.boards.find(board => board.id === id)?.size) === size)
   }, [data, scope, size])
-  const canScatter = width === null || width >= 560
-  const shownView: View = view === 'scatter' && !canScatter ? 'solved' : view
+  const portrait = usePortrait()
+  const [narrowScatter, setNarrowScatter] = useState(false)
+  const wideEnough = width === null || width >= 560
+  const shownView: View = view
   const rows = useMemo(() => data ? rowsFor(data, ids).sort(shownView === 'cost' ? byCost : byRank) : [], [data, ids, shownView])
 
   if (error) return <p className="leaderboard-status" role="status">The leaderboard could not load, so no scores are shown.</p>
@@ -287,7 +442,7 @@ export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
     ? [['solid', 'Solved'], ['hatched', 'Solved, wrong answer format'], ['base', 'Solved by the rule']]
     : shownView === 'cost' ? [['cost', 'API spend on these boards']] : []
   const sizeHeaders = (rows[0]?.bySize.length ?? 0) > 1 ? rows[0].bySize.map(part => `${part.size}×${part.size}`) : []
-  const views: [View, string][] = [['solved', 'Boards solved'], ['cost', 'Cost'], ...(canScatter ? [['scatter', 'Solved vs cost'] as [View, string]] : [])]
+  const views: [View, string][] = [['solved', 'Boards solved'], ['cost', 'Cost'], ['scatter', 'Solved vs cost']]
 
   return <figure className="leaderboard" aria-labelledby={headingId}>
     <figcaption className="lb-caption">
@@ -305,7 +460,9 @@ export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
       {shownView === 'cost' && hasBatch && <span>† batch price</span>}
     </div>}
     <div ref={chartRef} className="lb-chart" key={`${shownView}-${scope}-${size}`}>
-      {width !== null && (shownView === 'scatter' ? <Scatter rows={rows} width={width} pick={pick} /> : <Columns rows={rows} view={shownView} columns={columns} pick={pick} />)}
+      {width !== null && (shownView !== 'scatter' ? <Columns rows={rows} view={shownView} columns={columns} pick={pick} />
+        : wideEnough || narrowScatter ? <Scatter rows={rows} width={width} pick={pick} />
+          : <RotatePrompt portrait={portrait} onShow={() => setNarrowScatter(true)} />)}
     </div>
     <Detail row={shown} />
     <p className="sr-only" aria-live="polite">{announcement}</p>

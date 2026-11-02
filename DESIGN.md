@@ -24,14 +24,18 @@ The visual authority is the authorized [AI Agent Skills Resource Library design 
 
 ## Information architecture
 
-The persistent book rail groups twelve routes into six chapters:
+The persistent book rail is generated from one tree in `src/bookNav.ts`, which also drives the Contents page, the hero breadcrumb and tab titles. It groups pages into front matter, six numbered parts and back matter:
 
-1. Read first: executive summary and assessment receipt.
-2. The board: Queens rules and protocol/results.
-3. Model generations: the October 1 earlier-generation replay using the original board images.
-4. The Jev question: primer, candidate engineering, scale/primitives, and trajectories.
-5. Receipts: searchable evidence atlas and methods/sources.
-6. About: purpose, provenance, and sharing.
+1. Start here: executive summary, assessment receipt and Contents.
+2. Part I · The puzzle: Queens rules and How Z3 solves Queens (its sections nest under it).
+3. Part II · Frontier language models: protocol and results, one queen at a time, earlier generations.
+4. Part III · Local open-weight models: the assessments chapter, with the original 4B pilot and the Caveman comparison nested under it.
+5. Part IV · Decision models: the Decision Index comparison, the Jev primer (with its three follow-ups nested), SubQ Snap and the greedy rule baseline.
+6. Part V · Evidence: evidence atlas and board receipts.
+7. Part VI · Methods: methods and sources, methods critique.
+8. About: purpose and provenance, and the changelog.
+
+Parts and parent pages are collapsed disclosures, except along the path to the open page. See [book organization](docs/book-organization.md) for the rationale.
 
 Hash routing keeps every page compatible with a later static host. The evidence atlas adds one deep-linkable subpage per request or full grade source.
 
@@ -47,8 +51,8 @@ Hash routing keeps every page compatible with a later static host. The evidence 
 
 ## Core components
 
-- **Book rail:** global route hierarchy, edition/date, active chapter, and report hash.
-- **Page hero:** chapter trail, strong thesis, and at most one primary action.
+- **Book rail:** collapsible part and page hierarchy, edition/date linked to the changelog, and the active page.
+- **Page hero:** linked breadcrumb (book, part, parent pages, current page) with an up-one-level arrow, strong thesis, and at most one primary action.
 - **Assessment receipt:** source class, verification date, interaction mode, and bounded outcome.
 - **Local contents rail:** in-page navigation that scrolls without corrupting hash routing.
 - **Board diagram:** visible region letters, color redundancy, row/column-aware cell labels, and queen markers.
@@ -92,7 +96,7 @@ Identified evaluator references are a separate versioned registry derived and in
 
 - At and above 1180px, the global book rail and local contents rail can remain visible together.
 - Below 1180px, local contents move into document flow.
-- Below 780px, the global rail becomes a modal drawer, the page becomes a single reading column, and the drawer removes the page from focus while open.
+- Below 780px, and on short landscape screens (≤1020px wide and ≤500px tall), the global rail becomes a modal drawer, the page becomes a single reading column, and the drawer removes the page from focus while open.
 - Below 460px, candidate rows, JSON type, receipts, and tables compress without hiding evidence. Tables retain horizontal scrolling rather than collapsing meaning.
 
 The site was visually checked at 1440×1000 and 390×844. Final QA captures are retained locally under `output/playwright/`.
