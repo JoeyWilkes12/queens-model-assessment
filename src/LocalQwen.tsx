@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import type { BookUi } from './ollamaEvidence'
 import { compareArms, estimateCohort, isMatchedCohort, parseRate, type Rates } from './localQwenMath'
-import { armName, localArtifact, localReceiptUrl, rowOutcome, useLocalStudies, type LocalIndex, type LocalRow, type LocalStudy, type Pricing } from './localQwenEvidence'
+import { LOCAL_PRICING_FILE, armName, localArtifact, localReceiptUrl, rowOutcome, useLocalStudies, type LocalIndex, type LocalRow, type LocalStudy, type Pricing } from './localQwenEvidence'
+import { useSharedJson } from './sharedJson'
 import './ollama-comparison.css'
 import './local-qwen.css'
 
@@ -74,26 +75,13 @@ function BudgetChart({ study, rows, ui }: { study: LocalStudy; rows: LocalRow[];
     <p className="cv-note">This is not a controlled estimate of the benefit of a larger budget. Budget, cache policy, transport, host conditions and stopping policy can differ between studies; the 4B pilot also diverged from a fresh replay. Sampling changes multiple decoding settings.</p></>
 }
 
-/** Load only the saved public tariff evidence, with no live API or inference requests. */
-function usePricing() {
-  const [state, setState] = useState<{ status: 'loading' | 'error' } | { status: 'ready'; data: Pricing }>({ status: 'loading' })
-  useEffect(() => {
-    const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`, { signal: controller.signal }).then(r => { if (!r.ok) throw new Error('Missing rates'); return r.json() })
-      .then((p: Pricing) => {
-        if (p.schema_version !== 1 || p.catalog_url !== 'https://openrouter.ai/api/v1/models' || !Array.isArray(p.models) || !p.models.length || !Number.isFinite(Date.parse(p.checked_utc))
-          || !p.models.every(m => /^qwen\/[a-zA-Z0-9.-]+$/.test(m.id) && [m.usd_per_million?.input, m.usd_per_million?.output].every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0))) throw new Error('Invalid rates')
-        if (!controller.signal.aborted) setState({ status: 'ready', data: p })
-      }).catch(() => { if (!controller.signal.aborted) setState({ status: 'error' }) })
-    return () => controller.abort()
-  }, [])
-  return state
-}
+/** Load only the saved public tariff evidence, with no live API or inference requests. One request serves every view. */
+const usePricing = () => useSharedJson(LOCAL_PRICING_FILE)
 
 /** Price every recorded attempt, including unsuccessful outputs; rescues retain their full replay usage. */
 function Finance({ study, rows, ui }: { study: LocalStudy; rows: LocalRow[]; ui: BookUi }) {
   const prices = usePricing()
-  if (prices.status !== 'ready') return <p role="status">{prices.status === 'loading' ? 'Loading saved tariffs…' : <>Saved tariffs could not be loaded. Reload or <a href={`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`}>inspect the pricing artifact</a>. No substitute rates are used.</>}</p>
+  if (prices.status !== 'ready') return <p role="status">{prices.status === 'loading' ? 'Loading saved tariffs…' : <>Saved tariffs could not be loaded. <button type="button" className="retry-button" onClick={prices.retry}>Try again</button> or <a href={`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`}>inspect the pricing artifact</a>. No substitute rates are used.</>}</p>
   if (!recorded(rows).length) return <p role="status">No requests have been recorded in this selected scope. Pending requests have no observed cost or success rate.</p>
   return study.kind === 'audit' ? <AuditFinance key={study.id} study={study} rows={rows} pricing={prices.data} ui={ui} /> : <FinanceReady key={study.id} study={study} rows={rows} pricing={prices.data} ui={ui} />
 }
@@ -123,7 +111,7 @@ function AuditFinance({ study, rows, pricing, ui }: { study: LocalStudy; rows: L
 /** Compare cohorts at their matching-family tariff; the unlisted 4B price remains an explicit proxy. */
 function StudyCosts({ data, ui }: { data: LocalIndex; ui: BookUi }) {
   const pricing = usePricing(), { DataTable } = ui
-  if (pricing.status !== 'ready') return <p role="status">{pricing.status === 'loading' ? 'Loading saved study-cost scenarios…' : 'Saved tariffs unavailable; study cost scenarios cannot be shown.'}</p>
+  if (pricing.status !== 'ready') return <p role="status">{pricing.status === 'loading' ? 'Loading saved study-cost scenarios…' : <>Saved tariffs unavailable; study cost scenarios cannot be shown. <button type="button" className="retry-button" onClick={pricing.retry}>Try again</button></>}</p>
   const prices = pricing.data
   return <><DataTable caption="Original attempts only · each study uses its own recorded tokens, with a matching hosted-model tariff or explicit 4B proxy" headers={['Study / tariff', 'Baseline', '+ Caveman', 'Spend change']} rows={data.studies.map(s => {
     const id = defaultTariff(s), tariff = prices.models.find(p => p.id === id)

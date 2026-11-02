@@ -64,6 +64,7 @@ img, svg { display: block; }
 .receipt-chain-actions button:disabled { opacity: .55; cursor: default; transform: none; }
 .receipt-chain .receipt-chain-context { margin: 14px 0 0; max-width: 75ch; color: var(--text-muted); font-size: .875rem; }
 
+.retry-button { min-height: 32px; margin: 0 4px; padding: 2px 10px; border: 1px solid var(--border-strong); background: var(--surface-raised); color: var(--text-primary); font-weight: 700; }
 .app-shell { display: flex; min-height: 100vh; }
 .page-frame { flex: 1; min-width: 0; margin-left: 296px; position: relative; }
 .book-sidebar { position: fixed; z-index: 30; inset: 0 auto 0 0; width: 296px; display: flex; flex-direction: column; padding: 30px 24px 24px; background: var(--surface-inverse); color: var(--text-inverse); overflow-y: auto; }

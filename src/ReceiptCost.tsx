@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { money } from './BoardReceipts'
+import { loadSharedJson, type JsonResource } from './sharedJson'
 
 /** [usd or null, basis, board total or null, requests on that board, requests with unknown cost] */
 type Entry = [number | null, string, number | null, number, number]
@@ -15,11 +16,12 @@ const BASIS: Record<string, string> = {
   subq_rate: "SubQ: input tokens × SubQ's published $0.05 per million (output is free)",
 }
 
-// One fetch per page load, shared by the atlas list and every receipt page.
-let costs: Promise<Costs | null> | null = null
-let boards: Promise<Set<string>> | null = null
-const loadCosts = () => costs ??= fetch(evidence('costs/receipts.json')).then(r => r.ok ? r.json() as Promise<Costs> : null).catch(() => null)
-const loadBoards = () => boards ??= fetch(evidence('board-receipts/index.json')).then(r => r.ok ? r.json() as Promise<BoardIndex> : { boards: [] }).then(d => new Set(d.boards.map(b => b.id))).catch(() => new Set<string>())
+// One shared request per file, for the atlas list and every receipt page. A failed load is not kept:
+// the next receipt page to open asks again (src/sharedJson.ts). Pages still render without cost data.
+const COSTS_FILE: JsonResource<Costs> = { url: evidence('costs/receipts.json'), validate: (value): value is Costs => !!value && typeof (value as Costs).receipts === 'object' }
+const BOARDS_FILE: JsonResource<BoardIndex> = { url: evidence('board-receipts/index.json'), validate: (value): value is BoardIndex => Array.isArray((value as BoardIndex)?.boards) }
+const loadCosts = () => loadSharedJson(COSTS_FILE).catch(() => null)
+const loadBoards = () => loadSharedJson(BOARDS_FILE).then(d => new Set(d.boards.map(b => b.id))).catch(() => new Set<string>())
 
 const lookup = (data: Costs | null, id: string): Entry | undefined => {
   const split = id.indexOf(':')
