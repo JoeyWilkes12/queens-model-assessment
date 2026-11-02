@@ -1,4 +1,4 @@
-import { Component, Fragment, lazy, Suspense, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
+import { Component, Fragment, lazy, Suspense, useEffect, type ComponentType, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 import { BoardReplay } from './BoardReplay'
 import { deriveReceiptBoard } from './receiptBoardData'
 import { deriveTrajectoryFrames } from './trajectoryBoardData'
@@ -19,10 +19,10 @@ import { LoadingBlocks } from './LoadingBlocks'
 // Chapters other than the summary, atlas and the chapters written in this file load when their route opens,
 // so the first visit downloads only what it shows. Each loader is shared by its lazy component and by
 // preloadRoute, which the sidebar calls on hover, focus or touch so a click usually finds the code ready.
-// A failed load is forgotten, so the next attempt (a retry or another visit) tries again.
+// Browsers keep a failed module import for the life of the page, so a chapter that fails to load offers a reload.
 function loader<M>(load: () => Promise<M>) {
   let pending: Promise<M> | undefined
-  return () => pending ??= load().catch(error => { pending = undefined; throw error })
+  return () => pending ??= load()
 }
 const chapters = {
   z3: loader(() => import('./z3/Z3Part')),
@@ -38,18 +38,19 @@ const chapters = {
   legacyPanel: loader(() => import('./LegacyPanel')),
   receiptChain: loader(() => import('./ReceiptChainNavigation')),
 }
+const named = <M, K extends keyof M>(load: () => Promise<M>, key: K) => lazy(() => load().then(module => ({ default: module[key] as ComponentType<any> })))
 const Z3Part = lazy(chapters.z3)
 const LocalQwen = lazy(chapters.localQwen)
-const BoardReceipts = lazy(() => chapters.boardReceipts().then(m => ({ default: m.BoardReceipts })))
-const DecisionModels = lazy(() => chapters.decisionModels().then(m => ({ default: m.DecisionModels })))
-const FrontierTrajectories = lazy(() => chapters.frontier().then(m => ({ default: m.FrontierTrajectories })))
-const GreedyRule = lazy(() => chapters.greedy().then(m => ({ default: m.GreedyRule })))
-const MethodsCritique = lazy(() => chapters.critique().then(m => ({ default: m.MethodsCritique })))
-const OllamaAssessment = lazy(() => chapters.pilot().then(m => ({ default: m.OllamaAssessment })))
-const OllamaComparison = lazy(() => chapters.caveman().then(m => ({ default: m.OllamaComparison })))
-const SubQAssessment = lazy(() => chapters.subq().then(m => ({ default: m.SubQAssessment })))
-const LegacyPanel = lazy(() => chapters.legacyPanel().then(m => ({ default: m.LegacyPanel })))
-const ReceiptChainNavigation = lazy(() => chapters.receiptChain().then(m => ({ default: m.ReceiptChainNavigation })))
+const BoardReceipts = named(chapters.boardReceipts, 'BoardReceipts')
+const DecisionModels = named(chapters.decisionModels, 'DecisionModels')
+const FrontierTrajectories = named(chapters.frontier, 'FrontierTrajectories')
+const GreedyRule = named(chapters.greedy, 'GreedyRule')
+const MethodsCritique = named(chapters.critique, 'MethodsCritique')
+const OllamaAssessment = named(chapters.pilot, 'OllamaAssessment')
+const OllamaComparison = named(chapters.caveman, 'OllamaComparison')
+const SubQAssessment = named(chapters.subq, 'SubQAssessment')
+const LegacyPanel = named(chapters.legacyPanel, 'LegacyPanel')
+const ReceiptChainNavigation = named(chapters.receiptChain, 'ReceiptChainNavigation')
 
 const ROUTE_CHAPTERS: Record<string, () => Promise<unknown>> = {
   'how-z3-solves-queens': chapters.z3, 'local-qwen': chapters.localQwen, 'board-receipts': chapters.boardReceipts,
@@ -1261,13 +1262,13 @@ function loadingHero(path: string): HeroText {
   return { trail: '', title: entry?.page.title ?? 'Queens assessment', deck: entry?.page.description ?? 'Loading this page.' }
 }
 
-/** If a chapter's code fails to load (offline, a deploy replaced the files), say so and offer a retry instead of a blank page. */
+/** If a chapter's code fails to load (offline, or a deploy replaced the files), say so and offer a reload instead of a blank page. */
 class ChapterBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false }
   static getDerivedStateFromError() { return { failed: true } }
   render() {
     if (!this.state.failed) return this.props.children
-    return <div className="not-found" role="alert"><span className="section-label">Unavailable</span><h1>This chapter could not load.</h1><p>The connection may have dropped, or the book was updated while this page was open.</p><div className="next-actions"><button className="button button-mint" onClick={() => this.setState({ failed: false })}>Try again <Icon name="arrow" /></button><button className="button" onClick={() => window.location.reload()}>Reload the book</button></div></div>
+    return <div className="not-found" role="alert"><span className="section-label">Unavailable</span><h1>This chapter could not load.</h1><p>The connection may have dropped, or the book was updated while this page was open. Reloading fetches the current version; other chapters keep working.</p><div className="next-actions"><button className="button button-mint" onClick={() => window.location.reload()}>Reload the book <Icon name="arrow" /></button></div></div>
   }
 }
 

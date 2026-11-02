@@ -21,13 +21,19 @@ const MAX_ENTRIES = 16
 const cache = new Map<string, Promise<unknown>>()
 /** Settled successes, so a consumer mounting after the first load renders at once instead of flashing "Loading…". */
 const settled = new Map<string, unknown>()
+/** Mounted readers per URL, told when any reader's retry succeeds so every view of that file recovers together. */
+const listeners = new Map<string, Set<() => void>>()
 
 export function loadSharedJson<T>({ url, validate }: JsonResource<T>): Promise<T> {
   const cached = cache.get(url)
   if (cached) return cached as Promise<T>
   const request = fetch(url)
     .then(response => { if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`); return response.json() as Promise<unknown> })
-    .then(value => { if (!validate(value)) throw new Error(`${url}: unexpected shape`); if (cache.get(url) === request) settled.set(url, value); return value })
+    .then(value => {
+      if (!validate(value)) throw new Error(`${url}: unexpected shape`)
+      if (cache.get(url) === request) { settled.set(url, value); listeners.get(url)?.forEach(notify => notify()) }
+      return value
+    })
   cache.set(url, request)
   request.catch(() => { if (cache.get(url) === request) cache.delete(url) })
   while (cache.size > MAX_ENTRIES) { const oldest = cache.keys().next().value as string; cache.delete(oldest); settled.delete(oldest) }
@@ -54,7 +60,11 @@ export function useSharedJson<T>(resource: JsonResource<T>): SharedJson<T> {
       data => { if (current) setState({ url, result: { status: 'ready', data } }) },
       () => { if (current) setState({ url, result: { status: 'error', retry } }) },
     )
-    return () => { current = false }
+    const recover = () => { if (current && settled.has(url)) setState({ url, result: { status: 'ready', data: settled.get(url) as T } }) }
+    const readers = listeners.get(url) ?? new Set<() => void>()
+    readers.add(recover)
+    listeners.set(url, readers)
+    return () => { current = false; readers.delete(recover); if (!readers.size) listeners.delete(url) }
   // Resources are module-level constants; the URL and an explicit retry decide reloads.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, attempt, retry])
