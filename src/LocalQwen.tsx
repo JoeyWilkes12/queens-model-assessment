@@ -3,6 +3,8 @@ import type { BookUi } from './ollamaEvidence'
 import { compareArms, estimateCohort, isMatchedCohort, parseRate, type Rates } from './localQwenMath'
 import { LOCAL_PRICING_FILE, armName, localArtifact, localReceiptUrl, rowOutcome, useLocalStudies, type LocalIndex, type LocalRow, type LocalStudy, type Pricing } from './localQwenEvidence'
 import { useSharedJson } from './sharedJson'
+import { LOCAL_QWEN_HERO } from './routeHeroes'
+import { LoadingBlocks } from './LoadingBlocks'
 import './ollama-comparison.css'
 import './local-qwen.css'
 
@@ -230,7 +232,7 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
   const fresh4 = assessments.find(s => s.id === 'qwen3.5-4b-fresh1-4arm-np32768')
   const fresh4Pending = fresh4 ? fresh4.planned - fresh4.recorded : null
   const { PageHero, Section, LocalToc, DataTable, Callout } = ui
-  return <><PageHero trail="Model generations / local open-weight assessments" title="Local open-weight assessments" deck="Inspect Qwen, Gemma and LLaVA studies by frozen board set, prompt arm, decoding and token budget. Every number leads back to saved evidence." />
+  return <><PageHero {...LOCAL_QWEN_HERO} />
     <div className="reading-layout lq-study"><LocalToc items={[{ id: 'lq-overview', label: 'Study overview' }, { id: 'lq-sampling', label: 'Sampling rounds' }, { id: 'lq-selected', label: 'Selected results' }, { id: 'lq-budget', label: 'Completion lengths' }, { id: 'lq-finance', label: 'Hosted cost scenario' }, { id: 'lq-loop', label: 'Loop-stop method' }, { id: 'lq-next', label: 'Coverage & questions' }, { id: 'lq-receipts', label: 'Every request' }, { id: 'lq-provenance', label: 'Snapshot & method' }]} /><main className="reading-column" id="main-content">
       <Section id="lq-overview" title="Separate studies, visible denominators">
         <p className="lead">Fresh-board studies add schema-reminder and neutral-control arms alongside baseline and Caveman. Gemma, LLaVA and Qwen retain separate configurations and denominators. Earlier studies and selected no-stop audits remain available below; their outcomes are never pooled with the fresh panel.</p>
@@ -312,6 +314,10 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
 /** Static-site entry point; all computation uses saved evidence, never a model endpoint. */
 export default function LocalQwen({ ui, studyId, callId }: { ui: BookUi; studyId?: string; callId?: string }) {
   const saved = useLocalStudies(), { PageHero } = ui
-  if (saved.status !== 'ready') return <><PageHero trail="Model generations / local open-weight assessments" title="Local open-weight assessments" deck="Saved experiments and illustrative hosted costs." /><main className="ollama-standalone" role="status">{saved.status === 'loading' ? 'Loading the saved study snapshot…' : <>The saved study snapshot is unavailable or invalid. Reload or <a href={localArtifact('index.json')}>inspect the index</a>. No results are substituted.</>}</main></>
+  if (saved.status !== 'ready') {
+    // Same hero as the loaded overview, and a body as tall as the viewport, so nothing moves when the data arrives.
+    const hero = callId ? { trail: 'Local open-weight assessments / saved receipt', title: 'Saved receipt', deck: 'Loading the saved study snapshot for this receipt.' } : LOCAL_QWEN_HERO
+    return <><PageHero {...hero} /><main className="ollama-standalone loading-shell" id="main-content" aria-busy={saved.status === 'loading'}><p role="status">{saved.status === 'loading' ? 'Loading the saved study snapshot…' : <>The saved study snapshot is unavailable or invalid. Reload or <a href={localArtifact('index.json')}>inspect the index</a>. No results are substituted.</>}</p>{saved.status === 'loading' && <LoadingBlocks />}</main></>
+  }
   return studyId && callId ? <Receipt data={saved.data} studyId={studyId} callId={callId} ui={ui} /> : <Overview key={studyId} data={saved.data} ui={ui} requested={studyId} />
 }

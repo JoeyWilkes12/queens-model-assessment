@@ -23,6 +23,8 @@ import { ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCos
 import { BOOK_PAGES, BOOK_PARTS, crumbsFor, entryFor, expandedFor, type NavPage } from './bookNav'
 import { CHANGELOG, FOUNDATION, REPOSITORY_URL, type ChangeKind } from './changelog'
 import './book-nav.css'
+import { LOCAL_QWEN_HERO, Z3_HERO, type HeroText } from './routeHeroes'
+import { LoadingBlocks } from './LoadingBlocks'
 
 // The Z3 part is large and self-contained; load it only when its route opens.
 const Z3Part = lazy(() => import('./z3/Z3Part'))
@@ -1219,6 +1221,11 @@ function ChangelogPage() {
     </div></>
 }
 
+/** Lazy chapter placeholder: the chapter's own hero and a full-height body, so the page does not jump when it loads. */
+function LoadingPage({ hero, label }: { hero: HeroText; label: string }) {
+  return <><PageHero {...hero} /><main className="reading-column loading-shell" id="main-content" aria-busy="true"><p role="status">{label}</p><LoadingBlocks /></main></>
+}
+
 function NotFound() {
   const [, navigate] = useHashPath()
   return <div className="not-found"><span className="section-label">404 / unfiled page</span><h1>This page is not in the book.</h1><p>Use the chapter rail to return to a documented part of the assessment.</p><button className="button button-mint" onClick={() => navigate('executive-summary')}>Return to summary <Icon name="arrow" /></button></div>
@@ -1282,7 +1289,7 @@ function App() {
   const page = active === 'executive-summary' ? <ExecutiveSummary />
     : active === 'assessment-receipt' ? <AssessmentReceiptPage />
       : active === 'queens-rules' ? <QueensRules />
-        : active === 'how-z3-solves-queens' ? <Suspense fallback={<p className="board-view-unavailable" style={{ padding: "40px 28px" }} role="status">Loading How Z3 solves Queens…</p>}><Z3Part ui={bookUi} section={parts[1]} /></Suspense>
+        : active === 'how-z3-solves-queens' ? <Suspense fallback={<LoadingPage hero={Z3_HERO} label="Loading How Z3 solves Queens…" />}><Z3Part ui={bookUi} section={parts[1]} /></Suspense>
         : active === 'protocol-results' ? <ProtocolResults />
           : active === 'jev-primer' ? <JevPrimer />
             : active === 'candidate-engineering' ? <CandidateEngineering />
@@ -1290,7 +1297,7 @@ function App() {
               : active === 'earlier-generations' ? <EarlierGenerations />
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
-                : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading local open-weight assessments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
+                : active === 'local-qwen' ? <Suspense fallback={<LoadingPage hero={parts[1] === 'receipt' ? { trail: 'Local open-weight assessments / saved receipt', title: 'Saved receipt', deck: 'Loading the saved study snapshot for this receipt.' } : LOCAL_QWEN_HERO} label="Loading local open-weight assessments…" />}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
                 : active === 'caveman-summary' ? <OllamaComparison ui={bookUi} view="summary" />
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
@@ -1304,7 +1311,7 @@ function App() {
                     : active === 'about' ? <AboutPage />
                     : active === 'contents' ? <ContentsPage partId={parts[1]} />
                     : active === 'changelog' ? <ChangelogPage /> : <NotFound />
-  return <div className="app-shell"><Sidebar path={path} open={drawerOpen} onClose={() => setDrawerOpen(false)} /><div className="page-frame" {...(drawerOpen ? { inert: '' } : {})}><header className="mobile-topbar"><button ref={menuButtonRef} className="icon-button" onClick={() => setDrawerOpen(true)} aria-label="Open navigation"><Icon name="menu" /></button><button className="mobile-wordmark" onClick={() => navigate('executive-summary')}>Queens <span>/ assessment</span></button><ThemeToggle theme={theme} setTheme={setTheme} /></header><div className="page-tools"><ThemeToggle theme={theme} setTheme={setTheme} /></div>{page}<footer className="site-footer"><span>Queens assessment · expanded illustrated edition</span><span><a href="#/contents">contents</a> · <a href="#/about">about this book</a> · <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a></span></footer></div></div>
+  return <div className="app-shell"><Sidebar path={path} open={drawerOpen} onClose={() => setDrawerOpen(false)} /><div className="page-frame" {...(drawerOpen ? { inert: '' } : {})}><header className="mobile-topbar"><button ref={menuButtonRef} className="icon-button" onClick={() => setDrawerOpen(true)} aria-label="Open navigation"><Icon name="menu" /></button><button className="mobile-wordmark" onClick={() => navigate('executive-summary')}>Queens <span>/ assessment</span></button><ThemeToggle theme={theme} setTheme={setTheme} /></header><div className="page-tools"><ThemeToggle theme={theme} setTheme={setTheme} /></div><div className="page-body">{page}</div><footer className="site-footer"><span>Queens assessment · expanded illustrated edition</span><span><a href="#/contents">contents</a> · <a href="#/about">about this book</a> · <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a></span></footer></div></div>
 }
 
 function ThemeToggle({ theme, setTheme }: { theme: 'light' | 'dark'; setTheme: (theme: 'light' | 'dark') => void }) {
