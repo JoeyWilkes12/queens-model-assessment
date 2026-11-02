@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
+import { Fragment, lazy, Suspense, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 import { BoardReplay } from './BoardReplay'
 import { deriveReceiptBoard } from './receiptBoardData'
 import { deriveTrajectoryFrames } from './trajectoryBoardData'
@@ -20,17 +20,13 @@ import { Leaderboard } from './Leaderboard'
 import { Scoreboard } from './Scoreboard'
 import { BoardReceipts } from './BoardReceipts'
 import { ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCost'
+import { BOOK_PAGES, BOOK_PARTS, crumbsFor, entryFor, expandedFor, type NavPage } from './bookNav'
+import { CHANGELOG, FOUNDATION, REPOSITORY_URL, type ChangeKind } from './changelog'
+import './book-nav.css'
 
 // The Z3 part is large and self-contained; load it only when its route opens.
 const Z3Part = lazy(() => import('./z3/Z3Part'))
 const LocalQwen = lazy(() => import('./LocalQwen'))
-
-type Route = {
-  path: string
-  title: string
-  section: string
-  description: string
-}
 
 type AssessmentOutcome = 'success' | 'model_failure' | 'request_failure' | 'not_run' | 'ungraded'
 
@@ -95,30 +91,6 @@ type ManifestRecord = {
   errorContext?: ErrorContext | null
 }
 
-const routes: Route[] = [
-  { path: 'executive-summary', title: 'Executive summary', section: 'Read first', description: 'Outcome, boundaries, and the short version.' },
-  { path: 'assessment-receipt', title: 'Assessment receipt', section: 'Read first', description: 'What was tested, when, and how to read the ledger.' },
-  { path: 'queens-rules', title: 'Queens rules', section: 'The board', description: 'Regional constraints, boards, and verified solutions.' },
-  { path: 'how-z3-solves-queens', title: 'How Z3 solves Queens', section: 'The board', description: 'Propositions, clauses, propagation, learning, a proof of uniqueness, and a rule workbench.' },
-  { path: 'protocol-results', title: 'Protocol & results', section: 'The board', description: 'Frozen inputs, entrants, outcomes, and route failures.' },
-  { path: 'frontier-trajectories', title: 'One queen at a time', section: 'The board', description: 'Frontier models place one queen per request and explain each move.' },
-  { path: 'earlier-generations', title: 'Earlier generations', section: 'Model generations', description: 'A sparse cross-generation replay of the original image prompts.' },
-  { path: 'local-qwen', title: 'Local open-weight assessments', section: 'Model generations', description: 'Gemma, LLaVA and Qwen studies, four prompt arms, coverage and hosted cost scenarios.' },
-  { path: 'local-open-models', title: 'Original 4B pilot', section: 'Model generations', description: 'Saved Ollama requests, deterministic grades, and the conditional Caveman comparison.' },
-  { path: 'caveman-summary', title: 'Caveman comparison', section: 'Model generations', description: 'Paired local Qwen receipts, observed correctness and usage, and experimental limits.' },
-  { path: 'jev-primer', title: 'Jev primer', section: 'The Jev question', description: 'Typed decisions, text state, and what was actually measured.' },
-  { path: 'candidate-engineering', title: 'Candidate engineering', section: 'The Jev question', description: 'Why explicit region lists changed the decision.' },
-  { path: 'scale-primitives', title: 'Scale & primitives', section: 'The Jev question', description: 'Larger menus, Noul, Score, and held-out boards.' },
-  { path: 'jev-trajectories', title: 'Jev trajectories', section: 'The Jev question', description: 'Empty-board placement, restarts, repeatability, and batching.' },
-  { path: 'decision-models', title: 'Decision models vs the index', section: 'Decision models', description: 'Jev, SubQ and OpenAI Decisions against the Artificial Analysis Decision Index.' },
-  { path: 'greedy-rule', title: 'Greedy rule baseline', section: 'Decision models', description: 'The no-model rule behind the 80/192 baseline, step by step.' },
-  { path: 'subq-assessment', title: 'SubQ Snap replay', section: 'Decision models', description: 'Historical Jev tasks, deterministic results, and every SubQ receipt.' },
-  { path: 'evidence-atlas', title: 'Evidence atlas', section: 'Receipts', description: 'Search sanitized requests, outputs, and metadata.' },
-  { path: 'board-receipts', title: 'Board receipts', section: 'Receipts', description: 'One page per panel board: who solved it, every written answer, replays and cost.' },
-  { path: 'methods-sources', title: 'Methods & sources', section: 'Receipts', description: 'Definitions, limits, and primary links.' },
-  { path: 'methods-critique', title: 'Methods critique', section: 'Receipts', description: 'What the design can and cannot support, and the next experiments.' },
-  { path: 'about', title: 'About this book', section: 'About', description: 'Purpose, provenance, source, and a shareable QR code.' },
-]
 
 const boardConfigs = {
   five: {
@@ -309,9 +281,11 @@ function useHashPath() {
   return [path, (next: string) => { window.location.hash = `/${next}` }] as const
 }
 
-function Icon({ name, size = 18 }: { name: 'arrow' | 'book' | 'close' | 'menu' | 'moon' | 'sun' | 'copy' | 'download' | 'search' | 'external' | 'expand'; size?: number }) {
+function Icon({ name, size = 18 }: { name: 'arrow' | 'up' | 'chevron' | 'book' | 'close' | 'menu' | 'moon' | 'sun' | 'copy' | 'download' | 'search' | 'external' | 'expand'; size?: number }) {
   const paths: Record<string, ReactNode> = {
     arrow: <><path d="M4 9h11" /><path d="m11 4 5 5-5 5" /></>,
+    up: <><path d="M10 16V4" /><path d="m5 9 5-5 5 5" /></>,
+    chevron: <path d="m8 5 5 5-5 5" />,
     book: <><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H19v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z" /><path d="M4 19V4.5" /><path d="M7.5 6H16" /><path d="M7.5 9H16" /></>,
     close: <><path d="m5 5 10 10" /><path d="m15 5-10 10" /></>,
     menu: <><path d="M3 5h14" /><path d="M3 10h14" /><path d="M3 15h14" /></>,
@@ -423,12 +397,30 @@ function LocalToc({ items }: { items: { id: string; label: string }[] }) {
 }
 
 function PageHero({ title, deck, trail, action, children, className = '' }: { title: string; deck: string; trail: string; action?: { label: string; path?: string; scrollTo?: string }; children?: ReactNode; className?: string }) {
-  const [, navigate] = useHashPath()
+  const [path, navigate] = useHashPath()
   const act = () => {
     if (action?.scrollTo) document.getElementById(action.scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     else if (action?.path) navigate(action.path)
   }
-  return <header className={`page-hero ${className}`.trim()}><div className="hero-trail">Queens assessment <span>/</span> {trail}</div><h1>{title}</h1><p className="hero-deck">{deck}</p>{action && <button className="button button-mint" onClick={act}>{action.label}<Icon name="arrow" /></button>}{children}</header>
+  return <header className={`page-hero ${className}`.trim()}><HeroTrail path={path} fallback={trail.split('/').pop()?.trim()} /><h1>{title}</h1><p className="hero-deck">{deck}</p>{action && <button className="button button-mint" onClick={act}>{action.label}<Icon name="arrow" /></button>}{children}</header>
+}
+
+/** Where this page sits in the book. Every level above the current page is a link; the arrow goes up one level. */
+function HeroTrail({ path, fallback }: { path: string; fallback?: string }) {
+  const crumbs = crumbsFor(path, fallback)
+  const up = crumbs[crumbs.length - 2]
+  // On phones, levels between the book and the parent page fold behind a button (CSS applies the fold below 780px).
+  const [unfolded, setUnfolded] = useState(false)
+  useEffect(() => setUnfolded(false), [path])
+  const foldable = crumbs.length > 3 && !unfolded
+  const middle = (index: number) => foldable && index > 0 && index < crumbs.length - 2
+  return <nav className={`hero-trail${foldable ? ' is-folded' : ''}`} aria-label="Breadcrumb">
+    {up?.href && <a className="hero-up" href={up.href} aria-label={`Up one level to ${up.label}`} title={`Up to ${up.label}`}><Icon name="up" size={16} /></a>}
+    <ol>{crumbs.map((crumb, index) => <Fragment key={`${index}-${crumb.label}`}>
+      {foldable && index === 1 && <li key="more" className="hero-more"><span className="hero-sep" aria-hidden="true">/</span><button type="button" onClick={() => setUnfolded(true)} aria-label={`Show ${crumbs.length - 3} more ${crumbs.length - 3 === 1 ? 'level' : 'levels'} of the path`}>…</button></li>}
+      <li className={middle(index) ? 'hero-middle' : undefined}>{index > 0 && <span className="hero-sep" aria-hidden="true">/</span>}{crumb.current || !crumb.href ? <span aria-current={crumb.current ? 'page' : undefined}>{crumb.label}</span> : <a href={crumb.href}>{crumb.label}</a>}</li>
+    </Fragment>)}</ol>
+  </nav>
 }
 
 function Section({ id, title, children, label, className = '' }: { id?: string; title: string; children: ReactNode; label?: string; className?: string }) {
@@ -1174,7 +1166,57 @@ function JevTrajectories({ selectedId }: { selectedId?: string }) {
 function AboutPage() {
   const liveUrl = 'https://joeywilkes12.github.io/queens-model-assessment/'
   const sourceUrl = 'https://github.com/JoeyWilkes12/queens-model-assessment'
-  return <><PageHero trail="About / project" title="A public field guide with its receipts attached." deck="This technical book translates a bounded Queens model assessment into a readable narrative without separating the findings from the evidence used to support them." action={{ label: 'Browse the evidence', path: 'evidence-atlas' }} /><div className="reading-layout"><LocalToc items={[{ id: 'purpose', label: 'Purpose' }, { id: 'provenance', label: 'Provenance' }, { id: 'share', label: 'Share this book' }]} /><main className="reading-column" id="main-content"><Section id="purpose" title="Why this book exists"><p className="lead">Evaluation reports are easiest to trust when the conclusion, method, failure cases, and source records remain close together.</p><p>The book teaches the regional Queens constraints, explains what each model was actually asked to do, and keeps the narrow Jev candidate-selection result distinct from autonomous puzzle solving. The evidence atlas exposes sanitized requests, visible responses, deterministic grades, timing, usage, and transport failures for inspection.</p><Callout tone="caution" title="Read the denominator, not just the headline.">The assessed boards are deliberately visible and limited. This is a documented experiment, not a population-level model ranking.</Callout></Section><Section id="provenance" title="Build provenance"><div className="about-ledger"><div><span>Foundation source revision</span><code>dc5b1f77357bcb62580f3e4f5ccf480765586b75</code></div><div><span>Published repository</span><a href={sourceUrl} target="_blank" rel="noreferrer">JoeyWilkes12/queens-model-assessment <Icon name="external" /></a></div><div><span>Delivery</span><strong>Static Vite build on GitHub Pages</strong></div><div><span>Data boundary</span><strong>Sanitized, read-only evidence bundle</strong></div></div><p>This SHA identifies the original book foundation, not the current expanded edition. The September 30 trajectory, October 1 earlier-generations, and October 13 SubQ chapters were added in later commits; the repository history is the provenance record for this current publication. The About page, Pages configuration, and QR assets are publication-layer additions and do not alter the assessment results.</p><p className="atlas-provenance">The standalone Constraint Atlas site (<a href="https://joeywilkes12.github.io/constraint-atlas-queens/" target="_blank" rel="noreferrer">https://joeywilkes12.github.io/constraint-atlas-queens/</a>) is kept as a backup; its content now lives in the <a href="#/how-z3-solves-queens">How Z3 solves Queens</a> part: the Chapter 10 workbench, the Chapter 2 sidebar on other ways to model the board, the Beyond Queens appendix and the added research citations.</p></Section><Section id="share" title="Open the book on another device"><div className="qr-share"><div className="qr-frame"><img src={assetUrl('assets/queens-model-assessment-qr.svg')} alt={`QR code for ${liveUrl}`} /></div><div className="qr-copy"><span className="section-label">Permanent public URL</span><a className="qr-url" href={liveUrl}>{liveUrl}</a><p>Scan the code or use the URL to open this exact public edition. The high-error-correction QR uses a full quiet zone and a dark-on-light treatment for reliable display and print.</p><div className="next-actions"><a href={assetUrl('assets/queens-model-assessment-qr.svg')} download>Download SVG <Icon name="download" /></a><a href={assetUrl('assets/queens-model-assessment-qr.png')} download>Download PNG <Icon name="download" /></a></div></div></div></Section></main></div></>
+  return <><PageHero trail="About / project" title="A public field guide with its receipts attached." deck="This technical book translates a bounded Queens model assessment into a readable narrative without separating the findings from the evidence used to support them." action={{ label: 'Browse the evidence', path: 'evidence-atlas' }} /><div className="reading-layout"><LocalToc items={[{ id: 'purpose', label: 'Purpose' }, { id: 'provenance', label: 'Provenance' }, { id: 'share', label: 'Share this book' }]} /><main className="reading-column" id="main-content"><Section id="purpose" title="Why this book exists"><p className="lead">Evaluation reports are easiest to trust when the conclusion, method, failure cases, and source records remain close together.</p><p>The book teaches the regional Queens constraints, explains what each model was actually asked to do, and keeps the narrow Jev candidate-selection result distinct from autonomous puzzle solving. The evidence atlas exposes sanitized requests, visible responses, deterministic grades, timing, usage, and transport failures for inspection.</p><Callout tone="caution" title="Read the denominator, not just the headline.">The assessed boards are deliberately visible and limited. This is a documented experiment, not a population-level model ranking.</Callout></Section><Section id="provenance" title="Build provenance"><div className="about-ledger"><div><span>Publication history</span><a href="#/changelog">Changelog · {CHANGELOG.length} entries, latest {formatDay(CHANGELOG[0].date)} <Icon name="arrow" /></a></div><div><span>Published repository</span><a href={sourceUrl} target="_blank" rel="noreferrer">JoeyWilkes12/queens-model-assessment <Icon name="external" /></a></div><div><span>Delivery</span><strong>Static Vite build on GitHub Pages</strong></div><div><span>Data boundary</span><strong>Sanitized, read-only evidence bundle</strong></div></div><p>The <a href="#/changelog">changelog</a> lists every published change since the first import, rebuilt from the repository history, and keeps the foundation report and source revisions the book was built from. The About page, Pages configuration, and QR assets are publication-layer additions and do not alter the assessment results.</p><p className="atlas-provenance">The standalone Constraint Atlas site (<a href="https://joeywilkes12.github.io/constraint-atlas-queens/" target="_blank" rel="noreferrer">https://joeywilkes12.github.io/constraint-atlas-queens/</a>) is kept as a backup; its content now lives in the <a href="#/how-z3-solves-queens">How Z3 solves Queens</a> part: the Chapter 10 workbench, the Chapter 2 sidebar on other ways to model the board, the Beyond Queens appendix and the added research citations.</p></Section><Section id="share" title="Open the book on another device"><div className="qr-share"><div className="qr-frame"><img src={assetUrl('assets/queens-model-assessment-qr.svg')} alt={`QR code for ${liveUrl}`} /></div><div className="qr-copy"><span className="section-label">Permanent public URL</span><a className="qr-url" href={liveUrl}>{liveUrl}</a><p>Scan the code or use the URL to open this exact public edition. The high-error-correction QR uses a full quiet zone and a dark-on-light treatment for reliable display and print.</p><div className="next-actions"><a href={assetUrl('assets/queens-model-assessment-qr.svg')} download>Download SVG <Icon name="download" /></a><a href={assetUrl('assets/queens-model-assessment-qr.png')} download>Download PNG <Icon name="download" /></a></div></div></div></Section></main></div></>
+}
+
+function ContentsPage({ partId }: { partId?: string }) {
+  useEffect(() => {
+    if (!partId) return
+    const frame = window.requestAnimationFrame(() => document.getElementById(`part-${partId}`)?.scrollIntoView({ block: 'start' }))
+    return () => window.cancelAnimationFrame(frame)
+  }, [partId])
+  const list = (items: NavPage[]): ReactNode => <ul className="contents-list">{items.map(item => <li key={item.path}>
+    <a href={`#/${item.path}`}>{item.title}</a><span>{item.description}</span>
+    {item.children && (item.children.every(child => child.anchor)
+      ? <p className="contents-sections">{item.children.map((child, index) => <span key={child.path}>{index > 0 && ' · '}<a href={`#/${child.path}`}>{child.title}</a></span>)}</p>
+      : list(item.children))}
+  </li>)}</ul>
+  return <><PageHero trail="Contents" title="Contents" deck="Every part of the book on one page. Start with the summary, read a part end to end, or jump straight to the receipts." />
+    <div className="reading-layout"><LocalToc items={BOOK_PARTS.map(part => ({ id: `part-${part.id}`, label: part.label ? `${part.label} · ${part.title}` : part.title }))} />
+      <main className="reading-column contents-page" id="main-content">
+        {BOOK_PARTS.map(part => <section key={part.id} id={`part-${part.id}`} className="reading-section contents-part">
+          {part.label && <span className="section-label">{part.label}</span>}<h2>{part.title}</h2><p>{part.description}</p>{list(part.pages)}
+        </section>)}
+      </main>
+    </div></>
+}
+
+const KIND_LABEL: Record<ChangeKind, string> = { evidence: 'Evidence', chapter: 'Chapter', interface: 'Interface', method: 'Method', fix: 'Fix', dependency: 'Dependency' }
+
+function ChangelogPage() {
+  const months = Array.from(new Set(CHANGELOG.map(entry => entry.date.slice(0, 7))))
+  const monthLabel = (month: string) => new Date(`${month}-01T12:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  return <><PageHero trail="Changelog" title="Changelog" deck="Every published change to this book, newest first. Rebuilt from the repository history: each pull request and each direct commit to the main branch is listed once, with links to the source." />
+    <div className="reading-layout"><LocalToc items={[...months.map(month => ({ id: `changes-${month}`, label: monthLabel(month) })), { id: 'foundation', label: 'Foundation' }, { id: 'maintaining', label: 'How this log is kept' }]} />
+      <main className="reading-column changelog" id="main-content">
+        {months.map(month => <section key={month} id={`changes-${month}`} className="reading-section">
+          <h2>{monthLabel(month)}</h2>
+          <ol className="changelog-list">{CHANGELOG.filter(entry => entry.date.startsWith(month)).map(entry => <li key={`${entry.date}-${entry.title}`} className="changelog-entry">
+            <div className="changelog-meta"><time dateTime={entry.date}>{formatDay(entry.date)}</time>{entry.kinds.map(kind => <span key={kind} className="changelog-kind">{KIND_LABEL[kind]}</span>)}</div>
+            <h3>{entry.title}</h3>
+            <ul>{entry.changes.map(change => <li key={change}>{change}</li>)}</ul>
+            <p className="changelog-refs">{entry.pr && <a href={`${REPOSITORY_URL}/pull/${entry.pr}`} target="_blank" rel="noreferrer">Pull request #{entry.pr} <Icon name="external" size={14} /></a>}{entry.commits && <span>{entry.pr ? 'Commits' : 'Direct commits'}: {entry.commits.map((hash, index) => <span key={hash}>{index > 0 && ', '}<a href={`${REPOSITORY_URL}/commit/${hash}`} target="_blank" rel="noreferrer"><code>{hash}</code></a></span>)}</span>}</p>
+          </li>)}</ol>
+        </section>)}
+        <Section id="foundation" title="Foundation">
+          <div className="about-ledger"><div><span>Foundation report SHA</span><code>{FOUNDATION.reportSha}</code></div><div><span>Foundation source revision</span><code>{FOUNDATION.sourceRevision}</code></div><div><span>First commit in this repository</span><a href={`${REPOSITORY_URL}/commit/${CHANGELOG[CHANGELOG.length - 1].commits?.[0]}`} target="_blank" rel="noreferrer"><code>{CHANGELOG[CHANGELOG.length - 1].commits?.[0]}</code> · {formatDay(CHANGELOG[CHANGELOG.length - 1].date)} <Icon name="external" size={14} /></a></div></div>
+          <p>{FOUNDATION.note}</p>
+        </Section>
+        <Section id="maintaining" title="How this log is kept">
+          <p>Each pull request adds its own entry to <code>src/changelog.ts</code>. <code>npm run changelog:verify</code> fails if a commit on the main branch has no entry: a pull-request merge counts by its number and a direct commit by its hash. The <a href={`${REPOSITORY_URL}/commits/main`} target="_blank" rel="noreferrer">repository history <Icon name="external" size={14} /></a> remains the complete record.</p>
+        </Section>
+      </main>
+    </div></>
 }
 
 function NotFound() {
@@ -1182,11 +1224,43 @@ function NotFound() {
   return <div className="not-found"><span className="section-label">404 / unfiled page</span><h1>This page is not in the book.</h1><p>Use the chapter rail to return to a documented part of the assessment.</p><button className="button button-mint" onClick={() => navigate('executive-summary')}>Return to summary <Icon name="arrow" /></button></div>
 }
 
-function Sidebar({ active, open, onClose }: { active: string; open: boolean; onClose: () => void }) {
-  const [, navigate] = useHashPath()
-  const groups = Array.from(new Set(routes.map(route => route.section)))
-  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>2 NOV UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
+/** The book rail: parts and parent pages are disclosures, closed by default except along the path to the open page. */
+function Sidebar({ path, open, onClose }: { path: string; open: boolean; onClose: () => void }) {
+  const [expanded, setExpanded] = useState(() => new Set(expandedFor(path)))
+  useEffect(() => { setExpanded(current => { const next = new Set(current); expandedFor(path).forEach(key => next.add(key)); return next.size === current.size ? current : next }) }, [path])
+  const toggle = (key: string) => setExpanded(current => { const next = new Set(current); if (next.has(key)) next.delete(key); else next.add(key); return next })
+  const here = entryFor(path)
+  const ancestors = new Set(here?.ancestors.map(page => page.path))
+  const latest = CHANGELOG[0]
+  const page = (item: NavPage, depth: number): ReactNode => {
+    const isOpen = expanded.has(item.path)
+    const active = here?.page === item
+    const listId = `nav-${item.path.replace(/[^a-z0-9]+/gi, '-')}`
+    return <li key={item.path}>
+      <div className={`nav-row nav-row--depth-${Math.min(depth, 2)}${active ? ' active' : ''}${ancestors.has(item.path) ? ' is-ancestor' : ''}`}>
+        <a href={`#/${item.path}`} onClick={onClose} aria-current={active ? 'page' : undefined}><span>{item.title}</span>{active && <span className="nav-dot" aria-hidden="true" />}</a>
+        {item.children && <button type="button" className="nav-twisty" aria-expanded={isOpen} aria-controls={listId} aria-label={`${isOpen ? 'Hide' : 'Show'} ${item.children.length} ${item.children.every(child => child.anchor) ? 'sections' : 'pages'} in ${item.title}`} onClick={() => toggle(item.path)}><Icon name="chevron" size={16} /></button>}
+      </div>
+      {item.children && <ul id={listId} hidden={!isOpen}>{item.children.map(child => page(child, depth + 1))}</ul>}
+    </li>
+  }
+  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Book navigation" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><a className="edition-chip" href="#/changelog" onClick={onClose}><span>EXPANDED EDITION</span><strong>{formatDay(latest.date).toUpperCase()} UPDATE</strong></a>
+    <nav className="chapter-nav" aria-label="Book contents">{BOOK_PARTS.map(part => {
+      const key = `part:${part.id}`
+      const isOpen = expanded.has(key)
+      const holdsActive = here?.part === part
+      return <div className={`chapter-group${holdsActive ? ' holds-active' : ''}`} key={part.id}>
+        <button type="button" className="nav-part" aria-expanded={isOpen} aria-controls={`nav-part-${part.id}`} onClick={() => toggle(key)}>
+          <span className="nav-part-text">{part.label && <span className="nav-part-label">{part.label}</span>}<span className="nav-part-title">{part.title}</span></span>
+          <Icon name="chevron" size={16} />
+        </button>
+        <ul id={`nav-part-${part.id}`} className="nav-pages" hidden={!isOpen}>{part.pages.map(item => page(item, 0))}</ul>
+      </div>
+    })}</nav>
+    <div className="sidebar-footer"><a href="#/changelog" onClick={onClose}>Changelog · updated {formatDay(latest.date)}</a><span>{BOOK_PAGES.length} pages · {BOOK_PARTS.length} sections · 5 figures</span></div></aside></>
 }
+
+const formatDay = (date: string) => new Date(`${date}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
 
 function App() {
   const [path, navigate] = useHashPath()
@@ -1198,7 +1272,7 @@ function App() {
   const active = parts[0] || 'executive-summary'
   const selectedId = active === 'evidence-atlas' && parts[1] ? parts[1] : undefined
   useEffect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem('queens-theme', theme) }, [theme])
-  useEffect(() => { document.title = `${routes.find(route => route.path === active)?.title || 'Queens assessment'} · Queens book` }, [active])
+  useEffect(() => { document.title = `${entryFor(path)?.page.title || 'Queens assessment'} · Queens book` }, [path])
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }) }, [path])
   useEffect(() => {
     if (drawerOpen) document.querySelector<HTMLButtonElement>('.sidebar-close')?.focus()
@@ -1227,8 +1301,10 @@ function App() {
                 : active === 'evidence-atlas' ? <EvidenceExplorer selectedId={selectedId} />
                 : active === 'board-receipts' ? <BoardReceipts ui={bookUi} boardId={parts[1]} />
                   : active === 'methods-sources' ? <MethodsSources />
-                    : active === 'about' ? <AboutPage /> : <NotFound />
-  return <div className="app-shell"><Sidebar active={active} open={drawerOpen} onClose={() => setDrawerOpen(false)} /><div className="page-frame" {...(drawerOpen ? { inert: '' } : {})}><header className="mobile-topbar"><button ref={menuButtonRef} className="icon-button" onClick={() => setDrawerOpen(true)} aria-label="Open navigation"><Icon name="menu" /></button><button className="mobile-wordmark" onClick={() => navigate('executive-summary')}>Queens <span>/ assessment</span></button><ThemeToggle theme={theme} setTheme={setTheme} /></header><div className="page-tools"><span>PUBLIC / READ-ONLY</span><ThemeToggle theme={theme} setTheme={setTheme} /></div>{page}<footer className="site-footer"><span>Queens assessment · expanded illustrated edition</span><span><a href="#/about">about this book</a> · <a href="#/methods-sources">methods and sources</a></span></footer></div></div>
+                    : active === 'about' ? <AboutPage />
+                    : active === 'contents' ? <ContentsPage partId={parts[1]} />
+                    : active === 'changelog' ? <ChangelogPage /> : <NotFound />
+  return <div className="app-shell"><Sidebar path={path} open={drawerOpen} onClose={() => setDrawerOpen(false)} /><div className="page-frame" {...(drawerOpen ? { inert: '' } : {})}><header className="mobile-topbar"><button ref={menuButtonRef} className="icon-button" onClick={() => setDrawerOpen(true)} aria-label="Open navigation"><Icon name="menu" /></button><button className="mobile-wordmark" onClick={() => navigate('executive-summary')}>Queens <span>/ assessment</span></button><ThemeToggle theme={theme} setTheme={setTheme} /></header><div className="page-tools"><ThemeToggle theme={theme} setTheme={setTheme} /></div>{page}<footer className="site-footer"><span>Queens assessment · expanded illustrated edition</span><span><a href="#/contents">contents</a> · <a href="#/about">about this book</a> · <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a></span></footer></div></div>
 }
 
 function ThemeToggle({ theme, setTheme }: { theme: 'light' | 'dark'; setTheme: (theme: 'light' | 'dark') => void }) {

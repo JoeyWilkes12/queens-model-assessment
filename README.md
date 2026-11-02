@@ -52,6 +52,10 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/methods-sources`
 - `#/methods-critique`
 - `#/about`
+- `#/contents` (the full table of contents; `#/contents/<part-id>` scrolls to one part)
+- `#/changelog` (publication history rebuilt from the repository; check coverage with `npm run changelog:verify`)
+
+The sidebar, Contents page and hero breadcrumb are generated from one navigation tree in `src/bookNav.ts`; see [book organization](docs/book-organization.md).
 
 The evidence atlas also supports `#/evidence-atlas/<record-id>` detail routes.
 How Z3 solves Queens deep-links each section as `#/how-z3-solves-queens/<section-id>`: chapters 1–9 (`z3-variables`, `z3-clauses`, `z3-propagation`, `z3-search`, `z3-conflict`, `z3-learning`, `z3-confinement`, `z3-uniqueness`, `z3-engine`), Chapter 10's rule workbench (`z3-workbench`), the kernel experiment (`z3-experiment`) and the closing Beyond Queens appendix (`z3-beyond`). The standalone [Constraint Atlas site](https://joeywilkes12.github.io/constraint-atlas-queens/) is kept as a backup; its content now lives in this part (Chapter 10, the Chapter 2 sidebar on other models, the appendix and its citations). Re-check the part's evidence, the workbench counter and its SMT-LIB exports with `Z3_PYTHON=<python with z3-solver 4.16> npm run z3:verify`.
