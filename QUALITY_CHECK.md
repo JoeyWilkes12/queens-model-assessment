@@ -272,3 +272,35 @@ All 166 protected historical evidence files remain byte-identical. No Ollama req
   are reused. Both origins render the updated chapter from this Mac; no physical
   phone test is claimed. No Ollama request, benchmark/service/queue change or
   production deployment was made. The existing main-bundle size advisory remains.
+
+## November 2 sampling completion
+
+- Verified the user’s time gate at 11:36 a.m. MST on November 2, after the 9 a.m.
+  cutoff. Began from merged PR 10 on main `e62e9a86` in a new branch.
+- Imported `2026-11-02-overnight` with unchanged schema 3: 19 conditions, 464
+  original/audit receipts and 38 rescues. The delta is 57 original calls and
+  five rescues: both r3 panels, final 27B r2 pair and seven fresh1 4B calls.
+  Earlier snapshots remain byte-identical; prior raw evidence is unchanged.
+- Independent audit recomputed all 57 new strict grades and five rescue grades,
+  verified request/response hashes and frozen controls, and explained the
+  pre-existing bare-array diagnostic difference in 9B r1. No historical grade
+  was changed. Only source summaries acquired new rows or updated timestamps.
+- Published a six-row sampling comparison with separate arms, seed conditions,
+  format-only results and rescues. Updated 27B r2 completion and fresh1 4B
+  progress (13 strict + four format-only + 20 caps / 37 recorded; 11 pending).
+  Ten 4B shadow flags remain observations, never client cancellations.
+- 62 Python tests, complete receipt/pair verification, all four snapshot
+  contracts, current and historical financial fixtures, privacy scrub and
+  TypeScript/Vite build pass. Public scrub: zero private-field files.
+  Board/leaderboard checks pass (8,474 / 1,178). Existing bundle-size advisory
+  remains. Independent Codex review reports no confirmed blockers.
+- Browser checks cover all 19 study selections, complete sampling table, r3
+  cost deltas, full rescue replay costs, completed r2 costs, unmatched 4B
+  suppression, size/reset controls, receipt chains and rescue separation,
+  390/320px layouts and dark theme. No uncaught errors or inference requests.
+  Localhost and private HTTP Tailscale rendering pass from this Mac; the
+  private development WebSocket also connects. No physical phone test claimed.
+  Captures and QA logs: ignored `output/playwright/local-qwen-nov2/`.
+- Existing launchd preview reused on 4598. No Ollama, nightly job, queue,
+  model settings or frozen source evidence was changed. No production deploy
+  or merge was performed.

@@ -1,0 +1,58 @@
+{
+  "call_id": "caveman_panel-9-08",
+  "board_id": "panel-9-08",
+  "size": 9,
+  "treatment": "caveman",
+  "model": "qwen3.5:9b-nvfp4",
+  "model_digest": "8218177ac78e61e0038e60fda513dc9ced4472637f0bc30e45def6aec48649d4",
+  "started_utc": "2026-11-02T08:05:56.525395+00:00",
+  "completed_utc": "2026-11-02T08:16:22.274651+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 625.7103689169999,
+  "returned_model": "qwen3.5:9b-nvfp4",
+  "finish_reason": "length",
+  "done": true,
+  "input_tokens": 1984,
+  "output_tokens": 24576,
+  "total_duration_ns": 625704619125,
+  "load_duration_ns": 2068875,
+  "prompt_eval_duration_ns": 4747643417,
+  "eval_duration_ns": 620917894750,
+  "request_sha256": "d5dd9c04e350928e724bdbbc6a20121a439359fdf5bea11100483347dff9881a",
+  "response_sha256": "0d91423159023d95d46017654c833d0c6514039b9f6117f9871e5aac451eb332",
+  "image_sha256": "90729467277953f3bf28da599b1bd1f4182cec291e7b5f6d6e7333d953062a78",
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": false,
+  "rule_valid_after_extraction": false,
+  "outcome": "truncated",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "ba31a8f2e26e4dfcd5085872d30f9b626752464778ce06577582b737b627bc53",
+    "panel_py_sha256": "df0584aa9f68bae53bc2787d9fa174316fc1c912890d38440a63da2c510edd30",
+    "runtime_lock_sha256": "a4a5cbd736e62c6198900c117845fbb524e202e976a1bde41e4a95cb96dc157b",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "nonstream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.0,
+    "last_llama_server_decode": null,
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": false,
+    "reason": "this study's plan.json has no protocol.loop_stop"
+  }
+}

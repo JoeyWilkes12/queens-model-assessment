@@ -100,6 +100,8 @@ for(const [id,expected] of Object.entries(fixtures)) {
  }
 }
 console.log(`Verified independent integration math across ${index.studies.length} frozen studies.`)
+const oct31Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-10-31-overnight/catalog.json',import.meta.url)))
+const nov1Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-01-local-coverage/catalog.json',import.meta.url)))
 const oct31Fixtures = {
  'qwen3.5-9b-nvfp4-np24576-qwen-sampling-r2': [[12,10236,211838,10],[12,23808,191712,8]],
  'qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r2': [[11,9383,112997,7],[11,21824,97334,9]],
@@ -107,7 +109,7 @@ const oct31Fixtures = {
  'qwen3.5-9b-nvfp4-np32768-loopstop-audit': [[1,853,32768,0],[4,7936,127398,1]],
 }
 for (const [id, expected] of Object.entries(oct31Fixtures)) {
- const study=index.studies.find(s=>s.id===id)
+ const study=oct31Index.studies.find(s=>s.id===id)
  assert.ok(study,`Missing Oct31 study ${id}`)
  for (const [i,arm] of ['baseline','caveman'].entries()) {
   const rows=study.rows.filter(r=>r.state==='recorded'&&r.treatment===arm), usage=aggregateUsage(rows)
@@ -118,7 +120,7 @@ for (const [id, expected] of Object.entries(oct31Fixtures)) {
   assert.equal(isMatchedCohort(study.rows),false) // Selected unmatched arms cannot support a treatment contrast.
   const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
   assert.equal(source.rows.length,24) // Preserve raw scheduled summary; price selected eligible calls only.
-  const original=index.studies.find(s=>s.id===study.audit_of)
+  const original=oct31Index.studies.find(s=>s.id===study.audit_of)
   assert.ok(original)
   const eligible=original.rows.filter(r=>r.loop_stopped)
   assert.equal(study.rows.length,eligible.length)
@@ -143,7 +145,7 @@ const coverageFixtures = {
  'qwen3.5-27b-q4_K_M': [[1,853,5915,1],[1,1984,4602,1]],
 }
 for (const [id,expected] of Object.entries(coverageFixtures)) {
- const study=index.studies.find(s=>s.id===id)
+ const study=nov1Index.studies.find(s=>s.id===id)
  assert.ok(study,`Missing coverage study ${id}`)
  for (const [i,arm] of Object.keys(study.arms).entries()) {
   const rows=study.rows.filter(r=>r.state==='recorded'&&r.treatment===arm), usage=aggregateUsage(rows)
@@ -161,3 +163,37 @@ near(freshContrast.deltaUsd,-0.00663901)
 // Adding the two control arms must never contaminate baseline/Caveman contrast.
 assert.deepEqual(compareArms(fresh9.rows.filter(r=>['baseline','caveman'].includes(r.treatment)),rates),compareArms(fresh9.rows,rates))
 console.log('Verified six previously omitted cohorts, four-arm usage and unmatched partial cost guard.')
+
+// Independently transcribed from Nov2 recorded raw summary usage, including failures.
+const nov2Fixtures = {
+ 'qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r2': [[12,10236,132997,8,4],[12,23808,119929,9,0]],
+ 'qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r3': [[12,10236,123190,10,2],[12,23808,95594,12,0]],
+ 'qwen3.5-9b-nvfp4-np24576-qwen-sampling-r3': [[12,10236,191680,9,1],[12,23808,196740,7,1]],
+ 'qwen3.5-4b-fresh1-4arm-np32768': [[9,7677,208989,4,1],[9,8199,250119,2,0],[9,17226,194324,3,3],[10,19840,241512,4,0]],
+}
+for (const [id, expected] of Object.entries(nov2Fixtures)) {
+ const study=index.studies.find(s=>s.id===id)
+ assert.ok(study,`Missing Nov2 study ${id}`)
+ const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
+ for (const [i,arm] of Object.keys(study.arms).entries()) {
+  for (const all of [study.rows,source.rows]) {
+   const rows=all.filter(r=>r.state==='recorded'&&r.treatment===arm), usage=aggregateUsage(rows)
+   assert.deepEqual([rows.length,usage.inputTokens,usage.outputTokens,rows.filter(r=>r.strict_correct).length,rows.filter(r=>r.format_only_correct || r.outcome==='format_only').length],expected[i])
+  }
+ }
+ assert.equal(isMatchedCohort(study.rows),!id.includes('4b-fresh'))
+}
+console.log('Verified Nov2 round-3, completed 27B round-2 and unmatched 37/48 fresh 4B usage against independent fixtures and raw summaries.')
+
+const nov2Round3=index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-np24576-qwen-sampling-r3')
+const nov2Round3Cost=compareArms(nov2Round3.rows,{input:0.17,output:0.25},true)
+near(nov2Round3Cost.baseline.oneShotCostUsd,0.04966012)
+near(nov2Round3Cost.caveman.oneShotCostUsd,0.05323236)
+near(nov2Round3Cost.baseline.rescueIncrementalCostUsd,0.00433623)
+near(nov2Round3Cost.caveman.rescueIncrementalCostUsd,0.01810583)
+near(nov2Round3Cost.baseline.combinedCostUsd,0.05399635)
+near(nov2Round3Cost.caveman.combinedCostUsd,0.07133819)
+assert.equal(nov2Round3Cost.baseline.combinedStrictSuccessCount,9)
+assert.equal(nov2Round3Cost.caveman.combinedStrictSuccessCount,9)
+near(compareArms(index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r3').rows,{input:0.26,output:2.6}).deltaUsd,-0.06822088)
+near(compareArms(index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r2').rows,{input:0.26,output:2.6}).deltaUsd,-0.03044808)

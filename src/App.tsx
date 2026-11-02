@@ -409,7 +409,7 @@ function AssessmentReceipt() {
       <div className="receipt-lead"><span className="receipt-mark">✓</span><div><span className="receipt-label">Assessment receipt</span><h2 id="receipt-heading">A bounded claim with an inspectable trail.</h2></div></div>
       <div className="receipt-grid">
         <div><span className="receipt-label">Source class</span><strong>Independent finding</strong><span>saved experiment records</span></div>
-        <div><span className="receipt-label">Edition</span><strong>1 Nov 2026</strong><span>dated studies retained</span></div>
+        <div><span className="receipt-label">Edition</span><strong>2 Nov 2026</strong><span>dated studies retained</span></div>
         <div><span className="receipt-label">Interaction</span><strong>Read-only</strong><span>local evidence only</span></div>
         <div><span className="receipt-label">Outcome</span><strong>Task-specific grades</strong><span>inspect each denominator</span></div>
       </div>
@@ -504,6 +504,7 @@ const studies: [string, string, string, string, string][] = [
   ['2026-10-28', '28 Oct', 'Small local model and Caveman', 'local-open-models', '3 and 5 of 12'],
   ['2026-10-31', '29–31 Oct', 'Larger local Qwen, sampling and loop-stop audits', 'local-qwen', 'Separate cohorts; round 2 updated'],
   ['2026-11-01', '1 Nov', 'Fresh-board local models, four prompt arms', 'local-qwen', 'Qwen 9B 38/48; Gemma 10/48; LLaVA 0/48'],
+  ['2026-11-02', '2 Nov', 'Qwen sampling round 3 and fresh-board progress', 'local-qwen', '9B 16/24; 27B 22/24 strict; 4B 37/48 recorded'],
 ]
 
 function ExecutiveSummary() {
@@ -559,7 +560,7 @@ function ExecutiveSummary() {
               <p className="qa-caveat">The 24 lists come from two boards, so they are not 24 separate puzzles.</p>
               <QaLinks links={[['Jev primer', '#/jev-primer'], ['Candidate engineering', '#/candidate-engineering'], ['Scale & primitives', '#/scale-primitives'], ['Decision models vs the index', '#/decision-models']]} />
             </Answer>
-            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="38/48" statLabel="strict requests, Qwen 9B on fresh1" statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions." answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B is partial at 13 of 30 recorded, with 48 planned. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles." more="Original 4B pilot, 28 Oct">
+            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="38/48" statLabel="strict requests, Qwen 9B on fresh1" statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions." answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B is partial at 13 of 37 recorded, with 48 planned. Three sampling rounds are now complete for both larger Qwen models on the earlier panel. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles." more="Original 4B pilot, 28 Oct">
               <p>The original 4B pilot below is preserved separately from the later larger-budget and larger-model experiments.</p>
               <PairStrip />
               <Facts items={[
@@ -623,7 +624,7 @@ function ExecutiveSummary() {
         </Section>
         <Section id="next" title="Go deeper">
           <div className="next-actions"><a href="#/queens-rules">Queens rules <Icon name="arrow" /></a><a href="#/how-z3-solves-queens">How Z3 solves Queens, in ten chapters <Icon name="arrow" /></a><a href="#/board-receipts">36 board receipts <Icon name="arrow" /></a><a href="#/evidence-atlas">Search 5,417 saved requests <Icon name="arrow" /></a></div>
-          <Disclosure label="Main studies by date, 17 Sep to 1 Nov">
+          <Disclosure label="Main studies by date, 17 Sep to 2 Nov">
             <ol className="study-timeline">{studies.map(([iso, date, title, path, result]) => <li key={`${iso}-${title}`}><time dateTime={iso}>{date}</time><a href={`#/${path}`}>{title}</a><span className="study-result">{result}</span></li>)}</ol>
           </Disclosure>
         </Section>
@@ -1184,7 +1185,7 @@ function NotFound() {
 function Sidebar({ active, open, onClose }: { active: string; open: boolean; onClose: () => void }) {
   const [, navigate] = useHashPath()
   const groups = Array.from(new Set(routes.map(route => route.section)))
-  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>1 NOV UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
+  return <><div className={`sidebar-scrim ${open ? 'is-open' : ''}`} onClick={onClose} aria-hidden="true" /><aside className={`book-sidebar ${open ? 'is-open' : ''}`} aria-label="Assessment chapters" role={open ? 'dialog' : undefined} aria-modal={open || undefined}><div className="bookmark"><div className="bookmark-icon"><Icon name="book" size={21} /></div><div><strong>Queens</strong><span>assessment book</span></div><button className="sidebar-close" onClick={onClose} aria-label="Close navigation"><Icon name="close" /></button></div><div className="edition-chip"><span>EXPANDED EDITION</span><strong>2 NOV UPDATE</strong></div><nav className="chapter-nav">{groups.map(group => <div className="chapter-group" key={group}><span className="chapter-label">{group}</span>{routes.filter(route => route.section === group).map(route => <button key={route.path} className={active === route.path ? 'active' : ''} onClick={() => { navigate(route.path); onClose() }} aria-current={active === route.path ? 'page' : undefined}><span>{route.title}</span>{active === route.path && <span className="nav-dot" aria-hidden="true" />}</button>)}</div>)}</nav><div className="sidebar-footer"><span>FOUNDATION REPORT SHA</span><code>1e103a40…e452d67</code><span>5 figures · {routes.length} book chapters</span></div></aside></>
 }
 
 function App() {
