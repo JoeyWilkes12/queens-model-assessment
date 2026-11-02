@@ -31,7 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-02',
     title: 'Book organization, breadcrumb navigation and this changelog',
     kinds: ['interface'],
-    pr: 12,
+    pr: 13,
     changes: [
       'Regrouped the book into front matter, six numbered parts and an About section, with a new Contents page.',
       'The sidebar now nests pages under collapsible parts and parent pages. Everything starts collapsed except the path to the page you are reading.',

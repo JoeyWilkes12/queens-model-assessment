@@ -1,6 +1,6 @@
 # Book organization
 
-Proposed and implemented 2 November 2026, after PR #11. The site's navigation, Contents page, breadcrumb and tab titles are all generated from one tree in [`src/bookNav.ts`](../src/bookNav.ts).
+Proposed and implemented 2 November 2026 in PR #13, after PR #11. The site's navigation, Contents page, breadcrumb and tab titles are all generated from one tree in [`src/bookNav.ts`](../src/bookNav.ts).
 
 ## Contents
 
