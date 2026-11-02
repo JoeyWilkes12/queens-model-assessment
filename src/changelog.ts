@@ -29,6 +29,18 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-02',
+    title: 'Faster, steadier loading',
+    kinds: ['interface'],
+    pr: 14,
+    changes: [
+      'The local open-weight chapter no longer jumps while it loads: loading pages keep the chapter’s own heading and a full-height body (mobile layout shift 0.27 → 0 in a slow-4G lab test).',
+      'Files read by several views, such as the scoreboard and the saved tariffs, are fetched once per page and can be retried after a failure.',
+      'Chapters load with their own page, so the first visit downloads about a third less JavaScript. Sidebar links start loading a chapter on hover or touch.',
+      'The summary’s replays and the local pair strip fetch their evidence only when they are about to be seen.',
+    ],
+  },
+  {
+    date: '2026-11-02',
     title: 'Book organization, breadcrumb navigation and this changelog',
     kinds: ['interface'],
     pr: 13,
