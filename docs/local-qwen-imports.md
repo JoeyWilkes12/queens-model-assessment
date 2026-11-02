@@ -78,8 +78,15 @@ See [results and stopping-policy interpretation](local-qwen-methods.md) and
 [financial estimates](local-qwen-costs.md). Repeated use of the same 12 boards
 does not increase the number of independent board samples.
 
-The November 1 coverage inventory includes every current frozen assessment plan;
+The historical November 1 coverage inventory includes every frozen assessment plan found at that capture;
 operational probes, selftests and sessions are excluded from accuracy denominators.
 The separate queue contains unstarted text, constrained-JSON and 27B fresh-board
 conditions. They are described as queued work, without invented plans or receipts.
 See [coverage and completion requirements](local-assessment-coverage.md).
+
+The November 2 snapshot (`2026-11-02-overnight`) uses the unchanged schema-3
+contract. It adds both third sampling rounds, the final two 27B round-2 calls
+and seven further fresh1 4B calls. Historical fixtures use their original frozen
+catalogs; current integration checks use the selected index. They must not be
+rewritten to pretend a former partial snapshot was complete. See the
+[November 2 results](local-qwen-nov2.md) and [cost scenarios](local-qwen-nov2-costs.md).
