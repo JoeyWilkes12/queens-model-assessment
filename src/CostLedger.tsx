@@ -1,5 +1,5 @@
 import { type ComponentType, type ReactNode } from 'react'
-import { money } from './BoardReceipts'
+import { money } from './format'
 import { SCOREBOARD_FILE } from './evidenceFiles'
 import { useSharedJson } from './sharedJson'
 

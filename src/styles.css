@@ -424,6 +424,9 @@ code { color: var(--text-primary); font-size: .88em; }
 .limit-list { margin: 0 0 16px; padding-left: 1.1rem; }
 .limit-list li { margin-bottom: 10px; line-height: 1.6; }
 .featured-replays { margin-top: 12px; }
+/* Reserve the first replay's measured height (850px on phones, about 940px wide) until its data arrives. */
+.featured-replays #featured-panel.is-pending { min-height: 850px; }
+@media (min-width: 1000px) { .featured-replays #featured-panel.is-pending { min-height: 930px; } }
 .featured-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 4px; }
 .featured-tabs button { flex: 1 1 auto; min-height: 44px; padding: 8px 14px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .8rem; font-weight: 700; cursor: pointer; }
 .featured-tabs button.is-active { background: var(--navy-950); color: var(--paper-0, #fffdf8); border-color: var(--navy-950); }

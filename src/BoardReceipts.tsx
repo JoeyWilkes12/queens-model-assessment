@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type ComponentType, type ReactNode } from
 import { BoardReplay, type BoardFrame, type Cell, type FrameTone } from './BoardReplay'
 import { greedyFrames, type GreedyBoard } from './GreedyRule'
 import { MiniBoard } from './MiniBoard'
+import { money } from './format'
 import { deriveTrajectoryFrames, type RecordedTrajectory } from './trajectoryBoardData'
 import './board-receipts.css'
 import './scoreboard.css'
@@ -44,17 +45,9 @@ const OUTCOME: Record<string, string> = {
 const fillOf = (system: System) => system.family === 'baseline' ? (system.solved ? 'baseline' : null)
   : ['strict', 'solved_raw'].includes(system.outcome) ? 'solid' : ['format_only', 'solved_filtered'].includes(system.outcome) ? 'hatched' : null
 const rank = (system: System) => fillOf(system) === 'solid' ? 3 : fillOf(system) ? 2 : system.outcome === 'not_run' ? 0 : 1
+export { money }
 const strata = (s: Stratum) => `${s.singleton_status === 'singleton' ? 'Has a single-cell region' : 'No single-cell region'} · ${s.tier === 'lower_search' ? 'lower search' : 'higher search'}`
 
-/** Dollar amounts down to SubQ's fractions of a cent, never rounded to zero. */
-export function money(value: number | null | undefined) {
-  if (value === null || value === undefined) return '—'
-  if (value === 0) return '$0'
-  if (value >= 1) return `$${value.toFixed(2)}`
-  if (value >= 0.01) return `$${value.toFixed(3)}`
-  if (value >= 0.001) return `$${value.toFixed(4)}`
-  return `$${value.toPrecision(2)}`
-}
 const plural = (count: number, word: string) => `${count} ${word}${count === 1 ? '' : 's'}`
 /** A one-shot model's re-run (sent again after a request failure) has its own outcome and cost; never average it in. */
 const rerunOf = (system: System) => system.family === 'decision' ? undefined : system.receipts.find(receipt => receipt.role === 're-run')

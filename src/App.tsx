@@ -1,24 +1,14 @@
-import { Fragment, lazy, Suspense, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
+import { Component, Fragment, lazy, Suspense, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 import { BoardReplay } from './BoardReplay'
 import { deriveReceiptBoard } from './receiptBoardData'
 import { deriveTrajectoryFrames } from './trajectoryBoardData'
-import { ReceiptChainNavigation } from './ReceiptChainNavigation'
 import { FailureComparison } from './FailureComparison'
 import { deriveFailureComparison } from './failureComparisonData'
-import { SubQAssessment } from './SubQAssessment'
-import { OllamaAssessment } from './OllamaAssessment'
-import { OllamaComparison } from './OllamaComparison'
-import { DecisionModels } from './DecisionModels'
-import { GreedyRule } from './GreedyRule'
-import { FrontierTrajectories } from './FrontierTrajectories'
-import { LegacyPanel } from './LegacyPanel'
 import { CostLedger } from './CostLedger'
-import { MethodsCritique } from './MethodsCritique'
 import { FeaturedReplays } from './FeaturedReplays'
 import { PairStrip } from './PairStrip'
 import { Leaderboard } from './Leaderboard'
 import { Scoreboard } from './Scoreboard'
-import { BoardReceipts } from './BoardReceipts'
 import { ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCost'
 import { BOOK_PAGES, BOOK_PARTS, crumbsFor, entryFor, expandedFor, type NavPage } from './bookNav'
 import { CHANGELOG, FOUNDATION, REPOSITORY_URL, type ChangeKind } from './changelog'
@@ -26,9 +16,53 @@ import './book-nav.css'
 import { LOCAL_QWEN_HERO, Z3_HERO, type HeroText } from './routeHeroes'
 import { LoadingBlocks } from './LoadingBlocks'
 
-// The Z3 part is large and self-contained; load it only when its route opens.
-const Z3Part = lazy(() => import('./z3/Z3Part'))
-const LocalQwen = lazy(() => import('./LocalQwen'))
+// Chapters other than the summary, atlas and the chapters written in this file load when their route opens,
+// so the first visit downloads only what it shows. Each loader is shared by its lazy component and by
+// preloadRoute, which the sidebar calls on hover, focus or touch so a click usually finds the code ready.
+// A failed load is forgotten, so the next attempt (a retry or another visit) tries again.
+function loader<M>(load: () => Promise<M>) {
+  let pending: Promise<M> | undefined
+  return () => pending ??= load().catch(error => { pending = undefined; throw error })
+}
+const chapters = {
+  z3: loader(() => import('./z3/Z3Part')),
+  localQwen: loader(() => import('./LocalQwen')),
+  boardReceipts: loader(() => import('./BoardReceipts')),
+  decisionModels: loader(() => import('./DecisionModels')),
+  frontier: loader(() => import('./FrontierTrajectories')),
+  greedy: loader(() => import('./GreedyRule')),
+  critique: loader(() => import('./MethodsCritique')),
+  pilot: loader(() => import('./OllamaAssessment')),
+  caveman: loader(() => import('./OllamaComparison')),
+  subq: loader(() => import('./SubQAssessment')),
+  legacyPanel: loader(() => import('./LegacyPanel')),
+  receiptChain: loader(() => import('./ReceiptChainNavigation')),
+}
+const Z3Part = lazy(chapters.z3)
+const LocalQwen = lazy(chapters.localQwen)
+const BoardReceipts = lazy(() => chapters.boardReceipts().then(m => ({ default: m.BoardReceipts })))
+const DecisionModels = lazy(() => chapters.decisionModels().then(m => ({ default: m.DecisionModels })))
+const FrontierTrajectories = lazy(() => chapters.frontier().then(m => ({ default: m.FrontierTrajectories })))
+const GreedyRule = lazy(() => chapters.greedy().then(m => ({ default: m.GreedyRule })))
+const MethodsCritique = lazy(() => chapters.critique().then(m => ({ default: m.MethodsCritique })))
+const OllamaAssessment = lazy(() => chapters.pilot().then(m => ({ default: m.OllamaAssessment })))
+const OllamaComparison = lazy(() => chapters.caveman().then(m => ({ default: m.OllamaComparison })))
+const SubQAssessment = lazy(() => chapters.subq().then(m => ({ default: m.SubQAssessment })))
+const LegacyPanel = lazy(() => chapters.legacyPanel().then(m => ({ default: m.LegacyPanel })))
+const ReceiptChainNavigation = lazy(() => chapters.receiptChain().then(m => ({ default: m.ReceiptChainNavigation })))
+
+const ROUTE_CHAPTERS: Record<string, () => Promise<unknown>> = {
+  'how-z3-solves-queens': chapters.z3, 'local-qwen': chapters.localQwen, 'board-receipts': chapters.boardReceipts,
+  'decision-models': chapters.decisionModels, 'openai-decisions-plan': chapters.decisionModels, 'frontier-trajectories': chapters.frontier,
+  'greedy-rule': chapters.greedy, 'methods-critique': chapters.critique, 'local-open-models': chapters.pilot,
+  'caveman-summary': chapters.caveman, 'subq-assessment': chapters.subq, 'earlier-generations': chapters.legacyPanel,
+}
+/** Start loading a route's chapter code ahead of a click. Failures are ignored here; the route reports them. */
+function preloadRoute(path: string) {
+  const first = path.split('/')[0]
+  ROUTE_CHAPTERS[first]?.().catch(() => undefined)
+  if (first === 'local-open-models' && path !== first) chapters.caveman().catch(() => undefined)
+}
 
 type AssessmentOutcome = 'success' | 'model_failure' | 'request_failure' | 'not_run' | 'ungraded'
 
@@ -766,7 +800,7 @@ function EvidenceDetail({ record, onBack }: { record: EvidenceRecord; onBack: ()
     </PageHero>
     <main className="evidence-detail" id="main-content">
       <button className="back-link" onClick={onBack}>← Back to atlas</button>
-      <ReceiptChainNavigation receiptId={record.id} />
+      <Suspense fallback={null}><ReceiptChainNavigation receiptId={record.id} /></Suspense>
       <ReceiptCostStrip id={record.id} board={record.board ?? undefined} />
       <ErrorContextCallout record={record} />
       {record.excluded && !record.errorContext && <Callout tone="caution" title="Excluded from the default atlas"><p>{record.exclusionReason || 'This record documents a request-level failure rather than a model response.'}</p><p>It remains searchable, directly addressable, and available for audit.</p></Callout>}
@@ -988,7 +1022,7 @@ function EarlierGenerations() {
   return <><PageHero trail="Model generations / October 1 cohort" title="The same board, across earlier model generations." deck="A sparse, adaptively reprioritized comparison replays the original image prompts and separates strict JSON-plus-rules success from a deterministic written-answer diagnostic." action={{ label: 'Open the request receipts', path: 'evidence-atlas' }} />
     <div className="reading-layout"><LocalToc items={[{ id: 'earlier-panel', label: '36-board panel' }, { id: 'earlier-method', label: 'Scoring boundary' }, { id: 'earlier-models', label: 'By model' }, { id: 'earlier-receipts', label: 'Every board receipt' }, { id: 'earlier-failures', label: 'First observed failures' }, { id: 'earlier-diagnostics', label: 'Historical diagnostics' }, { id: 'diagnostic-completion', label: 'Matched completion study' }, { id: 'earlier-limits', label: 'Cost & limits' }]} />
       <main className="reading-column" id="main-content">
-        <Section id="earlier-panel" title="36 boards per model (17–19 October)"><LegacyPanel ui={bookUi} /></Section>
+        <Section id="earlier-panel" title="36 boards per model (17–19 October)"><Suspense fallback={<p role="status">Loading the 36-board panel…</p>}><LegacyPanel ui={bookUi} /></Suspense></Section>
         {!data && <p role="status">{error ? 'The saved cohort summary is not available. You can still inspect this study’s saved requests and responses in the evidence atlas.' : 'Loading the saved cohort summary…'}</p>}
         {data && <>
           {data.status === 'running' && <Callout tone="caution" title="This cohort is still in progress.">The counts below are a live saved summary, not a final result. Do not interpret unfinished requests or phases as the generation ladder’s stopping point.</Callout>}
@@ -1178,7 +1212,7 @@ function ContentsPage({ partId }: { partId?: string }) {
     return () => window.cancelAnimationFrame(frame)
   }, [partId])
   const list = (items: NavPage[]): ReactNode => <ul className="contents-list">{items.map(item => <li key={item.path}>
-    <a href={`#/${item.path}`}>{item.title}</a><span>{item.description}</span>
+    <a href={`#/${item.path}`} onPointerEnter={() => preloadRoute(item.path)} onFocus={() => preloadRoute(item.path)}>{item.title}</a><span>{item.description}</span>
     {item.children && (item.children.every(child => child.anchor)
       ? <p className="contents-sections">{item.children.map((child, index) => <span key={child.path}>{index > 0 && ' · '}<a href={`#/${child.path}`}>{child.title}</a></span>)}</p>
       : list(item.children))}
@@ -1221,6 +1255,22 @@ function ChangelogPage() {
     </div></>
 }
 
+/** A lazy chapter's placeholder hero, from the book's contents (the chapter replaces it with its own). */
+function loadingHero(path: string): HeroText {
+  const entry = entryFor(path)
+  return { trail: '', title: entry?.page.title ?? 'Queens assessment', deck: entry?.page.description ?? 'Loading this page.' }
+}
+
+/** If a chapter's code fails to load (offline, a deploy replaced the files), say so and offer a retry instead of a blank page. */
+class ChapterBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() {
+    if (!this.state.failed) return this.props.children
+    return <div className="not-found" role="alert"><span className="section-label">Unavailable</span><h1>This chapter could not load.</h1><p>The connection may have dropped, or the book was updated while this page was open.</p><div className="next-actions"><button className="button button-mint" onClick={() => this.setState({ failed: false })}>Try again <Icon name="arrow" /></button><button className="button" onClick={() => window.location.reload()}>Reload the book</button></div></div>
+  }
+}
+
 /** Lazy chapter placeholder: the chapter's own hero and a full-height body, so the page does not jump when it loads. */
 function LoadingPage({ hero, label }: { hero: HeroText; label: string }) {
   return <><PageHero {...hero} /><main className="reading-column loading-shell" id="main-content" aria-busy="true"><p role="status">{label}</p><LoadingBlocks /></main></>
@@ -1245,7 +1295,7 @@ function Sidebar({ path, open, onClose }: { path: string; open: boolean; onClose
     const listId = `nav-${item.path.replace(/[^a-z0-9]+/gi, '-')}`
     return <li key={item.path}>
       <div className={`nav-row nav-row--depth-${Math.min(depth, 2)}${active ? ' active' : ''}${ancestors.has(item.path) ? ' is-ancestor' : ''}`}>
-        <a href={`#/${item.path}`} onClick={onClose} aria-current={active ? 'page' : undefined}><span>{item.title}</span>{active && <span className="nav-dot" aria-hidden="true" />}</a>
+        <a href={`#/${item.path}`} onClick={onClose} onPointerEnter={() => preloadRoute(item.path)} onFocus={() => preloadRoute(item.path)} onTouchStart={() => preloadRoute(item.path)} aria-current={active ? 'page' : undefined}><span>{item.title}</span>{active && <span className="nav-dot" aria-hidden="true" />}</a>
         {item.children && <button type="button" className="nav-twisty" aria-expanded={isOpen} aria-controls={listId} aria-label={`${isOpen ? 'Hide' : 'Show'} ${item.children.length} ${item.children.every(child => child.anchor) ? 'sections' : 'pages'} in ${item.title}`} onClick={() => toggle(item.path)}><Icon name="chevron" size={16} /></button>}
       </div>
       {item.children && <ul id={listId} hidden={!isOpen}>{item.children.map(child => page(child, depth + 1))}</ul>}
@@ -1311,7 +1361,7 @@ function App() {
                     : active === 'about' ? <AboutPage />
                     : active === 'contents' ? <ContentsPage partId={parts[1]} />
                     : active === 'changelog' ? <ChangelogPage /> : <NotFound />
-  return <div className="app-shell"><Sidebar path={path} open={drawerOpen} onClose={() => setDrawerOpen(false)} /><div className="page-frame" {...(drawerOpen ? { inert: '' } : {})}><header className="mobile-topbar"><button ref={menuButtonRef} className="icon-button" onClick={() => setDrawerOpen(true)} aria-label="Open navigation"><Icon name="menu" /></button><button className="mobile-wordmark" onClick={() => navigate('executive-summary')}>Queens <span>/ assessment</span></button><ThemeToggle theme={theme} setTheme={setTheme} /></header><div className="page-tools"><ThemeToggle theme={theme} setTheme={setTheme} /></div><div className="page-body">{page}</div><footer className="site-footer"><span>Queens assessment · expanded illustrated edition</span><span><a href="#/contents">contents</a> · <a href="#/about">about this book</a> · <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a></span></footer></div></div>
+  return <div className="app-shell"><Sidebar path={path} open={drawerOpen} onClose={() => setDrawerOpen(false)} /><div className="page-frame" {...(drawerOpen ? { inert: '' } : {})}><header className="mobile-topbar"><button ref={menuButtonRef} className="icon-button" onClick={() => setDrawerOpen(true)} aria-label="Open navigation"><Icon name="menu" /></button><button className="mobile-wordmark" onClick={() => navigate('executive-summary')}>Queens <span>/ assessment</span></button><ThemeToggle theme={theme} setTheme={setTheme} /></header><div className="page-tools"><ThemeToggle theme={theme} setTheme={setTheme} /></div><div className="page-body"><ChapterBoundary key={path}><Suspense fallback={<LoadingPage hero={loadingHero(path)} label="Loading this chapter…" />}>{page}</Suspense></ChapterBoundary></div><footer className="site-footer"><span>Queens assessment · expanded illustrated edition</span><span><a href="#/contents">contents</a> · <a href="#/about">about this book</a> · <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a></span></footer></div></div>
 }
 
 function ThemeToggle({ theme, setTheme }: { theme: 'light' | 'dark'; setTheme: (theme: 'light' | 'dark') => void }) {

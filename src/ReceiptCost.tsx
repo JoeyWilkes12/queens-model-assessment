@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { money } from './BoardReceipts'
+import { money } from './format'
 import { loadSharedJson, type JsonResource } from './sharedJson'
 
 /** [usd or null, basis, board total or null, requests on that board, requests with unknown cost] */

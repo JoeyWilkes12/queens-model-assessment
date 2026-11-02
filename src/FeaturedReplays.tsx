@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { BoardReplay } from './BoardReplay'
 import { deriveTrajectoryFrames, type RecordedTrajectory } from './trajectoryBoardData'
+import { useNearViewport } from './useNearViewport'
 
 type SavedTrajectory = RecordedTrajectory & { correct_queens_before_failure: number; http_calls: number; forced_decisions: number }
 type Board = { id: string; size: number; regions: number[][] }
@@ -29,8 +30,11 @@ export function FeaturedReplays() {
   const [data, setData] = useState<Loaded | null>(null)
   const [error, setError] = useState(false)
   const [active, setActive] = useState<(typeof showcase)[number]['key']>('subq-solve')
+  // About 0.9 MB of saved trajectories (48 kB gzip): fetch them only when the replays are about to scroll into view.
+  const [panelRef, near] = useNearViewport<HTMLDivElement>()
 
   useEffect(() => {
+    if (!near) return
     const controller = new AbortController()
     Promise.all([
       loadJson('trajectory-study.json', controller.signal),
@@ -39,7 +43,7 @@ export function FeaturedReplays() {
     ]).then(([jev, subq, protocol]) => setData({ jev, subq, subqBoards: protocol.boards }))
       .catch(() => { if (!controller.signal.aborted) setError(true) })
     return () => controller.abort()
-  }, [])
+  }, [near])
 
   const item = showcase.find(entry => entry.key === active) ?? showcase[0]
   const view = useMemo(() => {
@@ -64,7 +68,7 @@ export function FeaturedReplays() {
     <div className="featured-tabs" role="tablist" aria-label="Featured recorded attempts">
       {showcase.map(entry => <button key={entry.key} type="button" role="tab" id={`featured-tab-${entry.key}`} aria-selected={entry.key === active} aria-controls="featured-panel" className={entry.key === active ? 'is-active' : ''} onClick={() => setActive(entry.key)}>{entry.tab}</button>)}
     </div>
-    <div id="featured-panel" role="tabpanel" aria-labelledby={`featured-tab-${item.key}`}>
+    <div id="featured-panel" ref={panelRef} className={!data && !error ? 'is-pending' : undefined} role="tabpanel" aria-labelledby={`featured-tab-${item.key}`}>
       {error && <p role="status">The saved trajectory evidence could not be loaded. No replay is substituted.</p>}
       {!error && !data && <p role="status">Loading saved attempts…</p>}
       {data && !view && <p role="status">This saved attempt is unavailable; no trace is reconstructed.</p>}
