@@ -9,12 +9,17 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
 import { CHANGELOG } from '../src/changelog.ts'
-import { BOOK_PARTS, NAV_ENTRIES } from '../src/bookNav.ts'
+import { BOOK_PARTS, NAV_ENTRIES, crumbsFor } from '../src/bookNav.ts'
 
 const paths = NAV_ENTRIES.map(entry => entry.page.path)
 assert.equal(new Set(paths).size, paths.length, 'navigation paths must be unique')
 assert.equal(new Set(BOOK_PARTS.map(part => part.id)).size, BOOK_PARTS.length, 'part ids must be unique')
 assert.ok(paths.includes('changelog'), 'the navigation must list the changelog')
+// Contents opened at a part is the Contents page, not a page below it (seen on a phone: "… / Contents / Start").
+const trail = path => crumbsFor(path).map(crumb => crumb.label).join(' / ')
+assert.equal(trail('contents/start'), 'Queens assessment / Contents / Start here')
+assert.equal(trail('contents'), 'Queens assessment / Contents')
+assert.equal(trail('about'), 'Queens assessment / About / About this book')
 
 for (const [index, entry] of CHANGELOG.entries()) {
   assert.match(entry.date, /^\d{4}-\d{2}-\d{2}$/, `entry ${index} date`)
