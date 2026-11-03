@@ -27,6 +27,9 @@ TOP_FILES = ("plan.json", "summary.json", "prompt-template.txt", "caveman-system
 CALL_FILES = ("request.json", "response.json", "metadata.json", "grade.json", "diagnostic.json")
 STUDY_NAME = re.compile(r"qwen3[.]5-(?:9b-nvfp4|27b-q4_K_M)-np24576(?:-qwen-sampling-r[1-9][0-9]*)?$|qwen3[.]5-(?:4b|9b-nvfp4)-np32768-loopstop(?:-audit)?$")
 FRESH_NAMES = {"gemma4-e4b-fresh1-4arm-np32768", "llava-llama3-8b-fresh1-4arm-np4096", "qwen3.5-4b-fresh1-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-4arm-np32768"}
+TEXT_NAMES = {"gpt-oss-20b-fresh1-text-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-text-4arm-np32768"}
+FRESH_NAMES |= TEXT_NAMES
+TEXT_TEMPLATE = "prompt-template-text-grid.txt"
 PRIMARY_NAMES = {"qwen3.5-9b-nvfp4", "qwen3.5-27b-q4_K_M"}
 HOST_KEYS = ("samples", "max_pressure_level", "swap_used_gib_start", "swap_used_gib_max", "swap_used_gib_end",
              "min_free_plus_inactive_gib", "max_compressor_gib", "max_model_size_gib", "max_model_vram_gib")
@@ -115,7 +118,7 @@ def format_only_correct(board, text):
 def configuration(plan):
     """Rebuild every supported requested generation control from the frozen plan."""
     protocol = plan["protocol"]
-    require(protocol["modality"] == "image" and protocol["one_shot"] is True
+    require(protocol["modality"] in ("image", "text") and protocol["one_shot"] is True
             and protocol["tools"] is False and protocol["retries"] == 0
             and protocol["structured_output_enforcement"] is False, "Unsupported study protocol")
     options = {key: protocol[key] for key in ("num_predict", "temperature", "seed", "num_ctx")}
@@ -222,7 +225,12 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     require(re.fullmatch(r"[a-f0-9]{64}", plan["runtime"]["digest"]) is not None, "Invalid model digest")
     boards = {b["id"]: b for b in plan["boards"]}
     require(len(boards) == len(plan["boards"]) and all(re.fullmatch(r"[A-Za-z0-9_-]+", key) for key in boards), "Invalid board identities")
-    template = (directory / "prompt-template.txt").read_bytes()
+    text_study = study_id in TEXT_NAMES
+    modality = "text" if text_study else "image"
+    require(plan["protocol"]["modality"] == modality, "Unexpected study modality")
+    template_name = TEXT_TEMPLATE if text_study else "prompt-template.txt"
+    require(plan.get("prompt_template_file", "prompt-template.txt") == template_name, "Unexpected prompt template path")
+    template = (directory / template_name).read_bytes()
     system = (directory / "caveman-system.txt").read_bytes()
     require(sha(template) == plan["prompt_template_sha256"], "Template hash mismatch")
     require(sha(system) == read(directory / "skill.json")["system_sha256"], "Skill body hash mismatch")
@@ -259,17 +267,25 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
             continue
         board, arm = boards[saved["board_id"]], saved["treatment"]
         require(arm in arms and saved["call_id"] == f"{arm}_{board['id']}" and saved["size"] == board["size"], "Invalid row identity")
-        image_name = f"images/{board['id']}.png"
-        require(board["image"] == image_name and saved["image"] == image_name, "Unexpected board image")
-        image_bytes = (directory / image_name).read_bytes()
-        require(sha(image_bytes) == board["image_sha256"], "Frozen image hash mismatch")
-        user = {"role": "user", "content": template.decode().replace("{{BOARD_ID}}", board["id"]).replace("{{SIZE}}", str(board["size"])),
-                "images": [base64.b64encode(image_bytes).decode("ascii")]}
+        prompt = template.decode().replace("{{BOARD_ID}}", board["id"]).replace("{{SIZE}}", str(board["size"]))
+        user = {"role": "user", "content": prompt}
+        image_name = None
+        if text_study:
+            require(board["image"] is None and board["image_sha256"] is None and saved["image"] is None,
+                    "Unexpected image in text study")
+            grid = [[chr(65 + region) for region in line] for line in board["regions"]]
+            user["content"] = prompt.replace("{{REGION_GRID_ROWS}}", json.dumps(grid, separators=(",", ":")))
+        else:
+            image_name = f"images/{board['id']}.png"
+            require(board["image"] == image_name and saved["image"] == image_name, "Unexpected board image")
+            image_bytes = (directory / image_name).read_bytes()
+            require(sha(image_bytes) == board["image_sha256"], "Frozen image hash mismatch")
+            user["images"] = [base64.b64encode(image_bytes).decode("ascii")]
         row = {"call_id": saved["call_id"], "board_id": board["id"], "size": board["size"], "treatment": arm,
                "state": "recorded" if saved["state"] == "recorded" else "pending",
                "strict_correct": False, "format_only_correct": False, "truncated": False, "loop_stopped": False,
                "input_tokens": None, "output_tokens": None, "elapsed_seconds": None, "finish_reason": None,
-               "receipt": None, "image": relative_root + "/" + image_name, "peer_call_id": f"{'caveman' if arm == 'baseline' else 'baseline'}_{board['id']}",
+               "receipt": None, "image": relative_root + "/" + image_name if image_name else None, "peer_call_id": f"{'caveman' if arm == 'baseline' else 'baseline'}_{board['id']}",
                "pair_verified": False, "rescue": None, "host": None, "loop_stop": None}
         if row["state"] == "recorded":
             receipt = directory / "receipts" / row["call_id"]
@@ -309,6 +325,8 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     label = f"Qwen3.5 {model_short} · {protocol['num_predict']:,} · " + ("loop-stop audit" if audit_of else f"sampling r{sampling.group(1)}" if sampling else "greedy + loop-stop" if loopstop else "greedy")
     if coverage and plan.get("arms"):
         label = f"{plan['runtime']['model']} · fresh1 · four arms · {protocol['num_predict']:,} · greedy · shadow detector"
+    if text_study:
+        label += " · text grid"
     runtime = {key: plan["runtime"].get(key) for key in ("model", "digest", "server_version", "details", "os", "machine_architecture")}
     return {**({"arms": plan.get("arms", {arm: {"system_file": "caveman-system.txt" if arm == "caveman" else None, "system_sha256": sha(system) if arm == "caveman" else None, "system_chars": len(system.decode()) if arm == "caveman" else 0, "system_words": len(system.decode().split()) if arm == "caveman" else 0} for arm in ARMS}), "board_set": "fresh1" if plan.get("arms") else "legacy", "loop_mode": "shadow" if protocol.get("loop_stop", {}).get("shadow") else "active" if loopstop else "off"} if coverage else {}), **({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
             "decoding": decoding, "round": int(sampling.group(1)) if sampling else 0,
@@ -321,7 +339,10 @@ def source_files(directory):
     """Select the explicit artifact allowlist, never logs or live operational state."""
     result = [directory / name for name in TOP_FILES if (directory / name).is_file()]
     plan, summary = read(directory / "plan.json"), read(directory / "summary.json")
-    result += [directory / safe_relative(board["image"]) for board in plan["boards"]]
+    if directory.name in TEXT_NAMES:
+        result.append(directory / TEXT_TEMPLATE)
+    else:
+        result += [directory / safe_relative(board["image"]) for board in plan["boards"]]
     expected_calls = {row["call_id"] for row in summary["rows"]}
     completed_calls = {path.parent.name for path in (directory / "receipts").glob("*/metadata.json")}
     require(completed_calls <= expected_calls, "Unexpected completed receipt directory")
@@ -360,9 +381,17 @@ def derive_catalog(base, manifest):
     if manifest["schema_version"] >= 3:
         fresh = [read(base / item["directory"] / "plan.json") for item in manifest["study_roots"]
                  if item["id"] in FRESH_NAMES]
-        if fresh:
-            require(all(plan["boards"] == fresh[0]["boards"] and plan["board_set"] == fresh[0]["board_set"] for plan in fresh),
+        by_modality = {}
+        for plan in fresh:
+            modality = plan["protocol"]["modality"]
+            peer = by_modality.setdefault(modality, plan)
+            require(plan["boards"] == peer["boards"] and plan["board_set"] == peer["board_set"],
                     "Fresh studies disagree on frozen boards")
+        if "image" in by_modality and "text" in by_modality:
+            image, text = (by_modality[modality] for modality in ("image", "text"))
+            text_projection = [dict(board, image=None, image_sha256=None) for board in image["boards"]]
+            require(text["boards"] == text_projection and text["board_set"] == image["board_set"],
+                    "Text and image studies disagree on frozen boards")
     return {"schema_version": manifest["schema_version"], "snapshot_id": manifest["snapshot_id"], "captured_utc": manifest["captured_utc"],
             "source_commit": manifest["source_commit"], "source_dirty": manifest["source_dirty"],
             "grader_sha256": manifest["grader_sha256"], "manifest": prefix + "/manifest.json",
