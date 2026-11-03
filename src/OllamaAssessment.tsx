@@ -20,7 +20,7 @@ export function OllamaAssessment({ ui }: { ui: BookUi }) {
   const { PageHero, LocalToc, Section, Callout, DataTable } = ui
   const saved = useSavedOllamaStudy()
 
-  const hero = <PageHero trail="Model generations / local open models" title="Local Qwen, measured separately." deck="A saved image pilot on 5×5, 7×7 and 9×9 regional Queens boards. Inspect the local runner, exact requests, deterministic grades, and conditional Caveman comparison." />
+  const hero = <PageHero trail="Model generations / local open models" title="The original Qwen 4B pilot" deck="A saved image pilot on 5×5, 7×7 and 9×9 regional Queens boards. Inspect the local runner, exact requests, deterministic grades, and conditional Caveman comparison." />
   if (saved.status === 'loading') return <>{hero}<main className="reading-column" id="main-content"><p className="board-view-unavailable" role="status">Loading the saved local-model assessment…</p></main></>
   if (saved.status === 'error') return <>{hero}<main className="reading-column" id="main-content"><Callout tone="stop" title="The saved assessment could not be loaded."><p>No results are substituted. Reload this page, or {artifactLink('summary.json', 'open the saved summary')} to inspect the published artifact.</p></Callout></main></>
 
@@ -56,7 +56,7 @@ export function OllamaAssessment({ ui }: { ui: BookUi }) {
       </Section>
 
       <Section id="ollama-receipts" title="Every scheduled request">
-        <p><a href="#/caveman-summary">Read the Caveman comparison summary</a> or <a href="#/local-open-models/configuration">inspect the shared model configuration</a>. Every receipt has a direct link to the same board with the other condition.</p>
+        <p><a href="#/caveman-summary/pilot">Read the pilot comparison</a> or <a href="#/local-open-models/configuration">inspect the shared model configuration</a>. Every receipt has a direct link to the same board with the other condition.</p>
         <p>Each board link opens the exact image supplied to the model. Request, response, strict grade, extraction grade, and runtime metadata stay separate. The page reads committed evidence; it never calls a model. Runtime-reported generated tokens include thinking and final-answer tokens, not just the visible final answer.</p>
         <p>For a budget-limited response, “No final answer” means no validated final placement was returned within the cap. It does not label an unfinished attempt as an invalid completed solution.</p>
         {data.rows.length ? <DataTable caption="Local model request ledger with raw JSON receipts" headers={['Request / treatment', 'Board image', 'Outcome', 'Strict correct', 'Valid after extraction', 'Wall time', 'Input tokens (reported)', 'Generated tokens (reported)', 'Evidence (JSON)']} rows={data.rows.map(row => [
@@ -69,7 +69,7 @@ export function OllamaAssessment({ ui }: { ui: BookUi }) {
       </Section>
 
       <Section id="ollama-caveman" title="The paired Caveman comparison">
-        <p><a href="#/caveman-summary">Caveman summary: correctness, token use and every matched pair</a>.</p>
+        <p><a href="#/caveman-summary">Compare Caveman across local studies</a> · <a href="#/local-qwen">Explore all local assessments</a>.</p>
         <Callout tone={data.gate.baseline_success ? 'evidence' : 'note'} title={gateTitle}>
           <p>The frozen gate requires at least one baseline solution at 5×5 or larger, either strict or uniquely extracted and rule-valid, plus completed skill review. The paired arm uses the same frozen boards and generation settings in fresh requests, with the reviewed Caveman body added as a system instruction.</p>
           <p>{status === 'gate_not_met' ? 'No qualifying baseline solution was recorded, so Caveman was not run.' : status === 'enabled_after_review' ? 'The reviewed Caveman arm is enabled. Its recorded, unrecorded and not-run requests appear in the tables above.' : 'The saved status is pending baseline success or skill review; absence of Caveman results is not a failed model attempt.'}</p>
