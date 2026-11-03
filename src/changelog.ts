@@ -28,6 +28,16 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-03',
+    title: 'Contents breadcrumb and phone section jumps',
+    kinds: ['fix'],
+    pr: 15,
+    changes: [
+      'Contents opened at a part now reads “Queens assessment / Contents / Start here” instead of treating the part as a page below Contents.',
+      'On phones, jumping to a section no longer hides its heading under the sticky top bar.',
+    ],
+  },
+  {
     date: '2026-11-02',
     title: 'Faster, steadier loading',
     kinds: ['interface'],
