@@ -5,16 +5,16 @@ This is the static-compatible Vite + React + TypeScript companion to the expande
 Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-model-assessment/)
 
 The [local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen)
-cover Gemma 4 E4B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
+cover Gemma 4 E4B, GPT-OSS 20B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
 original Qwen budget and sampling conditions, and selected loop-stop audits.
-The November 2 snapshot contains 19 conditions and 464 assessment receipts, plus
-38 separate rescues. Third sampling rounds are complete for Qwen 9B and 27B;
-fresh1 Qwen 4B remains partial at 13 strict of 37 recorded, with 48 planned. It includes partial studies without treating unrun requests
-as model failures. See the [coverage and scientific limits](docs/local-assessment-coverage.md),
+The November 3 snapshot contains 21 conditions and 531 assessment receipts, plus
+38 separate rescues. It completes Qwen 4B fresh1 image, adds the complete GPT-OSS
+20B text-grid study and includes the first eight Qwen 9B text-grid calls.
+See the [November 3 results](docs/local-qwen-nov3.md),
 [offline import workflow](docs/local-qwen-imports.md), [method review](docs/local-qwen-methods.md),
 [historical October 31 results](docs/local-qwen-oct31.md), and
 [November 2 findings](docs/local-qwen-nov2.md) and
-[updated financial scenarios](docs/local-qwen-nov2-costs.md). New nights add immutable
+[November 2 financial scenarios](docs/local-qwen-nov2-costs.md). New nights add immutable
 snapshots; the website never sends inference requests.
 
 ## Table of contents
