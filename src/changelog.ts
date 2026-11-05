@@ -29,6 +29,24 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-05',
+    title: 'Completed open-weight assessments in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    changes: [
+      'Added a completed open-weight view to the Executive Summary leaderboard, with model and board-size filters and links to the saved studies.',
+      'Showed strict answers and correct answers in the wrong format by completed protocol. Selected rerun audits appear in a separate evidence section.',
+    ],
+  },
+  {
+    date: '2026-11-05',
+    title: 'Reviewable evidence updates and changelog guidance',
+    kinds: ['method'],
+    pr: 12,
+    changes: [
+      'Documented how to split evidence and site changes into reviewable PRs and keep the changelog current.',
+    ],
+  },
+  {
+    date: '2026-11-05',
     title: 'Completed Qwen 9B text and JSON studies, plus fresh Qwen 27B images',
     kinds: ['evidence', 'chapter', 'method'],
     pr: 18,
