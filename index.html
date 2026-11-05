@@ -7,6 +7,14 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="description" content="An inspectable technical book about the expanded Queens model assessment." />
     <title>Queens assessment · an inspectable technical book</title>
+    <script>
+      // The evidence atlas loads with its route; on a direct visit, start its catalog download now, alongside the
+      // book's code, instead of after the atlas code arrives. The atlas's own fetch reuses this response.
+      if (/^#\/?evidence-atlas\/?$/.test(location.hash)) {
+        const link = Object.assign(document.createElement('link'), { rel: 'preload', as: 'fetch', crossOrigin: 'anonymous', href: 'evidence/manifest.json' })
+        document.head.appendChild(link)
+      }
+    </script>
   </head>
   <body><!--
       THESIS: A technical book can make an evaluation legible without hiding its receipts.
