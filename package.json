@@ -12,6 +12,7 @@
     "boards:build": "python3 -I scripts/analysis/build_scoreboard.py && python3 -I scripts/analysis/build_board_receipts.py && python3 -I scripts/analysis/build_leaderboard.py",
     "boards:verify": "node scripts/verify-board-receipts.mjs && node scripts/verify-leaderboard.mjs",
     "test:print": "node scripts/check-print.cjs",
+    "test:shared-json-hook": "node scripts/test-shared-json-hook.cjs",
     "test:shared-json": "node --experimental-strip-types scripts/test-shared-json.mjs",
     "changelog:verify": "node --experimental-strip-types scripts/verify-changelog.mjs",
     "evidence:check-public": "python3 scripts/analysis/public_scrub.py check",
