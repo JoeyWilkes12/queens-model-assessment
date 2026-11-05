@@ -498,6 +498,7 @@ const studies: [string, string, string, string, string][] = [
   ['2026-11-01', '1 Nov', 'Fresh-board local models, four prompt arms', 'local-qwen', 'Qwen 9B 38/48; Gemma 10/48; LLaVA 0/48'],
   ['2026-11-02', '2 Nov', 'Qwen sampling round 3 and fresh-board progress', 'local-qwen', '9B 16/24; 27B 22/24 strict; 4B 37/48 recorded'],
   ['2026-11-03', '3 Nov', 'First local text-grid studies and completed 4B image panel', 'local-qwen', 'GPT-OSS 20B text 23/48 strict, Qwen 4B image 16/48 strict'],
+  ['2026-11-05', '4–5 Nov', 'Text grid, constrained JSON and 27B fresh images', 'local-qwen', '9B text 26/48, 9B JSON 19/24, 27B image 37/41 strict'],
 ]
 
 function ExecutiveSummary() {
@@ -553,7 +554,7 @@ function ExecutiveSummary() {
               <p className="qa-caveat">The 24 lists come from two boards, so they are not 24 separate puzzles.</p>
               <QaLinks links={[['Jev primer', '#/jev-primer'], ['Candidate engineering', '#/candidate-engineering'], ['Scale & primitives', '#/scale-primitives'], ['Decision models vs the index', '#/decision-models']]} />
             </Answer>
-            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="38/48" statLabel="strict requests, Qwen 9B on fresh1" statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions." answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B finished the image panel at 16 of 48 strict. On text grids, GPT-OSS 20B scored 23 of 48 and Qwen 9B has eight strict answers in eight recorded calls, with forty pending. Three sampling rounds are now complete for both larger Qwen models on the earlier panel. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles." more="Original 4B pilot, 28 Oct">
+            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="38/48" statLabel="strict requests, Qwen 9B on fresh1" statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions." answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B finished the image panel at 16 of 48 strict. On text grids, GPT-OSS 20B scored 23 of 48 and Qwen 9B scored 26 of 48. On images with a request-level JSON schema, Qwen 9B returned 19 of 24 strict. Qwen 27B returned 37 of 41 strict on fresh images, with seven pending. Three sampling rounds are now complete for both larger Qwen models on the earlier panel. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles." more="Original 4B pilot, 28 Oct">
               <p>The original 4B pilot below is preserved separately from the later larger-budget and larger-model experiments.</p>
               <PairStrip />
               <Facts items={[

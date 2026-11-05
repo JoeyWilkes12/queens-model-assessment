@@ -14,7 +14,7 @@ export type LocalStudy = {
   kind?: 'assessment' | 'audit'; audit_of?: string | null
   round: number; status: 'complete' | 'partial'; planned: number; recorded: number
   root: string; plan: string; summary: string; rows: LocalRow[]
-  protocol?: { modality?: 'image' | 'text' }
+  protocol?: { modality?: 'image' | 'text'; format?: Record<string, unknown> }
   runtime: { digest: string; server_version: string; details: { runner: string; quantization_level: string } }
 }
 export type LocalIndex = { schema_version: number; snapshot_id: string; captured_utc: string; source_commit: string; source_dirty: boolean; manifest: string; studies: LocalStudy[] }
