@@ -36,7 +36,7 @@ async function capture(context, url) {
 
 ;(async () => {
   const { BOOK_PAGES } = await import('../src/bookNav.ts')
-  const queue = only ? [only] : ['', ...BOOK_PAGES.map(page => `#/${page.path}`)], seen = new Set(only ? ['*'] : queue)
+  const queue = only ? [only] : [...new Set(['', ...BOOK_PAGES.map(entry => `#/${entry.page.path}`)])], seen = new Set(only ? ['*'] : queue)
   const browser = await chromium.launch()
   const options = mobile ? { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } : { viewport: { width: 1440, height: 1000 } }
   const [contextA, contextB] = [await browser.newContext({ ...options, reducedMotion: 'reduce' }), await browser.newContext({ ...options, reducedMotion: 'reduce' })]

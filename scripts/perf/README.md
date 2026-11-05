@@ -8,6 +8,7 @@ Tools for checking that a website change keeps the performance budget in [AGENTS
   - Cache modes: normal and disabled. A/B order alternates each round, after a warm-up load.
   - Each sample records primary readiness, LCP, layout shift (captured sum and session-window CLS), transfer, long tasks, and Total Blocking Time (TBT): each long task's time past 50 ms, from first contentful paint to readiness and to the end of the capture.
   - Invalid samples make it exit 1; they stay in the output and are excluded from medians.
+- **`../compare-builds.cjs`** checks a refactor: it renders the book's pages, and every in-book link it finds on them, in two builds and compares the DOM and a screenshot of each.
 - **`gzip-static-server.cjs`** serves a `dist/` directory under `/queens-model-assessment/` with gzip level 6 and `max-age=600`, like GitHub Pages without its CDN.
 
 ## Compare two commits

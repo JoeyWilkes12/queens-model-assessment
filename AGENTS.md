@@ -87,4 +87,6 @@ Keep what PR #14 gained. For any change under `src/`:
   into one line.
 
 For timing claims, use the matched lab in `scripts/perf/` (see its README);
-it reports readiness, LCP, layout shift and Total Blocking Time.
+it reports readiness, LCP, layout shift and Total Blocking Time. For a
+refactor that should not change what readers see, compare the two builds
+with `scripts/compare-builds.cjs`.
