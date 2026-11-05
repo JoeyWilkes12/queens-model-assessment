@@ -33,8 +33,8 @@ export const CHANGELOG: ChangeEntry[] = [
     kinds: ['interface'],
     pr: 21,
     changes: [
-      'Every page except the executive summary now loads with its own route, so the first visit downloads about a quarter less JavaScript than before (93 kB instead of 127 kB, compressed). Links in the sidebar and the contents start loading a page on hover, focus or touch.',
-      'Opening the evidence atlas directly starts downloading its catalog at once, alongside the book’s code, and the atlas keeps its heading in place while it loads.',
+      'Every page except the executive summary now loads with its own route, so the first visit downloads about a quarter less JavaScript than before (94 kB instead of 127 kB, compressed). In a slow-4G lab test, the summary, the local chapter and the atlas each showed their main content 0.14–0.27 s sooner. Links in the sidebar and the contents start loading a page on hover, focus or touch.',
+      'Opening the evidence atlas directly starts downloading its catalog and costs as soon as the book’s code has loaded, alongside the atlas’s own code. The atlas keeps its heading in place while it loads, and its rows appear with their costs instead of growing a cost line afterwards.',
       'Nothing on the pages changed: every book page and several hundred linked pages were compared with the previous version.',
     ],
   },
