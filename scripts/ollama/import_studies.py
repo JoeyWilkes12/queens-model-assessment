@@ -28,7 +28,16 @@ CALL_FILES = ("request.json", "response.json", "metadata.json", "grade.json", "d
 STUDY_NAME = re.compile(r"qwen3[.]5-(?:9b-nvfp4|27b-q4_K_M)-np24576(?:-qwen-sampling-r[1-9][0-9]*)?$|qwen3[.]5-(?:4b|9b-nvfp4)-np32768-loopstop(?:-audit)?$")
 FRESH_NAMES = {"gemma4-e4b-fresh1-4arm-np32768", "llava-llama3-8b-fresh1-4arm-np4096", "qwen3.5-4b-fresh1-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-4arm-np32768"}
 TEXT_NAMES = {"gpt-oss-20b-fresh1-text-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-text-4arm-np32768"}
-FRESH_NAMES |= TEXT_NAMES
+CONSTRAINED_NAME = "qwen3.5-9b-nvfp4-fresh1-json-2arm-np32768"
+FRESH_NAMES |= TEXT_NAMES | {CONSTRAINED_NAME, "qwen3.5-27b-q4_K_M-fresh1-4arm-np24576"}
+ANSWER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "board_id": {"type": "string"},
+        "columns_by_row": {"type": "array", "items": {"type": "integer"}},
+    },
+    "required": ["board_id", "columns_by_row"],
+}
 TEXT_TEMPLATE = "prompt-template-text-grid.txt"
 PRIMARY_NAMES = {"qwen3.5-9b-nvfp4", "qwen3.5-27b-q4_K_M"}
 HOST_KEYS = ("samples", "max_pressure_level", "swap_used_gib_start", "swap_used_gib_max", "swap_used_gib_end",
@@ -123,7 +132,8 @@ def configuration(plan):
             and protocol["structured_output_enforcement"] is False, "Unsupported study protocol")
     options = {key: protocol[key] for key in ("num_predict", "temperature", "seed", "num_ctx")}
     options.update(protocol.get("extra_options", {}))
-    return {"model": plan["runtime"]["model"], "think": protocol["think"],
+    return {**({"format": protocol["format"]} if "format" in protocol else {}),
+            "model": plan["runtime"]["model"], "think": protocol["think"],
             "stream": protocol.get("transport") == "stream", "options": options,
             "keep_alive": protocol.get("keep_alive", "10m")}
 
@@ -225,6 +235,13 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     require(re.fullmatch(r"[a-f0-9]{64}", plan["runtime"]["digest"]) is not None, "Invalid model digest")
     boards = {b["id"]: b for b in plan["boards"]}
     require(len(boards) == len(plan["boards"]) and all(re.fullmatch(r"[A-Za-z0-9_-]+", key) for key in boards), "Invalid board identities")
+    constrained = study_id == CONSTRAINED_NAME
+    protocol = plan["protocol"]
+    if constrained:
+        require(protocol.get("format") == ANSWER_SCHEMA and plan.get("arms"),
+                "Unexpected constrained JSON schema or arm design")
+    else:
+        require("format" not in protocol, "Unexpected format outside constrained JSON study")
     text_study = study_id in TEXT_NAMES
     modality = "text" if text_study else "image"
     require(plan["protocol"]["modality"] == modality, "Unexpected study modality")
@@ -237,7 +254,8 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     arms = plan.get("arm_names", list(ARMS))
     systems = {"baseline": None, "caveman": system.decode()}
     if plan.get("arms"):
-        require(arms == ["baseline", "schema", "neutral", "caveman"] and set(plan["arms"]) == set(arms), "Unsupported arm design")
+        expected_arms = list(ARMS) if constrained else ["baseline", "schema", "neutral", "caveman"]
+        require(arms == expected_arms and set(plan["arms"]) == set(arms), "Unsupported arm design")
         require(study_id in FRESH_NAMES and plan["board_set"]["name"] == "fresh1", "Unsupported fresh condition")
         for arm, info in plan["arms"].items():
             if arm == "baseline":
@@ -325,6 +343,8 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     label = f"Qwen3.5 {model_short} · {protocol['num_predict']:,} · " + ("loop-stop audit" if audit_of else f"sampling r{sampling.group(1)}" if sampling else "greedy + loop-stop" if loopstop else "greedy")
     if coverage and plan.get("arms"):
         label = f"{plan['runtime']['model']} · fresh1 · four arms · {protocol['num_predict']:,} · greedy · shadow detector"
+    if constrained:
+        label = f"{plan['runtime']['model']} · fresh1 · two arms · {protocol['num_predict']:,} · greedy · constrained JSON · shadow detector"
     if text_study:
         label += " · text grid"
     runtime = {key: plan["runtime"].get(key) for key in ("model", "digest", "server_version", "details", "os", "machine_architecture")}
