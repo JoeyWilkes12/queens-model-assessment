@@ -67,3 +67,24 @@ scope. The original `#/caveman-summary` page covers the 4B pilot; expanded model
 sampling and cost comparisons live at `#/local-qwen`. Do not imply that changing
 one route updates the other. If a future change expands a chapter's scope, make
 that change and its evidence dependencies explicit in the frontend PR.
+
+## Performance budget for website changes
+
+Keep what PR #14 gained. For any change under `src/`:
+
+- **Entry JavaScript stays at or below 135 kB gzip.** `npm run budget:check`
+  (after `npm run build`) enforces it in CI and fails if a route chapter
+  joins the entry. Raising the budget needs a stated reason and before/after
+  measurements in the PR.
+- **Loading causes no layout shift** on `#/executive-summary`, `#/local-qwen`
+  and `#/evidence-atlas`. A lazy page's loading state uses `LoadingPage` with
+  the page's own hero, so the layout does not jump.
+- **Below-the-fold evidence stays deferred** (`useNearViewport`, a closed
+  disclosure, or a route), and printing keeps working (`npm run test:print`).
+- **A new chapter gets its own module** and is registered in `src/chapters.ts`
+  to load with its route. Shared page parts live in `src/bookUi.tsx`. Keep
+  lines readable (about 160 characters at most) rather than packing a page
+  into one line.
+
+For timing claims, use the matched lab in `scripts/perf/` (see its README);
+it reports readiness, LCP, layout shift and Total Blocking Time.
