@@ -1,0 +1,63 @@
+{
+  "call_id": "baseline_panel-9-08",
+  "board_id": "panel-9-08",
+  "size": 9,
+  "treatment": "baseline",
+  "model": "qwen3.5:4b",
+  "model_digest": "7f3251fa6878a78a606bcb3c074283306e5ad2ea411a7774a9dd98a4bc7f2d13",
+  "started_utc": "2026-10-30T06:12:56.493517+00:00",
+  "completed_utc": "2026-10-30T06:22:51.034784+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 594.49487125,
+  "returned_model": "qwen3.5:4b",
+  "finish_reason": "length",
+  "done": true,
+  "input_tokens": 853,
+  "output_tokens": 32768,
+  "total_duration_ns": 594488975417,
+  "load_duration_ns": 642708,
+  "prompt_eval_duration_ns": 1338180042,
+  "eval_duration_ns": 593127950000,
+  "request_sha256": "1bae25502643cef28aac5930ccf6da03e39f4c82e3ec93272ec076c8e799d31b",
+  "response_sha256": "0d22e51eced68cb1331e2183475ba7fae87a3adad3a6613a4c51b35b125b3967",
+  "image_sha256": "90729467277953f3bf28da599b1bd1f4182cec291e7b5f6d6e7333d953062a78",
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": false,
+  "rule_valid_after_extraction": false,
+  "outcome": "truncated",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "d1678c181b4d9707d3224ef643427fe0f6edd55f8b17d7df8dcda7e5c39765df",
+    "panel_py_sha256": "788e1aa12df02460f2bb2f07b1ba9026f557cdc85941c6734d0dab110c9a1956",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "stream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.4,
+    "last_llama_server_decode": null,
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": true,
+    "policy_version": 1,
+    "detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47",
+    "triggered": false,
+    "checks": 104,
+    "max_metric": 0.525,
+    "fired_at_thinking_chars": null,
+    "stream_chunks": 29425
+  }
+}
