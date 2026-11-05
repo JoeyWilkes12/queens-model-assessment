@@ -31,6 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-05',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
+    pr: 19,
     changes: [
       'Added a completed open-weight view to the Executive Summary leaderboard, with model and board-size filters and links to the saved studies.',
       'Showed strict answers and correct answers in the wrong format by completed protocol. Selected rerun audits appear in a separate evidence section.',
