@@ -29,6 +29,15 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-05',
+    title: 'Incomplete open-weight coverage in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    changes: [
+      'Added a separate progress view for incomplete studies, with recorded outcomes and unrecorded calls shown against each frozen plan.',
+      'Separated the unfinished Qwen 27B fresh image panel from the two superseded original-budget runs. Linked the exact study and board records.',
+    ],
+  },
+  {
+    date: '2026-11-05',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
     pr: 19,
