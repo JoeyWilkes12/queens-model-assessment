@@ -31,7 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-05',
     title: 'Every page loads with its route',
     kinds: ['interface'],
-    pr: 16,
+    pr: 21,
     changes: [
       'Every page except the executive summary now loads with its own route, so the first visit downloads about a quarter less JavaScript than before (93 kB instead of 127 kB, compressed). Links in the sidebar and the contents start loading a page on hover, focus or touch.',
       'Opening the evidence atlas directly starts downloading its catalog at once, alongside the book’s code, and the atlas keeps its heading in place while it loads.',

@@ -2,7 +2,7 @@
 
 November 5, 2026. A review of Nolan Lawson's [The AI cost of JavaScript frameworks](https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/) (October 28, 2026) for this book: which findings apply, and what they suggest.
 
-> **Status, November 5:** suggestions 1–4 are implemented in PR #16, and suggestion 5 was evaluated there without adopting it. The results are in [the app-split measurements](../output/performance/2026-11-05-app-split/results.md). Suggestion 6 remains deferred.
+> **Status, November 5:** suggestions 1–4 are implemented in PR #21, and suggestion 5 was evaluated there without adopting it. The results are in [the app-split measurements](../output/performance/2026-11-05-app-split/results.md). Suggestion 6 remains deferred.
 
 ## Contents
 
