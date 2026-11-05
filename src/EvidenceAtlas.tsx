@@ -461,7 +461,8 @@ export function EvidenceExplorer({ selectedId }: { selectedId?: string }) {
           </label>
         </div>
         <p className="atlas-count" aria-live="polite">
-          Showing <strong>{visible.length}</strong> of {filtered.length} matching records ·{' '}
+          Showing <strong>{visible.length}</strong> of {filtered.length}
+          {' matching records · '}
           {records.length - excludedCount} included by default · {excludedCount} excluded
         </p>
         <div className="evidence-list">
