@@ -28,6 +28,15 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-05',
+    title: 'How large updates are reviewed',
+    kinds: ['method'],
+    pr: 12,
+    changes: [
+      'Documented the review workflow for evidence-heavy updates: compatibility changes first, then evidence and content, then the pages that display them, each as its own pull request. Every website update now adds an entry here. No page of the book changed.',
+    ],
+  },
+  {
     date: '2026-11-03',
     title: 'Contents breadcrumb and phone section jumps',
     kinds: ['fix'],
