@@ -85,12 +85,14 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
       <ul className="ow-results">
         {visible.map(({ study, rows, strict, format, remaining, total }) => {
           const counts = [strict, format, remaining]
+          const modelLabel = study.id === 'qwen3.5-4b-pilot' ? `${study.model} · pilot` : study.model
+          const protocolLabel = settings(study)
           return <li key={study.id}>
             <div className="ow-row-title">
-              <a href={studyHref(study)} aria-label={`Open study: ${study.label}`}>{study.model}{study.id === 'qwen3.5-4b-pilot' ? ' · pilot' : ''}</a>
+              <a href={studyHref(study)} aria-label={`${modelLabel} · ${protocolLabel}`}>{modelLabel}</a>
               <strong>{strict}/{total} strict</strong>
             </div>
-            <p className="ow-settings">{settings(study)}</p>
+            <p className="ow-settings">{protocolLabel}</p>
             <div className="ow-bar" aria-hidden="true">{counts.map((count, index) => count > 0 &&
               <span key={outcomeLabels[index]} className={outcomeStyles[index]} style={{ width: `${count / total * 100}%` }} />)}</div>
             <p className="ow-counts">{format} correct, wrong format · {remaining} remaining</p>
