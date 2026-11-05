@@ -2,6 +2,8 @@
 
 Measured November 2, 2026, against [Codex's plan](../../../../docs/static-site-performance-improvements-plan.md) and its [browser assessment](../browser-assessment.md). This is a local lab comparison of two production builds. It is not a public-site or field measurement.
 
+> **Revised November 5, after review.** An independent review on a second host (GPT 6.1, posted on PR #14) reproduced the bundle, transfer and layout-shift results below. It did not reproduce the timing medians consistently, so treat those as dated observations from this one host, not general speedups. The review also found that printing before the replays had loaded printed a loading line; that is fixed, and the claim about printing below is corrected. The matched follow-up (both cache modes, alternated A/B order, invalid samples rejected) is in [the November 5 results](../../2026-11-05/results.md).
+
 ## Contents
 
 - [Conditions](#conditions)
@@ -34,7 +36,7 @@ Measured November 2, 2026, against [Codex's plan](../../../../docs/static-site-p
 | | LCP | 1.75 s | 1.55 s | −11% |
 | | Transfer | 305 kB, 17 requests | 176 kB, 11 requests | −42% |
 | | JSON before scrolling | 94 kB (7 files) | 23 kB (2 files) | −75% |
-| Local open-weight assessments | Layout shift (CLS) | **0.268** | **0** | fixed |
+| Local open-weight assessments | Layout shift, captured sum¹ | **0.268** | **0** | fixed |
 | | LCP | 2.62 s | 1.29 s | −51% |
 | | Primary data ready | 2.99 s (2.85–3.15) | 2.64 s (2.60–2.83) | −12% |
 | | Transfer | 280 kB | 222 kB | −21% |
@@ -42,9 +44,11 @@ Measured November 2, 2026, against [Codex's plan](../../../../docs/static-site-p
 | | LCP | 1.72 s | 1.38 s | −19% |
 | | Transfer | 572 kB | 513 kB | −10% |
 
+¹ The harness sums every layout shift not caused by input during the captured load. Recomputed from the raw samples, session-window CLS (the largest burst of shifts, as the CLS metric defines it) is identical in every sample here. It is a short lab capture, not a field Core Web Vitals value.
+
 ### Desktop profile, no throttling
 
-| Route | CLS before → after | Data ready before → after | Transfer before → after |
+| Route | Layout-shift sum¹ before → after | Data ready before → after | Transfer before → after |
 |---|---|---|---|
 | Executive summary | 0.0099 → 0.0099 | 272 → 219 ms | 305 → 176 kB |
 | Local open-weight assessments | **0.089 → 0** | 247 → 235 ms | 280 → 222 kB |
@@ -80,13 +84,13 @@ Codex's goal was a 20% reduction from the 174 kB entry. The entry is now 126.6 k
    - **Lazy chapters:** ten chapters and the receipt-chain table (149 kB raw) now load with their route.
    - **Preloading:** sidebar and Contents links start loading a chapter on hover, focus or touch.
    - **Failed chunks:** a chapter whose code fails to load shows a "Reload the book" boundary, and other chapters keep working. Chromium keeps a failed module import for the page's lifetime, so an in-page retry cannot work; a reload does.
-   - **Deferred evidence:** the summary's featured replays (0.94 MB raw of trajectories) and the pair strip in a closed disclosure fetch their data only when they come within reach of the viewport, or when the page prints. Their content stays mounted, so anchors, disclosures and find-in-page behave as before, and the replay panel keeps its measured height while it waits.
+   - **Deferred evidence:** the summary's featured replays (0.94 MB raw of trajectories) and the pair strip in a closed disclosure fetch their data only when they come within reach of the viewport. *Corrected November 5:* this originally said "or when the page prints", but a browser does not wait for fetches started when printing begins, so a print before scrolling showed a loading line. Ctrl/⌘+P now loads and renders the replays before opening the print dialog, and printing from the browser menu prints a text record of the attempts (see the November 5 results). Their content stays mounted, so anchors, disclosures and find-in-page behave as before, and the replay panel keeps its measured height while it waits.
 
 ## Interpretation
 
-- **Did performance improve?** Yes. On the mobile profile, every route is faster to its primary content, transfers less, and has no new layout shift. The before and after sample ranges do not overlap on any mobile route.
+- **Did performance improve?** On this host, yes: on the mobile profile, every route was faster to its primary content, transferred less, and had no new layout shift, and the before and after sample ranges did not overlap on any mobile route. The transfer, bundle and layout-shift results were later reproduced on a second host; the timing results were not (see the revision note above).
 - **Largest wins:**
-  - The local chapter no longer jumps (CLS 0.27 → 0).
+  - The local chapter no longer jumps (layout shift 0.27 → 0).
   - Its heading paints 1.3 s sooner, because the shell shows the real hero before the chapter's code arrives.
   - The summary transfers 42% less before the reader scrolls.
 - **The atlas improved least.** Its full catalog is still gated by the 337 kB gzip, 9.3 MB raw `manifest.json`. Only stage 5 changes that.
