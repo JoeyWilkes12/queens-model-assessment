@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useMemo, useState } from 'react'
 import { BoardReplay } from './BoardReplay'
 import { FailureComparison } from './FailureComparison'
-import { ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCost'
+import { loadReceiptCosts, ReceiptCostStrip, receiptCostText, useReceiptCosts } from './ReceiptCost'
 import { assetUrl, useHashPath, Icon, PageHero, Callout } from './bookUi'
 import { ATLAS_HERO } from './routeHeroes'
 import { ReceiptChainNavigation } from './chapters'
@@ -313,9 +313,11 @@ export function EvidenceExplorer({ selectedId }: { selectedId?: string }) {
   const costOf = useReceiptCosts()
   useEffect(() => {
     let active = true
-    fetch(assetUrl('evidence/manifest.json'))
+    // Swap in the catalog only once the receipt costs are known (or failed), so rows never grow a cost line later.
+    const manifest = fetch(assetUrl('evidence/manifest.json'))
       .then(response => (response.ok ? response.json() : Promise.reject(new Error('manifest unavailable'))))
-      .then(payload => {
+    Promise.all([manifest, loadReceiptCosts()])
+      .then(([payload]) => {
         const incoming = Array.isArray(payload)
           ? payload
           : [...(payload.records || []), ...(payload.gradeRecords || [])]

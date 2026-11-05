@@ -8,7 +8,7 @@ import { ExecutiveSummary } from './ExecutiveSummary'
 import { Sidebar } from './Sidebar'
 import './book-nav.css'
 import { entryFor } from './bookNav'
-import { useHashPath, Icon, PageHero, bookUi } from './bookUi'
+import { assetUrl, useHashPath, Icon, PageHero, bookUi } from './bookUi'
 import {
   AboutPage,
   AssessmentReceiptPage,
@@ -37,6 +37,15 @@ import {
 import { LoadingBlocks } from './LoadingBlocks'
 import { installPrintShortcut } from './printPreparation'
 import { ATLAS_HERO, LOCAL_QWEN_HERO, Z3_HERO, type HeroText } from './routeHeroes'
+
+// On a direct visit to the atlas list, request its catalog and the receipt costs its rows show as soon as the entry
+// code has run, alongside the atlas code instead of after it. Not earlier: on a slow link the 337 kB catalog would
+// compete with the entry code and delay the first paint. The atlas's own requests reuse these responses.
+if (/^#\/?evidence-atlas\/?$/.test(window.location.hash)) {
+  for (const file of ['evidence/manifest.json', 'evidence/costs/receipts.json']) {
+    document.head.append(Object.assign(document.createElement('link'), { rel: 'preload', as: 'fetch', crossOrigin: 'anonymous', href: assetUrl(file) }))
+  }
+}
 
 /** A lazy chapter's placeholder hero, from the book's contents (the chapter replaces it with its own). */
 function loadingHero(path: string): HeroText {
