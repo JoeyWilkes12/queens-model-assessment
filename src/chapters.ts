@@ -7,7 +7,7 @@ import { lazy, type ComponentType } from 'react'
 // To add a chapter: give it its own module, add a loader and a lazy component here, and map its route below.
 export function loader<M>(load: () => Promise<M>) {
   let pending: Promise<M> | undefined
-  return () => pending ??= load()
+  return () => (pending ??= load())
 }
 
 export const chapters = {
