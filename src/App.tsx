@@ -15,6 +15,7 @@ import { CHANGELOG, FOUNDATION, REPOSITORY_URL, type ChangeKind } from './change
 import './book-nav.css'
 import { LOCAL_QWEN_HERO, Z3_HERO, type HeroText } from './routeHeroes'
 import { LoadingBlocks } from './LoadingBlocks'
+import { installPrintShortcut } from './printPreparation'
 
 // Chapters other than the summary, atlas and the chapters written in this file load when their route opens,
 // so the first visit downloads only what it shows. Each loader is shared by its lazy component and by
@@ -1329,6 +1330,7 @@ function App() {
   const parts = path.split('/').filter(Boolean)
   const active = parts[0] || 'executive-summary'
   const selectedId = active === 'evidence-atlas' && parts[1] ? parts[1] : undefined
+  useEffect(() => { installPrintShortcut() }, [])
   useEffect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem('queens-theme', theme) }, [theme])
   useEffect(() => { document.title = `${entryFor(path)?.page.title || 'Queens assessment'} · Queens book` }, [path])
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }) }, [path])

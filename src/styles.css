@@ -216,7 +216,13 @@ img, svg { display: block; }
 .table-wrap tbody th { min-width: 145px; color: var(--text-primary); font-weight: 700; }
 .table-wrap td { min-width: 120px; }
 .table-note { color: var(--text-muted); font-size: .84rem; }
+.print-only { display: none; }
+.featured-print-fallback ul { margin: 8px 0 0; padding-left: 1.2em; }
+.featured-print-fallback li { margin-bottom: 6px; overflow-wrap: anywhere; }
 @media print {
+  .print-only { display: block; }
+  .screen-only { display: none; }
+  .featured-replays #featured-panel.is-pending { min-height: 0; }
   .table-scroll-hint { display: none; }
   .table-wrap { max-block-size: none; overflow: visible; }
   .table-wrap table, .table-wrap td, .table-wrap tbody th { min-width: 0; }

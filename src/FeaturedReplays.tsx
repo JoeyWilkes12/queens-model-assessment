@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { BoardReplay } from './BoardReplay'
 import { deriveTrajectoryFrames, type RecordedTrajectory } from './trajectoryBoardData'
 import { useNearViewport } from './useNearViewport'
+import { registerPrintPreparer } from './printPreparation'
+import { loadSharedJson, type JsonResource } from './sharedJson'
 
 type SavedTrajectory = RecordedTrajectory & { correct_queens_before_failure: number; http_calls: number; forced_decisions: number }
 type Board = { id: string; size: number; regions: number[][] }
@@ -19,12 +22,15 @@ const showcase = [
 ] as const
 
 const evidenceUrl = (file: string) => `${import.meta.env.BASE_URL}evidence/${file}`
-
-async function loadJson(file: string, signal: AbortSignal) {
-  const response = await fetch(evidenceUrl(file), { signal })
-  if (!response.ok) throw new Error(`${file} unavailable`)
-  return response.json()
-}
+const isObject = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object'
+const withTrajectories = (value: unknown): value is { trajectories: SavedTrajectory[] } => isObject(value) && Array.isArray(value.trajectories)
+const JEV_FILE: JsonResource<Loaded['jev']> = { url: evidenceUrl('trajectory-study.json'), validate: (value): value is Loaded['jev'] => withTrajectories(value) && Array.isArray((value as Loaded['jev']).boards) }
+const SUBQ_FILE: JsonResource<Loaded['subq']> = { url: evidenceUrl('subq-trajectories-summary.json'), validate: withTrajectories }
+const PROTOCOL_FILE: JsonResource<{ boards: Board[] }> = { url: evidenceUrl('subq-trajectories-protocol.json'), validate: (value): value is { boards: Board[] } => isObject(value) && Array.isArray(value.boards) }
+/** One shared request per file, for the scroll trigger and the print preparation alike. */
+const loadReplays = (): Promise<Loaded> => Promise.all([loadSharedJson(JEV_FILE), loadSharedJson(SUBQ_FILE), loadSharedJson(PROTOCOL_FILE)])
+  .then(([jev, subq, protocol]) => ({ jev, subq, subqBoards: protocol.boards }))
+const absolute = (hash: string) => typeof window === 'undefined' ? hash : new URL(hash, window.location.href).href
 
 export function FeaturedReplays() {
   const [data, setData] = useState<Loaded | null>(null)
@@ -35,15 +41,16 @@ export function FeaturedReplays() {
 
   useEffect(() => {
     if (!near) return
-    const controller = new AbortController()
-    Promise.all([
-      loadJson('trajectory-study.json', controller.signal),
-      loadJson('subq-trajectories-summary.json', controller.signal),
-      loadJson('subq-trajectories-protocol.json', controller.signal),
-    ]).then(([jev, subq, protocol]) => setData({ jev, subq, subqBoards: protocol.boards }))
-      .catch(() => { if (!controller.signal.aborted) setError(true) })
-    return () => controller.abort()
+    let live = true
+    loadReplays().then(value => { if (live) setData(value) }, () => { if (live) setError(true) })
+    return () => { live = false }
   }, [near])
+
+  // Ctrl/⌘+P loads the replays and renders them before the print dialog opens (src/printPreparation.ts).
+  useEffect(() => {
+    if (data || error) return
+    return registerPrintPreparer(() => loadReplays().then(value => flushSync(() => setData(value)), () => flushSync(() => setError(true))))
+  }, [data, error])
 
   const item = showcase.find(entry => entry.key === active) ?? showcase[0]
   const view = useMemo(() => {
@@ -70,7 +77,14 @@ export function FeaturedReplays() {
     </div>
     <div id="featured-panel" ref={panelRef} className={!data && !error ? 'is-pending' : undefined} role="tabpanel" aria-labelledby={`featured-tab-${item.key}`}>
       {error && <p role="status">The saved trajectory evidence could not be loaded. No replay is substituted.</p>}
-      {!error && !data && <p role="status">Loading saved attempts…</p>}
+      {!error && !data && <>
+        <p role="status" className="screen-only">Loading saved attempts…</p>
+        {/* Printed from the browser menu before the replays loaded: a defined text record instead of a loading line. */}
+        <div className="print-only featured-print-fallback">
+          <p>Recorded attempts, with their receipts online (the board replays load on screen; print with Ctrl or ⌘ + P to include the selected replay):</p>
+          <ul>{showcase.map(entry => <li key={entry.key}><strong>{entry.title}.</strong> {entry.takeaway} {absolute(entry.model === 'jev' ? `#/jev-trajectories/${entry.id}` : `#/subq-assessment/${entry.id}`)}</li>)}</ul>
+        </div>
+      </>}
       {data && !view && <p role="status">This saved attempt is unavailable; no trace is reconstructed.</p>}
       {view && <>
         <BoardReplay key={item.key} compact regions={view.regions} frames={view.frames} eyebrow={`${modelName} · board ${view.trace.board_id.replace('sequence-', '')} · ${view.trace.mode === 'local' ? 'conflict-filtered menu' : 'raw menu'}`} title={item.title} />
