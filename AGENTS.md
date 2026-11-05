@@ -50,6 +50,16 @@ Preserve historical evidence and scientific denominators. Do not delete,
 truncate or rewrite receipts to make a diff smaller. Do not change benchmark
 jobs or issue inference requests as part of arranging a publication stack.
 
+## Changelog for website updates
+
+Whenever asked to update the website, update the reader-facing changelog at
+`#/changelog` in the same change. Add a dated entry to `src/changelog.ts`
+summarizing the routes, features, or evidence readers will see. Link the PR
+number once assigned. In a stack, each website PR records its own changes and
+inherits earlier entries from its base. Run `npm run changelog:verify` and
+confirm the new entry appears in the corresponding preview. The verifier checks
+main-branch history, so a pass alone does not confirm the current PR has an entry.
+
 ## Chapter coverage in update descriptions
 
 State which reader-facing routes were updated and which retain historical

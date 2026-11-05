@@ -12,5 +12,11 @@ and preserve immutable evidence and a usable intermediate site. Ordinary small
 changes can remain one focused PR. Do not merge, deploy or force-push without
 the applicable explicit approval.
 
+Whenever asked to update the website, also update `#/changelog` by adding a dated
+entry in `src/changelog.ts` to the same PR. Describe the visible change, link the
+PR number once assigned, and run `npm run changelog:verify`. Check the entry in the
+preview. Each website PR in a stack adds its own entry and inherits its parents'
+entries.
+
 State chapter coverage explicitly: `#/caveman-summary` retains the original 4B
 pilot, while newer multi-model assessments and costs live at `#/local-qwen`.
