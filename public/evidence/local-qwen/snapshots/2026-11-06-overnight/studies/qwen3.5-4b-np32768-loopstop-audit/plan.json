@@ -1,0 +1,1043 @@
+{
+  "schema_version": 1,
+  "study": "2026-10-28-local-qwen-image-larger-qwen3.5-4b-np32768-loopstop-audit",
+  "frozen_utc": "2026-10-30T15:18:00.386466+00:00",
+  "design": "loop-stop audit: reruns, with the loop-stop OFF and the same greedy 32768-token protocol, exactly the calls the loop-stop stopped in qwen3.5-4b-np32768-loopstop. Greedy decoding repeats each call token for token up to the stop, so the audit shows what the stopped calls would have done. Outcome-selected detector audit, not a performance sample: never pool it; use it only to confirm or correct the loop_stopped outcomes. See docs/ollama-loop-stop-analysis-2026-10-30.md",
+  "selection_rule": "Within the frozen frontier-image-panel subset, lexicographically first board in each size × singleton status × search tier; one per cell, 12 total. Ordered by stratum then size.",
+  "corpus": "public/evidence/subq-panel/corpus.json",
+  "corpus_sha256": "468a6a36d941c8143fdd9d39c1ea23d6a8c2da03a240c4743fcefda3fc6e7216",
+  "runtime": {
+    "model": "qwen3.5:4b",
+    "digest": "7f3251fa6878a78a606bcb3c074283306e5ad2ea411a7774a9dd98a4bc7f2d13",
+    "server_version": "0.40.10",
+    "details": {
+      "parent_model": "",
+      "format": "safetensors",
+      "family": "qwen3_5",
+      "families": null,
+      "parameter_size": "4.5B",
+      "quantization_level": "nvfp4",
+      "runner": "mlx"
+    },
+    "model_info": {
+      "general.architecture": "qwen3_5",
+      "general.parameter_count": 4538986496,
+      "qwen3_5.block_count": 32,
+      "qwen3_5.context_length": 262144,
+      "qwen3_5.embedding_length": 2560
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "thinking",
+      "tools"
+    ],
+    "thinking": {
+      "values": [
+        false,
+        true
+      ],
+      "default": true
+    },
+    "parameters_reported": "top_k                          20\ntop_p                          0.95\nmin_p                          0\npresence_penalty               1.5\nrepeat_penalty                 1\ntemperature                    1",
+    "machine_architecture": "arm64",
+    "os": "Darwin",
+    "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+    "transport": "Ollama-compatible local HTTP /api/chat",
+    "host": "loopback"
+  },
+  "prompt_template_sha256": "b7ef8260e400f8e474056bb7249b1c135e3c74a64f174c84c69d87fc8c78bac4",
+  "boards": [
+    {
+      "id": "panel-5-18",
+      "size": 5,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          2,
+          2
+        ],
+        [
+          4,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          4,
+          2,
+          2,
+          2,
+          2
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "board_sha256": "4dd227e10ff10e8ff750267a2477edee48ad131753aefa29b5e7142e4de9e7d5",
+      "image": "images/panel-5-18.png",
+      "image_sha256": "abb489c16732d1be93d18b4eb240426054a3468690682840cb38097d762220fb"
+    },
+    {
+      "id": "panel-7-04",
+      "size": 7,
+      "regions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          2,
+          2,
+          3,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          4,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          5,
+          5,
+          5,
+          5,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          5,
+          5,
+          5,
+          5,
+          1
+        ],
+        [
+          1,
+          6,
+          5,
+          5,
+          5,
+          1,
+          1
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "board_sha256": "1a75c2fb5599b7bd64f5798435098957e9956d2711a73d64c3287e086685a995",
+      "image": "images/panel-7-04.png",
+      "image_sha256": "3241469d2aebfdbd78e47c8e82c61270c874d05cd860cb77b5f7082d5ef9cdc0"
+    },
+    {
+      "id": "panel-9-22",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          4,
+          0,
+          0,
+          0,
+          5,
+          0,
+          6,
+          6
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          4,
+          6,
+          6,
+          6,
+          6
+        ],
+        [
+          4,
+          4,
+          4,
+          7,
+          7,
+          7,
+          6,
+          6,
+          6
+        ],
+        [
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4,
+          6,
+          6
+        ],
+        [
+          8,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "board_sha256": "63cb746cec131100bde50233f3fb629a701a6ef5ab79cdc4fef6b5c26377b120",
+      "image": "images/panel-9-22.png",
+      "image_sha256": "dfdb01a33db2f7e0dcca3b1fbcbde1e991ebc87b343ab0a7d3897a973d95b9f7"
+    },
+    {
+      "id": "panel-5-21",
+      "size": 5,
+      "regions": [
+        [
+          0,
+          1,
+          2,
+          3,
+          3
+        ],
+        [
+          0,
+          2,
+          2,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          2,
+          3,
+          3
+        ],
+        [
+          0,
+          2,
+          2,
+          3,
+          3
+        ],
+        [
+          0,
+          2,
+          2,
+          4,
+          3
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "board_sha256": "8b4308096fb0adebbd884803f2aa636174172ff6f416d72cb08a44713fbb2fbd",
+      "image": "images/panel-5-21.png",
+      "image_sha256": "c6abaab2e37ec6feac1adc0d86411a512385b68fddfec4d8273083698b074150"
+    },
+    {
+      "id": "panel-7-01",
+      "size": 7,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          4
+        ],
+        [
+          2,
+          2,
+          5,
+          6,
+          3,
+          3,
+          4
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          3,
+          4,
+          4
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "board_sha256": "39dc043b2dbab097b639465dbf5181031f190c231454ccc9a70dbfe93ad69636",
+      "image": "images/panel-7-01.png",
+      "image_sha256": "a5f1cb07ab8c79e40ce9d7ddfe9dfd92ce444109d43a8934dfbf930699bcdf71"
+    },
+    {
+      "id": "panel-9-08",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          1,
+          1,
+          1,
+          2,
+          2,
+          3,
+          3,
+          3
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3
+        ],
+        [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          4,
+          3,
+          3
+        ],
+        [
+          1,
+          1,
+          5,
+          2,
+          2,
+          2,
+          4,
+          4,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          4,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          6,
+          7,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          8,
+          7,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          7,
+          7,
+          7
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          7,
+          7,
+          7,
+          7
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "board_sha256": "fa86126f201f67098ee2f5fe13a95c0794e6c1489f319038373a361ef1b51beb",
+      "image": "images/panel-9-08.png",
+      "image_sha256": "90729467277953f3bf28da599b1bd1f4182cec291e7b5f6d6e7333d953062a78"
+    },
+    {
+      "id": "panel-5-10",
+      "size": 5,
+      "regions": [
+        [
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          3,
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          3,
+          0,
+          2,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "board_sha256": "bee3f902f24f06ac005a303b470d3c1877842ddadf0773ec30d39c63e7dd7df8",
+      "image": "images/panel-5-10.png",
+      "image_sha256": "e4ada8f6e587130e64a50ae701ed3e094cce27ad825e409a762b0d20846abbb0"
+    },
+    {
+      "id": "panel-7-24",
+      "size": 7,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          2,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3
+        ],
+        [
+          2,
+          2,
+          4,
+          2,
+          5,
+          5,
+          3
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          6,
+          6,
+          6
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          4,
+          6,
+          6
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "board_sha256": "82546c1abf49eee800be57678a9bf493bdb31bd2664419b39190f102a3d5bd48",
+      "image": "images/panel-7-24.png",
+      "image_sha256": "fe37832e3e30131cf25ea8a72bc55fe10cb03a24c23c55d4ce8b59d951b683b3"
+    },
+    {
+      "id": "panel-9-05",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3
+        ],
+        [
+          4,
+          0,
+          1,
+          1,
+          1,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          4,
+          1,
+          1,
+          1,
+          5,
+          6,
+          6,
+          3,
+          6
+        ],
+        [
+          4,
+          4,
+          1,
+          1,
+          5,
+          6,
+          6,
+          6,
+          6
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          5,
+          1,
+          6,
+          6,
+          6
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6,
+          6,
+          6
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          6,
+          6,
+          6,
+          6
+        ],
+        [
+          1,
+          1,
+          1,
+          7,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        [
+          1,
+          1,
+          1,
+          7,
+          6,
+          6,
+          8,
+          8,
+          6
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "board_sha256": "cd6d69ceefdc65d0334da0f3b9233466d2a95a6cfa034caf05da5c0aa27dbc90",
+      "image": "images/panel-9-05.png",
+      "image_sha256": "570175b1db16f50a05edd006242b02a288b8b158be19c15448cc62990a921a03"
+    },
+    {
+      "id": "panel-5-19",
+      "size": 5,
+      "regions": [
+        [
+          0,
+          0,
+          1,
+          2,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          2,
+          2
+        ],
+        [
+          3,
+          3,
+          3,
+          2,
+          2
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "board_sha256": "0def1d29b1542dbf7310514311839513245062f7ddc6d6c221c56c5bcf1c73b3",
+      "image": "images/panel-5-19.png",
+      "image_sha256": "1154279d3074685c73297ffb2ee6aa04bd5abcffadac65ac6173c93184a2c16f"
+    },
+    {
+      "id": "panel-7-50",
+      "size": 7,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          3,
+          3,
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          2,
+          2,
+          3,
+          3,
+          5,
+          5
+        ],
+        [
+          4,
+          2,
+          3,
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          4,
+          2,
+          2,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          6,
+          6,
+          2,
+          2,
+          5,
+          5,
+          5
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "board_sha256": "78cc213b76a9549e6878be0bcf0b8b390fd833433a7d4996f5389d2cfbe1dcdf",
+      "image": "images/panel-7-50.png",
+      "image_sha256": "7c87c4b79671b9b5d56bf1d572e2ab98ce4b4cfac49d0f9261a32cc9c933b2ff"
+    },
+    {
+      "id": "panel-9-34",
+      "size": 9,
+      "regions": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          1,
+          1,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          4,
+          3,
+          3,
+          5,
+          5,
+          2,
+          2,
+          2
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          4,
+          4,
+          3,
+          3,
+          2,
+          2,
+          2,
+          6,
+          6
+        ],
+        [
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          2,
+          2,
+          6
+        ],
+        [
+          4,
+          4,
+          7,
+          7,
+          7,
+          7,
+          7,
+          2,
+          8
+        ],
+        [
+          4,
+          4,
+          4,
+          7,
+          7,
+          2,
+          2,
+          2,
+          8
+        ]
+      ],
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "board_sha256": "3776d267c85031760298034a14298ccf6d33628d732b5e0465b8fdffab134260",
+      "image": "images/panel-9-34.png",
+      "image_sha256": "f9e323dc331b0df07ffc1eba90833e69b5dd8c214222ef8a37f36f379a244ecc"
+    }
+  ],
+  "protocol": {
+    "modality": "image",
+    "one_shot": true,
+    "tools": false,
+    "retries": 0,
+    "think": true,
+    "num_predict": 32768,
+    "timeout_seconds": 1800,
+    "temperature": 0,
+    "seed": 20261028,
+    "num_ctx": 36864,
+    "structured_output_enforcement": false,
+    "reasoning_control_note": "Qwen supports boolean thinking, not the historical providers' high reasoning-effort setting. Requested controls are not proof the compatible server honored each option.",
+    "keep_alive": 0,
+    "order": "paired by board: baseline then caveman",
+    "transport": "nonstream",
+    "changes_from_pilot": "num_predict 12288->32768 (separate study; do not pool with the 12,288 results); num_ctx 32768->36864 (budget + 4096; largest prompt 1,984); keep_alive 10m->0 (unload after each request); timeout scaled to model size and budget; loop-stop audit of qwen3.5-4b-np32768-loopstop: only its 6 loop_stopped calls, loop-stop off"
+  },
+  "conditional_treatment": {
+    "name": "caveman",
+    "gate": "Not gated: the 4b pilot already passed the gate and the skill review; arms run as pairs.",
+    "paired_boards": "Same 12 frozen boards, one fresh request per board, same generation settings; system instruction contains reviewed skill body only. No persisted model history."
+  },
+  "derived_from": {
+    "plan": "public/evidence/ollama/plan.json",
+    "study": "2026-10-28-local-qwen-image-pilot",
+    "plan_sha256": "16e22205f5ff5eb03d0afba433aa073bc061598f7e75731817ac0b37ee626828",
+    "panel_py_sha256": "788e1aa12df02460f2bb2f07b1ba9026f557cdc85941c6734d0dab110c9a1956"
+  },
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "35a92b89f881517071acb50bc7a708bf3dfdca10e8a6c0f1a003a0f2d415bbde",
+    "panel_py_sha256": "788e1aa12df02460f2bb2f07b1ba9026f557cdc85941c6734d0dab110c9a1956",
+    "git_commit": "e458d37fcf9fe5ddd1fe0496aced89b13dbb1fee",
+    "git_branch": "claude/ollama-bigger-qwen",
+    "scripts_uncommitted": true,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "audit_of": "qwen3.5-4b-np32768-loopstop",
+  "audit_calls": [
+    "caveman_panel-5-19",
+    "caveman_panel-7-01",
+    "caveman_panel-7-50",
+    "caveman_panel-9-05",
+    "caveman_panel-9-08",
+    "caveman_panel-9-34"
+  ]
+}

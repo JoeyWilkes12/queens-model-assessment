@@ -14,7 +14,7 @@ export type LocalStudy = {
   kind?: 'assessment' | 'audit'; audit_of?: string | null
   round: number; status: 'complete' | 'partial'; planned: number; recorded: number
   root: string; plan: string; summary: string; rows: LocalRow[]
-  protocol?: { modality?: 'image' | 'text' }
+  protocol?: { modality?: 'image' | 'text'; format?: Record<string, unknown> }
   runtime: { digest: string; server_version: string; details: { runner: string; quantization_level: string } }
 }
 export type LocalIndex = { schema_version: number; snapshot_id: string; captured_utc: string; source_commit: string; source_dirty: boolean; manifest: string; studies: LocalStudy[] }
@@ -42,7 +42,7 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
       && ['greedy', 'sampling', 'greedy+ls', 'loop-audit'].includes(s.decoding) && ['complete', 'partial'].includes(s.status)
       && (s.kind === undefined || ['assessment', 'audit'].includes(s.kind))
       && (s.kind !== 'audit' || (typeof s.audit_of === 'string' && data.studies.some(source => source.id === s.audit_of)))
-      && (data.schema_version !== 3 || (['fresh1', 'legacy'].includes(s.board_set || '') && ['off', 'active', 'shadow'].includes(s.loop_mode || '')
+      && (data.schema_version !== 3 || (['fresh1', 'fresh2', 'legacy'].includes(s.board_set || '') && ['off', 'active', 'shadow'].includes(s.loop_mode || '')
         && !!s.arms && Object.keys(s.arms).length >= 2 && Object.keys(s.arms).every(arm => ['baseline', 'schema', 'neutral', 'caveman'].includes(arm))
         && Object.values(s.arms).every(arm => count(arm.system_chars) && count(arm.system_words))))
       && count(s.budget) && s.budget > 0 && count(s.planned) && count(s.recorded) && s.recorded <= s.planned

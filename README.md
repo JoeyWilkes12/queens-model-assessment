@@ -7,10 +7,11 @@ Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-
 The [local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen)
 cover Gemma 4 E4B, GPT-OSS 20B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
 original Qwen budget and sampling conditions, and selected loop-stop audits.
-The November 3 snapshot contains 21 conditions and 531 assessment receipts, plus
-38 separate rescues. It completes Qwen 4B fresh1 image, adds the complete GPT-OSS
-20B text-grid study and includes the first eight Qwen 9B text-grid calls.
-See the [November 3 results](docs/local-qwen-nov3.md),
+The November 6 snapshot contains 25 conditions and 709 assessment and audit receipts,
+plus 38 separate rescues. It completes Qwen 27B Fresh1 images and Qwen 9B Fresh2 images
+and adds 18 of 48 GPT-OSS 20B Fresh2 text-grid calls.
+See the [November 6 audit](docs/local-qwen-nov6.md), the [November 5 audit](docs/local-qwen-nov5.md),
+the [November 3 results](docs/local-qwen-nov3.md),
 [offline import workflow](docs/local-qwen-imports.md), [method review](docs/local-qwen-methods.md),
 [historical October 31 results](docs/local-qwen-oct31.md), and
 [November 2 findings](docs/local-qwen-nov2.md) and
