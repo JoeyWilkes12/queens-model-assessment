@@ -1,6 +1,7 @@
 import type { BookUi } from './ollamaEvidence'
 import { compareArms, isMatchedCohort } from './localQwenMath'
-import { armName, defaultTariff, localArtifact, useLocalStudies, usePricing, type LocalIndex, type LocalStudy } from './localQwenEvidence'
+import { armName, defaultTariff, localArtifact, useLocalStudies, type LocalIndex, type LocalStudy } from './localQwenEvidence'
+import { usePricing } from './localPricing'
 import './ollama-comparison.css'
 
 /** Count original outcomes and retain both observed and planned denominators. */

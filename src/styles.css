@@ -64,7 +64,18 @@ img, svg { display: block; }
 .receipt-chain-actions button:disabled { opacity: .55; cursor: default; transform: none; }
 .receipt-chain .receipt-chain-context { margin: 14px 0 0; max-width: 75ch; color: var(--text-muted); font-size: .875rem; }
 
+.retry-button { min-height: 32px; margin: 0 4px; padding: 2px 10px; border: 1px solid var(--border-strong); background: var(--surface-raised); color: var(--text-primary); font-weight: 700; }
 .app-shell { display: flex; min-height: 100vh; }
+/* At least one viewport tall, so the footer never shows high on the screen while a chapter or its data is loading
+   and then jumps away (measured layout shift 0.27 on the local chapter, all of it the footer). */
+.page-body { min-height: 100vh; min-height: 100dvh; }
+.loading-shell { padding: 40px clamp(22px, 7vw, 112px); }
+.loading-shell > p { margin: 0 0 22px; color: var(--text-muted); }
+.loading-blocks { display: grid; gap: 14px; max-width: 760px; }
+.loading-blocks > span { display: block; height: 14px; background: var(--border-subtle); }
+.loading-blocks > span:nth-child(2) { width: 86%; }
+.loading-blocks > span:nth-child(3) { width: 64%; }
+.loading-blocks > .loading-blocks-panel { height: 220px; margin-top: 12px; background: transparent; border: 1px solid var(--border-subtle); }
 .page-frame { flex: 1; min-width: 0; margin-left: 296px; position: relative; }
 .book-sidebar { position: fixed; z-index: 30; inset: 0 auto 0 0; width: 296px; display: flex; flex-direction: column; padding: 30px 24px 24px; background: var(--surface-inverse); color: var(--text-inverse); overflow-y: auto; }
 .bookmark { display: flex; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.2); }
@@ -205,7 +216,13 @@ img, svg { display: block; }
 .table-wrap tbody th { min-width: 145px; color: var(--text-primary); font-weight: 700; }
 .table-wrap td { min-width: 120px; }
 .table-note { color: var(--text-muted); font-size: .84rem; }
+.print-only { display: none; }
+.featured-print-fallback ul { margin: 8px 0 0; padding-left: 1.2em; }
+.featured-print-fallback li { margin-bottom: 6px; overflow-wrap: anywhere; }
 @media print {
+  .print-only { display: block; }
+  .screen-only { display: none; }
+  .featured-replays #featured-panel.is-pending { min-height: 0; }
   .table-scroll-hint { display: none; }
   .table-wrap { max-block-size: none; overflow: visible; }
   .table-wrap table, .table-wrap td, .table-wrap tbody th { min-width: 0; }
@@ -319,6 +336,8 @@ code { color: var(--text-primary); font-size: .88em; }
 /* Phones in landscape are wide but short: they get the drawer too, so content keeps the full width. */
 @media (max-width: 780px), (max-width: 1020px) and (max-height: 500px) {
   .page-frame { margin-left: 0; }
+  /* Section jumps land below the sticky 58px top bar instead of hiding the heading under it. */
+  .reading-section { scroll-margin-top: 76px; }
   .book-sidebar { visibility: hidden; pointer-events: none; transform: translateX(-100%); transition: transform .2s ease; box-shadow: var(--shadow-float); }.book-sidebar.is-open { visibility: visible; pointer-events: auto; transform: translateX(0); }.sidebar-close { display: block; }.sidebar-scrim { position: fixed; z-index: 29; inset: 0; background: rgba(4,19,35,.65); }.sidebar-scrim:not(.is-open) { display: none; }
   .mobile-topbar { display: flex; position: sticky; z-index: 20; top: 0; align-items: center; justify-content: space-between; min-height: 58px; padding: 7px 17px; background: var(--surface-inverse); color: var(--text-inverse); }.mobile-wordmark { min-height: 44px; border: 0; background: transparent; color: var(--text-inverse); font-family: var(--display-font); font-size: 1.05rem; }.mobile-wordmark span { color: var(--mint-300); font-family: var(--mono-font); font-size: .62rem; letter-spacing: .05em; }.icon-button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.3); background: transparent; color: var(--text-inverse); }.mobile-topbar .theme-toggle { color: var(--text-inverse); padding: 8px 0; }.mobile-topbar .theme-toggle span { display: none; }
   .page-tools { display: none; }
@@ -413,6 +432,9 @@ code { color: var(--text-primary); font-size: .88em; }
 .limit-list { margin: 0 0 16px; padding-left: 1.1rem; }
 .limit-list li { margin-bottom: 10px; line-height: 1.6; }
 .featured-replays { margin-top: 12px; }
+/* Reserve the first replay's measured height (850px on phones, about 940px wide) until its data arrives. */
+.featured-replays #featured-panel.is-pending { min-height: 850px; }
+@media (min-width: 1000px) { .featured-replays #featured-panel.is-pending { min-height: 930px; } }
 .featured-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 4px; }
 .featured-tabs button { flex: 1 1 auto; min-height: 44px; padding: 8px 14px; border: 1px solid var(--border-strong); border-radius: 0; background: var(--surface-raised); color: var(--text-primary); font-size: .8rem; font-weight: 700; cursor: pointer; }
 .featured-tabs button.is-active { background: var(--navy-950); color: var(--paper-0, #fffdf8); border-color: var(--navy-950); }

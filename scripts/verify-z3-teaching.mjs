@@ -31,12 +31,12 @@ const blocked = await json('public/evidence/z3/reference-trace-blocked.json')
 const teaching = await json('public/evidence/z3/teaching-data.json')
 const receipts = await json('public/evidence/z3/z3-receipts.json')
 const manifest = await json('public/evidence/z3/manifest.json')
-const app = await read('src/App.tsx')
+const app = await read('src/bookFigures.tsx')
 
 // Python json.dumps default separators, as documented in board-seven.json.
 const pythonJson = regions => '[' + regions.map(row => '[' + row.map(cell => JSON.stringify(cell)).join(', ') + ']').join(', ') + ']'
 
-await check('board-seven.json matches boardConfigs.seven in src/App.tsx', () => {
+await check('board-seven.json matches boardConfigs.seven in src/bookFigures.tsx', () => {
   const block = app.split('  seven: {')[1].split('  },')[0]
   const regions = JSON.parse(block.match(/regions: (\[[\s\S]*?\n {4}\])/)[1].replace(/'/g, '"').replace(/,\s*\]/g, ']'))
   assert.deepEqual(regions, board.regions)

@@ -64,7 +64,7 @@ Routes deeper than the tree are named from their path: an atlas record, a board,
 
 ## Adding a page
 
-1. Add the route in `App.tsx` as before.
+1. Write the page in its own module (shared parts are in `src/bookUi.tsx`), add a loader and lazy component in `src/chapters.ts`, and add its route to `routePage` in `src/App.tsx`.
 2. Add one entry to `BOOK_PARTS` in `src/bookNav.ts`, under its part or parent page. Use `anchor: true` for an in-page section.
 3. Add a changelog entry in `src/changelog.ts` and run `npm run changelog:verify`.
 

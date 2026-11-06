@@ -16,6 +16,7 @@ on:
       - 'public/evidence/board-receipts/**'
       - 'scripts/analysis/build_leaderboard.py'
       - 'scripts/verify-*.mjs'
+      - 'scripts/check-bundle-budget.mjs'
       - 'src/**'
       - 'package*.json'
       - 'tsconfig.json'
@@ -48,3 +49,5 @@ jobs:
         run: npm run evidence:check-public
       - name: Build static site
         run: npm run build
+      - name: Check the performance budget (entry JavaScript)
+        run: npm run budget:check
