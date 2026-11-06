@@ -29,7 +29,11 @@ STUDY_NAME = re.compile(r"qwen3[.]5-(?:9b-nvfp4|27b-q4_K_M)-np24576(?:-qwen-samp
 FRESH_NAMES = {"gemma4-e4b-fresh1-4arm-np32768", "llava-llama3-8b-fresh1-4arm-np4096", "qwen3.5-4b-fresh1-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-4arm-np32768"}
 TEXT_NAMES = {"gpt-oss-20b-fresh1-text-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-text-4arm-np32768"}
 CONSTRAINED_NAME = "qwen3.5-9b-nvfp4-fresh1-json-2arm-np32768"
-FRESH_NAMES |= TEXT_NAMES | {CONSTRAINED_NAME, "qwen3.5-27b-q4_K_M-fresh1-4arm-np24576"}
+FRESH2_TEXT_NAME = "gpt-oss-20b-fresh2-text-4arm-np32768"
+FRESH2_NAMES = {FRESH2_TEXT_NAME, "qwen3.5-9b-nvfp4-fresh2-4arm-np32768"}
+FRESH2_FILE = "fresh2-boards.json"
+TEXT_NAMES.add(FRESH2_TEXT_NAME)
+FRESH_NAMES |= FRESH2_NAMES | TEXT_NAMES | {CONSTRAINED_NAME, "qwen3.5-27b-q4_K_M-fresh1-4arm-np24576"}
 ANSWER_SCHEMA = {
     "type": "object",
     "properties": {
@@ -251,12 +255,14 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     system = (directory / "caveman-system.txt").read_bytes()
     require(sha(template) == plan["prompt_template_sha256"], "Template hash mismatch")
     require(sha(system) == read(directory / "skill.json")["system_sha256"], "Skill body hash mismatch")
+    board_set = "legacy"
     arms = plan.get("arm_names", list(ARMS))
     systems = {"baseline": None, "caveman": system.decode()}
     if plan.get("arms"):
         expected_arms = list(ARMS) if constrained else ["baseline", "schema", "neutral", "caveman"]
         require(arms == expected_arms and set(plan["arms"]) == set(arms), "Unsupported arm design")
-        require(study_id in FRESH_NAMES and plan["board_set"]["name"] == "fresh1", "Unsupported fresh condition")
+        board_set = "fresh2" if study_id in FRESH2_NAMES else "fresh1"
+        require(study_id in FRESH_NAMES and plan["board_set"]["name"] == board_set, "Unsupported fresh condition")
         for arm, info in plan["arms"].items():
             if arm == "baseline":
                 require(info == {"system_file": None, "system_sha256": None, "system_chars": 0, "system_words": 0}, "Invalid baseline arm")
@@ -342,13 +348,13 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     model_short = plan["runtime"]["model"].split(":")[-1].split("-")[0].upper()
     label = f"Qwen3.5 {model_short} · {protocol['num_predict']:,} · " + ("loop-stop audit" if audit_of else f"sampling r{sampling.group(1)}" if sampling else "greedy + loop-stop" if loopstop else "greedy")
     if coverage and plan.get("arms"):
-        label = f"{plan['runtime']['model']} · fresh1 · four arms · {protocol['num_predict']:,} · greedy · shadow detector"
+        label = f"{plan['runtime']['model']} · {board_set} · four arms · {protocol['num_predict']:,} · greedy · shadow detector"
     if constrained:
         label = f"{plan['runtime']['model']} · fresh1 · two arms · {protocol['num_predict']:,} · greedy · constrained JSON · shadow detector"
     if text_study:
         label += " · text grid"
     runtime = {key: plan["runtime"].get(key) for key in ("model", "digest", "server_version", "details", "os", "machine_architecture")}
-    return {**({"arms": plan.get("arms", {arm: {"system_file": "caveman-system.txt" if arm == "caveman" else None, "system_sha256": sha(system) if arm == "caveman" else None, "system_chars": len(system.decode()) if arm == "caveman" else 0, "system_words": len(system.decode().split()) if arm == "caveman" else 0} for arm in ARMS}), "board_set": "fresh1" if plan.get("arms") else "legacy", "loop_mode": "shadow" if protocol.get("loop_stop", {}).get("shadow") else "active" if loopstop else "off"} if coverage else {}), **({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
+    return {**({"arms": plan.get("arms", {arm: {"system_file": "caveman-system.txt" if arm == "caveman" else None, "system_sha256": sha(system) if arm == "caveman" else None, "system_chars": len(system.decode()) if arm == "caveman" else 0, "system_words": len(system.decode().split()) if arm == "caveman" else 0} for arm in ARMS}), "board_set": board_set, "loop_mode": "shadow" if protocol.get("loop_stop", {}).get("shadow") else "active" if loopstop else "off"} if coverage else {}), **({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
             "decoding": decoding, "round": int(sampling.group(1)) if sampling else 0,
             "status": "complete" if recorded == len(rows) else "partial", "planned": len(rows), "recorded": recorded,
             "root": relative_root, "plan": relative_root + "/plan.json", "summary": relative_root + "/summary.json",
@@ -401,17 +407,37 @@ def derive_catalog(base, manifest):
     if manifest["schema_version"] >= 3:
         fresh = [read(base / item["directory"] / "plan.json") for item in manifest["study_roots"]
                  if item["id"] in FRESH_NAMES]
-        by_modality = {}
+        by_set = {}
         for plan in fresh:
+            board_set = plan["board_set"]["name"]
             modality = plan["protocol"]["modality"]
-            peer = by_modality.setdefault(modality, plan)
+            modalities = by_set.setdefault(board_set, {})
+            peer = modalities.setdefault(modality, plan)
             require(plan["boards"] == peer["boards"] and plan["board_set"] == peer["board_set"],
                     "Fresh studies disagree on frozen boards")
-        if "image" in by_modality and "text" in by_modality:
-            image, text = (by_modality[modality] for modality in ("image", "text"))
-            text_projection = [dict(board, image=None, image_sha256=None) for board in image["boards"]]
-            require(text["boards"] == text_projection and text["board_set"] == image["board_set"],
-                    "Text and image studies disagree on frozen boards")
+        for modalities in by_set.values():
+            if "image" in modalities and "text" in modalities:
+                image, text = (modalities[modality] for modality in ("image", "text"))
+                text_projection = [dict(board, image=None, image_sha256=None) for board in image["boards"]]
+                require(text["boards"] == text_projection and text["board_set"] == image["board_set"],
+                        "Text and image studies disagree on frozen boards")
+        if "fresh2" in by_set:
+            frozen_bytes = (base / FRESH2_FILE).read_bytes()
+            frozen = json.loads(frozen_bytes)
+            require(frozen["name"] == "fresh2" and set(frozen["excluded_sets"]) == {"pilot", "fresh1"},
+                    "Fresh2 exclusion policy mismatch")
+            for modality, plan in by_set["fresh2"].items():
+                source = plan["board_set"]
+                require(source["file"] == "public/evidence/ollama-models/" + FRESH2_FILE
+                        and source["sha256"] == sha(frozen_bytes) and source["frozen_utc"] == frozen["frozen_utc"],
+                        "Fresh2 board-set provenance mismatch")
+                boards = frozen["boards"] if modality == "image" else [
+                    dict(board, image=None, image_sha256=None) for board in frozen["boards"]
+                ]
+                require(plan["boards"] == boards, "Fresh2 plan differs from frozen board set")
+            prior_ids = {row["board_id"] for study in studies if study["board_set"] != "fresh2" for row in study["rows"]}
+            require(not prior_ids.intersection(board["id"] for board in frozen["boards"]),
+                    "Fresh2 board IDs overlap prior board sets")
     return {"schema_version": manifest["schema_version"], "snapshot_id": manifest["snapshot_id"], "captured_utc": manifest["captured_utc"],
             "source_commit": manifest["source_commit"], "source_dirty": manifest["source_dirty"],
             "grader_sha256": manifest["grader_sha256"], "manifest": prefix + "/manifest.json",
@@ -563,6 +589,12 @@ def import_snapshot(source_root, snapshot_id, output=DEFAULT_OUT):
                     target_file.parent.mkdir(parents=True, exist_ok=True)
                     target_file.write_bytes(data)
                 manifest["files"][target_file.relative_to(staging).as_posix()] = sha(target_file.read_bytes())
+        if any(study_id in FRESH2_NAMES for study_id, _ in sources):
+            frozen_file = source_root / "public/evidence/ollama-models" / FRESH2_FILE
+            require(frozen_file.is_file() and not frozen_file.is_symlink(), "Missing or symlinked Fresh2 board set")
+            data = frozen_file.read_bytes()
+            observed[frozen_file] = manifest["files"][FRESH2_FILE] = sha(data)
+            (staging / FRESH2_FILE).write_bytes(data)
         catalog = derive_catalog(staging, manifest)
         require(discover_sources(source_root) == sources, "Study inventory changed during capture")
         for source, files in inventories.items():

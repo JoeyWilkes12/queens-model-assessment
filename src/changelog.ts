@@ -28,13 +28,24 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
-    date: '2026-11-05',
+    date: '2026-11-06',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
     pr: 19,
     changes: [
-      'Added a completed open-weight view to the Executive Summary leaderboard, with model and board-size filters and links to the saved studies.',
-      'Showed strict answers and correct answers in the wrong format by completed protocol. Selected rerun audits appear in a separate evidence section.',
+      'Added a completed open-weight view to the Executive Summary leaderboard with model, board-panel and board-size filters.',
+      'The November 6 catalog includes completed Qwen 9B Fresh2 and Qwen 27B Fresh1 image studies. Selected rerun audits remain separate.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'November 5–6 local assessments and the Fresh2 panel',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 18,
+    changes: [
+      'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
+      'Completed Qwen 27B Fresh1 images at 43/48 strict and Qwen 9B Fresh2 images at 43/48 strict. GPT-OSS 20B Fresh2 text grids have 18/48 recorded.',
+      'Added matched input and decoding comparisons and a request-latency table. The November 6 snapshot adds 73 receipts since November 5, bringing coverage to 25 conditions, 709 assessment and audit receipts and 38 separate rescues.',
     ],
   },
   {
@@ -44,17 +55,6 @@ export const CHANGELOG: ChangeEntry[] = [
     pr: 12,
     changes: [
       'Documented how to split evidence and site changes into reviewable PRs and keep the changelog current.',
-    ],
-  },
-  {
-    date: '2026-11-05',
-    title: 'Completed Qwen 9B text and JSON studies, plus fresh Qwen 27B images',
-    kinds: ['evidence', 'chapter', 'method'],
-    pr: 18,
-    changes: [
-      'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
-      'Added 41 Qwen 27B fresh image receipts: 37 strict, four correct in the wrong format and seven requests still pending.',
-      'Added matched input and decoding comparisons and a request-latency table. The snapshot adds 105 receipts since November 3, bringing coverage to 23 conditions, 636 assessment and audit receipts and 38 separate rescues.',
     ],
   },
   {
