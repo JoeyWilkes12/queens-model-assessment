@@ -500,15 +500,15 @@ const studies: [string, string, string, string, string][] = [
   ['2026-11-01', '1 Nov', 'Fresh-board local models, four prompt arms', 'local-qwen', 'Qwen 9B 38/48; Gemma 10/48; LLaVA 0/48'],
   ['2026-11-02', '2 Nov', 'Qwen sampling round 3 and fresh-board progress', 'local-qwen', '9B 16/24; 27B 22/24 strict; 4B 37/48 recorded'],
   ['2026-11-03', '3 Nov', 'First local text-grid studies and completed 4B image panel', 'local-qwen', 'GPT-OSS 20B text 23/48 strict, Qwen 4B image 16/48 strict'],
-  ['2026-11-05', '4–5 Nov', 'Text grid, constrained JSON and 27B fresh images', 'local-qwen', '9B text 26/48, 9B JSON 19/24, 27B image 37/41 strict'],
+  ['2026-11-05', '4–5 Nov', 'Completed text-grid and constrained JSON panels', 'local-qwen', '9B text 26/48, 9B JSON 19/24 strict'],
   ['2026-11-06', '5–6 Nov', 'Fresh2 starts and Qwen 27B completes Fresh1', 'local-qwen', '9B Fresh2 image 43/48, 27B Fresh1 image 43/48 strict'],
 ]
 
 function ExecutiveSummary() {
   return <>
-    <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. Every system in the chart below tried the same boards." />
+    <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. The shared benchmark compares systems on the same boards. The completed open-weight view shows local results by study." />
     <section className="board-cover" aria-labelledby="leaderboard-title"><Leaderboard ui={bookUi} titleId="leaderboard-title" /></section>
-    <p className="qa-caveat" style={{ paddingInline: '28px' }}>The leaderboard retains its dated conditions. <a href="#/local-qwen">Local open-weight assessments</a> report Gemma, LLaVA and Qwen, fresh-board prompt controls, sampling rounds and stopping policies separately.</p>
+    <p className="qa-caveat" style={{ paddingInline: '28px' }}>Open-weight results retain their board panels, prompt arms, input formats and token budgets. <a href="#/local-qwen">Explore the local assessment receipts and cost scenarios</a>.</p>
     <AssessmentReceipt />
     <div className="reading-layout">
       <LocalToc items={[{ id: 'finding', label: 'Short answers' }, { id: 'scoreboard', label: 'Results by task' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'Limits' }, { id: 'next', label: 'Go deeper' }]} />

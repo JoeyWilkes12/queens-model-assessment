@@ -29,6 +29,16 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-06',
+    title: 'Completed open-weight assessments in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    pr: 19,
+    changes: [
+      'Added a completed open-weight view to the Executive Summary leaderboard with model, board-panel and board-size filters.',
+      'The November 6 catalog includes completed Qwen 9B Fresh2 and Qwen 27B Fresh1 image studies. Selected rerun audits remain separate.',
+    ],
+  },
+  {
+    date: '2026-11-06',
     title: 'November 5–6 local assessments and the Fresh2 panel',
     kinds: ['evidence', 'chapter', 'method'],
     pr: 18,
