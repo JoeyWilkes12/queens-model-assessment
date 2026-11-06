@@ -44,6 +44,7 @@ const outcomeStyles = ['lb-fill--solid', 'lb-fill--hatched', 'ow-remaining']
 export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
   const saved = useLocalStudies()
   const [model, setModel] = useState('all')
+  const [panel, setPanel] = useState('all')
   const [size, setSize] = useState('all')
   const { DataTable } = ui
 
@@ -56,9 +57,11 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
   const assessments = complete.filter(study => study.kind !== 'audit')
   const audits = complete.filter(study => study.kind === 'audit').map(study => score(study, 'all'))
   const models = Array.from(new Set(assessments.map(study => study.model))).sort()
+  const panels = Array.from(new Set(assessments.map(study => study.board_set || 'legacy'))).sort()
   const sizes = Array.from(new Set(assessments.flatMap(study => study.rows.map(row => row.size)))).sort((a, b) => a - b)
   const visible = assessments
-    .filter(study => model === 'all' || study.model === model)
+    .filter(study => (model === 'all' || study.model === model)
+      && (panel === 'all' || (study.board_set || 'legacy') === panel))
     .map(study => score(study, size))
     .filter(cohort => cohort.total > 0)
     .sort((a, b) => a.study.model.localeCompare(b.study.model))
@@ -70,6 +73,10 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
       <div><label htmlFor="ow-model">Model</label><select id="ow-model" value={model} onChange={event => setModel(event.target.value)}>
         <option value="all">All models</option>
         {models.map(name => <option key={name} value={name}>{name}</option>)}
+      </select></div>
+      <div><label htmlFor="ow-panel">Board panel</label><select id="ow-panel" value={panel} onChange={event => setPanel(event.target.value)}>
+        <option value="all">All board panels</option>
+        {panels.map(name => <option key={name} value={name}>{name === 'legacy' ? 'Earlier boards' : name === 'fresh1' ? 'Fresh1' : name === 'fresh2' ? 'Fresh2' : name}</option>)}
       </select></div>
       <div><label htmlFor="ow-size">Board size</label><select id="ow-size" value={size} onChange={event => setSize(event.target.value)}>
         <option value="all">All board sizes</option>
