@@ -1,0 +1,60 @@
+{
+  "call_id": "caveman_panel-9-05",
+  "board_id": "panel-9-05",
+  "size": 9,
+  "treatment": "caveman",
+  "model": "qwen3.5:27b-q4_K_M",
+  "model_digest": "64ae5b1d651fb2709d5928ccb8dcfb4bb2cc9c2c8001ac34497e36a6cf905b59",
+  "started_utc": "2026-10-30T13:09:33.917641+00:00",
+  "completed_utc": "2026-10-30T13:21:00.347628+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 686.3265791670019,
+  "returned_model": "qwen3.5:27b-q4_K_M",
+  "finish_reason": "stop",
+  "done": true,
+  "input_tokens": 1984,
+  "output_tokens": 8503,
+  "total_duration_ns": 686317516292,
+  "load_duration_ns": 4235334,
+  "prompt_eval_duration_ns": 17727149000,
+  "eval_duration_ns": 668560587000,
+  "request_sha256": "85c8f18c35ad9ba4386bbc1df40e7d7b892630e05db371afcdf3212c5274ccf3",
+  "response_sha256": "2afdd5686121b9dc27e1ec6ca19ed8cf461e4b7315d125c0497c105792395539",
+  "image_sha256": "570175b1db16f50a05edd006242b02a288b8b158be19c15448cc62990a921a03",
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": true,
+  "rule_valid_after_extraction": true,
+  "outcome": "strict",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "d1678c181b4d9707d3224ef643427fe0f6edd55f8b17d7df8dcda7e5c39765df",
+    "panel_py_sha256": "788e1aa12df02460f2bb2f07b1ba9026f557cdc85941c6734d0dab110c9a1956",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "nonstream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.6,
+    "last_llama_server_decode": {
+      "tokens": 8375,
+      "tok_per_s": 12.72
+    },
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": false,
+    "reason": "this study's plan.json has no protocol.loop_stop"
+  }
+}

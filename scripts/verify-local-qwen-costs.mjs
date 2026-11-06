@@ -281,3 +281,44 @@ const nov5Rates = { input: 0.17, output: 0.25 }
 near(compareArms(nov5Json.rows,nov5Rates).deltaUsd,-0.00664476)
 near(compareArms(nov5Text.rows,nov5Rates).deltaUsd,-0.01400751)
 console.log('Verified November 5 outcome, pairing and hosted-cost fixtures.')
+
+const nov6Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-06-overnight/catalog.json',import.meta.url)))
+// Recorded calls, input, generated, strict, format-only and capped.
+const nov6Fixtures = {
+ 'qwen3.5-27b-q4_K_M-fresh1-4arm-np24576': {
+  baseline: [12,10236,130101,9,3,0], schema: [12,10932,144470,12,0,0],
+  neutral: [12,22968,132099,10,1,1], caveman: [12,23808,105203,12,0,0],
+ },
+ 'qwen3.5-9b-nvfp4-fresh2-4arm-np32768': {
+  baseline: [12,10236,180366,11,0,1], schema: [12,10932,209674,12,0,0],
+  neutral: [12,22968,181517,11,0,1], caveman: [12,23808,187503,9,0,3],
+ },
+ 'gpt-oss-20b-fresh2-text-4arm-np32768': {
+  baseline: [5,2131,65049,4,0,1], schema: [5,2441,134404,1,0,4],
+  neutral: [4,5882,67917,3,0,1], caveman: [4,6074,73142,2,0,2],
+ },
+}
+for (const [id, expected] of Object.entries(nov6Fixtures)) {
+ const study=nov6Index.studies.find(s=>s.id===id)
+ assert.ok(study,`Missing Nov6 study ${id}`)
+ const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
+ for (const [arm, fixture] of Object.entries(expected)) {
+  for (const all of [study.rows,source.rows]) {
+   const rows=all.filter(r=>r.state==='recorded'&&r.treatment===arm)
+   const usage=aggregateUsage(rows)
+   assert.deepEqual([rows.length,usage.inputTokens,usage.outputTokens,rows.filter(r=>r.strict_correct).length,
+    rows.filter(r=>r.format_only_correct || r.outcome==='format_only').length,
+    rows.filter(r=>r.truncated || r.outcome==='truncated').length],fixture)
+  }
+ }
+ assert.equal(isMatchedCohort(study.rows),!id.startsWith('gpt-oss'))
+}
+const nov6Nine=nov6Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh2-4arm-np32768')
+const nov6TwentySeven=nov6Index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-fresh1-4arm-np24576')
+const nov6GptOss=nov6Index.studies.find(s=>s.id==='gpt-oss-20b-fresh2-text-4arm-np32768')
+near(compareArms(nov6Nine.rows,nov5Rates).deltaUsd,0.00409149)
+near(compareArms(nov6TwentySeven.rows,{input:0.26,output:2.60}).deltaUsd,-0.06120608)
+assert.equal(nov6GptOss.rows.filter(r=>r.state==='pending').length,30)
+assert.deepEqual(nov6GptOss.rows.filter(r=>r.strict_correct&&r.loop_stop?.would_have_stopped).map(r=>r.call_id).sort(),
+ ['baseline_panel-9-32','neutral_panel-7-46'])
+console.log('Verified November 6 outcome, cost and pending-coverage fixtures.')
