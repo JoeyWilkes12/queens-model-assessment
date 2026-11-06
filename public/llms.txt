@@ -1,0 +1,37 @@
+# Queens model assessment
+
+> An illustrated book about how language models, typed decision models, and constraint solvers approach regional Queens puzzles, with saved requests, answers, grades, and costs.
+
+This is a navigation guide, not a full copy of the book. Pages use client-side hash routing; a JavaScript-capable browser is needed to read the rendered chapters. Follow the links below, keeping each #/ fragment intact. Results belong to the dated study and board set shown on each page; historical panels and planned experiments have separate scopes.
+
+## Start here
+
+- [Contents](https://joeywilkes12.github.io/queens-model-assessment/#/contents): Complete chapter and section navigation.
+- [Executive summary](https://joeywilkes12.github.io/queens-model-assessment/#/executive-summary): Main findings, leaderboard, and suggested reading.
+- [Assessment receipt](https://joeywilkes12.github.io/queens-model-assessment/#/assessment-receipt): What was tested, when, and how to read the ledger.
+
+## Puzzle and assessments
+
+- [Queens rules](https://joeywilkes12.github.io/queens-model-assessment/#/queens-rules): Regional Queens constraints and original boards.
+- [How Z3 solves Queens](https://joeywilkes12.github.io/queens-model-assessment/#/how-z3-solves-queens): Illustrated constraint solving, uniqueness proofs, and an interactive rule workbench.
+- [Frontier protocol and results](https://joeywilkes12.github.io/queens-model-assessment/#/protocol-results): Hosted-model inputs, outcomes, and route failures.
+- [Local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen): Gemma, LLaVA, Qwen, and GPT-OSS studies, decoding comparisons, and illustrative hosted costs.
+- [Caveman comparison](https://joeywilkes12.github.io/queens-model-assessment/#/caveman-summary): Matched local-study outcomes, token use, and estimated costs, including the original 4B pilot.
+- [Decision models](https://joeywilkes12.github.io/queens-model-assessment/#/decision-models): Typed-choice models and their assessment context; the OpenAI Decisions section is a future experiment plan.
+- [Jev trajectories](https://joeywilkes12.github.io/queens-model-assessment/#/jev-trajectories): Saved empty-board attempts, restarts, and repeatability.
+- [SubQ Snap replay](https://joeywilkes12.github.io/queens-model-assessment/#/subq-assessment): Historical tasks, outcomes, and receipt-linked replays.
+- [Greedy rule baseline](https://joeywilkes12.github.io/queens-model-assessment/#/greedy-rule): A no-model placement rule and its recorded successes and failures.
+
+## Evidence and context
+
+- [Evidence atlas](https://joeywilkes12.github.io/queens-model-assessment/#/evidence-atlas): Search saved sanitized requests, outputs, grades, and metadata.
+- [Board receipts](https://joeywilkes12.github.io/queens-model-assessment/#/board-receipts): Results, answers, replays, and costs by board.
+- [Methods and sources](https://joeywilkes12.github.io/queens-model-assessment/#/methods-sources): Definitions, limits, and primary references.
+- [Methods critique](https://joeywilkes12.github.io/queens-model-assessment/#/methods-critique): What the design can support and where it is limited.
+- [About this book](https://joeywilkes12.github.io/queens-model-assessment/#/about): Purpose and provenance.
+- [Changelog](https://joeywilkes12.github.io/queens-model-assessment/#/changelog): Publication history and updates.
+
+## Optional
+
+- [Public evidence manifest](https://joeywilkes12.github.io/queens-model-assessment/evidence/manifest.json): Large machine-readable historical evidence bundle; newer local studies have separate catalogs linked from their chapters.
+- [Source repository](https://github.com/JoeyWilkes12/queens-model-assessment): Site source, documentation, and offline verification scripts. The website displays saved evidence and does not issue model inference requests.

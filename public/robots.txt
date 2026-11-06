@@ -1,0 +1,5 @@
+# All crawlers, including AI crawlers, are welcome.
+# Robots policy is discovered at the origin root (/robots.txt).
+# On GitHub Pages this project-path copy does not set policy for the whole host.
+User-agent: *
+Allow: /
