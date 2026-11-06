@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { assetUrl, Icon } from './bookUi'
+import { assetUrl, formatDay, Icon } from './bookUi'
+import { CHANGELOG } from './changelog'
 
 export const boardConfigs = {
   five: {
@@ -174,6 +175,7 @@ export function ReportFigures() {
 }
 
 export function AssessmentReceipt() {
+  const edition = CHANGELOG[0].date
   return (
     <section className="receipt" aria-labelledby="receipt-heading">
       <div className="receipt-lead">
@@ -191,7 +193,11 @@ export function AssessmentReceipt() {
         </div>
         <div>
           <span className="receipt-label">Edition</span>
-          <strong>2 Nov 2026</strong>
+          <strong>
+            <time dateTime={edition}>
+              {formatDay(edition)} {edition.slice(0, 4)}
+            </time>
+          </strong>
           <span>dated studies retained</span>
         </div>
         <div>

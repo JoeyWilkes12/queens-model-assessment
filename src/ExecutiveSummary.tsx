@@ -88,14 +88,14 @@ export function ExecutiveSummary() {
         className="page-hero--board"
         trail="Read first"
         title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one."
-        deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. Every system in the chart below tried the same boards."
+        deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. The shared benchmark compares systems on the same boards. The completed open-weight view shows local results by study."
       />
       <section className="board-cover" aria-labelledby="leaderboard-title">
         <Leaderboard ui={bookUi} titleId="leaderboard-title" />
       </section>
       <p className="qa-caveat" style={{ paddingInline: '28px' }}>
-        The leaderboard retains its dated conditions. <a href="#/local-qwen">Local open-weight assessments</a> report
-        Gemma, LLaVA and Qwen, fresh-board prompt controls, sampling rounds and stopping policies separately.
+        Open-weight results retain their board panels, prompt arms, input formats and token budgets.{' '}
+        <a href="#/local-qwen">Explore the local assessment receipts and cost scenarios</a>.
       </p>
       <AssessmentReceipt />
       <div className="reading-layout">
@@ -272,7 +272,7 @@ export function ExecutiveSummary() {
                 stat="38/48"
                 statLabel="strict requests, Qwen 9B on fresh1"
                 statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions."
-                answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B is partial at 13 of 37 recorded, with 48 planned. Three sampling rounds are now complete for both larger Qwen models on the earlier panel. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles."
+                answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B finished the image panel at 16 of 48 strict. On text grids, GPT-OSS 20B scored 23 of 48 and Qwen 9B scored 26 of 48. On images with a request-level JSON schema, Qwen 9B returned 19 of 24 strict. Qwen 27B completed Fresh1 images with 43 of 48 strict. Qwen 9B also scored 43 of 48 on the separate Fresh2 image panel. Three sampling rounds are now complete for both larger Qwen models on the earlier panel. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles."
                 more="Original 4B pilot, 28 Oct"
               >
                 <p>
@@ -304,6 +304,10 @@ export function ExecutiveSummary() {
                 <p className="qa-caveat">
                   Four boards per size, one run each, plain prompt always first: this cannot show that Caveman caused
                   the gain.
+                </p>
+                <p>
+                  {'Caveman’s cost and correctness tradeoffs varied across studies. At the saved tariffs, Qwen 27B spent less with Caveman in each of its three sampling rounds, while Qwen 9B spent more in round three. Both 27B arms solved all twelve round-three boards after accounting for response format. '}
+                  <a href="#/caveman-summary">Compare outcomes and estimated costs across studies</a>.
                 </p>
                 <QaLinks
                   links={[

@@ -1,0 +1,6 @@
+{
+  "format_valid": false,
+  "correct": false,
+  "checks": {},
+  "failure": "invalid_json_or_missing_final"
+}

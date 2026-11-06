@@ -8,7 +8,7 @@ export type HeroText = { trail: string; title: string; deck: string; action?: { 
 export const LOCAL_QWEN_HERO: HeroText = {
   trail: 'Model generations / local open-weight assessments',
   title: 'Local open-weight assessments',
-  deck: 'Inspect Qwen, Gemma and LLaVA studies by frozen board set, prompt arm, decoding and token budget. Every number leads back to saved evidence.',
+  deck: 'Inspect Qwen, GPT-OSS, Gemma and LLaVA studies by board set, input modality, prompt arm, decoding and token budget. Every number leads back to saved evidence.',
 }
 
 export const Z3_HERO: HeroText = {

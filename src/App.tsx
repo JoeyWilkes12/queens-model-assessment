@@ -14,6 +14,7 @@ import {
   AssessmentReceiptPage,
   BoardReceipts,
   CandidateEngineering,
+  CavemanStudies,
   ChangelogPage,
   ContentsPage,
   DecisionModels,
@@ -161,7 +162,8 @@ function routePage(active: string, parts: string[]): ReactNode {
         />,
       )
     case 'caveman-summary':
-      return <OllamaComparison ui={bookUi} view="summary" />
+      // The original 4B pilot's Caveman summary is at caveman-summary/pilot; the route itself compares every study.
+      return second === 'pilot' ? <OllamaComparison ui={bookUi} view="summary" /> : <CavemanStudies ui={bookUi} />
     case 'subq-assessment':
       return <SubQAssessment ui={bookUi} selectedId={second} />
     case 'decision-models':

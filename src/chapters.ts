@@ -20,6 +20,7 @@ export const chapters = {
   critique: loader(() => import('./MethodsCritique')),
   pilot: loader(() => import('./OllamaAssessment')),
   caveman: loader(() => import('./OllamaComparison')),
+  cavemanStudies: loader(() => import('./CavemanStudies')),
   subq: loader(() => import('./SubQAssessment')),
   legacyPanel: loader(() => import('./LegacyPanel')),
   receiptChain: loader(() => import('./ReceiptChainNavigation')),
@@ -50,6 +51,7 @@ export const GreedyRule = named(chapters.greedy, 'GreedyRule')
 export const MethodsCritique = named(chapters.critique, 'MethodsCritique')
 export const OllamaAssessment = named(chapters.pilot, 'OllamaAssessment')
 export const OllamaComparison = named(chapters.caveman, 'OllamaComparison')
+export const CavemanStudies = lazy(chapters.cavemanStudies)
 export const SubQAssessment = named(chapters.subq, 'SubQAssessment')
 export const LegacyPanel = named(chapters.legacyPanel, 'LegacyPanel')
 export const ReceiptChainNavigation = named(chapters.receiptChain, 'ReceiptChainNavigation')
@@ -80,7 +82,7 @@ const ROUTE_CHAPTERS: Record<string, (() => Promise<unknown>)[]> = {
   'jev-trajectories': [chapters.trajectories],
   'local-open-models': [chapters.pilot],
   'local-qwen': [chapters.localQwen],
-  'caveman-summary': [chapters.caveman],
+  'caveman-summary': [chapters.cavemanStudies],
   'subq-assessment': [chapters.subq],
   'decision-models': [chapters.decisionModels],
   'openai-decisions-plan': [chapters.decisionModels],
@@ -99,5 +101,6 @@ const ROUTE_CHAPTERS: Record<string, (() => Promise<unknown>)[]> = {
 export function preloadRoute(path: string) {
   const first = path.split('/')[0]
   ROUTE_CHAPTERS[first]?.forEach(load => load().catch(() => undefined))
-  if (first === 'local-open-models' && path !== first) chapters.caveman().catch(() => undefined)
+  // Receipts and configuration under the 4B pilot, and the pilot's Caveman summary, are drawn by OllamaComparison.
+  if ((first === 'local-open-models' && path !== first) || path === 'caveman-summary/pilot') chapters.caveman().catch(() => undefined)
 }

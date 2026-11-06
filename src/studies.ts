@@ -38,4 +38,25 @@ export const studies: [string, string, string, string, string][] = [
     'local-qwen',
     '9B 16/24; 27B 22/24 strict; 4B 37/48 recorded',
   ],
+  [
+    '2026-11-03',
+    '3 Nov',
+    'First local text-grid studies and completed 4B image panel',
+    'local-qwen',
+    'GPT-OSS 20B text 23/48 strict, Qwen 4B image 16/48 strict',
+  ],
+  [
+    '2026-11-05',
+    '4–5 Nov',
+    'Completed text-grid and constrained JSON panels',
+    'local-qwen',
+    '9B text 26/48, 9B JSON 19/24 strict',
+  ],
+  [
+    '2026-11-06',
+    '5–6 Nov',
+    'Fresh2 starts and Qwen 27B completes Fresh1',
+    'local-qwen',
+    '9B Fresh2 image 43/48, 27B Fresh1 image 43/48 strict',
+  ],
 ]
