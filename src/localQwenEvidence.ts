@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import type { CostRow } from './localQwenMath'
 
 export type LocalRow = CostRow & {
-  call_id: string; board_id: string; size: number; receipt: string | null; image: string
+  call_id: string; board_id: string; size: number; receipt: string | null; image: string | null
   peer_call_ids?: string[]; peer_call_id: string | null; pair_verified: boolean; finish_reason: string | null
   rescue: (NonNullable<CostRow['rescue']> & { receipt: string; outcome: string }) | null
   host: Record<string, number | null> | null; loop_stop: Record<string, unknown> | null
@@ -14,6 +14,7 @@ export type LocalStudy = {
   kind?: 'assessment' | 'audit'; audit_of?: string | null
   round: number; status: 'complete' | 'partial'; planned: number; recorded: number
   root: string; plan: string; summary: string; rows: LocalRow[]
+  protocol?: { modality?: 'image' | 'text' }
   runtime: { digest: string; server_version: string; details: { runner: string; quantization_level: string } }
 }
 export type LocalIndex = { schema_version: number; snapshot_id: string; captured_utc: string; source_commit: string; source_dirty: boolean; manifest: string; studies: LocalStudy[] }
@@ -52,7 +53,7 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
         && (r.elapsed_seconds === null || (typeof r.elapsed_seconds === 'number' && Number.isFinite(r.elapsed_seconds) && r.elapsed_seconds >= 0))
         && ['strict_correct', 'format_only_correct', 'truncated', 'loop_stopped', 'pair_verified'].every(k => typeof r[k as keyof LocalRow] === 'boolean')
         && (data.schema_version !== 3 || (Array.isArray(r.peer_call_ids) && r.peer_call_ids.every(id => s.rows.some(peer => peer.call_id === id && peer.board_id === r.board_id && peer.treatment !== r.treatment)) && !!s.arms?.[r.treatment]))
-        && (r.receipt === null || path(r.receipt)) && path(r.image)
+        && (r.receipt === null || path(r.receipt)) && (s.protocol?.modality === 'text' ? r.image === null : path(r.image))
         && (r.audit === undefined || r.audit === null || (path(r.audit.source_receipt) && typeof r.audit.source_call_id === 'string'
           && typeof r.audit.prefix_match === 'boolean' && typeof r.audit.answered_after_stop === 'boolean' && count(r.audit.source_thinking_chars)))
         && (r.rescue === null || (path(r.rescue.receipt) && optional(r.rescue.input_tokens) && optional(r.rescue.output_tokens) && typeof r.rescue.strict_correct === 'boolean'))))

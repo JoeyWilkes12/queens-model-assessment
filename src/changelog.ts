@@ -28,6 +28,17 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-03',
+    title: 'First text-grid assessments and completed Qwen 4B image panel',
+    kinds: ['evidence', 'chapter'],
+    pr: 17,
+    changes: [
+      'Completed the Qwen 4B fresh image panel with 16 strict answers in 48 calls.',
+      'Added GPT-OSS 20B on text grids with 23/48 strict and the first eight Qwen 9B text-grid calls, all strict, with 40 calls pending.',
+      'Added text-grid receipt links and updated local coverage to 21 conditions and 531 assessment and audit receipts, plus 38 separate rescues.',
+    ],
+  },
+  {
     date: '2026-11-02',
     title: 'Book organization, breadcrumb navigation and this changelog',
     kinds: ['interface'],
@@ -230,9 +241,10 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-09-21',
     title: 'First publication',
     kinds: ['chapter', 'interface'],
-    commits: ['f0b837d0'],
+    commits: ['754fb130', 'f0f0a143', '8d64caca', 'f6db6ff7', 'f0b837d0'],
     changes: [
       'Imported the assessment book foundation: the Executive Summary, Queens rules, protocol and results, the Jev chapters, the evidence atlas, methods and About.',
+      'Published the book on GitHub Pages and added fullscreen receipts with outcome context.',
       'Added model author and exact-version filters to the evidence atlas.',
     ],
   },
