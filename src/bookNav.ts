@@ -84,7 +84,7 @@ export const BOOK_PARTS: NavPart[] = [
               { path: 'local-open-models/configuration', title: 'Pilot configuration', description: 'The frozen runner, model digest and request settings.' },
             ],
           },
-          { path: 'caveman-summary', title: 'Caveman comparison', description: 'Paired receipts, observed correctness and usage, and experimental limits.' },
+          { path: 'caveman-summary', title: 'Caveman comparison', description: 'Matched outcomes, token use and estimated cost across local studies, with the original 4B pilot.' },
         ],
       },
     ],
