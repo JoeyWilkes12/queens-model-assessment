@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import type { CostRow } from './localQwenMath'
 
 export type LocalRow = CostRow & {
-  call_id: string; board_id: string; size: number; receipt: string | null; image: string
+  call_id: string; board_id: string; size: number; receipt: string | null; image: string | null
   peer_call_ids?: string[]; peer_call_id: string | null; pair_verified: boolean; finish_reason: string | null
   rescue: (NonNullable<CostRow['rescue']> & { receipt: string; outcome: string }) | null
   host: Record<string, number | null> | null; loop_stop: Record<string, unknown> | null
@@ -14,6 +14,7 @@ export type LocalStudy = {
   kind?: 'assessment' | 'audit'; audit_of?: string | null
   round: number; status: 'complete' | 'partial'; planned: number; recorded: number
   root: string; plan: string; summary: string; rows: LocalRow[]
+  protocol?: { modality?: 'image' | 'text'; format?: Record<string, unknown> }
   runtime: { digest: string; server_version: string; details: { runner: string; quantization_level: string } }
 }
 export type LocalIndex = { schema_version: number; snapshot_id: string; captured_utc: string; source_commit: string; source_dirty: boolean; manifest: string; studies: LocalStudy[] }
@@ -41,7 +42,7 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
       && ['greedy', 'sampling', 'greedy+ls', 'loop-audit'].includes(s.decoding) && ['complete', 'partial'].includes(s.status)
       && (s.kind === undefined || ['assessment', 'audit'].includes(s.kind))
       && (s.kind !== 'audit' || (typeof s.audit_of === 'string' && data.studies.some(source => source.id === s.audit_of)))
-      && (data.schema_version !== 3 || (['fresh1', 'legacy'].includes(s.board_set || '') && ['off', 'active', 'shadow'].includes(s.loop_mode || '')
+      && (data.schema_version !== 3 || (['fresh1', 'fresh2', 'legacy'].includes(s.board_set || '') && ['off', 'active', 'shadow'].includes(s.loop_mode || '')
         && !!s.arms && Object.keys(s.arms).length >= 2 && Object.keys(s.arms).every(arm => ['baseline', 'schema', 'neutral', 'caveman'].includes(arm))
         && Object.values(s.arms).every(arm => count(arm.system_chars) && count(arm.system_words))))
       && count(s.budget) && s.budget > 0 && count(s.planned) && count(s.recorded) && s.recorded <= s.planned
@@ -52,7 +53,7 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
         && (r.elapsed_seconds === null || (typeof r.elapsed_seconds === 'number' && Number.isFinite(r.elapsed_seconds) && r.elapsed_seconds >= 0))
         && ['strict_correct', 'format_only_correct', 'truncated', 'loop_stopped', 'pair_verified'].every(k => typeof r[k as keyof LocalRow] === 'boolean')
         && (data.schema_version !== 3 || (Array.isArray(r.peer_call_ids) && r.peer_call_ids.every(id => s.rows.some(peer => peer.call_id === id && peer.board_id === r.board_id && peer.treatment !== r.treatment)) && !!s.arms?.[r.treatment]))
-        && (r.receipt === null || path(r.receipt)) && path(r.image)
+        && (r.receipt === null || path(r.receipt)) && (s.protocol?.modality === 'text' ? r.image === null : path(r.image))
         && (r.audit === undefined || r.audit === null || (path(r.audit.source_receipt) && typeof r.audit.source_call_id === 'string'
           && typeof r.audit.prefix_match === 'boolean' && typeof r.audit.answered_after_stop === 'boolean' && count(r.audit.source_thinking_chars)))
         && (r.rescue === null || (path(r.rescue.receipt) && optional(r.rescue.input_tokens) && optional(r.rescue.output_tokens) && typeof r.rescue.strict_correct === 'boolean'))))
@@ -76,3 +77,21 @@ export function useLocalStudies(): State {
 export const localReceiptUrl = (study: LocalStudy, row: LocalRow) => `#/local-qwen/receipt/${study.id}/${row.call_id}`
 export const armName = (arm: string) => ({ baseline: 'Baseline', schema: 'Schema reminder', neutral: 'Neutral control', caveman: '+ Caveman' }[arm] || arm)
 export const rowOutcome = (r: LocalRow) => r.state !== 'recorded' ? 'Pending / not recorded' : r.strict_correct ? 'Strict correct' : r.format_only_correct ? 'Correct, wrong format' : r.loop_stopped ? 'Client loop-stop' : r.truncated ? 'Token cap reached' : 'Completed incorrect / other'
+
+/** Load only the saved public tariff evidence, with no live API or inference requests. */
+export function usePricing() {
+  const [state, setState] = useState<{ status: 'loading' | 'error' } | { status: 'ready'; data: Pricing }>({ status: 'loading' })
+  useEffect(() => {
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`, { signal: controller.signal }).then(r => { if (!r.ok) throw new Error('Missing rates'); return r.json() })
+      .then((p: Pricing) => {
+        if (p.schema_version !== 1 || p.catalog_url !== 'https://openrouter.ai/api/v1/models' || !Array.isArray(p.models) || !p.models.length || !Number.isFinite(Date.parse(p.checked_utc))
+          || !p.models.every(m => /^qwen\/[a-zA-Z0-9.-]+$/.test(m.id) && [m.usd_per_million?.input, m.usd_per_million?.output].every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0))) throw new Error('Invalid rates')
+        if (!controller.signal.aborted) setState({ status: 'ready', data: p })
+      }).catch(() => { if (!controller.signal.aborted) setState({ status: 'error' }) })
+    return () => controller.abort()
+  }, [])
+  return state
+}
+
+export const defaultTariff = (study: LocalStudy) => !study.model.toLowerCase().includes('qwen') ? 'custom' : study.model.includes(':4b') ? 'qwen/qwen3.5-flash-02-23' : study.model.includes('27b') ? 'qwen/qwen3.5-27b' : 'qwen/qwen3.5-9b'

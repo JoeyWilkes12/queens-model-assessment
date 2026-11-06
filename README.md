@@ -5,16 +5,17 @@ This is the static-compatible Vite + React + TypeScript companion to the expande
 Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-model-assessment/)
 
 The [local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen)
-cover Gemma 4 E4B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
+cover Gemma 4 E4B, GPT-OSS 20B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
 original Qwen budget and sampling conditions, and selected loop-stop audits.
-The November 2 snapshot contains 19 conditions and 464 assessment receipts, plus
-38 separate rescues. Third sampling rounds are complete for Qwen 9B and 27B;
-fresh1 Qwen 4B remains partial at 13 strict of 37 recorded, with 48 planned. It includes partial studies without treating unrun requests
-as model failures. See the [coverage and scientific limits](docs/local-assessment-coverage.md),
+The November 6 snapshot contains 25 conditions and 709 assessment and audit receipts,
+plus 38 separate rescues. It completes Qwen 27B Fresh1 images and Qwen 9B Fresh2 images
+and adds 18 of 48 GPT-OSS 20B Fresh2 text-grid calls.
+See the [November 6 audit](docs/local-qwen-nov6.md), the [November 5 audit](docs/local-qwen-nov5.md),
+the [November 3 results](docs/local-qwen-nov3.md),
 [offline import workflow](docs/local-qwen-imports.md), [method review](docs/local-qwen-methods.md),
 [historical October 31 results](docs/local-qwen-oct31.md), and
 [November 2 findings](docs/local-qwen-nov2.md) and
-[updated financial scenarios](docs/local-qwen-nov2-costs.md). New nights add immutable
+[November 2 financial scenarios](docs/local-qwen-nov2-costs.md). New nights add immutable
 snapshots; the website never sends inference requests.
 
 ## Table of contents
@@ -39,7 +40,8 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/local-qwen/study/<study_id>`
 - `#/local-qwen/receipt/<study_id>/<call_id>`
 - `#/local-open-models`
-- `#/caveman-summary`
+- `#/caveman-summary` (cross-study synthesis)
+- `#/caveman-summary/pilot` (original paired 4B analysis)
 - `#/local-open-models/configuration`
 - `#/local-open-models/receipt/<call_id>`
 - `#/jev-primer`
@@ -94,7 +96,7 @@ Run `npm run ollama:test` and `npm run ollama:verify` to audit the complete save
 
 See the [protocol and reproduction commands](docs/ollama-local-assessment.md), [Caveman security review](docs/caveman-review.md), and [coding-agent tracing and virtual-tag capture limits](docs/observability.md). No global Caveman installation is required.
 
-The Caveman comparison chapter reports correctness, paired transitions, token usage and elapsed time for the 4b pilot, with input-length and run-order confounds. Each of the 24 readable receipts links to the other condition on the same board and to its shared model configuration. The derived [comparison index](public/evidence/ollama/comparisons.json) binds both calls to exact user-message, image, request, response and model/configuration hashes. `npm run ollama:verify` checks these relationships offline as well as the original receipts; it never contacts Ollama.
+The [Caveman comparison chapter](https://joeywilkes12.github.io/queens-model-assessment/#/caveman-summary) compares matched outcomes and estimated costs by saved study. The original 4B pilot section retains its paired transitions, token use and elapsed time, with input-length and run-order confounds. Each of the 24 readable receipts links to the other condition on the same board and to its shared model configuration. The derived [comparison index](public/evidence/ollama/comparisons.json) binds both calls to exact user-message, image, request, response and model/configuration hashes. `npm run ollama:verify` checks these relationships offline as well as the original receipts; it never contacts Ollama.
 
 The chapter also visualizes outcomes and token overhead, with an interactive [hosted cost tradeoff](docs/caveman-cost-tradeoff.md) calculator. Its dated OpenRouter tariffs are illustrative repricing of the observed 4b usage, not bills or performance measurements for the reference models. `npm run caveman:verify` checks the cost arithmetic offline; the actual local provider fee remains $0.
 

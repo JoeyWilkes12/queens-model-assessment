@@ -28,12 +28,54 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-06',
+    title: 'Completed open-weight assessments in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    pr: 19,
+    changes: [
+      'Added a completed open-weight view to the Executive Summary leaderboard with model, board-panel and board-size filters.',
+      'The November 6 catalog includes completed Qwen 9B Fresh2 and Qwen 27B Fresh1 image studies. Selected rerun audits remain separate.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'November 5–6 local assessments and the Fresh2 panel',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 18,
+    changes: [
+      'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
+      'Completed Qwen 27B Fresh1 images at 43/48 strict and Qwen 9B Fresh2 images at 43/48 strict. GPT-OSS 20B Fresh2 text grids have 18/48 recorded.',
+      'Added matched input and decoding comparisons and a request-latency table. The November 6 snapshot adds 73 receipts since November 5, bringing coverage to 25 conditions, 709 assessment and audit receipts and 38 separate rescues.',
+    ],
+  },
+  {
     date: '2026-11-05',
-    title: 'How large updates are reviewed',
+    title: 'Reviewable evidence updates and changelog guidance',
     kinds: ['method'],
     pr: 12,
     changes: [
-      'Documented the review workflow for evidence-heavy updates: compatibility changes first, then evidence and content, then the pages that display them, each as its own pull request. Every website update now adds an entry here. No page of the book changed.',
+      'Documented how to split evidence and site changes into reviewable PRs and keep the changelog current.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'First text-grid assessments and completed Qwen 4B image panel',
+    kinds: ['evidence', 'chapter'],
+    pr: 17,
+    changes: [
+      'Completed the Qwen 4B fresh image panel with 16 strict answers in 48 calls.',
+      'Added GPT-OSS 20B on text grids with 23/48 strict and the first eight Qwen 9B text-grid calls, all strict, with 40 calls pending.',
+      'Added text-grid receipt links and updated local coverage to 21 conditions and 531 assessment and audit receipts, plus 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Caveman results across local studies',
+    kinds: ['chapter'],
+    pr: 16,
+    changes: [
+      'The Caveman chapter now compares strict answers, format recovery and estimated spend across the local studies, with separate round charts for Qwen 9B and 27B rather than pooling repeated boards.',
+      'The original 4B pilot analysis moved to its own page under the chapter; existing receipt and configuration links still open.',
     ],
   },
   {
@@ -249,9 +291,10 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-09-21',
     title: 'First publication',
     kinds: ['chapter', 'interface'],
-    commits: ['f0b837d0'],
+    commits: ['754fb130', 'f0f0a143', '8d64caca', 'f6db6ff7', 'f0b837d0'],
     changes: [
       'Imported the assessment book foundation: the Executive Summary, Queens rules, protocol and results, the Jev chapters, the evidence atlas, methods and About.',
+      'Published the book on GitHub Pages and added fullscreen receipts with outcome context.',
       'Added model author and exact-version filters to the evidence atlas.',
     ],
   },

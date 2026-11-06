@@ -26,6 +26,7 @@ import './book-nav.css'
 
 // The Z3 part is large and self-contained; load it only when its route opens.
 const Z3Part = lazy(() => import('./z3/Z3Part'))
+const CavemanStudies = lazy(() => import('./CavemanStudies'))
 const LocalQwen = lazy(() => import('./LocalQwen'))
 
 type AssessmentOutcome = 'success' | 'model_failure' | 'request_failure' | 'not_run' | 'ungraded'
@@ -378,12 +379,13 @@ function ReportFigures() {
 }
 
 function AssessmentReceipt() {
+  const edition = CHANGELOG[0].date
   return (
     <section className="receipt" aria-labelledby="receipt-heading">
       <div className="receipt-lead"><span className="receipt-mark">✓</span><div><span className="receipt-label">Assessment receipt</span><h2 id="receipt-heading">A bounded claim with an inspectable trail.</h2></div></div>
       <div className="receipt-grid">
         <div><span className="receipt-label">Source class</span><strong>Independent finding</strong><span>saved experiment records</span></div>
-        <div><span className="receipt-label">Edition</span><strong>2 Nov 2026</strong><span>dated studies retained</span></div>
+        <div><span className="receipt-label">Edition</span><strong><time dateTime={edition}>{formatDay(edition)} {edition.slice(0, 4)}</time></strong><span>dated studies retained</span></div>
         <div><span className="receipt-label">Interaction</span><strong>Read-only</strong><span>local evidence only</span></div>
         <div><span className="receipt-label">Outcome</span><strong>Task-specific grades</strong><span>inspect each denominator</span></div>
       </div>
@@ -497,13 +499,16 @@ const studies: [string, string, string, string, string][] = [
   ['2026-10-31', '29–31 Oct', 'Larger local Qwen, sampling and loop-stop audits', 'local-qwen', 'Separate cohorts; round 2 updated'],
   ['2026-11-01', '1 Nov', 'Fresh-board local models, four prompt arms', 'local-qwen', 'Qwen 9B 38/48; Gemma 10/48; LLaVA 0/48'],
   ['2026-11-02', '2 Nov', 'Qwen sampling round 3 and fresh-board progress', 'local-qwen', '9B 16/24; 27B 22/24 strict; 4B 37/48 recorded'],
+  ['2026-11-03', '3 Nov', 'First local text-grid studies and completed 4B image panel', 'local-qwen', 'GPT-OSS 20B text 23/48 strict, Qwen 4B image 16/48 strict'],
+  ['2026-11-05', '4–5 Nov', 'Completed text-grid and constrained JSON panels', 'local-qwen', '9B text 26/48, 9B JSON 19/24 strict'],
+  ['2026-11-06', '5–6 Nov', 'Fresh2 starts and Qwen 27B completes Fresh1', 'local-qwen', '9B Fresh2 image 43/48, 27B Fresh1 image 43/48 strict'],
 ]
 
 function ExecutiveSummary() {
   return <>
-    <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. Every system in the chart below tried the same boards." />
+    <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. The shared benchmark compares systems on the same boards. The completed open-weight view shows local results by study." />
     <section className="board-cover" aria-labelledby="leaderboard-title"><Leaderboard ui={bookUi} titleId="leaderboard-title" /></section>
-    <p className="qa-caveat" style={{ paddingInline: '28px' }}>The leaderboard retains its dated conditions. <a href="#/local-qwen">Local open-weight assessments</a> report Gemma, LLaVA and Qwen, fresh-board prompt controls, sampling rounds and stopping policies separately.</p>
+    <p className="qa-caveat" style={{ paddingInline: '28px' }}>Open-weight results retain their board panels, prompt arms, input formats and token budgets. <a href="#/local-qwen">Explore the local assessment receipts and cost scenarios</a>.</p>
     <AssessmentReceipt />
     <div className="reading-layout">
       <LocalToc items={[{ id: 'finding', label: 'Short answers' }, { id: 'scoreboard', label: 'Results by task' }, { id: 'watch', label: 'Watch it happen' }, { id: 'limits', label: 'Limits' }, { id: 'next', label: 'Go deeper' }]} />
@@ -552,7 +557,7 @@ function ExecutiveSummary() {
               <p className="qa-caveat">The 24 lists come from two boards, so they are not 24 separate puzzles.</p>
               <QaLinks links={[['Jev primer', '#/jev-primer'], ['Candidate engineering', '#/candidate-engineering'], ['Scale & primitives', '#/scale-primitives'], ['Decision models vs the index', '#/decision-models']]} />
             </Answer>
-            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="38/48" statLabel="strict requests, Qwen 9B on fresh1" statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions." answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B is partial at 13 of 37 recorded, with 48 planned. Three sampling rounds are now complete for both larger Qwen models on the earlier panel. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles." more="Original 4B pilot, 28 Oct">
+            <Answer id="qa-local" question="Can models running on our own computer do it?" stat="38/48" statLabel="strict requests, Qwen 9B on fresh1" statSr="Qwen 9B returned 38 strict correct answers on 48 requests across 12 fresh1 boards and four prompt conditions." answer="Yes, with large differences between tested configurations. On the same 12 fresh1 boards across four prompt arms, Qwen 9B returned 38 of 48 strict answers, Gemma 4 E4B 10 of 48 and LLaVA-Llama3 0 of 48. Qwen 4B finished the image panel at 16 of 48 strict. On text grids, GPT-OSS 20B scored 23 of 48 and Qwen 9B scored 26 of 48. On images with a request-level JSON schema, Qwen 9B returned 19 of 24 strict. Qwen 27B completed Fresh1 images with 43 of 48 strict. Qwen 9B also scored 43 of 48 on the separate Fresh2 image panel. Three sampling rounds are now complete for both larger Qwen models on the earlier panel. On the earlier boards, Qwen 27B greedy returned 24 of 24 at its 24,576-token limit. These are separate studies; repeated prompt arms are not independent puzzles." more="Original 4B pilot, 28 Oct">
               <p>The original 4B pilot below is preserved separately from the later larger-budget and larger-model experiments.</p>
               <PairStrip />
               <Facts items={[
@@ -563,6 +568,7 @@ function ExecutiveSummary() {
                 ['Caveman', 'A free third-party add-on that tells the model to answer in as few words as possible, checked for safety before use. No fee; electricity was not measured.'],
               ]} />
               <p className="qa-caveat">Four boards per size, one run each, plain prompt always first: this cannot show that Caveman caused the gain.</p>
+              <p>Caveman’s cost and correctness tradeoffs varied across studies. At the saved tariffs, Qwen 27B spent less with Caveman in each of its three sampling rounds, while Qwen 9B spent more in round three. Both 27B arms solved all twelve round-three boards after accounting for response format. <a href="#/caveman-summary">Compare outcomes and estimated costs across studies</a>.</p>
               <QaLinks links={[['Local open-weight assessments', '#/local-qwen'], ['Original 4B pilot', '#/local-open-models'], ['Caveman comparison', '#/caveman-summary']]} />
             </Answer>
             <Answer id="qa-cost" question="What did it cost?" stat="$31.48" statLabel="recorded API spend, all studies" answer="Little. Most went on the two 36-board picture tests, and every request, visible reply and grade is saved." more="Breakdown and records">
@@ -1291,7 +1297,7 @@ function App() {
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
                 : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading local open-weight assessments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
-                : active === 'caveman-summary' ? <OllamaComparison ui={bookUi} view="summary" />
+                : active === 'caveman-summary' ? parts[1] === 'pilot' ? <OllamaComparison ui={bookUi} view="summary" /> : <Suspense fallback={<p role="status" className="ollama-standalone">Loading Caveman studies…</p>}><CavemanStudies ui={bookUi} /></Suspense>
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
                 : active === 'greedy-rule' ? <GreedyRule ui={bookUi} />

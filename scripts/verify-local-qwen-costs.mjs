@@ -153,7 +153,7 @@ for (const [id,expected] of Object.entries(coverageFixtures)) {
  }
 }
 const fresh9=index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh1-4arm-np32768')
-const fresh4=index.studies.find(s=>s.id==='qwen3.5-4b-fresh1-4arm-np32768')
+const fresh4=nov1Index.studies.find(s=>s.id==='qwen3.5-4b-fresh1-4arm-np32768')
 assert.equal(isMatchedCohort(fresh9.rows),true)
 assert.equal(isMatchedCohort(fresh4.rows),false)
 const freshContrast=compareArms(fresh9.rows,{input:0.17,output:0.25})
@@ -164,6 +164,7 @@ near(freshContrast.deltaUsd,-0.00663901)
 assert.deepEqual(compareArms(fresh9.rows.filter(r=>['baseline','caveman'].includes(r.treatment)),rates),compareArms(fresh9.rows,rates))
 console.log('Verified six previously omitted cohorts, four-arm usage and unmatched partial cost guard.')
 
+const nov2Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-02-overnight/catalog.json',import.meta.url)))
 // Independently transcribed from Nov2 recorded raw summary usage, including failures.
 const nov2Fixtures = {
  'qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r2': [[12,10236,132997,8,4],[12,23808,119929,9,0]],
@@ -172,7 +173,7 @@ const nov2Fixtures = {
  'qwen3.5-4b-fresh1-4arm-np32768': [[9,7677,208989,4,1],[9,8199,250119,2,0],[9,17226,194324,3,3],[10,19840,241512,4,0]],
 }
 for (const [id, expected] of Object.entries(nov2Fixtures)) {
- const study=index.studies.find(s=>s.id===id)
+ const study=nov2Index.studies.find(s=>s.id===id)
  assert.ok(study,`Missing Nov2 study ${id}`)
  const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
  for (const [i,arm] of Object.keys(study.arms).entries()) {
@@ -185,7 +186,7 @@ for (const [id, expected] of Object.entries(nov2Fixtures)) {
 }
 console.log('Verified Nov2 round-3, completed 27B round-2 and unmatched 37/48 fresh 4B usage against independent fixtures and raw summaries.')
 
-const nov2Round3=index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-np24576-qwen-sampling-r3')
+const nov2Round3=nov2Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-np24576-qwen-sampling-r3')
 const nov2Round3Cost=compareArms(nov2Round3.rows,{input:0.17,output:0.25},true)
 near(nov2Round3Cost.baseline.oneShotCostUsd,0.04966012)
 near(nov2Round3Cost.caveman.oneShotCostUsd,0.05323236)
@@ -195,5 +196,129 @@ near(nov2Round3Cost.baseline.combinedCostUsd,0.05399635)
 near(nov2Round3Cost.caveman.combinedCostUsd,0.07133819)
 assert.equal(nov2Round3Cost.baseline.combinedStrictSuccessCount,9)
 assert.equal(nov2Round3Cost.caveman.combinedStrictSuccessCount,9)
-near(compareArms(index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r3').rows,{input:0.26,output:2.6}).deltaUsd,-0.06822088)
-near(compareArms(index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r2').rows,{input:0.26,output:2.6}).deltaUsd,-0.03044808)
+near(compareArms(nov2Index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r3').rows,{input:0.26,output:2.6}).deltaUsd,-0.06822088)
+near(compareArms(nov2Index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r2').rows,{input:0.26,output:2.6}).deltaUsd,-0.03044808)
+
+
+const nov3Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-03-overnight/catalog.json',import.meta.url)))
+
+// Recorded raw summaries from the November 3 evidence. Each tuple records calls,
+// input, output, strict successes, format-only successes and truncations.
+const nov3Fixtures = {
+ 'qwen3.5-4b-fresh1-4arm-np32768': [[12,10236,288892,4,3,5],[12,10932,336091,3,0,9],[12,22968,276054,4,3,5],[12,23808,293729,5,0,7]],
+ 'gpt-oss-20b-fresh1-text-4arm-np32768': [[12,5260,263898,6,0,6],[12,6004,300201,5,0,7],[12,17812,248506,6,0,6],[12,18388,214813,6,0,5]],
+ 'qwen3.5-9b-nvfp4-fresh1-text-4arm-np32768': [[2,712,44494,2,0,0],[2,828,35607,2,0,0],[2,2834,19417,2,0,0],[2,2974,20355,2,0,0]],
+}
+for (const [id, expected] of Object.entries(nov3Fixtures)) {
+ const study=nov3Index.studies.find(s=>s.id===id)
+ assert.ok(study,`Missing Nov3 study ${id}`)
+ const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
+ for (const [i,arm] of ['baseline','schema','neutral','caveman'].entries()) {
+  for (const all of [study.rows,source.rows]) {
+   const rows=all.filter(r=>r.state==='recorded'&&r.treatment===arm)
+   const usage=aggregateUsage(rows)
+   const strict=rows.filter(r=>r.strict_correct).length
+   const formatOnly=rows.filter(r=>r.format_only_correct || r.outcome==='format_only').length
+   const truncated=rows.filter(r=>r.truncated || r.outcome==='truncated').length
+   assert.deepEqual([rows.length,usage.inputTokens,usage.outputTokens,strict,formatOnly,truncated],expected[i])
+  }
+ }
+ assert.equal(isMatchedCohort(study.rows),true)
+ const recorded=study.rows.filter(r=>r.state==='recorded')
+ assert.equal(recorded.some(r=>r.rescue),false)
+ if (id.includes('9b')) {
+  assert.deepEqual([...new Set(recorded.map(r=>r.board_id))].sort(),['panel-5-28','panel-7-06'])
+  assert.equal(study.rows.filter(r=>r.state==='pending').length,40)
+  near(compareArms(study.rows,{input:0.17,output:0.25}).deltaUsd,-0.00565021)
+ }
+ if (id.includes('4b')) near(compareArms(study.rows,{input:0.065,output:0.26}).deltaUsd,0.0021398)
+}
+console.log('Verified Nov3 fresh 4B, GPT-OSS text and matched two-board Qwen 9B text usage and outcomes.')
+
+const nov5Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-05-overnight/catalog.json',import.meta.url)))
+
+// November 5 receipt totals and cost accounting. Order: calls, input, generated,
+// strict, format-only, capped.
+const nov5Fixtures = {
+ 'qwen3.5-9b-nvfp4-fresh1-text-4arm-np32768': {
+  baseline: [12,4624,332471,7,0,5], schema: [12,5320,320696,6,0,6],
+  neutral: [12,17356,268829,7,0,5], caveman: [12,18196,267212,6,0,6],
+ },
+ 'qwen3.5-9b-nvfp4-fresh1-json-2arm-np32768': {
+  baseline: [12,10236,210425,9,0,3], caveman: [12,23808,174617,10,0,2],
+ },
+ 'qwen3.5-27b-q4_K_M-fresh1-4arm-np24576': {
+  baseline: [11,9383,113883,8,3,0], schema: [10,9110,108693,10,0,0],
+  neutral: [10,19140,93374,9,1,0], caveman: [10,19840,84142,10,0,0],
+ },
+}
+for (const [id, expected] of Object.entries(nov5Fixtures)) {
+ const study=nov5Index.studies.find(s=>s.id===id)
+ assert.ok(study,`Missing Nov5 study ${id}`)
+ const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
+ for (const [arm, fixture] of Object.entries(expected)) {
+  for (const all of [study.rows,source.rows]) {
+   const rows=all.filter(r=>r.state==='recorded'&&r.treatment===arm)
+   const usage=aggregateUsage(rows)
+   assert.deepEqual([rows.length,usage.inputTokens,usage.outputTokens,rows.filter(r=>r.strict_correct).length,
+    rows.filter(r=>r.format_only_correct || r.outcome==='format_only').length,
+    rows.filter(r=>r.truncated || r.outcome==='truncated').length],fixture)
+  }
+ }
+ assert.equal(isMatchedCohort(study.rows),!id.includes('27b'))
+}
+const nov5Plain=nov5Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh1-4arm-np32768')
+const nov5Json=nov5Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh1-json-2arm-np32768')
+const nov5Text=nov5Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh1-text-4arm-np32768')
+assert.equal(nov5Json.rows.length,24)
+assert.ok(nov5Json.protocol.format)
+for (const row of nov5Json.rows) {
+ const plain=nov5Plain.rows.find(r=>r.call_id===row.call_id)
+ assert.equal(row.strict_correct,plain.strict_correct)
+ assert.equal(row.truncated,plain.truncated)
+}
+const nov5Rates = { input: 0.17, output: 0.25 }
+near(compareArms(nov5Json.rows,nov5Rates).deltaUsd,-0.00664476)
+near(compareArms(nov5Text.rows,nov5Rates).deltaUsd,-0.01400751)
+console.log('Verified November 5 outcome, pairing and hosted-cost fixtures.')
+
+const nov6Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-06-overnight/catalog.json',import.meta.url)))
+// Recorded calls, input, generated, strict, format-only and capped.
+const nov6Fixtures = {
+ 'qwen3.5-27b-q4_K_M-fresh1-4arm-np24576': {
+  baseline: [12,10236,130101,9,3,0], schema: [12,10932,144470,12,0,0],
+  neutral: [12,22968,132099,10,1,1], caveman: [12,23808,105203,12,0,0],
+ },
+ 'qwen3.5-9b-nvfp4-fresh2-4arm-np32768': {
+  baseline: [12,10236,180366,11,0,1], schema: [12,10932,209674,12,0,0],
+  neutral: [12,22968,181517,11,0,1], caveman: [12,23808,187503,9,0,3],
+ },
+ 'gpt-oss-20b-fresh2-text-4arm-np32768': {
+  baseline: [5,2131,65049,4,0,1], schema: [5,2441,134404,1,0,4],
+  neutral: [4,5882,67917,3,0,1], caveman: [4,6074,73142,2,0,2],
+ },
+}
+for (const [id, expected] of Object.entries(nov6Fixtures)) {
+ const study=nov6Index.studies.find(s=>s.id===id)
+ assert.ok(study,`Missing Nov6 study ${id}`)
+ const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
+ for (const [arm, fixture] of Object.entries(expected)) {
+  for (const all of [study.rows,source.rows]) {
+   const rows=all.filter(r=>r.state==='recorded'&&r.treatment===arm)
+   const usage=aggregateUsage(rows)
+   assert.deepEqual([rows.length,usage.inputTokens,usage.outputTokens,rows.filter(r=>r.strict_correct).length,
+    rows.filter(r=>r.format_only_correct || r.outcome==='format_only').length,
+    rows.filter(r=>r.truncated || r.outcome==='truncated').length],fixture)
+  }
+ }
+ assert.equal(isMatchedCohort(study.rows),!id.startsWith('gpt-oss'))
+}
+const nov6Nine=nov6Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh2-4arm-np32768')
+const nov6TwentySeven=nov6Index.studies.find(s=>s.id==='qwen3.5-27b-q4_K_M-fresh1-4arm-np24576')
+const nov6GptOss=nov6Index.studies.find(s=>s.id==='gpt-oss-20b-fresh2-text-4arm-np32768')
+near(compareArms(nov6Nine.rows,nov5Rates).deltaUsd,0.00409149)
+near(compareArms(nov6TwentySeven.rows,{input:0.26,output:2.60}).deltaUsd,-0.06120608)
+assert.equal(nov6GptOss.rows.filter(r=>r.state==='pending').length,30)
+assert.deepEqual(nov6GptOss.rows.filter(r=>r.strict_correct&&r.loop_stop?.would_have_stopped).map(r=>r.call_id).sort(),
+ ['baseline_panel-9-32','neutral_panel-7-46'])
+console.log('Verified November 6 outcome, cost and pending-coverage fixtures.')
