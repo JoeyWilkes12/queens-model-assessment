@@ -21,6 +21,8 @@ const BASIS: Record<string, string> = {
 const COSTS_FILE: JsonResource<Costs> = { url: evidence('costs/receipts.json'), validate: (value): value is Costs => !!value && typeof (value as Costs).receipts === 'object' }
 const BOARDS_FILE: JsonResource<BoardIndex> = { url: evidence('board-receipts/index.json'), validate: (value): value is BoardIndex => Array.isArray((value as BoardIndex)?.boards) }
 const loadCosts = () => loadSharedJson(COSTS_FILE).catch(() => null)
+/** The receipt costs, or null if they could not load. The atlas waits for this so its rows do not grow later. */
+export const loadReceiptCosts = loadCosts
 const loadBoards = () => loadSharedJson(BOARDS_FILE).then(d => new Set(d.boards.map(b => b.id))).catch(() => new Set<string>())
 
 const lookup = (data: Costs | null, id: string): Entry | undefined => {

@@ -41,7 +41,7 @@ import reference_cdcl as kernel  # noqa: E402
 from reference_cdcl import ClauseDB, cell_var, lit_key, pairwise_cnf, run_cdcl, unit_propagate, var_cell  # noqa: E402
 
 BOARD_JSON = ROOT / "src" / "z3" / "board-seven.json"
-APP_TSX = ROOT / "src" / "App.tsx"
+APP_TSX = ROOT / "src" / "bookFigures.tsx"
 OUT = ROOT / "public" / "evidence" / "z3"
 CAPTION_REFERENCE = "Reference CDCL execution · pairwise encoding"
 CAPTION_Z3 = "Recorded Z3 execution"
@@ -157,7 +157,7 @@ def load_board():
     check(len({k for row in regions for k in row}) == n, "board-seven.json has n regions")
     check(board["partitionSha256"] == partition_sha(regions), "board-seven.json partition hash")
     boards = app_boards()
-    check(boards["seven"]["regions"] == regions, "board-seven.json matches boardConfigs.seven in src/App.tsx")
+    check(boards["seven"]["regions"] == regions, "board-seven.json matches boardConfigs.seven in src/bookFigures.tsx")
     passed("board-seven.json matches boardConfigs.seven regions and its partition hash")
     return board, boards
 

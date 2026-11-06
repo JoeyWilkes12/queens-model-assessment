@@ -1,0 +1,94 @@
+import { Icon, LocalToc, PageHero, Section, Callout, DataTable } from './bookUi'
+
+export function ProtocolResults() {
+  return (
+    <>
+      <PageHero
+        trail="The board / protocol"
+        title="Freeze the input before interpreting the output."
+        deck="The cleanest result in the report is the protocol boundary: identical board bytes, one request, no tools, and a separate diagnostic for formatting."
+      />
+      <div className="reading-layout">
+        <LocalToc
+          items={[
+            { id: 'conditions', label: 'Conditions' },
+            { id: 'results', label: 'Results' },
+            { id: 'routes', label: 'Routes' },
+          ]}
+        />
+        <main className="reading-column" id="main-content">
+          <Section id="conditions" title="What each entrant actually received">
+            <DataTable
+              caption="Evaluation conditions"
+              headers={['Condition', 'Input', 'Model work', 'External help']}
+              rows={[
+                [
+                  'Four reasoning models',
+                  'Same image and rules per board',
+                  'Generate complete written placement',
+                  'None; no repair turns',
+                ],
+                [
+                  'Jev native row choices',
+                  'Canonical text region grid',
+                  'Select one column per row',
+                  'Fixed typed options',
+                ],
+                [
+                  'Jev candidate recognition',
+                  'Text board plus complete placements',
+                  'Choose one option',
+                  'Candidate construction by code',
+                ],
+                [
+                  'Repository solver',
+                  'Exact region map',
+                  'Solve explicit Boolean constraints',
+                  <>
+                    Local Z3; not a timed entrant · <a href="#/how-z3-solves-queens">How Z3 solves Queens</a>
+                  </>,
+                ],
+              ]}
+            />
+            <p>
+              Images were clean 768×768 synthetic PNGs with region letters. They were not live-game screenshots or
+              unlabelled color fields.
+            </p>
+          </Section>
+          <Section id="results" title="Reasoning-model results">
+            <DataTable
+              caption="Three boards per reasoning model"
+              headers={['Model', 'Strict + correct', 'Written correct', 'Median seconds', 'OpenRouter cost, 3 boards']}
+              rows={[
+                ['GPT-5.6 Sol', '3/3', '3/3', '13.70', '$0.034'],
+                ['Claude Opus 4.8', '2/3', '3/3', '39.13', '$0.244'],
+                ['Grok 4.6 via Bedrock', '2/3', '2/3', '91.96', '$0.076 + 1 timeout (cost unknown)'],
+                ['Gemini 3.1 Pro Preview', '2/3', '3/3', '71.97', '$0.313'],
+              ]}
+            />
+            <p>
+              “Format only” means a unique visible solution passed the post-hoc mathematical check while breaking the
+              original JSON-only contract. “No answer” is not an invalid queen placement.
+            </p>
+          </Section>
+          <Section id="routes" title="Routes, costs, and operational failures">
+            <Callout tone="caution" title="Do not conflate developer, provider, and gateway.">
+              The historical one-shot reasoning-model requests used OpenRouter through the local credential broker. The
+              new SubQ replay calls its documented provider endpoint directly. Grok's approved route was Amazon Bedrock
+              US West 2. One 7×7 Grok request timed out at 600.964 seconds without a recoverable generation ID; it was
+              not retried.
+            </Callout>
+            <div className="next-actions">
+              <a href="#/assessment-receipt">
+                Inspect the cost receipt <Icon name="arrow" />
+              </a>
+              <a href="#/evidence-atlas">
+                Open saved records <Icon name="arrow" />
+              </a>
+            </div>
+          </Section>
+        </main>
+      </div>
+    </>
+  )
+}

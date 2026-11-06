@@ -17,3 +17,9 @@ export const Z3_HERO: HeroText = {
   deck: 'Ten short chapters on the mathematics a solver uses on the book’s 7×7 board: propositions, clauses, propagation, conflict-driven learning, a matching theorem, a proof of uniqueness, and a workbench for changing the rules. Figures distinguish recorded runs, checked encodings and labelled illustrations; the workbench computes in this page and says so.',
   action: { label: 'Read the explanation', scrollTo: 'z3-variables' },
 }
+
+export const ATLAS_HERO: HeroText = {
+  trail: 'Receipts / atlas',
+  title: 'Evidence atlas',
+  deck: 'Search the sanitized request, visible output, deterministic grade, and metadata behind the assessment. Every record is a bounded receipt, not a private raw dump.',
+}

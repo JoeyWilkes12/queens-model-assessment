@@ -29,6 +29,17 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-05',
+    title: 'Every page loads with its route',
+    kinds: ['interface'],
+    pr: 21,
+    changes: [
+      'Every page except the executive summary now loads with its own route, so the first visit downloads about a quarter less JavaScript than before (94 kB instead of 127 kB, compressed). In a slow-4G lab test, the summary, the local chapter and the atlas each showed their main content 0.14–0.27 s sooner. Links in the sidebar and the contents start loading a page on hover, focus or touch.',
+      'Opening the evidence atlas directly starts downloading its catalog and costs as soon as the book’s code has loaded, alongside the atlas’s own code. The atlas keeps its heading in place while it loads, and its rows appear with their costs instead of growing a cost line afterwards.',
+      'Nothing on the pages changed: every book page and several hundred linked pages were compared with the previous version.',
+    ],
+  },
+  {
+    date: '2026-11-05',
     title: 'How large updates are reviewed',
     kinds: ['method'],
     pr: 12,

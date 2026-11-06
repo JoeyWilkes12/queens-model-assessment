@@ -1,0 +1,14 @@
+samples 72, valid 72; 153.0.8010.12, Playwright 1.63.0, Intel(R) Xeon(R) Processor @ 2.30GHz
+desktop normal home | before: ready 134 (128–150) lcp 100 sum 0.0099 cls 0.0099 tbt 0/0 (0–0) 177.6kB n=3 | after: ready 119 (117–140) lcp 100 sum 0.0099 cls 0.0099 tbt 0/0 (0–0) 145.1kB n=3
+desktop normal local-qwen | before: ready 179 (176–183) lcp 156 sum 0 cls 0 tbt 0/0 (0–0) 223.3kB n=3 | after: ready 162 (151–178) lcp 136 sum 0 cls 0 tbt 0/0 (0–0) 190.8kB n=3
+desktop normal atlas | before: ready 245 (222–260) lcp 92 sum 0.0005 cls 0.0005 tbt 0/0 (0–11) 514.6kB n=3 | after: ready 199 (189–216) lcp 132 sum 0.0143 cls 0.0143 tbt 0/0 (0–0) 501.3kB n=3
+desktop disabled home | before: ready 127 (115–146) lcp 104 sum 0.0099 cls 0.0099 tbt 0/0 (0–0) 177.6kB n=3 | after: ready 123 (120–133) lcp 104 sum 0.0099 cls 0.0099 tbt 0/0 (0–0) 145.1kB n=3
+desktop disabled local-qwen | before: ready 171 (164–182) lcp 152 sum 0 cls 0 tbt 0/0 (0–0) 223.3kB n=3 | after: ready 160 (149–191) lcp 144 sum 0 cls 0 tbt 0/0 (0–0) 190.8kB n=3
+desktop disabled atlas | before: ready 252 (231–303) lcp 88 sum 0.0005 cls 0.0005 tbt 0/0 (0–5) 514.6kB n=3 | after: ready 203 (191–243) lcp 124 sum 0.0143 cls 0.0143 tbt 0/0 (0–10) 501.3kB n=3
+mobile-slow4g normal home | before: ready 1506 (1485–1586) lcp 1288 sum 0 cls 0 tbt 3/3 (0–8) 177.6kB n=3 | after: ready 1345 (1338–1431) lcp 1124 sum 0 cls 0 tbt 5/5 (2–60) 145.1kB n=3
+mobile-slow4g normal local-qwen | before: ready 2363 (2326–2519) lcp 1260 sum 0 cls 0 tbt 113/113 (86–153) 223.3kB n=3 | after: ready 2204 (2203–2210) lcp 1076 sum 0 cls 0 tbt 111/111 (107–115) 190.8kB n=3
+mobile-slow4g normal atlas | before: ready 3711 (3661–3725) lcp 1280 sum 0.0128 cls 0.0128 tbt 242/242 (227–257) 514.6kB n=3 | after: ready 3217 (3216–3293) lcp 1552 sum 0.0128 cls 0.0128 tbt 211/211 (210–272) 501.3kB n=3
+mobile-slow4g disabled home | before: ready 1487 (1485–1527) lcp 1276 sum 0 cls 0 tbt 1/1 (1–5) 177.6kB n=3 | after: ready 1330 (1326–1348) lcp 1112 sum 0 cls 0 tbt 0/0 (0–25) 145.1kB n=3
+mobile-slow4g disabled local-qwen | before: ready 2349 (2324–2354) lcp 1240 sum 0 cls 0 tbt 99/99 (94–105) 223.3kB n=3 | after: ready 2165 (2160–2202) lcp 1088 sum 0 cls 0 tbt 95/95 (91–110) 190.8kB n=3
+mobile-slow4g disabled atlas | before: ready 3614 (3614–3625) lcp 1252 sum 0.0128 cls 0.0128 tbt 204/204 (201–214) 514.6kB n=3 | after: ready 3200 (3196–3208) lcp 1520 sum 0.0128 cls 0.0128 tbt 203/203 (198–205) 501.3kB n=3
+exit 0
