@@ -28,14 +28,23 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
-    date: '2026-11-05',
-    title: 'Completed Qwen 9B text and JSON studies, plus fresh Qwen 27B images',
+    date: '2026-11-06',
+    title: 'November 5–6 local assessments and the Fresh2 panel',
     kinds: ['evidence', 'chapter', 'method'],
     pr: 18,
     changes: [
       'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
-      'Added 41 Qwen 27B fresh image receipts: 37 strict, four correct in the wrong format and seven requests still pending.',
-      'Added matched input and decoding comparisons and a request-latency table. The snapshot adds 105 receipts since November 3, bringing coverage to 23 conditions, 636 assessment and audit receipts and 38 separate rescues.',
+      'Completed Qwen 27B Fresh1 images at 43/48 strict and Qwen 9B Fresh2 images at 43/48 strict. GPT-OSS 20B Fresh2 text grids have 18/48 recorded.',
+      'Added matched input and decoding comparisons and a request-latency table. The November 6 snapshot adds 73 receipts since November 5, bringing coverage to 25 conditions, 709 assessment and audit receipts and 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-05',
+    title: 'Reviewable evidence updates and changelog guidance',
+    kinds: ['method'],
+    pr: 12,
+    changes: [
+      'Documented how to split evidence and site changes into reviewable PRs and keep the changelog current.',
     ],
   },
   {
