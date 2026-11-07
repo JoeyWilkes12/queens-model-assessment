@@ -31,6 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-06',
     title: 'Validate local assessment results and receipt navigation',
     kinds: ['fix'],
+    pr: 23,
     changes: [
       'Local assessments and the completed open-weight leaderboard now reject inconsistent saved study counts, outcomes or receipt links.',
       'Restored the publication record for the cross-study Caveman comparison. The original 4B pilot still has its own page.',

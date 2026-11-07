@@ -80,6 +80,15 @@ test('Caveman chapter renders signed spend differences and links the original pi
   const chart = page.locator('figure').filter({ hasText: 'Spend change by sampling round' })
   await chart.getByText('-21.12%', { exact: true }).waitFor()
   await chart.getByText('+7.19%', { exact: true }).waitFor()
+  const table = page.getByRole('table', { name: 'Baseline and Caveman only · original estimated USD' })
+  for (const [study, expected] of [
+    ['qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r3', '-21.12%'],
+    ['qwen3.5-9b-nvfp4-np24576-qwen-sampling-r3', '+7.19%'],
+  ]) {
+    const link = page.locator(`a[href="#/local-qwen/study/${study}"]`)
+    const row = table.getByRole('row').filter({ has: link })
+    await visibleText(row.getByRole('cell').last(), expected)
+  }
   await page.getByRole('main').getByRole('link', { name: 'Original 4B Caveman pilot' }).click()
   await page.waitForURL('**/#/caveman-summary/pilot')
   await page.getByRole('heading', { name: 'More strict answers in this sample' }).waitFor()
