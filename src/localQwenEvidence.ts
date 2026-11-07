@@ -27,6 +27,14 @@ export function localArtifact(path: string): string {
   return `${import.meta.env.BASE_URL}evidence/local-qwen/${path}`
 }
 
+/** Match the saved peer list to all other selected arms of this board. */
+function hasExactPeers(study: LocalStudy, row: LocalRow) {
+  if (!Array.isArray(row.peer_call_ids)) return false
+  const expected = study.rows.filter(peer => peer.board_id === row.board_id && peer.treatment !== row.treatment)
+  const ids = new Set(row.peer_call_ids)
+  return ids.size === row.peer_call_ids.length && ids.size === expected.length && expected.every(peer => ids.has(peer.call_id))
+}
+
 /** Validate the display contract independently of the stricter offline receipt audit. */
 export function isLocalIndex(value: unknown): value is LocalIndex {
   if (!value || typeof value !== 'object') return false
@@ -48,12 +56,15 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
       && count(s.budget) && s.budget > 0 && count(s.planned) && count(s.recorded) && s.recorded <= s.planned
       && path(s.root) && path(s.plan) && path(s.summary) && !!s.runtime && typeof s.runtime.digest === 'string'
       && Array.isArray(s.rows) && s.rows.length === s.planned && new Set(s.rows.map(r => r.call_id)).size === s.rows.length
+      && s.recorded === s.rows.filter(r => r.state === 'recorded').length
+      && (s.status === 'complete') === (s.recorded === s.planned)
       && s.rows.every(r => r && /^[a-zA-Z0-9_-]+$/.test(r.call_id) && typeof r.board_id === 'string' && count(r.size)
-        && ['baseline', 'schema', 'neutral', 'caveman'].includes(r.treatment) && typeof r.state === 'string' && optional(r.input_tokens) && optional(r.output_tokens)
+        && ['baseline', 'schema', 'neutral', 'caveman'].includes(r.treatment) && ['recorded', 'pending'].includes(r.state) && optional(r.input_tokens) && optional(r.output_tokens)
         && (r.elapsed_seconds === null || (typeof r.elapsed_seconds === 'number' && Number.isFinite(r.elapsed_seconds) && r.elapsed_seconds >= 0))
         && ['strict_correct', 'format_only_correct', 'truncated', 'loop_stopped', 'pair_verified'].every(k => typeof r[k as keyof LocalRow] === 'boolean')
-        && (data.schema_version !== 3 || (Array.isArray(r.peer_call_ids) && r.peer_call_ids.every(id => s.rows.some(peer => peer.call_id === id && peer.board_id === r.board_id && peer.treatment !== r.treatment)) && !!s.arms?.[r.treatment]))
-        && (r.receipt === null || path(r.receipt)) && (s.protocol?.modality === 'text' ? r.image === null : path(r.image))
+        && [r.strict_correct, r.format_only_correct, r.truncated, r.loop_stopped].filter(Boolean).length <= Number(r.state === 'recorded')
+        && (data.schema_version !== 3 || (hasExactPeers(s, r) && !!s.arms?.[r.treatment]))
+        && (r.state === 'recorded' ? path(r.receipt) : r.receipt === null) && (s.protocol?.modality === 'text' ? r.image === null : path(r.image))
         && (r.audit === undefined || r.audit === null || (path(r.audit.source_receipt) && typeof r.audit.source_call_id === 'string'
           && typeof r.audit.prefix_match === 'boolean' && typeof r.audit.answered_after_stop === 'boolean' && count(r.audit.source_thinking_chars)))
         && (r.rescue === null || (path(r.rescue.receipt) && optional(r.rescue.input_tokens) && optional(r.rescue.output_tokens) && typeof r.rescue.strict_correct === 'boolean'))))

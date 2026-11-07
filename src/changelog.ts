@@ -29,6 +29,15 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-06',
+    title: 'Validate local assessment results and receipt navigation',
+    kinds: ['fix'],
+    changes: [
+      'Local assessments and the completed open-weight leaderboard now reject inconsistent saved study counts, outcomes or receipt links.',
+      'Restored the publication record for the cross-study Caveman comparison. The original 4B pilot still has its own page.',
+    ],
+  },
+  {
+    date: '2026-11-06',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
     pr: 19,
@@ -46,6 +55,16 @@ export const CHANGELOG: ChangeEntry[] = [
       'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
       'Completed Qwen 27B Fresh1 images at 43/48 strict and Qwen 9B Fresh2 images at 43/48 strict. GPT-OSS 20B Fresh2 text grids have 18/48 recorded.',
       'Added matched input and decoding comparisons and a request-latency table. The November 6 snapshot adds 73 receipts since November 5, bringing coverage to 25 conditions, 709 assessment and audit receipts and 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Caveman comparison across local studies',
+    kinds: ['chapter', 'method'],
+    pr: 16,
+    changes: [
+      'Expanded the Caveman comparison to show matched sampling outcomes, prompt arms and hosted cost scenarios across local studies.',
+      'Moved the original 4B Caveman pilot to its own page and kept it linked from the comparison.',
     ],
   },
   {

@@ -16,6 +16,7 @@ on:
       - 'public/evidence/board-receipts/**'
       - 'scripts/analysis/build_leaderboard.py'
       - 'scripts/verify-*.mjs'
+      - 'scripts/test-site.mjs'
       - 'src/**'
       - 'package*.json'
       - 'tsconfig.json'
@@ -31,6 +32,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -46,5 +49,11 @@ jobs:
         run: npm run boards:verify
       - name: Check public evidence boundary
         run: npm run evidence:check-public
+      - name: Verify changelog against main history
+        run: npm run changelog:verify
       - name: Build static site
         run: npm run build
+      - name: Install Chromium for rendered site checks
+        run: npx playwright install --with-deps chromium
+      - name: Check rendered site behavior
+        run: npm run site:test
