@@ -61,6 +61,21 @@ assert.equal(isLocalIndex(index),true,'Shipped snapshot must pass the actual fro
 for (const invalid of [null, {}, {schema_version:3,studies:[null]}, {...index,studies:[{...index.studies[0],arms:{baseline:null}}]}]) {
  assert.equal(isLocalIndex(invalid),false,'Malformed public data must fail closed without throwing')
 }
+// A fetched catalog with inconsistent rows must not render misleading scores or receipt links.
+for (const [label, corrupt] of [
+  ['unknown state', (study, row) => { row.state = 'broken' }],
+  ['recorded call without evidence', (study, row) => { row.receipt = null }],
+  ['contradictory outcomes', (study, row) => { row.format_only_correct = true }],
+  ['missing peer', (study, row) => { row.peer_call_ids = [] }],
+  ['duplicate peer', (study, row) => { row.peer_call_ids.push(row.peer_call_ids[0]) }],
+  ['wrong recorded count', study => { study.recorded-- }],
+  ['inconsistent completion', study => { study.status = 'partial' }],
+]) {
+  const bad = structuredClone(index)
+  const study = bad.studies.find(study => study.id === 'qwen3.5-4b-pilot')
+  corrupt(study, study.rows.find(row => row.call_id === 'baseline_panel-5-18'))
+  assert.equal(isLocalIndex(bad), false, label)
+}
 for (const name of fs.readdirSync(new URL('../public/evidence/local-qwen/snapshots/',import.meta.url))) {
  const catalog=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/snapshots/${name}/catalog.json`,import.meta.url)))
  assert.equal(isLocalIndex(catalog),true,`Retained ${name} catalog must remain compatible with the frontend`)
