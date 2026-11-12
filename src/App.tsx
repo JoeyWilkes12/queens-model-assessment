@@ -26,6 +26,7 @@ import './book-nav.css'
 
 // The Z3 part is large and self-contained; load it only when its route opens.
 const Z3Part = lazy(() => import('./z3/Z3Part'))
+const CavemanStudies = lazy(() => import('./CavemanStudies'))
 const LocalQwen = lazy(() => import('./LocalQwen'))
 
 type AssessmentOutcome = 'success' | 'model_failure' | 'request_failure' | 'not_run' | 'ungraded'
@@ -567,6 +568,7 @@ function ExecutiveSummary() {
                 ['Caveman', 'A free third-party add-on that tells the model to answer in as few words as possible, checked for safety before use. No fee; electricity was not measured.'],
               ]} />
               <p className="qa-caveat">Four boards per size, one run each, plain prompt always first: this cannot show that Caveman caused the gain.</p>
+              <p>Caveman’s cost and correctness tradeoffs varied across studies. At the saved tariffs, Qwen 27B spent less with Caveman in each of its three sampling rounds, while Qwen 9B spent more in round three. Both 27B arms solved all twelve round-three boards after accounting for response format. <a href="#/caveman-summary">Compare outcomes and estimated costs across studies</a>.</p>
               <QaLinks links={[['Local open-weight assessments', '#/local-qwen'], ['Original 4B pilot', '#/local-open-models'], ['Caveman comparison', '#/caveman-summary']]} />
             </Answer>
             <Answer id="qa-cost" question="What did it cost?" stat="$31.48" statLabel="recorded API spend, all studies" answer="Little. Most went on the two 36-board picture tests, and every request, visible reply and grade is saved." more="Breakdown and records">
@@ -1295,7 +1297,7 @@ function App() {
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
                 : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading local open-weight assessments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
-                : active === 'caveman-summary' ? <OllamaComparison ui={bookUi} view="summary" />
+                : active === 'caveman-summary' ? parts[1] === 'pilot' ? <OllamaComparison ui={bookUi} view="summary" /> : <Suspense fallback={<p role="status" className="ollama-standalone">Loading Caveman studies…</p>}><CavemanStudies ui={bookUi} /></Suspense>
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
                 : active === 'greedy-rule' ? <GreedyRule ui={bookUi} />

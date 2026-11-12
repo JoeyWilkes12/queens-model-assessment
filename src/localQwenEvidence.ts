@@ -77,3 +77,21 @@ export function useLocalStudies(): State {
 export const localReceiptUrl = (study: LocalStudy, row: LocalRow) => `#/local-qwen/receipt/${study.id}/${row.call_id}`
 export const armName = (arm: string) => ({ baseline: 'Baseline', schema: 'Schema reminder', neutral: 'Neutral control', caveman: '+ Caveman' }[arm] || arm)
 export const rowOutcome = (r: LocalRow) => r.state !== 'recorded' ? 'Pending / not recorded' : r.strict_correct ? 'Strict correct' : r.format_only_correct ? 'Correct, wrong format' : r.loop_stopped ? 'Client loop-stop' : r.truncated ? 'Token cap reached' : 'Completed incorrect / other'
+
+/** Load only the saved public tariff evidence, with no live API or inference requests. */
+export function usePricing() {
+  const [state, setState] = useState<{ status: 'loading' | 'error' } | { status: 'ready'; data: Pricing }>({ status: 'loading' })
+  useEffect(() => {
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`, { signal: controller.signal }).then(r => { if (!r.ok) throw new Error('Missing rates'); return r.json() })
+      .then((p: Pricing) => {
+        if (p.schema_version !== 1 || p.catalog_url !== 'https://openrouter.ai/api/v1/models' || !Array.isArray(p.models) || !p.models.length || !Number.isFinite(Date.parse(p.checked_utc))
+          || !p.models.every(m => /^qwen\/[a-zA-Z0-9.-]+$/.test(m.id) && [m.usd_per_million?.input, m.usd_per_million?.output].every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0))) throw new Error('Invalid rates')
+        if (!controller.signal.aborted) setState({ status: 'ready', data: p })
+      }).catch(() => { if (!controller.signal.aborted) setState({ status: 'error' }) })
+    return () => controller.abort()
+  }, [])
+  return state
+}
+
+export const defaultTariff = (study: LocalStudy) => !study.model.toLowerCase().includes('qwen') ? 'custom' : study.model.includes(':4b') ? 'qwen/qwen3.5-flash-02-23' : study.model.includes('27b') ? 'qwen/qwen3.5-27b' : 'qwen/qwen3.5-9b'
