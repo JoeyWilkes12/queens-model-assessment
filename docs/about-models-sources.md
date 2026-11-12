@@ -103,6 +103,67 @@ num_predict, num_ctx). Reader route: `#/local-qwen`.
 | Ollama: digest f38aa0c53da5, 14GB, MXFP4, 20.9B | https://ollama.com/library/gpt-oss:20b | 2026-11-11 | "quantized to 4.25 bits per parameter" |
 | Build: gguf, MXFP4, llamacpp, parent dhiltgen/gpt-oss:20b-llamacpp; think "high"; text modality | receipt study `gpt-oss-20b-fresh1-text-4arm-np32768` | 2026-11-11 | `"think": "high"`, `"modality": "text"` |
 
+## Hosted models through OpenRouter
+
+Shared sources, all opened 2026-11-11:
+
+- OpenRouter catalogue entry per slug: `https://openrouter.ai/api/v1/models/<slug>/endpoints` (name, endpoints, provider, context per endpoint) and the list `https://openrouter.ai/api/v1/models` (created date, input modalities, supported parameters, description). The HTML model page (`openrouter.ai/<slug>`) returned an API guide without model facts, so the page links the JSON entries.
+- Claude models overview: https://platform.claude.com/docs/en/about-claude/models/overview — context windows and max output for Opus 4.8/4.7/4.6 ("1M tokens", "128K tokens"), Opus 4.5, Sonnet 4.5, Sonnet 4 ("200K tokens", "64K tokens"); Sonnet 4 "retired, except on Claude Models on Google Cloud (Google managed) and Bedrock"; extended thinking "deprecated on Claude Opus 4.6"; tokenizer "introduced with Claude Opus 4.7".
+- Book receipts: `public/evidence/frontier-image-panel/plan.json` (`reasoning_effort: "high"`, `max_tokens: 12288`, per-model `provider` / `batch_provider`, `allow_fallbacks: false`); `public/evidence/legacy-panel/plan.json` (per-model `reasoning: {effort: "high", exclude: true}`, GPT-4.1 `reasoning: null`, Gemini `batch_provider: "google-vertex/global"`); `public/evidence/runs/2026-10-01-earlier-generations/*/request.json` and `metadata.json` (Oct 1 replay providers; Sonnet 4 provider "Amazon Bedrock").
+
+| Model | Claim | URL | Accessed | Supporting quote |
+|---|---|---|---|---|
+| Claude Opus 4.8 | Released 28 May 2026; builds on 4.7; effort default high, extra/max | https://www.anthropic.com/news/claude-opus-4-8 | 2026-11-11 | "builds on Opus 4.7 with improvements across benchmarks" |
+| Claude Opus 4.8 | Most capable GA Opus; text/image/file in | https://openrouter.ai/api/v1/models/anthropic/claude-opus-4.8/endpoints | 2026-11-11 | "most capable generally available model in the Opus family" |
+| Claude Opus 4.7 | Released 16 Apr 2026; upgrade to 4.6; xhigh; 2,576-px images | https://www.anthropic.com/news/claude-opus-4-7 | 2026-11-11 | "a direct upgrade to Opus 4.6" |
+| Claude Opus 4.7 | Built for long-running asynchronous agents | https://openrouter.ai/api/v1/models/anthropic/claude-opus-4.7/endpoints | 2026-11-11 | "built for long-running, asynchronous agents" |
+| Claude Opus 4.6 | Released 5 Feb 2026; successor to 4.5; first 1M Opus; adaptive thinking; four effort levels | https://www.anthropic.com/news/claude-opus-4-6 | 2026-11-11 | "four effort levels to choose from: low, medium, high (default), and max" |
+| Claude Opus 4.6 | Coding and long-running professional tasks | https://openrouter.ai/api/v1/models/anthropic/claude-opus-4.6/endpoints | 2026-11-11 | "strongest model for coding and long-running professional tasks" |
+| Claude Opus 4.5 | Released 24 Nov 2025; snapshot 20251101; effort parameter; coding/agents/computer use | https://www.anthropic.com/news/claude-opus-4-5 | 2026-11-11 | "With our new effort parameter on the Claude API" |
+| Claude Sonnet 4.5 | Released 29 Sep 2025; priced as Sonnet 4; extended thinking | https://www.anthropic.com/news/claude-sonnet-4-5 | 2026-11-11 | Pricing matches Claude Sonnet 4: "$3/$15 per million tokens" |
+| Claude Sonnet 4 | Released 22 May 2025; upgrade to 3.7; hybrid with extended thinking | https://www.anthropic.com/news/claude-4 | 2026-11-11 | "near-instant responses and extended thinking for deeper reasoning" |
+| Claude Sonnet 4 | OpenRouter lists no endpoints today; image/text/file input | https://openrouter.ai/api/v1/models/anthropic/claude-sonnet-4/endpoints | 2026-11-11 | `"endpoints": []` |
+| GPT-5.6 Sol | Flagship of 5.6 series; 1,050,000 ctx (922K in), 128K out; text+image; effort levels; cutoff 16 Feb 2026; no date | https://developers.openai.com/api/docs/models/gpt-5.6-sol | 2026-11-11 | "GPT-5.6 flagship model for complex professional work" |
+| GPT-5.6 Sol | OpenRouter created 2026-07-09 | https://openrouter.ai/api/v1/models | 2026-11-11 | `created` timestamp for `openai/gpt-5.6-sol` = 2026-07-09 UTC |
+| GPT-5.5 | Snapshot 2026-04-23; 1.05M/128K; effort none…xhigh, default medium; cutoff 1 Dec 2025 | https://developers.openai.com/api/docs/models/gpt-5.5 | 2026-11-11 | "none, low, medium (default), high and xhigh" |
+| GPT-5.5 | Builds on GPT-5.4 | https://openrouter.ai/api/v1/models/openai/gpt-5.5/endpoints | 2026-11-11 | "building on GPT-5.4 with stronger reasoning" |
+| GPT-5.4 | Snapshot 2026-03-05; 1.05M/128K; effort default none; cutoff 31 Aug 2025 | https://developers.openai.com/api/docs/models/gpt-5.4 | 2026-11-11 | "none (default), low, medium, high and xhigh" |
+| GPT-5.4 | Unifies Codex and GPT lines | https://openrouter.ai/api/v1/models/openai/gpt-5.4/endpoints | 2026-11-11 | "unifying the Codex and GPT lines into a single system" |
+| GPT-5.2 | Snapshot 2025-12-11; 400K/128K; default none; cutoff 31 Aug 2025; previous flagship | https://developers.openai.com/api/docs/models/gpt-5.2 | 2026-11-11 | "Previous flagship model for professional work" |
+| GPT-5.1 | Snapshot 2025-11-13 deprecated; 400K/128K; none/low/medium/high; cutoff 30 Sep 2024 | https://developers.openai.com/api/docs/models/gpt-5.1 | 2026-11-11 | "configurable reasoning effort" |
+| GPT-5 | Snapshot 2025-08-07 deprecated; 400K (272K in)/128K; minimal…high; cutoff 30 Sep 2024 | https://developers.openai.com/api/docs/models/gpt-5 | 2026-11-11 | "Previous intelligent reasoning model for coding and agentic tasks" |
+| GPT-4.1 | Snapshot 2025-04-14 deprecated; 1,047,576/32,768; non-reasoning; cutoff 1 Jun 2024 | https://developers.openai.com/api/docs/models/gpt-4.1 | 2026-11-11 | "Smartest non-reasoning model" |
+| GPT-4o (2024-11-20) | Snapshot listed, deprecated; 128K/16,384; cutoff 1 Oct 2023 | https://developers.openai.com/api/docs/models/gpt-4o | 2026-11-11 | `gpt-4o-2024-11-20` (Deprecated) |
+| GPT-4o (2024-11-20) | No `reasoning` in supported parameters | https://openrouter.ai/api/v1/models | 2026-11-11 | `supported_parameters` lacks `reasoning` |
+| Gemini 3.1 Pro Preview | 19 Feb 2026 preview; builds on Gemini 3 series | https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/ | 2026-11-11 | "We are releasing 3.1 Pro in preview today" |
+| Gemini 3.1 Pro Preview | Inputs text/image/video/audio/PDF; 1,048,576 in / 65,536 out; thinking supported | https://aistudio.google.com/docs/models/gemini-3.1-pro-preview | 2026-11-11 | "Text, Image, Video, Audio, and PDF" |
+| Gemini 2.5 Pro | Updated June 2025; deprecated, reroute 1 Dec 2026; limits; thinking; cutoff Jan 2025 | https://aistudio.google.com/docs/models/gemini-2.5-pro | 2026-11-11 | "Audio, images, video, text, and PDF" |
+| Gemini 2.5 Pro | Reasoning, coding, maths, science | https://openrouter.ai/api/v1/models/google/gemini-2.5-pro/endpoints | 2026-11-11 | "designed for advanced reasoning, coding, mathematics, and scientific tasks" |
+| Gemini 2.5 Flash | Price-performance; June 2025; deprecated; limits; cutoff Jan 2025 | https://aistudio.google.com/docs/models/gemini-2.5-flash | 2026-11-11 | "Our best model in terms of price-performance" |
+| Gemini 2.5 Flash-Lite | July 2025; most cost-efficient; limits; cutoff Jan 2025 | https://aistudio.google.com/docs/models/gemini-2.5-flash-lite | 2026-11-11 | "Our most cost-efficient multimodal model" |
+| Grok 4.6 | 12 Aug 2026; builds on Grok 4.5; long-running agents, visual work; reasoning controls not described | https://x.ai/news/grok-4-6 | 2026-11-11 | "builds on Grok 4.5" |
+| Grok 4.6 | 500K context | https://docs.x.ai/docs/models | 2026-11-11 | Pricing table lists "500k" for grok-4.6 |
+| Grok 4.6 | Author SpaceXAI; succeeded by Grok 4.7; text/image/file in; 500,000 ctx | https://openrouter.ai/api/v1/models/x-ai/grok-4.6/endpoints | 2026-11-11 | "It is succeeded by Grok 4.7" |
+
+## Decision models and other hosted routes
+
+| Model | Claim | URL | Accessed | Supporting quote |
+|---|---|---|---|---|
+| Jev 1.13 | TypeSafe flagship, first System One model; Choice/Score/Noul; text + PNG/JPEG; 64K/32K, 262K with header; RLCD; same weights for all; 1.13 undated, 1.14 dated 14 Oct 2026 | https://docs.typesafe.ai/models | 2026-11-11 | "TypeSafe's flagship model and the first System One model" |
+| Jev 1.13 | Listed 2026-09-18; output modality "decisions"; TypeSafe provider, 262,144 ctx | https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints | 2026-11-11 | `"modality": "text+image->decisions"` |
+| Jev 1.13 | Image prompt got HTTP 400; Decisions route with text grid | book `#/jev-primer` (`src/App.tsx` JevPrimer) | 2026-11-11 | "requires its separate Decisions API" |
+| SubQ Snap | Subquadratic; 12 Oct 2026; public preview; decision head; SSA claim; 384K mixed context | https://subq.ai/introducing-subq-snap | 2026-11-11 | "a decision model for agentic workflows" |
+| SubQ Snap | `subq-snap-preview` retired 11 Nov 2026, routes to Snap 1.2 | https://docs.subq.ai/using-the-api/models/ | 2026-11-11 | "These models have been retired and now route to Snap 1.2" |
+| SubQ Snap | Called directly, not via OpenRouter | book `#/protocol-results` routes callout | 2026-11-11 | "calls its documented provider endpoint directly" |
+
+## Non-model systems
+
+| System | Claim | URL | Accessed | Supporting quote |
+|---|---|---|---|---|
+| Greedy rule | Four-step rule; fail-first / MRV heuristic (Haralick and Elliott 1980) | book `#/greedy-rule` (`src/GreedyRule.tsx`) | 2026-11-11 | "Take the color with the fewest legal cells" |
+| Z3 | Theorem prover from Microsoft Research; MIT licence | https://github.com/Z3Prover/z3 | 2026-11-11 | "Z3 is a theorem prover from Microsoft Research" |
+| Z3 | Book pins 4.16.0; explanatory context, not a timed competitor | book `#/how-z3-solves-queens` (`src/z3/Chapter9.tsx`), `DESIGN.md` | 2026-11-11 | "The repository solver is explanatory context, not a timed competitor" |
+
 ## Unverified / omitted
 
 - **gpt-oss 20B context window.** Not stated on the Hugging Face card, the arXiv abstract page, the GitHub README (only a CLI default of 8,192) or the Ollama page. Written as "Not stated in the primary sources we found".
@@ -113,3 +174,11 @@ num_predict, num_ctx). Reader route: `#/local-qwen`.
 - **Gemma 4 E4B Ollama input types.** The library page lists text, image and audio; the tags page lists text and image. The page cites the Google card and blog for modalities instead.
 - **Qwen blog post.** `qwen.ai/blog?id=qwen3.5` rendered no text; the GitHub repository was used for release dates.
 - **OCP MX specification PDF.** Could not be read as text; MXFP4 is described from the NVIDIA comparison and the gpt-oss card.
+- **Hosted model sizes.** None of the lab pages, docs or OpenRouter entries we opened state parameter counts for any hosted model; written as "Not disclosed" / "Not stated in the primary sources we found".
+- **"No open weights" for hosted models.** A negative claim: none of the sources we opened offers downloadable weights. Worded on the page as "no open weights in the sources".
+- **GPT-5.6 Sol release date.** OpenAI's model page gives none and `openai.com` returned HTTP 403; only OpenRouter's listing date (9 Jul 2026) is shown. Secondary press dates were not used.
+- **Other OpenAI dates.** Shown as snapshot dates from OpenAI's docs, not announcement dates.
+- **Gemini 2.5 release dates.** Shown as the docs' "Latest update" month, not an announcement date.
+- **Grok 4.6 reasoning controls and parameter count.** Not described by xAI; secondary reports of a parameter count were not used.
+- **Gemini 3.1 Pro thinking levels, Claude parameter counts, Jev/SubQ architecture details beyond the developer's own claims.** Not stated in primary sources.
+- **Claude Sonnet 4.5 context.** OpenRouter lists 1M on some endpoints; Anthropic's docs list 200K. The page uses Anthropic's figure.

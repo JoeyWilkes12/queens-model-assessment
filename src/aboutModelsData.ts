@@ -56,7 +56,7 @@ export const MODEL_GROUPS: ModelGroup[] = [
   {
     id: 'openrouter',
     title: 'Hosted models reached through OpenRouter',
-    intro: 'API-only models from four labs. Each request went through OpenRouter with a pinned upstream provider and fallbacks disabled, so the route is part of what was measured. Weights for these models are not published.',
+    intro: 'API-only models from four labs. Each request went through OpenRouter with a pinned upstream provider and fallbacks disabled, so the route is part of what was measured. None of the sources we opened offers downloadable weights for these models.',
   },
   {
     id: 'direct',
@@ -70,7 +70,7 @@ export const MODEL_GROUPS: ModelGroup[] = [
   },
 ]
 
-export const MODELS: ModelEntry[] = [
+const LOCAL_MODELS: ModelEntry[] = [
   // ---------------------------------------------------------------- Local open-weight models
   {
     id: 'qwen3.5-4b',
@@ -267,6 +267,17 @@ export const MODELS: ModelEntry[] = [
   },
 ]
 
+/** The OpenRouter catalogue entry (JSON) for one exact slug: name, endpoints and context per provider. */
+const openRouter = (slug: string): SourceRef => ({ label: `OpenRouter catalogue: ${slug}`, url: `https://openrouter.ai/api/v1/models/${slug}/endpoints` })
+const OPENROUTER_MODELS: SourceRef = { label: 'OpenRouter models API', url: 'https://openrouter.ai/api/v1/models' }
+const FRONTIER_RECEIPT: SourceRef = { label: 'Book receipt: frontier panel plan', url: '#/protocol-results' }
+const LEGACY_RECEIPT: SourceRef = { label: 'Book receipt: earlier-generations panel plan', url: '#/earlier-generations' }
+const OCT1_RECEIPT: SourceRef = { label: 'Book receipt: October 1 replay requests', url: '#/earlier-generations' }
+const CLAUDE_MODELS: SourceRef = { label: 'Claude docs: models overview', url: 'https://platform.claude.com/docs/en/about-claude/models/overview' }
+const openAiDoc = (id: string, name: string): SourceRef => ({ label: `OpenAI docs: ${name}`, url: `https://developers.openai.com/api/docs/models/${id}` })
+const geminiDoc = (id: string, name: string): SourceRef => ({ label: `Google AI Studio docs: ${name}`, url: `https://aistudio.google.com/docs/models/${id}` })
+const HOSTED_LICENCE = 'Hosted API; no open weights in the sources'
+
 /** Sources for the primer box on open weights, quantisation and runtimes. */
 export const PRIMER_SOURCES: Record<string, SourceRef> = {
   gguf: { label: 'Hugging Face Hub docs: GGUF', url: 'https://huggingface.co/docs/hub/en/gguf' },
@@ -277,3 +288,379 @@ export const PRIMER_SOURCES: Record<string, SourceRef> = {
   gptoss: { label: 'Hugging Face: openai/gpt-oss-20b', url: 'https://huggingface.co/openai/gpt-oss-20b' },
   tags: QWEN_TAGS,
 }
+
+// ---------------------------------------------------------------- Hosted models through OpenRouter
+const ANTHROPIC = 'Anthropic'
+const OPENAI = 'OpenAI'
+const GOOGLE = 'Google'
+const XAI = 'xAI'
+
+const HOSTED_MODELS: ModelEntry[] = [
+  {
+    id: 'claude-opus-4.8', name: 'Claude Opus 4.8', lab: ANTHROPIC, family: ANTHROPIC, group: 'openrouter',
+    glance: { released: '28 May 2026', size: 'Not disclosed', modalities: 'Text, image, file → text', licence: HOSTED_LICENCE, build: 'anthropic/claude-opus-4.8 · Anthropic · high effort' },
+    facts: [
+      { label: 'Released', value: '28 May 2026', src: ['news'] },
+      { label: 'Lineage', value: 'Builds on Claude Opus 4.7', src: ['news'] },
+      { label: 'Context window', value: '1M tokens; 128K maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image and file input; text output', src: ['docs', 'or'] },
+      { label: 'Reasoning control', value: 'Effort parameter, default high, with extra-high and max settings', src: ['news'] },
+      { label: 'Parameters', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'OpenRouter slug anthropic/claude-opus-4.8, provider pinned to Anthropic (fast variant excluded), no fallbacks, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'The newest Anthropic model in the book and one of the four entrants in the original image protocol. Anthropic presents it as its most capable generally available Opus model.', src: ['or', 'news'] }],
+    sources: { news: { label: 'Anthropic: Claude Opus 4.8', url: 'https://www.anthropic.com/news/claude-opus-4-8' }, docs: CLAUDE_MODELS, or: openRouter('anthropic/claude-opus-4.8'), receipt: FRONTIER_RECEIPT },
+    results: [{ label: 'Protocol & results', href: '#/protocol-results' }, { label: 'One queen at a time', href: '#/frontier-trajectories' }],
+  },
+  {
+    id: 'claude-opus-4.7', name: 'Claude Opus 4.7', lab: ANTHROPIC, family: ANTHROPIC, group: 'openrouter',
+    glance: { released: '16 Apr 2026', size: 'Not disclosed', modalities: 'Text, image, file → text', licence: HOSTED_LICENCE, build: 'anthropic/claude-opus-4.7 · Anthropic · high effort' },
+    facts: [
+      { label: 'Released', value: '16 April 2026', src: ['news'] },
+      { label: 'Lineage', value: 'A direct upgrade to Claude Opus 4.6; introduced a new tokenizer', src: ['news', 'docs'] },
+      { label: 'Context window', value: '1M tokens; 128K maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image and file input; accepts images up to 2,576 pixels on the long edge', src: ['news', 'or'] },
+      { label: 'Reasoning control', value: 'Effort parameter; added an xhigh level between high and max', src: ['news'] },
+      { label: 'Parameters', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'Provider pinned to Anthropic, no fallbacks, reasoning effort high with reasoning text excluded, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'Positioned for long-running, asynchronous agent work. In this book it is one of the earlier-generation entrants replayed on the same boards.', src: ['or'] }],
+    sources: { news: { label: 'Anthropic: Claude Opus 4.7', url: 'https://www.anthropic.com/news/claude-opus-4-7' }, docs: CLAUDE_MODELS, or: openRouter('anthropic/claude-opus-4.7'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'claude-opus-4.6', name: 'Claude Opus 4.6', lab: ANTHROPIC, family: ANTHROPIC, group: 'openrouter',
+    glance: { released: '5 Feb 2026', size: 'Not disclosed', modalities: 'Text, image, file → text', licence: HOSTED_LICENCE, build: 'anthropic/claude-opus-4.6 · Anthropic · high effort' },
+    facts: [
+      { label: 'Released', value: '5 February 2026', src: ['news'] },
+      { label: 'Lineage', value: 'Successor to Claude Opus 4.5; the first Opus model with a 1M-token context', src: ['news'] },
+      { label: 'Context window', value: '1M tokens; 128K maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image and file input; text output', src: ['docs', 'or'] },
+      { label: 'Reasoning control', value: 'Adaptive thinking with four effort levels: low, medium, high (default) and max', src: ['news'] },
+      { label: 'Parameters', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'Provider pinned to Anthropic, no fallbacks, reasoning effort high with reasoning text excluded, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'Aimed at coding and long-running professional tasks. Its adaptive thinking lets the model decide how much to reason, steered by the effort setting.', src: ['or', 'news'] }],
+    sources: { news: { label: 'Anthropic: Claude Opus 4.6', url: 'https://www.anthropic.com/news/claude-opus-4-6' }, docs: CLAUDE_MODELS, or: openRouter('anthropic/claude-opus-4.6'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'claude-opus-4.5', name: 'Claude Opus 4.5', lab: ANTHROPIC, family: ANTHROPIC, group: 'openrouter',
+    glance: { released: '24 Nov 2025', size: 'Not disclosed', modalities: 'Text, image, file → text', licence: HOSTED_LICENCE, build: 'anthropic/claude-opus-4.5 · Anthropic · high effort' },
+    facts: [
+      { label: 'Released', value: '24 November 2025 (snapshot claude-opus-4-5-20251101)', src: ['news'] },
+      { label: 'Context window', value: '200K tokens; 64K maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image and file input; text output', src: ['or'] },
+      { label: 'Reasoning control', value: 'Introduced the effort parameter on the Claude API', src: ['news'] },
+      { label: 'Parameters', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'October 1 replay: provider pinned to Anthropic, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'Anthropic aimed it at coding, agents and computer use. It appears only in the October 1 earlier-generations ladder.', src: ['news'] }],
+    sources: { news: { label: 'Anthropic: Claude Opus 4.5', url: 'https://www.anthropic.com/news/claude-opus-4-5' }, docs: CLAUDE_MODELS, or: openRouter('anthropic/claude-opus-4.5'), receipt: OCT1_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'claude-sonnet-4.5', name: 'Claude Sonnet 4.5', lab: ANTHROPIC, family: ANTHROPIC, group: 'openrouter',
+    glance: { released: '29 Sep 2025', size: 'Not disclosed', modalities: 'Text, image, file → text', licence: HOSTED_LICENCE, build: 'anthropic/claude-sonnet-4.5 · Anthropic · high effort' },
+    facts: [
+      { label: 'Released', value: '29 September 2025', src: ['news'] },
+      { label: 'Lineage', value: 'Sonnet tier, priced the same as Claude Sonnet 4', src: ['news'] },
+      { label: 'Context window', value: '200K tokens; 64K maximum output (Anthropic API)', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image and file input; text output', src: ['or'] },
+      { label: 'Reasoning control', value: 'Extended thinking with a token budget (the pre-adaptive mode)', src: ['news', 'docs'] },
+      { label: 'Parameters', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'October 1 replay: provider pinned to Anthropic, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'A mid-tier Sonnet model rather than an Opus, so comparing it with the Opus entries changes product tier as well as age.', src: ['news'] }],
+    sources: { news: { label: 'Anthropic: Claude Sonnet 4.5', url: 'https://www.anthropic.com/news/claude-sonnet-4-5' }, docs: CLAUDE_MODELS, or: openRouter('anthropic/claude-sonnet-4.5'), receipt: OCT1_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'claude-sonnet-4', name: 'Claude Sonnet 4', lab: ANTHROPIC, family: ANTHROPIC, group: 'openrouter',
+    glance: { released: '22 May 2025', size: 'Not disclosed', modalities: 'Text, image, file → text', licence: HOSTED_LICENCE, build: 'anthropic/claude-sonnet-4 · Amazon Bedrock' },
+    facts: [
+      { label: 'Released', value: '22 May 2025', src: ['news'] },
+      { label: 'Lineage', value: 'An upgrade to Claude Sonnet 3.7', src: ['news'] },
+      { label: 'Context window', value: '200K tokens; 64K maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Image, text and file input; text output', src: ['or'] },
+      { label: 'Reasoning control', value: 'Hybrid model: near-instant responses or extended thinking', src: ['news'] },
+      { label: 'Status today', value: 'Retired on Anthropic\'s API, still offered on Bedrock and Google Cloud; OpenRouter now lists no endpoints for the slug', src: ['docs', 'or'] },
+      { label: 'Route we ran', value: 'Served by Amazon Bedrock, the only route at discovery; used in the October 1 replay and the diagnostic-completion study', src: ['receipt'] },
+    ],
+    prose: [{ text: 'The oldest Claude model in the book. Its route differed from the other Claude entries, which ran on Anthropic\'s own endpoint.', src: ['receipt'] }],
+    sources: { news: { label: 'Anthropic: Introducing Claude 4', url: 'https://www.anthropic.com/news/claude-4' }, docs: CLAUDE_MODELS, or: openRouter('anthropic/claude-sonnet-4'), receipt: OCT1_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gpt-5.6-sol', name: 'GPT-5.6 Sol', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Listed on OpenRouter 9 Jul 2026', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-5.6-sol · OpenAI batch · high effort' },
+    facts: [
+      { label: 'Released', value: 'OpenAI\'s model page gives no date; OpenRouter lists the slug from 9 July 2026', src: ['docs', 'models'] },
+      { label: 'Lineage', value: 'Flagship of the GPT-5.6 series', src: ['docs', 'or'] },
+      { label: 'Context window', value: '1,050,000 tokens (922,000 input); 128,000 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Reasoning effort, default medium, with none, low, high, xhigh and max listed', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: '16 February 2026', src: ['docs'] },
+      { label: 'Route we ran', value: 'OpenRouter batch route, provider OpenAI only, no fallbacks, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'The OpenAI entrant in the original four-model image protocol, aimed at complex professional, coding and agent work.', src: ['docs', 'or'] }],
+    sources: { docs: openAiDoc('gpt-5.6-sol', 'GPT-5.6 Sol'), or: openRouter('openai/gpt-5.6-sol'), models: OPENROUTER_MODELS, receipt: FRONTIER_RECEIPT },
+    results: [{ label: 'Protocol & results', href: '#/protocol-results' }, { label: 'One queen at a time', href: '#/frontier-trajectories' }],
+  },
+  {
+    id: 'gpt-5.5', name: 'GPT-5.5', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Snapshot 23 Apr 2026', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-5.5 · OpenAI · high effort' },
+    facts: [
+      { label: 'Released', value: 'Snapshot gpt-5.5-2026-04-23', src: ['docs'] },
+      { label: 'Lineage', value: 'Builds on GPT-5.4', src: ['or'] },
+      { label: 'Context window', value: '1,050,000 tokens; 128,000 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Effort none, low, medium (default), high and xhigh', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: '1 December 2025', src: ['docs'] },
+      { label: 'Route we ran', value: 'Provider pinned to OpenAI (flex and fast excluded), reasoning effort high with reasoning text excluded, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'OpenAI describes it for coding and professional work. It is the newest model in the earlier-generations panel.', src: ['docs'] }],
+    sources: { docs: openAiDoc('gpt-5.5', 'GPT-5.5'), or: openRouter('openai/gpt-5.5'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gpt-5.4', name: 'GPT-5.4', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Snapshot 5 Mar 2026', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-5.4 · OpenAI · high effort' },
+    facts: [
+      { label: 'Released', value: 'Snapshot gpt-5.4-2026-03-05', src: ['docs'] },
+      { label: 'Lineage', value: 'OpenRouter describes it as unifying the Codex and GPT lines', src: ['or'] },
+      { label: 'Context window', value: '1,050,000 tokens; 128,000 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Effort none (default), low, medium, high and xhigh', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: '31 August 2025', src: ['docs'] },
+      { label: 'Route we ran', value: 'Provider pinned to OpenAI, reasoning effort high with reasoning text excluded, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'A reasoning model for coding and professional work; its default effort is none, so the book\'s explicit high setting matters.', src: ['docs', 'receipt'] }],
+    sources: { docs: openAiDoc('gpt-5.4', 'GPT-5.4'), or: openRouter('openai/gpt-5.4'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gpt-5.2', name: 'GPT-5.2', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Snapshot 11 Dec 2025', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-5.2 · OpenAI · high effort' },
+    facts: [
+      { label: 'Released', value: 'Snapshot gpt-5.2-2025-12-11', src: ['docs'] },
+      { label: 'Lineage', value: 'GPT-5 series, following GPT-5.1', src: ['or'] },
+      { label: 'Context window', value: '400,000 tokens; 128,000 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Effort none (default), low, medium, high and xhigh', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: '31 August 2025', src: ['docs'] },
+      { label: 'Route we ran', value: 'October 1 replay: provider pinned to OpenAI, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'OpenAI now labels it a previous flagship for professional work. It is a rung in the October 1 generation ladder.', src: ['docs'] }],
+    sources: { docs: openAiDoc('gpt-5.2', 'GPT-5.2'), or: openRouter('openai/gpt-5.2'), receipt: OCT1_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gpt-5.1', name: 'GPT-5.1', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Snapshot 13 Nov 2025', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-5.1 · OpenAI · high effort' },
+    facts: [
+      { label: 'Released', value: 'Snapshot gpt-5.1-2025-11-13, now deprecated', src: ['docs'] },
+      { label: 'Lineage', value: 'GPT-5 series, following GPT-5', src: ['or'] },
+      { label: 'Context window', value: '400,000 tokens; 128,000 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Effort none (default), low, medium and high', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: '30 September 2024', src: ['docs'] },
+      { label: 'Route we ran', value: 'October 1 replay: provider pinned to OpenAI, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'Described by OpenAI for coding and agent tasks with configurable reasoning effort.', src: ['docs'] }],
+    sources: { docs: openAiDoc('gpt-5.1', 'GPT-5.1'), or: openRouter('openai/gpt-5.1'), receipt: OCT1_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gpt-5', name: 'GPT-5', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Snapshot 7 Aug 2025', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-5 · OpenAI · high effort' },
+    facts: [
+      { label: 'Released', value: 'Snapshot gpt-5-2025-08-07, now deprecated', src: ['docs'] },
+      { label: 'Context window', value: '400,000 tokens (272,000 input); 128,000 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Effort minimal, low, medium and high', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: '30 September 2024', src: ['docs'] },
+      { label: 'Route we ran', value: 'Provider pinned to openai/default, reasoning effort high with reasoning text excluded, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'OpenAI now calls it a previous reasoning model for coding and agent tasks. By snapshot date it is the oldest OpenAI reasoning model in the book.', src: ['docs'] }],
+    sources: { docs: openAiDoc('gpt-5', 'GPT-5'), or: openRouter('openai/gpt-5'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gpt-4.1', name: 'GPT-4.1', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Snapshot 14 Apr 2025', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-4.1 · OpenAI · no reasoning' },
+    facts: [
+      { label: 'Released', value: 'Snapshot gpt-4.1-2025-04-14, now deprecated', src: ['docs'] },
+      { label: 'Context window', value: '1,047,576 tokens; 32,768 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'None: OpenAI calls it a non-reasoning model', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: '1 June 2024', src: ['docs'] },
+      { label: 'Route we ran', value: 'Provider pinned to OpenAI, no reasoning parameter sent, 12,288-token cap; also used in the diagnostic-completion study', src: ['receipt'] },
+    ],
+    prose: [{ text: 'A non-reasoning model built for instruction following and tool calling. It answers without a separate thinking phase, unlike the other OpenRouter entries except GPT-4o.', src: ['docs'] }],
+    sources: { docs: openAiDoc('gpt-4.1', 'GPT-4.1'), or: openRouter('openai/gpt-4.1'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gpt-4o-2024-11-20', name: 'GPT-4o (2024-11-20)', lab: OPENAI, family: OPENAI, group: 'openrouter',
+    glance: { released: 'Snapshot 20 Nov 2024', size: 'Not disclosed', modalities: 'Text, image → text', licence: HOSTED_LICENCE, build: 'openai/gpt-4o-2024-11-20 · OpenAI · no reasoning' },
+    facts: [
+      { label: 'Released', value: 'Snapshot gpt-4o-2024-11-20, now deprecated', src: ['docs'] },
+      { label: 'Context window', value: '128,000 tokens; 16,384 maximum output', src: ['docs'] },
+      { label: 'Modalities', value: 'Text and image input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'No reasoning parameter is listed for the slug; the book sent none', src: ['or', 'receipt'] },
+      { label: 'Knowledge cutoff', value: '1 October 2023', src: ['docs'] },
+      { label: 'Route we ran', value: 'October 1 replay: provider pinned to OpenAI, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'The oldest hosted model in the book: a general-purpose multimodal GPT from before OpenAI\'s reasoning models.', src: ['docs'] }],
+    sources: { docs: openAiDoc('gpt-4o', 'GPT-4o'), or: openRouter('openai/gpt-4o-2024-11-20'), receipt: OCT1_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gemini-3.1-pro-preview', name: 'Gemini 3.1 Pro Preview', lab: GOOGLE, family: GOOGLE, group: 'openrouter',
+    glance: { released: '19 Feb 2026 (preview)', size: 'Not disclosed', modalities: 'Text, image, video, audio, PDF → text', licence: HOSTED_LICENCE, build: 'google/gemini-3.1-pro-preview · Google AI Studio · high effort' },
+    facts: [
+      { label: 'Released', value: '19 February 2026, as a preview', src: ['blog'] },
+      { label: 'Lineage', value: 'Builds on the Gemini 3 series, after Gemini 3 Pro', src: ['blog'] },
+      { label: 'Context window', value: '1,048,576 input tokens; 65,536 output tokens', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image, video, audio and PDF input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Thinking supported; levels are not described on the model page', src: ['docs'] },
+      { label: 'Parameters', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'Provider pinned to Google AI Studio (flex and priority excluded), no fallbacks, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'The Google entrant in the original image protocol. As a preview model it may change before general availability.', src: ['blog'] }],
+    sources: { blog: { label: 'Google blog: Gemini 3.1 Pro', url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/' }, docs: geminiDoc('gemini-3.1-pro-preview', 'Gemini 3.1 Pro Preview'), or: openRouter('google/gemini-3.1-pro-preview'), receipt: FRONTIER_RECEIPT },
+    results: [{ label: 'Protocol & results', href: '#/protocol-results' }, { label: 'One queen at a time', href: '#/frontier-trajectories' }],
+  },
+  {
+    id: 'gemini-2.5-pro', name: 'Gemini 2.5 Pro', lab: GOOGLE, family: GOOGLE, group: 'openrouter',
+    glance: { released: 'Stable June 2025', size: 'Not disclosed', modalities: 'Audio, image, video, text, PDF → text', licence: HOSTED_LICENCE, build: 'google/gemini-2.5-pro · batch via Vertex · high effort' },
+    facts: [
+      { label: 'Released', value: 'Latest update June 2025; now deprecated, with requests rerouted from 1 December 2026', src: ['docs'] },
+      { label: 'Context window', value: '1,048,576 input tokens; 65,536 output tokens', src: ['docs'] },
+      { label: 'Modalities', value: 'Audio, image, video, text and PDF input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Thinking supported', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: 'January 2025', src: ['docs'] },
+      { label: 'Route we ran', value: 'Earlier-generations panel: batch through Google Vertex (global), reasoning effort high with reasoning text excluded. October 1 replay: Google AI Studio.', src: ['receipt'] },
+    ],
+    prose: [{ text: 'The Pro tier of the Gemini 2.5 family, which OpenRouter describes as built for reasoning, coding, mathematics and science.', src: ['or'] }],
+    sources: { docs: geminiDoc('gemini-2.5-pro', 'Gemini 2.5 Pro'), or: openRouter('google/gemini-2.5-pro'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', lab: GOOGLE, family: GOOGLE, group: 'openrouter',
+    glance: { released: 'Stable June 2025', size: 'Not disclosed', modalities: 'Text, image, video, audio → text', licence: HOSTED_LICENCE, build: 'google/gemini-2.5-flash · batch via Vertex · high effort' },
+    facts: [
+      { label: 'Released', value: 'Latest update June 2025; now deprecated, with requests rerouted from 1 December 2026', src: ['docs'] },
+      { label: 'Context window', value: '1,048,576 input tokens; 65,536 output tokens', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image, video and audio input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Thinking supported', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: 'January 2025', src: ['docs'] },
+      { label: 'Route we ran', value: 'Earlier-generations panel: batch through Google Vertex (global), reasoning effort high. October 1 replay and diagnostic-completion study: Google AI Studio.', src: ['receipt'] },
+    ],
+    prose: [{ text: 'Google\'s price-performance tier of Gemini 2.5, below Pro.', src: ['docs'] }],
+    sources: { docs: geminiDoc('gemini-2.5-flash', 'Gemini 2.5 Flash'), or: openRouter('google/gemini-2.5-flash'), receipt: LEGACY_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'gemini-2.5-flash-lite', name: 'Gemini 2.5 Flash-Lite', lab: GOOGLE, family: GOOGLE, group: 'openrouter',
+    glance: { released: 'July 2025', size: 'Not disclosed', modalities: 'Text, image, video, audio, PDF → text', licence: HOSTED_LICENCE, build: 'google/gemini-2.5-flash-lite · Google AI Studio · high effort' },
+    facts: [
+      { label: 'Released', value: 'Latest update July 2025', src: ['docs'] },
+      { label: 'Context window', value: '1,048,576 input tokens; 65,536 output tokens', src: ['docs'] },
+      { label: 'Modalities', value: 'Text, image, video, audio and PDF input; text output', src: ['docs'] },
+      { label: 'Reasoning control', value: 'Thinking supported', src: ['docs'] },
+      { label: 'Knowledge cutoff', value: 'January 2025', src: ['docs'] },
+      { label: 'Route we ran', value: 'October 1 replay: provider pinned to Google AI Studio, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'Google\'s most cost-efficient Gemini 2.5 model, intended for high-volume, lightweight tasks.', src: ['docs'] }],
+    sources: { docs: geminiDoc('gemini-2.5-flash-lite', 'Gemini 2.5 Flash-Lite'), or: openRouter('google/gemini-2.5-flash-lite'), receipt: OCT1_RECEIPT },
+    results: [{ label: 'Earlier generations', href: '#/earlier-generations' }],
+  },
+  {
+    id: 'grok-4.6', name: 'Grok 4.6', lab: 'xAI (listed on OpenRouter as SpaceXAI)', family: XAI, group: 'openrouter',
+    glance: { released: '12 Aug 2026', size: 'Not disclosed', modalities: 'Text, image, file → text', licence: HOSTED_LICENCE, build: 'x-ai/grok-4.6 · Amazon Bedrock us-west-2 · high effort' },
+    facts: [
+      { label: 'Released', value: '12 August 2026', src: ['news'] },
+      { label: 'Lineage', value: 'Builds on Grok 4.5; OpenRouter lists Grok 4.7 as its successor', src: ['news', 'or'] },
+      { label: 'Context window', value: '500K tokens', src: ['docs', 'or'] },
+      { label: 'Modalities', value: 'Text, image and file input; text output', src: ['or'] },
+      { label: 'Reasoning control', value: 'Not described on xAI\'s announcement or model page; OpenRouter accepts a reasoning parameter', src: ['news', 'models'] },
+      { label: 'Parameters', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'Provider pinned to Amazon Bedrock us-west-2, no fallbacks, reasoning effort high, 12,288-token cap', src: ['receipt'] },
+    ],
+    prose: [{ text: 'xAI aimed this release at long-running agents and interactive, visual work. In the book it is the only frontier entrant served through a cloud platform (Amazon Bedrock) rather than its developer\'s own endpoint.', src: ['news', 'receipt'] }],
+    sources: { news: { label: 'xAI: Grok 4.6', url: 'https://x.ai/news/grok-4-6' }, docs: { label: 'xAI docs: models', url: 'https://docs.x.ai/docs/models' }, or: openRouter('x-ai/grok-4.6'), models: OPENROUTER_MODELS, receipt: FRONTIER_RECEIPT },
+    results: [{ label: 'Protocol & results', href: '#/protocol-results' }, { label: 'One queen at a time', href: '#/frontier-trajectories' }],
+  },
+]
+
+// ---------------------------------------------------------------- Decision models and other hosted routes
+const DIRECT_MODELS: ModelEntry[] = [
+  {
+    id: 'jev-1.13', name: 'Jev 1.13', lab: 'TypeSafe', group: 'direct',
+    glance: { released: 'Listed on OpenRouter 18 Sep 2026', size: 'Not disclosed', modalities: 'Text, PNG/JPEG image → typed decision', licence: 'Hosted API; openness not stated', build: 'typesafe/jev-1.13 · OpenRouter Decisions · text state' },
+    facts: [
+      { label: 'Developer', value: 'TypeSafe; Jev is its flagship and first "System One" model', src: ['docs'] },
+      { label: 'Released', value: 'No date given for 1.13 on TypeSafe\'s model page (Jev 1.14 is dated 14 October 2026); OpenRouter lists the slug from 18 September 2026', src: ['docs', 'or'] },
+      { label: 'Kind of model', value: 'A decision model: it returns a probability distribution over supplied options instead of free text. Question types are Choice, Score and Noul.', src: ['docs', 'or'] },
+      { label: 'Modalities', value: 'Text (string, JSON object or array) and PNG or JPEG images in; decisions out', src: ['docs', 'or'] },
+      { label: 'Context window', value: '64K tokens per request and 32K per question by default; 262K with a long-context header', src: ['docs', 'or'] },
+      { label: 'Training', value: 'Trained with RLCD to return calibrated decisions; the same weights serve every account', src: ['docs'] },
+      { label: 'Parameters and licence', value: NOT_STATED, src: [] },
+      { label: 'Route we ran', value: 'OpenRouter\'s Decisions route with a canonical text grid of the board; the image prompt was rejected because this family needs the Decisions API', src: ['receipt'] },
+    ],
+    prose: [{ text: 'Jev never writes a solution. It picks among options the harness builds, so the book scores it on a different task from the language models: choosing a cell or colour from a menu, one decision per call.', src: ['docs', 'receipt'] }],
+    sources: { docs: { label: 'TypeSafe docs: models', url: 'https://docs.typesafe.ai/models' }, or: openRouter('typesafe/jev-1.13'), receipt: { label: 'Book chapter: Jev primer', url: '#/jev-primer' } },
+    results: [{ label: 'Jev primer', href: '#/jev-primer' }, { label: 'Decision models vs the index', href: '#/decision-models' }],
+  },
+  {
+    id: 'subq-snap-preview', name: 'SubQ Snap (preview)', lab: 'Subquadratic', group: 'direct',
+    glance: { released: 'Announced 12 Oct 2026', size: 'Not disclosed', modalities: 'Text, image → probability over answers', licence: 'Hosted API; openness not stated', build: 'subq-snap-preview · SubQ API (direct)' },
+    facts: [
+      { label: 'Developer', value: 'Subquadratic', src: ['blog'] },
+      { label: 'Released', value: 'Announced 12 October 2026 as a public preview', src: ['blog'] },
+      { label: 'Kind of model', value: 'A decision model for agent workflows: a decision head maps its representations to a probability for each allowed answer', src: ['blog'] },
+      { label: 'Architecture claim', value: 'Subquadratic Sparse Attention, which the company says reduces attention cost from quadratic to linear. This is the developer\'s claim.', src: ['blog'] },
+      { label: 'Modalities', value: 'Text and image input, up to 384K tokens of mixed context', src: ['blog'] },
+      { label: 'Parameters and licence', value: NOT_STATED, src: [] },
+      { label: 'Status today', value: 'subq-snap-preview is listed as retired on 11 November 2026 and now routes to Snap 1.2', src: ['docs'] },
+      { label: 'Route we ran', value: 'SubQ\'s own Decisions endpoint, called directly rather than through OpenRouter', src: ['receipt'] },
+    ],
+    prose: [{ text: 'A second decision model, run on the same historical Jev tasks and the new-board panel so the two can be compared on identical menus. Because the preview ID now routes to a newer model, the book\'s receipts describe the preview only.', src: ['blog', 'docs', 'receipt'] }],
+    sources: { blog: { label: 'Subquadratic: Introducing SubQ Snap', url: 'https://subq.ai/introducing-subq-snap' }, docs: { label: 'SubQ docs: models', url: 'https://docs.subq.ai/using-the-api/models/' }, receipt: { label: 'Book chapter: SubQ Snap replay', url: '#/subq-assessment' } },
+    results: [{ label: 'SubQ Snap replay', href: '#/subq-assessment' }, { label: 'New-board panel', href: '#/subq-assessment/panel' }],
+  },
+]
+
+// ---------------------------------------------------------------- Non-model systems
+const SYSTEMS: ModelEntry[] = [
+  {
+    id: 'greedy-rule', name: 'Greedy rule (no model)', lab: 'This book', group: 'system',
+    glance: { released: 'n/a', size: 'No parameters', modalities: 'Board state → one placement per step', licence: 'n/a', build: 'Fixed four-step rule, no search, no backtracking' },
+    facts: [
+      { label: 'What it is', value: 'A fixed rule: list each unplaced colour\'s legal cells, take the colour with the fewest, place its first legal cell in reading order, never undo', src: ['chapter'] },
+      { label: 'Origin', value: 'The fail-first, minimum-remaining-values heuristic from constraint search (Haralick and Elliott, 1980), used here with no search at all', src: ['chapter'] },
+      { label: 'Why it is on the leaderboard', value: 'A no-model baseline that uses the same conflict filter as the decision models\' filtered menus', src: ['chapter'] },
+    ],
+    prose: [{ text: 'It shows how much of a board a mechanical rule can solve with no model, which puts the decision-model results in context.', src: ['chapter'] }],
+    sources: { chapter: { label: 'Book chapter: Greedy rule baseline', url: '#/greedy-rule' } },
+    results: [{ label: 'Greedy rule baseline', href: '#/greedy-rule' }],
+  },
+  {
+    id: 'z3', name: 'Z3 (referee, not an entrant)', lab: 'Microsoft Research', group: 'system',
+    glance: { released: 'Book pins Z3 4.16.0', size: 'Not a learned model', modalities: 'Logical constraints → proof or model', licence: 'MIT', build: 'Z3 4.16.0, default solver parameters' },
+    facts: [
+      { label: 'What it is', value: 'A theorem prover from Microsoft Research', src: ['repo'] },
+      { label: 'Licence', value: 'MIT', src: ['repo'] },
+      { label: 'Version we ran', value: 'Z3 4.16.0 with the stated configuration', src: ['chapter'] },
+      { label: 'Role in the book', value: 'Checks that each board has exactly one solution and teaches how a solver reasons; it is explanatory context, not a timed competitor', src: ['chapter'] },
+    ],
+    prose: [{ text: 'Z3 does not appear as a scored row: it is the referee that makes "exactly one solution" a checked fact rather than an assumption.', src: ['chapter'] }],
+    sources: { repo: { label: 'GitHub: Z3Prover/z3', url: 'https://github.com/Z3Prover/z3' }, chapter: { label: 'Book part: How Z3 solves Queens', url: '#/how-z3-solves-queens' } },
+    results: [{ label: 'How Z3 solves Queens', href: '#/how-z3-solves-queens' }],
+  },
+]
+
+/** Every entry on the page, in reading order: local first (the owner's priority), then hosted, then systems. */
+export const MODELS: ModelEntry[] = [...LOCAL_MODELS, ...HOSTED_MODELS, ...DIRECT_MODELS, ...SYSTEMS]
