@@ -28,6 +28,27 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-11',
+    title: 'Final nights of local open-weight assessments',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 28,
+    changes: [
+      'Updated #/local-qwen and its study/receipt routes to 27 conditions, 835 assessment/audit receipts and 38 separate rescues. GPT-OSS Fresh2 text grids are complete at 25/48 strict.',
+      'Added separate Fresh1 GPT-OSS medium-effort 32k and high-effort 65k conditions, each 29/48 strict, with board/arm denominators, changed traces and one recorded transport failure with unknown usage.',
+      'The leaderboard open-weight views and the shared #/caveman-summary comparison now include the completed panels. Effort settings remain distinct; #/caveman-summary/pilot and hosted-comparison local rows retain their 4B pilot scope.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Caveman comparison across local studies',
+    kinds: ['chapter', 'method'],
+    pr: 16,
+    changes: [
+      'Expanded #/caveman-summary to show matched strict outcomes, format recovery and saved hosted-cost scenarios across separate local study conditions.',
+      'Preserved the original 4B pilot at #/caveman-summary/pilot and linked the expanded local assessment chapter.',
+    ],
+  },
+  {
     date: '2026-11-06',
     title: 'Incomplete open-weight coverage in the Queens leaderboard',
     kinds: ['chapter', 'interface'],

@@ -28,7 +28,8 @@ function settings(study: LocalStudy) {
   const arms = Object.keys(study.arms || {}).length || new Set(study.rows.map(row => row.treatment)).size
   return [
     `${study.board_set || 'legacy'} panel`, modality, `${arms} prompt arms`, format,
-    `${study.budget.toLocaleString('en-US')} tokens`, `${decode}${round}`, `detector ${detector}`,
+    `${study.budget.toLocaleString('en-US')} tokens`, `${decode}${round}`,
+    ...(typeof study.protocol?.think === 'string' ? [`think ${study.protocol.think}`] : []), `detector ${detector}`,
   ].join(' · ')
 }
 
@@ -87,7 +88,7 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
     {visible.length ? <figure className="ow-figure">
       <figcaption>
         <div className="lb-legend">{outcomeLabels.map((label, index) => <span key={label}><i className={`lb-swatch ${outcomeStyles[index]}`} aria-hidden="true" />{label}</span>)}</div>
-        <p>Each bar spans all recorded calls in that row. Remaining includes incorrect answers, token caps and client stops.</p>
+        <p>Each bar spans all recorded calls in that row. Remaining includes incorrect answers, token caps, client stops and recorded transport errors.</p>
       </figcaption>
       <ul className="ow-results">
         {visible.map(({ study, rows, strict, format, remaining, total }) => {
