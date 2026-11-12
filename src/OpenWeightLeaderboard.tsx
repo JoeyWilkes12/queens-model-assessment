@@ -137,7 +137,7 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
       <InfoBubble label="How to read these studies" wide>
         <p>Each row is one completed study: one model under one fixed set of settings. The bar covers every recorded call, and each board is asked once per prompt arm.</p>
         <p>Compare rows inside one board panel, and only between rows with the same input type. Token budgets and thinking settings differ between models; the tags and each row’s info button show them.</p>
-        <p>Not solved includes wrong answers, answers cut off at the token budget and calls the loop detector stopped.</p>
+        <p>Not solved includes wrong answers, answers cut off at the token budget, calls the loop detector stopped and recorded transport errors.</p>
       </InfoBubble>
       {OUTCOMES.map(([label, style]) => <span key={label} className="lb-legend-item"><i className={`lb-swatch ${style}`} aria-hidden="true" />{label}</span>)}
     </div>
