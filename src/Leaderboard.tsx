@@ -1,9 +1,9 @@
 import { lazy, Suspense, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import type { BookUi } from './ollamaEvidence'
+import { Choice, InfoBubble } from './leaderboardUi'
 import './leaderboard.css'
 
 const OpenWeightLeaderboard = lazy(() => import('./OpenWeightLeaderboard'))
-const OpenWeightProgress = lazy(() => import('./OpenWeightProgress'))
 
 type Cell = { outcome: string; solved: boolean; usd: number | null; requests: number; unknown: number }
 type Family = 'frontier' | 'earlier' | 'decision' | 'baseline' | 'local'
@@ -92,23 +92,6 @@ function summary(row: Row) {
   const format = row.system.method === 'image' && row.offFormat ? `, ${row.offFormat} in the wrong format` : ''
   const cost = row.usd === null ? noCost(row.system) : `cost ${row.unknown ? 'at least ' : ''}${usd(row.usd)}${row.system.route === 'batch' ? ' at batch price' : ''}`
   return `${fullName(row.system)}: ${row.solved} of ${row.total} boards solved${format}; ${cost}.`
-}
-
-/** Single-choice controls: one tab stop per group, arrow keys move the choice. */
-function Choice<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: [T, string][]; onChange: (value: T) => void }) {
-  const buttons = useRef<(HTMLButtonElement | null)[]>([])
-  const move = (index: number) => {
-    const next = (index + options.length) % options.length
-    onChange(options[next][0])
-    buttons.current[next]?.focus()
-  }
-  return <div className="lb-tabs" role="radiogroup" aria-label={label}>
-    {options.map(([key, text], index) => <button key={key} ref={element => { buttons.current[index] = element }} type="button" role="radio" aria-checked={value === key} tabIndex={value === key ? 0 : -1}
-      onClick={() => onChange(key)} onKeyDown={event => {
-        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); move(index + 1) }
-        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') { event.preventDefault(); move(index - 1) }
-      }}>{text}</button>)}
-  </div>
 }
 
 type Pick = { selected: string | null; peek: string | null; onPick: (key: string) => void; onPeek: (key: string | null) => void }
@@ -212,7 +195,9 @@ function boardTicks([lo, hi]: [number, number], n: number) {
  */
 function Scatter({ rows, width, pick }: { rows: Row[]; width: number; pick: Pick }) {
   const n = rows[0]?.total ?? 1
-  const height = 360, left = 40, lane = 64, right = 28, top = 18, bottom = 46, inset = 16
+  // Phones get a taller plot and a slimmer $0 lane: portrait has height to spare, and zoom does the rest.
+  const narrow = width < 560
+  const height = narrow ? 420 : 360, left = narrow ? 34 : 40, lane = narrow ? 50 : 64, right = narrow ? 14 : 28, top = 18, bottom = 46, inset = 16
   const perBoard = (row: Row) => row.usd === null || row.usd <= 0 ? null : row.usd / row.total
   const priced = rows.map(perBoard).filter((value): value is number => value !== null)
   // The cost axis spans the data plus a little room, so close prices are not squeezed into one corner.
@@ -309,7 +294,7 @@ function Scatter({ rows, width, pick }: { rows: Row[]; width: number; pick: Pick
       <button type="button" onClick={() => zoomAt(1 / 1.8)} disabled={!zoomed} aria-label="Zoom out">−</button>
       <button type="button" onClick={() => zoomAt(1.8)} disabled={view.x[1] - view.x[0] <= minX + 1e-6 && view.y[1] - view.y[0] <= minY + 1e-6} aria-label="Zoom in">+</button>
       <button type="button" onClick={() => setView(full)} disabled={!zoomed}>Reset</button>
-      <span className="lb-zoom-hint">{zoomed ? visible.length ? `${visible.length} of ${rows.length} shown · drag to pan` : 'No systems in this area · drag to pan or reset' : 'Zoom: double-click or double-tap, pinch, or Ctrl/⌘ + scroll'}</span>
+      <span className="lb-zoom-hint">{zoomed ? visible.length ? `${visible.length} of ${rows.length} shown · drag to pan` : 'No systems in this area · drag to pan or reset' : ''}</span>
     </div>
     <svg ref={svgRef} className={`lb-scatter${zoomed ? ' is-zoomed' : ''}`} viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="group" aria-label={`Boards solved out of ${n} against API cost per board on a logarithmic axis. Systems with no API cost sit in the left lane.${zoomed ? ` Zoomed to ${visible.length} of ${rows.length} systems.` : ''}`}
       onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerEnd} onPointerCancel={onPointerEnd}
@@ -339,40 +324,8 @@ function Scatter({ rows, width, pick }: { rows: Row[]; width: number; pick: Pick
   </div>
 }
 
-/** True while the viewport is taller than it is wide; updates when the phone turns. */
-function usePortrait() {
-  const query = '(orientation: portrait)'
-  const [portrait, setPortrait] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.(query).matches)
-  useEffect(() => {
-    const media = window.matchMedia?.(query)
-    if (!media) return
-    const update = () => setPortrait(media.matches)
-    update()
-    media.addEventListener('change', update)
-    return () => media.removeEventListener('change', update)
-  }, [])
-  return portrait
-}
-
-/** Shown in place of the scatter plot when it would be too narrow to read. */
-function RotatePrompt({ portrait, onShow }: { portrait: boolean; onShow: () => void }) {
-  return <div className="lb-rotate" role="note">
-    <svg className="lb-rotate-icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="22" y="8" width="20" height="34" rx="3" />
-      <rect x="14" y="36" width="34" height="20" rx="3" className="lb-rotate-landscape" />
-      <path d="M50 14a14 14 0 0 1 4 12" /><path d="m51 24 3 3 3-4" />
-    </svg>
-    <div>
-      <strong>{portrait ? 'Turn your phone sideways for this chart' : 'This chart needs a wider window'}</strong>
-      <p>{portrait ? 'Solved vs cost places every system by its result and its price per board. In landscape it appears here, at a readable size.' : 'Solved vs cost places every system by its result and its price per board. Widen the window and it appears here.'}</p>
-      <button type="button" className="lb-rotate-show" onClick={onShow}>Show it here anyway</button>
-      <span className="lb-rotate-note">The narrow plot zooms, so crowded points can be pulled apart. The table below has the same numbers.</span>
-    </div>
-  </div>
-}
-
 function Detail({ row }: { row: Row | null }) {
-  if (!row) return <p className="lb-detail lb-detail--empty">Pick a bar or dot for details.</p>
+  if (!row) return <p className="lb-detail lb-detail--empty">Pick a dot or bar for details.</p>
   const { system } = row
   const misses = Object.entries(row.misses).map(([outcome, count]) => `${count} ${MISS[outcome]}`).join(', ')
   const reruns = system.method === 'image' ? row.requests - row.total : 0
@@ -390,21 +343,18 @@ function Detail({ row }: { row: Row | null }) {
   </div>
 }
 
-/** Keep the shared-board benchmark and separate open-weight protocols in one figure. */
+/** Keep the shared-board benchmark and the separate open-weight protocols in one figure. */
 export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
   const ownId = useId()
   const headingId = titleId ?? ownId
-  const [dataset, setDataset] = useState<'board-panel' | 'completed' | 'incomplete'>('board-panel')
+  const [dataset, setDataset] = useState<'board-panel' | 'open-weight'>('board-panel')
   return <figure className="leaderboard" aria-labelledby={headingId}>
-    <figcaption className="lb-caption"><strong id={headingId}>Queens leaderboard</strong></figcaption>
-    <div className="lb-controls">
-      <Choice label="Assessment view" value={dataset} onChange={setDataset}
-        options={ [['board-panel', 'Shared board benchmark'], ['completed', 'Completed open-weight'], ['incomplete', 'Incomplete open-weight']] } />
-    </div>
+    <figcaption className="lb-caption">
+      <strong id={headingId}>Queens leaderboard</strong>
+      <Choice label="Assessment view" value={dataset} onChange={setDataset} options={[['board-panel', 'Shared boards'], ['open-weight', 'Open-weight studies']]} />
+    </figcaption>
     {dataset === 'board-panel' ? <BoardPanelLeaderboard ui={ui} />
-      : <Suspense fallback={<p role="status">Loading open-weight studies…</p>}>
-        {dataset === 'completed' ? <OpenWeightLeaderboard ui={ui} /> : <OpenWeightProgress ui={ui} />}
-      </Suspense>}
+      : <Suspense fallback={<p className="leaderboard-status" role="status">Loading open-weight studies…</p>}><OpenWeightLeaderboard ui={ui} /></Suspense>}
   </figure>
 }
 
@@ -413,7 +363,7 @@ function BoardPanelLeaderboard({ ui }: { ui: BookUi }) {
   const { DataTable } = ui
   const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState(false)
-  const [view, setView] = useState<View>('solved')
+  const [view, setView] = useState<View>('scatter')
   const [scope, setScope] = useState<Scope>('panel')
   const [size, setSize] = useState<Size>('all')
   const [selected, setSelected] = useState<string | null>(null)
@@ -435,9 +385,6 @@ function BoardPanelLeaderboard({ ui }: { ui: BookUi }) {
     const pool = scope === 'local' ? data.local_boards : data.boards.map(board => board.id)
     return pool.filter(id => size === 'all' || String(data.boards.find(board => board.id === id)?.size) === size)
   }, [data, scope, size])
-  const portrait = usePortrait()
-  const [narrowScatter, setNarrowScatter] = useState(false)
-  const wideEnough = width === null || width >= 560
   const shownView: View = view
   const rows = useMemo(() => data ? rowsFor(data, ids).sort(shownView === 'cost' ? byCost : byRank) : [], [data, ids, shownView])
 
@@ -461,24 +408,31 @@ function BoardPanelLeaderboard({ ui }: { ui: BookUi }) {
     ? [['solid', 'Solved'], ['hatched', 'Solved, wrong answer format'], ['base', 'Solved by the rule']]
     : shownView === 'cost' ? [['cost', 'API spend on these boards']] : []
   const sizeHeaders = (rows[0]?.bySize.length ?? 0) > 1 ? rows[0].bySize.map(part => `${part.size}×${part.size}`) : []
-  const views: [View, string][] = [['solved', 'Boards solved'], ['cost', 'Cost'], ['scatter', 'Solved vs cost']]
+  const views: [View, string][] = [['scatter', 'Solved vs cost'], ['solved', 'Boards solved'], ['cost', 'Cost']]
 
   return <>
-    <p className="lb-key">{rows.length} systems · {boardsLabel}</p>
     <div className="lb-controls">
       <Choice label="Measure" value={shownView} onChange={setView} options={views} />
       <Choice label="Board size" value={size} onChange={setSize} options={SIZES} />
       <Choice label="Boards" value={scope} onChange={setScope} options={[['panel', `All ${data.boards.length} boards`], ['local', `${data.local_boards.length} boards, with local models`]]} />
     </div>
-    <p className="lb-key"><span><b>image</b>: one reply to a picture</span><span><b>menus</b>: picked moves from menus our code built; best of two runs</span><span><b>rule</b>: no model</span>{scope === 'local' && <span><b>local</b>: small model on our own computer</span>}</p>
-    {(legend.length > 0 || (shownView === 'cost' && hasBatch)) && <div className="lb-legend">
-      {legend.map(([kind, label]) => <span key={kind}><span className={`lb-swatch lb-fill--${kind}`} aria-hidden="true" />{label}</span>)}
+    <div className="lb-meta">
+      <span>{rows.length} systems · {boardsLabel}</span>
+      <InfoBubble label="How to read this chart" wide>
+        <dl className="lb-info-list">
+          <div><dt>image</dt><dd>A language model saw each board as a picture and answered once.</dd></div>
+          <div><dt>menus</dt><dd>A decision model picked one move at a time from menus our code built. A board counts if either of its two runs solved it.</dd></div>
+          <div><dt>rule</dt><dd>No model: a fixed rule that never undoes a move.</dd></div>
+          <div><dt>local</dt><dd>A small open-weight model on our own computer. No API fee, so it sits in the $0 lane.</dd></div>
+        </dl>
+        <p>A right answer counts as solved even in the wrong format. Ties go to more answers in the exact format, then to the lower cost. Costs come from the saved receipts for these boards, re-runs included{hasBatch ? '; † marks batch prices' : ''}.</p>
+        {shownView === 'scatter' && <p>Zoom rescales the axes: double-click, pinch, or Ctrl/⌘ + scroll. Drag to pan once zoomed.</p>}
+      </InfoBubble>
+      {legend.map(([kind, label]) => <span key={kind} className="lb-legend-item"><span className={`lb-swatch lb-fill--${kind}`} aria-hidden="true" />{label}</span>)}
       {shownView === 'cost' && hasBatch && <span>† batch price</span>}
-    </div>}
+    </div>
     <div ref={chartRef} className="lb-chart" key={`${shownView}-${scope}-${size}`}>
-      {width !== null && (shownView !== 'scatter' ? <Columns rows={rows} view={shownView} columns={columns} pick={pick} />
-        : wideEnough || narrowScatter ? <Scatter rows={rows} width={width} pick={pick} />
-          : <RotatePrompt portrait={portrait} onShow={() => setNarrowScatter(true)} />)}
+      {width !== null && (shownView === 'scatter' ? <Scatter rows={rows} width={width} pick={pick} /> : <Columns rows={rows} view={shownView} columns={columns} pick={pick} />)}
     </div>
     <Detail row={shown} />
     <p className="sr-only" aria-live="polite">{announcement}</p>
@@ -486,7 +440,7 @@ function BoardPanelLeaderboard({ ui }: { ui: BookUi }) {
       <summary>Show the data as a table</summary>
       <DataTable caption={`Every system on the same ${boardsLabel}`} headers={['System', 'Method', 'Boards solved', 'Exact format', ...sizeHeaders, 'Cost', 'Per board', 'Requests']}
         rows={[...rows].sort(byRank).map(row => [fullName(row.system), TAG[row.system.family], `${row.solved}/${row.total}`, row.system.method === 'image' ? String(row.strict) : '—', ...(sizeHeaders.length ? row.bySize.map(part => `${part.solved}/${part.total}`) : []), row.usd === null ? noCost(row.system) : `${usd(row.usd)}${batch(row.system)}`, row.usd === null ? '—' : usd(row.usd / row.total), String(row.requests)])} />
-      <p>A right answer counts as solved even if it ignored the requested format. A decision model solves a board if either of its two runs does. Ties go to more answers in the exact format, then to the lower cost. Costs are what the saved receipts record for requests on these boards, re-runs included; † marks batch prices. <a href={assetUrl('evidence/leaderboard.json')} download>Download the data (JSON)</a></p>
+      <p><a href={assetUrl('evidence/leaderboard.json')} download>Download the data (JSON)</a></p>
     </details>
   </>
 }
