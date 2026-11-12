@@ -11,9 +11,9 @@ type Score = { study: LocalStudy; rows: LocalStudy['rows']; strict: number; form
 
 /** Board panels in reading order: the frozen queue sets first, the earlier pilot boards last. */
 const PANELS: { id: string; title: string; about: string }[] = [
-  { id: 'fresh1', title: 'Fresh1 boards', about: 'Twelve boards, four each at 5×5, 7×7 and 9×9, frozen for the nightly queue. Every study here ran the same boards, so rows compare directly when their input type matches.' },
-  { id: 'fresh2', title: 'Fresh2 boards', about: 'A second set of twelve boards, frozen on 3 November before any model saw it. It repeats Fresh1 studies to check that their results hold on new boards.' },
-  { id: 'legacy', title: 'Earlier boards', about: 'The twelve boards of the first local studies, including the 4B pilot, the larger token budgets, the sampling rounds and the loop-stop studies. Sampling rounds are exploratory and never pooled with greedy runs.' },
+  { id: 'fresh1', title: 'Fresh1 boards', about: 'Twelve of the 36 shared boards, four each at 5×5, 7×7 and 9×9, frozen on 31 October before any local model ran on them. Every study here used the same boards. Rows still differ in model, input type, token budget and thinking setting, so read them as descriptions, not a controlled ranking.' },
+  { id: 'fresh2', title: 'Fresh2 boards', about: 'Another twelve of the 36 shared boards, frozen on 3 November before any local model ran on them. It repeats Fresh1 studies to check whether their results hold on different boards.' },
+  { id: 'legacy', title: 'Earlier boards', about: 'The twelve shared boards used by the first local studies: the 4B pilot, the larger token budgets, the sampling rounds and the loop-stop studies. Sampling rounds are exploratory and never pooled with greedy runs.' },
 ]
 
 /** Identify fully recorded cohorts, including selected audits for separate display. */
