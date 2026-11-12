@@ -1,0 +1,70 @@
+{
+  "call_id": "caveman_panel-9-24",
+  "board_id": "panel-9-24",
+  "size": 9,
+  "treatment": "caveman",
+  "model": "gpt-oss:20b",
+  "model_digest": "f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe",
+  "started_utc": "2026-11-08T11:04:29.743391+00:00",
+  "completed_utc": "2026-11-08T11:25:35.834226+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 1266.0493244999998,
+  "returned_model": "gpt-oss:20b",
+  "finish_reason": "stop",
+  "done": true,
+  "input_tokens": 1593,
+  "output_tokens": 53781,
+  "total_duration_ns": 1266040512375,
+  "load_duration_ns": 2925417,
+  "prompt_eval_duration_ns": 1923553000,
+  "eval_duration_ns": 1264086082000,
+  "request_sha256": "f32141be3417a70d3df7fd0e9f052f1e87caeb635c92455fe8994afe29393985",
+  "response_sha256": "aafc99cc8dc2d56ed3a86073fdec82917601e47fa240c1bb0f7ef0e9a96fe10b",
+  "image_sha256": null,
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": false,
+  "rule_valid_after_extraction": false,
+  "outcome": "incorrect",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "97114c58b735a4bbc84a13ae6b78bb9351c2d657e65b3705c4be593e8ddf9d47",
+    "panel_py_sha256": "df0584aa9f68bae53bc2787d9fa174316fc1c912890d38440a63da2c510edd30",
+    "runtime_lock_sha256": "a4a5cbd736e62c6198900c117845fbb524e202e976a1bde41e4a95cb96dc157b",
+    "git_commit": "e89d4a9dd6958c660e4efb905fc32fe17864e56b",
+    "git_branch": "claude/ollama-bigger-qwen",
+    "git_commit_source": "runner-versions.json",
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "stream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.0,
+    "last_llama_server_decode": {
+      "tokens": 53492,
+      "tok_per_s": 42.59
+    },
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": false,
+    "shadow": true,
+    "policy_version": 1,
+    "detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47",
+    "would_have_stopped": false,
+    "checks": 275,
+    "max_metric": 0.154,
+    "fired_at_thinking_chars": null,
+    "stream_chunks": 53439,
+    "reading": "Shadow mode: the detector only logged where it would have stopped this call; the call ran to its end."
+  }
+}

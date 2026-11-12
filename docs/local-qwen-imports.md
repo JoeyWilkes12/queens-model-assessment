@@ -20,6 +20,10 @@ npm run evidence:check-public
 npm run build
 ```
 
+For an evidence-only layer, add `--inactive` to capture and verify the candidate
+without switching `index.json`. Activate by copying its verified `catalog.json`
+to `index.json` only with the matching frontend change.
+
 Choose a new unique snapshot ID. Existing snapshots cannot be overwritten.
 The importer refuses a source whose allowlisted inventory or bytes change during
 capture; retry after the source is stable. Prepared studies remain pending, not
@@ -90,3 +94,15 @@ and seven further fresh1 4B calls. Historical fixtures use their original frozen
 catalogs; current integration checks use the selected index. They must not be
 rewritten to pretend a former partial snapshot was complete. See the
 [November 2 results](local-qwen-nov2.md) and [cost scenarios](local-qwen-nov2-costs.md).
+
+The final-night extension explicitly admits gpt-oss fresh1 text medium effort at
+32,768 tokens and high effort at 65,536 tokens. Their effort and budget are verified
+against plan and receipts and kept as separate conditions. Operational `abandoned/`
+started-only attempts remain excluded from accuracy denominators and the public
+allowlist; their meaning is documented in the dated report, without deleting source.
+
+The 65,536-token condition also retains one reviewed client-side `stream_error`
+receipt as a recorded transport failure, with null input/output usage and no
+invented response identity. Its exact request/response hashes and empty-answer
+grade/diagnostic still verify. Complete coverage means every planned attempt has
+an outcome record; it does not mean every attempt returned a model answer.
