@@ -32,7 +32,11 @@ CONSTRAINED_NAME = "qwen3.5-9b-nvfp4-fresh1-json-2arm-np32768"
 FRESH2_TEXT_NAME = "gpt-oss-20b-fresh2-text-4arm-np32768"
 FRESH2_NAMES = {FRESH2_TEXT_NAME, "qwen3.5-9b-nvfp4-fresh2-4arm-np32768"}
 FRESH2_FILE = "fresh2-boards.json"
-TEXT_NAMES.add(FRESH2_TEXT_NAME)
+GPT_FINAL_NAMES = {
+    "gpt-oss-20b-fresh1-text-think-medium-4arm-np32768": ("medium", 32768),
+    "gpt-oss-20b-fresh1-text-4arm-np65536": ("high", 65536),
+}
+TEXT_NAMES |= {FRESH2_TEXT_NAME} | set(GPT_FINAL_NAMES)
 FRESH_NAMES |= FRESH2_NAMES | TEXT_NAMES | {CONSTRAINED_NAME, "qwen3.5-27b-q4_K_M-fresh1-4arm-np24576"}
 ANSWER_SCHEMA = {
     "type": "object",
@@ -151,12 +155,23 @@ def validate_call(directory, board, arm, plan, user, system):
             "Request configuration differs from frozen plan: " + directory.name)
     messages = [user] if system is None else [{"role": "system", "content": system}, user]
     require(canonical(request.get("messages")) == canonical(messages), "Frozen prompt/image mismatch: " + directory.name)
+    transport_error = meta.get("outcome") == "transport_error"
+    if transport_error:
+        require(plan["study"].endswith("gpt-oss-20b-fresh1-text-4arm-np65536")
+                and meta.get("response_origin") == "client_exception"
+                and meta.get("http_status") is None
+                and set(response) == {"error"}
+                and response["error"].get("type") == "stream_error"
+                and isinstance(response["error"].get("message"), str)
+                and all(meta.get(key) is None for key in ("returned_model", "finish_reason", "done", "input_tokens", "output_tokens",
+                    "total_duration_ns", "load_duration_ns", "prompt_eval_duration_ns", "eval_duration_ns")),
+                "Unsupported transport error receipt")
     for key, expected_value in {"call_id": directory.name, "board_id": board["id"], "size": board["size"],
                                 "treatment": arm, "model": plan["runtime"]["model"],
                                 "model_digest": plan["runtime"]["digest"], "image_sha256": board["image_sha256"],
-                                "returned_model": plan["runtime"]["model"]}.items():
+                                "returned_model": None if transport_error else plan["runtime"]["model"]}.items():
         require(canonical(meta.get(key)) == canonical(expected_value), "Receipt identity mismatch: " + key)
-    require(meta.get("http_status") == 200 and response.get("model") == plan["runtime"]["model"],
+    require(transport_error or (meta.get("http_status") == 200 and response.get("model") == plan["runtime"]["model"]),
             "Unsupported failed/foreign response")
     require(meta["request_sha256"] == sha(canonical(request)), "Request hash mismatch")
     require(meta["response_sha256"] == sha(canonical(response)), "Response hash mismatch")
@@ -168,10 +183,10 @@ def validate_call(directory, board, arm, plan, user, system):
         require(plan["protocol"].get("loop_stop") and not plan["protocol"]["loop_stop"].get("shadow") and response.get("done") is False
                 and response.get("client_stop", {}).get("reason") == "loop_stop"
                 and meta.get("loop_stop", {}).get("triggered") is True, "Invalid client loop stop")
-    else:
+    elif not transport_error:
         require(response.get("done") is True and meta.get("done") is True
                 and meta.get("finish_reason") == response.get("done_reason"), "Incomplete model response")
-    content = (response.get("message") or {}).get("content", "")
+    content = (response.get("message") or {}).get("content")
     grade = grading.grade(board, content)
     require(canonical(read(directory / "grade.json")) == canonical(grade), "Saved strict grade mismatch")
     diagnostic = grading.diagnose(board, content)
@@ -182,7 +197,8 @@ def validate_call(directory, board, arm, plan, user, system):
         number(meta.get(key), key, True)
         require(meta.get(key) == response.get(response_key), "Usage differs from raw response: " + key)
     number(meta.get("elapsed_seconds"), "elapsed_seconds")
-    return {"strict_correct": grade["correct"], "format_only_correct": format_only_correct(board, content),
+    return {**({"transport_error": True} if transport_error else {}),
+            "strict_correct": grade["correct"], "format_only_correct": format_only_correct(board, content),
             "truncated": not stopped and response.get("done_reason") == "length", "loop_stopped": stopped,
             "input_tokens": meta.get("input_tokens"), "output_tokens": meta.get("output_tokens"),
             "elapsed_seconds": meta.get("elapsed_seconds"), "finish_reason": meta.get("finish_reason"),
@@ -239,6 +255,11 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
     require(re.fullmatch(r"[a-f0-9]{64}", plan["runtime"]["digest"]) is not None, "Invalid model digest")
     boards = {b["id"]: b for b in plan["boards"]}
     require(len(boards) == len(plan["boards"]) and all(re.fullmatch(r"[A-Za-z0-9_-]+", key) for key in boards), "Invalid board identities")
+    if study_id in GPT_FINAL_NAMES:
+        effort, budget = GPT_FINAL_NAMES[study_id]
+        require(plan["runtime"]["model"] == "gpt-oss:20b"
+                and plan["protocol"]["think"] == effort
+                and plan["protocol"]["num_predict"] == budget, "Unexpected final gpt-oss condition")
     constrained = study_id == CONSTRAINED_NAME
     protocol = plan["protocol"]
     if constrained:
@@ -353,6 +374,8 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
         label = f"{plan['runtime']['model']} · fresh1 · two arms · {protocol['num_predict']:,} · greedy · constrained JSON · shadow detector"
     if text_study:
         label += " · text grid"
+    if study_id in GPT_FINAL_NAMES:
+        label += " · think " + protocol["think"]
     runtime = {key: plan["runtime"].get(key) for key in ("model", "digest", "server_version", "details", "os", "machine_architecture")}
     return {**({"arms": plan.get("arms", {arm: {"system_file": "caveman-system.txt" if arm == "caveman" else None, "system_sha256": sha(system) if arm == "caveman" else None, "system_chars": len(system.decode()) if arm == "caveman" else 0, "system_words": len(system.decode().split()) if arm == "caveman" else 0} for arm in ARMS}), "board_set": board_set, "loop_mode": "shadow" if protocol.get("loop_stop", {}).get("shadow") else "active" if loopstop else "off"} if coverage else {}), **({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],
             "decoding": decoding, "round": int(sampling.group(1)) if sampling else 0,
@@ -553,8 +576,8 @@ def discover_sources(source_root):
     return sources
 
 
-def import_snapshot(source_root, snapshot_id, output=DEFAULT_OUT):
-    """Capture a stable allowlisted source, then atomically publish its index pointer."""
+def import_snapshot(source_root, snapshot_id, output=DEFAULT_OUT, activate=True):
+    """Capture a stable source; optionally activate it after deriving its catalog."""
     source_root, output = Path(source_root).resolve(), Path(output)
     require(re.fullmatch(r"[A-Za-z0-9_-]+", snapshot_id), "Unsafe snapshot ID")
     target = output / "snapshots" / snapshot_id
@@ -604,10 +627,12 @@ def import_snapshot(source_root, snapshot_id, output=DEFAULT_OUT):
         manifest["files"]["catalog.json"] = sha((staging / "catalog.json").read_bytes())
         save(staging / "manifest.json", manifest)
         staging.rename(target)
-        pointer = output / ".index.tmp"
-        save(pointer, catalog)
-        os.replace(pointer, output / "index.json")
-        verify_snapshot(output)
+        if activate:
+            pointer = output / ".index.tmp"
+            save(pointer, catalog)
+            os.replace(pointer, output / "index.json")
+        if (output / "index.json").exists():
+            verify_snapshot(output)
         return catalog
     finally:
         if staging.exists():
@@ -621,14 +646,15 @@ def main(argv=None):
     parser.add_argument("--snapshot-id")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--verify", action="store_true")
+    parser.add_argument("--inactive", action="store_true", help="Capture a candidate without changing the active index")
     args = parser.parse_args(argv)
     try:
         if args.verify:
-            require(args.source_root is None and args.snapshot_id is None, "Verify uses only the saved snapshot")
+            require(args.source_root is None and args.snapshot_id is None and not args.inactive, "Verify uses only the saved snapshot")
             catalog = verify_snapshot(args.output)
         else:
             require(args.source_root is not None and args.snapshot_id is not None, "Import requires --source-root and --snapshot-id")
-            catalog = import_snapshot(args.source_root, args.snapshot_id, args.output)
+            catalog = import_snapshot(args.source_root, args.snapshot_id, args.output, activate=not args.inactive)
         print(json.dumps({"snapshot": catalog["snapshot_id"], "studies": len(catalog["studies"]),
                           "recorded": sum(study["recorded"] for study in catalog["studies"]), "offline": True}))
     except (OSError, ValueError, KeyError, TypeError, subprocess.CalledProcessError) as error:
