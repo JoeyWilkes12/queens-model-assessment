@@ -31,6 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-11',
     title: 'Queens leaderboard opens on Solved vs cost, with details in info buttons',
     kinds: ['interface'],
+    pr: 24,
     changes: [
       'The Executive Summary leaderboard now opens on the Solved vs cost scatter plot. It draws in portrait on a phone, taller and zoomable; the turn-your-phone prompt is gone.',
       'Two views replace three: Shared boards and Open-weight studies. Open-weight studies lists each completed study on one line, grouped by board panel and ranked by strict solve rate, with only a board-size filter. Unfinished and superseded runs moved into a disclosure at the end.',
