@@ -40,7 +40,8 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/local-qwen/study/<study_id>`
 - `#/local-qwen/receipt/<study_id>/<call_id>`
 - `#/local-open-models`
-- `#/caveman-summary`
+- `#/caveman-summary` (cross-study synthesis)
+- `#/caveman-summary/pilot` (original paired 4B analysis)
 - `#/local-open-models/configuration`
 - `#/local-open-models/receipt/<call_id>`
 - `#/jev-primer`
@@ -95,7 +96,7 @@ Run `npm run ollama:test` and `npm run ollama:verify` to audit the complete save
 
 See the [protocol and reproduction commands](docs/ollama-local-assessment.md), [Caveman security review](docs/caveman-review.md), and [coding-agent tracing and virtual-tag capture limits](docs/observability.md). No global Caveman installation is required.
 
-The Caveman comparison chapter reports correctness, paired transitions, token usage and elapsed time for the 4b pilot, with input-length and run-order confounds. Each of the 24 readable receipts links to the other condition on the same board and to its shared model configuration. The derived [comparison index](public/evidence/ollama/comparisons.json) binds both calls to exact user-message, image, request, response and model/configuration hashes. `npm run ollama:verify` checks these relationships offline as well as the original receipts; it never contacts Ollama.
+The [Caveman comparison chapter](https://joeywilkes12.github.io/queens-model-assessment/#/caveman-summary) compares matched outcomes and estimated costs by saved study. The original 4B pilot section retains its paired transitions, token use and elapsed time, with input-length and run-order confounds. Each of the 24 readable receipts links to the other condition on the same board and to its shared model configuration. The derived [comparison index](public/evidence/ollama/comparisons.json) binds both calls to exact user-message, image, request, response and model/configuration hashes. `npm run ollama:verify` checks these relationships offline as well as the original receipts; it never contacts Ollama.
 
 The chapter also visualizes outcomes and token overhead, with an interactive [hosted cost tradeoff](docs/caveman-cost-tradeoff.md) calculator. Its dated OpenRouter tariffs are illustrative repricing of the observed 4b usage, not bills or performance measurements for the reference models. `npm run caveman:verify` checks the cost arithmetic offline; the actual local provider fee remains $0.
 

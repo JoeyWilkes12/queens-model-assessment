@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { BookUi } from './ollamaEvidence'
 import { compareArms, estimateCohort, isMatchedCohort, parseRate, type Rates } from './localQwenMath'
-import { armName, localArtifact, localReceiptUrl, rowOutcome, useLocalStudies, type LocalIndex, type LocalRow, type LocalStudy, type Pricing } from './localQwenEvidence'
+import { armName, defaultTariff, usePricing, localArtifact, localReceiptUrl, rowOutcome, useLocalStudies, type LocalIndex, type LocalRow, type LocalStudy, type Pricing } from './localQwenEvidence'
 import './ollama-comparison.css'
 import './local-qwen.css'
 
@@ -9,7 +9,6 @@ const number = (v: number | null) => v === null ? 'Not reported' : v.toLocaleStr
 const usd = (v: number | null) => v === null ? 'Unknown: usage missing' : v === 0 ? '$0' : v < .000001 ? `$${v.toExponential(2)}` : `$${v.toFixed(6)}`
 const percent = (v: number | null) => v === null ? 'No baseline percentage' : `${v > 0 ? '+' : ''}${v.toFixed(2)}%`
 const studyArms = (study: LocalStudy) => Object.keys(study.arms || { baseline: {}, caveman: {} })
-const defaultTariff = (study: LocalStudy) => !study.model.toLowerCase().includes('qwen') ? 'custom' : study.model.includes(':4b') ? 'qwen/qwen3.5-flash-02-23' : study.model.includes('27b') ? 'qwen/qwen3.5-27b' : 'qwen/qwen3.5-9b'
 const recorded = (rows: LocalRow[]) => rows.filter(r => r.state === 'recorded')
 
 /** Draw status glyphs in the book's consistent stroke style, redundant with visible labels. */
@@ -112,22 +111,6 @@ function BudgetChart({ study, rows, ui }: { study: LocalStudy; rows: LocalRow[];
       return [armName(arm), String(strict.filter(r => r.output_tokens !== null && r.output_tokens <= 12288).length), String(strict.filter(r => r.output_tokens !== null && r.output_tokens <= 24576).length), `${strict.length}/${all.length}`]
     }).filter(row => row[3] !== '0/0')} />
     <p className="cv-note">This is not a controlled estimate of the benefit of a larger budget. Budget, cache policy, transport, host conditions and stopping policy can differ between studies; the 4B pilot also diverged from a fresh replay. Sampling changes multiple decoding settings.</p></>
-}
-
-/** Load only the saved public tariff evidence, with no live API or inference requests. */
-function usePricing() {
-  const [state, setState] = useState<{ status: 'loading' | 'error' } | { status: 'ready'; data: Pricing }>({ status: 'loading' })
-  useEffect(() => {
-    const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`, { signal: controller.signal }).then(r => { if (!r.ok) throw new Error('Missing rates'); return r.json() })
-      .then((p: Pricing) => {
-        if (p.schema_version !== 1 || p.catalog_url !== 'https://openrouter.ai/api/v1/models' || !Array.isArray(p.models) || !p.models.length || !Number.isFinite(Date.parse(p.checked_utc))
-          || !p.models.every(m => /^qwen\/[a-zA-Z0-9.-]+$/.test(m.id) && [m.usd_per_million?.input, m.usd_per_million?.output].every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0))) throw new Error('Invalid rates')
-        if (!controller.signal.aborted) setState({ status: 'ready', data: p })
-      }).catch(() => { if (!controller.signal.aborted) setState({ status: 'error' }) })
-    return () => controller.abort()
-  }, [])
-  return state
 }
 
 /** Price every recorded attempt, including unsuccessful outputs; rescues retain their full replay usage. */
@@ -379,7 +362,7 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
         <DataTable caption={`${study.label} · ${size === 'all' ? 'all sizes' : `${size}×${size}`} · original attempts`} headers={['Board / condition', 'Original result', 'Input / generated tokens', 'Elapsed', 'Pair / follow-up']} rows={rows.map(r => [<a href={localReceiptUrl(study, r)}>{r.board_id}<br />{armName(r.treatment)}</a>, <span className="lq-status">{r.strict_correct ? <Mark kind="check" /> : r.loop_stopped ? <Mark kind="loop" /> : <Mark kind="clock" />}{rowOutcome(r)}</span>, `${number(r.input_tokens)} / ${number(r.output_tokens)}`, `${number(r.elapsed_seconds)} s`, <>{study.rows.filter(p => (r.peer_call_ids || [r.peer_call_id]).includes(p.call_id)).map(p => <a className="lq-peer" key={p.call_id} href={localReceiptUrl(study, p)}>{armName(p.treatment)} · {p.state === 'recorded' ? 'recorded' : 'pending'}</a>)}{!(r.peer_call_ids?.length || r.peer_call_id) && 'No other arm selected for this audit'}{r.rescue && <><br />Rescue: {r.rescue.strict_correct ? 'strict correct' : 'not strict correct'}</>}</>])} />
       </Section>
       <Section id="lq-provenance" title="Frozen evidence, refreshable imports">
-        <p>Original receipts, plans and grades are preserved byte for byte. Formatting recovery and host summaries are separately derived. <a href={localArtifact(data.manifest)}>Snapshot file hashes</a> · <a href={localArtifact('index.json')}>Study index</a> · <a href="#/caveman-summary">Original 4B Caveman analysis</a>.</p>
+        <p>Original receipts, plans and grades are preserved byte for byte. Formatting recovery and host summaries are separately derived. <a href={localArtifact(data.manifest)}>Snapshot file hashes</a> · <a href={localArtifact('index.json')}>Study index</a> · <a href="#/caveman-summary">Caveman synthesis across studies</a>.</p>
         <p>Source revision <code>{data.source_commit}</code>{data.source_dirty ? ', with uncommitted source state recorded at capture' : ''}. The snapshot verifier checks artifact hashes and derived results without inference. New samples never overwrite an older snapshot.</p>
         <details className="cv-method"><summary>Resource conditions for the selected study</summary><p>27B uses a different runner and quantization from 4B/9B. Latency also reflects host state and model order. Warning pressure alone does not establish throttling; swap-in rate and decode speed are needed. Host windows can include placement or the previously loaded model, so a window maximum is not a precise attribution to the selected model.</p><DataTable caption="Allowlisted numeric window maxima; full machine logs are excluded" headers={['Call', 'Max pressure', 'Max swap · GiB', 'Max model VRAM · GiB']} rows={rows.map(r => [r.call_id, r.host ? ({ 1: 'Normal', 2: 'Warning', 4: 'Critical' }[r.host.max_pressure_level as 1 | 2 | 4] || 'Not reported') : 'Not captured', number(r.host?.swap_used_gib_max ?? null), number(r.host?.max_model_vram_gib ?? null)])} /></details>
       </Section>

@@ -132,7 +132,7 @@ function CavemanSummary({ summary, data, ui }: { summary: Summary; data: Compari
     <LocalToc items={[{ id: 'caveman-finding', label: 'Observed result' }, { id: 'caveman-usage', label: 'Tokens & time' }, { id: 'caveman-cost', label: 'Cost tradeoff' }, { id: 'caveman-pairs', label: 'Every matched pair' }, { id: 'caveman-limits', label: 'What this supports' }]} />
     <main className="reading-column" id="main-content">
       <Section id="caveman-finding" title="More strict answers in this sample">
-        <p><a href="#/local-qwen">Explore the expanded Local Qwen studies</a>: 9B and 27B, sampling rounds, 32K loop-stop conditions and study-specific hosted cost scenarios. This page preserves the original 4B pilot.</p>
+        <p><a href="#/local-qwen">Explore the local open-weight assessments</a> or <a href="#/caveman-summary">compare Caveman across the saved studies</a>. This page preserves the original 4B pilot.</p>
         <p className="lead"><code>{summary.runtime.model}</code> returned <strong>{strict(caveman)} strict correct answers with Caveman</strong>, compared with <strong>{strict(baseline)} without it</strong>. Counting uniquely recoverable off-format answers as a diagnostic, the counts were {valid(caveman)} and {valid(baseline)}.</p>
         <p>This is exploratory: <strong>n=4 boards per size, one run per condition</strong>. Only <code>qwen3.5:4b</code> was tested in this comparison. It cannot establish that Caveman caused the difference or that other Qwen models would behave the same way.</p>
         <CavemanOutcomeChart rows={summary.rows} />
@@ -176,7 +176,7 @@ function CavemanSummary({ summary, data, ui }: { summary: Summary; data: Compari
         <Callout tone="caution" title="A paired pilot, with uncontrolled conditions"><p>These are reused public boards, not a held-out test. The skill changes both the instruction and the input-token count. With one run per condition and no counterbalanced order, the observed difference supports a follow-up experiment, not a causal performance claim, a model ranking, or a general recommendation.</p></Callout>
         <p>The reviewed Caveman body was added to a fresh system message. No skill scripts, hooks, tools, global installation or additional attempts were used. {artifactLink('skill.json', 'Pinned application record')} · {artifactLink('caveman-system.txt', 'Exact skill instruction')} · {artifactLink('caveman-review.json', 'Scoped security review')}.</p>
         <p>A follow-up should repeat each condition, counterbalance order, include an input-length control, and record host conditions. It needs a separate plan and must respect ownership of the local inference service.</p>
-        <div className="next-actions"><a href="#/local-open-models">Full local-model assessment</a>{artifactLink('summary.json', 'Original saved results')}{artifactLink('runtime-audit.json', 'Runtime and host audit')}</div>
+        <div className="next-actions"><a href="#/local-open-models">Original 4B request ledger</a>{artifactLink('summary.json', 'Original saved results')}{artifactLink('runtime-audit.json', 'Runtime and host audit')}</div>
       </Section>
     </main>
   </div>
@@ -223,7 +223,7 @@ function PairedReceipt({ pair, callId, data, summary, ui }: { pair: Pair; callId
     </Section>
     <Section title="Shared model configuration">
       <Configuration data={data} summary={summary} ui={ui} />
-      <p>Matching requested controls do not make this a fully controlled experiment: all baseline calls ran first, and cache and host memory state changed. <a href="#/caveman-summary">Read the performance summary and limitations</a>.</p>
+      <p>Matching requested controls do not make this a fully controlled experiment: all baseline calls ran first, and cache and host memory state changed. <a href="#/caveman-summary/pilot">Read the pilot summary and limitations</a>.</p>
     </Section>
   </main>
 }
@@ -233,11 +233,11 @@ export function OllamaComparison({ ui, view, callId }: { ui: BookUi; view: 'summ
   const saved = useSavedOllamaStudy(), paired = useComparisons(saved.status === 'ready' ? saved.summary : null)
   const { PageHero, Callout, Section } = ui
   const pair = paired.status === 'ready' ? paired.data.pairs.find(pair => pair.baseline.call_id === callId || pair.caveman.call_id === callId) : undefined
-  const title = view === 'summary' ? 'Caveman on local Qwen.' : view === 'configuration' ? 'One model configuration, two conditions.' : pair ? `${callId?.startsWith('caveman_') ? 'With Caveman' : 'Without Caveman'} · ${pair.board_id}` : 'Local Qwen receipt'
+  const title = view === 'summary' ? 'Original 4B Caveman pilot' : view === 'configuration' ? 'One model configuration, two conditions.' : pair ? `${callId?.startsWith('caveman_') ? 'With Caveman' : 'Without Caveman'} · ${pair.board_id}` : 'Local Qwen receipt'
   const hero = <PageHero trail="Model generations / Caveman comparison" title={title} deck={view === 'summary' ? 'The saved qwen3.5:4b pilot, at a glance: final-answer outcomes, the token tradeoff, and when fewer generated tokens would lower a hosted charge.' : 'Follow the same board and user prompt from the baseline request to the request with the reviewed Caveman instruction.'} />
   if (saved.status === 'error' || paired.status === 'error') return <>{hero}<main className="reading-column ollama-standalone" id="main-content"><Callout tone="stop" title="The saved comparison could not be verified."><p>Reload this page, or inspect {artifactLink('comparisons.json', 'the pair index')} and {artifactLink('summary.json', 'the saved results')}. No receipt relationships or results are substituted.</p></Callout></main></>
   if (saved.status !== 'ready' || paired.status !== 'ready') return <>{hero}<main className="reading-column ollama-standalone" id="main-content"><p role="status">Loading the saved paired evidence…</p></main></>
   if (view === 'summary') return <>{hero}<CavemanSummary summary={saved.summary} data={paired.data} ui={ui} /></>
-  if (view === 'configuration') return <>{hero}<main className="reading-column ollama-study ollama-standalone" id="main-content"><Section title="Matching requested controls"><Configuration data={paired.data} summary={saved.summary} ui={ui} /></Section><Section title="Every paired receipt"><PairTable data={paired.data} summary={saved.summary} ui={ui} /><div className="next-actions"><a href="#/caveman-summary">Caveman performance summary</a><a href="#/local-open-models">Full request ledger</a></div></Section></main></>
-  return <>{hero}{pair && callId ? <PairedReceipt pair={pair} callId={callId} data={paired.data} summary={saved.summary} ui={ui} /> : <main className="reading-column ollama-standalone" id="main-content"><Callout title="This receipt is not in the saved comparison."><p><a href="#/caveman-summary">Return to the twelve matched pairs</a> to choose a recorded request.</p></Callout></main>}</>
+  if (view === 'configuration') return <>{hero}<main className="reading-column ollama-study ollama-standalone" id="main-content"><Section title="Matching requested controls"><Configuration data={paired.data} summary={saved.summary} ui={ui} /></Section><Section title="Every paired receipt"><PairTable data={paired.data} summary={saved.summary} ui={ui} /><div className="next-actions"><a href="#/caveman-summary/pilot">Original 4B Caveman pilot</a><a href="#/local-open-models">Full request ledger</a></div></Section></main></>
+  return <>{hero}{pair && callId ? <PairedReceipt pair={pair} callId={callId} data={paired.data} summary={saved.summary} ui={ui} /> : <main className="reading-column ollama-standalone" id="main-content"><Callout title="This receipt is not in the saved comparison."><p><a href="#/caveman-summary/pilot">Return to the twelve matched pairs</a> to choose a recorded request.</p></Callout></main>}</>
 }
