@@ -28,6 +28,7 @@ import './book-nav.css'
 const Z3Part = lazy(() => import('./z3/Z3Part'))
 const CavemanStudies = lazy(() => import('./CavemanStudies'))
 const LocalQwen = lazy(() => import('./LocalQwen'))
+const AboutModels = lazy(() => import('./AboutModels'))
 
 type AssessmentOutcome = 'success' | 'model_failure' | 'request_failure' | 'not_run' | 'ungraded'
 
@@ -1287,6 +1288,7 @@ function App() {
   }, [drawerOpen])
   const page = active === 'executive-summary' ? <ExecutiveSummary />
     : active === 'assessment-receipt' ? <AssessmentReceiptPage />
+      : active === 'about-models' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading About the models…</p>}><AboutModels ui={bookUi} /></Suspense>
       : active === 'queens-rules' ? <QueensRules />
         : active === 'how-z3-solves-queens' ? <Suspense fallback={<p className="board-view-unavailable" style={{ padding: "40px 28px" }} role="status">Loading How Z3 solves Queens…</p>}><Z3Part ui={bookUi} section={parts[1]} /></Suspense>
         : active === 'protocol-results' ? <ProtocolResults />
