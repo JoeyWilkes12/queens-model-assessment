@@ -28,6 +28,17 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-11',
+    title: 'About the models',
+    kinds: ['chapter'],
+    // pr: TBD — add the pull request number once it is assigned.
+    changes: [
+      'Added #/about-models under Start here: background on every assessed model (lab, release, lineage, size, inputs, context, licence and reasoning controls), with each fact linked to its primary source. No scores are restated; each entry links to its results.',
+      'Local open-weight models come first: Qwen3.5 4B, 9B and 27B, Gemma 4 E4B, LLaVA-Llama3 8B and gpt-oss 20B, with the exact Ollama build and digest from the receipts and a primer on open weights, Q4_K_M, NVFP4/MXFP4, MLX versus llama.cpp/GGUF and Ollama tags.',
+      'Hosted models are grouped by lab (19 OpenRouter models from Anthropic, OpenAI, Google and xAI), followed by Jev 1.13, SubQ Snap, the greedy rule and Z3. Linked from the local assessments intro and the About page.',
+    ],
+  },
+  {
     date: '2026-11-06',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
@@ -46,6 +57,15 @@ export const CHANGELOG: ChangeEntry[] = [
       'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
       'Completed Qwen 27B Fresh1 images at 43/48 strict and Qwen 9B Fresh2 images at 43/48 strict. GPT-OSS 20B Fresh2 text grids have 18/48 recorded.',
       'Added matched input and decoding comparisons and a request-latency table. The November 6 snapshot adds 73 receipts since November 5, bringing coverage to 25 conditions, 709 assessment and audit receipts and 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Caveman results summarized across local studies',
+    kinds: ['chapter'],
+    pr: 16,
+    changes: [
+      'The Caveman comparison at #/caveman-summary now summarizes matched outcomes, token use and estimated cost across the local studies, with the original 4B pilot kept alongside.',
     ],
   },
   {
