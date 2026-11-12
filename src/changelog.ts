@@ -34,7 +34,7 @@ export const CHANGELOG: ChangeEntry[] = [
     pr: 24,
     changes: [
       'The Executive Summary leaderboard now opens on the Solved vs cost scatter plot. It draws in portrait on a phone, taller and zoomable; the turn-your-phone prompt is gone.',
-      'Two views replace three: Shared boards and Open-weight studies. Open-weight studies lists each completed study on one line, grouped by board panel and ranked by strict solve rate, with only a board-size filter. Unfinished and superseded runs moved into a disclosure at the end.',
+      'Two views replace three: Shared boards and Open-weight studies. Open-weight studies shows one bar per model, pooled over its completed studies and sorted by strict solve rate, with only a board-size filter. Unfinished and superseded runs moved into a disclosure at the end.',
       'Settings, prompt-arm results, reading notes and board-panel descriptions moved from running text into info buttons beside the row or heading they explain.',
     ],
   },

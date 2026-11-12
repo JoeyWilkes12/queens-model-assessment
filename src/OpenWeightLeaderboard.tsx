@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useState, type CSSProperties } from 'react'
 import { armName, localArtifact, useLocalStudies, type LocalStudy } from './localQwenEvidence'
 import type { BookUi } from './ollamaEvidence'
 import { Choice, InfoBubble } from './leaderboardUi'
@@ -8,13 +8,6 @@ const OpenWeightProgress = lazy(() => import('./OpenWeightProgress'))
 
 type Protocol = NonNullable<LocalStudy['protocol']> & { think?: boolean | string }
 type Score = { study: LocalStudy; rows: LocalStudy['rows']; strict: number; format: number; remaining: number; total: number }
-
-/** Board panels in reading order: the frozen queue sets first, the earlier pilot boards last. */
-const PANELS: { id: string; title: string; about: string }[] = [
-  { id: 'fresh1', title: 'Fresh1 boards', about: 'Twelve of the 36 shared boards, four each at 5×5, 7×7 and 9×9, frozen on 31 October before any local model ran on them. Every study here used the same boards. Rows still differ in model, input type, token budget and thinking setting, so read them as descriptions, not a controlled ranking.' },
-  { id: 'fresh2', title: 'Fresh2 boards', about: 'Another twelve of the 36 shared boards, frozen on 3 November before any local model ran on them. It repeats Fresh1 studies to check whether their results hold on different boards.' },
-  { id: 'legacy', title: 'Earlier boards', about: 'The twelve shared boards used by the first local studies: the 4B pilot, the larger token budgets, the sampling rounds and the loop-stop studies. Sampling rounds are exploratory and never pooled with greedy runs.' },
-]
 
 /** Identify fully recorded cohorts, including selected audits for separate display. */
 function isComplete(study: LocalStudy) {
@@ -38,6 +31,7 @@ const armCount = (study: LocalStudy) => Object.keys(study.arms || {}).length || 
 function tags(study: LocalStudy) {
   const protocol = (study.protocol ?? {}) as Protocol
   return [
+    ({ fresh1: 'Fresh1', fresh2: 'Fresh2' } as Record<string, string>)[study.board_set || ''] ?? 'Earlier boards',
     protocol.modality === 'text' ? 'text' : 'image',
     tokens(study.budget),
     study.id === 'qwen3.5-4b-pilot' && 'pilot',
@@ -75,35 +69,31 @@ function Bar({ counts, total }: { counts: number[]; total: number }) {
     <span key={OUTCOMES[index][0]} className={OUTCOMES[index][1]} style={{ width: `${count / total * 100}%` }} />)}</span>
 }
 
-/** One completed study: name, distinguishing tags, outcome bar and score; settings and arms sit in the bubble. */
-function StudyRow({ cohort }: { cohort: Score }) {
-  const { study, rows, strict, format, remaining, total } = cohort
-  const arms = [...new Set(rows.map(row => row.treatment))]
-  return <li className="ow-row">
-    <span className="ow-row-name">
-      <a href={studyHref(study)}>{study.model}</a>
-      <span className="ow-tags">{tags(study).map(tag => <span key={tag}>{tag}</span>)}</span>
-    </span>
+type ModelRow = { model: string; cohorts: Score[]; strict: number; format: number; remaining: number; total: number }
+
+/** One model: every completed call pooled into one bar; the studies behind it sit in the bubble. */
+function ModelLine({ row, index }: { row: ModelRow; index: number }) {
+  const { model, cohorts, strict, format, remaining, total } = row
+  return <li className="ow-row" style={{ '--i': index } as CSSProperties}>
+    <span className="ow-row-name"><a href="#/local-qwen">{model}</a></span>
     <Bar counts={[strict, format, remaining]} total={total} />
-    <strong className="ow-score">{strict}<small>/{total}</small></strong>
-    <InfoBubble label={`Settings and prompt arms for ${study.label}`} wide>
-      <dl className="lb-info-list">{settings(study).map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
+    <strong className="ow-score">{Math.round(strict / total * 100)}%<small> {strict}/{total}</small></strong>
+    <InfoBubble label={`Studies behind ${model}`} wide>
+      <p>{cohorts.length === 1 ? 'One completed study.' : `${cohorts.length} completed studies, pooled. Their settings differ, so each is listed with its own score.`}{format > 0 && ` ${format} more ${format === 1 ? 'answer was' : 'answers were'} correct but in the wrong format.`}</p>
       <table className="ow-arm-table">
-        <caption>Strict correct by prompt arm</caption>
-        <tbody>{arms.map(arm => {
-          const calls = rows.filter(row => row.treatment === arm)
-          const correct = calls.filter(row => row.strict_correct).length
-          const wrongFormat = calls.filter(row => row.format_only_correct && !row.strict_correct).length
-          return <tr key={arm}><th scope="row">{armName(arm)}</th><td><Bar counts={[correct, wrongFormat, calls.length - correct - wrongFormat]} total={calls.length} /></td><td>{correct}/{calls.length}</td></tr>
-        })}</tbody>
+        <caption>Strict correct by study</caption>
+        <tbody>{cohorts.map(cohort => <tr key={cohort.study.id}>
+          <th scope="row"><a href={studyHref(cohort.study)}>{tags(cohort.study).join(' · ')}</a></th>
+          <td><Bar counts={[cohort.strict, cohort.format, cohort.remaining]} total={cohort.total} /></td>
+          <td>{cohort.strict}/{cohort.total}</td>
+        </tr>)}</tbody>
       </table>
-      {format > 0 && <p>{format} more {format === 1 ? 'answer was' : 'answers were'} correct but in the wrong format.</p>}
-      <a className="lb-info-link" href={studyHref(study)}>Open the study and its receipts</a>
+      <dl className="lb-info-list ow-build">{settings(cohorts[0].study).filter(([term]) => term === 'Build').map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
     </InfoBubble>
   </li>
 }
 
-/** Completed open-weight studies, grouped by the board panel they share; unfinished runs stay in a disclosure. */
+/** Completed open-weight results, one bar per model, best first; unfinished runs stay in a disclosure. */
 export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
   const saved = useLocalStudies()
   const [size, setSize] = useState('all')
@@ -118,36 +108,33 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
   const assessments = complete.filter(study => study.kind !== 'audit')
   const audits = complete.filter(study => study.kind === 'audit').map(study => score(study, 'all'))
   const unfinished = saved.data.studies.filter(study => study.kind !== 'audit' && study.recorded < study.planned).length
-  const models = new Set(assessments.map(study => study.model)).size
   const sizes = Array.from(new Set(assessments.flatMap(study => study.rows.map(row => row.size)))).sort((a, b) => a - b)
-  const known = new Set(PANELS.map(panel => panel.id))
-  const groups = [...PANELS, ...Array.from(new Set(assessments.map(study => study.board_set || 'legacy'))).filter(id => !known.has(id)).map(id => ({ id, title: id, about: '' }))]
-    .map(panel => ({
-      panel,
-      cohorts: assessments.filter(study => (study.board_set || 'legacy') === panel.id).map(study => score(study, size)).filter(cohort => cohort.total > 0)
-        .sort((a, b) => b.strict / b.total - a.strict / a.total || a.study.model.localeCompare(b.study.model) || a.study.id.localeCompare(b.study.id)),
-    })).filter(group => group.cohorts.length > 0)
+  const sum = (cohorts: Score[], key: 'strict' | 'format' | 'remaining' | 'total') => cohorts.reduce((n, cohort) => n + cohort[key], 0)
+  // Pool each model's completed calls; rows are always presented best first.
+  const rows: ModelRow[] = Array.from(new Set(assessments.map(study => study.model))).map(model => {
+    const cohorts = assessments.filter(study => study.model === model).map(study => score(study, size)).filter(cohort => cohort.total > 0)
+      .sort((a, b) => b.strict / b.total - a.strict / a.total || a.study.id.localeCompare(b.study.id))
+    return { model, cohorts, strict: sum(cohorts, 'strict'), format: sum(cohorts, 'format'), remaining: sum(cohorts, 'remaining'), total: sum(cohorts, 'total') }
+  }).filter(row => row.total > 0).sort((a, b) => b.strict / b.total - a.strict / a.total || a.model.localeCompare(b.model))
 
   return <div className="ow-leaderboard">
     <div className="lb-controls">
       <Choice label="Board size" value={size} onChange={setSize} options={[['all', 'All sizes'], ...sizes.map(value => [String(value), `${value}×${value}`] as [string, string])]} />
     </div>
     <div className="lb-meta">
-      <span>{assessments.length} completed studies · {models} models</span>
-      <InfoBubble label="How to read these studies" wide>
-        <p>Each row is one completed study: one model under one fixed set of settings. The bar covers every recorded call, and each board is asked once per prompt arm.</p>
-        <p>Compare rows inside one board panel, and only between rows with the same input type. Token budgets and thinking settings differ between models; the tags and each row’s info button show them.</p>
+      <span>{rows.length} models · ranked by strict solve rate</span>
+      <InfoBubble label="How to read these results" wide>
+        <p>Each bar pools every completed call for one model on our own computer: {assessments.length} studies in all. A call is one board, asked once.</p>
+        <p>Studies differ in boards, input (image or text grid), token budget and thinking setting, and models were not all run under the same ones. Read the order as a summary of what was recorded, not a controlled ranking. Each row’s info button lists its studies.</p>
         <p>Not solved includes wrong answers, answers cut off at the token budget, calls the loop detector stopped and recorded transport errors.</p>
       </InfoBubble>
       {OUTCOMES.map(([label, style]) => <span key={label} className="lb-legend-item"><i className={`lb-swatch ${style}`} aria-hidden="true" />{label}</span>)}
     </div>
-    {groups.length ? groups.map(({ panel, cohorts }) => <section key={panel.id} className="ow-group" aria-labelledby={`ow-${panel.id}`}>
-      <h3 id={`ow-${panel.id}`}>{panel.title}{panel.about && <InfoBubble label={`About the ${panel.title}`}><p>{panel.about}</p></InfoBubble>}</h3>
-      <ol className="ow-results">{cohorts.map(cohort => <StudyRow key={cohort.study.id} cohort={cohort} />)}</ol>
-    </section>) : <p>No completed studies have recorded calls at this board size.</p>}
+    {rows.length ? <ol className="ow-results">{rows.map((row, index) => <ModelLine key={row.model} row={row} index={index} />)}</ol>
+      : <p>No completed studies have recorded calls at this board size.</p>}
     {audits.length > 0 && <details className="lb-table ow-audits">
       <summary>Loop-stop audits ({audits.length})</summary>
-      <p>Diagnostic reruns of only the calls the loop detector had stopped. They are never pooled with the studies above and ignore the size filter.</p>
+      <p>Diagnostic reruns of only the calls the loop detector had stopped. They are never pooled with the results above and ignore the size filter.</p>
       <DataTable caption="Completed audits of selected client stops" headers={['Study', 'Strict / recorded', 'Correct, wrong format', 'Not solved']} rows={audits.map(({ study, strict, format, remaining, total }) => [
         <a href={studyHref(study)}>{study.label}</a>, `${strict}/${total}`, String(format), String(remaining),
       ])} />
