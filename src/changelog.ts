@@ -31,7 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-11',
     title: 'About the models',
     kinds: ['chapter'],
-    // pr: TBD — add the pull request number once it is assigned.
+    pr: 27,
     changes: [
       'Added #/about-models under Start here: background on every assessed model (lab, release, lineage, size, inputs, context, licence and reasoning controls), with each fact linked to its primary source. No scores are restated; each entry links to its results.',
       'Local open-weight models come first: Qwen3.5 4B, 9B and 27B, Gemma 4 E4B, LLaVA-Llama3 8B and gpt-oss 20B, with the exact Ollama build and digest from the receipts and a primer on open weights, Q4_K_M, NVFP4/MXFP4, MLX versus llama.cpp/GGUF and Ollama tags.',
