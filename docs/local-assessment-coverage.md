@@ -2,31 +2,36 @@
 
 Audit date: 2026-11-01. This report is an offline inventory and scientific review; it makes no inference requests and changes no live runner, study, service or frozen evidence.
 
-## Current publication boundary — November 11, 2026
+## Current publication boundary — November 12, 2026
 
-The historical audit below retains its November 1 scope. The new immutable
-`2026-11-09-overnight` snapshot captures the final recorded nights: **27 conditions,
-835 primary/audit receipts and 38 separate rescues**. There are 23 completed
-assessment conditions (816 calls), two historical original-budget partial studies
-(eight calls, 40 unrecorded), and two selected audits (11 calls). Every current
-queued panel is recorded; completed coverage includes the gpt-oss fresh2 text panel
-and the two fresh1 effort/budget follow-ups. One 65k attempt is a recorded transport
-failure, with usage unknown; it is not pending or a natural token cap.
+The historical audit below retains its November 1 scope. The immutable
+`2026-11-12-overnight` snapshot contains **30 conditions, 973 primary/audit receipts
+and 38 separate rescues**: 25 completed assessment conditions (912 calls), three
+partial conditions (50 recorded, 46 pending), and two selected audits (11 calls).
+The earlier November 9 snapshot remains unchanged.
 
-Qwen 27B fresh1 and Qwen 9B fresh2 were fully recorded in November 6 and their
-primary receipts are unchanged. November 7 was not idle: it continued 65k work,
-although its session results map omits that queue-study status. A separate
-started-only baseline attempt was archived and replaced on November 8; November
-9/10 were idle completion checks. See the [final-night report](local-qwen-nov9.md)
-for arm/size denominators, interruption history, trace divergence and usage limits.
+The new night adds 48 GPT-OSS medium-effort Fresh2 text outcomes, 48 Gemma Fresh2
+image outcomes and 42 Qwen 4B Fresh2 image outcomes. Qwen 4B retains all 48 planned
+rows, with six pending; its fixed ±6-of-48 criterion is not yet evaluable.
+Qwen 9B Fresh2 text has not started and has no frozen plan or study root, so its
+48 intended calls are outside the 1,019 frozen-plan denominator. Do not invent a
+plan or classify its absence as model failure.
 
-Updated routes are `#/local-qwen` and its study/receipt pages, plus the leaderboard's
-completed/incomplete open-weight views. Inherited PR #16 made `#/caveman-summary` a
-shared-index cross-study comparison, so its data also refreshes. The original
-`#/caveman-summary/pilot` and hosted-comparison leaderboard local rows retain their
-4B pilot scope. No inference
-or queue/service change was performed for publication. Further proposed tests are
-recommendations, not unfinished calls in the current frozen queue.
+Both completed fixed predictions replicate: GPT-OSS medium has fewer cut-offs
+and at least as many strict answers; Gemma Caveman is below baseline. The pooled
+effort accuracy test is p=0.072951389; the Gemma deficit is p=0.015625 under the
+fixed nominal rule. Four predictions were fixed, only two are evaluable, and one
+success by chance is plausible. See the [November 12 report](local-qwen-nov12.md)
+for the exact tests, by-arm/size denominators, timing and operational observations.
+The [November 9 report](local-qwen-nov9.md) retains the earlier interruption and
+transport-failure history; no earlier outcome or usage was rewritten.
+
+Updated presentation routes are `#/local-qwen`, its study/receipt pages and
+`#/changelog`. Activation also refreshes consumers of the shared index, including
+`#/caveman-summary` and the completed/incomplete open-weight leaderboard views;
+no leaderboard source or styling changed. The original `#/caveman-summary/pilot`
+and hosted-comparison local rows retain their 4B pilot scope. No inference or
+queue/service change was performed for publication.
 
 ## Historical evidence boundary
 

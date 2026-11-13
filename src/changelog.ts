@@ -28,6 +28,17 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-12',
+    title: 'Fresh2 replication results and unfinished Qwen coverage',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 30,
+    changes: [
+      'Updated #/local-qwen and its study/receipt routes with the November 12 snapshot: 30 conditions, 973 assessment/audit receipts and 38 separate rescues.',
+      'Reported the two predictions that could be checked against the analysis fixed before the night. On Fresh2, GPT-OSS at medium effort had fewer cut-offs (9 against 23) and more strict answers (31/48 against 25/48) than at high effort; the pooled accuracy difference is not significant (p = 0.073). Gemma again scored lower with Caveman than at baseline (2/12 against 5/12); pooled over both board sets that deficit is significant (p = 0.016, 24 boards).',
+      'Kept Qwen 4B Fresh2 unfinished at 42/48 recorded and Qwen 9B Fresh2 text unstarted. Shared-index comparisons also receive the new data; the original 4B pilot and hosted-comparison local rows retain their historical scope.',
+    ],
+  },
+  {
     date: '2026-11-11',
     title: 'Final nights of local open-weight assessments',
     kinds: ['evidence', 'chapter', 'method'],
