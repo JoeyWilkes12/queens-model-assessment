@@ -34,8 +34,10 @@ export function InfoBubble({ label, children, wide = false }: { label: string; c
     if (!open) return
     const onPress = (event: PointerEvent) => { if (!root.current?.contains(event.target as Node)) setOpen(false) }
     const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); button.current?.focus() } }
-    // A resize or rotation moves the anchor; close rather than leave the panel hanging off screen.
-    const onResize = () => setOpen(false)
+    // A width change or rotation moves the anchor; close rather than leave the panel hanging off screen.
+    // Height-only changes (a phone's address bar hiding on scroll) are ignored.
+    const width = window.innerWidth
+    const onResize = () => { if (window.innerWidth !== width) setOpen(false) }
     document.addEventListener('pointerdown', onPress)
     document.addEventListener('keydown', onKey)
     window.addEventListener('resize', onResize)
