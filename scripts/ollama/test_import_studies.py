@@ -211,6 +211,62 @@ class ImportTests(unittest.TestCase):
                     self.capture("false-usage")
             shutil.rmtree(target)
 
+    def test_nov12_fresh2_conditions_and_pending_rows(self):
+        """Admit only reviewed identities; partial and prepared plans retain null usage."""
+        for sid, (model, effort, modality) in module.NOV12_CONDITIONS.items():
+            with self.subTest(condition=sid):
+                root = self.make_four_arm()
+                target = root.with_name(sid)
+                root.rename(target)
+                plan, summary = (module.read(target / name) for name in ("plan.json", "summary.json"))
+                plan["study"] = summary["study"] = "fixture-" + sid
+                plan["board_set"] = {"name": "fresh2"}
+                plan["runtime"]["model"] = model
+                plan["protocol"].update(modality=modality, think=effort, num_predict=32768, num_ctx=36864)
+                if modality == "text":
+                    template = "Solve {{BOARD_ID}} {{SIZE}} {{REGION_GRID_ROWS}}"
+                    plan["prompt_template_file"] = module.TEXT_TEMPLATE
+                    plan["prompt_template_sha256"] = module.sha(template.encode())
+                    (target / module.TEXT_TEMPLATE).write_text(template)
+                    plan["boards"][0].update(image=None, image_sha256=None)
+                for i, row in enumerate(summary["rows"]):
+                    directory = target / "receipts" / row["call_id"]
+                    row["image"] = plan["boards"][0]["image"]
+                    # Model the unfinished 4B and a possible prepared, wholly unstarted 9B.
+                    if model.startswith("qwen") and ("9b" in model or i == 0):
+                        row["state"] = "not_run"
+                        shutil.rmtree(directory)
+                        continue
+                    request, response, meta = (module.read(directory / (name + ".json")) for name in ("request", "response", "metadata"))
+                    request.update(module.configuration(plan))
+                    if modality == "text":
+                        request["messages"][-1] = {"role": "user", "content": "Solve fixture-5 5 " + json.dumps([[chr(65+r)]*5 for r in range(5)], separators=(",", ":"))}
+                    response["model"] = model
+                    meta.update(model=model, returned_model=model, image_sha256=plan["boards"][0]["image_sha256"],
+                                request_sha256=module.sha(module.canonical(request)), response_sha256=module.sha(module.canonical(response)))
+                    for name, value in (("request", request), ("response", response), ("metadata", meta)):
+                        module.save(directory / (name + ".json"), value)
+                summary.update(protocol=plan["protocol"], runtime=plan["runtime"])
+                module.save(target / "plan.json", plan)
+                module.save(target / "summary.json", summary)
+                study = module.derive_study(target, "fixture/" + sid, sid, True, True)
+                expected = 0 if "9b" in model else 3 if model.startswith("qwen") else 4
+                self.assertEqual((study["board_set"], study["recorded"], study["planned"]), ("fresh2", expected, 4))
+                self.assertEqual(study["status"], "partial" if expected < 4 else "complete")
+                self.assertIn(target / "plan.json", module.source_files(target))
+                for row in study["rows"]:
+                    if row["state"] == "pending":
+                        self.assertIsNone(row["input_tokens"])
+                        self.assertIsNone(row["receipt"])
+                        self.assertFalse(row["pair_verified"])
+                plan["protocol"]["think"] = "high" if effort == "medium" else False
+                summary["protocol"] = plan["protocol"]
+                module.save(target / "plan.json", plan)
+                module.save(target / "summary.json", summary)
+                with self.assertRaisesRegex(ValueError, "Unexpected November 12 condition"):
+                    module.derive_study(target, "fixture/" + sid, sid, True, True)
+                shutil.rmtree(target)
+
     def test_arm_prompt_mutation(self):
         """A changed control-arm prompt fails its frozen hash."""
         root = self.make_four_arm()

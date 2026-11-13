@@ -1,0 +1,70 @@
+{
+  "call_id": "caveman_panel-7-61",
+  "board_id": "panel-7-61",
+  "size": 7,
+  "treatment": "caveman",
+  "model": "qwen3.5:27b-q4_K_M",
+  "model_digest": "64ae5b1d651fb2709d5928ccb8dcfb4bb2cc9c2c8001ac34497e36a6cf905b59",
+  "started_utc": "2026-11-06T11:59:27.910299+00:00",
+  "completed_utc": "2026-11-06T12:14:37.915553+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 909.8901687500002,
+  "returned_model": "qwen3.5:27b-q4_K_M",
+  "finish_reason": "stop",
+  "done": true,
+  "input_tokens": 1984,
+  "output_tokens": 10899,
+  "total_duration_ns": 909881641959,
+  "load_duration_ns": 6890500,
+  "prompt_eval_duration_ns": 21396812000,
+  "eval_duration_ns": 888455064000,
+  "request_sha256": "13f9311a8e910a87601246c9676b0933b78db8d9d8893c24fa248d6e18b9a1fd",
+  "response_sha256": "ed3d219492e9000a282383025c4d9fd869bef9fd224bc4adda763bb2def21d98",
+  "image_sha256": "9b713bde61627b9dc0db47b4eaae33e14e4d01d5198502dee3f44978fd168293",
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": true,
+  "rule_valid_after_extraction": true,
+  "outcome": "strict",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "97114c58b735a4bbc84a13ae6b78bb9351c2d657e65b3705c4be593e8ddf9d47",
+    "panel_py_sha256": "df0584aa9f68bae53bc2787d9fa174316fc1c912890d38440a63da2c510edd30",
+    "runtime_lock_sha256": "a4a5cbd736e62c6198900c117845fbb524e202e976a1bde41e4a95cb96dc157b",
+    "git_commit": "e89d4a9dd6958c660e4efb905fc32fe17864e56b",
+    "git_branch": "claude/ollama-bigger-qwen",
+    "git_commit_source": "runner-versions.json",
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "stream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.4,
+    "last_llama_server_decode": {
+      "tokens": 10847,
+      "tok_per_s": 12.27
+    },
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": false,
+    "shadow": true,
+    "policy_version": 1,
+    "detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47",
+    "would_have_stopped": false,
+    "checks": 29,
+    "max_metric": 0.054,
+    "fired_at_thinking_chars": null,
+    "stream_chunks": 9038,
+    "reading": "Shadow mode: the detector only logged where it would have stopped this call; the call ran to its end."
+  }
+}
