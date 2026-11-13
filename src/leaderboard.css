@@ -137,7 +137,6 @@
 .lb-info-list > div { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); gap: 10px; }
 .lb-info-list dt { color: var(--lb-muted); }
 .lb-info-list dd { margin: 0; }
-.lb-info-link { display: inline-block; margin-top: 10px; color: var(--mint-300); font-weight: 700; text-underline-offset: 3px; }
 @keyframes lb-info-in { from { opacity: 0; clip-path: inset(0 0 100% 0); } }
 
 /* Detail strip and table. */

@@ -20,7 +20,7 @@ export function Choice<T extends string>({ label, value, options, onChange }: { 
 /**
  * An "i" button that opens a small panel of secondary detail beside it. The chart keeps only what is
  * needed to read it; definitions, settings and caveats live here. Closes on Escape, on a press
- * outside, or on the button again, and slides sideways to stay inside the viewport.
+ * outside, on a window resize, or on the button again, and slides sideways to stay inside the viewport.
  */
 export function InfoBubble({ label, children, wide = false }: { label: string; children: ReactNode; wide?: boolean }) {
   const [open, setOpen] = useState(false)
@@ -34,9 +34,12 @@ export function InfoBubble({ label, children, wide = false }: { label: string; c
     if (!open) return
     const onPress = (event: PointerEvent) => { if (!root.current?.contains(event.target as Node)) setOpen(false) }
     const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); button.current?.focus() } }
+    // A resize or rotation moves the anchor; close rather than leave the panel hanging off screen.
+    const onResize = () => setOpen(false)
     document.addEventListener('pointerdown', onPress)
     document.addEventListener('keydown', onKey)
-    return () => { document.removeEventListener('pointerdown', onPress); document.removeEventListener('keydown', onKey) }
+    window.addEventListener('resize', onResize)
+    return () => { document.removeEventListener('pointerdown', onPress); document.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize) }
   }, [open])
 
   // Measure the panel where CSS centred it, then nudge it back inside the viewport before paint.

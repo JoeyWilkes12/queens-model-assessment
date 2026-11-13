@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState, type CSSProperties } from 'react'
-import { armName, localArtifact, useLocalStudies, type LocalStudy } from './localQwenEvidence'
+import { localArtifact, useLocalStudies, type LocalStudy } from './localQwenEvidence'
 import type { BookUi } from './ollamaEvidence'
 import { Choice, InfoBubble } from './leaderboardUi'
 import './open-weight-leaderboard.css'
@@ -96,14 +96,11 @@ function ModelLine({ row, index }: { row: ModelRow; index: number }) {
     <strong className="ow-score">{Math.round(strict / total * 100)}%<small> {strict}/{total}</small></strong>
     <InfoBubble label={`Studies behind ${info.name}`} wide>
       <p>{cohorts.length === 1 ? 'One completed study.' : `${cohorts.length} completed studies, pooled. Their settings differ, so each is listed with its own score.`}{format > 0 && ` ${format} more ${format === 1 ? 'answer was' : 'answers were'} correct but in the wrong format.`}</p>
-      <table className="ow-arm-table">
-        <caption>Strict correct by study</caption>
-        <tbody>{cohorts.map(cohort => <tr key={cohort.study.id}>
-          <th scope="row"><a href={studyHref(cohort.study)}>{tags(cohort.study).join(' · ')}</a></th>
-          <td><Bar counts={[cohort.strict, cohort.format, cohort.remaining]} total={cohort.total} /></td>
-          <td>{cohort.strict}/{cohort.total}</td>
-        </tr>)}</tbody>
-      </table>
+      <ul className="ow-study-list" aria-label="Strict correct by study">{cohorts.map(cohort => <li key={cohort.study.id}>
+        <a href={studyHref(cohort.study)}>{tags(cohort.study).join(' · ')}</a>
+        <Bar counts={[cohort.strict, cohort.format, cohort.remaining]} total={cohort.total} />
+        <span>{cohort.strict}/{cohort.total}</span>
+      </li>)}</ul>
       <dl className="lb-info-list ow-build"><div><dt>Ollama tag</dt><dd>{model}</dd></div>{settings(cohorts[0].study).filter(([term]) => term === 'Build').map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
     </InfoBubble>
   </li>
@@ -140,7 +137,7 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
     <div className="lb-meta">
       <span>{rows.length} models · ranked by strict solve rate</span>
       <InfoBubble label="How to read these results" wide>
-        <p>Each bar pools every completed call for one model on our own computer: {assessments.length} studies in all. A call is one board, asked once.</p>
+        <p>Each bar pools the recorded calls from one model’s fully completed studies on our own computer: {assessments.length} studies in all. A call is one board, asked once. Unfinished studies and loop-stop audits are listed separately below.</p>
         <p>Studies differ in boards, input (image or text grid), token budget and thinking setting, and models were not all run under the same ones. Read the order as a summary of what was recorded, not a controlled ranking. Each row’s info button lists its studies.</p>
         <p>Not solved includes wrong answers, answers cut off at the token budget, calls the loop detector stopped and recorded transport errors.</p>
       </InfoBubble>
