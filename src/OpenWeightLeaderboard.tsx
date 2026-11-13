@@ -24,6 +24,17 @@ function score(study: LocalStudy, size: string): Score {
   return { study, rows, strict, format, remaining: rows.length - strict - format, total: rows.length }
 }
 
+/** Reader-facing names for the Ollama tags, with the lab's mark where the book already carries one. */
+const MODELS: Record<string, { name: string; lab: string; logo?: string }> = {
+  'qwen3.5:27b-q4_K_M': { name: 'Qwen3.5 27B', lab: 'Alibaba' },
+  'qwen3.5:9b-nvfp4': { name: 'Qwen3.5 9B', lab: 'Alibaba' },
+  'qwen3.5:4b': { name: 'Qwen3.5 4B', lab: 'Alibaba' },
+  'gpt-oss:20b': { name: 'gpt-oss 20B', lab: 'OpenAI', logo: 'assets/logos/openai.svg' },
+  'gemma4:e4b': { name: 'Gemma 4 E4B', lab: 'Google DeepMind', logo: 'assets/logos/google-gemini.svg' },
+  'llava-llama3:8b': { name: 'LLaVA-Llama3 8B', lab: 'XTuner' },
+}
+const modelInfo = (tag: string) => MODELS[tag] ?? { name: tag, lab: '' }
+
 const tokens = (budget: number) => `${Math.round(budget / 1024)}k`
 const armCount = (study: LocalStudy) => Object.keys(study.arms || {}).length || new Set(study.rows.map(row => row.treatment)).size
 
@@ -74,11 +85,16 @@ type ModelRow = { model: string; cohorts: Score[]; strict: number; format: numbe
 /** One model: every completed call pooled into one bar; the studies behind it sit in the bubble. */
 function ModelLine({ row, index }: { row: ModelRow; index: number }) {
   const { model, cohorts, strict, format, remaining, total } = row
+  const info = modelInfo(model)
   return <li className="ow-row" style={{ '--i': index } as CSSProperties}>
-    <span className="ow-row-name"><a href="#/local-qwen">{model}</a></span>
+    <span className="ow-row-name">
+      <span className="lb-logo" aria-hidden="true">{info.logo ? <img src={`${import.meta.env.BASE_URL}${info.logo}`} alt="" width={16} height={16} loading="lazy" /> : <span>{info.name[0]}</span>}</span>
+      <a href="#/local-qwen">{info.name}</a>
+      {info.lab && <span className="ow-tags"><span>{info.lab}</span></span>}
+    </span>
     <Bar counts={[strict, format, remaining]} total={total} />
     <strong className="ow-score">{Math.round(strict / total * 100)}%<small> {strict}/{total}</small></strong>
-    <InfoBubble label={`Studies behind ${model}`} wide>
+    <InfoBubble label={`Studies behind ${info.name}`} wide>
       <p>{cohorts.length === 1 ? 'One completed study.' : `${cohorts.length} completed studies, pooled. Their settings differ, so each is listed with its own score.`}{format > 0 && ` ${format} more ${format === 1 ? 'answer was' : 'answers were'} correct but in the wrong format.`}</p>
       <table className="ow-arm-table">
         <caption>Strict correct by study</caption>
@@ -88,7 +104,7 @@ function ModelLine({ row, index }: { row: ModelRow; index: number }) {
           <td>{cohort.strict}/{cohort.total}</td>
         </tr>)}</tbody>
       </table>
-      <dl className="lb-info-list ow-build">{settings(cohorts[0].study).filter(([term]) => term === 'Build').map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
+      <dl className="lb-info-list ow-build"><div><dt>Ollama tag</dt><dd>{model}</dd></div>{settings(cohorts[0].study).filter(([term]) => term === 'Build').map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
     </InfoBubble>
   </li>
 }
