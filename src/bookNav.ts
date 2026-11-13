@@ -29,6 +29,7 @@ export const BOOK_PARTS: NavPart[] = [
     pages: [
       { path: 'executive-summary', title: 'Executive summary', description: 'The leaderboard, short answers and where to look next.' },
       { path: 'assessment-receipt', title: 'Assessment receipt', description: 'What was tested, when, what it cost and how to read the ledger.' },
+      { path: 'about-models', title: 'About the models', description: 'Where each assessed model comes from, its size, licence and the exact build or route we ran.' },
       { path: 'contents', title: 'Contents', description: 'Every part, chapter and section of the book on one page.' },
     ],
   },
