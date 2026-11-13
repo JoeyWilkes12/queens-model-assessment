@@ -322,3 +322,65 @@ assert.equal(nov6GptOss.rows.filter(r=>r.state==='pending').length,30)
 assert.deepEqual(nov6GptOss.rows.filter(r=>r.strict_correct&&r.loop_stop?.would_have_stopped).map(r=>r.call_id).sort(),
  ['baseline_panel-9-32','neutral_panel-7-46'])
 console.log('Verified November 6 outcome, cost and pending-coverage fixtures.')
+
+const nov9Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-09-overnight/catalog.json',import.meta.url)))
+assert.equal(isLocalIndex(nov9Index),true)
+assert.equal(nov9Index.studies.length,27)
+assert.equal(nov9Index.studies.reduce((n,s)=>n+s.recorded,0),835)
+assert.equal(nov9Index.studies.reduce((n,s)=>n+s.planned,0),875)
+assert.equal(nov9Index.studies.filter(s=>s.kind!=='audit'&&s.status==='complete').length,23)
+assert.equal(nov9Index.studies.filter(s=>s.kind==='audit').length,2)
+assert.deepEqual(nov9Index.studies.filter(s=>s.status==='partial').map(s=>s.id).sort(),
+ ['qwen3.5-27b-q4_K_M','qwen3.5-9b-nvfp4'])
+// Strict counts by size, total caps, errors, known input/output subtotals.
+const nov9Fixtures = {
+ 'gpt-oss-20b-fresh2-text-4arm-np32768': {
+  baseline: [[2,2,2],6,0,5260,254295], schema: [[3,1,1],7,0,6004,293849],
+  neutral: [[3,3,1],5,0,17812,256504], caveman: [[3,2,2],5,0,18388,250062],
+ },
+ 'gpt-oss-20b-fresh1-text-think-medium-4arm-np32768': {
+  baseline: [[4,3,0],4,0,5260,184646], schema: [[4,2,2],3,0,6004,172779],
+  neutral: [[4,3,1],2,0,17812,155692], caveman: [[2,3,1],1,0,18388,166022],
+ },
+ 'gpt-oss-20b-fresh1-text-4arm-np65536': {
+  baseline: [[4,3,1],4,0,5260,438670], schema: [[3,3,1],5,0,6004,417023],
+  neutral: [[4,2,1],4,1,16267,349629], caveman: [[4,2,1],3,0,18388,313105],
+ },
+}
+for(const [id,arms] of Object.entries(nov9Fixtures)) {
+ const study=nov9Index.studies.find(s=>s.id===id)
+ assert.ok(study)
+ assert.equal(study.recorded,48)
+ assert.equal(isMatchedCohort(study.rows),true)
+ for(const [arm,[sizes,caps,errors,input,output]] of Object.entries(arms)) {
+  const rows=study.rows.filter(r=>r.treatment===arm)
+  assert.equal(rows.length,12)
+  for(const [i,size] of [5,7,9].entries()) {
+   const cell=rows.filter(r=>r.size===size)
+   assert.equal(cell.length,4)
+   assert.equal(cell.filter(r=>r.strict_correct).length,sizes[i])
+  }
+  const usage=aggregateUsage(rows)
+  assert.equal(rows.filter(r=>r.truncated).length,caps)
+  assert.equal(rows.filter(r=>r.transport_error).length,errors)
+  assert.equal(rows.filter(r=>r.format_only_correct).length,0)
+  assert.equal(usage.knownInputTokens,input)
+  assert.equal(usage.knownOutputTokens,output)
+  assert.equal(usage.inputTokens,errors?null:input)
+  assert.equal(usage.outputTokens,errors?null:output)
+ }
+}
+const final65=nov9Index.studies.find(s=>s.id==='gpt-oss-20b-fresh1-text-4arm-np65536')
+const transport=final65.rows.find(r=>r.transport_error)
+assert.equal(transport.call_id,'neutral_panel-9-45')
+assert.equal(transport.finish_reason,null)
+assert.equal(estimateCohort(final65.rows,{input:1,output:1}).costUsd,null)
+assert.equal(isLocalIndex({...nov9Index,studies:[{...final65,rows:final65.rows.map(r=>r===transport?{...r,output_tokens:0}:r)}]}),false)
+for(const id of ['qwen3.5-27b-q4_K_M-fresh1-4arm-np24576','qwen3.5-9b-nvfp4-fresh2-4arm-np32768']) {
+ const prior=nov6Index.studies.find(s=>s.id===id)
+ const final=nov9Index.studies.find(s=>s.id===id)
+ // Root paths change in a new immutable snapshot, but scientific outcome/usage fields do not.
+ for(const key of ['strict_correct','format_only_correct','truncated','input_tokens','output_tokens','elapsed_seconds'])
+  assert.deepEqual(final.rows.map(r=>r[key]),prior.rows.map(r=>r[key]))
+}
+console.log('Verified final-night completion, arm/size outcomes, unchanged Qwen panels and unknown transport-error usage.')

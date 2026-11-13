@@ -25,14 +25,14 @@ function outcomeCounts(rows: LocalRow[]) {
     rows.filter(r => r.state !== 'recorded').length,
     rows.filter(r => r.state === 'recorded' && !r.strict_correct && !r.format_only_correct && !r.loop_stopped && !r.truncated).length]
 }
-const categories = ['Strict correct', 'Correct, wrong format', 'Client loop-stop', 'Token cap', 'Pending', 'Completed incorrect']
+const categories = ['Strict correct', 'Correct, wrong format', 'Client loop-stop', 'Token cap', 'Pending', 'Other / transport error']
 const classes = ['cv-strict', 'cv-extracted', 'lq-loop', 'cv-capped', 'lq-pending', 'cv-other']
 
 /** Compare request outcomes on a fixed 48-call scale without treating arms as independent boards. */
 function FreshCoverage({ panel, studies }: { panel: string; studies: LocalStudy[] }) {
   return <figure className="cv-figure"><figcaption><strong>{panel} outcomes and coverage</strong><p>Common scale: 0–48 planned requests. Each study uses twelve boards with two or four prompt arms. Configurations differ in input modality, budget, thinking capability, runner and quantization. This is a descriptive panel, not a controlled model ranking.</p></figcaption>
     <div className="cv-legend">{categories.map((c, i) => <span key={c}><i className={classes[i]} />{c}</span>)}</div>
-    {studies.map(s => { const counts = outcomeCounts(s.rows); return <div className="cv-outcome-row" key={s.id}><span>{s.model} · {s.protocol?.modality === 'text' ? 'text grid' : s.protocol?.format ? 'image, JSON schema' : 'image'}</span><div className="cv-outcome-bar" role="img" aria-label={`${s.label}: ${counts.map((n, i) => `${n} ${categories[i]}`).join(', ')}; ${s.recorded} recorded of ${s.planned} planned`}>
+    {studies.map(s => { const counts = outcomeCounts(s.rows); return <div className="cv-outcome-row" key={s.id}><span>{s.model} · {s.protocol?.modality === 'text' ? 'text grid' : s.protocol?.format ? 'image, JSON schema' : 'image'} · {s.budget.toLocaleString()} tokens{typeof s.protocol?.think === 'string' ? ` · think ${s.protocol.think}` : ''}</span><div className="cv-outcome-bar" role="img" aria-label={`${s.label}: ${counts.map((n, i) => `${n} ${categories[i]}`).join(', ')}; ${s.recorded} recorded of ${s.planned} planned`}>
       {counts.map((n, i) => n ? <span key={i} className={classes[i]} style={{ width: `${n / 48 * 100}%` }} title={`${n} ${categories[i]}`}>{n}</span> : null)}
     </div><small>{counts[0]}/{s.recorded} strict<br />{s.recorded}/{s.planned} recorded</small></div> })}
     <p className="cv-note">Gold format-only results preserve correct puzzle answers that failed the strict response schema. Dashed pending requests have no model outcome.</p>
@@ -99,7 +99,7 @@ function OutcomeMatrix({ study, rows }: { study: LocalStudy; rows: LocalRow[] })
 function BudgetChart({ study, rows, ui }: { study: LocalStudy; rows: LocalRow[]; ui: BookUi }) {
   const { DataTable } = ui, max = Math.max(1, ...studyArms(study).map(a => rows.filter(r => r.treatment === a).length))
   return <><figure className="cv-figure"><figcaption><strong>When strict answers finished</strong><p>Observed output-token lengths in this selected run. Unfinished requests never enter the completion count.</p></figcaption>
-    <div className="cv-legend"><span><i className="cv-strict" />≤12,288</span><span><i className="lq-mid" />12,289–24,576</span><span><i className="lq-late" />24,577–32,768</span></div>
+    <div className="cv-legend"><span><i className="cv-strict" />≤12,288</span><span><i className="lq-mid" />12,289–24,576</span><span><i className="lq-late" />&gt;24,576</span></div>
     {studyArms(study).map(arm => {
       if (!rows.some(r => r.treatment === arm)) return null
       const group = rows.filter(r => r.treatment === arm && r.strict_correct && r.output_tokens !== null)
@@ -275,10 +275,11 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
       <Section id="lq-overview" title="Separate studies, visible denominators">
         <p className="lead">Fresh-board studies add schema-reminder and neutral-control arms alongside baseline and Caveman. Each configuration has its own board panel and denominator. Earlier studies and selected no-stop audits are shown separately.</p>
         <p>Snapshot captured <time dateTime={data.captured_utc}>{new Date(data.captured_utc).toISOString().replace('T', ' ').slice(0, 19)} UTC</time>. Additional nights are imported as new dated snapshots; this page does not poll the running benchmark.</p>
-        <Callout tone="evidence" title="November 6: Fresh2 starts and Qwen 27B finishes Fresh1">
-          Qwen 9B finished Fresh2 images with 43/48 strict answers and five token caps.
-          Qwen 27B finished Fresh1 images with 43/48 strict, four correct in the wrong format and one cap.
-          GPT-OSS 20B has 10 strict answers and eight caps in 18 Fresh2 text-grid calls, with 30 unrecorded.
+        <Callout tone="evidence" title="Final nights: the queued panels are recorded">
+          GPT-OSS 20B Fresh2 text grids finished at 25/48 strict, with 23 token caps.
+          On Fresh1 text grids, medium effort at 32,768 tokens recorded 29/48 strict;
+          high effort at 65,536 also recorded 29/48 strict. The latter condition includes one transport failure with unknown usage.
+          Qwen 27B Fresh1 and Qwen 9B Fresh2 images were already complete in the November 6 snapshot, each at 43/48 strict.
         </Callout>
         <p>Fresh1 and Fresh2 each use twelve boards and are separate local panels. They were drawn from the public board corpus. Repeated prompt arms share board identities. The schema reminder is a prompt instruction, while constrained JSON requests carry a response schema.</p>
         {freshPanels.map(panel => <div key={panel.name}>
@@ -299,7 +300,20 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
       </Section>
       <Section id="lq-protocols" title="Image, text grid and constrained JSON">
         <FreshProtocolComparison studies={fresh} ui={ui} />
-        <p>The completed Qwen 27B Fresh1 panel now supports a same-board baseline and Caveman cost comparison. Fresh2 includes a Qwen 9B image study and a GPT-OSS text-grid study. Their inputs and models differ, and GPT-OSS has only partial coverage.</p>
+        <p>The completed Qwen 27B Fresh1 panel now supports a same-board baseline and Caveman cost comparison. Fresh2 includes a Qwen 9B image study and a GPT-OSS text-grid study. Their inputs and models differ, so these are separate configuration results. All queued panels now have a recorded outcome for every planned attempt.</p>
+        <h3>GPT-OSS effort and output allowance on Fresh1 text grids</h3>
+        <DataTable caption="Same twelve Fresh1 boards and four arms; one call per arm and board, four boards per size"
+          headers={['Requested setting', 'Strict / recorded', 'Token caps / recorded', 'Completed incorrect / recorded', 'Transport errors / recorded']}
+          rows={fresh.filter(s => s.model === 'gpt-oss:20b' && s.board_set === 'fresh1').map(s => {
+            const calls = recorded(s.rows)
+            const fraction = (count: number) => `${count}/${calls.length}`
+            return [<a href={`#/local-qwen/study/${s.id}`}>{s.protocol?.think} effort · {s.budget.toLocaleString()} output tokens</a>,
+              fraction(calls.filter(r => r.strict_correct).length), fraction(calls.filter(r => r.truncated).length),
+              fraction(calls.filter(r => !r.strict_correct && !r.format_only_correct && !r.truncated && !r.loop_stopped && !r.transport_error).length),
+              fraction(calls.filter(r => r.transport_error).length)]
+          })} />
+        <p>High effort at 32,768 tokens recorded 23/48 strict. Both later settings recorded 29/48 strict, with different outcomes by board and arm. Medium effort had fewer caps but nine completed incorrect answers. The 65,536-token run also raised context from 36,864 to 69,632 tokens and ran on later nights. None of its 24 previously completed responses reproduced byte for byte; four previously strict answers became capped attempts. These exploratory results do not establish a general benefit from lower effort or a larger budget.</p>
+        <p>The 65,536-token study has 48 recorded attempts, including one stream error: <a href="#/local-qwen/receipt/gpt-oss-20b-fresh1-text-4arm-np65536/neutral_panel-9-45">neutral on panel-9-45</a>. Its input/output counts and full study cost are unknown. A separate started-only baseline attempt was archived after an interruption and replaced; it has no recorded answer and is excluded from the 48 outcome records.</p>
         <details className="cv-method">
           <summary>Compare observed request latency</summary>
           <DataTable caption="Fresh-panel recorded requests, including caps and incorrect answers"
@@ -329,7 +343,7 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
       </Section>
       <Section id="lq-selected" title="Inspect one configuration">
         <div className="cv-controls"><div><label htmlFor="lq-study">Study</label><select id="lq-study" value={study.id} onChange={e => { setStudyId(e.target.value); setSize('all') }}>{data.studies.map(s => <option value={s.id} key={s.id}>{s.label}</option>)}</select></div><div><label htmlFor="lq-size">Board size</label><select id="lq-size" value={size} onChange={e => setSize(e.target.value)}><option value="all">All board sizes</option>{[5, 7, 9].filter(n => study.rows.some(r => r.size === n)).map(n => <option value={n} key={n}>{n}×{n}</option>)}</select></div></div>
-        <p><code>{study.model}</code> · {study.budget.toLocaleString()} output-token allowance · {study.decoding}{study.round ? ` round ${study.round}` : ''} · {study.board_set || 'legacy'} board set{study.protocol?.format ? ' · request-level JSON schema' : ''} · detector {study.loop_mode || (study.decoding === 'greedy+ls' ? 'active' : 'off')} · {study.runtime.details?.runner} / {study.runtime.details?.quantization_level}. <a href={localArtifact(study.plan)}>Frozen configuration</a>.</p>
+        <p><code>{study.model}</code> · {study.budget.toLocaleString()} output-token allowance · {study.decoding}{study.round ? ` round ${study.round}` : ''}{typeof study.protocol?.think === 'string' ? ` · think ${study.protocol.think}` : ''} · {study.board_set || 'legacy'} board set{study.protocol?.format ? ' · request-level JSON schema' : ''} · detector {study.loop_mode || (study.decoding === 'greedy+ls' ? 'active' : 'off')} · {study.runtime.details?.runner} / {study.runtime.details?.quantization_level}. <a href={localArtifact(study.plan)}>Frozen configuration</a>.</p>
         {study.loop_mode === 'shadow' && <p>Shadow observation only: {recorded(rows).filter(r => r.loop_stop?.would_have_stopped).length}/{recorded(rows).length} recorded requests in this scope would have triggered the detector; {recorded(rows).filter(r => r.loop_stop?.would_have_stopped && r.strict_correct).length} of those still finished strictly correct. Generation was never canceled. These observations describe this panel, not a population false-positive rate.</p>}
         {study.kind === 'audit' && <Callout tone="caution" title="Outcome-selected audit">Only the frozen selected original stops are in this audit. Unselected board/arm combinations are excluded, not pending. No baseline-versus-Caveman performance or cost effect is inferred from this selected population.</Callout>}
         <OutcomeMatrix study={study} rows={rows} />
@@ -348,15 +362,15 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
         <p>This demonstrates that this detector can interrupt a trace that later finishes correctly. The cases were selected by prior detector outcomes, and streaming and runner code differ between the original calls and these reruns. The result does not establish a population false-positive rate, isolated causal savings, or a replacement score for either original study. Complete rerun usage is priced separately; original canceled usage is still missing.</p>
         <h3>November 1: fresh-board shadow observations</h3>
         <p>The fresh1 9B detector would have stopped four requests. One, <a href="#/local-qwen/receipt/qwen3.5-9b-nvfp4-fresh1-4arm-np32768/caveman_panel-9-24">Caveman on panel-9-24</a>, continued to a strict correct answer at 26,779 output tokens. The other three reached the cap. The completed 4B image panel recorded {fresh4?.rows.filter(r => r.loop_stop?.would_have_stopped).length ?? 'an unreported number of'} shadow flags, including a strict answer on <a href="#/local-qwen/receipt/qwen3.5-4b-fresh1-4arm-np32768/caveman_panel-7-61">panel-7-61</a>. Shadow mode preserved every outcome; these additional observed escapes argue against treating a trigger as proof that a model cannot finish. They do not establish a general false-positive rate or exact savings from active cancellation.</p>
-        <p>In the Fresh2 GPT-OSS text-grid study, two flagged traces still finished with strict answers. See <a href="#/local-qwen/receipt/gpt-oss-20b-fresh2-text-4arm-np32768/baseline_panel-9-32">baseline on panel-9-32</a> and <a href="#/local-qwen/receipt/gpt-oss-20b-fresh2-text-4arm-np32768/neutral_panel-7-46">neutral control on panel-7-46</a>.</p>
+        <p>In the completed Fresh2 GPT-OSS text-grid study, 16/48 traces triggered the shadow detector and 5/16 flagged traces still finished strictly correct. Examples include <a href="#/local-qwen/receipt/gpt-oss-20b-fresh2-text-4arm-np32768/baseline_panel-9-32">baseline on panel-9-32</a> and <a href="#/local-qwen/receipt/gpt-oss-20b-fresh2-text-4arm-np32768/neutral_panel-7-46">neutral control on panel-7-46</a>.</p>
         <DataTable caption="Matched original stop → separate no-stop audit; selected calls only" headers={['Audit call', 'Rerun result', 'Observed prefix', 'Reported output tokens']} rows={audits.flatMap(s => s.rows.map(r => [<a href={localReceiptUrl(s, r)}>{s.model}<br />{r.call_id}</a>, rowOutcome(r), r.audit?.prefix_match ? 'Full original prefix matches' : 'Not verified', number(r.output_tokens)]))} />
-        <p>New receipts retain code hashes but their per-call Git revision fields are null; the later checkout revision is not a substitute for missing call-time provenance. <a href="https://github.com/JoeyWilkes12/queens-model-assessment/blob/main/docs/local-qwen-methods.md">Read the detailed scientific review</a>, including calibration counts, matched traces and timing limitations.</p>
+        <p>Older receipts retain null or absent per-call Git revisions. Later receipts identify a hash-matched commit through the saved runner-version map. A capture-time checkout revision does not fill missing call-time provenance. <a href="https://github.com/JoeyWilkes12/queens-model-assessment/blob/main/docs/local-qwen-methods.md">Read the detailed scientific review</a>, including calibration counts, matched traces and timing limitations.</p>
       </Section>
       <Section id="lq-next" title="Recorded coverage and remaining questions">
         <p><strong>All {data.studies.length} frozen conditions inventoried at capture are represented:</strong> {data.studies.reduce((n, s) => n + s.recorded, 0)} original/audit receipts and {data.studies.reduce((n, s) => n + s.rows.filter(r => r.rescue).length, 0)} separate rescues. Operational probes, runtime selftests and session logs are outside the assessment denominator.</p>
-        <p>GPT-OSS 20B Fresh2 has 30 unrecorded requests. The two original-budget partial studies retain 40 historical unrecorded calls. Coverage is frozen at capture.</p>
+        <p>All currently queued panels are recorded: 23 completed assessment conditions and two selected audits. The two original-budget partial studies retain 40 historical unrecorded calls; those calls are unobserved, not failed. The November 7 night continued the larger-budget study; November 9 and 10 were idle completion checks. Coverage is frozen at capture.</p>
         <p>The schema reminder adds a prompt instruction. The constrained study sends a schema in the request itself. The neutral control adds unrelated system text whose length differs from Caveman. Each condition keeps its own denominator and recorded costs.</p>
-        <p><a href="https://github.com/JoeyWilkes12/queens-model-assessment/blob/main/docs/local-qwen-nov6.md">November 6 audit and cost scenarios</a> · <a href="https://github.com/JoeyWilkes12/queens-model-assessment/blob/main/docs/local-qwen-methods.md">Frozen-evidence methods</a>.</p>
+        <p><a href="https://github.com/JoeyWilkes12/queens-model-assessment/blob/main/docs/local-qwen-nov9.md">Final-night audit and interpretation</a> · <a href="https://github.com/JoeyWilkes12/queens-model-assessment/blob/main/docs/local-qwen-methods.md">Frozen-evidence methods</a>.</p>
       </Section>
       <Section id="lq-receipts" title="Every request, matched arms and any rescue">
         <DataTable caption={`${study.label} · ${size === 'all' ? 'all sizes' : `${size}×${size}`} · original attempts`} headers={['Board / condition', 'Original result', 'Input / generated tokens', 'Elapsed', 'Pair / follow-up']} rows={rows.map(r => [<a href={localReceiptUrl(study, r)}>{r.board_id}<br />{armName(r.treatment)}</a>, <span className="lq-status">{r.strict_correct ? <Mark kind="check" /> : r.loop_stopped ? <Mark kind="loop" /> : <Mark kind="clock" />}{rowOutcome(r)}</span>, `${number(r.input_tokens)} / ${number(r.output_tokens)}`, `${number(r.elapsed_seconds)} s`, <>{study.rows.filter(p => (r.peer_call_ids || [r.peer_call_id]).includes(p.call_id)).map(p => <a className="lq-peer" key={p.call_id} href={localReceiptUrl(study, p)}>{armName(p.treatment)} · {p.state === 'recorded' ? 'recorded' : 'pending'}</a>)}{!(r.peer_call_ids?.length || r.peer_call_id) && 'No other arm selected for this audit'}{r.rescue && <><br />Rescue: {r.rescue.strict_correct ? 'strict correct' : 'not strict correct'}</>}</>])} />
