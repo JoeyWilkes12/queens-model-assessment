@@ -1,0 +1,69 @@
+{
+  "call_id": "neutral_panel-7-02",
+  "board_id": "panel-7-02",
+  "size": 7,
+  "treatment": "neutral",
+  "model": "gpt-oss:20b",
+  "model_digest": "f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe",
+  "started_utc": "2026-11-03T09:47:57.944035+00:00",
+  "completed_utc": "2026-11-03T09:59:19.255307+00:00",
+  "http_status": 200,
+  "elapsed_seconds": 681.2715285419999,
+  "returned_model": "gpt-oss:20b",
+  "finish_reason": "length",
+  "done": true,
+  "input_tokens": 1479,
+  "output_tokens": 32768,
+  "total_duration_ns": 681266683834,
+  "load_duration_ns": 2091292,
+  "prompt_eval_duration_ns": 1723070000,
+  "eval_duration_ns": 679527151000,
+  "request_sha256": "67f78d0eddb4b688bf67eed9955335f12accd94c466fd3eba8f6efc36c75d40d",
+  "response_sha256": "b0dd85b1b065754f8c03257033d06b3df9e28a47bf4974322635e4a84f4ca482",
+  "image_sha256": null,
+  "json_hash_encoding": "Python json.dumps(value, sort_keys=True), UTF-8",
+  "response_origin": "server",
+  "strict_correct": false,
+  "rule_valid_after_extraction": false,
+  "outcome": "truncated",
+  "provider_fee_usd": 0,
+  "local_total_cost_usd": null,
+  "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+  "runner": {
+    "script": "scripts/ollama/overnight.py",
+    "script_sha256": "ba31a8f2e26e4dfcd5085872d30f9b626752464778ce06577582b737b627bc53",
+    "panel_py_sha256": "df0584aa9f68bae53bc2787d9fa174316fc1c912890d38440a63da2c510edd30",
+    "runtime_lock_sha256": "a4a5cbd736e62c6198900c117845fbb524e202e976a1bde41e4a95cb96dc157b",
+    "git_commit": null,
+    "git_branch": null,
+    "scripts_uncommitted": false,
+    "loop_detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47"
+  },
+  "transport": "stream",
+  "resource_guard": {
+    "tripped": null,
+    "max_mean_swapin_mbps": 0.0,
+    "last_llama_server_decode": {
+      "tokens": 32552,
+      "tok_per_s": 48.26
+    },
+    "limits": {
+      "swapin_mbps_mean": 300,
+      "window_seconds": 120,
+      "critical_seconds": 60,
+      "min_decode_share_of_prior": 0.2
+    }
+  },
+  "loop_stop": {
+    "enabled": false,
+    "shadow": true,
+    "policy_version": 1,
+    "detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47",
+    "would_have_stopped": false,
+    "checks": 149,
+    "max_metric": 0.3,
+    "fired_at_thinking_chars": null,
+    "stream_chunks": 32733,
+    "reading": "Shadow mode: the detector only logged where it would have stopped this call; the call ran to its end."
+  }
+}
