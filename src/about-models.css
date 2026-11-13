@@ -23,3 +23,5 @@
   .am-card { padding: 14px 14px; }
   .am-facts > div { grid-template-columns: minmax(0, 1fr); }
 }
+.am-card:focus { outline: none; }
+.am-card:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 4px; }

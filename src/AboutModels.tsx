@@ -40,6 +40,16 @@ function ModelCard({ entry }: { entry: ModelEntry }) {
   </article>
 }
 
+/** Scroll to a model card and move keyboard focus there, so Tab continues inside the card the reader chose. */
+function jumpToCard(id: string) {
+  const card = document.getElementById(id)
+  if (!card) return
+  const calm = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  card.setAttribute('tabindex', '-1')
+  card.focus({ preventScroll: true })
+  card.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' })
+}
+
 /** A model group: the at-a-glance table, then one card per model (sub-headed by family where set). */
 function ModelGroupSection({ group, ui }: { group: ModelGroup; ui: BookUi }) {
   const { Section, DataTable } = ui
@@ -48,7 +58,7 @@ function ModelGroupSection({ group, ui }: { group: ModelGroup; ui: BookUi }) {
   const families = Array.from(new Set(entries.map(entry => entry.family ?? '')))
   const glanceRows = entries.map(entry => [
     // Hash routing owns the fragment, so the link scrolls in place instead of adding a second `#`.
-    <a href="#/about-models" onClick={event => { event.preventDefault(); document.getElementById(`model-${entry.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}>{entry.name}</a>,
+    <a href="#/about-models" onClick={event => { event.preventDefault(); jumpToCard(`model-${entry.id}`) }}>{entry.name}</a>,
     entry.lab, entry.glance.released, entry.glance.size, entry.glance.modalities, entry.glance.licence, <code>{entry.glance.build}</code>,
   ])
   return <Section id={`group-${group.id}`} title={group.title}>
