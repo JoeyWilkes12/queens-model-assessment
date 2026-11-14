@@ -31,6 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-13',
     title: 'Writing arena for the local models',
     kinds: ['chapter', 'interface'],
+    pr: 31,
     changes: [
       'Added #/writing-arena under Local open-weight models. Each local model rewrites the same five book pages once from one fixed instruction; the rewrites sit beside the published page.',
       'On a desktop two or three writers show side by side with a picker per pane; on a phone one writer shows at a time with lettered tabs and previous/next. Names are hidden until you choose to show them, and you can mark the version you prefer on each page.',
