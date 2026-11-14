@@ -28,6 +28,7 @@ import './book-nav.css'
 const Z3Part = lazy(() => import('./z3/Z3Part'))
 const CavemanStudies = lazy(() => import('./CavemanStudies'))
 const LocalQwen = lazy(() => import('./LocalQwen'))
+const WritingArena = lazy(() => import('./WritingArena'))
 
 type AssessmentOutcome = 'success' | 'model_failure' | 'request_failure' | 'not_run' | 'ungraded'
 
@@ -1297,6 +1298,7 @@ function App() {
                 : active === 'jev-trajectories' ? <JevTrajectories selectedId={parts[1]} />
                 : active === 'local-open-models' ? parts[1] === 'receipt' ? <OllamaComparison ui={bookUi} view="receipt" callId={parts[2]} /> : parts[1] === 'configuration' ? <OllamaComparison ui={bookUi} view="configuration" /> : <OllamaAssessment ui={bookUi} />
                 : active === 'local-qwen' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading local open-weight assessments…</p>}><LocalQwen ui={bookUi} studyId={parts[1] === 'receipt' || parts[1] === 'study' ? parts[2] : undefined} callId={parts[1] === 'receipt' ? parts[3] : undefined} /></Suspense>
+                : active === 'writing-arena' ? <Suspense fallback={<p role="status" className="ollama-standalone">Loading the writing arena…</p>}><WritingArena ui={bookUi} taskId={parts[1]} /></Suspense>
                 : active === 'caveman-summary' ? parts[1] === 'pilot' ? <OllamaComparison ui={bookUi} view="summary" /> : <Suspense fallback={<p role="status" className="ollama-standalone">Loading Caveman studies…</p>}><CavemanStudies ui={bookUi} /></Suspense>
                 : active === 'subq-assessment' ? <SubQAssessment ui={bookUi} selectedId={parts[1]} />
                 : active === 'decision-models' ? <DecisionModels ui={bookUi} />
