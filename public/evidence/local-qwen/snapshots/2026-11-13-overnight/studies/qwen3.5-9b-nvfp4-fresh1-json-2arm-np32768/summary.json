@@ -1,0 +1,723 @@
+{
+  "schema_version": 1,
+  "study": "2026-10-31-local-open-weight-qwen3.5-9b-nvfp4-fresh1-json-2arm-np32768",
+  "updated_utc": "2026-11-05T06:28:58.534074+00:00",
+  "protocol": {
+    "modality": "image",
+    "one_shot": true,
+    "tools": false,
+    "retries": 0,
+    "think": true,
+    "num_predict": 32768,
+    "timeout_seconds": 2306,
+    "temperature": 0,
+    "seed": 20261028,
+    "num_ctx": 36864,
+    "structured_output_enforcement": false,
+    "reasoning_control_note": "think true (the model's boolean switch). Requested controls are not proof the server honored each option.",
+    "keep_alive": 0,
+    "order": "abba",
+    "transport": "stream",
+    "changes_from_pilot": "num_predict 12288->32768 (separate study; do not pool with the 12,288 results); num_ctx 32768->36864 (budget + 4096; largest prompt 1,984); keep_alive 10m->0 (unload after each request); timeout scaled to model size and budget; board set fresh1; arms baseline/caveman (plan.arms), ABBA order; responses streamed; loop detector in shadow mode (never stops); no rescues; Ollama format = JSON schema of the answer (constrained output); think true",
+    "rescue": false,
+    "order_rule": "board i (0-based, plan order): arms in plan order when i is even, reversed when odd",
+    "loop_stop": {
+      "version": 1,
+      "measure": "share of thinking lines (stripped, >= min_line_chars) in the last tail_chars that already appeared earlier in the thinking",
+      "tail_chars": 6000,
+      "min_line_chars": 21,
+      "min_lines": 10,
+      "threshold": 0.7,
+      "consecutive_checks": 3,
+      "first_check_chars": 12000,
+      "check_every_chars": 500,
+      "applies_to": "thinking text only, and only while the model has produced no answer text",
+      "shadow": true,
+      "detector_sha256": "6fc2dcccb62e5b3a19c61c861c795c3a1e02098fa59f1b77681e3493f0cf8f47",
+      "documentation": "docs/ollama-loop-stop.md"
+    },
+    "format": {
+      "type": "object",
+      "properties": {
+        "board_id": {
+          "type": "string"
+        },
+        "columns_by_row": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "board_id",
+        "columns_by_row"
+      ]
+    }
+  },
+  "runtime": {
+    "model": "qwen3.5:9b-nvfp4",
+    "digest": "8218177ac78e61e0038e60fda513dc9ced4472637f0bc30e45def6aec48649d4",
+    "server_version": "0.40.10",
+    "details": {
+      "parent_model": "",
+      "format": "safetensors",
+      "family": "qwen3_5",
+      "families": null,
+      "parameter_size": "9.4B",
+      "quantization_level": "nvfp4",
+      "runner": "mlx"
+    },
+    "model_info": {
+      "general.architecture": "qwen3_5",
+      "general.parameter_count": 9409468800,
+      "qwen3_5.block_count": 32,
+      "qwen3_5.context_length": 262144,
+      "qwen3_5.embedding_length": 4096
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "tools",
+      "thinking"
+    ],
+    "thinking": {
+      "values": [
+        false,
+        true
+      ],
+      "default": true
+    },
+    "parameters_reported": "top_k                          20\ntop_p                          0.95\nmin_p                          0\npresence_penalty               1.5\nrepeat_penalty                 1\ntemperature                    1",
+    "machine_architecture": "arm64",
+    "os": "Darwin",
+    "virtual_tag": "vtag:32720a64-f618-48bd-9c45-23c30bc9136c",
+    "transport": "Ollama-compatible local HTTP /api/chat",
+    "host": "loopback"
+  },
+  "rows": [
+    {
+      "call_id": "baseline_panel-5-28",
+      "board_id": "panel-5-28",
+      "size": 5,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 140.37989933399876,
+      "input_tokens": 853,
+      "output_tokens": 5869,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-5-28/metadata.json",
+      "image": "images/panel-5-28.png"
+    },
+    {
+      "call_id": "baseline_panel-7-06",
+      "board_id": "panel-7-06",
+      "size": 7,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 401.89853087499796,
+      "input_tokens": 853,
+      "output_tokens": 16490,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-7-06/metadata.json",
+      "image": "images/panel-7-06.png"
+    },
+    {
+      "call_id": "baseline_panel-9-30",
+      "board_id": "panel-9-30",
+      "size": 9,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 286.4238583339975,
+      "input_tokens": 853,
+      "output_tokens": 11870,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-9-30/metadata.json",
+      "image": "images/panel-9-30.png"
+    },
+    {
+      "call_id": "baseline_panel-5-32",
+      "board_id": "panel-5-32",
+      "size": 5,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 136.27162099999987,
+      "input_tokens": 853,
+      "output_tokens": 5715,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-5-32/metadata.json",
+      "image": "images/panel-5-32.png"
+    },
+    {
+      "call_id": "baseline_panel-7-02",
+      "board_id": "panel-7-02",
+      "size": 7,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 594.9205168749977,
+      "input_tokens": 853,
+      "output_tokens": 23862,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-7-02/metadata.json",
+      "image": "images/panel-7-02.png"
+    },
+    {
+      "call_id": "baseline_panel-9-33",
+      "board_id": "panel-9-33",
+      "size": 9,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "truncated",
+      "strict_correct": false,
+      "rule_valid_after_extraction": false,
+      "elapsed_seconds": 841.9489507090002,
+      "input_tokens": 853,
+      "output_tokens": 32768,
+      "finish_reason": "length",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-9-33/metadata.json",
+      "image": "images/panel-9-33.png"
+    },
+    {
+      "call_id": "baseline_panel-5-11",
+      "board_id": "panel-5-11",
+      "size": 5,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 230.5507590829984,
+      "input_tokens": 853,
+      "output_tokens": 9639,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-5-11/metadata.json",
+      "image": "images/panel-5-11.png"
+    },
+    {
+      "call_id": "baseline_panel-7-34",
+      "board_id": "panel-7-34",
+      "size": 7,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 296.81968816699737,
+      "input_tokens": 853,
+      "output_tokens": 12331,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-7-34/metadata.json",
+      "image": "images/panel-7-34.png"
+    },
+    {
+      "call_id": "baseline_panel-9-24",
+      "board_id": "panel-9-24",
+      "size": 9,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "truncated",
+      "strict_correct": false,
+      "rule_valid_after_extraction": false,
+      "elapsed_seconds": 846.6057680419981,
+      "input_tokens": 853,
+      "output_tokens": 32768,
+      "finish_reason": "length",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-9-24/metadata.json",
+      "image": "images/panel-9-24.png"
+    },
+    {
+      "call_id": "baseline_panel-5-43",
+      "board_id": "panel-5-43",
+      "size": 5,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 248.4425234579976,
+      "input_tokens": 853,
+      "output_tokens": 10370,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-5-43/metadata.json",
+      "image": "images/panel-5-43.png"
+    },
+    {
+      "call_id": "baseline_panel-7-61",
+      "board_id": "panel-7-61",
+      "size": 7,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 388.0762449160029,
+      "input_tokens": 853,
+      "output_tokens": 15975,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-7-61/metadata.json",
+      "image": "images/panel-7-61.png"
+    },
+    {
+      "call_id": "baseline_panel-9-45",
+      "board_id": "panel-9-45",
+      "size": 9,
+      "treatment": "baseline",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "truncated",
+      "strict_correct": false,
+      "rule_valid_after_extraction": false,
+      "elapsed_seconds": 845.679174334,
+      "input_tokens": 853,
+      "output_tokens": 32768,
+      "finish_reason": "length",
+      "http_status": 200,
+      "receipt": "receipts/baseline_panel-9-45/metadata.json",
+      "image": "images/panel-9-45.png"
+    },
+    {
+      "call_id": "caveman_panel-5-28",
+      "board_id": "panel-5-28",
+      "size": 5,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 142.12482474999706,
+      "input_tokens": 1984,
+      "output_tokens": 5807,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-5-28/metadata.json",
+      "image": "images/panel-5-28.png"
+    },
+    {
+      "call_id": "caveman_panel-7-06",
+      "board_id": "panel-7-06",
+      "size": 7,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 279.5142952089991,
+      "input_tokens": 1984,
+      "output_tokens": 11422,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-7-06/metadata.json",
+      "image": "images/panel-7-06.png"
+    },
+    {
+      "call_id": "caveman_panel-9-30",
+      "board_id": "panel-9-30",
+      "size": 9,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 273.0879179170006,
+      "input_tokens": 1984,
+      "output_tokens": 11158,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-9-30/metadata.json",
+      "image": "images/panel-9-30.png"
+    },
+    {
+      "call_id": "caveman_panel-5-32",
+      "board_id": "panel-5-32",
+      "size": 5,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 165.03384474999984,
+      "input_tokens": 1984,
+      "output_tokens": 6738,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-5-32/metadata.json",
+      "image": "images/panel-5-32.png"
+    },
+    {
+      "call_id": "caveman_panel-7-02",
+      "board_id": "panel-7-02",
+      "size": 7,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 223.70255208399976,
+      "input_tokens": 1984,
+      "output_tokens": 9165,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-7-02/metadata.json",
+      "image": "images/panel-7-02.png"
+    },
+    {
+      "call_id": "caveman_panel-9-33",
+      "board_id": "panel-9-33",
+      "size": 9,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 355.2425698750012,
+      "input_tokens": 1984,
+      "output_tokens": 14451,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-9-33/metadata.json",
+      "image": "images/panel-9-33.png"
+    },
+    {
+      "call_id": "caveman_panel-5-11",
+      "board_id": "panel-5-11",
+      "size": 5,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 95.92035000000033,
+      "input_tokens": 1984,
+      "output_tokens": 3885,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-5-11/metadata.json",
+      "image": "images/panel-5-11.png"
+    },
+    {
+      "call_id": "caveman_panel-7-34",
+      "board_id": "panel-7-34",
+      "size": 7,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 273.4944747499976,
+      "input_tokens": 1984,
+      "output_tokens": 11210,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-7-34/metadata.json",
+      "image": "images/panel-7-34.png"
+    },
+    {
+      "call_id": "caveman_panel-9-24",
+      "board_id": "panel-9-24",
+      "size": 9,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "lower_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 683.2328791670006,
+      "input_tokens": 1984,
+      "output_tokens": 26778,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-9-24/metadata.json",
+      "image": "images/panel-9-24.png"
+    },
+    {
+      "call_id": "caveman_panel-5-43",
+      "board_id": "panel-5-43",
+      "size": 5,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "strict",
+      "strict_correct": true,
+      "rule_valid_after_extraction": true,
+      "elapsed_seconds": 205.6419019160021,
+      "input_tokens": 1984,
+      "output_tokens": 8467,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-5-43/metadata.json",
+      "image": "images/panel-5-43.png"
+    },
+    {
+      "call_id": "caveman_panel-7-61",
+      "board_id": "panel-7-61",
+      "size": 7,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "truncated",
+      "strict_correct": false,
+      "rule_valid_after_extraction": false,
+      "elapsed_seconds": 849.8733402500002,
+      "input_tokens": 1984,
+      "output_tokens": 32768,
+      "finish_reason": "length",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-7-61/metadata.json",
+      "image": "images/panel-7-61.png"
+    },
+    {
+      "call_id": "caveman_panel-9-45",
+      "board_id": "panel-9-45",
+      "size": 9,
+      "treatment": "caveman",
+      "stratum": {
+        "singleton_status": "no_singleton",
+        "tier": "higher_search"
+      },
+      "state": "recorded",
+      "outcome": "truncated",
+      "strict_correct": false,
+      "rule_valid_after_extraction": false,
+      "elapsed_seconds": 855.692583667,
+      "input_tokens": 1984,
+      "output_tokens": 32768,
+      "finish_reason": "length",
+      "http_status": 200,
+      "receipt": "receipts/caveman_panel-9-45/metadata.json",
+      "image": "images/panel-9-45.png"
+    }
+  ],
+  "by_treatment_size": [
+    {
+      "treatment": "baseline",
+      "size": 5,
+      "scheduled": 4,
+      "recorded": 4,
+      "http_completed": 4,
+      "strict_correct": 4,
+      "rule_valid_after_extraction": 4,
+      "format_only": 0,
+      "transport_errors": 0,
+      "truncated": 0,
+      "not_run": 0,
+      "unrecorded": 0,
+      "elapsed_seconds": 755.6448028749946,
+      "input_tokens_reported": 3412,
+      "output_tokens_reported": 31593
+    },
+    {
+      "treatment": "baseline",
+      "size": 7,
+      "scheduled": 4,
+      "recorded": 4,
+      "http_completed": 4,
+      "strict_correct": 4,
+      "rule_valid_after_extraction": 4,
+      "format_only": 0,
+      "transport_errors": 0,
+      "truncated": 0,
+      "not_run": 0,
+      "unrecorded": 0,
+      "elapsed_seconds": 1681.714980832996,
+      "input_tokens_reported": 3412,
+      "output_tokens_reported": 68658
+    },
+    {
+      "treatment": "baseline",
+      "size": 9,
+      "scheduled": 4,
+      "recorded": 4,
+      "http_completed": 4,
+      "strict_correct": 1,
+      "rule_valid_after_extraction": 1,
+      "format_only": 0,
+      "transport_errors": 0,
+      "truncated": 3,
+      "not_run": 0,
+      "unrecorded": 0,
+      "elapsed_seconds": 2820.6577514189958,
+      "input_tokens_reported": 3412,
+      "output_tokens_reported": 110174
+    },
+    {
+      "treatment": "caveman",
+      "size": 5,
+      "scheduled": 4,
+      "recorded": 4,
+      "http_completed": 4,
+      "strict_correct": 4,
+      "rule_valid_after_extraction": 4,
+      "format_only": 0,
+      "transport_errors": 0,
+      "truncated": 0,
+      "not_run": 0,
+      "unrecorded": 0,
+      "elapsed_seconds": 608.7209214159993,
+      "input_tokens_reported": 7936,
+      "output_tokens_reported": 24897
+    },
+    {
+      "treatment": "caveman",
+      "size": 7,
+      "scheduled": 4,
+      "recorded": 4,
+      "http_completed": 4,
+      "strict_correct": 3,
+      "rule_valid_after_extraction": 3,
+      "format_only": 0,
+      "transport_errors": 0,
+      "truncated": 1,
+      "not_run": 0,
+      "unrecorded": 0,
+      "elapsed_seconds": 1626.5846622929967,
+      "input_tokens_reported": 7936,
+      "output_tokens_reported": 64565
+    },
+    {
+      "treatment": "caveman",
+      "size": 9,
+      "scheduled": 4,
+      "recorded": 4,
+      "http_completed": 4,
+      "strict_correct": 3,
+      "rule_valid_after_extraction": 3,
+      "format_only": 0,
+      "transport_errors": 0,
+      "truncated": 1,
+      "not_run": 0,
+      "unrecorded": 0,
+      "elapsed_seconds": 2167.2559506260022,
+      "input_tokens_reported": 7936,
+      "output_tokens_reported": 85155
+    }
+  ],
+  "gate": {
+    "baseline_success": true,
+    "caveman_status": "enabled_after_review"
+  },
+  "costs": {
+    "provider_fee_usd": 0,
+    "local_total_cost_usd": null,
+    "note": "No paid inference API. Electricity, hardware amortization and local runtime costs are unmeasured."
+  },
+  "limitations": [
+    "Exploratory 12-board sample: four boards per size, one per existing stratum. One run per condition; no precision or causal benefit claim.",
+    "Qwen boolean thinking and local server controls differ from the historical high-effort hosted protocols. Compare as a separate local pilot.",
+    "Reported token counts and elapsed time are runtime measurements, not provider billing or a controlled speed benchmark.",
+    "Requested generation options may be interpreted differently by an Ollama-compatible MLX runner; this study records the request and returned metadata."
+  ]
+}
