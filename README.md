@@ -7,14 +7,17 @@ Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-
 The [local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen)
 cover Gemma 4 E4B, GPT-OSS 20B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
 original Qwen budget and sampling conditions, and selected loop-stop audits.
-The November 12 snapshot contains 30 conditions and 973 assessment/audit receipts,
-plus 38 separate rescues. The fixed predictions replicate for GPT-OSS medium
-(31/48 strict, nine cut-offs versus high’s 25/48 and 23) and Gemma
-(baseline 5/12 versus Caveman 2/12). The pooled effort accuracy test does not meet
-p<0.05; the Gemma deficit meets the fixed nominal rule, with small-panel and
-multiplicity limits. Qwen 4B Fresh2 remains unfinished at 42/48 recorded;
-Qwen 9B Fresh2 text has not started. No missing call is scored as a failure.
-See the [November 12 fixed-analysis audit](docs/local-qwen-nov12.md),
+The November 13 snapshot contains 31 conditions and 1,027 assessment/audit receipts,
+plus 38 separate rescues. All four criteria fixed before the runs hold: GPT-OSS
+medium has 31/48 strict and nine cut-offs versus high’s 25/48 and 23; Gemma has
+baseline 5/12 versus Caveman 2/12; Qwen 4B has 19/48 versus Fresh1’s 16/48,
+inside ±6; Qwen 9B text has 27/48 versus image’s 43/48. All Fresh2 panels are
+complete, and the matched four-arm text/image comparison is available.
+Four successful criteria are not four significant effects: only the pooled Gemma
+deficit meets its fixed nominal accuracy threshold; each set has twelve public
+boards and one greedy run per cell. Forty historical original-budget slots remain
+unobserved, not failed. See the [November 13 final fixed-analysis audit](docs/local-qwen-nov13.md),
+[November 12 interim report](docs/local-qwen-nov12.md),
 [earlier final-night audit](docs/local-qwen-nov9.md), [November 6 audit](docs/local-qwen-nov6.md),
 the [November 5 audit](docs/local-qwen-nov5.md),
 the [November 3 results](docs/local-qwen-nov3.md),

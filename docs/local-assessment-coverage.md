@@ -2,29 +2,27 @@
 
 Audit date: 2026-11-01. This report is an offline inventory and scientific review; it makes no inference requests and changes no live runner, study, service or frozen evidence.
 
-## Current publication boundary — November 12, 2026
+## Current publication boundary — November 13, 2026
 
 The historical audit below retains its November 1 scope. The immutable
-`2026-11-12-overnight` snapshot contains **30 conditions, 973 primary/audit receipts
-and 38 separate rescues**: 25 completed assessment conditions (912 calls), three
-partial conditions (50 recorded, 46 pending), and two selected audits (11 calls).
-The earlier November 9 snapshot remains unchanged.
+`2026-11-13-overnight` snapshot contains **31 conditions, 1,027 primary/audit
+receipts and 38 separate rescues**: 27 completed assessment conditions
+(1,008 calls), two original-budget partial conditions (eight recorded, 40 pending),
+and two selected audits (11 calls). All six Fresh2 conditions have 48/48 recorded.
+The 1,067 planned-call denominator includes those historical unobserved slots;
+no unfinished queued study remains. Older snapshots stay unchanged.
 
-The new night adds 48 GPT-OSS medium-effort Fresh2 text outcomes, 48 Gemma Fresh2
-image outcomes and 42 Qwen 4B Fresh2 image outcomes. Qwen 4B retains all 48 planned
-rows, with six pending; its fixed ±6-of-48 criterion is not yet evaluable.
-Qwen 9B Fresh2 text has not started and has no frozen plan or study root, so its
-48 intended calls are outside the 1,019 frozen-plan denominator. Do not invent a
-plan or classify its absence as model failure.
-
-Both completed fixed predictions replicate: GPT-OSS medium has fewer cut-offs
-and at least as many strict answers; Gemma Caveman is below baseline. The pooled
-effort accuracy test is p=0.072951389; the Gemma deficit is p=0.015625 under the
-fixed nominal rule. Four predictions were fixed, only two are evaluable, and one
-success by chance is plausible. See the [November 12 report](local-qwen-nov12.md)
-for the exact tests, by-arm/size denominators, timing and operational observations.
-The [November 9 report](local-qwen-nov9.md) retains the earlier interruption and
-transport-failure history; no earlier outcome or usage was rewritten.
+The new night adds six Qwen 4B image calls (complete: 19/48 strict) and 48 Qwen
+9B text calls (27/48 strict versus image’s 43/48). All four fixed criteria now
+hold, including 4B’s nondirectional ±6 band around Fresh1’s 16/48. The prior
+GPT-OSS and Gemma results are unchanged: pooled effort accuracy p=0.072951389
+misses its fixed threshold; Gemma p=0.015625 meets its fixed nominal rule.
+Four-of-four is informative prospective agreement, not four significant effects
+or a quantified chance probability. Each set has twelve public boards with one
+greedy run per cell. See the [November 13 final report](local-qwen-nov13.md)
+for fixed rules, by-arm/size outcomes, timing and cross-night host observations.
+The [November 12 interim report](local-qwen-nov12.md) and
+[November 9 history](local-qwen-nov9.md) retain their dated scope.
 
 Updated presentation routes are `#/local-qwen`, its study/receipt pages and
 `#/changelog`. Activation also refreshes consumers of the shared index, including
