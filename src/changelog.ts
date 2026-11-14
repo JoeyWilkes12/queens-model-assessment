@@ -28,6 +28,17 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-13',
+    title: 'All four fixed predictions and complete Fresh2 coverage',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 33,
+    changes: [
+      'Updated #/local-qwen and its study/receipt routes with the November 13 snapshot: 31 conditions, 1,027 assessment/audit receipts and 38 separate rescues. Every Fresh2 panel is complete.',
+      'Reported all four fixed criteria holding. Qwen 4B finishes at 19/48 strict, within ±6 of Fresh1’s 16/48. Qwen 9B text scores 27/48 versus image’s 43/48; a matched four-arm and size comparison is now available.',
+      'Retained GPT-OSS and Gemma conclusions and the fixed statistical limits: four successful criteria are not four significant effects. Each set has twelve public boards with one greedy run per board and arm. Shared-index comparisons receive the new data; the original 4B pilot and hosted-comparison local rows retain their historical scope.',
+    ],
+  },
+  {
     date: '2026-11-12',
     title: 'Fresh2 replication results and unfinished Qwen coverage',
     kinds: ['evidence', 'chapter', 'method'],

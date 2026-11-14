@@ -114,3 +114,11 @@ reviewed identities. The captured night has no Qwen 9B text plan; the allowlist
 does not fabricate one. The Qwen 4B capture retains six pending rows and all 48
 planned slots. The active `2026-11-12-overnight` catalog and all older catalogs
 verify independently. See the [November 12 fixed-analysis report](local-qwen-nov12.md).
+
+The November 13 snapshot (`2026-11-13-overnight`) uses the same reviewed schema-3
+allowlist. It completes Qwen 4B Fresh2 (48/48) and adds the now-frozen Qwen 9B
+Fresh2 text study (48/48). No importer/schema extension was needed. All Fresh2
+panels are complete; the two original-budget partial studies retain 40 historical
+pending slots. The active index switched only with the matching display change;
+November 12 and older snapshots remain unchanged. See the
+[November 13 final fixed-analysis report](local-qwen-nov13.md).

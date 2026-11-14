@@ -435,3 +435,63 @@ for(const [set,expected] of [['fresh1',[4,0]],['fresh2',[3,0]]]) {
  assert.deepEqual(discordance(arm('baseline'),arm('caveman')),expected)
 }
 console.log('Verified November 12 complete/partial usage, unmatched-cost guards and fixed-analysis discordances.')
+
+// November 13 completed receipts: strict-by-size, format-only, caps, shadow flags,
+// input and generated totals. Preserve November 12's partial fixtures above.
+const nov13Index=JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/snapshots/2026-11-13-overnight/catalog.json',import.meta.url)))
+assert.equal(isLocalIndex(nov13Index),true)
+assert.deepEqual([nov13Index.studies.length,nov13Index.studies.reduce((n,s)=>n+s.recorded,0),nov13Index.studies.reduce((n,s)=>n+s.planned,0)],[31,1027,1067])
+assert.equal(nov13Index.studies.filter(s=>s.kind!=='audit'&&s.status==='complete').length,27)
+assert.equal(nov13Index.studies.filter(s=>s.board_set==='fresh2').length,6)
+assert.ok(nov13Index.studies.filter(s=>s.board_set==='fresh2').every(s=>s.recorded===48&&s.status==='complete'))
+assert.equal(nov13Index.studies.reduce((n,s)=>n+s.rows.filter(r=>r.state==='pending').length,0),40)
+const nov13Fixtures={
+ 'qwen3.5-4b-fresh2-4arm-np32768': {
+  baseline:[[1,1,1],5,4,1,10236,253841],schema:[[3,4,1],0,4,2,10932,287372],
+  neutral:[[1,2,0],4,5,2,22968,297954],caveman:[[3,2,0],0,4,2,23808,257670],
+ },
+ 'qwen3.5-9b-nvfp4-fresh2-text-4arm-np32768': {
+  baseline:[[3,1,0],0,8,7,4624,352445],schema:[[3,3,0],0,6,4,5320,333546],
+  neutral:[[4,3,2],0,3,2,17356,240598],caveman:[[3,4,1],0,4,3,18196,224445],
+ },
+}
+for(const [id,arms] of Object.entries(nov13Fixtures)) {
+ const study=nov13Index.studies.find(s=>s.id===id)
+ assert.ok(study)
+ assert.equal(isMatchedCohort(study.rows),true)
+ const source=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/${study.summary}`,import.meta.url)))
+ for(const [arm,[sizes,formatOnly,caps,flags,input,output]] of Object.entries(arms)) {
+  const rows=study.rows.filter(r=>r.treatment===arm), usage=aggregateUsage(rows)
+  assert.equal(rows.length,12)
+  for(const [i,size] of [5,7,9].entries()) {
+   const cell=rows.filter(r=>r.size===size)
+   assert.equal(cell.length,4)
+   assert.equal(cell.filter(r=>r.strict_correct).length,sizes[i])
+  }
+  assert.deepEqual([rows.filter(r=>r.format_only_correct).length,rows.filter(r=>r.truncated).length,
+   rows.filter(r=>r.loop_stop?.would_have_stopped).length,usage.inputTokens,usage.outputTokens],
+   [formatOnly,caps,flags,input,output])
+  assert.equal(rows.filter(r=>r.transport_error||r.rescue||r.loop_stopped).length,0)
+  assert.equal(rows.filter(r=>r.strict_correct&&r.loop_stop?.would_have_stopped).length,0)
+  const raw=source.rows.filter(r=>r.treatment===arm), rawUsage=aggregateUsage(raw)
+  assert.deepEqual([raw.length,raw.filter(r=>r.strict_correct).length,rawUsage.inputTokens,rawUsage.outputTokens],
+   [12,sizes.reduce((n,x)=>n+x,0),input,output])
+ }
+}
+const nov13Four=nov13Index.studies.find(s=>s.id==='qwen3.5-4b-fresh2-4arm-np32768')
+const nov13Text=nov13Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh2-text-4arm-np32768')
+const nov13Image=nov13Index.studies.find(s=>s.id==='qwen3.5-9b-nvfp4-fresh2-4arm-np32768')
+assert.deepEqual(discordance(nov13Text.rows,nov13Image.rows),[0,16])
+for(const [arm,expected] of Object.entries({baseline:[0,7],schema:[0,6],neutral:[0,2],caveman:[0,1]}))
+ assert.deepEqual(discordance(nov13Text.rows.filter(r=>r.treatment===arm),nov13Image.rows.filter(r=>r.treatment===arm)),expected)
+const fourArm=name=>nov13Four.rows.filter(r=>r.treatment===name).map(r=>({...r,call_id:r.board_id}))
+assert.deepEqual(discordance(fourArm('baseline'),fourArm('caveman')),[2,4])
+// Recorded failures and caps remain in matched-arm spend, including the 4B proxy.
+near(compareArms(nov13Four.rows,{input:0.065,output:0.26}).deltaUsd,0.00187772)
+near(compareArms(nov13Text.rows,{input:0.17,output:0.25}).deltaUsd,-0.02969276)
+for(const old of nov12Four.rows.filter(r=>r.state==='recorded')) {
+ const current=nov13Four.rows.find(r=>r.call_id===old.call_id)
+ for(const key of ['strict_correct','format_only_correct','truncated','input_tokens','output_tokens','elapsed_seconds'])
+  assert.equal(current[key],old[key])
+}
+console.log('Verified November 13 completion, arm/size diagnostics, unchanged 42 prior calls, matched costs and fresh2 text/image discordance.')
