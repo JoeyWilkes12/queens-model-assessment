@@ -506,7 +506,7 @@ const studies: [string, string, string, string, string][] = [
 
 function ExecutiveSummary() {
   return <>
-    <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. The shared benchmark compares systems on the same boards. The completed open-weight view shows local results by study." />
+    <PageHero className="page-hero--board" trail="Read first" title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one." deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. The shared benchmark compares systems on the same boards. Open-weight studies shows each local model’s results, study by study." />
     <section className="board-cover" aria-labelledby="leaderboard-title"><Leaderboard ui={bookUi} titleId="leaderboard-title" /></section>
     <p className="qa-caveat" style={{ paddingInline: '28px' }}>Open-weight results retain their board panels, prompt arms, input formats and token budgets. <a href="#/local-qwen">Explore the local assessment receipts and cost scenarios</a>.</p>
     <AssessmentReceipt />
