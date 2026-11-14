@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "captured_utc": "2026-11-14T12:45:21+00:00",
+  "captured_utc": "2026-11-14T12:55:08+00:00",
   "prompt_template": "prompt-template.md",
   "prompt_template_sha256": "233dbe6b20d9b9242792ec08d6e0cdb14950b6b75aedee358ab003e997e0c608",
   "note": "Pages as readers saw them on main at d74641ac, extracted by extract-pages.cjs. One call per page and model; no retries.",
@@ -199,6 +199,38 @@
       "output": "outputs/protocol-results/llava-llama3-8b.md",
       "output_sha256": "5be590a7a60de6042633845432f554c7a588ed01cc80ebc51207c261274e25ed",
       "response_sha256": "15556a1bda9fe26a245763c1b14c52e2b788408e9e51f0c604779efce22a65df"
+    },
+    {
+      "task": "scale-primitives",
+      "model": "qwen3.5:4b",
+      "outcome": "truncated",
+      "words": 0,
+      "input_tokens": 906,
+      "output_tokens": 12288,
+      "thinking_chars": 45902,
+      "elapsed_seconds": 214.9,
+      "finished_utc": "2026-11-14T12:52:43.096584+00:00",
+      "digest": "7f3251fa6878",
+      "quantization": "nvfp4",
+      "output": "outputs/scale-primitives/qwen3.5-4b.md",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "response_sha256": "215adeb90fd40807577819d44565dc00a10db03621fbea65a16d8666e38428b5"
+    },
+    {
+      "task": "scale-primitives",
+      "model": "llava-llama3:8b",
+      "outcome": "ok",
+      "words": 560,
+      "input_tokens": 831,
+      "output_tokens": 795,
+      "thinking_chars": 0,
+      "elapsed_seconds": 19.8,
+      "finished_utc": "2026-11-14T12:49:06.473016+00:00",
+      "digest": "44c161b1f465",
+      "quantization": "Q4_K_M",
+      "output": "outputs/scale-primitives/llava-llama3-8b.md",
+      "output_sha256": "a8613f4bf88a6ae3e1e24485256cf493a35937ad39f823d96f62625b1e03c1fe",
+      "response_sha256": "7bd1d4406e03a6733adfec99a1bae5e78422ad37c34e72a19a1102e713dd442c"
     }
   ]
 }
