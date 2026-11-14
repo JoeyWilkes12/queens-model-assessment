@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "captured_utc": "2026-11-14T04:53:31+00:00",
+  "captured_utc": "2026-11-14T12:45:21+00:00",
   "prompt_template": "prompt-template.md",
   "prompt_template_sha256": "233dbe6b20d9b9242792ec08d6e0cdb14950b6b75aedee358ab003e997e0c608",
   "note": "Pages as readers saw them on main at d74641ac, extracted by extract-pages.cjs. One call per page and model; no retries.",
@@ -105,6 +105,38 @@
   ],
   "entries": [
     {
+      "task": "queens-rules",
+      "model": "qwen3.5:4b",
+      "outcome": "ok",
+      "words": 275,
+      "input_tokens": 641,
+      "output_tokens": 7085,
+      "thinking_chars": 26429,
+      "elapsed_seconds": 120.9,
+      "finished_utc": "2026-11-14T05:02:30.174750+00:00",
+      "digest": "7f3251fa6878",
+      "quantization": "nvfp4",
+      "output": "outputs/queens-rules/qwen3.5-4b.md",
+      "output_sha256": "fd60f4c0f15c4646b2b36a50520fb1de6f4bc75700109276fbe161c8933094b0",
+      "response_sha256": "aa7f21f88244fd6cb958cb5333c38905db24426e14fb0359cb9ee2a702998978"
+    },
+    {
+      "task": "queens-rules",
+      "model": "llava-llama3:8b",
+      "outcome": "ok",
+      "words": 249,
+      "input_tokens": 605,
+      "output_tokens": 365,
+      "thinking_chars": 0,
+      "elapsed_seconds": 9.5,
+      "finished_utc": "2026-11-14T05:00:27.798520+00:00",
+      "digest": "44c161b1f465",
+      "quantization": "Q4_K_M",
+      "output": "outputs/queens-rules/llava-llama3-8b.md",
+      "output_sha256": "7c5af510158ff430dc3ec81158f4b8e10470795edfcc7fc69e2b3be33af426ef",
+      "response_sha256": "19331103e45a6e083e82f1f22d97ff6a6ba811dd3ff18123dc57615830535fb1"
+    },
+    {
       "task": "jev-primer",
       "model": "qwen3.5:4b",
       "outcome": "ok",
@@ -135,6 +167,38 @@
       "output": "outputs/jev-primer/llava-llama3-8b.md",
       "output_sha256": "f9204053b26bc83cce640f23915e7994999a3a90103ed67fecdf55c90fa87177",
       "response_sha256": "b77d12385d1f365396037c8251dbe844c9bdd691b940a5bfa8399ea3f6456dae"
+    },
+    {
+      "task": "protocol-results",
+      "model": "qwen3.5:4b",
+      "outcome": "ok",
+      "words": 375,
+      "input_tokens": 668,
+      "output_tokens": 6548,
+      "thinking_chars": 23337,
+      "elapsed_seconds": 111.3,
+      "finished_utc": "2026-11-14T12:45:00.484070+00:00",
+      "digest": "7f3251fa6878",
+      "quantization": "nvfp4",
+      "output": "outputs/protocol-results/qwen3.5-4b.md",
+      "output_sha256": "b7800b2192734e9fb6693931684cbea320c8d37cd682e539f1731da2beb860e9",
+      "response_sha256": "ad4f986e9a248fad9dfff5f7442373a7e569d28e525f47ca2b7845f52b8c1010"
+    },
+    {
+      "task": "protocol-results",
+      "model": "llava-llama3:8b",
+      "outcome": "ok",
+      "words": 227,
+      "input_tokens": 624,
+      "output_tokens": 346,
+      "thinking_chars": 0,
+      "elapsed_seconds": 9.2,
+      "finished_utc": "2026-11-14T12:43:07.611897+00:00",
+      "digest": "44c161b1f465",
+      "quantization": "Q4_K_M",
+      "output": "outputs/protocol-results/llava-llama3-8b.md",
+      "output_sha256": "5be590a7a60de6042633845432f554c7a588ed01cc80ebc51207c261274e25ed",
+      "response_sha256": "15556a1bda9fe26a245763c1b14c52e2b788408e9e51f0c604779efce22a65df"
     }
   ]
 }
