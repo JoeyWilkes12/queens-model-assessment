@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "captured_utc": "2026-11-14T04:53:31+00:00",
+  "prompt_template": "prompt-template.md",
+  "prompt_template_sha256": "233dbe6b20d9b9242792ec08d6e0cdb14950b6b75aedee358ab003e997e0c608",
+  "note": "Pages as readers saw them on main at d74641ac, extracted by extract-pages.cjs. One call per page and model; no retries.",
+  "models": [
+    {
+      "id": "qwen3.5:27b-q4_K_M",
+      "name": "Qwen3.5 27B",
+      "lab": "Alibaba",
+      "settings": null
+    },
+    {
+      "id": "qwen3.5:9b-nvfp4",
+      "name": "Qwen3.5 9B",
+      "lab": "Alibaba",
+      "settings": null
+    },
+    {
+      "id": "qwen3.5:4b",
+      "name": "Qwen3.5 4B",
+      "lab": "Alibaba",
+      "settings": {
+        "think": true,
+        "num_predict": 12288,
+        "num_ctx": 20480,
+        "temperature": 0.7,
+        "top_p": 0.95,
+        "seed": 20261113
+      }
+    },
+    {
+      "id": "gpt-oss:20b",
+      "name": "gpt-oss 20B",
+      "lab": "OpenAI",
+      "settings": null
+    },
+    {
+      "id": "gemma4:e4b",
+      "name": "Gemma 4 E4B",
+      "lab": "Google DeepMind",
+      "settings": null
+    },
+    {
+      "id": "llava-llama3:8b",
+      "name": "LLaVA-Llama3 8B",
+      "lab": "XTuner",
+      "settings": {
+        "think": false,
+        "num_predict": 4096,
+        "num_ctx": 8192,
+        "temperature": 0.7,
+        "top_p": 0.95,
+        "seed": 20261113
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "queens-rules",
+      "title": "Queens rules",
+      "route": "queens-rules",
+      "kind": "Explaining rules to a newcomer",
+      "words": 275,
+      "source": "sources/queens-rules.md",
+      "source_sha256": "52443fe7fd86650f98de7dfe3cf69a4af3c034e8de79ac87e127140864f55c28"
+    },
+    {
+      "id": "jev-primer",
+      "title": "Jev primer",
+      "route": "jev-primer",
+      "kind": "Introducing a system and why its interface matters",
+      "words": 229,
+      "source": "sources/jev-primer.md",
+      "source_sha256": "2d06b435acedebe4501aa5cbc411c3925750da21947ac17e17851b056849b7bd"
+    },
+    {
+      "id": "protocol-results",
+      "title": "Protocol and results",
+      "route": "protocol-results",
+      "kind": "Reporting a test protocol and its results",
+      "words": 294,
+      "source": "sources/protocol-results.md",
+      "source_sha256": "a81bbfc378f720da564f31862b81b6ad6a4eb2f6e0fe6c62bdc130a85e3c8bf9"
+    },
+    {
+      "id": "scale-primitives",
+      "title": "Scale and primitives",
+      "route": "scale-primitives",
+      "kind": "Dense results with tables and caveats",
+      "words": 401,
+      "source": "sources/scale-primitives.md",
+      "source_sha256": "94af63e3d1efb6984dc00119775dedb396f823ade00688d0ce6b2ef2aca4e888"
+    },
+    {
+      "id": "greedy-rule",
+      "title": "The greedy rule baseline",
+      "route": "greedy-rule",
+      "kind": "A long methods page: algorithm, scoring, results",
+      "words": 1287,
+      "source": "sources/greedy-rule.md",
+      "source_sha256": "60516dd020b5f2e8d255459c1dc006cfdd069269ed334354f73bb1b62b1fef29"
+    }
+  ],
+  "entries": [
+    {
+      "task": "jev-primer",
+      "model": "qwen3.5:4b",
+      "outcome": "ok",
+      "words": 245,
+      "input_tokens": 606,
+      "output_tokens": 6081,
+      "thinking_chars": 23255,
+      "elapsed_seconds": 103.6,
+      "finished_utc": "2026-11-14T04:50:39.949204+00:00",
+      "digest": "7f3251fa6878",
+      "quantization": "nvfp4",
+      "output": "outputs/jev-primer/qwen3.5-4b.md",
+      "output_sha256": "261c24bf83103ca0d8c6192f2178494966005dec785e788caec7932608ffe765",
+      "response_sha256": "cc3fe4553f2ac03966a56673cd5544f6195cd1e878a5d1d9414071d5e54a8948"
+    },
+    {
+      "task": "jev-primer",
+      "model": "llava-llama3:8b",
+      "outcome": "ok",
+      "words": 230,
+      "input_tokens": 541,
+      "output_tokens": 340,
+      "thinking_chars": 0,
+      "elapsed_seconds": 8.8,
+      "finished_utc": "2026-11-14T04:48:54.706501+00:00",
+      "digest": "44c161b1f465",
+      "quantization": "Q4_K_M",
+      "output": "outputs/jev-primer/llava-llama3-8b.md",
+      "output_sha256": "f9204053b26bc83cce640f23915e7994999a3a90103ed67fecdf55c90fa87177",
+      "response_sha256": "b77d12385d1f365396037c8251dbe844c9bdd691b940a5bfa8399ea3f6456dae"
+    }
+  ]
+}

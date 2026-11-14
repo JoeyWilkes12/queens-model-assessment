@@ -85,6 +85,7 @@ export const BOOK_PARTS: NavPart[] = [
             ],
           },
           { path: 'caveman-summary', title: 'Caveman comparison', description: 'Matched outcomes, token use and estimated cost across local studies, with the original 4B pilot.' },
+          { path: 'writing-arena', title: 'Writing arena', description: 'The same five pages rewritten by each local model, side by side with names hidden.' },
         ],
       },
     ],

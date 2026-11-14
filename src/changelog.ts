@@ -28,6 +28,16 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-13',
+    title: 'Writing arena for the local models',
+    kinds: ['chapter', 'interface'],
+    changes: [
+      'Added #/writing-arena under Local open-weight models. Each local model rewrites the same five book pages once from one fixed instruction; the rewrites sit beside the published page.',
+      'On a desktop two or three writers show side by side with a picker per pane; on a phone one writer shows at a time with lettered tabs and previous/next. Names are hidden until you choose to show them, and you can mark the version you prefer on each page.',
+      'Rewrites are published as they came back, with no retry and no editing. Pages not yet run are marked as waiting; the nightly job adds them.',
+    ],
+  },
+  {
     date: '2026-11-06',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
