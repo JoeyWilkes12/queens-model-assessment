@@ -28,6 +28,15 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-09',
+    title: 'Archived the November 9 local assessment receipts',
+    kinds: ['evidence'],
+    pr: 25,
+    changes: [
+      'The November 9 archive contains 835 recorded assessment and audit calls across 27 studies, plus 38 separate rescue calls. The local assessment pages still show the November 6 snapshot at this stage.',
+    ],
+  },
+  {
     date: '2026-11-06',
     title: 'Incomplete open-weight coverage in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
