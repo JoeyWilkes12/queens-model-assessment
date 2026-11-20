@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 import type { BookUi } from './ollamaEvidence'
 import { compareArms, estimateCohort, isMatchedCohort, parseRate, type Rates } from './localQwenMath'
-import { armName, defaultTariff, usePricing, localArtifact, localReceiptUrl, rowOutcome, useLocalStudies, type LocalIndex, type LocalRow, type LocalStudy, type Pricing } from './localQwenEvidence'
+import { LOCAL_QWEN_HERO } from './routeHeroes'
+import { LoadingBlocks } from './LoadingBlocks'
+import { usePricing } from './localPricing'
+import { armName, defaultTariff, localArtifact, localReceiptUrl, rowOutcome, useLocalStudies, type LocalIndex, type LocalRow, type LocalStudy, type Pricing } from './localQwenEvidence'
 import './ollama-comparison.css'
 import './local-qwen.css'
 
@@ -116,7 +119,7 @@ function BudgetChart({ study, rows, ui }: { study: LocalStudy; rows: LocalRow[];
 /** Price every recorded attempt, including unsuccessful outputs; rescues retain their full replay usage. */
 function Finance({ study, rows, ui }: { study: LocalStudy; rows: LocalRow[]; ui: BookUi }) {
   const prices = usePricing()
-  if (prices.status !== 'ready') return <p role="status">{prices.status === 'loading' ? 'Loading saved tariffs…' : <>Saved tariffs could not be loaded. Reload or <a href={`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`}>inspect the pricing artifact</a>. No substitute rates are used.</>}</p>
+  if (prices.status !== 'ready') return <p role="status">{prices.status === 'loading' ? 'Loading saved tariffs…' : <>Saved tariffs could not be loaded. <button type="button" className="retry-button" onClick={prices.retry}>Try again</button> or <a href={`${import.meta.env.BASE_URL}evidence/local-qwen-pricing.json`}>inspect the pricing artifact</a>. No substitute rates are used.</>}</p>
   if (!recorded(rows).length) return <p role="status">No requests have been recorded in this selected scope. Pending requests have no observed cost or success rate.</p>
   return study.kind === 'audit' ? <AuditFinance key={study.id} study={study} rows={rows} pricing={prices.data} ui={ui} /> : <FinanceReady key={study.id} study={study} rows={rows} pricing={prices.data} ui={ui} />
 }
@@ -146,7 +149,7 @@ function AuditFinance({ study, rows, pricing, ui }: { study: LocalStudy; rows: L
 /** Compare cohorts at their matching-family tariff; the unlisted 4B price remains an explicit proxy. */
 function StudyCosts({ data, ui }: { data: LocalIndex; ui: BookUi }) {
   const pricing = usePricing(), { DataTable } = ui
-  if (pricing.status !== 'ready') return <p role="status">{pricing.status === 'loading' ? 'Loading saved study-cost scenarios…' : 'Saved tariffs unavailable; study cost scenarios cannot be shown.'}</p>
+  if (pricing.status !== 'ready') return <p role="status">{pricing.status === 'loading' ? 'Loading saved study-cost scenarios…' : <>Saved tariffs unavailable; study cost scenarios cannot be shown. <button type="button" className="retry-button" onClick={pricing.retry}>Try again</button></>}</p>
   const prices = pricing.data
   return <><DataTable caption="Original attempts only · each study uses its own recorded tokens, with a matching hosted-model tariff or explicit 4B proxy" headers={['Study / tariff', 'Baseline', '+ Caveman', 'Spend change']} rows={data.studies.map(s => {
     const id = defaultTariff(s), tariff = prices.models.find(p => p.id === id)
@@ -270,7 +273,7 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
   ].filter(panel => panel.studies.length > 0)
   const fresh4 = assessments.find(s => s.id === 'qwen3.5-4b-fresh1-4arm-np32768')
   const { PageHero, Section, LocalToc, DataTable, Callout } = ui
-  return <><PageHero trail="Model generations / local open-weight assessments" title="Local open-weight assessments" deck="Inspect Qwen, GPT-OSS, Gemma and LLaVA studies by board set, input modality, prompt arm, decoding and token budget. Every number leads back to saved evidence." />
+  return <><PageHero {...LOCAL_QWEN_HERO} />
     <div className="reading-layout lq-study"><LocalToc items={[{ id: 'lq-overview', label: 'Study overview' }, { id: 'lq-protocols', label: 'Input and decoding' }, { id: 'lq-sampling', label: 'Sampling rounds' }, { id: 'lq-selected', label: 'Selected results' }, { id: 'lq-budget', label: 'Completion lengths' }, { id: 'lq-finance', label: 'Hosted cost scenario' }, { id: 'lq-loop', label: 'Loop-stop method' }, { id: 'lq-next', label: 'Coverage & questions' }, { id: 'lq-receipts', label: 'Every request' }, { id: 'lq-provenance', label: 'Snapshot & method' }]} /><main className="reading-column" id="main-content">
       <Section id="lq-overview" title="Separate studies, visible denominators">
         <p className="lead">Fresh-board studies add schema-reminder and neutral-control arms alongside baseline and Caveman. Each configuration has its own board panel and denominator. Earlier studies and selected no-stop audits are shown separately.</p>
@@ -373,6 +376,10 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
 /** Static-site entry point; all computation uses saved evidence, never a model endpoint. */
 export default function LocalQwen({ ui, studyId, callId }: { ui: BookUi; studyId?: string; callId?: string }) {
   const saved = useLocalStudies(), { PageHero } = ui
-  if (saved.status !== 'ready') return <><PageHero trail="Model generations / local open-weight assessments" title="Local open-weight assessments" deck="Saved experiments and illustrative hosted costs." /><main className="ollama-standalone" role="status">{saved.status === 'loading' ? 'Loading the saved study snapshot…' : <>The saved study snapshot is unavailable or invalid. Reload or <a href={localArtifact('index.json')}>inspect the index</a>. No results are substituted.</>}</main></>
+  if (saved.status !== 'ready') {
+    // Same hero as the loaded overview, and a body as tall as the viewport, so nothing moves when the data arrives.
+    const hero = callId ? { trail: 'Local open-weight assessments / saved receipt', title: 'Saved receipt', deck: 'Loading the saved study snapshot for this receipt.' } : LOCAL_QWEN_HERO
+    return <><PageHero {...hero} /><main className="ollama-standalone loading-shell" id="main-content" aria-busy={saved.status === 'loading'}><p role="status">{saved.status === 'loading' ? 'Loading the saved study snapshot…' : <>The saved study snapshot is unavailable or invalid. Reload or <a href={localArtifact('index.json')}>inspect the index</a>. No results are substituted.</>}</p>{saved.status === 'loading' && <LoadingBlocks />}</main></>
+  }
   return studyId && callId ? <Receipt data={saved.data} studyId={studyId} callId={callId} ui={ui} /> : <Overview key={studyId} data={saved.data} ui={ui} requested={studyId} />
 }
