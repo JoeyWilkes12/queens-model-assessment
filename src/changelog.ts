@@ -28,6 +28,27 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-11',
+    title: 'Queens leaderboard opens on Solved vs cost, with details in info buttons',
+    kinds: ['interface'],
+    pr: 24,
+    changes: [
+      'The Executive Summary leaderboard now opens on the Solved vs cost scatter plot. It draws in portrait on a phone, taller and zoomable; the turn-your-phone prompt is gone.',
+      'Two views replace three: Shared boards and Open-weight studies. Open-weight studies shows one bar per model, pooled over its completed studies and always presorted highest first, by strict solve rate or by estimated cost per call, with a board-size filter. Unfinished and superseded runs moved into a disclosure at the end.',
+      'Settings, prompt-arm results, reading notes and board-panel descriptions moved from running text into info buttons beside the row or heading they explain.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Incomplete open-weight coverage in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    pr: 20,
+    changes: [
+      'Added a separate progress view for incomplete studies, with recorded outcomes and unrecorded calls shown against each frozen plan.',
+      'Shows the unfinished GPT-OSS 20B Fresh2 text-grid panel separately from the superseded original-budget runs. Completed Qwen 27B Fresh1 images appear in completed coverage.',
+    ],
+  },
+  {
     date: '2026-11-06',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
