@@ -28,6 +28,15 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-12',
+    title: 'Archived the November 12 replication receipts',
+    kinds: ['evidence'],
+    pr: 29,
+    changes: [
+      'The November 12 archive contains 973 recorded assessment and audit calls across 30 studies, plus 38 separate rescue calls. The local assessment pages still show the November 9 snapshot at this stage.',
+    ],
+  },
+  {
     date: '2026-11-11',
     title: 'Final nights of local open-weight assessments',
     kinds: ['evidence', 'chapter', 'method'],
