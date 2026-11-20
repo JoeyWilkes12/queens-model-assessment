@@ -1,0 +1,11 @@
+{
+  "samples": 20,
+  "max_pressure_level": 2,
+  "swap_used_gib_start": 5.36,
+  "swap_used_gib_max": 5.8,
+  "swap_used_gib_end": 5.79,
+  "min_free_plus_inactive_gib": 2.66,
+  "max_compressor_gib": 4.56,
+  "max_model_size_gib": 6.67,
+  "max_model_vram_gib": 6.67
+}
