@@ -1,6 +1,8 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
+import { lazy, Suspense, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react'
 import type { BookUi } from './ollamaEvidence'
 import './leaderboard.css'
+
+const OpenWeightLeaderboard = lazy(() => import('./OpenWeightLeaderboard'))
 
 type Cell = { outcome: string; solved: boolean; usd: number | null; requests: number; unknown: number }
 type Family = 'frontier' | 'earlier' | 'decision' | 'baseline' | 'local'
@@ -387,11 +389,25 @@ function Detail({ row }: { row: Row | null }) {
   </div>
 }
 
-/** The book's headline chart: every system on the same boards, ranked the way public AI leaderboards rank them. */
+/** Keep the shared-board benchmark and separate open-weight protocols in one figure. */
 export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
-  const { DataTable } = ui
   const ownId = useId()
   const headingId = titleId ?? ownId
+  const [dataset, setDataset] = useState<'board-panel' | 'completed'>('board-panel')
+  return <figure className="leaderboard" aria-labelledby={headingId}>
+    <figcaption className="lb-caption"><strong id={headingId}>Queens leaderboard</strong></figcaption>
+    <div className="lb-controls">
+      <Choice label="Assessment view" value={dataset} onChange={setDataset}
+        options={ [['board-panel', 'Shared board benchmark'], ['completed', 'Completed open-weight']] } />
+    </div>
+    {dataset === 'board-panel' ? <BoardPanelLeaderboard ui={ui} />
+      : <Suspense fallback={<p role="status">Loading open-weight studies…</p>}><OpenWeightLeaderboard ui={ui} /></Suspense>}
+  </figure>
+}
+
+/** Rank the original benchmark systems only on the boards they share. */
+function BoardPanelLeaderboard({ ui }: { ui: BookUi }) {
+  const { DataTable } = ui
   const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState(false)
   const [view, setView] = useState<View>('solved')
@@ -444,11 +460,8 @@ export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
   const sizeHeaders = (rows[0]?.bySize.length ?? 0) > 1 ? rows[0].bySize.map(part => `${part.size}×${part.size}`) : []
   const views: [View, string][] = [['solved', 'Boards solved'], ['cost', 'Cost'], ['scatter', 'Solved vs cost']]
 
-  return <figure className="leaderboard" aria-labelledby={headingId}>
-    <figcaption className="lb-caption">
-      <strong id={headingId}>Queens leaderboard</strong>
-      <span>{rows.length} systems · {boardsLabel}</span>
-    </figcaption>
+  return <>
+    <p className="lb-key">{rows.length} systems · {boardsLabel}</p>
     <div className="lb-controls">
       <Choice label="Measure" value={shownView} onChange={setView} options={views} />
       <Choice label="Board size" value={size} onChange={setSize} options={SIZES} />
@@ -472,5 +485,5 @@ export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
         rows={[...rows].sort(byRank).map(row => [fullName(row.system), TAG[row.system.family], `${row.solved}/${row.total}`, row.system.method === 'image' ? String(row.strict) : '—', ...(sizeHeaders.length ? row.bySize.map(part => `${part.solved}/${part.total}`) : []), row.usd === null ? noCost(row.system) : `${usd(row.usd)}${batch(row.system)}`, row.usd === null ? '—' : usd(row.usd / row.total), String(row.requests)])} />
       <p>A right answer counts as solved even if it ignored the requested format. A decision model solves a board if either of its two runs does. Ties go to more answers in the exact format, then to the lower cost. Costs are what the saved receipts record for requests on these boards, re-runs included; † marks batch prices. <a href={assetUrl('evidence/leaderboard.json')} download>Download the data (JSON)</a></p>
     </details>
-  </figure>
+  </>
 }

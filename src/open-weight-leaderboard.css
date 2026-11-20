@@ -1,0 +1,38 @@
+.ow-leaderboard { min-width: 0; }
+.ow-scope { color: var(--lb-muted); font-size: .85rem; }
+.ow-figure { margin: 0; }
+.ow-figure figcaption p { color: var(--lb-muted); font-size: .85rem; }
+.ow-leaderboard .ow-results { list-style: none; margin: 16px 0 0; padding: 0; }
+.ow-leaderboard .ow-results > li {
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--lb-line);
+}
+.ow-row-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 16px; }
+.ow-row-title a { flex: 1 1 15rem; min-width: 0; overflow-wrap: anywhere; }
+.ow-row-title strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ow-results .ow-settings, .ow-results .ow-counts {
+  color: var(--lb-muted);
+  font-size: .8rem;
+  line-height: 1.45;
+  margin: 4px 0;
+}
+.ow-bar { display: flex; height: 10px; margin: 8px 0; }
+.ow-remaining { background: var(--lb-base); }
+.ow-audits { border-top: 1px solid var(--lb-line); }
+
+.ow-controls { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.ow-controls > div { display: grid; gap: 4px; min-width: 0; }
+.ow-controls label { font-size: .8rem; color: var(--lb-muted); }
+.ow-controls select {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--lb-line);
+  background: var(--lb-panel);
+  color: var(--lb-text);
+}
+.ow-leaderboard a { color: var(--lb-solid); }
+.ow-arms { font-size: .8rem; }
+.ow-arms summary { padding-block: 6px; cursor: pointer; }
+.ow-arms ul { margin-block: 4px 8px; padding-inline-start: 20px; }
