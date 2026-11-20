@@ -1,0 +1,35 @@
+[
+  {
+    "route": "home",
+    "samples_per_profile": 3,
+    "cache_disabled_body_bytes": 300502,
+    "desktop_lcp_ms": 208,
+    "desktop_primary_ready_ms": 301.89999997615814,
+    "mobile_lcp_ms": 1488,
+    "mobile_primary_ready_ms": 1768.9000000357628,
+    "desktop_cls": 0.021344204372829863,
+    "mobile_cls": 0
+  },
+  {
+    "route": "local-qwen",
+    "samples_per_profile": 3,
+    "cache_disabled_body_bytes": 275168,
+    "desktop_lcp_ms": 272,
+    "desktop_primary_ready_ms": 318.0999999642372,
+    "mobile_lcp_ms": 2252,
+    "mobile_primary_ready_ms": 2455.5,
+    "desktop_cls": 0.09561005485628857,
+    "mobile_cls": 0.23463148447502302
+  },
+  {
+    "route": "atlas",
+    "samples_per_profile": 3,
+    "cache_disabled_body_bytes": 574495,
+    "desktop_lcp_ms": 200,
+    "desktop_primary_ready_ms": 268.7999999523163,
+    "mobile_lcp_ms": 1444,
+    "mobile_primary_ready_ms": 3627.099999964237,
+    "desktop_cls": 0.00046545410156249997,
+    "mobile_cls": 0.01270826926100561
+  }
+]

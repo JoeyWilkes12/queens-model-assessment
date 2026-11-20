@@ -16,6 +16,7 @@ on:
       - 'public/evidence/board-receipts/**'
       - 'scripts/analysis/build_leaderboard.py'
       - 'scripts/verify-*.mjs'
+      - 'scripts/check-bundle-budget.mjs'
       - 'scripts/test-site.mjs'
       - 'src/**'
       - 'package*.json'
@@ -53,6 +54,8 @@ jobs:
         run: npm run changelog:verify
       - name: Build static site
         run: npm run build
+      - name: Check the performance budget (entry JavaScript)
+        run: npm run budget:check
       - name: Install Chromium for rendered site checks
         run: npx playwright install --with-deps chromium
       - name: Check rendered site behavior

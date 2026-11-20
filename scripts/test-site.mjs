@@ -62,7 +62,9 @@ test('completed leaderboard combines model, panel and size while keeping audits 
   await page.getByRole('radio', { name: 'Completed open-weight' }).click()
   await page.getByLabel('Model', { exact: true }).selectOption('qwen3.5:9b-nvfp4')
   await page.getByLabel('Board panel', { exact: true }).selectOption('fresh2')
-  const results = page.locator('.ow-results')
+  const results = page.locator('.ow-results li').filter({
+    has: page.locator('a[href="#/local-qwen/study/qwen3.5-9b-nvfp4-fresh2-4arm-np32768"]'),
+  })
   await visibleText(results.getByText(/strict$/), '43/48 strict')
   await page.getByLabel('Board size', { exact: true }).selectOption('5')
   await visibleText(results.getByText(/strict$/), '16/16 strict')
@@ -122,6 +124,6 @@ test('malformed fetched catalog fails closed on the study page', async () => {
 test('changelog includes the Caveman synthesis with its PR link', async () => {
   await visit('changelog')
   await page.getByRole('heading', { name: 'Validate local assessment results and receipt navigation' }).waitFor()
-  await page.getByRole('heading', { name: 'Caveman comparison across local studies' }).waitFor()
+  await page.getByRole('heading', { name: 'Caveman results across local studies' }).waitFor()
   await page.getByRole('link', { name: 'Pull request #16', exact: true }).waitFor()
 })
