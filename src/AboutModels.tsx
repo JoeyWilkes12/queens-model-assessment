@@ -103,7 +103,7 @@ export default function AboutModels({ ui }: { ui: BookUi }) {
         </Section>
         {MODEL_GROUPS.map(group => <ModelGroupSection key={group.id} group={group} ui={ui} />)}
         <Section id="sourcing" title="Sourcing">
-          <p>All sources were opened on 11 November 2026. The full ledger, with a short supporting quote for each claim and a list of facts we could not verify, is <code>docs/about-models-sources.md</code> in the repository. Lab pages change: model cards are revised, Ollama tags are repointed and providers retire routes, so a link may no longer show what we read.</p>
+          <p>Sources were first checked on 11 November 2026. Each entry in the source ledger records its check date. The full ledger, with a short supporting quote for each claim and a list of facts we could not verify, is <code>docs/about-models-sources.md</code> in the repository. Lab pages change: model cards are revised, Ollama tags are repointed and providers retire routes, so a link may no longer show what we read.</p>
         </Section>
       </main>
     </div>
