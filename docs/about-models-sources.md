@@ -2,8 +2,7 @@
 
 Ledger for the reader page `#/about-models` (`src/AboutModels.tsx`, data in `src/aboutModelsData.ts`).
 Every claim on the page maps to a row here: claim, URL, date accessed and a short supporting quote
-(under 15 words, quoted or closely paraphrased from what the page returned). All sources were opened
-on **2026-11-11**. Facts about our own builds come from the book's receipts, cited by file.
+(under 15 words, quoted or closely paraphrased from what the page returned). The original sources were checked on **2026-11-11**. Later checks are dated in the tables. Facts about our own builds come from the book's receipts, cited by file.
 
 Book receipt for local builds: `public/evidence/local-qwen/index.json` (snapshot `2026-11-06-overnight`),
 fields `studies[].runtime` (model, digest, server_version, details) and `studies[].protocol` (think,
@@ -95,6 +94,8 @@ num_predict, num_ctx). Reader route: `#/local-qwen`.
 
 | Claim | URL | Accessed | Supporting quote |
 |---|---|---|---|
+| Release date, 5 August 2025 | https://openai.com/index/introducing-gpt-oss/ | 2026-11-20 | Release announcement dated 5 August 2025 |
+| Native context, 131,072 tokens | https://developers.openai.com/api/docs/models/gpt-oss-20b | 2026-11-20 | “131,072 context window” |
 | OpenAI open-weight model | https://huggingface.co/openai/gpt-oss-20b | 2026-11-11 | "OpenAI's open-weight models" |
 | Model card on arXiv 2025-08-08; MoE; Apache 2.0 | https://arxiv.org/abs/2508.10925 | 2026-11-11 | "efficient mixture-of-expert transformer architecture" |
 | 21B total, 3.6B active | HF card; https://github.com/openai/gpt-oss | 2026-11-11 | "21B parameters with 3.6B active parameters" |
@@ -153,7 +154,7 @@ Shared sources, all opened 2026-11-11:
 | Jev 1.13 | Listed 2026-09-18; output modality "decisions"; TypeSafe provider, 262,144 ctx | https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints | 2026-11-11 | `"modality": "text+image->decisions"` |
 | Jev 1.13 | Image prompt got HTTP 400; Decisions route with text grid | book `#/jev-primer` (`src/App.tsx` JevPrimer) | 2026-11-11 | "requires its separate Decisions API" |
 | SubQ Snap | Subquadratic; 12 Oct 2026; public preview; decision head; SSA claim; 384K mixed context | https://subq.ai/introducing-subq-snap | 2026-11-11 | "a decision model for agentic workflows" |
-| SubQ Snap | `subq-snap-preview` retired 11 Nov 2026, routes to Snap 1.2 | https://docs.subq.ai/using-the-api/models/ | 2026-11-11 | "These models have been retired and now route to Snap 1.2" |
+| SubQ Snap | Preview shutdown date and recommended replacement | https://docs.subq.ai/using-the-api/models/ | 2026-11-20 | `subq-snap-preview` · November 11, 2026 · `subq-snap-1.2` |
 | SubQ Snap | Called directly, not via OpenRouter | book `#/protocol-results` routes callout | 2026-11-11 | "calls its documented provider endpoint directly" |
 
 ## Non-model systems
@@ -166,8 +167,6 @@ Shared sources, all opened 2026-11-11:
 
 ## Unverified / omitted
 
-- **gpt-oss 20B context window.** Not stated on the Hugging Face card, the arXiv abstract page, the GitHub README (only a CLI default of 8,192) or the Ollama page. Written as "Not stated in the primary sources we found".
-- **gpt-oss release date.** Only the model-card submission date (8 Aug 2025) was confirmed; `openai.com/index/introducing-gpt-oss/` returned HTTP 403.
 - **Qwen3.5 small sizes: dense or MoE.** The cards' highlights mention "sparse Mixture-of-Experts" but the per-model specifications list no experts, and the repository labels only 397B-A17B as MoE. The page says "no expert count is listed" and does not call them dense.
 - **Qwen3.5 27B base checkpoint.** Not named on its card.
 - **LLaVA-Llama3 fine-tune release date and checkpoint licence.** Not stated on the XTuner card or the Ollama page.

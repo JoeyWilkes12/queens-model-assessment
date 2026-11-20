@@ -3,7 +3,7 @@
  *
  * Every model fact carries the keys of the primary sources it came from, so the page can print the
  * source link next to the value. The ledger in `docs/about-models-sources.md` records the supporting
- * quote and access date (11 November 2026) for each claim. Facts that no primary source we opened
+ * quote and access date for each claim. Facts that no primary source we opened
  * states are written as "Not stated in the primary sources we found" rather than filled in.
  *
  * Exact local builds come from the book's own receipts (`public/evidence/local-qwen/index.json`),
@@ -89,11 +89,11 @@ const LOCAL_MODELS: ModelEntry[] = [
       { label: 'Licence', value: 'Apache 2.0, open weights', src: ['card'] },
       { label: 'Reasoning control', value: 'Thinking mode is on by default and can be disabled through the chat template. The book requested think=true.', src: ['card', 'receipt'] },
       { label: 'Build we ran', value: 'Tag qwen3.5:4b, digest 7f3251fa6878…, safetensors, NVFP4, MLX runner, Ollama 0.40.10, reported 4.5B parameters', src: ['receipt'] },
-      { label: 'Tag today', value: 'The library now points qwen3.5:4b at digest 492e37dc6907 (a Q4_K_M build); the MLX NVFP4 tag is 61aa3858e9d3. Neither matches the digest we ran.', src: ['tags', 'ollama'] },
+      { label: 'Ollama tag on 11 Nov 2026', value: 'The library now points qwen3.5:4b at digest 492e37dc6907 (a Q4_K_M build); the MLX NVFP4 tag is 61aa3858e9d3. Neither matches the digest we ran.', src: ['tags', 'ollama'] },
     ],
     prose: [
       { text: 'The smallest Qwen3.5 size in the book and the subject of the original 4B pilot. It is a general vision-language chat model with a long native context; the card does not describe a narrower intended use.', src: ['card'] },
-      { text: 'Because the qwen3.5:4b tag has since moved, a reader who pulls it today gets a different file. The digest in our receipts is the only reliable identifier of what was tested.', src: ['receipt', 'tags'] },
+      { text: 'On 11 November 2026, the qwen3.5:4b tag pointed to a different file. The receipt digest identifies the build tested here.', src: ['receipt', 'tags'] },
     ],
     sources: {
       card: { label: 'Hugging Face: Qwen/Qwen3.5-4B', url: 'https://huggingface.co/Qwen/Qwen3.5-4B' },
@@ -125,7 +125,7 @@ const LOCAL_MODELS: ModelEntry[] = [
       { label: 'Licence', value: 'Apache 2.0, open weights', src: ['card'] },
       { label: 'Reasoning control', value: 'Thinking on by default; the book requested think=true', src: ['card', 'receipt'] },
       { label: 'Build we ran', value: 'Tag qwen3.5:9b-nvfp4, digest 8218177ac78e…, safetensors, NVFP4, MLX runner, Ollama 0.40.10, reported 9.4B parameters', src: ['receipt'] },
-      { label: 'Tag today', value: 'Still digest 8218177ac78e, listed as a 7.2 GB MLX build with a 256K context. The plain qwen3.5:9b tag is a different file (fdf5fd4cd409).', src: ['tags'] },
+      { label: 'Ollama tag on 11 Nov 2026', value: 'Still digest 8218177ac78e, listed as a 7.2 GB MLX build with a 256K context. The plain qwen3.5:9b tag is a different file (fdf5fd4cd409).', src: ['tags'] },
     ],
     prose: [
       { text: 'The mid-sized Qwen3.5 model in the book. We ran the NVFP4 build on Ollama\'s MLX runner rather than the default tag, so its numbers describe that 4-bit file on Apple silicon, not every 9B build.', src: ['receipt', 'tags'] },
@@ -158,7 +158,7 @@ const LOCAL_MODELS: ModelEntry[] = [
       { label: 'Licence', value: 'Apache 2.0, open weights', src: ['card'] },
       { label: 'Reasoning control', value: 'Thinking on by default; the book requested think=true', src: ['card', 'receipt'] },
       { label: 'Build we ran', value: 'Tag qwen3.5:27b-q4_K_M, digest 64ae5b1d651f…, GGUF, Q4_K_M, llama.cpp runner, Ollama 0.40.10, reported 26.9B parameters. The receipt records a local parent model named qwen35-validation-20261004:27b-q4.', src: ['receipt'] },
-      { label: 'Tag today', value: 'Still digest 64ae5b1d651f, listed at 17 GB. The MLX NVFP4 27B build is a separate 20 GB tag.', src: ['tags'] },
+      { label: 'Ollama tag on 11 Nov 2026', value: 'Still digest 64ae5b1d651f, listed at 17 GB. The MLX NVFP4 27B build is a separate 20 GB tag.', src: ['tags'] },
     ],
     prose: [
       { text: 'The largest Qwen3.5 model the book ran. Unlike the 4B and 9B builds it used a GGUF file on the llama.cpp runner, so a 27B-versus-9B comparison also changes the quantisation format and the inference engine.', src: ['receipt'] },
@@ -191,7 +191,7 @@ const LOCAL_MODELS: ModelEntry[] = [
       { label: 'Licence', value: 'Apache 2.0, open weights', src: ['card', 'blog'] },
       { label: 'Reasoning control', value: 'Thinking switches on with a <|think|> token in the system prompt (enable_thinking in Transformers). The book requested think=true.', src: ['card', 'receipt'] },
       { label: 'Build we ran', value: 'Tag gemma4:e4b, digest eb2177adf764…, safetensors, NVFP4, MLX runner, Ollama 0.40.10, reported 8.1B parameters', src: ['receipt'] },
-      { label: 'Tag today', value: 'gemma4:e4b now resolves to 009acb0d7fe1 and the NVFP4 tag to 5a08735df03c; no current tag carries the digest we ran', src: ['tags'] },
+      { label: 'Ollama tag on 11 Nov 2026', value: 'gemma4:e4b now resolves to 009acb0d7fe1 and the NVFP4 tag to 5a08735df03c; no current tag carries the digest we ran', src: ['tags'] },
     ],
     prose: [
       { text: 'Google positions the E2B and E4B sizes for on-device use, offline on phones and small boards. The runtime\'s 8.1B parameter figure counts the embedding tables, which is why it differs from the 4.5B in the name.', src: ['blog', 'card', 'receipt'] },
@@ -222,7 +222,7 @@ const LOCAL_MODELS: ModelEntry[] = [
       { label: 'Licence', value: 'The base model uses the Meta Llama 3 Community License. A licence for the fine-tuned checkpoint is not stated on its card or Ollama page.', src: ['llama', 'hf', 'ollama'] },
       { label: 'Reasoning control', value: 'No thinking mode; the book requested think=false with a 4,096-token output budget', src: ['receipt'] },
       { label: 'Build we ran', value: 'Tag llava-llama3:8b, digest 44c161b1f465…, GGUF, Q4_K_M, families llama + clip, Ollama 0.40.10', src: ['receipt'] },
-      { label: 'Tag today', value: 'Same digest, 44c161b1f465: Q4_K_M model (4.9 GB) with an F16 projector', src: ['ollama'] },
+      { label: 'Ollama tag on 11 Nov 2026', value: 'Same digest, 44c161b1f465: Q4_K_M model (4.9 GB) with an F16 projector', src: ['ollama'] },
     ],
     prose: [
       { text: 'The oldest model in the local set: a 2024-generation Llama 3 language model with a CLIP vision encoder bolted on by an independent fine-tuner. It has no reasoning mode and a far shorter context than the 2026 models, so the book gave it a smaller budget.', src: ['hf', 'llama', 'receipt'] },
@@ -240,23 +240,25 @@ const LOCAL_MODELS: ModelEntry[] = [
     name: 'gpt-oss 20B',
     lab: 'OpenAI',
     group: 'local',
-    glance: { released: 'Model card 8 Aug 2025', size: '21B total, 3.6B active (MoE)', modalities: 'Text → text', licence: 'Apache 2.0', build: 'gpt-oss:20b · llama.cpp · GGUF MXFP4 · f38aa0c5…' },
+    glance: { released: '5 Aug 2025', size: '21B total, 3.6B active (MoE)', modalities: 'Text → text', licence: 'Apache 2.0', build: 'gpt-oss:20b · llama.cpp · GGUF MXFP4 · f38aa0c5…' },
     facts: [
       { label: 'Developer', value: 'OpenAI, as an open-weight model', src: ['hf'] },
-      { label: 'Released', value: 'The model card was published on arXiv on 8 August 2025; a separate release date is not stated in the primary sources we found', src: ['arxiv'] },
+      { label: 'Released', value: '5 August 2025', src: ['release'] },
       { label: 'Architecture', value: 'Mixture-of-experts transformer; the MoE weights were post-trained with MXFP4 quantisation', src: ['arxiv', 'hf'] },
       { label: 'Parameters', value: '21B total, 3.6B active per token', src: ['hf', 'github'] },
       { label: 'Modalities', value: 'Text only', src: ['hf'] },
-      { label: 'Context window', value: NOT_STATED, src: [] },
+      { label: 'Context window', value: '131,072 tokens', src: ['model'] },
       { label: 'Licence', value: 'Apache 2.0, open weights', src: ['hf', 'arxiv'] },
-      { label: 'Reasoning control', value: 'Reasoning effort low, medium or high, set in the system prompt; requires the harmony response format. The book requested think="high".', src: ['hf', 'receipt'] },
+      { label: 'Reasoning control', value: 'Reasoning effort low, medium or high, set in the system prompt; requires the harmony response format. The original Fresh1 text-grid study requested high effort.', src: ['hf', 'receipt'] },
       { label: 'Build we ran', value: 'Tag gpt-oss:20b, digest f38aa0c53da5…, GGUF, MXFP4, llama.cpp runner, Ollama 0.40.10, reported 20.9B parameters; parent model dhiltgen/gpt-oss:20b-llamacpp', src: ['receipt'] },
-      { label: 'Tag today', value: 'Same digest, f38aa0c53da5, 14 GB, MXFP4', src: ['ollama'] },
+      { label: 'Ollama tag on 11 Nov 2026', value: 'Same digest, f38aa0c53da5, 14 GB, MXFP4', src: ['ollama'] },
     ],
     prose: [
       { text: 'OpenAI describes the 20B model for lower-latency, local and specialised use, sized to run within 16 GB of memory. It cannot read images, so the book gave it the board as a text grid; its results are not directly comparable with the image studies.', src: ['hf', 'receipt'] },
     ],
     sources: {
+      release: { label: 'OpenAI: Introducing gpt-oss', url: 'https://openai.com/index/introducing-gpt-oss/' },
+      model: { label: 'OpenAI: gpt-oss-20b specification', url: 'https://developers.openai.com/api/docs/models/gpt-oss-20b' },
       hf: { label: 'Hugging Face: openai/gpt-oss-20b', url: 'https://huggingface.co/openai/gpt-oss-20b' },
       arxiv: { label: 'arXiv 2508.10925: gpt-oss model card', url: 'https://arxiv.org/abs/2508.10925' },
       github: { label: 'GitHub: openai/gpt-oss', url: 'https://github.com/openai/gpt-oss' },
@@ -384,7 +386,7 @@ const HOSTED_MODELS: ModelEntry[] = [
       { label: 'Context window', value: '200K tokens; 64K maximum output', src: ['docs'] },
       { label: 'Modalities', value: 'Image, text and file input; text output', src: ['or'] },
       { label: 'Reasoning control', value: 'Hybrid model: near-instant responses or extended thinking', src: ['news'] },
-      { label: 'Status today', value: 'Retired on Anthropic\'s API, still offered on Bedrock and Google Cloud; OpenRouter now lists no endpoints for the slug', src: ['docs', 'or'] },
+      { label: 'Status on 11 Nov 2026', value: 'Retired on Anthropic\'s API, still offered on Bedrock and Google Cloud; OpenRouter now lists no endpoints for the slug', src: ['docs', 'or'] },
       { label: 'Route we ran', value: 'Served by Amazon Bedrock, the only route at discovery; used in the October 1 replay and the diagnostic-completion study', src: ['receipt'] },
     ],
     prose: [{ text: 'The oldest Claude model in the book. Its route differed from the other Claude entries, which ran on Anthropic\'s own endpoint.', src: ['receipt'] }],
@@ -624,10 +626,10 @@ const DIRECT_MODELS: ModelEntry[] = [
       { label: 'Architecture claim', value: 'Subquadratic Sparse Attention, which the company says reduces attention cost from quadratic to linear. This is the developer\'s claim.', src: ['blog'] },
       { label: 'Modalities', value: 'Text and image input, up to 384K tokens of mixed context', src: ['blog'] },
       { label: 'Parameters and licence', value: NOT_STATED, src: [] },
-      { label: 'Status today', value: 'subq-snap-preview is listed as retired on 11 November 2026 and now routes to Snap 1.2', src: ['docs'] },
+      { label: 'Preview status', value: 'SubQ lists 11 November 2026 as the shutdown date for subq-snap-preview and recommends Snap 1.2 as its replacement', src: ['docs'] },
       { label: 'Route we ran', value: 'SubQ\'s own Decisions endpoint, called directly rather than through OpenRouter', src: ['receipt'] },
     ],
-    prose: [{ text: 'A second decision model, run on the same historical Jev tasks and the new-board panel so the two can be compared on identical menus. Because the preview ID now routes to a newer model, the book\'s receipts describe the preview only.', src: ['blog', 'docs', 'receipt'] }],
+    prose: [{ text: 'A second decision model, run on the same historical Jev tasks and the new-board panel so the two can be compared on identical menus. The saved receipts describe the preview used in those runs.', src: ['blog', 'docs', 'receipt'] }],
     sources: { blog: { label: 'Subquadratic: Introducing SubQ Snap', url: 'https://subq.ai/introducing-subq-snap' }, docs: { label: 'SubQ docs: models', url: 'https://docs.subq.ai/using-the-api/models/' }, receipt: { label: 'Book chapter: SubQ Snap replay', url: '#/subq-assessment' } },
     results: [{ label: 'SubQ Snap replay', href: '#/subq-assessment' }, { label: 'New-board panel', href: '#/subq-assessment/panel' }],
   },
