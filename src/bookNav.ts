@@ -188,6 +188,14 @@ const capital = (word: string) => word.charAt(0).toUpperCase() + word.slice(1)
  */
 export function crumbsFor(path: string, fallbackLabel?: string): Crumb[] {
   const root: Crumb = { label: 'Queens assessment', href: '#/contents' }
+  // The Contents page is the book's map, the level every other trail starts from: `contents/<part>` is that
+  // page scrolled to one part, not a page below it.
+  if (path === 'contents' || path.startsWith('contents/')) {
+    const part = BOOK_PARTS.find(candidate => candidate.id === path.split('/')[1])
+    return part
+      ? [{ label: root.label }, { label: 'Contents', href: '#/contents' }, { label: part.label ? `${part.label} · ${part.title}` : part.title, current: true }]
+      : [{ label: root.label }, { label: 'Contents', current: true }]
+  }
   const found = entryFor(path)
   if (!found) return [root, { label: fallbackLabel || 'Page', current: true }]
   // An in-page section belongs to its parent page; the trail stops there.

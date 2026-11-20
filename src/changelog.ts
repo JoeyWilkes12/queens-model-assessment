@@ -69,6 +69,26 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
+    date: '2026-11-03',
+    title: 'Caveman results across local studies',
+    kinds: ['chapter'],
+    pr: 16,
+    changes: [
+      'The Caveman chapter now compares strict answers, format recovery and estimated spend across the local studies, with separate round charts for Qwen 9B and 27B rather than pooling repeated boards.',
+      'The original 4B pilot analysis moved to its own page under the chapter; existing receipt and configuration links still open.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Contents breadcrumb and phone section jumps',
+    kinds: ['fix'],
+    pr: 15,
+    changes: [
+      'Contents opened at a part now reads “Queens assessment / Contents / Start here” instead of treating the part as a page below Contents.',
+      'On phones, jumping to a section no longer hides its heading under the sticky top bar.',
+    ],
+  },
+  {
     date: '2026-11-02',
     title: 'Book organization, breadcrumb navigation and this changelog',
     kinds: ['interface'],
