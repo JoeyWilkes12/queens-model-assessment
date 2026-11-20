@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import './scoreboard.css'
+import { SCOREBOARD_FILE } from './evidenceFiles'
+import { useSharedJson } from './sharedJson'
 
 type Outcome = 'strict' | 'format_only' | 'wrong' | 'no_answer' | 'truncated'
 /** Non-graded API spend behind a chart entry: re-runs, probes, diagnostics; by board size, plus requests tied to no board. */
@@ -303,8 +305,7 @@ function CoverageNote({ rows }: { rows: Row[] }) {
 }
 
 export function Scoreboard({ children }: { children?: ReactNode }) {
-  const [data, setData] = useState<ScoreboardData | null>(null)
-  const [error, setError] = useState(false)
+  const saved = useSharedJson(SCOREBOARD_FILE)
   const [llmTab, setLlmTab] = useState<TabKey>('all')
   const [decisionTab, setDecisionTab] = useState<TabKey>('all')
   const [includeEarlier, setIncludeEarlier] = useState(false)
@@ -312,17 +313,10 @@ export function Scoreboard({ children }: { children?: ReactNode }) {
   const [boardSet, setBoardSet] = useState<'original' | 'panel'>('panel')
   const [llmSort, setLlmSort] = useState<SortKey>('cost')
   const [decisionSort, setDecisionSort] = useState<SortKey>('cost')
-  useEffect(() => {
-    const controller = new AbortController()
-    fetch(evidenceUrl('evidence/scoreboard.json'), { signal: controller.signal })
-      .then(response => { if (!response.ok) throw new Error('unavailable'); return response.json() as Promise<ScoreboardData> })
-      .then(setData)
-      .catch(() => { if (!controller.signal.aborted) setError(true) })
-    return () => controller.abort()
-  }, [])
 
-  if (error) return <p role="status">The saved scoreboard could not be loaded. No scores are substituted.</p>
-  if (!data) return <p role="status">Loading the saved scoreboard…</p>
+  if (saved.status === 'error') return <p role="status">The saved scoreboard could not be loaded. No scores are substituted. <button type="button" className="retry-button" onClick={saved.retry}>Try again</button></p>
+  if (saved.status === 'loading') return <p role="status">Loading the saved scoreboard…</p>
+  const data = saved.data as unknown as ScoreboardData
 
   const panel = data.llm.panel
   const panelReadyLlm = !!panel && panel.models.length > 0
