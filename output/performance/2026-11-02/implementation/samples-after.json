@@ -1,0 +1,560 @@
+[
+ {
+  "label": "after-final",
+  "round": 1,
+  "profile": "desktop",
+  "route": "home",
+  "lcpMs": 176,
+  "cls": 0.0099,
+  "shifts": [
+   {
+    "t": 234,
+    "v": 0.0099,
+    "nodes": [
+     "receipt"
+    ]
+   }
+  ],
+  "primaryReadyMs": 239.9000000001397,
+  "requestCount": 11,
+  "transferBytes": 176450,
+  "jsBytes": 125686,
+  "jsonBytes": 23383,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/leaderboard.json",
+   "evidence/scoreboard.json",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/openai.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 1,
+  "profile": "desktop",
+  "route": "local-qwen",
+  "lcpMs": 212,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 232.10000000009313,
+  "requestCount": 8,
+  "transferBytes": 222085,
+  "jsBytes": 143259,
+  "jsonBytes": 58146,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "assets/LocalQwen-DVNq8Gs1.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "assets/ollama-comparison-Dx8sEvBg.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 1,
+  "profile": "desktop",
+  "route": "atlas",
+  "lcpMs": 128,
+  "cls": 0.0005,
+  "shifts": [
+   {
+    "t": 359,
+    "v": 0.0005,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 363.19999999995343,
+  "requestCount": 5,
+  "transferBytes": 513383,
+  "jsBytes": 125686,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 1,
+  "profile": "mobile-slow4g",
+  "route": "home",
+  "lcpMs": 1556,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 1944,
+  "requestCount": 11,
+  "transferBytes": 176450,
+  "jsBytes": 125686,
+  "jsonBytes": 23383,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/leaderboard.json",
+   "evidence/scoreboard.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 1,
+  "profile": "mobile-slow4g",
+  "route": "local-qwen",
+  "lcpMs": 1272,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 2641,
+  "requestCount": 8,
+  "transferBytes": 222085,
+  "jsBytes": 143259,
+  "jsonBytes": 58146,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "assets/LocalQwen-DVNq8Gs1.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "assets/ollama-comparison-Dx8sEvBg.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 1,
+  "profile": "mobile-slow4g",
+  "route": "atlas",
+  "lcpMs": 1384,
+  "cls": 0.0128,
+  "shifts": [
+   {
+    "t": 4116,
+    "v": 0.0128,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 4139.699999999953,
+  "requestCount": 5,
+  "transferBytes": 513383,
+  "jsBytes": 125686,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 2,
+  "profile": "desktop",
+  "route": "home",
+  "lcpMs": 156,
+  "cls": 0.0099,
+  "shifts": [
+   {
+    "t": 196,
+    "v": 0.0099,
+    "nodes": [
+     "receipt"
+    ]
+   }
+  ],
+  "primaryReadyMs": 201.39999999990687,
+  "requestCount": 11,
+  "transferBytes": 176450,
+  "jsBytes": 125686,
+  "jsonBytes": 23383,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/leaderboard.json",
+   "evidence/scoreboard.json",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/openai.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 2,
+  "profile": "desktop",
+  "route": "local-qwen",
+  "lcpMs": 244,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 267.19999999995343,
+  "requestCount": 8,
+  "transferBytes": 222085,
+  "jsBytes": 143259,
+  "jsonBytes": 58146,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "assets/LocalQwen-DVNq8Gs1.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "assets/ollama-comparison-Dx8sEvBg.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 2,
+  "profile": "desktop",
+  "route": "atlas",
+  "lcpMs": 120,
+  "cls": 0.0005,
+  "shifts": [
+   {
+    "t": 349,
+    "v": 0.0005,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 351.89999999990687,
+  "requestCount": 5,
+  "transferBytes": 513383,
+  "jsBytes": 125686,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 2,
+  "profile": "mobile-slow4g",
+  "route": "home",
+  "lcpMs": 1468,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 1861.8999999999069,
+  "requestCount": 11,
+  "transferBytes": 176450,
+  "jsBytes": 125686,
+  "jsonBytes": 23383,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/leaderboard.json",
+   "evidence/scoreboard.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 2,
+  "profile": "mobile-slow4g",
+  "route": "local-qwen",
+  "lcpMs": 1288,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 2598.5999999998603,
+  "requestCount": 8,
+  "transferBytes": 222085,
+  "jsBytes": 143259,
+  "jsonBytes": 58146,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "assets/LocalQwen-DVNq8Gs1.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "assets/ollama-comparison-Dx8sEvBg.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 2,
+  "profile": "mobile-slow4g",
+  "route": "atlas",
+  "lcpMs": 1328,
+  "cls": 0.0128,
+  "shifts": [
+   {
+    "t": 3929,
+    "v": 0.0128,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 3947,
+  "requestCount": 5,
+  "transferBytes": 513383,
+  "jsBytes": 125686,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 3,
+  "profile": "desktop",
+  "route": "home",
+  "lcpMs": 168,
+  "cls": 0.0099,
+  "shifts": [
+   {
+    "t": 212,
+    "v": 0.0099,
+    "nodes": [
+     "receipt"
+    ]
+   }
+  ],
+  "primaryReadyMs": 219.0999999998603,
+  "requestCount": 11,
+  "transferBytes": 176450,
+  "jsBytes": 125686,
+  "jsonBytes": 23383,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/leaderboard.json",
+   "evidence/scoreboard.json",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/openai.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 3,
+  "profile": "desktop",
+  "route": "local-qwen",
+  "lcpMs": 212,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 234.80000000004657,
+  "requestCount": 8,
+  "transferBytes": 222085,
+  "jsBytes": 143259,
+  "jsonBytes": 58146,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "assets/LocalQwen-DVNq8Gs1.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "assets/ollama-comparison-Dx8sEvBg.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 3,
+  "profile": "desktop",
+  "route": "atlas",
+  "lcpMs": 132,
+  "cls": 0.0005,
+  "shifts": [
+   {
+    "t": 346,
+    "v": 0.0005,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 349.30000000004657,
+  "requestCount": 5,
+  "transferBytes": 513383,
+  "jsBytes": 125686,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 3,
+  "profile": "mobile-slow4g",
+  "route": "home",
+  "lcpMs": 1552,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 1751.1999999999534,
+  "requestCount": 11,
+  "transferBytes": 176450,
+  "jsBytes": 125686,
+  "jsonBytes": 23383,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/leaderboard.json",
+   "evidence/scoreboard.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 3,
+  "profile": "mobile-slow4g",
+  "route": "local-qwen",
+  "lcpMs": 1388,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 2826.100000000093,
+  "requestCount": 8,
+  "transferBytes": 222085,
+  "jsBytes": 143259,
+  "jsonBytes": 58146,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "assets/LocalQwen-DVNq8Gs1.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "assets/ollama-comparison-Dx8sEvBg.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "after-final",
+  "round": 3,
+  "profile": "mobile-slow4g",
+  "route": "atlas",
+  "lcpMs": 1420,
+  "cls": 0.0128,
+  "shifts": [
+   {
+    "t": 4048,
+    "v": 0.0128,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 4068.3000000000466,
+  "requestCount": 5,
+  "transferBytes": 513383,
+  "jsBytes": 125686,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BQZ0jbtE.js",
+   "assets/index-ovjBjLzA.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ }
+]

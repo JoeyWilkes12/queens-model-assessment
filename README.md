@@ -11,8 +11,8 @@ The November 12 snapshot contains 30 conditions and 973 assessment/audit receipt
 plus 38 separate rescues. The fixed predictions replicate for GPT-OSS medium
 (31/48 strict, nine cut-offs versus high’s 25/48 and 23) and Gemma
 (baseline 5/12 versus Caveman 2/12). The pooled effort accuracy test does not meet
-p<0.05; the Gemma deficit meets the fixed nominal rule, with small-panel and
-multiplicity limits. Qwen 4B Fresh2 remains unfinished at 42/48 recorded;
+p<0.05; the pooled Gemma result includes the Fresh1 discovery boards. Fresh2 alone
+repeats the direction (paired p=0.25). Qwen 4B Fresh2 remains unfinished at 42/48 recorded;
 Qwen 9B Fresh2 text has not started. No missing call is scored as a failure.
 See the [November 12 fixed-analysis audit](docs/local-qwen-nov12.md),
 [earlier final-night audit](docs/local-qwen-nov9.md), [November 6 audit](docs/local-qwen-nov6.md),
