@@ -10,6 +10,7 @@ import './book-nav.css'
 import { entryFor } from './bookNav'
 import { assetUrl, useHashPath, Icon, PageHero, bookUi } from './bookUi'
 import {
+  AboutModels,
   AboutPage,
   AssessmentReceiptPage,
   BoardReceipts,
@@ -186,6 +187,8 @@ function routePage(active: string, parts: string[]): ReactNode {
       return <BoardReceipts ui={bookUi} boardId={second} />
     case 'methods-sources':
       return <MethodsSources />
+    case 'about-models':
+      return <AboutModels ui={bookUi} />
     case 'about':
       return <AboutPage />
     case 'contents':
@@ -255,10 +258,10 @@ function App() {
           </ChapterBoundary>
         </div>
         <footer className="site-footer">
-          <span>Queens assessment · expanded illustrated edition</span>
           <span>
             <a href="#/contents">contents</a> · <a href="#/about">about this book</a> ·{' '}
-            <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a>
+            <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a> ·{' '}
+            <a href={assetUrl('llms.txt')}>llms.txt</a>
           </span>
         </footer>
       </div>
