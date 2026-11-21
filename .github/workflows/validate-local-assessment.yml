@@ -19,6 +19,7 @@ on:
       - 'scripts/analysis/build_leaderboard.py'
       - 'scripts/verify-*.mjs'
       - 'scripts/check-bundle-budget.mjs'
+      - 'scripts/test-site.mjs'
       - 'src/**'
       - 'package*.json'
       - 'tsconfig.json'
@@ -30,10 +31,13 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    # The locked Playwright release ships Chromium dependencies for Ubuntu 24.04.
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -53,7 +57,13 @@ jobs:
         run: |
           python3 -B scripts/ollama/import_writing_arena.py --verify --require-complete
           npm run test:writing-arena
+      - name: Verify changelog against main history
+        run: npm run changelog:verify
       - name: Build static site
         run: npm run build
       - name: Check the performance budget (entry JavaScript)
         run: npm run budget:check
+      - name: Install Chromium for rendered site checks
+        run: npx playwright install --with-deps chromium
+      - name: Check rendered site behavior
+        run: npm run site:test
