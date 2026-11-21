@@ -12,6 +12,7 @@ export function loader<M>(load: () => Promise<M>) {
 
 export const chapters = {
   z3: loader(() => import('./z3/Z3Part')),
+  writingArena: loader(() => import('./WritingArena')),
   localQwen: loader(() => import('./LocalQwen')),
   boardReceipts: loader(() => import('./BoardReceipts')),
   decisionModels: loader(() => import('./DecisionModels')),
@@ -44,6 +45,7 @@ export const named = <M, K extends keyof M>(load: () => Promise<M>, key: K) =>
   lazy(() => load().then(module => ({ default: module[key] as ComponentType<any> })))
 
 export const Z3Part = lazy(chapters.z3)
+export const WritingArena = lazy(chapters.writingArena)
 export const LocalQwen = lazy(chapters.localQwen)
 export const BoardReceipts = named(chapters.boardReceipts, 'BoardReceipts')
 export const DecisionModels = named(chapters.decisionModels, 'DecisionModels')
@@ -83,6 +85,7 @@ const ROUTE_CHAPTERS: Record<string, (() => Promise<unknown>)[]> = {
   'earlier-generations': [chapters.earlier, chapters.legacyPanel],
   'jev-trajectories': [chapters.trajectories],
   'local-open-models': [chapters.pilot],
+  'writing-arena': [chapters.writingArena],
   'local-qwen': [chapters.localQwen],
   'caveman-summary': [chapters.cavemanStudies],
   'subq-assessment': [chapters.subq],

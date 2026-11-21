@@ -26,6 +26,7 @@ import {
   JevPrimer,
   JevTrajectories,
   LocalQwen,
+  WritingArena,
   MethodsCritique,
   MethodsSources,
   OllamaAssessment,
@@ -152,6 +153,8 @@ function routePage(active: string, parts: string[]): ReactNode {
       if (second === 'receipt') return <OllamaComparison ui={bookUi} view="receipt" callId={third} />
       if (second === 'configuration') return <OllamaComparison ui={bookUi} view="configuration" />
       return <OllamaAssessment ui={bookUi} />
+    case 'writing-arena':
+      return <WritingArena ui={bookUi} taskId={second} />
     case 'local-qwen':
       return own(
         second === 'receipt' ? LOCAL_QWEN_RECEIPT_HERO : LOCAL_QWEN_HERO,

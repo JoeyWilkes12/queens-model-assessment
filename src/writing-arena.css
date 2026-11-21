@@ -1,0 +1,73 @@
+/* Writing arena: the same page from several writers. Panes sit side by side on desktop and page one at a
+   time on phones. Everything is drawn with the book's surface tokens, so light and dark themes both work. */
+.wa { max-width: 1760px; margin: 0 auto; padding: 36px clamp(16px, 3vw, 44px) 80px; }
+.wa-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.wa-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.wa-tabs a { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 14px; border: 1px solid var(--border-strong); color: var(--text-primary); font-size: .84rem; font-weight: 700; text-decoration: none; }
+.wa-tabs a:hover { border-color: var(--text-primary); }
+.wa-tabs a[aria-selected='true'] { border-color: var(--surface-inverse); background: var(--surface-inverse); color: var(--text-inverse); }
+:root[data-theme='dark'] .wa-tabs a[aria-selected='true'] { border-color: var(--mint-300); background: var(--mint-300); color: var(--navy-950); }
+.wa-blind { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--text-primary); font-size: .88rem; font-weight: 700; cursor: pointer; }
+.wa-blind input { width: 18px; height: 18px; accent-color: var(--mint-700); }
+.wa-about { max-width: 90ch; margin: 14px 0 22px; color: var(--text-secondary); font-size: .9rem; line-height: 1.6; }
+.wa a { color: var(--link-evidence); text-underline-offset: 3px; }
+
+.wa-panes { display: grid; gap: 20px; align-items: start; }
+.wa-pane { display: grid; grid-template-rows: auto 1fr auto; min-width: 0; border: 1px solid var(--border-subtle); background: var(--surface-raised); }
+.wa-pane-head { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 16px; border-bottom: 1px solid var(--border-subtle); background: var(--surface-raised); }
+.wa-pane-title { color: var(--text-primary); font-family: var(--display-font); font-size: 1.15rem; font-weight: 400; }
+.wa-pane-pick select { min-height: 40px; max-width: 100%; padding: 4px 10px; border: 1px solid var(--border-strong); background: var(--surface-page); color: var(--text-primary); font: inherit; font-weight: 700; }
+.wa-pane-lab { color: var(--text-muted); font-family: var(--mono-font); font-size: .7rem; }
+.wa-prefer { margin-left: auto; min-height: 40px; padding: 4px 12px; border: 1px solid var(--border-strong); background: transparent; color: var(--text-primary); font-size: .8rem; font-weight: 700; cursor: pointer; }
+.wa-prefer:hover:not(:disabled) { border-color: var(--text-primary); }
+.wa-prefer[aria-pressed='true'] { border-color: var(--mint-700); background: var(--mint-700); color: #fffdf8; }
+:root[data-theme='dark'] .wa-prefer[aria-pressed='true'] { border-color: var(--mint-300); background: var(--mint-300); color: var(--navy-950); }
+.wa-prefer:disabled { opacity: .45; cursor: default; }
+.wa-pane-foot { display: flex; flex-wrap: wrap; gap: 2px 16px; padding: 10px 16px; border-top: 1px solid var(--border-subtle); color: var(--text-muted); font-family: var(--mono-font); font-size: .72rem; line-height: 1.6; }
+.wa-flag { color: var(--coral-500); font-weight: 700; }
+
+/* The rewritten page: an editorial reading column inside each pane. */
+.wa-prose { min-width: 0; padding: 20px clamp(16px, 2vw, 28px) 24px; color: var(--text-secondary); font-size: 1rem; line-height: 1.68; overflow-wrap: anywhere; }
+.wa-prose > * { max-width: 68ch; }
+.wa-prose h3, .wa-prose h4, .wa-prose h5, .wa-prose h6 { margin: 1.5em 0 .45em; color: var(--text-primary); font-family: var(--display-font); font-weight: 400; line-height: 1.25; text-wrap: balance; }
+.wa-prose h3 { margin-top: 0; font-size: 1.55rem; letter-spacing: -.02em; }
+.wa-prose h4 { font-size: 1.22rem; }
+.wa-prose h5, .wa-prose h6 { font-size: 1.05rem; }
+.wa-prose p, .wa-prose ul, .wa-prose ol, .wa-prose blockquote { margin: 0 0 1em; }
+.wa-prose ul, .wa-prose ol { padding-left: 1.3em; }
+.wa-prose li { margin-bottom: .35em; }
+.wa-prose strong { color: var(--text-primary); }
+.wa-prose code { font-family: var(--mono-font); font-size: .88em; }
+.wa-prose pre { max-width: 100%; margin: 0 0 1em; padding: 12px; overflow-x: auto; border: 1px solid var(--border-subtle); background: var(--surface-page); }
+.wa-prose blockquote { padding-left: 14px; border-left: 1px solid var(--border-strong); }
+.wa-prose hr { margin: 1.4em 0; border: 0; border-top: 1px solid var(--border-subtle); }
+.wa-table { max-width: 100%; margin: 0 0 1em; overflow-x: auto; }
+.wa-table table { width: 100%; border-collapse: collapse; font-size: .84rem; line-height: 1.4; }
+.wa-table th, .wa-table td { padding: 6px 10px; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
+.wa-table th { color: var(--text-primary); font-family: var(--mono-font); font-size: .72rem; font-weight: 600; white-space: nowrap; }
+.wa-empty { color: var(--text-muted); }
+
+/* Phones: one writer at a time, with lettered tabs and previous/next. */
+.wa-pager { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 6px; margin-bottom: 4px; }
+.wa-pager button { min-height: 44px; padding: 6px 12px; border: 1px solid var(--border-strong); background: transparent; color: var(--text-primary); font-size: .84rem; font-weight: 700; cursor: pointer; }
+.wa-pager-tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.wa-pager-tabs button { flex: 1 0 44px; padding: 6px 4px; }
+.wa-pager-tabs button[aria-selected='true'] { border-color: var(--surface-inverse); background: var(--surface-inverse); color: var(--text-inverse); }
+:root[data-theme='dark'] .wa-pager-tabs button[aria-selected='true'] { border-color: var(--mint-300); background: var(--mint-300); color: var(--navy-950); }
+.wa-count { margin: 6px 0 10px; color: var(--text-muted); font-family: var(--mono-font); font-size: .74rem; }
+
+.wa-notes { max-width: 78ch; margin-top: 44px; color: var(--text-secondary); line-height: 1.65; }
+.wa-notes h2 { margin: 0 0 12px; color: var(--text-primary); font-family: var(--display-font); font-size: 1.6rem; font-weight: 400; }
+.wa-notes h3 { margin: 22px 0 8px; color: var(--text-primary); font-family: var(--display-font); font-size: 1.15rem; font-weight: 400; }
+.wa-tally, .wa-settings ul { padding-left: 1.2em; }
+.wa-clear { min-height: 40px; padding: 4px 12px; border: 1px solid var(--border-strong); background: transparent; color: var(--text-primary); font-weight: 700; cursor: pointer; }
+.wa-settings { margin-top: 18px; }
+.wa-settings summary { min-height: 44px; padding: 10px 0; color: var(--text-primary); font-weight: 700; cursor: pointer; }
+.wa :focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+@media (max-width: 999px) {
+  .wa { padding-top: 24px; }
+  .wa-tabs { flex-wrap: nowrap; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .wa-tabs a { flex: 0 0 auto; }
+  .wa-pane-head { top: 56px; }
+}

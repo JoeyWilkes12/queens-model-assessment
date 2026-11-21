@@ -16,7 +16,7 @@ import { gzipSync } from 'node:zlib'
 /** Gzip bytes allowed for the JavaScript every route downloads first. PR #14 brought it to about 128 kB. */
 export const ENTRY_JS_BUDGET_GZIP = 135_000
 /** Chunks that must never be part of the entry: chapters with their own route, and evidence views below the fold. */
-export const MUST_STAY_LAZY = ['Z3Part', 'LocalQwen', 'ReceiptChainNavigation', 'SubQAssessment', 'OllamaComparison']
+export const MUST_STAY_LAZY = ['Z3Part', 'WritingArena', 'LocalQwen', 'ReceiptChainNavigation', 'SubQAssessment', 'OllamaComparison']
 
 const dist = process.argv[2] || 'dist'
 const indexPath = join(dist, 'index.html')
