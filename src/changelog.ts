@@ -28,6 +28,25 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-09',
+    title: 'Archived the November 9 local assessment receipts',
+    kinds: ['evidence'],
+    pr: 25,
+    changes: [
+      'The November 9 archive contains 835 recorded assessment and audit calls across 27 studies, plus 38 separate rescue calls. The local assessment pages still show the November 6 snapshot at this stage.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Incomplete open-weight coverage in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    pr: 20,
+    changes: [
+      'Added a separate progress view for incomplete studies, with recorded outcomes and unrecorded calls shown against each frozen plan.',
+      'Shows the unfinished GPT-OSS 20B Fresh2 text-grid panel separately from the superseded original-budget runs. Completed Qwen 27B Fresh1 images appear in completed coverage.',
+    ],
+  },
+  {
     date: '2026-11-06',
     title: 'Incomplete open-weight coverage in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
