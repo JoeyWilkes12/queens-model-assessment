@@ -34,6 +34,7 @@ export const chapters = {
   trajectories: loader(() => import('./JevTrajectories')),
   atlas: loader(() => import('./EvidenceAtlas')),
   sources: loader(() => import('./MethodsSources')),
+  aboutModels: loader(() => import('./AboutModels')),
   about: loader(() => import('./AboutPage')),
   contents: loader(() => import('./ContentsPage')),
   changelog: loader(() => import('./ChangelogPage')),
@@ -65,6 +66,7 @@ export const EarlierGenerations = named(chapters.earlier, 'EarlierGenerations')
 export const JevTrajectories = named(chapters.trajectories, 'JevTrajectories')
 export const EvidenceExplorer = named(chapters.atlas, 'EvidenceExplorer')
 export const MethodsSources = named(chapters.sources, 'MethodsSources')
+export const AboutModels = lazy(chapters.aboutModels)
 export const AboutPage = named(chapters.about, 'AboutPage')
 export const ContentsPage = named(chapters.contents, 'ContentsPage')
 export const ChangelogPage = named(chapters.changelog, 'ChangelogPage')
@@ -92,6 +94,7 @@ const ROUTE_CHAPTERS: Record<string, (() => Promise<unknown>)[]> = {
   'evidence-atlas': [chapters.atlas],
   'board-receipts': [chapters.boardReceipts],
   'methods-sources': [chapters.sources],
+  'about-models': [chapters.aboutModels],
   about: [chapters.about],
   contents: [chapters.contents],
   changelog: [chapters.changelog],
