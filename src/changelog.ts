@@ -79,6 +79,17 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
+    date: '2026-11-06',
+    title: 'Navigation guide for AI readers and open crawler access',
+    kinds: ['interface'],
+    pr: 22,
+    changes: [
+      'Added llms.txt with links to the book’s main chapters, evidence, methods and publication history.',
+      'Added a permissive robots.txt welcoming all crawlers, including AI crawlers; crawler policy must be served from the host root to take effect.',
+      'Linked llms.txt in the shared footer on every page and removed the edition label.',
+    ],
+  },
+  {
     date: '2026-11-05',
     title: 'Every page loads with its route',
     kinds: ['interface'],
