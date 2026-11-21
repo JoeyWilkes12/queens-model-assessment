@@ -145,3 +145,11 @@ Limits that remain: fresh2 is a public twelve-board set, each cell is still one 
 5. **Add boards, not arms.** A third and fourth disjoint set, chosen by the existing rule and frozen with a written analysis like the one above, is worth more than another prompt variant. Sixty boards per contrast is the scale at which a moderate effect becomes visible.
 6. **Keep the loop detector in shadow mode** and stop describing its flags as loops.
 7. **Record the commit at call time.** The hash table works, but a contemporaneous commit in each receipt would remove the backfill caveat for future studies.
+
+## Interpretation after the Fresh2 runs, 20 November 2026
+
+The original analysis was fixed on 11 November. Fresh1 supplied the predictions, and Fresh2 supplied the subsequent observations.
+
+On Fresh2, three Gemma boards had a strict baseline answer and a failed Caveman answer. None showed the reverse. This repeats the predicted direction on new boards (exact two-sided sign test, p = 0.25). Pooling in Fresh1's four baseline-only boards gives seven to zero and meets the plan's nominal threshold (p = 0.015625). That pooled result includes the boards that suggested the prediction. The evidence for replication on Fresh2 alone is the three-to-zero split.
+
+The pooled GPT-OSS comparison has 25 medium-only and 13 high-only strict answers (p = 0.073 under the fixed call-level calculation). The 96 pairs span 24 boards, each reused across four prompt arms. Dependence among arms limits how much independent evidence the call-level test represents. The Fresh2 prediction concerned strict counts and cut-offs. It holds for this configuration: 31 strict answers and nine cut-offs at medium effort, against 25 and 23 at high effort.
