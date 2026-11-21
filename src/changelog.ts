@@ -48,6 +48,17 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
+    date: '2026-11-11',
+    title: 'About the models',
+    kinds: ['chapter'],
+    pr: 27,
+    changes: [
+      'Added #/about-models under Start here: background on every assessed model (lab, release, lineage, size, inputs, context, licence and reasoning controls), with each fact linked to its primary source. No scores are restated; each entry links to its results.',
+      'Local open-weight models come first: Qwen3.5 4B, 9B and 27B, Gemma 4 E4B, LLaVA-Llama3 8B and gpt-oss 20B, with the exact Ollama build and digest from the receipts and a primer on open weights, Q4_K_M, NVFP4/MXFP4, MLX versus llama.cpp/GGUF and Ollama tags.',
+      'Hosted models are grouped by lab (19 OpenRouter models from Anthropic, OpenAI, Google and xAI), followed by Jev 1.13, SubQ Snap, the greedy rule and Z3. Linked from the local assessments intro and the About page.',
+    ],
+  },
+  {
     date: '2026-11-09',
     title: 'Archived the November 9 local assessment receipts',
     kinds: ['evidence'],
@@ -78,6 +89,16 @@ export const CHANGELOG: ChangeEntry[] = [
   },
   {
     date: '2026-11-06',
+    title: 'Validate local assessment results and receipt navigation',
+    kinds: ['fix'],
+    pr: 23,
+    changes: [
+      'Local assessments and the completed open-weight leaderboard now reject inconsistent saved study counts, outcomes or receipt links.',
+      'Added browser checks for the cross-study Caveman comparison, the original 4B pilot and the publication history.',
+    ],
+  },
+  {
+    date: '2026-11-06',
     title: 'November 5–6 local assessments and the Fresh2 panel',
     kinds: ['evidence', 'chapter', 'method'],
     pr: 18,
@@ -85,6 +106,17 @@ export const CHANGELOG: ChangeEntry[] = [
       'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
       'Completed Qwen 27B Fresh1 images at 43/48 strict and Qwen 9B Fresh2 images at 43/48 strict. GPT-OSS 20B Fresh2 text grids have 18/48 recorded.',
       'Added matched input and decoding comparisons and a request-latency table. The November 6 snapshot adds 73 receipts since November 5, bringing coverage to 25 conditions, 709 assessment and audit receipts and 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Navigation guide for AI readers and open crawler access',
+    kinds: ['interface'],
+    pr: 22,
+    changes: [
+      'Added llms.txt with links to the book’s main chapters, evidence, methods and publication history.',
+      'Added a permissive robots.txt welcoming all crawlers, including AI crawlers; crawler policy must be served from the host root to take effect.',
+      'Linked llms.txt in the shared footer on every page and removed the edition label.',
     ],
   },
   {
