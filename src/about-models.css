@@ -1,0 +1,27 @@
+/* About the models (#/about-models): square cards with a label/value fact list. Tokens come from styles.css,
+   so light and dark themes follow automatically. */
+.about-models .am-cards { display: grid; gap: 18px; margin-top: 22px; }
+.about-models .am-family { margin: 32px 0 0; font-family: var(--display-font); font-size: 1.2rem; }
+.am-card { min-width: 0; padding: 18px 20px; border: 1px solid var(--border-subtle); border-left: 4px solid var(--mint-700); background: var(--surface-raised); scroll-margin-top: 24px; }
+.am-card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 8px; }
+.am-card-head h3 { margin: 0; font-family: var(--display-font); font-size: 1.25rem; }
+.am-card-lab { margin: 0; color: var(--text-muted); font-size: .86rem; font-weight: 700; letter-spacing: .02em; }
+.am-card p { overflow-wrap: anywhere; }
+.am-facts { display: grid; gap: 0; margin: 14px 0 0; border-top: 1px solid var(--border-subtle); }
+.am-facts > div { display: grid; grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr); gap: 4px 16px; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
+.am-facts dt { color: var(--text-muted); font-size: .76rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.am-facts dd { margin: 0; min-width: 0; font-size: .92rem; overflow-wrap: anywhere; }
+.am-srcs { color: var(--text-muted); font-size: .8rem; }
+.am-src { color: var(--link-evidence); }
+.am-results { margin: 14px 0 0; font-size: .9rem; }
+.am-results span { color: var(--text-muted); font-weight: 700; }
+.am-primer { display: grid; gap: 10px; margin: 0; }
+.am-primer dt { font-weight: 700; }
+.am-primer dd { margin: 2px 0 0; overflow-wrap: anywhere; }
+.about-models .data-table code { font-size: .78rem; white-space: nowrap; }
+@media (max-width: 560px) {
+  .am-card { padding: 14px 14px; }
+  .am-facts > div { grid-template-columns: minmax(0, 1fr); }
+}
+.am-card:focus { outline: none; }
+.am-card:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 4px; }
