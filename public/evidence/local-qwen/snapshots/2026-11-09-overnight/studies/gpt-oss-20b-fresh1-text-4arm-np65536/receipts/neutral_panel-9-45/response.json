@@ -1,0 +1,6 @@
+{
+  "error": {
+    "type": "stream_error",
+    "message": "prediction aborted, token repeat limit reached"
+  }
+}
