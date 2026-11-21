@@ -29,22 +29,22 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-06',
-    title: 'Validate local assessment results and receipt navigation',
-    kinds: ['fix'],
-    pr: 23,
-    changes: [
-      'Local assessments and the completed open-weight leaderboard now reject inconsistent saved study counts, outcomes or receipt links.',
-      'Added browser checks for the cross-study Caveman comparison, the original 4B pilot and the publication history.',
-    ],
-  },
-  {
-    date: '2026-11-06',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
     pr: 19,
     changes: [
       'Added a completed open-weight view to the Executive Summary leaderboard with model, board-panel and board-size filters.',
       'The November 6 catalog includes completed Qwen 9B Fresh2 and Qwen 27B Fresh1 image studies. Selected rerun audits remain separate.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Validate local assessment results and receipt navigation',
+    kinds: ['fix'],
+    pr: 23,
+    changes: [
+      'Local assessments and the completed open-weight leaderboard now reject inconsistent saved study counts, outcomes or receipt links.',
+      'Added browser checks for the cross-study Caveman comparison, the original 4B pilot and the publication history.',
     ],
   },
   {
