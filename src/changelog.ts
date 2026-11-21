@@ -28,22 +28,23 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-11',
+    title: 'About the models',
+    kinds: ['chapter'],
+    pr: 27,
+    changes: [
+      'Added #/about-models under Start here: background on every assessed model (lab, release, lineage, size, inputs, context, licence and reasoning controls), with each fact linked to its primary source. No scores are restated; each entry links to its results.',
+      'Local open-weight models come first: Qwen3.5 4B, 9B and 27B, Gemma 4 E4B, LLaVA-Llama3 8B and gpt-oss 20B, with the exact Ollama build and digest from the receipts and a primer on open weights, Q4_K_M, NVFP4/MXFP4, MLX versus llama.cpp/GGUF and Ollama tags.',
+      'Hosted models are grouped by lab (19 OpenRouter models from Anthropic, OpenAI, Google and xAI), followed by Jev 1.13, SubQ Snap, the greedy rule and Z3. Linked from the local assessments intro and the About page.',
+    ],
+  },
+  {
     date: '2026-11-09',
     title: 'Archived the November 9 local assessment receipts',
     kinds: ['evidence'],
     pr: 25,
     changes: [
       'The November 9 archive contains 835 recorded assessment and audit calls across 27 studies, plus 38 separate rescue calls. The local assessment pages still show the November 6 snapshot at this stage.',
-    ],
-  },
-  {
-    date: '2026-11-06',
-    title: 'Incomplete open-weight coverage in the Queens leaderboard',
-    kinds: ['chapter', 'interface'],
-    pr: 20,
-    changes: [
-      'Added a separate progress view for incomplete studies, with recorded outcomes and unrecorded calls shown against each frozen plan.',
-      'Shows the unfinished GPT-OSS 20B Fresh2 text-grid panel separately from the superseded original-budget runs. Completed Qwen 27B Fresh1 images appear in completed coverage.',
     ],
   },
   {

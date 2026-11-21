@@ -26,7 +26,7 @@ The visual authority is the authorized [AI Agent Skills Resource Library design 
 
 The persistent book rail is generated from one tree in `src/bookNav.ts`, which also drives the Contents page, the hero breadcrumb and tab titles. It groups pages into front matter, six numbered parts and back matter:
 
-1. Start here: executive summary, assessment receipt and Contents.
+1. Start here: executive summary, assessment receipt, about the models and Contents.
 2. Part I · The puzzle: Queens rules and How Z3 solves Queens (its sections nest under it).
 3. Part II · Frontier language models: protocol and results, one queen at a time, earlier generations.
 4. Part III · Local open-weight models: the assessments chapter, with the original 4B pilot and the Caveman comparison nested under it.
