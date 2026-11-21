@@ -92,7 +92,7 @@ def build(source_root):
             "tasks": tasks, "entries": entries}
 
 
-def verify():
+def verify(require_complete=False):
     """Check that every published file matches the index."""
     index = json.loads((OUT / "index.json").read_text())
     if sha((OUT / index["prompt_template"]).read_bytes()) != index["prompt_template_sha256"]:
@@ -100,22 +100,40 @@ def verify():
     for task in index["tasks"]:
         if sha((OUT / task["source"]).read_bytes()) != task["source_sha256"]:
             raise SystemExit(f"Published source {task['id']} does not match the index")
+    expected = {(task["id"], model["id"]) for task in index["tasks"] for model in index["models"]}
+    seen = set()
+    with_text = capped_empty = 0
     for entry in index["entries"]:
-        if sha((OUT / entry["output"]).read_bytes()) != entry["output_sha256"]:
+        pair = (entry["task"], entry["model"])
+        if pair not in expected or pair in seen:
+            raise SystemExit(f"Unexpected or duplicate writing attempt: {pair}")
+        seen.add(pair)
+        output = (OUT / entry["output"]).read_bytes()
+        if sha(output) != entry["output_sha256"]:
             raise SystemExit(f"Published rewrite {entry['output']} does not match the index")
-    print(json.dumps({"tasks": len(index["tasks"]), "models": len(index["models"]), "rewrites": len(index["entries"]),
-                      "pending": len(index["tasks"]) * len(index["models"]) - len(index["entries"]), "offline": True}))
+        words = len(output.decode().split())
+        if words != entry["words"]:
+            raise SystemExit(f"Word count differs from the published text for {pair}")
+        with_text += words > 0
+        capped_empty += words == 0 and entry["outcome"] == "truncated"
+    missing = expected - seen
+    if require_complete and missing:
+        raise SystemExit(f"Missing writing attempts: {sorted(missing)}")
+    print(json.dumps({"tasks": len(index["tasks"]), "models": len(index["models"]), "attempts": len(seen),
+                      "rewrites_with_text": with_text, "capped_without_text": capped_empty,
+                      "pending": len(missing), "offline": True}))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--source-root", type=pathlib.Path)
     parser.add_argument("--verify", action="store_true")
+    parser.add_argument("--require-complete", action="store_true", help="Require a recorded attempt for every task and model")
     args = parser.parse_args()
     if args.source_root:
         index = build(args.source_root.resolve())
         (OUT / "index.json").write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n")
-    verify()
+    verify(args.require_complete)
 
 
 if __name__ == "__main__":

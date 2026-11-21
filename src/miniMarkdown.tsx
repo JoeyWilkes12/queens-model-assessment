@@ -76,7 +76,8 @@ export function MiniMarkdown({ text }: { text: string }) {
       continue
     }
     if (/^\s*([-*_])\s*\1\s*\1[\s\-*_]*$/.test(line)) { blocks.push(<hr key={key++} />); i++; continue }
-    const paragraph: string[] = []
+    // All recognized blocks have already been handled. Consume the first line even if it starts with a literal pipe.
+    const paragraph: string[] = [lines[i++].trim()]
     for (; i < lines.length && lines[i].trim() && !/^(#{1,6}\s|```|\s*>|\s*\|)/.test(lines[i]) && !bullet.test(lines[i]); i++) paragraph.push(lines[i].trim())
     blocks.push(<p key={key++}>{inline(paragraph.join(' '))}</p>)
   }

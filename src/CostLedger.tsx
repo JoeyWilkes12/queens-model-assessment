@@ -1,5 +1,7 @@
-import { useEffect, useState, type ComponentType, type ReactNode } from 'react'
-import { money } from './BoardReceipts'
+import { type ComponentType, type ReactNode } from 'react'
+import { money } from './format'
+import { SCOREBOARD_FILE } from './evidenceFiles'
+import { useSharedJson } from './sharedJson'
 
 type Ui = {
   Callout: ComponentType<{ tone?: 'note' | 'evidence' | 'caution' | 'stop'; title: string; children: ReactNode }>
@@ -23,18 +25,10 @@ const PANELS = ['2026-10-16-frontier-image-panel', '2026-10-17-earlier-generatio
 /** API cost per evaluation, board, request and model, from scoreboard.json (built from the receipts). */
 export function CostLedger({ ui, compact = false }: { ui: Ui; compact?: boolean }) {
   const { Callout, DataTable } = ui
-  const [costs, setCosts] = useState<Costs | null>(null)
-  const [error, setError] = useState(false)
-  useEffect(() => {
-    const controller = new AbortController()
-    fetch(url('scoreboard.json'), { signal: controller.signal })
-      .then(response => { if (!response.ok) throw new Error('scoreboard'); return response.json() })
-      .then(data => { if (!data.costs) throw new Error('costs'); setCosts(data.costs) })
-      .catch(() => { if (!controller.signal.aborted) setError(true) })
-    return () => controller.abort()
-  }, [])
-  if (error) return <p role="status">The saved cost ledger could not be loaded. No costs are substituted.</p>
-  if (!costs) return <p role="status">Loading the cost ledger…</p>
+  const saved = useSharedJson(SCOREBOARD_FILE)
+  if (saved.status === 'error') return <p role="status">The saved cost ledger could not be loaded. No costs are substituted. <button type="button" className="retry-button" onClick={saved.retry}>Try again</button></p>
+  if (saved.status === 'loading') return <p role="status">Loading the cost ledger…</p>
+  const costs = saved.data.costs as unknown as Costs
 
   const solved = (row: Evaluation) => row.boards_solved === null ? '—' : `${row.boards_solved}/${row.boards_graded}`
   // An unknown cost makes the total and per-solved figures lower bounds; say so instead of printing them as exact.

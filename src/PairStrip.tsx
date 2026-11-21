@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { useSavedOllamaStudy, type ResultRow, type Treatment } from './ollamaEvidence'
+import { useNearViewport } from './useNearViewport'
 
 const ARMS: [Treatment, string][] = [['baseline', 'Plain'], ['caveman', 'Caveman']]
 const SOLVED = ['strict', 'format_only']
@@ -14,6 +15,12 @@ function Crown() {
 /** The local pilot board by board, for both prompts, graded as the leaderboard grades it: a right answer in the
     wrong format still counts, drawn striped. Draws nothing it cannot match to a saved row. */
 export function PairStrip() {
+  // It sits in a closed disclosure on the summary: load the pilot's saved results only once it is opened.
+  const [ref, near] = useNearViewport<HTMLDivElement>('200px')
+  return <div ref={ref}>{near ? <LoadedPairStrip /> : <p role="status">Loading the local results…</p>}</div>
+}
+
+function LoadedPairStrip() {
   const saved = useSavedOllamaStudy()
   if (saved.status === 'loading') return <p role="status">Loading the local results…</p>
   if (saved.status === 'error') return <p role="status">The local results could not load, so none are shown.</p>

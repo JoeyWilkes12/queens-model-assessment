@@ -85,7 +85,7 @@ export const BOOK_PARTS: NavPart[] = [
             ],
           },
           { path: 'caveman-summary', title: 'Caveman comparison', description: 'Matched outcomes, token use and estimated cost across local studies, with the original 4B pilot.' },
-          { path: 'writing-arena', title: 'Writing arena', description: 'The same five pages rewritten by each local model, side by side with names hidden.' },
+          { path: 'writing-arena', title: 'Writing arena', description: 'Compare model rewrites of five frozen book pages with writer names hidden.' },
         ],
       },
     ],
@@ -189,6 +189,14 @@ const capital = (word: string) => word.charAt(0).toUpperCase() + word.slice(1)
  */
 export function crumbsFor(path: string, fallbackLabel?: string): Crumb[] {
   const root: Crumb = { label: 'Queens assessment', href: '#/contents' }
+  // The Contents page is the book's map, the level every other trail starts from: `contents/<part>` is that
+  // page scrolled to one part, not a page below it.
+  if (path === 'contents' || path.startsWith('contents/')) {
+    const part = BOOK_PARTS.find(candidate => candidate.id === path.split('/')[1])
+    return part
+      ? [{ label: root.label }, { label: 'Contents', href: '#/contents' }, { label: part.label ? `${part.label} · ${part.title}` : part.title, current: true }]
+      : [{ label: root.label }, { label: 'Contents', current: true }]
+  }
   const found = entryFor(path)
   if (!found) return [root, { label: fallbackLabel || 'Page', current: true }]
   // An in-page section belongs to its parent page; the trail stops there.

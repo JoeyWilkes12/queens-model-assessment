@@ -28,14 +28,24 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
-    date: '2026-11-13',
+    date: '2026-11-20',
     title: 'Writing arena for the local models',
-    kinds: ['chapter', 'interface'],
+    kinds: ['chapter', 'interface', 'evidence'],
     pr: 31,
     changes: [
-      'Added #/writing-arena under Local open-weight models. Each local model rewrites the same five book pages once from one fixed instruction; the rewrites sit beside the published page.',
-      'On a desktop two or three writers show side by side with a picker per pane; on a phone one writer shows at a time with lettered tabs and previous/next. Names are hidden until you choose to show them, and you can mark the version you prefer on each page.',
-      'Rewrites are published as they came back, with no retry and no editing. Pages not yet run are marked as waiting; the nightly job adds them.',
+      'At #/writing-arena, compare five pages frozen on November 13 with the text six local models produced from the same instruction.',
+      'Of 30 attempts, 28 returned rewrites. Two reached the token limit before returning any page text.',
+      'Compare writers side by side on desktop or switch between them on a phone. Reveal their names or save your preferred version in this browser.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Incomplete open-weight coverage in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    pr: 20,
+    changes: [
+      'Added a separate progress view for incomplete studies, with recorded outcomes and unrecorded calls shown against each frozen plan.',
+      'Shows the unfinished GPT-OSS 20B Fresh2 text-grid panel separately from the superseded original-budget runs. Completed Qwen 27B Fresh1 images appear in completed coverage.',
     ],
   },
   {
@@ -60,13 +70,14 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
-    date: '2026-11-06',
-    title: 'Caveman comparison across local studies',
-    kinds: ['chapter', 'method'],
-    pr: 16,
+    date: '2026-11-05',
+    title: 'Every page loads with its route',
+    kinds: ['interface'],
+    pr: 21,
     changes: [
-      'Expanded #/caveman-summary to show matched strict outcomes, format recovery and saved hosted-cost scenarios across separate local study conditions.',
-      'Preserved the original 4B pilot at #/caveman-summary/pilot and linked the expanded local assessment chapter.',
+      'Every page except the executive summary now loads with its own route, so the first visit downloads about a quarter less JavaScript than before (94 kB instead of 127 kB, compressed). In a slow-4G lab test, the summary, the local chapter and the atlas each showed their main content 0.14–0.27 s sooner. Links in the sidebar and the contents start loading a page on hover, focus or touch.',
+      'Opening the evidence atlas directly starts downloading its catalog and costs as soon as the book’s code has loaded, alongside the atlas’s own code. The atlas keeps its heading in place while it loads, and its rows appear with their costs instead of growing a cost line afterwards.',
+      'Nothing on the pages changed: every book page and several hundred linked pages were compared with the previous version.',
     ],
   },
   {
@@ -87,6 +98,38 @@ export const CHANGELOG: ChangeEntry[] = [
       'Completed the Qwen 4B fresh image panel with 16 strict answers in 48 calls.',
       'Added GPT-OSS 20B on text grids with 23/48 strict and the first eight Qwen 9B text-grid calls, all strict, with 40 calls pending.',
       'Added text-grid receipt links and updated local coverage to 21 conditions and 531 assessment and audit receipts, plus 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Caveman results across local studies',
+    kinds: ['chapter'],
+    pr: 16,
+    changes: [
+      'The Caveman chapter now compares strict answers, format recovery and estimated spend across the local studies, with separate round charts for Qwen 9B and 27B rather than pooling repeated boards.',
+      'The original 4B pilot analysis moved to its own page under the chapter; existing receipt and configuration links still open.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Contents breadcrumb and phone section jumps',
+    kinds: ['fix'],
+    pr: 15,
+    changes: [
+      'Contents opened at a part now reads “Queens assessment / Contents / Start here” instead of treating the part as a page below Contents.',
+      'On phones, jumping to a section no longer hides its heading under the sticky top bar.',
+    ],
+  },
+  {
+    date: '2026-11-02',
+    title: 'Faster, steadier loading',
+    kinds: ['interface'],
+    pr: 14,
+    changes: [
+      'The local open-weight chapter no longer jumps while it loads: loading pages keep the chapter’s own heading and a full-height body (mobile layout shift 0.27 → 0 in a slow-4G lab test).',
+      'Files read by several views, such as the scoreboard and the saved tariffs, are fetched once per page and can be retried after a failure.',
+      'Chapters load with their own page, so the first visit downloads about a third less JavaScript. Sidebar links start loading a chapter on hover or touch.',
+      'The summary’s replays and the local pair strip fetch their evidence only when they are about to be seen. Ctrl or ⌘ + P loads the replays before printing; printing from the browser menu before they load prints a list of the recorded attempts with links.',
     ],
   },
   {

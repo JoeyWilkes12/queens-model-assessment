@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import './z3.css'
+import { Z3_HERO } from '../routeHeroes'
 import { Chapter1 } from './Chapter1'
 import { Chapter2 } from './Chapter2'
 import { Chapter3 } from './Chapter3'
@@ -79,7 +80,7 @@ export default function Z3Part({ ui, section }: { ui: BookUi; section?: string }
     return () => window.cancelAnimationFrame(frame)
   }, [section, state.status])
   return <>
-    <PageHero trail="The board / how Z3 solves Queens" title="How Z3 solves Queens" deck="Ten short chapters on the mathematics a solver uses on the book’s 7×7 board: propositions, clauses, propagation, conflict-driven learning, a matching theorem, a proof of uniqueness, and a workbench for changing the rules. Figures distinguish recorded runs, checked encodings and labelled illustrations; the workbench computes in this page and says so." action={{ label: 'Read the explanation', scrollTo: 'z3-variables' }} />
+    <PageHero {...Z3_HERO} />
     <div className="reading-layout">
       <LocalToc items={CHAPTERS} />
       <main className="reading-column z3-part" id="main-content">
