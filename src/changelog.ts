@@ -29,6 +29,15 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-11',
+    title: 'Scientific review of local open-weight assessments',
+    kinds: ['method'],
+    pr: 26,
+    changes: [
+      'Reviewed the November 9 archive and specified four Fresh2 replication criteria before the runs. A dated follow-up explains how the discovery boards and repeated prompt arms affect the pooled tests.',
+    ],
+  },
+  {
+    date: '2026-11-11',
     title: 'About the models',
     kinds: ['chapter'],
     pr: 27,
