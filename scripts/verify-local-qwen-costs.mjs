@@ -66,6 +66,7 @@ for (const [label, corrupt] of [
   ['unknown state', (study, row) => { row.state = 'broken' }],
   ['recorded call without evidence', (study, row) => { row.receipt = null }],
   ['contradictory outcomes', (study, row) => { row.format_only_correct = true }],
+  ['contradictory finish reasons', (study, row) => { row.truncated = true; row.loop_stopped = true }],
   ['missing peer', (study, row) => { row.peer_call_ids = [] }],
   ['duplicate peer', (study, row) => { row.peer_call_ids.push(row.peer_call_ids[0]) }],
   ['wrong recorded count', study => { study.recorded-- }],
@@ -75,6 +76,19 @@ for (const [label, corrupt] of [
   const study = bad.studies.find(study => study.id === 'qwen3.5-4b-pilot')
   corrupt(study, study.rows.find(row => row.call_id === 'baseline_panel-5-18'))
   assert.equal(isLocalIndex(bad), false, label)
+}
+// The final token can complete a correct answer, including one recoverable only after extraction.
+for (const [grade, finish] of [['strict_correct', 'truncated'], ['format_only_correct', 'loop_stopped']]) {
+  const catalog = structuredClone(index)
+  const row = catalog.studies[0].rows.find(row => row.state === 'recorded')
+  Object.assign(row, { strict_correct: false, format_only_correct: false, truncated: false, loop_stopped: false, [grade]: true, [finish]: true })
+  assert.equal(isLocalIndex(catalog), true, `recorded row with ${grade} and ${finish}`)
+}
+for (const flag of ['strict_correct', 'format_only_correct', 'truncated', 'loop_stopped']) {
+  const catalog = structuredClone(index)
+  const partial = catalog.studies.find(study => study.rows.some(row => row.state === 'pending'))
+  partial.rows.find(row => row.state === 'pending')[flag] = true
+  assert.equal(isLocalIndex(catalog), false, `pending row with ${flag}`)
 }
 for (const name of fs.readdirSync(new URL('../public/evidence/local-qwen/snapshots/',import.meta.url))) {
  const catalog=JSON.parse(fs.readFileSync(new URL(`../public/evidence/local-qwen/snapshots/${name}/catalog.json`,import.meta.url)))

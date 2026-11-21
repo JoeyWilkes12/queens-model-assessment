@@ -36,6 +36,12 @@ function hasExactPeers(study: LocalStudy, row: LocalRow) {
   return ids.size === row.peer_call_ids.length && ids.size === expected.length && expected.every(peer => ids.has(peer.call_id))
 }
 
+/** Grades and finish reasons are independent. A valid answer can arrive at the token cap. */
+function hasConsistentOutcomes(row: LocalRow) {
+  if (row.state === 'pending') return !(row.strict_correct || row.format_only_correct || row.truncated || row.loop_stopped)
+  return !(row.strict_correct && row.format_only_correct) && !(row.truncated && row.loop_stopped)
+}
+
 /** Validate the display contract independently of the stricter offline receipt audit. */
 export function isLocalIndex(value: unknown): value is LocalIndex {
   if (!value || typeof value !== 'object') return false
@@ -63,7 +69,7 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
         && ['baseline', 'schema', 'neutral', 'caveman'].includes(r.treatment) && ['recorded', 'pending'].includes(r.state) && optional(r.input_tokens) && optional(r.output_tokens)
         && (r.elapsed_seconds === null || (typeof r.elapsed_seconds === 'number' && Number.isFinite(r.elapsed_seconds) && r.elapsed_seconds >= 0))
         && ['strict_correct', 'format_only_correct', 'truncated', 'loop_stopped', 'pair_verified'].every(k => typeof r[k as keyof LocalRow] === 'boolean')
-        && [r.strict_correct, r.format_only_correct, r.truncated, r.loop_stopped].filter(Boolean).length <= Number(r.state === 'recorded')
+        && hasConsistentOutcomes(r)
         && (data.schema_version !== 3 || (hasExactPeers(s, r) && !!s.arms?.[r.treatment]))
         && (r.state === 'recorded' ? path(r.receipt) : r.receipt === null) && (s.protocol?.modality === 'text' ? r.image === null : path(r.image))
         && (r.audit === undefined || r.audit === null || (path(r.audit.source_receipt) && typeof r.audit.source_call_id === 'string'

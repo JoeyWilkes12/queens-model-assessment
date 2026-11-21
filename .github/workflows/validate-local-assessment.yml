@@ -29,7 +29,8 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    # The locked Playwright release ships Chromium dependencies for Ubuntu 24.04.
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
