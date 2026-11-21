@@ -1,0 +1,710 @@
+[
+ {
+  "label": "before-final",
+  "round": 1,
+  "profile": "desktop",
+  "route": "home",
+  "lcpMs": 204,
+  "cls": 0.0099,
+  "shifts": [
+   {
+    "t": 234,
+    "v": 0.0099,
+    "nodes": [
+     "receipt"
+    ]
+   }
+  ],
+  "primaryReadyMs": 281.60000000009313,
+  "requestCount": 17,
+  "transferBytes": 305415,
+  "jsBytes": 181252,
+  "jsonBytes": 93883,
+  "duplicates": [
+   "evidence/scoreboard.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/leaderboard.json",
+   "evidence/ollama/summary.json",
+   "evidence/scoreboard.json",
+   "evidence/scoreboard.json",
+   "evidence/trajectory-study.json",
+   "evidence/subq-trajectories-summary.json",
+   "evidence/subq-trajectories-protocol.json",
+   "evidence/ollama/skill.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 1,
+  "profile": "desktop",
+  "route": "local-qwen",
+  "lcpMs": 212,
+  "cls": 0.0893,
+  "shifts": [
+   {
+    "t": 120,
+    "v": 0.0254,
+    "nodes": [
+     "site-footer"
+    ]
+   },
+   {
+    "t": 190,
+    "v": 0.0639,
+    "nodes": [
+     "site-footer"
+    ]
+   }
+  ],
+  "primaryReadyMs": 234.30000000004657,
+  "requestCount": 8,
+  "transferBytes": 280152,
+  "jsBytes": 198970,
+  "jsonBytes": 59341,
+  "duplicates": [
+   "evidence/local-qwen-pricing.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "assets/LocalQwen-DBJC4czI.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 1,
+  "profile": "desktop",
+  "route": "atlas",
+  "lcpMs": 128,
+  "cls": 0.0005,
+  "shifts": [
+   {
+    "t": 379,
+    "v": 0.0005,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 383.30000000004657,
+  "requestCount": 5,
+  "transferBytes": 571848,
+  "jsBytes": 181252,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 1,
+  "profile": "mobile-slow4g",
+  "route": "home",
+  "lcpMs": 1752,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 2296.6999999999534,
+  "requestCount": 17,
+  "transferBytes": 305415,
+  "jsBytes": 181252,
+  "jsonBytes": 93883,
+  "duplicates": [
+   "evidence/scoreboard.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/leaderboard.json",
+   "evidence/ollama/summary.json",
+   "evidence/scoreboard.json",
+   "evidence/scoreboard.json",
+   "evidence/trajectory-study.json",
+   "evidence/subq-trajectories-summary.json",
+   "evidence/subq-trajectories-protocol.json",
+   "evidence/ollama/skill.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 1,
+  "profile": "mobile-slow4g",
+  "route": "local-qwen",
+  "lcpMs": 2784,
+  "cls": 0.2676,
+  "shifts": [
+   {
+    "t": 1841,
+    "v": 0.1159,
+    "nodes": [
+     "site-footer"
+    ]
+   },
+   {
+    "t": 2728,
+    "v": 0.1517,
+    "nodes": [
+     "site-footer"
+    ]
+   }
+  ],
+  "primaryReadyMs": 3154.1999999999534,
+  "requestCount": 8,
+  "transferBytes": 280152,
+  "jsBytes": 198970,
+  "jsonBytes": 59341,
+  "duplicates": [
+   "evidence/local-qwen-pricing.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "assets/LocalQwen-DBJC4czI.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 1,
+  "profile": "mobile-slow4g",
+  "route": "atlas",
+  "lcpMs": 1728,
+  "cls": 0.0128,
+  "shifts": [
+   {
+    "t": 4388,
+    "v": 0.0128,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 4411.100000000093,
+  "requestCount": 5,
+  "transferBytes": 571848,
+  "jsBytes": 181252,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 2,
+  "profile": "desktop",
+  "route": "home",
+  "lcpMs": 192,
+  "cls": 0.0099,
+  "shifts": [
+   {
+    "t": 227,
+    "v": 0.0099,
+    "nodes": [
+     "receipt"
+    ]
+   }
+  ],
+  "primaryReadyMs": 272,
+  "requestCount": 17,
+  "transferBytes": 305415,
+  "jsBytes": 181252,
+  "jsonBytes": 93883,
+  "duplicates": [
+   "evidence/scoreboard.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/leaderboard.json",
+   "evidence/ollama/summary.json",
+   "evidence/scoreboard.json",
+   "evidence/scoreboard.json",
+   "evidence/trajectory-study.json",
+   "evidence/subq-trajectories-summary.json",
+   "evidence/subq-trajectories-protocol.json",
+   "evidence/ollama/skill.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 2,
+  "profile": "desktop",
+  "route": "local-qwen",
+  "lcpMs": 224,
+  "cls": 0.0893,
+  "shifts": [
+   {
+    "t": 122,
+    "v": 0.0254,
+    "nodes": [
+     "site-footer"
+    ]
+   },
+   {
+    "t": 201,
+    "v": 0.0639,
+    "nodes": [
+     "site-footer"
+    ]
+   }
+  ],
+  "primaryReadyMs": 247,
+  "requestCount": 8,
+  "transferBytes": 280152,
+  "jsBytes": 198970,
+  "jsonBytes": 59341,
+  "duplicates": [
+   "evidence/local-qwen-pricing.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "assets/LocalQwen-DBJC4czI.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 2,
+  "profile": "desktop",
+  "route": "atlas",
+  "lcpMs": 160,
+  "cls": 0.0005,
+  "shifts": [
+   {
+    "t": 345,
+    "v": 0.0005,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 348.9000000001397,
+  "requestCount": 5,
+  "transferBytes": 571848,
+  "jsBytes": 181252,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 2,
+  "profile": "mobile-slow4g",
+  "route": "home",
+  "lcpMs": 1872,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 2389.4000000001397,
+  "requestCount": 17,
+  "transferBytes": 305415,
+  "jsBytes": 181252,
+  "jsonBytes": 93883,
+  "duplicates": [
+   "evidence/scoreboard.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/leaderboard.json",
+   "evidence/ollama/summary.json",
+   "evidence/scoreboard.json",
+   "evidence/scoreboard.json",
+   "evidence/trajectory-study.json",
+   "evidence/subq-trajectories-summary.json",
+   "evidence/subq-trajectories-protocol.json",
+   "evidence/ollama/skill.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 2,
+  "profile": "mobile-slow4g",
+  "route": "local-qwen",
+  "lcpMs": 2616,
+  "cls": 0.2676,
+  "shifts": [
+   {
+    "t": 1819,
+    "v": 0.1159,
+    "nodes": [
+     "site-footer"
+    ]
+   },
+   {
+    "t": 2579,
+    "v": 0.1517,
+    "nodes": [
+     "site-footer"
+    ]
+   }
+  ],
+  "primaryReadyMs": 2988.5,
+  "requestCount": 8,
+  "transferBytes": 280152,
+  "jsBytes": 198970,
+  "jsonBytes": 59341,
+  "duplicates": [
+   "evidence/local-qwen-pricing.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "assets/LocalQwen-DBJC4czI.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 2,
+  "profile": "mobile-slow4g",
+  "route": "atlas",
+  "lcpMs": 1660,
+  "cls": 0.0128,
+  "shifts": [
+   {
+    "t": 4265,
+    "v": 0.0128,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 4282,
+  "requestCount": 5,
+  "transferBytes": 571848,
+  "jsBytes": 181252,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 3,
+  "profile": "desktop",
+  "route": "home",
+  "lcpMs": 152,
+  "cls": 0.0099,
+  "shifts": [
+   {
+    "t": 184,
+    "v": 0.0099,
+    "nodes": [
+     "receipt"
+    ]
+   }
+  ],
+  "primaryReadyMs": 218.60000000009313,
+  "requestCount": 17,
+  "transferBytes": 305415,
+  "jsBytes": 181252,
+  "jsonBytes": 93883,
+  "duplicates": [
+   "evidence/scoreboard.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/leaderboard.json",
+   "evidence/ollama/summary.json",
+   "evidence/scoreboard.json",
+   "evidence/scoreboard.json",
+   "evidence/trajectory-study.json",
+   "evidence/subq-trajectories-summary.json",
+   "evidence/subq-trajectories-protocol.json",
+   "evidence/ollama/skill.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 3,
+  "profile": "desktop",
+  "route": "local-qwen",
+  "lcpMs": 244,
+  "cls": 0.0893,
+  "shifts": [
+   {
+    "t": 148,
+    "v": 0.0254,
+    "nodes": [
+     "site-footer"
+    ]
+   },
+   {
+    "t": 218,
+    "v": 0.0639,
+    "nodes": [
+     "site-footer"
+    ]
+   }
+  ],
+  "primaryReadyMs": 256.19999999995343,
+  "requestCount": 8,
+  "transferBytes": 280152,
+  "jsBytes": 198970,
+  "jsonBytes": 59341,
+  "duplicates": [
+   "evidence/local-qwen-pricing.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "assets/LocalQwen-DBJC4czI.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 3,
+  "profile": "desktop",
+  "route": "atlas",
+  "lcpMs": 132,
+  "cls": 0.0005,
+  "shifts": [
+   {
+    "t": 364,
+    "v": 0.0005,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 368.10000000009313,
+  "requestCount": 5,
+  "transferBytes": 571848,
+  "jsBytes": 181252,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 3,
+  "profile": "mobile-slow4g",
+  "route": "home",
+  "lcpMs": 1696,
+  "cls": 0,
+  "shifts": [],
+  "primaryReadyMs": 2174.5999999998603,
+  "requestCount": 17,
+  "transferBytes": 305415,
+  "jsBytes": 181252,
+  "jsonBytes": 93883,
+  "duplicates": [
+   "evidence/scoreboard.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/leaderboard.json",
+   "evidence/ollama/summary.json",
+   "evidence/scoreboard.json",
+   "evidence/scoreboard.json",
+   "evidence/trajectory-study.json",
+   "evidence/subq-trajectories-summary.json",
+   "evidence/subq-trajectories-protocol.json",
+   "evidence/ollama/skill.json",
+   "assets/logos/openai.svg",
+   "assets/logos/anthropic.svg",
+   "assets/logos/xai.png",
+   "assets/logos/google-gemini.svg",
+   "assets/logos/subquadratic.svg",
+   "assets/logos/typesafe.png"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 3,
+  "profile": "mobile-slow4g",
+  "route": "local-qwen",
+  "lcpMs": 2560,
+  "cls": 0.2676,
+  "shifts": [
+   {
+    "t": 1782,
+    "v": 0.1159,
+    "nodes": [
+     "site-footer"
+    ]
+   },
+   {
+    "t": 2528,
+    "v": 0.1517,
+    "nodes": [
+     "site-footer"
+    ]
+   }
+  ],
+  "primaryReadyMs": 2853.6999999999534,
+  "requestCount": 8,
+  "transferBytes": 280152,
+  "jsBytes": 198970,
+  "jsonBytes": 59341,
+  "duplicates": [
+   "evidence/local-qwen-pricing.json"
+  ],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "assets/LocalQwen-DBJC4czI.js",
+   "assets/LocalQwen-pfvfZ--p.css",
+   "evidence/local-qwen/index.json",
+   "evidence/local-qwen-pricing.json",
+   "evidence/local-qwen-pricing.json"
+  ]
+ },
+ {
+  "label": "before-final",
+  "round": 3,
+  "profile": "mobile-slow4g",
+  "route": "atlas",
+  "lcpMs": 1716,
+  "cls": 0.0128,
+  "shifts": [
+   {
+    "t": 4360,
+    "v": 0.0128,
+    "nodes": [
+     "#text"
+    ]
+   }
+  ],
+  "primaryReadyMs": 4373.5,
+  "requestCount": 5,
+  "transferBytes": 571848,
+  "jsBytes": 181252,
+  "jsonBytes": 369668,
+  "duplicates": [],
+  "errors": [],
+  "failure": null,
+  "urls": [
+   "",
+   "assets/index-BNO7au3Q.js",
+   "assets/index-C9tdx6mU.css",
+   "evidence/costs/receipts.json",
+   "evidence/manifest.json"
+  ]
+ }
+]
