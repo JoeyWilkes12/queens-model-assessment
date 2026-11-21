@@ -1,5 +1,6 @@
 import { lazy, Suspense, useId, useState, type CSSProperties, type ReactNode } from 'react'
-import { defaultTariff, localArtifact, useLocalStudies, usePricing, type LocalStudy } from './localQwenEvidence'
+import { defaultTariff, localArtifact, useLocalStudies, type LocalStudy } from './localQwenEvidence'
+import { usePricing } from './localPricing'
 import { estimateCohort } from './localQwenMath'
 import { groupCohorts, rank } from './openWeightCohorts'
 import type { BookUi } from './ollamaEvidence'
@@ -47,10 +48,9 @@ const tokens = (budget: number) => `${Math.round(budget / 1024)}k`
 const armCount = (rows: LocalStudy['rows']) => new Set(rows.map(row => row.treatment)).size
 
 /** The settings that tell one cohort from another; everything else waits in the cohort's info bubble. */
-function tags(study: LocalStudy) {
+function protocolTags(study: LocalStudy) {
   const protocol = (study.protocol ?? {}) as Protocol
   return [
-    PANELS[panelOf(study)] ?? study.board_set,
     inputOf(study) === 'text' ? 'text grid' : 'image',
     tokens(study.budget),
     `${armCount(study.rows)} arms`,
@@ -59,9 +59,13 @@ function tags(study: LocalStudy) {
     protocol.think === false && 'no thinking',
     protocol.format && 'JSON schema',
     study.decoding === 'sampling' && `sampling r${study.round}`,
-    study.decoding === 'greedy+ls' && 'loop-stop',
+    study.loop_mode === 'shadow' && 'shadow detection',
+    (study.loop_mode === 'active' || study.decoding === 'greedy+ls') && 'loop-stop',
   ].filter((tag): tag is string => !!tag)
 }
+
+const protocolName = (study: LocalStudy) => protocolTags(study).join(' · ')
+const cohortName = (study: LocalStudy) => `${PANELS[panelOf(study)] ?? panelOf(study)} · ${protocolName(study)}`
 
 /** Every control that defines the cohort, spelled out for the info bubble. */
 function settings(study: LocalStudy): [string, string][] {
@@ -128,7 +132,7 @@ function EntryLine({ entry, place, sort, missing, index }: { entry: Entry; place
 function Cohort({ entries, sort, missing }: { entries: Entry[]; sort: Sort; missing: string }) {
   const id = useId()
   const lead = entries[0]
-  const title = tags(lead.study).join(' · ')
+  const title = cohortName(lead.study)
   const boards = new Set(lead.rows.map(row => row.board_id)).size
   // Lower-bound and missing costs never enter the cost order. Equal conditions mean equal calls,
   // so strict counts compare directly.
@@ -172,7 +176,7 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
   const pricing = usePricing()
   const [sort, setSort] = useState<Sort>('rate')
   const [panel, setPanel] = useState('all')
-  const [input, setInput] = useState('all')
+  const [protocol, setProtocol] = useState('all')
   const [size, setSize] = useState('all')
   const { DataTable } = ui
 
@@ -186,7 +190,8 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
   const audits = complete.filter(study => study.kind === 'audit').map(study => score(study, 'all'))
   const unfinished = saved.data.studies.filter(study => study.kind !== 'audit' && study.recorded < study.planned).length
   const panels = Object.keys(PANELS).filter(key => assessments.some(study => panelOf(study) === key))
-  const inputs = (['image', 'text'] as const).filter(key => assessments.some(study => inputOf(study) === key))
+  const panelStudies = assessments.filter(study => panel === 'all' || panelOf(study) === panel)
+  const protocols = [...new Set(panelStudies.map(protocolName))].sort()
   const sizes = Array.from(new Set(assessments.flatMap(study => study.rows.map(row => row.size)))).sort((a, b) => a - b)
   const rates = pricing.status === 'ready' ? pricing.data.models : []
   const missing = pricing.status === 'ready' ? 'no price saved' : pricing.status === 'loading' ? 'loading prices' : 'prices unavailable'
@@ -199,28 +204,33 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
       ? { cost: estimate.knownPartialCostUsd / estimate.usage.attemptCount, costIsFloor: !estimate.usage.complete }
       : { cost: null, costIsFloor: false }
   }
-  const entries: Entry[] = assessments
-    .filter(study => (panel === 'all' || panelOf(study) === panel) && (input === 'all' || inputOf(study) === input))
+  const entries: Entry[] = panelStudies
+    .filter(study => protocol === 'all' || protocolName(study) === protocol)
     .map(study => score(study, size)).filter(entry => entry.total > 0)
     .map(entry => ({ ...entry, ...price(entry.study, entry.rows) }))
     .sort((a, b) => modelInfo(a.study.model).name.localeCompare(modelInfo(b.study.model).name) || a.study.id.localeCompare(b.study.id))
   // Cohorts with something to rank come first, then by panel and title, so the order never depends on the scores.
   const cohorts = groupCohorts(entries).sort((a, b) => Number(b.length > 1) - Number(a.length > 1)
-    || panels.indexOf(panelOf(a[0].study)) - panels.indexOf(panelOf(b[0].study)) || tags(a[0].study).join().localeCompare(tags(b[0].study).join()))
+    || panels.indexOf(panelOf(a[0].study)) - panels.indexOf(panelOf(b[0].study)) || cohortName(a[0].study).localeCompare(cohortName(b[0].study)))
   const ranked = cohorts.filter(cohort => cohort.length > 1).length
 
   return <div className="ow-leaderboard">
     <div className="lb-controls">
       <Field label="Order within cohort"><Choice label="Order within cohort" value={sort} onChange={setSort} options={[['rate', 'Solve rate'], ['cost', 'Cost per call']]} /></Field>
-      {panels.length > 1 && <Field label="Board panel"><Choice label="Board panel" value={panel} onChange={setPanel} options={[['all', 'All panels'], ...panels.map(key => [key, PANELS[key]] as [string, string])]} /></Field>}
-      {inputs.length > 1 && <Field label="Input"><Choice label="Input" value={input} onChange={setInput} options={[['all', 'All inputs'], ['image', 'Image'], ['text', 'Text grid']]} /></Field>}
+      {panels.length > 1 && <Field label="Board panel"><Choice label="Board panel" value={panel} onChange={next => { setPanel(next); setProtocol('all') }} options={[['all', 'All panels'], ...panels.map(key => [key, PANELS[key]] as [string, string])]} /></Field>}
+      <label className="ow-control"><span className="ow-control-label">Protocol</span>
+        <select value={protocol} onChange={event => setProtocol(event.target.value)}>
+          <option value="all">All protocols</option>
+          {protocols.map(name => <option key={name} value={name}>{name}</option>)}
+        </select>
+      </label>
       <Field label="Board size"><Choice label="Board size" value={size} onChange={setSize} options={[['all', 'All sizes'], ...sizes.map(value => [String(value), `${value}×${value}`] as [string, string])]} /></Field>
     </div>
     <div className="lb-meta">
       <span>{cohorts.length} {cohorts.length === 1 ? 'cohort' : 'cohorts'} · {ranked} with more than one model · {sort === 'cost' ? 'highest exact cost per call first' : 'highest strict solve rate first'}</span>
       <InfoBubble label="How to read these results" wide>
-        <p>Models are ranked only against studies run under the same conditions: the same boards and prompt arms, input (image or text grid), token budget and context, decoding and sampling round, thinking setting, answer-format constraint and loop detector. Each such group is a cohort with its own counts. A study with no match is shown alone, unranked. Places never carry across cohorts, and nothing is pooled.</p>
-        <p>These are fully completed studies on our own computer: {assessments.length} in all. A call is one board, asked once. Per-call timeouts were set for each model’s size and are not matched; each row’s info button lists its own. Unfinished studies and loop-stop audits are listed separately below.</p>
+        <p>Models are ranked only against studies run under the same conditions: the same boards and prompt arms, input (image or text grid), token budget and context, decoding and sampling round, thinking setting, answer-format constraint and loop detector. Each such group is a cohort with its own counts. A study with no match is shown alone, unranked. Repeated studies of the same model are shown separately when a cohort would otherwise count that model twice. Places never carry across cohorts, and nothing is pooled.</p>
+        <p>These are fully completed studies on our own computer: {assessments.length} in all. A call is one board, asked once. When models had different time limits, a comparison requires every call to have finished within the shortest limit. Each row lists its own limit. Unfinished studies and loop-stop audits are listed separately below.</p>
         <p>Cost is not a bill: these models ran on our own computer for no fee. It reprices each study’s recorded tokens at the hosted price saved for its model family on {pricing.status === 'ready' ? pricing.data.checked_utc.slice(0, 10) : '30 October'}, per call. Only the Qwen models have a saved price (the 4B uses a stand-in). Only exact estimates are put in order; a lower bound (some calls have no token counts) or a missing price is listed after the order, never inside it. Electricity and hardware are not counted.</p>
         <p>Not solved includes wrong answers, answers cut off at the token budget, calls the loop detector stopped and recorded transport errors.</p>
       </InfoBubble>

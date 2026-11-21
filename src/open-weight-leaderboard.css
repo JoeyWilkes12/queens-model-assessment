@@ -6,6 +6,7 @@
 .ow-remaining { background: var(--lb-base-bg); }
 
 .ow-control { display: grid; gap: 4px; min-width: 0; }
+.ow-control select { max-width: 100%; min-width: 0; font: inherit; }
 .ow-control-label { color: var(--lb-muted); font-size: .72rem; font-weight: 700; letter-spacing: .02em; }
 
 .ow-cohort { margin-top: 18px; }
