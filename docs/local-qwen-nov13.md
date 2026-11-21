@@ -18,7 +18,7 @@ Sources: [November 13 catalog](../public/evidence/local-qwen/snapshots/2026-11-1
 [file manifest and hashes](../public/evidence/local-qwen/snapshots/2026-11-13-overnight/manifest.json),
 [retained November 12 catalog](../public/evidence/local-qwen/snapshots/2026-11-12-overnight/catalog.json),
 [previous report](local-qwen-nov12.md), and
-[reproducible offline analysis](../.empower/2026-11-13-nov13-night/analyze_night.py).
+[offline checks of arm totals and paired discordances](../scripts/verify-local-qwen-costs.mjs).
 Requests, responses, metadata, grades and diagnostics are linked from each
 catalog study. New snapshot: 6,934 manifest-hashed files, plus the manifest itself.
 No inference or service action was part of this publication.
@@ -42,7 +42,7 @@ separately reported. Earlier studies remain exploratory.
 
 4 of four fixed predictions hold. This is informative prospective agreement across the complete specified set, rather than selecting a successful contrast afterward. Three criteria predict directions; Qwen 4B predicts a ±6 replication band, explicitly not a direction. There is no fixed joint null model, independence assumption or chance-success probability for these mixed criteria; the exact probability of four successes by chance is UNCONFIRMED. Do not interpret the count as four significant effects.
 
-The fixed pooled GPT-OSS accuracy test has discordance 25 medium-only versus 13 high-only, exact two-sided p=0.072951389: no accuracy effect is licensed by the fixed p<0.05 rule. Gemma has seven baseline-only versus zero Caveman-only boards pooled over fresh1/fresh2, p=0.015625: the nominal fixed rule licenses a deficit for these frozen configurations and panels. No general Caveman mechanism is identified. Neither the Qwen 4B replication band nor the Qwen 9B directional rule licenses an accuracy-effect claim. No extra significance threshold or multiplicity correction was introduced.
+The fixed pooled GPT-OSS accuracy test has discordance 25 medium-only versus 13 high-only, exact two-sided p=0.072951389: no accuracy effect is licensed by the fixed p<0.05 rule. Gemma has seven baseline-only versus zero Caveman-only boards pooled over fresh1/fresh2, p=0.015625: this meets the fixed pooled threshold and includes the four Fresh1 baseline-only boards that suggested the prediction. On the prospective Fresh2 panel, three boards favored baseline and none favored Caveman (p=0.25). No general Caveman mechanism is identified. Neither the Qwen 4B replication band nor the Qwen 9B directional rule licenses an accuracy-effect claim. No extra significance threshold or multiplicity correction was introduced.
 
 Each set is twelve public boards, four per size, with one greedy run per board×arm cell. Four arms reuse each board; 48 calls are not 48 independent boards. The effort pool has 96 matched calls on 24 boards, and the Gemma pool 24 matched boards. These are disjoint local replication panels drawn deterministically from an already public hosted corpus, not unseen held-out tasks. Run-to-run variation, cross-night host conditions, architecture and prompt bundles remain limits. A format-only diagnostic never upgrades strict correctness.
 
@@ -201,5 +201,4 @@ public files, including the active index, stayed byte-identical through the
 evidence checkpoint. Activation then copied the verified candidate catalog
 with its display changes. All historical snapshots remain immutable.
 The source and snapshot-only analyses produce exactly equal result JSON.
-Required validation and browser-check results are recorded in the worktree’s
-[REVIEW.md](../.empower/2026-11-13-nov13-night/REVIEW.md).
+Run the checked-in archive and display verifiers with `npm run local-qwen:verify`. The publication PR also records its [CI checks](https://github.com/JoeyWilkes12/queens-model-assessment/pull/33/checks).

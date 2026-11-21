@@ -39,14 +39,32 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
+    date: '2026-11-13',
+    title: 'Archived the November 13 replication receipts',
+    kinds: ['evidence'],
+    pr: 32,
+    changes: [
+      'The November 13 archive contains 1,027 recorded assessment and audit calls across 31 studies, plus 38 separate rescue calls. The local assessment pages still show the November 12 snapshot at this stage.',
+    ],
+  },
+  {
     date: '2026-11-12',
     title: 'Fresh2 replication results and unfinished Qwen coverage',
     kinds: ['evidence', 'chapter', 'method'],
     pr: 30,
     changes: [
       'Updated #/local-qwen and its study/receipt routes with the November 12 snapshot: 30 conditions, 973 assessment/audit receipts and 38 separate rescues.',
-      'Reported the two predictions that could be checked against the analysis fixed before the night. On Fresh2, GPT-OSS at medium effort had fewer cut-offs (9 against 23) and more strict answers (31/48 against 25/48) than at high effort; the pooled accuracy difference is not significant (p = 0.073). Gemma again scored lower with Caveman than at baseline (2/12 against 5/12); pooled over both board sets that deficit is significant (p = 0.016, 24 boards).',
+      'Reported the two predictions that could be checked against the analysis fixed before the night. On Fresh2, GPT-OSS at medium effort had fewer cut-offs (9 against 23) and more strict answers (31/48 against 25/48) than at high effort; the pooled accuracy difference is not significant (p = 0.073). Gemma again scored lower with Caveman than at baseline (2/12 against 5/12); the Fresh2-only paired test gave p = 0.25. Pooling in the Fresh1 boards that suggested the prediction gave p = 0.016.',
       'Kept Qwen 4B Fresh2 unfinished at 42/48 recorded and Qwen 9B Fresh2 text unstarted. Shared-index comparisons also receive the new data; the original 4B pilot and hosted-comparison local rows retain their historical scope.',
+    ],
+  },
+  {
+    date: '2026-11-12',
+    title: 'Archived the November 12 replication receipts',
+    kinds: ['evidence'],
+    pr: 29,
+    changes: [
+      'The November 12 archive contains 973 recorded assessment and audit calls across 30 studies, plus 38 separate rescue calls. The local assessment pages still show the November 9 snapshot at this stage.',
     ],
   },
   {
@@ -61,13 +79,12 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
-    date: '2026-11-06',
-    title: 'Caveman comparison across local studies',
-    kinds: ['chapter', 'method'],
-    pr: 16,
+    date: '2026-11-09',
+    title: 'Archived the November 9 local assessment receipts',
+    kinds: ['evidence'],
+    pr: 25,
     changes: [
-      'Expanded #/caveman-summary to show matched strict outcomes, format recovery and saved hosted-cost scenarios across separate local study conditions.',
-      'Preserved the original 4B pilot at #/caveman-summary/pilot and linked the expanded local assessment chapter.',
+      'The November 9 archive contains 835 recorded assessment and audit calls across 27 studies, plus 38 separate rescue calls. The local assessment pages still show the November 6 snapshot at this stage.',
     ],
   },
   {
@@ -103,6 +120,17 @@ export const CHANGELOG: ChangeEntry[] = [
   },
   {
     date: '2026-11-05',
+    title: 'Every page loads with its route',
+    kinds: ['interface'],
+    pr: 21,
+    changes: [
+      'Every page except the executive summary now loads with its own route, so the first visit downloads about a quarter less JavaScript than before (94 kB instead of 127 kB, compressed). In a slow-4G lab test, the summary, the local chapter and the atlas each showed their main content 0.14–0.27 s sooner. Links in the sidebar and the contents start loading a page on hover, focus or touch.',
+      'Opening the evidence atlas directly starts downloading its catalog and costs as soon as the book’s code has loaded, alongside the atlas’s own code. The atlas keeps its heading in place while it loads, and its rows appear with their costs instead of growing a cost line afterwards.',
+      'Nothing on the pages changed: every book page and several hundred linked pages were compared with the previous version.',
+    ],
+  },
+  {
+    date: '2026-11-05',
     title: 'Reviewable evidence updates and changelog guidance',
     kinds: ['method'],
     pr: 12,
@@ -119,6 +147,38 @@ export const CHANGELOG: ChangeEntry[] = [
       'Completed the Qwen 4B fresh image panel with 16 strict answers in 48 calls.',
       'Added GPT-OSS 20B on text grids with 23/48 strict and the first eight Qwen 9B text-grid calls, all strict, with 40 calls pending.',
       'Added text-grid receipt links and updated local coverage to 21 conditions and 531 assessment and audit receipts, plus 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Caveman results across local studies',
+    kinds: ['chapter'],
+    pr: 16,
+    changes: [
+      'The Caveman chapter now compares strict answers, format recovery and estimated spend across the local studies, with separate round charts for Qwen 9B and 27B rather than pooling repeated boards.',
+      'The original 4B pilot analysis moved to its own page under the chapter; existing receipt and configuration links still open.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Contents breadcrumb and phone section jumps',
+    kinds: ['fix'],
+    pr: 15,
+    changes: [
+      'Contents opened at a part now reads “Queens assessment / Contents / Start here” instead of treating the part as a page below Contents.',
+      'On phones, jumping to a section no longer hides its heading under the sticky top bar.',
+    ],
+  },
+  {
+    date: '2026-11-02',
+    title: 'Faster, steadier loading',
+    kinds: ['interface'],
+    pr: 14,
+    changes: [
+      'The local open-weight chapter no longer jumps while it loads: loading pages keep the chapter’s own heading and a full-height body (mobile layout shift 0.27 → 0 in a slow-4G lab test).',
+      'Files read by several views, such as the scoreboard and the saved tariffs, are fetched once per page and can be retried after a failure.',
+      'Chapters load with their own page, so the first visit downloads about a third less JavaScript. Sidebar links start loading a chapter on hover or touch.',
+      'The summary’s replays and the local pair strip fetch their evidence only when they are about to be seen. Ctrl or ⌘ + P loads the replays before printing; printing from the browser menu before they load prints a list of the recorded attempts with links.',
     ],
   },
   {

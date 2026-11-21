@@ -13,9 +13,9 @@ medium has 31/48 strict and nine cut-offs versus high’s 25/48 and 23; Gemma ha
 baseline 5/12 versus Caveman 2/12; Qwen 4B has 19/48 versus Fresh1’s 16/48,
 inside ±6; Qwen 9B text has 27/48 versus image’s 43/48. All Fresh2 panels are
 complete, and the matched four-arm text/image comparison is available.
-Four successful criteria are not four significant effects: only the pooled Gemma
-deficit meets its fixed nominal accuracy threshold; each set has twelve public
-boards and one greedy run per cell. Forty historical original-budget slots remain
+The prospective Gemma comparison repeats the predicted direction (paired p=0.25).
+The pooled test includes the Fresh1 boards that suggested this prediction (p=0.016).
+Each set has twelve public boards and one greedy run per cell. Forty historical original-budget slots remain
 unobserved, not failed. See the [November 13 final fixed-analysis audit](docs/local-qwen-nov13.md),
 [November 12 interim report](docs/local-qwen-nov12.md),
 [earlier final-night audit](docs/local-qwen-nov9.md), [November 6 audit](docs/local-qwen-nov6.md),
