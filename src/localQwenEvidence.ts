@@ -15,7 +15,7 @@ export type LocalStudy = {
   kind?: 'assessment' | 'audit'; audit_of?: string | null
   round: number; status: 'complete' | 'partial'; planned: number; recorded: number
   root: string; plan: string; summary: string; rows: LocalRow[]
-  protocol?: { modality?: 'image' | 'text'; format?: Record<string, unknown> }
+  protocol?: { modality?: 'image' | 'text'; format?: Record<string, unknown>; think?: boolean | 'low' | 'medium' | 'high' }
   runtime: { digest: string; server_version: string; details: { runner: string; quantization_level: string } }
 }
 export type LocalIndex = { schema_version: number; snapshot_id: string; captured_utc: string; source_commit: string; source_dirty: boolean; manifest: string; studies: LocalStudy[] }
@@ -73,6 +73,7 @@ export function isLocalIndex(value: unknown): value is LocalIndex {
         && hasConsistentOutcomes(r)
         && (data.schema_version !== 3 || (hasExactPeers(s, r) && !!s.arms?.[r.treatment]))
         && (r.state === 'recorded' ? path(r.receipt) : r.receipt === null) && (s.protocol?.modality === 'text' ? r.image === null : path(r.image))
+        && (r.transport_error === undefined || (r.transport_error === true && r.state === 'recorded' && !r.strict_correct && !r.format_only_correct && !r.truncated && !r.loop_stopped && r.input_tokens === null && r.output_tokens === null && r.finish_reason === null))
         && (r.audit === undefined || r.audit === null || (path(r.audit.source_receipt) && typeof r.audit.source_call_id === 'string'
           && typeof r.audit.prefix_match === 'boolean' && typeof r.audit.answered_after_stop === 'boolean' && count(r.audit.source_thinking_chars)))
         && (r.rescue === null || (path(r.rescue.receipt) && optional(r.rescue.input_tokens) && optional(r.rescue.output_tokens) && typeof r.rescue.strict_correct === 'boolean'))))

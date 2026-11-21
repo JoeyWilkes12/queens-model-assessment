@@ -29,6 +29,26 @@ export const FOUNDATION = {
 export const CHANGELOG: ChangeEntry[] = [
   {
     date: '2026-11-11',
+    title: 'Final nights of local open-weight assessments',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 28,
+    changes: [
+      'Updated #/local-qwen and its study/receipt routes to 27 conditions, 835 assessment/audit receipts and 38 separate rescues. GPT-OSS Fresh2 text grids are complete at 25/48 strict.',
+      'Added separate Fresh1 GPT-OSS medium-effort 32k and high-effort 65k conditions, each 29/48 strict, with board/arm denominators, changed traces and one recorded transport failure with unknown usage.',
+      'The leaderboard open-weight views and the shared #/caveman-summary comparison now include the completed panels. Effort settings remain distinct; #/caveman-summary/pilot and hosted-comparison local rows retain their 4B pilot scope.',
+    ],
+  },
+  {
+    date: '2026-11-11',
+    title: 'Scientific review of local open-weight assessments',
+    kinds: ['method'],
+    pr: 26,
+    changes: [
+      'Reviewed the November 9 archive and specified four Fresh2 replication criteria before the runs. A dated follow-up explains how the discovery boards and repeated prompt arms affect the pooled tests.',
+    ],
+  },
+  {
+    date: '2026-11-11',
     title: 'Queens leaderboard opens on Solved vs cost, with details in info buttons',
     kinds: ['interface'],
     pr: 24,
