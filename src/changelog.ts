@@ -39,6 +39,25 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
+    date: '2026-11-09',
+    title: 'Archived the November 9 local assessment receipts',
+    kinds: ['evidence'],
+    pr: 25,
+    changes: [
+      'The November 9 archive contains 835 recorded assessment and audit calls across 27 studies, plus 38 separate rescue calls. The local assessment pages still show the November 6 snapshot at this stage.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Incomplete open-weight coverage in the Queens leaderboard',
+    kinds: ['chapter', 'interface'],
+    pr: 20,
+    changes: [
+      'Added a separate progress view for incomplete studies, with recorded outcomes and unrecorded calls shown against each frozen plan.',
+      'Shows the unfinished GPT-OSS 20B Fresh2 text-grid panel separately from the superseded original-budget runs. Completed Qwen 27B Fresh1 images appear in completed coverage.',
+    ],
+  },
+  {
     date: '2026-11-06',
     title: 'Completed open-weight assessments in the Queens leaderboard',
     kinds: ['chapter', 'interface'],
@@ -57,6 +76,17 @@ export const CHANGELOG: ChangeEntry[] = [
       'Completed the Qwen 9B text-grid panel at 26/48 strict and the image panel with a request-level JSON schema at 19/24 strict.',
       'Completed Qwen 27B Fresh1 images at 43/48 strict and Qwen 9B Fresh2 images at 43/48 strict. GPT-OSS 20B Fresh2 text grids have 18/48 recorded.',
       'Added matched input and decoding comparisons and a request-latency table. The November 6 snapshot adds 73 receipts since November 5, bringing coverage to 25 conditions, 709 assessment and audit receipts and 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: 'Navigation guide for AI readers and open crawler access',
+    kinds: ['interface'],
+    pr: 22,
+    changes: [
+      'Added llms.txt with links to the book’s main chapters, evidence, methods and publication history.',
+      'Added a permissive robots.txt welcoming all crawlers, including AI crawlers; crawler policy must be served from the host root to take effect.',
+      'Linked llms.txt in the shared footer on every page and removed the edition label.',
     ],
   },
   {

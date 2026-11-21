@@ -1,0 +1,12 @@
+.lb-progress { color: var(--lb-text); font-size: .88rem; }
+.lb-progress > p { margin-block: 8px; }
+.lb-progress h2 { font-size: 1rem; color: var(--lb-text); margin-block: 18px 6px; }
+.lb-progress-list { list-style: none; padding: 0; margin: 0; }
+.lb-progress-study { border-top: 1px solid var(--lb-line); padding: 12px 0; }
+.lb-progress-study h3 { margin: 0 0 4px; font-size: .94rem; overflow-wrap: anywhere; }
+.lb-progress a { color: var(--lb-solid); }
+.lb-progress-track { display: flex; min-height: 13px; margin-block: 8px; border: 1px solid var(--lb-line); }
+.lb-progress-track > span { flex: 0 0 auto; }
+.lb-progress-other { background: var(--lb-base); }
+.lb-progress-unrecorded { border: 1px solid var(--lb-line); }
+.lb-progress-pending { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-block: 10px 0; padding-inline-start: 18px; }

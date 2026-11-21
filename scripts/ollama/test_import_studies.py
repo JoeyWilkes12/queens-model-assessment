@@ -78,6 +78,15 @@ class ImportTests(unittest.TestCase):
         """Import and return the public catalog."""
         return module.import_snapshot(self.source, name, self.output)
 
+    def test_inactive_capture_preserves_active_pointer(self):
+        """An inactive candidate verifies without switching the active display."""
+        self.capture("active")
+        active = (self.output / "index.json").read_bytes()
+        module.import_snapshot(self.source, "candidate", self.output, activate=False)
+        self.assertEqual((self.output / "index.json").read_bytes(), active)
+        self.assertTrue((self.output / "snapshots/candidate/catalog.json").exists())
+        module.verify_snapshot(self.output)
+
     def mutate(self, name, change, rehash=False):
         """Alter a larger-model baseline artifact, optionally updating canonical hashes."""
         directory = self.larger / "receipts/baseline_fixture-5"
@@ -135,6 +144,72 @@ class ImportTests(unittest.TestCase):
         self.assertFalse(schema["pair_verified"])
         self.assertFalse(schema["loop_stopped"])
         self.assertTrue(schema["loop_stop"]["would_have_stopped"])
+
+    def test_final_gpt_conditions_keep_effort_and_budget_distinct(self):
+        """New reviewed text conditions validate controls and exclude abandoned attempts."""
+        for sid, (effort, budget) in module.GPT_FINAL_NAMES.items():
+            root = self.make_four_arm()
+            target = root.with_name(sid)
+            root.rename(target)
+            plan, summary = (module.read(target / name) for name in ("plan.json", "summary.json"))
+            plan["study"] = "fixture-" + sid
+            summary["study"] = plan["study"]
+            plan["runtime"]["model"] = "gpt-oss:20b"
+            plan["protocol"].update(modality="text", think=effort, num_predict=budget, num_ctx=budget + 4096)
+            plan["prompt_template_file"] = module.TEXT_TEMPLATE
+            template = "Solve {{BOARD_ID}} {{SIZE}} {{REGION_GRID_ROWS}}"
+            (target / module.TEXT_TEMPLATE).write_text(template)
+            plan["prompt_template_sha256"] = module.sha(template.encode())
+            plan["boards"][0].update(image=None, image_sha256=None)
+            for row in summary["rows"]:
+                row["image"] = None
+                directory = target / "receipts" / row["call_id"]
+                request, response, meta = (module.read(directory / (name + ".json")) for name in ("request", "response", "metadata"))
+                request.update(module.configuration(plan))
+                request["messages"][-1] = {"role": "user", "content": "Solve fixture-5 5 " + json.dumps([[chr(65 + r) for _ in range(5)] for r in range(5)], separators=(",", ":"))}
+                response["model"] = "gpt-oss:20b"
+                meta.update(model="gpt-oss:20b", returned_model="gpt-oss:20b", image_sha256=None,
+                            request_sha256=module.sha(module.canonical(request)), response_sha256=module.sha(module.canonical(response)))
+                for name, value in (("request", request), ("response", response), ("metadata", meta)):
+                    module.save(directory / (name + ".json"), value)
+            summary.update(protocol=plan["protocol"], runtime=plan["runtime"])
+            module.save(target / "plan.json", plan)
+            module.save(target / "summary.json", summary)
+            module.save(target / "abandoned/interrupted/abandoned.json", {"reason": "no recorded result"})
+            with self.subTest(condition=sid):
+                catalog = self.capture(sid)
+                study = next(study for study in catalog["studies"] if study["id"] == sid)
+                self.assertEqual((study["protocol"]["think"], study["budget"], study["recorded"]), (effort, budget, 4))
+                self.assertIn("think " + effort, study["label"])
+                self.assertFalse(any("abandoned" in path for path in module.read(self.output / "snapshots" / sid / "manifest.json")["files"]))
+            if budget == 65536:
+                directory = target / "receipts/baseline_fixture-5"
+                response = {"error": {"type": "stream_error", "message": "prediction aborted, token repeat limit reached"}}
+                meta = module.read(directory / "metadata.json")
+                meta.update(outcome="transport_error", response_origin="client_exception", strict_correct=False,
+                            rule_valid_after_extraction=False, response_sha256=module.sha(module.canonical(response)))
+                for key in ("returned_model", "finish_reason", "done", "input_tokens", "output_tokens", "http_status"):
+                    meta[key] = None
+                for name, value in (("response", response), ("metadata", meta),
+                                    ("grade", module.grading.grade(plan["boards"][0], None)),
+                                    ("diagnostic", module.grading.diagnose(plan["boards"][0], None))):
+                    module.save(directory / (name + ".json"), value)
+                summary = module.read(target / "summary.json")
+                next(row for row in summary["rows"] if row["treatment"] == "baseline").update(
+                    outcome="transport_error", strict_correct=False, input_tokens=None, output_tokens=None)
+                module.save(target / "summary.json", summary)
+                catalog = self.capture("transport-error")
+                study = next(study for study in catalog["studies"] if study["id"] == sid)
+                row = next(row for row in study["rows"] if row["treatment"] == "baseline")
+                self.assertTrue(row["transport_error"])
+                self.assertIsNone(row["output_tokens"])
+                self.assertFalse(row["truncated"])
+                self.assertEqual((study["recorded"], study["status"]), (4, "complete"))
+                meta["output_tokens"] = 1
+                module.save(directory / "metadata.json", meta)
+                with self.assertRaisesRegex(ValueError, "Unsupported transport error"):
+                    self.capture("false-usage")
+            shutil.rmtree(target)
 
     def test_arm_prompt_mutation(self):
         """A changed control-arm prompt fails its frozen hash."""
