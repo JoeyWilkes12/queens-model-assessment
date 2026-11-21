@@ -79,7 +79,7 @@ function Pane({ writer, writers, blind, onChoose, picked, onPick, sourceWords, s
             : text.trim() ? <MiniMarkdown text={text} /> : <p className="wa-empty">{entry?.outcome === 'truncated' ? 'The model reached its token limit before returning any page text' : 'Returned no page'}.</p>}
     </div>
     <footer className="wa-pane-foot">
-      {words !== null && <span>{words.toLocaleString('en-US')} words{writer.key !== 'current' && sourceWords ? ` · ${Math.round(words / sourceWords * 100)}% of the original` : ''}</span>}
+      {words !== null && <span>{words.toLocaleString('en-US')} words{!blind && writer.key !== 'current' && sourceWords ? ` · ${Math.round(words / sourceWords * 100)}% of the original` : ''}</span>}
       {entry && entry.outcome !== 'ok' && <span className="wa-flag">{OUTCOME[entry.outcome] ?? entry.outcome}</span>}
       {!blind && entry && <span>{Math.round(entry.elapsed_seconds)} s{entry.output_tokens !== null ? ` · ${entry.output_tokens.toLocaleString('en-US')} tokens generated` : ''}{entry.thinking_chars ? ', thinking included' : ''}</span>}
     </footer>

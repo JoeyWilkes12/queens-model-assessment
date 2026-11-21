@@ -28,6 +28,8 @@ MODELS = [
     ("gemma4:e4b", "Gemma 4 E4B", "Google DeepMind"),
     ("llava-llama3:8b", "LLaVA-Llama3 8B", "XTuner"),
 ]
+# Task IDs from the November 13 frozen plan. A shortened index cannot declare itself complete.
+FROZEN_TASK_IDS = {"queens-rules", "jev-primer", "protocol-results", "scale-primitives", "greedy-rule"}
 SAFE = re.compile(r"^[a-zA-Z0-9_.-]+$")
 
 
@@ -100,7 +102,13 @@ def verify(require_complete=False):
     for task in index["tasks"]:
         if sha((OUT / task["source"]).read_bytes()) != task["source_sha256"]:
             raise SystemExit(f"Published source {task['id']} does not match the index")
-    expected = {(task["id"], model["id"]) for task in index["tasks"] for model in index["models"]}
+    tasks = [task["id"] for task in index["tasks"]]
+    models = [model["id"] for model in index["models"]]
+    if len(set(tasks)) != len(tasks) or len(set(models)) != len(models):
+        raise SystemExit("Duplicate task or model in the published index")
+    if require_complete and (set(tasks) != FROZEN_TASK_IDS or set(models) != {model for model, _, _ in MODELS}):
+        raise SystemExit("Published tasks or models differ from the frozen Writing Arena plan")
+    expected = {(task, model) for task in tasks for model in models}
     seen = set()
     with_text = capped_empty = 0
     for entry in index["entries"]:
