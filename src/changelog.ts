@@ -78,6 +78,16 @@ export const CHANGELOG: ChangeEntry[] = [
   },
   {
     date: '2026-11-06',
+    title: 'Validate local assessment results and receipt navigation',
+    kinds: ['fix'],
+    pr: 23,
+    changes: [
+      'Local assessments and the completed open-weight leaderboard now reject inconsistent saved study counts, outcomes or receipt links.',
+      'Added browser checks for the cross-study Caveman comparison, the original 4B pilot and the publication history.',
+    ],
+  },
+  {
+    date: '2026-11-06',
     title: 'November 5–6 local assessments and the Fresh2 panel',
     kinds: ['evidence', 'chapter', 'method'],
     pr: 18,
