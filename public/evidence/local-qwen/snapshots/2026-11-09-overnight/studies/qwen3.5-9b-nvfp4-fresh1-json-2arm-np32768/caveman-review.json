@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-10-28",
+  "repository": "https://github.com/juliusbrussee/caveman",
+  "commit": "9b68f7ed12b05e7efaff18e65c5a3fc2849fd0a4",
+  "skill_path": "skills/caveman",
+  "files": [
+    {
+      "path": "skills/caveman/README.md",
+      "bytes": 3030,
+      "sha256": "e8b22f37ccb204bd00cdf98c723c0df37aeda1f5863e9ad1d634f5c839d99e5d",
+      "high_signal_matches": []
+    },
+    {
+      "path": "skills/caveman/SKILL.md",
+      "bytes": 4678,
+      "sha256": "415d43518f2b1a9498c15a445d4657117b129ee5e81b19454ce348439cc6672b",
+      "high_signal_matches": []
+    }
+  ],
+  "static": {
+    "scanner": "NVIDIA SkillSpector",
+    "version": "2.12.0",
+    "tool_commit": "d501c0d5035c2ed6385740a384d942bb05651fda",
+    "mode": "static-only",
+    "score": 0,
+    "severity": "LOW",
+    "findings": [],
+    "files_scanned": 2,
+    "bytes_scanned": 7708,
+    "owasp_high_signal_matches": 0,
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "broad_repository_scan": "incomplete; stopped after more than five minutes without report; exact basic skill scan complete"
+  },
+  "registry": {
+    "id": "juliusbrussee/caveman/caveman",
+    "retrieved_utc": "2026-10-28",
+    "audits": [
+      {
+        "provider": "Gen Agent Trust Hub",
+        "verdict": "PASS",
+        "risk": "SAFE",
+        "analyzed_display": "2026-10-08 15:25 (time zone unspecified)",
+        "url": "https://www.skills.sh/juliusbrussee/caveman/caveman/security/agent-trust-hub",
+        "findings": []
+      },
+      {
+        "provider": "Socket",
+        "verdict": "PASS",
+        "risk": null,
+        "analyzed_display": "2026-10-08 15:26 (time zone unspecified)",
+        "url": "https://www.skills.sh/juliusbrussee/caveman/caveman/security/socket",
+        "findings": [],
+        "finding_count_exposed": false
+      },
+      {
+        "provider": "Snyk",
+        "verdict": "PASS",
+        "risk": "LOW",
+        "analyzed_display": "2026-10-08 15:25 (time zone unspecified)",
+        "url": "https://www.skills.sh/juliusbrussee/caveman/caveman/security/snyk",
+        "findings": [],
+        "summary": "No issues detected"
+      }
+    ],
+    "socket_snapshot": "8dd75b3ad1dccebfc375f3ec73e714b02ef5666791416f228d8ebc53c8540597",
+    "exact_git_correspondence_verified": false,
+    "basic_skill_last_changed": "2026-10-06",
+    "freshness_note": "Registry audits postdate the basic skill subtree change; exact snapshot-to-Git correspondence is unverified."
+  },
+  "semantic": {
+    "status": "complete",
+    "mode": "local Codex semantic inspection",
+    "model": "Codex (GPT-6; exact profile unavailable in session)",
+    "reasoning_effort": "inherited session setting; exact value unavailable",
+    "external_transmission": false,
+    "reviewed_utc": "2026-10-28T17:34:21.117871+00:00",
+    "coverage": "Complete raw basic skill and README, 2 files / 7708 bytes; other upstream code, plugins, hooks and sibling skills excluded.",
+    "findings": [],
+    "assessment": "Style guidance only; no executable code, credential access, egress, hidden payloads or policy-evasion mechanism identified. Persistence/alias guidance is bounded to fresh one-shot local requests; no alias is invoked. Exact JSON payload preservation and clarity exceptions are explicit. Reduced prose is not evidence of better solving or lower hidden-reasoning use.",
+    "limitations": [
+      "Manual semantic review is not a formal proof or runtime audit.",
+      "Cross-host hooks, upstream installers, sibling skills and entire monorepo behavior are not reviewed or installed."
+    ],
+    "selection": "User explicitly selected local Codex review on 28 October 2026."
+  },
+  "decision": "Nonblocking for the user-authorized paired local benchmark: exact basic skill body as a system instruction in fresh one-shot requests. No global installation, plugin hooks, upstream scripts, aliases or external semantic transmission.",
+  "limitations": [
+    "Only skills/caveman basic skill is in scope; unrelated plugin, skill and executable directories are excluded.",
+    "Passing static and third-party audits do not verify publisher identity, dependencies at install time, all runtime behavior, or absence of prompt injection."
+  ]
+}

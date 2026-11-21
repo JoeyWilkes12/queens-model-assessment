@@ -35,8 +35,17 @@ export const CHANGELOG: ChangeEntry[] = [
     changes: [
       'The Executive Summary leaderboard now opens on the Solved vs cost scatter plot. It draws in portrait on a phone, taller and zoomable; the turn-your-phone prompt is gone.',
       'Two views replace three: Shared boards and Open-weight studies. Unfinished and superseded runs moved into a disclosure at the end.',
-      'Open-weight studies ranks only comparable studies. Completed studies are grouped into cohorts that share the same boards and prompt arms, input, token budget, decoding and sampling round, thinking setting, answer-format constraint and loop detector. Each cohort shows its own counts and orders its models highest first by strict solve rate or by estimated cost per call. A study with no match stands alone and unranked, and nothing is pooled across cohorts. Estimates that are only a lower bound, or missing a price, are listed outside the cost order. Board panel, input and board size filters narrow the cohorts.',
+      'Open-weight studies ranks only comparable studies. Completed studies are grouped into cohorts that share the same boards and prompt arms, input, token budget, decoding and sampling round, thinking setting, answer-format constraint and loop detector. Each cohort shows its own counts and orders its models highest first by strict solve rate or by estimated cost per call. A study with no match stands alone and unranked, and nothing is pooled across cohorts. Estimates that are only a lower bound, or missing a price, are listed outside the cost order. Board panel, protocol and board size filters narrow the cohorts.',
       'Settings, prompt-arm results, reading notes and board-panel descriptions moved from running text into info buttons beside the row or heading they explain.',
+    ],
+  },
+  {
+    date: '2026-11-09',
+    title: 'Archived the November 9 local assessment receipts',
+    kinds: ['evidence'],
+    pr: 25,
+    changes: [
+      'The November 9 archive contains 835 recorded assessment and audit calls across 27 studies, plus 38 separate rescue calls. The local assessment pages still show the November 6 snapshot at this stage.',
     ],
   },
   {
@@ -71,6 +80,28 @@ export const CHANGELOG: ChangeEntry[] = [
     ],
   },
   {
+    date: '2026-11-06',
+    title: 'Navigation guide for AI readers and open crawler access',
+    kinds: ['interface'],
+    pr: 22,
+    changes: [
+      'Added llms.txt with links to the book’s main chapters, evidence, methods and publication history.',
+      'Added a permissive robots.txt welcoming all crawlers, including AI crawlers; crawler policy must be served from the host root to take effect.',
+      'Linked llms.txt in the shared footer on every page and removed the edition label.',
+    ],
+  },
+  {
+    date: '2026-11-05',
+    title: 'Every page loads with its route',
+    kinds: ['interface'],
+    pr: 21,
+    changes: [
+      'Every page except the executive summary now loads with its own route, so the first visit downloads about a quarter less JavaScript than before (94 kB instead of 127 kB, compressed). In a slow-4G lab test, the summary, the local chapter and the atlas each showed their main content 0.14–0.27 s sooner. Links in the sidebar and the contents start loading a page on hover, focus or touch.',
+      'Opening the evidence atlas directly starts downloading its catalog and costs as soon as the book’s code has loaded, alongside the atlas’s own code. The atlas keeps its heading in place while it loads, and its rows appear with their costs instead of growing a cost line afterwards.',
+      'Nothing on the pages changed: every book page and several hundred linked pages were compared with the previous version.',
+    ],
+  },
+  {
     date: '2026-11-05',
     title: 'Reviewable evidence updates and changelog guidance',
     kinds: ['method'],
@@ -88,6 +119,38 @@ export const CHANGELOG: ChangeEntry[] = [
       'Completed the Qwen 4B fresh image panel with 16 strict answers in 48 calls.',
       'Added GPT-OSS 20B on text grids with 23/48 strict and the first eight Qwen 9B text-grid calls, all strict, with 40 calls pending.',
       'Added text-grid receipt links and updated local coverage to 21 conditions and 531 assessment and audit receipts, plus 38 separate rescues.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Caveman results across local studies',
+    kinds: ['chapter'],
+    pr: 16,
+    changes: [
+      'The Caveman chapter now compares strict answers, format recovery and estimated spend across the local studies, with separate round charts for Qwen 9B and 27B rather than pooling repeated boards.',
+      'The original 4B pilot analysis moved to its own page under the chapter; existing receipt and configuration links still open.',
+    ],
+  },
+  {
+    date: '2026-11-03',
+    title: 'Contents breadcrumb and phone section jumps',
+    kinds: ['fix'],
+    pr: 15,
+    changes: [
+      'Contents opened at a part now reads “Queens assessment / Contents / Start here” instead of treating the part as a page below Contents.',
+      'On phones, jumping to a section no longer hides its heading under the sticky top bar.',
+    ],
+  },
+  {
+    date: '2026-11-02',
+    title: 'Faster, steadier loading',
+    kinds: ['interface'],
+    pr: 14,
+    changes: [
+      'The local open-weight chapter no longer jumps while it loads: loading pages keep the chapter’s own heading and a full-height body (mobile layout shift 0.27 → 0 in a slow-4G lab test).',
+      'Files read by several views, such as the scoreboard and the saved tariffs, are fetched once per page and can be retried after a failure.',
+      'Chapters load with their own page, so the first visit downloads about a third less JavaScript. Sidebar links start loading a chapter on hover or touch.',
+      'The summary’s replays and the local pair strip fetch their evidence only when they are about to be seen. Ctrl or ⌘ + P loads the replays before printing; printing from the browser menu before they load prints a list of the recorded attempts with links.',
     ],
   },
   {
