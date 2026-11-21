@@ -6,6 +6,7 @@ export type LocalRow = CostRow & {
   peer_call_ids?: string[]; peer_call_id: string | null; pair_verified: boolean; finish_reason: string | null
   rescue: (NonNullable<CostRow['rescue']> & { receipt: string; outcome: string }) | null
   host: Record<string, number | null> | null; loop_stop: Record<string, unknown> | null
+  transport_error?: boolean
   audit?: { source_call_id: string; source_receipt: string; prefix_match: boolean; answered_after_stop: boolean; source_thinking_chars: number } | null
 }
 export type LocalStudy = {
@@ -77,6 +78,6 @@ export function useLocalStudies(): State {
 /** Keep study identity in every receipt URL because call IDs recur across cohorts. */
 export const localReceiptUrl = (study: LocalStudy, row: LocalRow) => `#/local-qwen/receipt/${study.id}/${row.call_id}`
 export const armName = (arm: string) => ({ baseline: 'Baseline', schema: 'Schema reminder', neutral: 'Neutral control', caveman: '+ Caveman' }[arm] || arm)
-export const rowOutcome = (r: LocalRow) => r.state !== 'recorded' ? 'Pending / not recorded' : r.strict_correct ? 'Strict correct' : r.format_only_correct ? 'Correct, wrong format' : r.loop_stopped ? 'Client loop-stop' : r.truncated ? 'Token cap reached' : 'Completed incorrect / other'
+export const rowOutcome = (r: LocalRow) => r.state !== 'recorded' ? 'Pending / not recorded' : r.transport_error ? 'Transport error · usage unavailable' : r.strict_correct ? 'Strict correct' : r.format_only_correct ? 'Correct, wrong format' : r.loop_stopped ? 'Client loop-stop' : r.truncated ? 'Token cap reached' : 'Completed incorrect / other'
 
 export const defaultTariff = (study: LocalStudy) => !study.model.toLowerCase().includes('qwen') ? 'custom' : study.model.includes(':4b') ? 'qwen/qwen3.5-flash-02-23' : study.model.includes('27b') ? 'qwen/qwen3.5-27b' : 'qwen/qwen3.5-9b'
