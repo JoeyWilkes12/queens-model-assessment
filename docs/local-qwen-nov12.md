@@ -14,7 +14,7 @@ Sources: [November 12 catalog](../public/evidence/local-qwen/snapshots/2026-11-1
 [file manifest and hashes](../public/evidence/local-qwen/snapshots/2026-11-12-overnight/manifest.json),
 [retained November 9 catalog](../public/evidence/local-qwen/snapshots/2026-11-09-overnight/catalog.json),
 [earlier report](local-qwen-nov9.md), and
-[reproducible offline analysis](../.empower/2026-11-12-nov12-night/analyze_night.py).
+[offline checks of arm totals and paired discordances](../scripts/verify-local-qwen-costs.mjs).
 Raw requests, responses, metadata, grades and diagnostics are linked from the
 catalog’s study roots. No inference or service action was part of publication.
 
@@ -49,7 +49,7 @@ cut-offs and transport errors are not solved and are reported separately.
 
 Exact p = min(1, 2 × sum binomial(n,k) for k=0..min(left-only,right-only) / 2^n), n = discordant pairs; concordant pairs excluded from the sign-test denominator. Pooled effort uses 96 matched board×arm calls, Gemma 24 matched boards, as fixed in advance. Four arms reuse each board: 96 pairs are not 96 independent boards. No extra outcome or multiplicity correction was introduced.
 
-Under the fixed nominal p<0.05 rule, GPT-OSS accuracy effect does not meet the threshold; Gemma deficit meets it. Directional replication is distinct from that threshold. Four predictions were fixed; only two are evaluable now. One successful prediction by chance is plausible. The direction/±6 criteria have no specified null success probability, so an exact chance count is UNCONFIRMED; do not turn nominal p-values into that probability. Under four independent nominal 5% tests alone, the illustrative probability of at least one false positive is 1−0.95^4≈18.5%, but these four criteria are neither all 5% tests nor independent.
+The fixed pooled test gives p=0.073 for GPT-OSS accuracy. Gemma’s pooled p=0.015625 includes the four Fresh1 baseline-only boards that suggested the prediction. On the subsequent Fresh2 panel, three boards favored baseline and none favored Caveman (p=0.25). Fresh2 reproduces the direction. Directional replication is distinct from that threshold. Four predictions were fixed; only two are evaluable now. One successful prediction by chance is plausible. The direction/±6 criteria have no specified null success probability, so an exact chance count is UNCONFIRMED; do not turn nominal p-values into that probability. Under four independent nominal 5% tests alone, the illustrative probability of at least one false positive is 1−0.95^4≈18.5%, but these four criteria are neither all 5% tests nor independent.
 
 ## Results by arm and size
 
@@ -183,6 +183,4 @@ The inactive capture was completed and verified November 12 at 20:25 local,
 well before the 22:40 capture deadline. The importer’s double-read hash/inventory
 check and an independent source-state comparison both passed. Active index
 stayed unchanged through the evidence checkpoint; activation accompanied the
-presentation update. Exact offline test, hash/grade verification, public scrub,
-board, changelog, cost/display-contract and build results are recorded in the
-worktree’s REVIEW.md.
+presentation update. Run the checked-in archive and display verifiers with `npm run local-qwen:verify`. The publication PR also records its [CI checks](https://github.com/JoeyWilkes12/queens-model-assessment/pull/30/checks).

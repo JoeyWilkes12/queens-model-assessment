@@ -20,7 +20,8 @@ plan or classify its absence as model failure.
 Both completed fixed predictions replicate: GPT-OSS medium has fewer cut-offs
 and at least as many strict answers; Gemma Caveman is below baseline. The pooled
 effort accuracy test is p=0.072951389; the Gemma deficit is p=0.015625 under the
-fixed nominal rule. Four predictions were fixed, only two are evaluable, and one
+fixed nominal rule, including the Fresh1 boards that suggested the prediction.
+The Fresh2-only paired result is p=0.25. Four predictions were fixed, only two are evaluable, and one
 success by chance is plausible. See the [November 12 report](local-qwen-nov12.md)
 for the exact tests, by-arm/size denominators, timing and operational observations.
 The [November 9 report](local-qwen-nov9.md) retains the earlier interruption and
