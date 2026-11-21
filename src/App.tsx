@@ -10,6 +10,7 @@ import './book-nav.css'
 import { entryFor } from './bookNav'
 import { assetUrl, useHashPath, Icon, PageHero, bookUi } from './bookUi'
 import {
+  AboutModels,
   AboutPage,
   AssessmentReceiptPage,
   BoardReceipts,
@@ -189,6 +190,8 @@ function routePage(active: string, parts: string[]): ReactNode {
       return <BoardReceipts ui={bookUi} boardId={second} />
     case 'methods-sources':
       return <MethodsSources />
+    case 'about-models':
+      return <AboutModels ui={bookUi} />
     case 'about':
       return <AboutPage />
     case 'contents':
