@@ -3,7 +3,8 @@ import fs from 'node:fs'
 import { conditionKey, groupCohorts, rank } from '../src/openWeightCohorts.ts'
 
 // The open-weight leaderboard may only rank studies whose conditions match exactly.
-const index = JSON.parse(fs.readFileSync(new URL('../public/evidence/local-qwen/index.json', import.meta.url)))
+const evidence = new URL('../public/evidence/local-qwen/', import.meta.url)
+const index = JSON.parse(fs.readFileSync(new URL('index.json', evidence)))
 const byId = id => { const study = index.studies.find(s => s.id === id); assert.ok(study, `Missing study ${id}`); return study }
 const entry = (study, size = 'all') => ({ study, rows: study.rows.filter(r => size === 'all' || r.size === Number(size)) })
 const key = (study, size) => { const e = entry(study, size); return conditionKey(e.study, e.rows) }
@@ -54,9 +55,31 @@ assert.deepEqual(places.map(p => [p.entry.s, p.place, p.tied]), [[5, 1, true], [
 
 // Shipped snapshot: every cohort shares exactly the same calls, and known mismatches stay apart.
 const assessments = index.studies.filter(s => s.kind !== 'audit' && s.status === 'complete' && s.recorded === s.planned && s.rows.every(r => r.state === 'recorded'))
+// Board IDs and the shared user prompt are stable across the shipped plans. Compare the
+// underlying fingerprints offline so future imports with reused IDs cannot mix inputs.
+const plans = new Map(assessments.map(study =>
+  [study.id, JSON.parse(fs.readFileSync(new URL(study.plan, evidence)))]))
+function fingerprints({ study, rows }) {
+  const plan = plans.get(study.id)
+  assert.match(plan.prompt_template_sha256, /^[a-f0-9]{64}$/)
+  const ids = [...new Set(rows.map(row => row.board_id))].sort()
+  const boards = ids.map(id => {
+    const board = plan.boards.find(item => item.id === id)
+    assert.ok(board, `Missing frozen board ${id} for ${study.id}`)
+    assert.match(board.board_sha256, /^[a-f0-9]{64}$/)
+    if (study.protocol?.modality === 'text') return [id, board.board_sha256]
+    assert.match(board.image_sha256, /^[a-f0-9]{64}$/)
+    return [id, board.board_sha256, board.image_sha256]
+  })
+  return { prompt: plan.prompt_template_sha256, boards }
+}
+
 for (const size of ['all', ...new Set(assessments.flatMap(s => s.rows.map(r => String(r.size))))]) {
   const cohorts = groupCohorts(assessments.map(s => entry(s, size)).filter(e => e.rows.length))
   for (const cohort of cohorts) {
+    for (const other of cohort.slice(1)) {
+      assert.deepEqual(fingerprints(other), fingerprints(cohort[0]), `Mismatched frozen inputs for ${other.study.id}`)
+    }
     const calls = cohort.map(e => e.rows.map(r => `${r.treatment}/${r.board_id}`).sort().join())
     assert.equal(new Set(calls).size, 1, `Cohort at size ${size} mixes different calls`)
   }
@@ -78,7 +101,7 @@ for (const [a, b] of apart) assert.ok(!cohortOf(a).includes(b), `${a} must not b
 const together = [
   ['gemma4-e4b-fresh1-4arm-np32768', 'qwen3.5-4b-fresh1-4arm-np32768', 'qwen3.5-9b-nvfp4-fresh1-4arm-np32768'],
   ['qwen3.5-27b-q4_K_M-np24576', 'qwen3.5-9b-nvfp4-np24576'],
-  ...[1].map(r => [`qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r${r}`, `qwen3.5-9b-nvfp4-np24576-qwen-sampling-r${r}`]),
+  ['qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r1', 'qwen3.5-9b-nvfp4-np24576-qwen-sampling-r1'],
   ['qwen3.5-4b-np32768-loopstop', 'qwen3.5-9b-nvfp4-np32768-loopstop'],
 ]
 for (const ids of together) assert.ok(ids.every(id => cohortOf(ids[0]).includes(id)), `Expected one cohort: ${ids.join(', ')}`)
