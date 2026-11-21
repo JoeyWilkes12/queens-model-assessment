@@ -32,6 +32,7 @@ export function AboutPage() {
               atlas exposes sanitized requests, visible responses, deterministic grades, timing, usage, and transport
               failures for inspection.
             </p>
+            <p>For background on each assessed model, its lab, size, licence and the exact build or route this book ran, see <a href="#/about-models">About the models</a>.</p>
             <Callout tone="caution" title="Read the denominator, not just the headline.">
               The assessed boards are deliberately visible and limited. This is a documented experiment, not a
               population-level model ranking.
