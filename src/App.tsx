@@ -255,10 +255,10 @@ function App() {
           </ChapterBoundary>
         </div>
         <footer className="site-footer">
-          <span>Queens assessment · expanded illustrated edition</span>
           <span>
             <a href="#/contents">contents</a> · <a href="#/about">about this book</a> ·{' '}
-            <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a>
+            <a href="#/changelog">changelog</a> · <a href="#/methods-sources">methods and sources</a> ·{' '}
+            <a href={assetUrl('llms.txt')}>llms.txt</a>
           </span>
         </footer>
       </div>

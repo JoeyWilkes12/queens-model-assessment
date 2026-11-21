@@ -3,6 +3,7 @@ import type { BookUi } from './ollamaEvidence'
 import './leaderboard.css'
 
 const OpenWeightLeaderboard = lazy(() => import('./OpenWeightLeaderboard'))
+const OpenWeightProgress = lazy(() => import('./OpenWeightProgress'))
 
 type Cell = { outcome: string; solved: boolean; usd: number | null; requests: number; unknown: number }
 type Family = 'frontier' | 'earlier' | 'decision' | 'baseline' | 'local'
@@ -393,15 +394,17 @@ function Detail({ row }: { row: Row | null }) {
 export function Leaderboard({ ui, titleId }: { ui: BookUi; titleId?: string }) {
   const ownId = useId()
   const headingId = titleId ?? ownId
-  const [dataset, setDataset] = useState<'board-panel' | 'completed'>('board-panel')
+  const [dataset, setDataset] = useState<'board-panel' | 'completed' | 'incomplete'>('board-panel')
   return <figure className="leaderboard" aria-labelledby={headingId}>
     <figcaption className="lb-caption"><strong id={headingId}>Queens leaderboard</strong></figcaption>
     <div className="lb-controls">
       <Choice label="Assessment view" value={dataset} onChange={setDataset}
-        options={ [['board-panel', 'Shared board benchmark'], ['completed', 'Completed open-weight']] } />
+        options={ [['board-panel', 'Shared board benchmark'], ['completed', 'Completed open-weight'], ['incomplete', 'Incomplete open-weight']] } />
     </div>
     {dataset === 'board-panel' ? <BoardPanelLeaderboard ui={ui} />
-      : <Suspense fallback={<p role="status">Loading open-weight studies…</p>}><OpenWeightLeaderboard ui={ui} /></Suspense>}
+      : <Suspense fallback={<p role="status">Loading open-weight studies…</p>}>
+        {dataset === 'completed' ? <OpenWeightLeaderboard ui={ui} /> : <OpenWeightProgress ui={ui} />}
+      </Suspense>}
   </figure>
 }
 
