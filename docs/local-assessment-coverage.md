@@ -2,7 +2,33 @@
 
 Audit date: 2026-11-01. This report is an offline inventory and scientific review; it makes no inference requests and changes no live runner, study, service or frozen evidence.
 
-## Evidence boundary
+## Current publication boundary — November 11, 2026
+
+The historical audit below retains its November 1 scope. The new immutable
+`2026-11-09-overnight` snapshot captures the final recorded nights: **27 conditions,
+835 primary/audit receipts and 38 separate rescues**. There are 23 completed
+assessment conditions (816 calls), two historical original-budget partial studies
+(eight calls, 40 unrecorded), and two selected audits (11 calls). Every current
+queued panel is recorded; completed coverage includes the gpt-oss fresh2 text panel
+and the two fresh1 effort/budget follow-ups. One 65k attempt is a recorded transport
+failure, with usage unknown; it is not pending or a natural token cap.
+
+Qwen 27B fresh1 and Qwen 9B fresh2 were fully recorded in November 6 and their
+primary receipts are unchanged. November 7 was not idle: it continued 65k work,
+although its session results map omits that queue-study status. A separate
+started-only baseline attempt was archived and replaced on November 8; November
+9/10 were idle completion checks. See the [final-night report](local-qwen-nov9.md)
+for arm/size denominators, interruption history, trace divergence and usage limits.
+
+Updated routes are `#/local-qwen` and its study/receipt pages, plus the leaderboard's
+completed/incomplete open-weight views. Inherited PR #16 made `#/caveman-summary` a
+shared-index cross-study comparison, so its data also refreshes. The original
+`#/caveman-summary/pilot` and hosted-comparison leaderboard local rows retain their
+4B pilot scope. No inference
+or queue/service change was performed for publication. Further proposed tests are
+recommendations, not unfinished calls in the current frozen queue.
+
+## Historical evidence boundary
 
 The canonical read-only source is the `ollama-bigger-qwen` benchmark checkout, branch `claude/ollama-bigger-qwen`, observed HEAD `590d66611cdbe791dbbc115d926bf2c944d30b30`. Paths beginning `source:` below resolve against that checkout. The website comparison baseline is `public/evidence/local-qwen/snapshots/2026-10-31-overnight/catalog.json`, selected by the index at the start of this audit: captured `2026-10-31T15:56:27.919659+00:00`, source commit `428c3ebe57ff0ca88682f4413ca42b32a5928b23`, source dirty flag true. This is a dated coverage baseline, not a claim that later publication work has not added these studies.
 
