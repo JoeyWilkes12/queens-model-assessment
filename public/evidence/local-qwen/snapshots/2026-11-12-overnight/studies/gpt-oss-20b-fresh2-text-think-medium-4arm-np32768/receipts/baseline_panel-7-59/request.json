@@ -1,0 +1,18 @@
+{
+  "model": "gpt-oss:20b",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Solve this regional Queens puzzle in one shot. The connected regions are provided as a text matrix below. Rows are listed top to bottom and columns left to right, both numbered starting at 1. Equal letter labels identify the same region; labels are identifiers, not clues about queen locations.\n\nRegion grid rows (JSON matrix):\n[[\"A\",\"B\",\"B\",\"A\",\"A\",\"A\",\"C\"],[\"A\",\"B\",\"B\",\"A\",\"A\",\"C\",\"C\"],[\"A\",\"A\",\"B\",\"A\",\"D\",\"D\",\"C\"],[\"A\",\"A\",\"B\",\"A\",\"A\",\"A\",\"A\"],[\"E\",\"A\",\"A\",\"A\",\"A\",\"A\",\"A\"],[\"E\",\"F\",\"F\",\"F\",\"A\",\"A\",\"A\"],[\"E\",\"F\",\"F\",\"G\",\"G\",\"G\",\"A\"]]\n\nRules:\n1. Place exactly N queens: exactly one in every row, every column, and every region.\n2. Queens may not touch, including diagonally. Thus queens in consecutive rows cannot occupy columns differing by 1. Queens separated by more than one row MAY share a long diagonal; this is not the ordinary chess N-queens diagonal rule.\n3. The board has exactly one valid solution.\n\nReturn a written solution as exactly one JSON object, with no Markdown, explanation, or alternative solution:\n{\"board_id\":\"panel-7-59\",\"columns_by_row\":[INTEGER_COLUMN_FOR_ROW_1,...,INTEGER_COLUMN_FOR_ROW_N]}\n\nReplace the placeholder entries with exactly N integers from 1 through N. Each array index identifies its row, so a coordinate appears only once. Check all rules before returning your final answer. You have no external tools, hints, or follow-up attempts.\n\nBoard ID: panel-7-59\nN: 7\n"
+    }
+  ],
+  "stream": true,
+  "think": "medium",
+  "options": {
+    "num_predict": 32768,
+    "temperature": 0,
+    "seed": 20261028,
+    "num_ctx": 36864
+  },
+  "keep_alive": 0
+}

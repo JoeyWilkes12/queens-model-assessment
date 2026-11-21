@@ -31,12 +31,20 @@ TEXT_NAMES = {"gpt-oss-20b-fresh1-text-4arm-np32768", "qwen3.5-9b-nvfp4-fresh1-t
 CONSTRAINED_NAME = "qwen3.5-9b-nvfp4-fresh1-json-2arm-np32768"
 FRESH2_TEXT_NAME = "gpt-oss-20b-fresh2-text-4arm-np32768"
 FRESH2_NAMES = {FRESH2_TEXT_NAME, "qwen3.5-9b-nvfp4-fresh2-4arm-np32768"}
+NOV12_CONDITIONS = {
+    "gpt-oss-20b-fresh2-text-think-medium-4arm-np32768": ("gpt-oss:20b", "medium", "text"),
+    "gemma4-e4b-fresh2-4arm-np32768": ("gemma4:e4b", True, "image"),
+    "qwen3.5-4b-fresh2-4arm-np32768": ("qwen3.5:4b", True, "image"),
+    "qwen3.5-9b-nvfp4-fresh2-text-4arm-np32768": ("qwen3.5:9b-nvfp4", True, "text"),
+}
+FRESH2_NAMES |= set(NOV12_CONDITIONS)
 FRESH2_FILE = "fresh2-boards.json"
 GPT_FINAL_NAMES = {
     "gpt-oss-20b-fresh1-text-think-medium-4arm-np32768": ("medium", 32768),
     "gpt-oss-20b-fresh1-text-4arm-np65536": ("high", 65536),
 }
 TEXT_NAMES |= {FRESH2_TEXT_NAME} | set(GPT_FINAL_NAMES)
+TEXT_NAMES |= {name for name, (_, _, modality) in NOV12_CONDITIONS.items() if modality == "text"}
 FRESH_NAMES |= FRESH2_NAMES | TEXT_NAMES | {CONSTRAINED_NAME, "qwen3.5-27b-q4_K_M-fresh1-4arm-np24576"}
 ANSWER_SCHEMA = {
     "type": "object",
@@ -260,6 +268,12 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
         require(plan["runtime"]["model"] == "gpt-oss:20b"
                 and plan["protocol"]["think"] == effort
                 and plan["protocol"]["num_predict"] == budget, "Unexpected final gpt-oss condition")
+    if study_id in NOV12_CONDITIONS:
+        model, effort, modality = NOV12_CONDITIONS[study_id]
+        require(plan["runtime"]["model"] == model
+                and canonical(plan["protocol"]["think"]) == canonical(effort)
+                and plan["protocol"]["modality"] == modality
+                and plan["protocol"]["num_predict"] == 32768, "Unexpected November 12 condition")
     constrained = study_id == CONSTRAINED_NAME
     protocol = plan["protocol"]
     if constrained:
@@ -374,7 +388,7 @@ def derive_study(directory, relative_root, study_id, extended=False, coverage=Fa
         label = f"{plan['runtime']['model']} · fresh1 · two arms · {protocol['num_predict']:,} · greedy · constrained JSON · shadow detector"
     if text_study:
         label += " · text grid"
-    if study_id in GPT_FINAL_NAMES:
+    if study_id in GPT_FINAL_NAMES or study_id in NOV12_CONDITIONS and text_study and plan["runtime"]["model"] == "gpt-oss:20b":
         label += " · think " + protocol["think"]
     runtime = {key: plan["runtime"].get(key) for key in ("model", "digest", "server_version", "details", "os", "machine_architecture")}
     return {**({"arms": plan.get("arms", {arm: {"system_file": "caveman-system.txt" if arm == "caveman" else None, "system_sha256": sha(system) if arm == "caveman" else None, "system_chars": len(system.decode()) if arm == "caveman" else 0, "system_words": len(system.decode().split()) if arm == "caveman" else 0} for arm in ARMS}), "board_set": board_set, "loop_mode": "shadow" if protocol.get("loop_stop", {}).get("shadow") else "active" if loopstop else "off"} if coverage else {}), **({"kind": "audit" if audit_of else "assessment", "audit_of": audit_of} if extended else {}), "id": study_id, "label": label, "model": plan["runtime"]["model"], "budget": protocol["num_predict"],

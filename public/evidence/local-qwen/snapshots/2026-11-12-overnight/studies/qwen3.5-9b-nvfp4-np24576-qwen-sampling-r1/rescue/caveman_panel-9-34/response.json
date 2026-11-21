@@ -1,0 +1,17 @@
+{
+  "model": "qwen3.5:9b-nvfp4",
+  "created_at": "2026-10-30T05:23:33.878149Z",
+  "message": {
+    "role": "assistant",
+    "content": "5,1,6,4,2,7,8,3,9]}"
+  },
+  "done": true,
+  "done_reason": "stop",
+  "total_duration": 67521265875,
+  "load_duration": 2024833,
+  "prompt_eval_count": 26600,
+  "prompt_eval_cached_count": 0,
+  "prompt_eval_duration": 66894005750,
+  "eval_count": 18,
+  "eval_duration": 521625458
+}
