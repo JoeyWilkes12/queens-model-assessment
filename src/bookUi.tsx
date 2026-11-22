@@ -1,5 +1,9 @@
 import { Fragment, useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import { crumbsFor } from './bookNav'
+import { ResponsiveTable } from './ResponsiveTable'
+
+// Keep this breakpoint in sync with the stacked table rules in styles.css.
+const stackedTableMedia = '(width < 780px)'
 
 export function assetUrl(path: string) {
   return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
@@ -292,8 +296,18 @@ export function DataTable({
 }) {
   const hintId = useId()
   const scrollRef = useRef<HTMLDivElement>(null)
+  const [stacked, setStacked] = useState(() => matchMedia(stackedTableMedia).matches)
 
   useEffect(() => {
+    const media = matchMedia(stackedTableMedia)
+    const sync = () => setStacked(media.matches)
+    media.addEventListener('change', sync)
+    sync()
+    return () => media.removeEventListener('change', sync)
+  }, [])
+
+  useEffect(() => {
+    if (stacked) return
     const scroller = scrollRef.current
     const heading = scroller?.querySelector('thead')
     if (!scroller || !heading) return
@@ -305,7 +319,7 @@ export function DataTable({
     const observer = new ResizeObserver(measure)
     observer.observe(heading)
     return () => observer.disconnect()
-  }, [])
+  }, [stacked])
 
   return (
     <div className="data-table">
@@ -315,38 +329,12 @@ export function DataTable({
       <div
         ref={scrollRef}
         className="table-wrap"
-        tabIndex={0}
-        role="region"
-        aria-label={caption}
-        aria-describedby={hintId}
+        tabIndex={stacked ? undefined : 0}
+        role={stacked ? undefined : 'region'}
+        aria-label={stacked ? undefined : caption}
+        aria-describedby={stacked ? undefined : hintId}
       >
-        <table>
-          <caption>{caption}</caption>
-          <thead>
-            <tr>
-              {headers.map(header => (
-                <th scope="col" key={header}>
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, index) => (
-              <tr key={index}>
-                {row.map((cell, cellIndex) =>
-                  cellIndex === 0 ? (
-                    <th scope="row" key={cellIndex}>
-                      {cell}
-                    </th>
-                  ) : (
-                    <td key={cellIndex}>{cell}</td>
-                  ),
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <ResponsiveTable caption={caption} columns={headers.map(heading => ({ heading, label: heading }))} rows={rows} rowHeaders />
       </div>
     </div>
   )

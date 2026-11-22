@@ -41,7 +41,8 @@
 .wa-prose pre { max-width: 100%; margin: 0 0 1em; padding: 12px; overflow-x: auto; border: 1px solid var(--border-subtle); background: var(--surface-page); }
 .wa-prose blockquote { padding-left: 14px; border-left: 1px solid var(--border-strong); }
 .wa-prose hr { margin: 1.4em 0; border: 0; border-top: 1px solid var(--border-subtle); }
-.wa-table { max-width: 100%; margin: 0 0 1em; overflow-x: auto; }
+.wa-table { max-width: 100%; margin: 0 0 1em; }
+@media screen and (min-width: 780px) { .wa-table { overflow-x: auto; } }
 .wa-table table { width: 100%; border-collapse: collapse; font-size: .84rem; line-height: 1.4; }
 .wa-table th, .wa-table td { padding: 6px 10px; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
 .wa-table th { color: var(--text-primary); font-family: var(--mono-font); font-size: .72rem; font-weight: 600; white-space: nowrap; }

@@ -28,6 +28,15 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-22',
+    title: 'Data tables stack on phones',
+    kinds: ['interface'],
+    changes: [
+      'Across the book and writing arena, data tables show one record at a time with column labels on the left and values on the right at phone widths.',
+      'Wide screens keep side-by-side columns for comparing the same evidence.',
+    ],
+  },
+  {
     date: '2026-11-20',
     title: 'Writing arena for the local models',
     kinds: ['chapter', 'interface', 'evidence'],

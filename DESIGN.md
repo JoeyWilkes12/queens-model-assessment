@@ -59,17 +59,16 @@ Hash routing keeps every page compatible with a later static host. The evidence 
 - **Candidate lens:** toggles between columns-only and explicit-region representations using exact saved candidates.
 - **Evidence atlas:** searchable, study-, provider-, exact-model-version-, and outcome-filtered request and grade-source index with distinct request and assessment states.
 - **Evidence receipt:** content-addressed input attachment, exact sanitized request, visible output, deterministic grade, metadata, copy, and download.
-- **Callouts and tables:** explicit evidence, caution, and boundary treatments. Every table uses the shared `DataTable` component and the frozen-header behavior below.
+- **Callouts and tables:** explicit evidence, caution, and boundary treatments. Data tables use the shared `ResponsiveTable` layout. Book tables use the `DataTable` wrapper for captions and desktop scroll behavior.
 
 ## Table behavior
 
-- Preserve native table, caption, column-header and row-header semantics. Do not clone headers or turn rows into mobile cards.
-- Short tables take their natural height. Tall tables scroll inside a named, keyboard-focusable region capped at the smaller of 36rem or 65% of the dynamic viewport height; the `vh` fallback covers older browsers. This leaves room for mobile navigation and the surrounding reading context.
-- Column headers stick to the top of the table's own scroll region. Their opaque, theme-aware raised-paper surface and stacking layer keep scrolling rows from showing through. Separate borders preserve the header rule while it moves.
-- Horizontal and vertical scrolling remain native, with columns and headers moving together horizontally. Visible guidance explains the scroll behavior; the same guidance describes the accessible region.
-- Measure wrapped header height with `ResizeObserver` and use it as scroll padding so keyboard-focused receipt links can be brought below the frozen header after viewport, font or zoom changes.
-- The mobile navigation remains above the table. No first-column pinning, data hiding, sampling or evidence truncation is introduced.
-- Printing removes the scroll height limit and sticky positioning so every row remains available.
+- Below 780px, each record stacks into label/value pairs and the page carries the vertical scroll. Labels align left, values align right, and long content wraps. A rule marks the start of each record. Column order, values, and interactive controls come from the same source as the wide view.
+- Preserve semantic table, caption, column-header and row-header markup. Keep the source column headings available to assistive technology and mark repeated visual labels as decorative. Keep a single instance of each link or control.
+- At 780px and above, book tables keep their columns and sticky headers. Tall tables scroll in a named, keyboard-focusable region capped at the smaller of 36rem or 65% of the dynamic viewport height. The opaque raised-paper header stays above the rows. Separate borders preserve the header rule while it moves.
+- Measure the desktop header with `ResizeObserver` and use its height as scroll padding so focused links clear the header. Keep scroll guidance with the desktop region.
+- Spatial diagrams such as the Z3 blocker grid keep their row and column geometry at every width and fit the available space.
+- Printing uses columns and removes the sticky positioning and scroll height limit so every row remains available.
 
 ## Receipt boards and recorded playback
 
@@ -97,7 +96,7 @@ Identified evaluator references are a separate versioned registry derived and in
 - At and above 1180px, the global book rail and local contents rail can remain visible together.
 - Below 1180px, local contents move into document flow.
 - Below 780px, and on short landscape screens (≤1020px wide and ≤500px tall), the global rail becomes a modal drawer, the page becomes a single reading column, and the drawer removes the page from focus while open.
-- Below 460px, candidate rows, JSON type, receipts, and tables compress without hiding evidence. Tables retain horizontal scrolling rather than collapsing meaning.
+- Below 460px, candidate rows, JSON type, and receipts compress without hiding evidence.
 
 The site was visually checked at 1440×1000 and 390×844. Final QA captures are retained locally under `output/playwright/`.
 
@@ -108,7 +107,7 @@ The site was visually checked at 1440×1000 and 390×844. Final QA captures are 
 - Region letters and written placements duplicate color meaning.
 - Closed mobile navigation is not focusable; focus enters the close control and returns to the menu opener.
 - `prefers-reduced-motion` removes smooth scrolling and transition duration.
-- JSON and table content remain selectable, horizontally scrollable, and available at 320px width.
+- JSON remains selectable and scrollable. Data tables reflow at 320px width with all values and controls selectable or operable.
 - Light and dark themes retain the same semantic hierarchy.
 
 ## Evidence semantics
@@ -133,7 +132,7 @@ labels and counts carry every meaning without color. Hosted-cost bars share a
 zero-based USD scale; signed arrows and values distinguish increases and savings.
 Missing canceled-stream usage has no fabricated zero-cost bar. Controls expose
 the selected study, size scope, tariff, editable USD/million rates and explicit
-rescue inclusion. Native tables retain the book's scrolling behavior. Partial
+rescue inclusion. Native tables use the shared responsive layout. Partial
 studies with unmatched recorded boards do not receive a comparative cost claim.
 
 - The repository solver is explanatory context, not a timed competitor.
