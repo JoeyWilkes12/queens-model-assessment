@@ -168,3 +168,14 @@ test('data tables stack at phone widths and restore desktop columns and print he
   await row.locator('.responsive-table-label').first().waitFor({ state: 'hidden' })
   assert.equal(await table.locator('thead th').first().evaluate(node => getComputedStyle(node).position), 'sticky')
 })
+
+test('long model identifiers wrap inside stacked table cells', async () => {
+  await page.setViewportSize({ width: 320, height: 640 })
+  await visit('about-models')
+  const table = page.getByRole('table', { name: 'Hosted models reached through OpenRouter: at a glance' })
+  await table.waitFor()
+  const fits = await table.locator('.responsive-table-value').evaluateAll(values =>
+    values.every(value => value.scrollWidth <= value.clientWidth + 1),
+  )
+  assert.equal(fits, true)
+})

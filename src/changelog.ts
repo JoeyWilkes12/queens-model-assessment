@@ -31,6 +31,7 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-22',
     title: 'Data tables stack on phones',
     kinds: ['interface'],
+    pr: 34,
     changes: [
       'Across the book and writing arena, data tables show one record at a time with column labels on the left and values on the right at phone widths.',
       'Wide screens keep side-by-side columns for comparing the same evidence.',
