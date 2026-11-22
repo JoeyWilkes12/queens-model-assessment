@@ -2,7 +2,37 @@
 
 Audit date: 2026-11-01. This report is an offline inventory and scientific review; it makes no inference requests and changes no live runner, study, service or frozen evidence.
 
-## Evidence boundary
+## Current publication boundary — November 13, 2026
+
+The historical audit below retains its November 1 scope. The immutable
+`2026-11-13-overnight` snapshot contains **31 conditions, 1,027 primary/audit
+receipts and 38 separate rescues**: 27 completed assessment conditions
+(1,008 calls), two original-budget partial conditions (eight recorded, 40 pending),
+and two selected audits (11 calls). All six Fresh2 conditions have 48/48 recorded.
+The 1,067 planned-call denominator includes those historical unobserved slots;
+no unfinished queued study remains. Older snapshots stay unchanged.
+
+The new night adds six Qwen 4B image calls (complete: 19/48 strict) and 48 Qwen
+9B text calls (27/48 strict versus image’s 43/48). All four fixed criteria now
+hold, including 4B’s nondirectional ±6 band around Fresh1’s 16/48. The prior
+GPT-OSS and Gemma results are unchanged: pooled effort accuracy p=0.072951389
+misses its fixed threshold; Gemma p=0.015625 meets its fixed nominal rule when
+the Fresh1 discovery boards are included. Fresh2 alone repeats the direction (p=0.25).
+Four-of-four is informative prospective agreement, not four significant effects
+or a quantified chance probability. Each set has twelve public boards with one
+greedy run per cell. See the [November 13 final report](local-qwen-nov13.md)
+for fixed rules, by-arm/size outcomes, timing and cross-night host observations.
+The [November 12 interim report](local-qwen-nov12.md) and
+[November 9 history](local-qwen-nov9.md) retain their dated scope.
+
+Updated presentation routes are `#/local-qwen`, its study/receipt pages and
+`#/changelog`. Activation also refreshes consumers of the shared index, including
+`#/caveman-summary` and the completed/incomplete open-weight leaderboard views;
+no leaderboard source or styling changed. The original `#/caveman-summary/pilot`
+and hosted-comparison local rows retain their 4B pilot scope. No inference or
+queue/service change was performed for publication.
+
+## Historical evidence boundary
 
 The canonical read-only source is the `ollama-bigger-qwen` benchmark checkout, branch `claude/ollama-bigger-qwen`, observed HEAD `590d66611cdbe791dbbc115d926bf2c944d30b30`. Paths beginning `source:` below resolve against that checkout. The website comparison baseline is `public/evidence/local-qwen/snapshots/2026-10-31-overnight/catalog.json`, selected by the index at the start of this audit: captured `2026-10-31T15:56:27.919659+00:00`, source commit `428c3ebe57ff0ca88682f4413ca42b32a5928b23`, source dirty flag true. This is a dated coverage baseline, not a claim that later publication work has not added these studies.
 
