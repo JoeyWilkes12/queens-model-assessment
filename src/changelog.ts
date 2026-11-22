@@ -28,6 +28,17 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-20',
+    title: 'Writing arena for the local models',
+    kinds: ['chapter', 'interface', 'evidence'],
+    pr: 31,
+    changes: [
+      'At #/writing-arena, compare five pages frozen on November 13 with the text six local models produced from the same instruction.',
+      'Of 30 attempts, 28 returned rewrites. Two reached the token limit before returning any page text.',
+      'Compare writers side by side on desktop or switch between them on a phone. Reveal their names or save your preferred version in this browser.',
+    ],
+  },
+  {
     date: '2026-11-13',
     title: 'All four fixed predictions and complete Fresh2 coverage',
     kinds: ['evidence', 'chapter', 'method'],
