@@ -72,7 +72,7 @@ test('completed leaderboard filters comparable studies by panel, protocol and si
   await visibleText(results.locator('.ow-score small'), '16/16')
   await page.getByText('Loop-stop audits (2)', { exact: true }).click()
   const audits = page.getByRole('table', { name: 'Completed audits of selected client stops' })
-  assert.deepEqual((await audits.getByRole('cell', { name: /^\d+\/\d+$/ }).allTextContents()).sort(), ['0/6', '1/5'])
+  assert.deepEqual((await audits.getByRole('cell', { name: /^\d+\/\d+$/ }).allInnerTexts()).sort(), ['0/6', '1/5'])
   await results.getByRole('link').click()
   await page.waitForURL('**/#/local-qwen/study/qwen3.5-9b-nvfp4-fresh2-4arm-np32768')
   assert.equal(await page.getByLabel('Study', { exact: true }).inputValue(), 'qwen3.5-9b-nvfp4-fresh2-4arm-np32768')
@@ -140,4 +140,42 @@ test('changelog includes the Caveman synthesis with its PR link', async () => {
   await page.getByRole('heading', { name: 'Validate local assessment results and receipt navigation' }).waitFor()
   await page.getByRole('heading', { name: 'Caveman results across local studies' }).waitFor()
   await page.getByRole('link', { name: 'Pull request #16', exact: true }).waitFor()
+})
+
+test('data tables stack at phone widths and restore desktop columns and print headers', async () => {
+  await page.setViewportSize({ width: 320, height: 640 })
+  await visit('earlier-generations')
+  const caption = 'Board-level records · original image condition'
+  const table = page.getByRole('table', { name: caption })
+  await table.waitFor()
+  const row = table.getByRole('row').nth(1)
+  assert.equal(await table.getByRole('columnheader', { name: 'Requested model' }).count(), 1)
+  await visibleText(row.locator('.responsive-table-label').first(), 'Requested model')
+  assert.match(await row.getByRole('rowheader').innerText(), /openai\/gpt-5\.5/)
+  assert.equal(await row.getByRole('link', { name: 'Open receipt' }).count(), 1)
+  const scroller = table.locator('..')
+  assert.equal(await scroller.evaluate(node => node.scrollWidth <= node.clientWidth), true)
+  assert.equal(await scroller.evaluate(node => node.scrollHeight <= node.clientHeight), true)
+
+  await page.emulateMedia({ media: 'print' })
+  assert.equal(await table.evaluate(node => getComputedStyle(node).display), 'table')
+  assert.equal(await table.locator('thead th').first().evaluate(node => getComputedStyle(node).position), 'static')
+  await page.emulateMedia({ media: 'screen' })
+
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  const desktopRegion = page.getByRole('region', { name: caption, exact: true })
+  await desktopRegion.waitFor()
+  await row.locator('.responsive-table-label').first().waitFor({ state: 'hidden' })
+  assert.equal(await table.locator('thead th').first().evaluate(node => getComputedStyle(node).position), 'sticky')
+})
+
+test('long model identifiers wrap inside stacked table cells', async () => {
+  await page.setViewportSize({ width: 320, height: 640 })
+  await visit('about-models')
+  const table = page.getByRole('table', { name: 'Hosted models reached through OpenRouter: at a glance' })
+  await table.waitFor()
+  const fits = await table.locator('.responsive-table-value').evaluateAll(values =>
+    values.every(value => value.scrollWidth <= value.clientWidth + 1),
+  )
+  assert.equal(fits, true)
 })

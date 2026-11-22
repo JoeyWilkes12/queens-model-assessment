@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from 'react'
+import { ResponsiveTable } from './ResponsiveTable'
 
 /**
  * A small Markdown renderer for model-written pages. It builds React elements directly and never
@@ -6,8 +7,8 @@ import { Fragment, type ReactNode } from 'react'
  * headings, paragraphs, lists, tables, block quotes, code fences and inline bold, italic, code and links.
  */
 
-/** Inline spans: `code`, **bold**, *italic* and [text](https://…). Anything else stays literal. */
-function inline(text: string, key = 0): ReactNode[] {
+/** Render supported inline spans. Repeated visual labels use plain text for links. */
+function inline(text: string, key = 0, linkify = true): ReactNode[] {
   const out: ReactNode[] = []
   const pattern = /(`[^`]+`)|(\*\*[^*]+\*\*)|(\*[^*\s][^*]*\*)|(\[[^\]]+\]\(https?:\/\/[^)\s]+\))/
   let rest = text, index = key
@@ -17,9 +18,9 @@ function inline(text: string, key = 0): ReactNode[] {
     if (match.index) out.push(rest.slice(0, match.index))
     const token = match[0]
     if (token.startsWith('`')) out.push(<code key={index++}>{token.slice(1, -1)}</code>)
-    else if (token.startsWith('**')) out.push(<strong key={index++}>{inline(token.slice(2, -2), index * 100)}</strong>)
-    else if (token.startsWith('*')) out.push(<em key={index++}>{inline(token.slice(1, -1), index * 100)}</em>)
-    else { const [, label, url] = /\[([^\]]+)\]\(([^)]+)\)/.exec(token)!; out.push(<a key={index++} href={url} rel="noreferrer">{label}</a>) }
+    else if (token.startsWith('**')) out.push(<strong key={index++}>{inline(token.slice(2, -2), index * 100, linkify)}</strong>)
+    else if (token.startsWith('*')) out.push(<em key={index++}>{inline(token.slice(1, -1), index * 100, linkify)}</em>)
+    else { const [, label, url] = /\[([^\]]+)\]\(([^)]+)\)/.exec(token)!; out.push(linkify ? <a key={index++} href={url} rel="noreferrer">{label}</a> : label) }
     rest = rest.slice(match.index + token.length)
   }
   return out
@@ -54,8 +55,14 @@ export function MiniMarkdown({ text }: { text: string }) {
     if (/^\s*\|/.test(line) && i + 1 < lines.length && isRule(lines[i + 1])) {
       const head = cells(line), rows: string[][] = []
       for (i += 2; i < lines.length && /^\s*\|/.test(lines[i]); i++) rows.push(cells(lines[i]))
-      blocks.push(<div className="wa-table" key={key++}><table><thead><tr>{head.map((cell, c) => <th key={c} scope="col">{inline(cell)}</th>)}</tr></thead>
-        <tbody>{rows.map((row, r) => <tr key={r}>{row.map((cell, c) => <td key={c}>{inline(cell)}</td>)}</tr>)}</tbody></table></div>)
+      const width = rows.reduce((count, row) => Math.max(count, row.length), head.length)
+      const columns = Array.from({ length: width }, (_, index) => {
+        const title = head[index] || `Column ${index + 1}`
+        return { heading: inline(title), label: inline(title, 0, false) }
+      })
+      blocks.push(<div className="wa-table" key={key++}>
+        <ResponsiveTable columns={columns} rows={rows.map(row => row.map(cell => inline(cell)))} />
+      </div>)
       continue
     }
     const bullet = /^\s*([-*+]|\d+[.)])\s+/

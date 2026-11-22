@@ -13,8 +13,8 @@ test('literal pipe lines and a malformed table stay readable before a real table
   assert.ok(html.includes('<p>|</p>'))
   assert.ok(html.includes('<p>| Not a header |</p>'))
   assert.ok(html.includes('<p>| broken separator |</p>'))
-  assert.ok(html.includes('<th scope="col">Heading</th>'))
-  assert.ok(html.includes('<td>content</td>'))
+  assert.match(html, /<th [^>]*scope="col"[^>]*>Heading<\/th>/)
+  assert.match(html, /<td [^>]*>.*class="responsive-table-value">content<\/span><\/td>/)
 })
 
 test('all five frozen pages and every recorded output render', () => {

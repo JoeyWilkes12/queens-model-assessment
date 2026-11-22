@@ -215,6 +215,84 @@ img, svg { display: block; }
 .table-wrap tbody tr:first-child > * { border-top: 0; }
 .table-wrap tbody th { min-width: 145px; color: var(--text-primary); font-weight: 700; }
 .table-wrap td { min-width: 120px; }
+.responsive-table-label { display: none; }
+
+@media screen and (width < 780px) {
+  .data-table .table-scroll-hint { display: none; }
+  .table-wrap {
+    max-block-size: none;
+    overflow: visible;
+  }
+
+  /* Keep the source column headers in the accessibility tree. */
+  .responsive-table thead:not(:has(a)) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .responsive-table,
+  .responsive-table caption,
+  .responsive-table tbody,
+  .responsive-table tbody tr {
+    display: block;
+  }
+
+  .table-wrap .responsive-table {
+    min-width: 0;
+  }
+
+  /* A linked source heading remains visible and operable in Markdown tables. */
+  .responsive-table thead:has(a) {
+    display: block;
+  }
+
+  .responsive-table thead:has(a) tr {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .responsive-table thead:has(a) th {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .responsive-table tbody tr {
+    padding-block: 4px;
+    border-top: 1px solid var(--border-strong);
+  }
+
+  .responsive-table tbody tr > :is(th, td) {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: baseline;
+    gap: 12px;
+    min-width: 0;
+    padding: 8px 12px;
+    border: 0;
+    text-align: end;
+    white-space: normal;
+    letter-spacing: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .responsive-table-label {
+    display: block;
+    color: var(--text-secondary);
+    font: 500 .73rem/1.4 var(--mono-font);
+    text-align: start;
+  }
+
+  .responsive-table tbody th .responsive-table-value { font-weight: 700; }
+  .responsive-table .responsive-table-value :is(code, a, button) {
+    max-inline-size: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
 .table-note { color: var(--text-muted); font-size: .84rem; }
 .print-only { display: none; }
 .featured-print-fallback ul { margin: 8px 0 0; padding-left: 1.2em; }

@@ -1,5 +1,7 @@
 # Frozen table headers — design review and verification
 
+> This record documents the October 1 frozen-header layout. The current [design system](DESIGN.md#table-behavior) and `npm run site:test` cover the automatic phone layout. To rerun the historical mobile checks below, use the October 1 revision.
+
 ## Contents
 
 - [Review and change](#review-and-change)
