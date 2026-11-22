@@ -7,12 +7,18 @@ Published site: [Queens model assessment](https://joeywilkes12.github.io/queens-
 The [local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen)
 cover Gemma 4 E4B, GPT-OSS 20B, LLaVA-Llama3 and Qwen, with separate fresh-board four-arm studies,
 original Qwen budget and sampling conditions, and selected loop-stop audits.
-The final-night November 9 snapshot contains 27 conditions and 835 assessment and audit receipts,
-plus 38 separate rescues. All queued panels have recorded outcomes: GPT-OSS Fresh2 text
-finishes at 25/48 strict, while Fresh1 medium effort at 32k and high effort at 65k each
-record 29/48 strict. The 65k condition includes one transport failure with unknown usage.
-Qwen 27B Fresh1 and Qwen 9B Fresh2 were already complete on November 6 and are unchanged.
-See the [final-night audit](docs/local-qwen-nov9.md), the [November 6 audit](docs/local-qwen-nov6.md),
+The November 13 snapshot contains 31 conditions and 1,027 assessment/audit receipts,
+plus 38 separate rescues. All four criteria fixed before the runs hold: GPT-OSS
+medium has 31/48 strict and nine cut-offs versus high’s 25/48 and 23; Gemma has
+baseline 5/12 versus Caveman 2/12; Qwen 4B has 19/48 versus Fresh1’s 16/48,
+inside ±6; Qwen 9B text has 27/48 versus image’s 43/48. All Fresh2 panels are
+complete, and the matched four-arm text/image comparison is available.
+The prospective Gemma comparison repeats the predicted direction (paired p=0.25).
+The pooled test includes the Fresh1 boards that suggested this prediction (p=0.016).
+Each set has twelve public boards and one greedy run per cell. Forty historical original-budget slots remain
+unobserved, not failed. See the [November 13 final fixed-analysis audit](docs/local-qwen-nov13.md),
+[November 12 interim report](docs/local-qwen-nov12.md),
+[earlier final-night audit](docs/local-qwen-nov9.md), [November 6 audit](docs/local-qwen-nov6.md),
 the [November 5 audit](docs/local-qwen-nov5.md),
 the [November 3 results](docs/local-qwen-nov3.md),
 [offline import workflow](docs/local-qwen-imports.md), [method review](docs/local-qwen-methods.md),

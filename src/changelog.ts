@@ -28,6 +28,46 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-13',
+    title: 'All four fixed predictions and complete Fresh2 coverage',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 33,
+    changes: [
+      'Updated #/local-qwen and its study/receipt routes with the November 13 snapshot: 31 conditions, 1,027 assessment/audit receipts and 38 separate rescues. Every Fresh2 panel is complete.',
+      'Reported all four fixed criteria holding. Qwen 4B finishes at 19/48 strict, within ±6 of Fresh1’s 16/48. Qwen 9B text scores 27/48 versus image’s 43/48; a matched four-arm and size comparison is now available.',
+      'Retained GPT-OSS and Gemma conclusions and the fixed statistical limits: four successful criteria are not four significant effects. Each set has twelve public boards with one greedy run per board and arm. Shared-index comparisons receive the new data; the original 4B pilot and hosted-comparison local rows retain their historical scope.',
+    ],
+  },
+  {
+    date: '2026-11-13',
+    title: 'Archived the November 13 replication receipts',
+    kinds: ['evidence'],
+    pr: 32,
+    changes: [
+      'The November 13 archive contains 1,027 recorded assessment and audit calls across 31 studies, plus 38 separate rescue calls. The local assessment pages still show the November 12 snapshot at this stage.',
+    ],
+  },
+  {
+    date: '2026-11-12',
+    title: 'Fresh2 replication results and unfinished Qwen coverage',
+    kinds: ['evidence', 'chapter', 'method'],
+    pr: 30,
+    changes: [
+      'Updated #/local-qwen and its study/receipt routes with the November 12 snapshot: 30 conditions, 973 assessment/audit receipts and 38 separate rescues.',
+      'Reported the two predictions that could be checked against the analysis fixed before the night. On Fresh2, GPT-OSS at medium effort had fewer cut-offs (9 against 23) and more strict answers (31/48 against 25/48) than at high effort; the pooled accuracy difference is not significant (p = 0.073). Gemma again scored lower with Caveman than at baseline (2/12 against 5/12); the Fresh2-only paired test gave p = 0.25. Pooling in the Fresh1 boards that suggested the prediction gave p = 0.016.',
+      'Kept Qwen 4B Fresh2 unfinished at 42/48 recorded and Qwen 9B Fresh2 text unstarted. Shared-index comparisons also receive the new data; the original 4B pilot and hosted-comparison local rows retain their historical scope.',
+    ],
+  },
+  {
+    date: '2026-11-12',
+    title: 'Archived the November 12 replication receipts',
+    kinds: ['evidence'],
+    pr: 29,
+    changes: [
+      'The November 12 archive contains 973 recorded assessment and audit calls across 30 studies, plus 38 separate rescue calls. The local assessment pages still show the November 9 snapshot at this stage.',
+    ],
+  },
+  {
     date: '2026-11-11',
     title: 'Final nights of local open-weight assessments',
     kinds: ['evidence', 'chapter', 'method'],

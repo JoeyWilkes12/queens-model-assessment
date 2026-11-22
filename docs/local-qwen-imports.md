@@ -106,3 +106,19 @@ receipt as a recorded transport failure, with null input/output usage and no
 invented response identity. Its exact request/response hashes and empty-answer
 grade/diagnostic still verify. Complete coverage means every planned attempt has
 an outcome record; it does not mean every attempt returned a model answer.
+
+The November 12 extension explicitly admits fresh2 GPT-OSS medium-effort text,
+Gemma 4 E4B images, Qwen 4B images and a prepared Qwen 9B text condition if one
+exists. Model, effort, modality and 32,768 output allowance must match those
+reviewed identities. The captured night has no Qwen 9B text plan; the allowlist
+does not fabricate one. The Qwen 4B capture retains six pending rows and all 48
+planned slots. The active `2026-11-12-overnight` catalog and all older catalogs
+verify independently. See the [November 12 fixed-analysis report](local-qwen-nov12.md).
+
+The November 13 snapshot (`2026-11-13-overnight`) uses the same reviewed schema-3
+allowlist. It completes Qwen 4B Fresh2 (48/48) and adds the now-frozen Qwen 9B
+Fresh2 text study (48/48). No importer/schema extension was needed. All Fresh2
+panels are complete; the two original-budget partial studies retain 40 historical
+pending slots. The active index switched only with the matching display change;
+November 12 and older snapshots remain unchanged. See the
+[November 13 final fixed-analysis report](local-qwen-nov13.md).
