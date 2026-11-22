@@ -88,7 +88,7 @@ export function ExecutiveSummary() {
         className="page-hero--board"
         trail="Read first"
         title="Frontier reasoning models solve Queens boards from a picture. Decision models rarely finish one."
-        deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. The shared benchmark compares systems on the same boards. The completed open-weight view shows local results by study."
+        deck="Queens is a logic puzzle: one queen in every row, column and colored region, with no two queens touching. The shared benchmark compares systems on the same boards. The open-weight view compares completed studies with matching boards and settings."
       />
       <section className="board-cover" aria-labelledby="leaderboard-title">
         <Leaderboard ui={bookUi} titleId="leaderboard-title" />

@@ -89,6 +89,18 @@ export const CHANGELOG: ChangeEntry[] = [
   },
   {
     date: '2026-11-11',
+    title: 'Queens leaderboard opens on Solved vs cost, with details in info buttons',
+    kinds: ['interface'],
+    pr: 24,
+    changes: [
+      'The Executive Summary leaderboard now opens on the Solved vs cost scatter plot. It draws in portrait on a phone, taller and zoomable; the turn-your-phone prompt is gone.',
+      'Two views replace three: Shared boards and Open-weight studies. Unfinished and superseded runs moved into a disclosure at the end.',
+      'Open-weight studies ranks only comparable studies. Completed studies are grouped into cohorts that share the same boards and prompt arms, input, token budget, decoding and sampling round, thinking setting, answer-format constraint and loop detector. Each cohort shows its own counts and orders its models highest first by strict solve rate or by estimated cost per call. A study with no match stands alone and unranked, and nothing is pooled across cohorts. Estimates that are only a lower bound, or missing a price, are listed outside the cost order. Board panel, protocol and board size filters narrow the cohorts.',
+      'Settings, prompt-arm results, reading notes and board-panel descriptions moved from running text into info buttons beside the row or heading they explain.',
+    ],
+  },
+  {
+    date: '2026-11-11',
     title: 'About the models',
     kinds: ['chapter'],
     pr: 27,

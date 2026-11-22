@@ -51,29 +51,43 @@ async function visibleText(locator, expected) {
 
 test('shared leaderboard displays solved boards and exact-format counts', async () => {
   await visit('executive-summary')
+  assert.equal(await page.getByRole('radio', { name: 'Solved vs cost' }).getAttribute('aria-checked'), 'true')
   await page.getByText('Show the data as a table', { exact: true }).click()
   const row = page.getByRole('row').filter({ has: page.getByRole('rowheader', { name: 'GPT-5.6 Sol', exact: true }) })
   await visibleText(row.getByRole('cell').nth(1), '36/36')
   await visibleText(row.getByRole('cell').nth(2), '36')
 })
 
-test('completed leaderboard combines model, panel and size while keeping audits separate', async () => {
+test('completed leaderboard filters comparable studies by panel, protocol and size', async () => {
   await visit('executive-summary')
-  await page.getByRole('radio', { name: 'Completed open-weight' }).click()
-  await page.getByLabel('Model', { exact: true }).selectOption('qwen3.5:9b-nvfp4')
-  await page.getByLabel('Board panel', { exact: true }).selectOption('fresh2')
+  await page.getByRole('radio', { name: 'Open-weight studies' }).click()
+  await page.getByRole('radio', { name: 'Fresh2', exact: true }).click()
+  const protocol = page.getByRole('combobox', { name: 'Protocol' })
+  await protocol.selectOption({ label: 'image · 32k · 4 arms · shadow detection' })
   const results = page.locator('.ow-results li').filter({
     has: page.locator('a[href="#/local-qwen/study/qwen3.5-9b-nvfp4-fresh2-4arm-np32768"]'),
   })
-  await visibleText(results.getByText(/strict$/), '43/48 strict')
-  await page.getByLabel('Board size', { exact: true }).selectOption('5')
-  await visibleText(results.getByText(/strict$/), '16/16 strict')
-  await page.getByText('2 selected loop-stop audits · diagnostic reruns', { exact: true }).click()
+  await visibleText(results.locator('.ow-score small'), '43/48')
+  await page.getByRole('radio', { name: '5×5', exact: true }).click()
+  await visibleText(results.locator('.ow-score small'), '16/16')
+  await page.getByText('Loop-stop audits (2)', { exact: true }).click()
   const audits = page.getByRole('table', { name: 'Completed audits of selected client stops' })
   assert.deepEqual((await audits.getByRole('cell', { name: /^\d+\/\d+$/ }).allTextContents()).sort(), ['0/6', '1/5'])
   await results.getByRole('link').click()
   await page.waitForURL('**/#/local-qwen/study/qwen3.5-9b-nvfp4-fresh2-4arm-np32768')
   assert.equal(await page.getByLabel('Study', { exact: true }).inputValue(), 'qwen3.5-9b-nvfp4-fresh2-4arm-np32768')
+})
+
+test('open-weight cost order leaves unpriced studies unranked', async () => {
+  await visit('executive-summary')
+  await page.getByRole('radio', { name: 'Open-weight studies' }).click()
+  await page.getByRole('radio', { name: 'Cost per call' }).click()
+  const result = page.locator('.ow-results li').filter({
+    has: page.locator('a[href="#/local-qwen/study/gemma4-e4b-fresh1-4arm-np32768"]'),
+  })
+  await visibleText(result.locator('.ow-score'), 'no price saved')
+  assert.equal(await result.locator('.ow-place').innerText(), '')
+  assert.match(await result.locator('..').getAttribute('aria-label'), /^Outside the cost order/)
 })
 
 test('Caveman chapter renders signed spend differences and links the original pilot', async () => {
