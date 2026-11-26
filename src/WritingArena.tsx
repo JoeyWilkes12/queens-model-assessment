@@ -103,7 +103,7 @@ export default function WritingArena({ ui, taskId }: { ui: BookUi; taskId?: stri
     return () => controller.abort()
   }, [])
 
-  const task = index?.tasks.find(item => item.id === taskId) ?? index?.tasks[0] ?? null
+  const task = taskId ? index?.tasks.find(item => item.id === taskId) : index?.tasks[0]
   const writers = useMemo<Writer[]>(() => {
     if (!index || !task) return []
     const list: Omit<Writer, 'alias'>[] = [
@@ -120,7 +120,11 @@ export default function WritingArena({ ui, taskId }: { ui: BookUi; taskId?: stri
   useEffect(() => { try { localStorage.setItem(PICKS, JSON.stringify(picks)) } catch { /* Private windows: picks last for this visit only. */ } }, [picks])
 
   if (error) return <><PageHero trail="Local open-weight models / writing arena" title="Writing arena" deck="The rewrites could not be loaded." /><main className="wa" id="main-content"><p role="status">Reload the page, or <a href={base + 'index.json'}>open the index</a> directly.</p></main></>
-  if (!index || !task) return <><PageHero trail="Local open-weight models / writing arena" title="Writing arena" deck="Loading the rewrites…" /><main className="wa" id="main-content"><p role="status">Loading…</p></main></>
+  if (!index) return <><PageHero trail="Local open-weight models / writing arena" title="Writing arena" deck="Loading the rewrites…" /><main className="wa" id="main-content"><p role="status">Loading…</p></main></>
+  if (!task) return <>
+    <PageHero trail="Local open-weight models / writing arena" title="Comparison page unavailable" deck="Choose one of the five saved comparisons." />
+    <main className="wa" id="main-content"><a href="#/writing-arena">See available comparisons</a></main>
+  </>
 
   const ready = writers.filter(writer => writer.path)
   const shown = Array.from({ length: Math.min(paneCount, Math.max(1, ready.length)) }, (_, slot) => {

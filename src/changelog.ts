@@ -28,6 +28,16 @@ export const FOUNDATION = {
 
 export const CHANGELOG: ChangeEntry[] = [
   {
+    date: '2026-11-26',
+    title: 'Writing Arena navigation and assessment notes',
+    kinds: ['fix', 'method'],
+    changes: [
+      'Writing Arena keeps the reveal setting when you switch comparison pages, identifies missing deep links, and stacks tables inside narrow comparison panes.',
+      'On phones, model links land below the sticky header. The navigation guide now links to the model profiles and Writing Arena.',
+      'The local assessments clarify the fixed GPT-OSS call-level calculation. The leaderboard explains how to read ranks across saved model configurations.',
+    ],
+  },
+  {
     date: '2026-11-22',
     title: 'Data tables stack on phones',
     kinds: ['interface'],

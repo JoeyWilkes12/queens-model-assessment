@@ -254,7 +254,7 @@ function App() {
           <ThemeToggle theme={theme} setTheme={setTheme} />
         </div>
         <div className="page-body">
-          <ChapterBoundary key={path}>
+          <ChapterBoundary key={active === 'writing-arena' ? active : path}>
             <Suspense fallback={<LoadingPage hero={loadingHero(path)} label="Loading this chapter…" />}>
               {page}
             </Suspense>

@@ -63,7 +63,7 @@ Hash routing keeps every page compatible with a later static host. The evidence 
 
 ## Table behavior
 
-- Below 780px, each record stacks into label/value pairs and the page carries the vertical scroll. Labels align left, values align right, and long content wraps. A rule marks the start of each record. Column order, values, and interactive controls come from the same source as the wide view.
+- Below 780px viewport width, book tables stack each record into label/value pairs. Writing Arena tables use the 780px breakpoint on each pane's reading width. The page carries the vertical scroll. Labels align left, values align right, and long content wraps. A rule marks the start of each record. Column order, values, and interactive controls come from the same source as the wide view.
 - Preserve semantic table, caption, column-header and row-header markup. Keep the source column headings available to assistive technology and mark repeated visual labels as decorative. Keep a single instance of each link or control.
 - At 780px and above, book tables keep their columns and sticky headers. Tall tables scroll in a named, keyboard-focusable region capped at the smaller of 36rem or 65% of the dynamic viewport height. The opaque raised-paper header stays above the rows. Separate borders preserve the header rule while it moves.
 - Measure the desktop header with `ResizeObserver` and use its height as scroll padding so focused links clear the header. Keep scroll guidance with the desktop region.

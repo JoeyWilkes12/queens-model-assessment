@@ -149,6 +149,7 @@ function Cohort({ entries, sort, missing }: { entries: Entry[]; sort: Sort; miss
       <span className="ow-cohort-note">{summary}</span>
       <InfoBubble label={`Conditions for ${title}`} wide>
         <p>Every study here ran the same {boards} boards with the same {armCount(lead.rows)} prompt arms, {lead.total} calls each, under these settings.</p>
+        <p>Ranks describe the saved configurations. Runners, quantization, and host conditions can differ between models.</p>
         <dl className="lb-info-list">{settings(lead.study).map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
       </InfoBubble>
     </div>
