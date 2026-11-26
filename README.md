@@ -41,6 +41,7 @@ The app uses hash routing so a static host can serve every page without rewrite 
 
 - `#/executive-summary`
 - `#/assessment-receipt`
+- `#/about-models`
 - `#/queens-rules`
 - `#/how-z3-solves-queens` (How Z3 solves Queens; see below for its section links)
 - `#/protocol-results`
@@ -48,6 +49,7 @@ The app uses hash routing so a static host can serve every page without rewrite 
 - `#/local-qwen` (all local open-weight cohorts; legacy URL retained)
 - `#/local-qwen/study/<study_id>`
 - `#/local-qwen/receipt/<study_id>/<call_id>`
+- `#/writing-arena` and `#/writing-arena/<task_id>`
 - `#/local-open-models`
 - `#/caveman-summary` (cross-study synthesis)
 - `#/caveman-summary/pilot` (original paired 4B analysis)

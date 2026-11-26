@@ -311,7 +311,8 @@ function Overview({ data, ui, requested }: { data: LocalIndex; ui: BookUi; reque
         <p>Snapshot captured <time dateTime={data.captured_utc}>{new Date(data.captured_utc).toISOString().replace('T', ' ').slice(0, 19)} UTC</time>. Additional nights are imported as new dated snapshots; this page does not poll the running benchmark.</p>
         <Callout tone="evidence" title="November 13: all four fixed predictions hold">
           <p>GPT-OSS repeated the lower-effort prediction. Medium effort scored 31/48 strict with nine cut-offs; high effort scored 25/48 with 23.
-          The pooled accuracy test misses the fixed p &lt; 0.05 threshold (p = 0.073), so this does not establish an accuracy effect.</p>
+          The fixed calculation pooled 96 matched call pairs on 24 boards (p = 0.073), above the 0.05 threshold.
+          Each board appeared in four prompt arms, so the call pairs are dependent.</p>
           <p>Gemma repeated the Caveman deficit: 2/12 strict versus baseline’s 5/12.
           Three Fresh2 boards favored baseline and none favored Caveman (p = 0.25). The pooled p = 0.016 includes the Fresh1 boards that suggested this prediction.</p>
           <p>Qwen 4B repeated its low score: 19/48 strict versus Fresh1’s 16/48.

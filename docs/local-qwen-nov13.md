@@ -42,7 +42,7 @@ separately reported. Earlier studies remain exploratory.
 
 4 of four fixed predictions hold. This is informative prospective agreement across the complete specified set, rather than selecting a successful contrast afterward. Three criteria predict directions; Qwen 4B predicts a ±6 replication band, explicitly not a direction. There is no fixed joint null model, independence assumption or chance-success probability for these mixed criteria; the exact probability of four successes by chance is UNCONFIRMED. Do not interpret the count as four significant effects.
 
-The fixed pooled GPT-OSS accuracy test has discordance 25 medium-only versus 13 high-only, exact two-sided p=0.072951389: no accuracy effect is licensed by the fixed p<0.05 rule. Gemma has seven baseline-only versus zero Caveman-only boards pooled over fresh1/fresh2, p=0.015625: this meets the fixed pooled threshold and includes the four Fresh1 baseline-only boards that suggested the prediction. On the prospective Fresh2 panel, three boards favored baseline and none favored Caveman (p=0.25). No general Caveman mechanism is identified. Neither the Qwen 4B replication band nor the Qwen 9B directional rule licenses an accuracy-effect claim. No extra significance threshold or multiplicity correction was introduced.
+The fixed GPT-OSS calculation pools call pairs across prompt arms: 25 medium-only versus 13 high-only, two-sided binomial p=0.072951389, above the fixed 0.05 threshold. The binomial calculation assumes independent pairs. The four prompt arms on each board share that board, so the call pairs are dependent. Gemma has seven baseline-only versus zero Caveman-only boards pooled over fresh1/fresh2, p=0.015625: this meets the fixed pooled threshold and includes the four Fresh1 baseline-only boards that suggested the prediction. On the prospective Fresh2 panel, three boards favored baseline and none favored Caveman (p=0.25). No general Caveman mechanism is identified. Neither the Qwen 4B replication band nor the Qwen 9B directional rule licenses an accuracy-effect claim. No extra significance threshold or multiplicity correction was introduced.
 
 Each set is twelve public boards, four per size, with one greedy run per board×arm cell. Four arms reuse each board; 48 calls are not 48 independent boards. The effort pool has 96 matched calls on 24 boards, and the Gemma pool 24 matched boards. These are disjoint local replication panels drawn deterministically from an already public hosted corpus, not unseen held-out tasks. Run-to-run variation, cross-night host conditions, architecture and prompt bundles remain limits. A format-only diagnostic never upgrades strict correctness.
 
@@ -189,8 +189,8 @@ power/hardware measurement or a hosted bill forecast.
 
 Updated `#/local-qwen`, its study/receipt routes and `#/changelog`. The matched
 Fresh2 text/image table includes all four arms and each board size. Activation
-also refreshes shared-index data in `#/caveman-summary` and completed/incomplete
-open-weight leaderboard views, without leaderboard source or CSS changes.
+also refreshes shared-index data in `#/caveman-summary` and the executive
+summary's Open-weight studies view, including its unfinished-study disclosure.
 The original `#/caveman-summary/pilot` and hosted-comparison local rows retain
 their historical 4B pilot scope.
 

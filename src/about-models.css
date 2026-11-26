@@ -2,7 +2,7 @@
    so light and dark themes follow automatically. */
 .about-models .am-cards { display: grid; gap: 18px; margin-top: 22px; }
 .about-models .am-family { margin: 32px 0 0; font-family: var(--display-font); font-size: 1.2rem; }
-.am-card { min-width: 0; padding: 18px 20px; border: 1px solid var(--border-subtle); border-left: 4px solid var(--mint-700); background: var(--surface-raised); scroll-margin-top: 24px; }
+.am-card { min-width: 0; padding: 18px 20px; border: 1px solid var(--border-subtle); border-left: 4px solid var(--mint-700); background: var(--surface-raised); scroll-margin-top: var(--book-jump-offset, 24px); }
 .am-card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 8px; }
 .am-card-head h3 { margin: 0; font-family: var(--display-font); font-size: 1.25rem; }
 .am-card-lab { margin: 0; color: var(--text-muted); font-size: .86rem; font-weight: 700; letter-spacing: .02em; }

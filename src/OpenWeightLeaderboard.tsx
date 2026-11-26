@@ -149,6 +149,7 @@ function Cohort({ entries, sort, missing }: { entries: Entry[]; sort: Sort; miss
       <span className="ow-cohort-note">{summary}</span>
       <InfoBubble label={`Conditions for ${title}`} wide>
         <p>Every study here ran the same {boards} boards with the same {armCount(lead.rows)} prompt arms, {lead.total} calls each, under these settings.</p>
+        <p>Ranks describe the saved configurations. Runners, quantization, and host conditions can differ between models.</p>
         <dl className="lb-info-list">{settings(lead.study).map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
       </InfoBubble>
     </div>
@@ -178,6 +179,7 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
   const [panel, setPanel] = useState('all')
   const [protocol, setProtocol] = useState('all')
   const [size, setSize] = useState('all')
+  const [showProgress, setShowProgress] = useState(false)
   const { DataTable } = ui
 
   if (saved.status === 'loading') return <p className="leaderboard-status" role="status">Loading completed studies…</p>
@@ -245,9 +247,9 @@ export default function OpenWeightLeaderboard({ ui }: { ui: BookUi }) {
         <a href={studyHref(study)}>{study.label}</a>, `${strict}/${total}`, String(format), String(remaining),
       ])} />
     </details>}
-    <details className="lb-table ow-unfinished">
+    <details className="lb-table ow-unfinished" onToggle={event => { if (event.currentTarget.open) setShowProgress(true) }}>
       <summary>Unfinished and superseded runs ({unfinished})</summary>
-      <Suspense fallback={<p role="status">Loading recorded progress…</p>}><OpenWeightProgress ui={ui} /></Suspense>
+      {showProgress && <Suspense fallback={<p role="status">Loading recorded progress…</p>}><OpenWeightProgress ui={ui} /></Suspense>}
     </details>
   </div>
 }

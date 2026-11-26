@@ -44,6 +44,8 @@ assert.equal(groupCohorts([entry(base), entry(twin)]).length, 1)
 // Differing deadlines may share a rank only if every observed call finished inside both.
 const shorter = { ...twin, protocol: { ...twin.protocol, timeout_seconds: 50 } }
 assert.equal(groupCohorts([entry(base), entry(shorter)]).length, 2)
+const fast = study => ({ ...study, rows: study.rows.map(r => ({ ...r, elapsed_seconds: 49, transport_error: false })) })
+assert.equal(groupCohorts([entry(fast(base)), entry(fast(shorter))]).length, 1)
 const unmeasured = { ...twin, protocol: { ...twin.protocol, timeout_seconds: 3000 }, rows: twin.rows.map(r => ({ ...r, elapsed_seconds: null })) }
 assert.equal(groupCohorts([entry(base), entry(unmeasured)]).length, 2)
 assert.equal(groupCohorts([entry(base), entry({ ...base, id: 'repeat' })]).length, 2)
@@ -97,9 +99,10 @@ const apart = [
   ['qwen3.5-4b-pilot', 'qwen3.5-9b-nvfp4-np24576'], // budget
 ]
 for (const [a, b] of apart) assert.ok(!cohortOf(a).includes(b), `${a} must not be ranked with ${b}`)
-// Matches expected in the November 6 snapshot; a failure here means a recorded setting differs.
+// Matches expected in the active snapshot; a failure here means a recorded setting differs.
 const together = [
   ['gemma4-e4b-fresh1-4arm-np32768', 'qwen3.5-4b-fresh1-4arm-np32768', 'qwen3.5-9b-nvfp4-fresh1-4arm-np32768'],
+  ['gemma4-e4b-fresh2-4arm-np32768', 'qwen3.5-4b-fresh2-4arm-np32768', 'qwen3.5-9b-nvfp4-fresh2-4arm-np32768'],
   ['qwen3.5-27b-q4_K_M-np24576', 'qwen3.5-9b-nvfp4-np24576'],
   ['qwen3.5-27b-q4_K_M-np24576-qwen-sampling-r1', 'qwen3.5-9b-nvfp4-np24576-qwen-sampling-r1'],
   ['qwen3.5-4b-np32768-loopstop', 'qwen3.5-9b-nvfp4-np32768-loopstop'],

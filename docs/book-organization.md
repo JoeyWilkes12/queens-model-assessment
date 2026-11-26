@@ -26,10 +26,10 @@ The old rail listed 21 pages in seven groups. Some placements reflected history 
 
 | Part | Pages (nested pages indented with →) |
 | --- | --- |
-| Start here | Executive summary · Assessment receipt · **Contents** (new) |
+| Start here | Executive summary · Assessment receipt · About the models · Contents |
 | Part I · The puzzle | Queens rules · How Z3 solves Queens → its 12 sections |
 | Part II · Frontier language models | Protocol & results · One queen at a time · Earlier generations |
-| Part III · Local open-weight models | Local open-weight assessments → Original 4B pilot (→ Pilot configuration), Caveman comparison |
+| Part III · Local open-weight models | Local open-weight assessments → Original 4B pilot (→ Pilot configuration), Caveman comparison, Writing Arena |
 | Part IV · Decision models | Decision models vs the index (→ OpenAI Decisions plan) · Jev primer → Candidate engineering, Scale & primitives, Jev trajectories · SubQ Snap replay (→ New-board panel) · Greedy rule baseline |
 | Part V · Evidence | Evidence atlas · Board receipts |
 | Part VI · Methods | Methods & sources · Methods critique |
@@ -48,7 +48,7 @@ The old rail listed 21 pages in seven groups. Some placements reflected history 
 - Parts and parent pages are disclosures. They start collapsed, except along the path to the page being read, which opens automatically so the current page is always visible.
 - A disclosure the reader opens stays open while they move around the book. Navigating never collapses anything.
 - The page name is a link and the chevron beside it is a separate button, so a parent page can be opened without expanding it.
-- In-page sections (How Z3 solves Queens chapters, the OpenAI Decisions plan) are listed as children and deep-link with the existing `#/page/section` routes.
+- In-page sections are listed as children. Use `#/how-z3-solves-queens/<section-id>` for Z3 chapters and `#/openai-decisions-plan` for the OpenAI Decisions plan.
 - Phones and short landscape screens (≤1020px wide and ≤500px tall) use the drawer, so content keeps the full width.
 
 ## Breadcrumb

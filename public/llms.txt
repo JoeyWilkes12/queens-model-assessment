@@ -9,6 +9,7 @@ This is a navigation guide, not a full copy of the book. Pages use client-side h
 - [Contents](https://joeywilkes12.github.io/queens-model-assessment/#/contents): Complete chapter and section navigation.
 - [Executive summary](https://joeywilkes12.github.io/queens-model-assessment/#/executive-summary): Main findings, leaderboard, and suggested reading.
 - [Assessment receipt](https://joeywilkes12.github.io/queens-model-assessment/#/assessment-receipt): What was tested, when, and how to read the ledger.
+- [About the models](https://joeywilkes12.github.io/queens-model-assessment/#/about-models): Model origins, characteristics, and the builds or routes tested.
 
 ## Puzzle and assessments
 
@@ -17,6 +18,7 @@ This is a navigation guide, not a full copy of the book. Pages use client-side h
 - [Frontier protocol and results](https://joeywilkes12.github.io/queens-model-assessment/#/protocol-results): Hosted-model inputs, outcomes, and route failures.
 - [Local open-weight assessments](https://joeywilkes12.github.io/queens-model-assessment/#/local-qwen): Gemma, LLaVA, Qwen, and GPT-OSS studies, decoding comparisons, and illustrative hosted costs.
 - [Caveman comparison](https://joeywilkes12.github.io/queens-model-assessment/#/caveman-summary): Matched local-study outcomes, token use, and estimated costs, including the original 4B pilot.
+- [Writing Arena](https://joeywilkes12.github.io/queens-model-assessment/#/writing-arena): Compare six local models’ rewrites of five frozen book pages.
 - [Decision models](https://joeywilkes12.github.io/queens-model-assessment/#/decision-models): Typed-choice models and their assessment context; the OpenAI Decisions section is a future experiment plan.
 - [Jev trajectories](https://joeywilkes12.github.io/queens-model-assessment/#/jev-trajectories): Saved empty-board attempts, restarts, and repeatability.
 - [SubQ Snap replay](https://joeywilkes12.github.io/queens-model-assessment/#/subq-assessment): Historical tasks, outcomes, and receipt-linked replays.

@@ -15,9 +15,10 @@ no unfinished queued study remains. Older snapshots stay unchanged.
 The new night adds six Qwen 4B image calls (complete: 19/48 strict) and 48 Qwen
 9B text calls (27/48 strict versus image’s 43/48). All four fixed criteria now
 hold, including 4B’s nondirectional ±6 band around Fresh1’s 16/48. The prior
-GPT-OSS and Gemma results are unchanged: pooled effort accuracy p=0.072951389
-misses its fixed threshold; Gemma p=0.015625 meets its fixed nominal rule when
-the Fresh1 discovery boards are included. Fresh2 alone repeats the direction (p=0.25).
+The fixed GPT-OSS call-level calculation gives p=0.072951389, above the 0.05
+threshold. The four prompt arms reuse each board. Gemma's pooled p=0.015625
+meets its fixed nominal rule with the Fresh1 discovery boards. Fresh2 alone
+repeats the direction (p=0.25).
 Four-of-four is informative prospective agreement, not four significant effects
 or a quantified chance probability. Each set has twelve public boards with one
 greedy run per cell. See the [November 13 final report](local-qwen-nov13.md)
@@ -27,8 +28,8 @@ The [November 12 interim report](local-qwen-nov12.md) and
 
 Updated presentation routes are `#/local-qwen`, its study/receipt pages and
 `#/changelog`. Activation also refreshes consumers of the shared index, including
-`#/caveman-summary` and the completed/incomplete open-weight leaderboard views;
-no leaderboard source or styling changed. The original `#/caveman-summary/pilot`
+`#/caveman-summary` and the executive summary's Open-weight studies view,
+including its unfinished-study disclosure. The original `#/caveman-summary/pilot`
 and hosted-comparison local rows retain their 4B pilot scope. No inference or
 queue/service change was performed for publication.
 
