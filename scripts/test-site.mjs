@@ -185,11 +185,12 @@ test('Writing Arena keeps the reveal and keyboard focus when selecting a differe
   const reveal = page.getByRole('checkbox', { name: 'Show who wrote each one' })
   assert.equal(await reveal.isChecked(), false)
   await reveal.check()
-  const next = page.getByRole('tab', { name: 'Jev primer' })
+  const pages = page.getByRole('navigation', { name: 'Page to compare' })
+  const next = pages.getByRole('link', { name: 'Jev primer' })
   await next.focus()
   await page.keyboard.press('Enter')
   await page.waitForURL('**/#/writing-arena/jev-primer')
-  await page.getByRole('tab', { name: 'Jev primer', selected: true }).waitFor()
+  await next.and(page.locator('[aria-current="page"]')).waitFor()
   assert.equal(await reveal.isChecked(), true)
   assert.equal(await next.evaluate(element => element === document.activeElement), true)
 })
@@ -198,7 +199,37 @@ test('Writing Arena identifies an unknown comparison page', async () => {
   await visit('writing-arena/does-not-exist')
   await page.getByRole('heading', { level: 1, name: 'Comparison page unavailable' }).waitFor()
   await page.getByRole('link', { name: 'See available comparisons' }).click()
-  await page.getByRole('tab', { name: 'Queens rules', selected: true }).waitFor()
+  const pages = page.getByRole('navigation', { name: 'Page to compare' })
+  await pages.getByRole('link', { name: 'Queens rules' }).and(page.locator('[aria-current="page"]')).waitFor()
+})
+
+test('Writing Arena keeps writer controls below the top bar when present', async () => {
+  await page.setViewportSize({ width: 900, height: 1000 })
+  await visit('writing-arena/queens-rules')
+  const writerHeader = page.locator('.wa-pane-head').first()
+  await writerHeader.waitFor()
+  const bar = page.locator('.mobile-topbar')
+  assert.equal(await bar.isVisible(), false)
+  assert.equal(await writerHeader.evaluate(element => getComputedStyle(element).top), '0px')
+
+  await page.setViewportSize({ width: 1010, height: 450 })
+  await bar.waitFor()
+  assert.equal(await writerHeader.evaluate(element => parseFloat(getComputedStyle(element).top)), (await bar.boundingBox()).height)
+})
+
+test('unfinished study progress loads when the disclosure opens', async () => {
+  let requested = false
+  page.on('request', request => {
+    if (/\/assets\/OpenWeightProgress-[\w-]+\.js$/.test(request.url())) requested = true
+  })
+  await visit('executive-summary')
+  await page.getByRole('radio', { name: 'Open-weight studies' }).click()
+  const disclosure = page.getByText(/^Unfinished and superseded runs/)
+  await disclosure.waitFor()
+  assert.equal(requested, false)
+  await disclosure.click()
+  await page.getByRole('heading', { name: 'Unfinished panels' }).waitFor()
+  assert.equal(requested, true)
 })
 
 test('Writing Arena tables stack inside narrow side-by-side panes and retain print columns', async () => {

@@ -146,9 +146,9 @@ export default function WritingArena({ ui, taskId }: { ui: BookUi; taskId?: stri
     <PageHero trail="Local open-weight models / writing arena" title="The same page, rewritten by each local model." deck="Six local models each attempted five book pages once, using the same instruction. Compare their rewrites with the frozen pages they received and choose which version you would keep." />
     <main className="wa" id="main-content">
       <div className="wa-controls">
-        <div className="wa-tabs" role="tablist" aria-label="Page to compare">
-          {index.tasks.map(item => <a key={item.id} role="tab" aria-selected={item.id === task.id} href={`#/writing-arena/${item.id}`}>{item.title}</a>)}
-        </div>
+        <nav className="wa-tabs" aria-label="Page to compare">
+          {index.tasks.map(item => <a key={item.id} aria-current={item.id === task.id ? 'page' : undefined} href={`#/writing-arena/${item.id}`}>{item.title}</a>)}
+        </nav>
         <label className="wa-blind"><input type="checkbox" checked={!blind} onChange={event => setBlind(!event.target.checked)} /> Show who wrote each one</label>
       </div>
       <p className="wa-about">{task.kind}. {task.words.toLocaleString('en-US')} words in the November 13, 2026 source snapshot. <a href={`#/${task.route}`}>Open the live page</a> · <a href={base + index.prompt_template}>the instruction every model received</a>.</p>
@@ -156,8 +156,8 @@ export default function WritingArena({ ui, taskId }: { ui: BookUi; taskId?: stri
 
       {single && <nav className="wa-pager" aria-label="Writers">
         <button type="button" onClick={() => step(-1)} aria-label="Previous writer">‹ Prev</button>
-        <div className="wa-pager-tabs" role="tablist" aria-label="Writer">
-          {ready.map(writer => <button key={writer.key} type="button" role="tab" aria-selected={writer.key === shown[0].key} onClick={() => choose(0, writer.key)}>{label(writer).replace('Writer ', '')}{picks[task.id] === writer.key ? ' ★' : ''}</button>)}
+        <div className="wa-pager-tabs" role="group" aria-label="Choose a writer">
+          {ready.map(writer => <button key={writer.key} type="button" aria-pressed={writer.key === shown[0].key} onClick={() => choose(0, writer.key)}>{label(writer).replace('Writer ', '')}{picks[task.id] === writer.key ? ' ★' : ''}</button>)}
         </div>
         <button type="button" onClick={() => step(1)} aria-label="Next writer">Next ›</button>
       </nav>}

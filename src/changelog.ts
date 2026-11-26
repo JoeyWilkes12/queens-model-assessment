@@ -31,10 +31,11 @@ export const CHANGELOG: ChangeEntry[] = [
     date: '2026-11-26',
     title: 'Writing Arena navigation and assessment notes',
     kinds: ['fix', 'method'],
+    pr: 35,
     changes: [
-      'Writing Arena keeps the reveal setting when you switch comparison pages, identifies missing deep links, and stacks tables inside narrow comparison panes.',
+      'Writing Arena keeps the reveal setting when you switch comparison pages, identifies missing deep links, and stacks tables inside narrow comparison panes. Writer controls stay below the sticky navigation bar.',
       'On phones, model links land below the sticky header. The navigation guide now links to the model profiles and Writing Arena.',
-      'The local assessments clarify the fixed GPT-OSS call-level calculation. The leaderboard explains how to read ranks across saved model configurations.',
+      'The local assessments clarify the fixed GPT-OSS call-level calculation. The leaderboard explains how to read ranks across saved configurations and loads unfinished runs when you open them.',
     ],
   },
   {
